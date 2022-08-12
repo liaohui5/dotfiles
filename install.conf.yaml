@@ -1,0 +1,23 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+
+- clean: ["~", "~/.config"]
+
+- link:
+    ~/.config/alacritty: alacritty
+    ~/.config/nvim: nvim
+    ~/.config/ranger: ranger
+    ~/.config/zellij: zellij
+    ~/.gitconfig: .gitconfig
+    ~/.zprofile: .zprofile
+    ~/.zshrc: .zshrc
+    ~/.bashrc: .bashrc
+    /user/local/bin: bin
+
+- create:
+
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
+

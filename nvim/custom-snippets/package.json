@@ -1,0 +1,62 @@
+{
+  "name": "custom-snippets",
+  "engines": {
+    "vscode": "^1.11.0"
+  },
+  "contributes": {
+    "snippets": [
+      {
+        "language": "json",
+        "path": "./debug.json"
+      },
+      {
+        "language": "vue",
+        "path": "./vue.json"
+      },
+      {
+        "language": "html",
+        "path": "./html.json"
+      },
+      {
+        "language": "javascript",
+        "path": "./javascript.json"
+      },
+      {
+        "language": "javascriptreact",
+        "path": "./javascript.json"
+      },
+      {
+        "language": "typescript",
+        "path": "./typescript.json"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./typescript.json"
+      },
+      {
+        "language": "javascript",
+        "path": "./vue-script.json"
+      },
+      {
+        "language": "javascript",
+        "path": "./vue-script-vuex.json"
+      },
+      {
+        "language": "javascript",
+        "path": "./vue-script-router.json"
+      },
+      {
+        "language": "typescript",
+        "path": "./vue-script.json"
+      },
+      {
+        "language": "typescript",
+        "path": "./vue-script-vuex.json"
+      },
+      {
+        "language": "typescript",
+        "path": "./vue-script-router.json"
+      }
+    ]
+  }
+}

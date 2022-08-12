@@ -1,0 +1,120 @@
+{
+  // ===== coc-translator ===== //
+  "translator.engines": ["youdao"],
+
+  // ===== snippets ===== //
+  "snippets.autoTrigger": true,
+  "snippets.extends": {
+    "javascriptreact": ["javascript"],
+    "typescript": ["javascript"]
+  },
+  "snippets.loadVSCodeProjectSnippets": true,
+  "snippets.ultisnips.enable": false,
+
+  // ===== tsserver ===== //
+  "tsserver.reportStyleChecksAsWarnings": true,
+  "javascript.referencesCodeLens.enable": false,
+  "typescript.referencesCodeLens.enable": false,
+  "javascript.suggest.names": true,
+  "tsserver.trace.server": "off",
+  "typescript.suggestionActions.enabled": true,
+  "typescript.format.enabled": true,
+  "typescript.showUnused": false,
+  "javascript.showUnused": false,
+  "typescript.implementationsCodeLens.enable": false,
+  "javascript.implementationsCodeLens.enable": false,
+
+  // ===== diagnostic ===== //
+  "diagnostic.checkCurrentLine": true,
+  "diagnostic.virtualTextPrefix": " ❯❯❯ ",
+  "diagnostic.virtualText": false,
+
+  // ===== yaml ===== //
+  "yaml.format.enable": true,
+
+  // ===== html ===== //
+  "html.format.enable": true,
+
+  // ===== json ===== //
+  "json.format.enable": true,
+
+  // ===== eslint ===== //
+  "eslint.autoFixOnSave": false,
+
+  // ===== prettier ===== //
+  "prettier.printWidth": 100,
+  "prettier.disableLanguages": [],
+  "prettier.formatterPriority": 1,
+  "prettier.useTabs": false,
+  "prettier.trailingComma": "all",
+  "prettier.singleQuote": false,
+
+  // ===== explorer ===== //
+  // "explorer.autoExpandOptions": [
+  //   "uncompact"
+  // ],
+  // "explorer.width": 30,
+  // "explorer.position": "left",
+  // "explorer.focus": true,
+  // "explorer.file.column.indent.indentLine": true,
+  // "explorer.file.showHiddenFiles": true,
+  // "explorer.icon.enableNerdfont": true,
+  // "explorer.icon.source": "builtin",
+  // "explorer.sources": [
+  //   {
+  //     "name": "file",
+  //     "expand": true
+  //   }
+  // ],
+
+  // languageserver
+  "languageserver": {
+    "sql": {
+      "command": "sql-language-server",
+      "args": ["up", "--method", "stdio"],
+      "filetypes": ["sql", "mysql"]
+    }
+  },
+
+  // settings
+  "codeLens.enable": false,
+  "coc.preferences.extensionUpdateCheck": "weekly",
+  "coc.preferences.snippetStatusText": "Ⓢ  ",
+  "coc.preferences.messageLevel": "error",
+  "coc.preferences.formatOnSaveFiletypes": [],
+
+  // suggest
+  "suggest.enablePreselect": false,
+  "suggest.triggerAfterInsertEnter": true,
+  "suggest.autoTrigger": "always",
+  "suggest.timeout": 2000,
+  "suggest.enablePreview": true,
+  "suggest.floatEnable": true,
+  "suggest.completionItemKindLabels": {
+    "class": "\uf0e8",
+    "color": "\ue22b",
+    "constant": "\uf8fe",
+    "default": "\uf29c",
+    "enum": "\uf435",
+    "enumMember": "\uf02b",
+    "event": "\ufacd",
+    "field": "\uf93d",
+    "file": "\uf723",
+    "folder": "\uf115",
+    "function": "\u0192",
+    "interface": "\uf417",
+    "keyword": "\uf1de",
+    "method": "\uf6a6",
+    "module": "\uf40d",
+    "operator": "\uf915",
+    "property": "\ue624",
+    "reference": "\ufa46",
+    "snippet": "\ue60b",
+    "struct": "\ufb44",
+    "text": "\ue612",
+    "typeParameter": "\uf728",
+    "unit": "\uf475",
+    "value": "\uf89f",
+    "variable": "\ue71b"
+  }
+}

@@ -1,0 +1,78 @@
+--  .----------------.  .----------------.  .----------------.  .----------------.  .----------------.  .-----------------.
+-- | .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. |
+-- | |   ______     | || |   _____      | || | _____  _____ | || |    ______    | || |     _____    | || | ____  _____  | |
+-- | |  |_   __ \   | || |  |_   _|     | || ||_   _||_   _|| || |  .' ___  |   | || |    |_   _|   | || ||_   \|_   _| | |
+-- | |    | |__) |  | || |    | |       | || |  | |    | |  | || | / .'   \_|   | || |      | |     | || |  |   \ | |   | |
+-- | |    |  ___/   | || |    | |   _   | || |  | '    ' |  | || | | |    ____  | || |      | |     | || |  | |\ \| |   | |
+-- | |   _| |_      | || |   _| |__/ |  | || |   \ `--' /   | || | \ `.___]  _| | || |     _| |_    | || | _| |_\   |_  | |
+-- | |  |_____|     | || |  |________|  | || |    `.__.'    | || |  `._____.'   | || |    |_____|   | || ||_____|\____| | |
+-- | |              | || |              | || |              | || |              | || |              | || |              | |
+-- | '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' |
+--  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------' 
+--  .----------------.  .----------------.  .----------------.  .----------------.  .----------------.  .----------------. 
+-- | .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. |
+-- | |   _____      | || |     ____     | || |      __      | || |  ________    | || |  _________   | || |  _______     | |
+-- | |  |_   _|     | || |   .'    `.   | || |     /  \     | || | |_   ___ `.  | || | |_   ___  |  | || | |_   __ \    | |
+-- | |    | |       | || |  /  .--.  \  | || |    / /\ \    | || |   | |   `. \ | || |   | |_  \_|  | || |   | |__) |   | |
+-- | |    | |   _   | || |  | |    | |  | || |   / ____ \   | || |   | |    | | | || |   |  _|  _   | || |   |  __ /    | |
+-- | |   _| |__/ |  | || |  \  `--'  /  | || | _/ /    \ \_ | || |  _| |___.' / | || |  _| |___/ |  | || |  _| |  \ \_  | |
+-- | |  |________|  | || |   `.____.'   | || ||____|  |____|| || | |________.'  | || | |_________|  | || | |____| |___| | |
+-- | |              | || |              | || |              | || |              | || |              | || |              | |
+-- | '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' |
+--  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------' 
+----------------------------------------------------
+-- 插件加载器: 加载所有的插件, 机器配置并启动,
+-- 不想要哪个插件的功能, 直接注释
+----------------------------------------------------
+local plugins = {
+	{ require_path = "aerial", config_name = "aerial" },
+	{ require_path = "align", config_name = "align" },
+	{ require_path = "nvim-autopairs", config_name = "nvim-autopairs" },
+	{ require_path = "bufferline", config_name = "bufferline" },
+	{ require_path = "Comment", config_name = "comment" },
+	{ require_path = "editorconfig", config_name = "editorconfig" },
+	{ require_path = "formatter", config_name = "formatter" },
+	{ require_path = "gitsigns", config_name = "gitsigns" },
+	{ require_path = "hop", config_name = "hop" },
+	{ require_path = "lualine", config_name = "lualine" },
+	{ require_path = "spectre", config_name = "nvim-spectre" },
+	{ require_path = "nvim-tree", config_name = "nvim-tree" },
+	{ require_path = "nvim-treesitter.configs", config_name = "nvim-treesitter" },
+	{ require_path = "nvim-web-devicons", config_name = "nvim-web-devicons" },
+	{ require_path = "telescope", config_name = "telescope" },
+	{ require_path = "toggleterm", config_name = "toggleterm" },
+	{ require_path = "indent_blankline", config_name = "indent_blankline" },
+	{ require_path = "session_manager", config_name = "session_manager" },
+	{ require_path = "auto-save", config_name = "auto-save" },
+	{ require_path = nil, config_name = "rnvimr" },
+	-- { require_path = nil, config_name = "coc" },
+	{ require_path = "catppuccin", config_name = "catppuccin" },
+	-- { require_path = "material", config_name = "material" },
+	-- { require_path = "monokai", config_name = "monokai" },
+	{ require_path = "onedark", config_name = "onedark" },
+}
+
+for _, item in pairs(plugins) do
+	local require_path = item["require_path"]
+	local plugin_item = nil
+	if require_path ~= nil then
+		-- 如果 require_path 不是 nil, 就加载插件
+		local status, plugin = pcall(require, require_path)
+		if not status then
+			vim.notify("[plugin]: " .. require_path .. " not found")
+			return
+		end
+		plugin_item = plugin
+	end
+
+	-- 加载 config
+	local config_name = "plugin-configs." .. item["config_name"]
+	local status, config = pcall(require, config_name)
+	if not status then
+		vim.notify("[config]: " .. config_name .. " not found")
+		return
+	end
+
+	-- config 配置模块必须实现 onstart 方法
+	config.onstart(plugin_item)
+end
