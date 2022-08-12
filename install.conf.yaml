@@ -14,7 +14,6 @@
     ~/.zprofile: .zprofile
     ~/.zshrc: .zshrc
     ~/.bashrc: .bashrc
-    /user/local/bin: bin
 
 - create:
 
