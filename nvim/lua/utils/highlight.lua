@@ -15,35 +15,30 @@ return {
       --   augroup END
       -- ]])
 
-      local group = vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
+      local group   = vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
       local autocmd = vim.api.nvim_create_autocmd
+      local buf = vim.lsp.buf;
 
-      autocmd("CursorHold", { -- normal 模式: 自动高亮光标位置的单词
-        group = group,
-        -- pattern = "*",
-        buffer = bufnr,
-        callback = function()
-          vim.lsp.buf.document_highlight()
-        end,
+      -- normal 模式: 自动高亮光标位置的单词
+      autocmd("CursorHold", { 
+        group    = group,
+        buffer   = bufnr,
+        callback = buf.document_highlight
       })
 
-      autocmd("CursorHoldI", { -- insert 模式: 自动高亮光标位置的单词
-        group = group,
-        -- pattern = "*",
-        buffer = bufnr,
-        callback = function()
-          vim.lsp.buf.document_highlight()
-        end,
+      -- insert 模式: 自动高亮光标位置的单词
+      autocmd("CursorHoldI", {
+        group    = group,
+        buffer   = bufnr,
+        callback = buf.document_highlight
       })
 
-      autocmd("CursorMoved", { -- 光标移开后自动取消高亮
-        group = group,
-        -- pattern = "*",
-        buffer = bufnr,
-        callback = function()
-          vim.lsp.buf.clear_references()
-        end,
+      -- 光标移开后自动取消高亮
+      autocmd("CursorMoved", {
+        group    = group,
+        buffer   = bufnr,
+        callback = buf.clear_references 
       })
-    end -- if end
+    end
   end
 }

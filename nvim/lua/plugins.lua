@@ -105,7 +105,7 @@ return require("packer").startup({
 		use({ "tpope/vim-surround" })
 
 		-- repeat .重复功能增强
-		-- use({ "tpope/vim-repeat" })
+		use({ "tpope/vim-repeat" })
 
 		-- easyclip, 粘贴增强
 		-- use({ "svermeulen/vim-easyclip" })

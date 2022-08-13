@@ -77,10 +77,9 @@ local initSagaUI = function()
 			sign_priority    = 20,
 			virtual_text     = true,
 		},
-		-- finder icons
 		finder_icons = {
-			def = "  ",
-			ref = "諭 ",
+			def  = "  ",
+			ref  = "諭 ",
 			link = "  ",
 		},
 		finder_action_keys      = keys.finder_action_keys,
@@ -88,7 +87,6 @@ local initSagaUI = function()
 		rename_action_quit      = "<C-c>",
 		rename_in_select        = true,
 		definition_preview_icon = " ",
-		-- show symbols in winbar must nightly
 		symbol_in_winbar = {
 			in_custom      = false,
 			enable         = false,
@@ -96,22 +94,16 @@ local initSagaUI = function()
 			show_file      = true,
 			click_support  = false,
 		},
-		-- show outline
 		show_outline = {
-			win_position = "right",
-			-- set special filetype win that outline window split.like NvimTree neotree, defx, db_ui
+			win_position = "right", -- NvimTree | neotree | defx | db_ui
 			win_with     = "NvimTree",
 			win_width    = 30,
 			auto_enter   = true,
 			auto_preview = true,
 			virt_text    = "┃",
 			jump_key     = "o",
-			-- auto refresh when change buffer
 			auto_refresh = true,
 		},
-		-- if you don't use nvim-lspconfig you must pass your server name and
-		-- the related filetypes into this table
-		-- like server_filetype_map = { metals = { "sbt", "scala" } }
 		server_filetype_map = {},
 	})
 end

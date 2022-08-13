@@ -7,70 +7,67 @@ return {
 	onstart = function(material)
 		material.setup({
 			contrast = {
-				sidebars = false, -- Enable contrast for sidebar-like windows ( for example Nvim-Tree )
-				floating_windows = false, -- Enable contrast for floating windows
-				line_numbers = false, -- Enable contrast background for line numbers
-				sign_column = false, -- Enable contrast background for the sign column
-				cursor_line = false, -- Enable darker background for the cursor line
-				non_current_windows = false, -- Enable darker background for non-current windows
-				popup_menu = false, -- Enable lighter background for the popup menu
+				sidebars            = false,
+				floating_windows    = false,
+				line_numbers        = false,
+				sign_column         = false,
+				cursor_line         = false, 
+				non_current_windows = false,
+				popup_menu          = false,
 			},
 
 			italics = {
-				comments = false, -- Enable italic comments
-				keywords = false, -- Enable italic keywords
-				functions = false, -- Enable italic functions
-				strings = false, -- Enable italic strings
-				variables = false, -- Enable italic variables
+				comments  = false, 
+				keywords  = false, 
+				functions = false,
+				strings   = false,
+				variables = false,
 			},
 
-			contrast_filetypes = { -- Specify which filetypes get the contrasted (darker) background
-				"terminal", -- Darker terminal background
-				"packer", -- Darker packer background
-				"qf", -- Darker qf list background
+			contrast_filetypes = {
+				"terminal",
+				"packer",
+				"qf",
 			},
 
 			high_visibility = {
-				lighter = false, -- Enable higher contrast text for lighter style
-				darker = false, -- Enable higher contrast text for darker style
+				lighter = false,
+				darker  = false, 
 			},
 
 			disable = {
-				colored_cursor = false, -- Disable the colored cursor
-				borders = false, -- Disable borders between verticaly split windows
-				background = false, -- Prevent the theme from setting the background (NeoVim then uses your teminal background)
-				term_colors = false, -- Prevent the theme from setting terminal colors
-				eob_lines = false, -- Hide the end-of-buffer lines
+				colored_cursor = false,
+				borders        = false,
+				background     = false,
+				term_colors    = false,
+				eob_lines      = false,
 			},
 
-			lualine_style = "default", -- Lualine style ( can be 'stealth' or 'default' )
-
-			async_loading = true, -- Load parts of the theme asyncronously for faster startup (turned on by default)
-
-			custom_highlights = {}, -- Overwrite highlights with your own
-
-			plugins = { -- Here, you can disable(set to false) plugins that you don't use or don't want to apply the theme to
-				trouble = true,
-				nvim_cmp = true,
-				neogit = true,
-				gitsigns = true,
-				git_gutter = true,
-				telescope = true,
-				nvim_tree = true,
-				sidebar_nvim = true,
-				lsp_saga = true,
-				nvim_dap = true,
-				nvim_navic = true,
-				which_key = true,
-				sneak = true,
-				hop = true,
+			lualine_style     = "default",
+			async_loading     = true,
+			custom_highlights = {},
+			plugins = {
+				trouble          = true,
+				nvim_cmp         = true,
+				neogit           = true,
+				gitsigns         = true,
+				git_gutter       = true,
+				telescope        = true,
+				nvim_tree        = true,
+				sidebar_nvim     = true,
+				lsp_saga         = true,
+				nvim_dap         = true,
+				nvim_navic       = true,
+				which_key        = true,
+				sneak            = true,
+				hop              = true,
 				indent_blankline = true,
-				nvim_illuminate = true,
-				mini = true,
+				nvim_illuminate  = true,
+				mini             = true,
 			},
 		})
 
-  -- apply this colortheme
+  -- 使用主题
   vim.g.material_style = "Palenight";
   vim.cmd[[colorscheme material]]
 	end,

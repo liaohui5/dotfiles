@@ -11,32 +11,30 @@ local config = {};
 config.onstart = function(nvimtree)
   nvimtree.setup({
     disable_netrw = true,
-    hijack_netrw = true,
+    hijack_netrw  = true,
     open_on_setup = false,
-    update_cwd = true,
+    update_cwd    = true,
     git = {
       enable = false,
     },
     update_focused_file = {
-      enable = true,
+      enable     = true,
       update_cwd = true,
     },
     filters = {
-      -- dont display files
       dotfiles = false,
-      custom = { "node_modules" },
+      custom   = { "node_modules" },
     },
     filesystem_watchers = {
       enable = true,
     },
     view = {
-      width = 32,
-      side = "left",
+      width            = 32,
+      side             = "left",
       hide_root_folder = true,
       mappings = {
         custom_only = true,
-        -- 绑定快捷键
-        list = require("keybindings").nvimtreeKeys(),
+        list        = require("keybindings").nvimtreeKeys(), -- 绑定快捷键
       },
       number = false,
       relativenumber = false,
@@ -45,46 +43,46 @@ config.onstart = function(nvimtree)
     actions = {
       open_file = {
         resize_window = false,
-        quit_on_open = false,
+        quit_on_open  = false,
       },
     },
     system_open = {
       cmd = "open",
     },
     renderer = {
-      highlight_git = false,
+      highlight_git          = false,
       highlight_opened_files = "none",
-      indent_markers = {
+      indent_markers         = {
         enable = false,
       },
       icons = {
         show = {
-          file = true,
-          folder = true,
+          file         = true,
+          folder       = true,
           folder_arrow = false,
-          git = false,
+          git          = false,
         },
         glyphs = {
           default = "",
           symlink = "",
           folder = {
-            default = "",
-            empty = "",
-            empty_open = "",
-            open = "",
-            symlink = "",
+            default      = "",
+            empty        = "",
+            empty_open   = "",
+            open         = "",
+            symlink      = "",
             symlink_open = "",
-            arrow_open = "",
+            arrow_open   = "",
             arrow_closed = "",
           },
           git = {
-            unstaged = "✗",
-            staged = "✓",
-            unmerged = "",
-            renamed = "➜",
+            unstaged  = "✗",
+            staged    = "✓",
+            unmerged  = "",
+            renamed   = "➜",
             untracked = "★",
-            deleted = "",
-            ignored = "◌",
+            deleted   = "",
+            ignored   = "◌",
           },
         },
       },

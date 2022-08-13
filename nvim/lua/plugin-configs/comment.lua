@@ -7,14 +7,14 @@ return {
     -- 启动时设置: 快捷键
     comment.setup({
       toggler = {
-        line = "gcc",
+        line  = "gcc",
         block = "gbc",
       },
 
       -- 选中模式下
       opleader = {
-        line = "<C-\\>",
-        block = "gb",
+        line   = "<C-\\>",
+        block  = "gb",
       },
     })
   end

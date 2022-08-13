@@ -7,20 +7,20 @@ local config = {};
 config.onstart = function(lualine)
   lualine.setup({
     options = {
-      icons_enabled = true,
-      theme = 'auto',
-      component_separators = { left = '', right = '' },
-      section_separators = { left = '', right = '' },
-      disabled_filetypes = {
-        statusline = {},
-        winbar = {},
-      },
+      icons_enabled        = true,
+      theme                = 'auto',
       always_divide_middle = true,
-      globalstatus = false,
-      refresh = {
-        statusline = 1000,
-        tabline = 1000,
-        winbar = 1000,
+      globalstatus         = false,
+      component_separators = { left = '', right = '' },
+      section_separators   = { left = '', right = '' },
+      disabled_filetypes   = {
+        statusline         = {},
+        winbar             = {},
+      },
+      refresh              = {
+        statusline         = 1000,
+        tabline            = 1000,
+        winbar             = 1000,
       }
     },
     sections = {
@@ -39,10 +39,10 @@ config.onstart = function(lualine)
       lualine_y = {},
       lualine_z = {}
     },
-    tabline = {},
-    winbar = {},
+    tabline         = {},
+    winbar          = {},
     inactive_winbar = {},
-    extensions = {}
+    extensions      = {}
   });
 end
 

@@ -5,27 +5,33 @@
 return {
   onstart = function(autosave)
     autosave.setup({
-      enabled = true,
-      execution_message = {
-        message = function()
-          return ("auto-save: saved at " .. vim.fn.strftime("%H:%M:%S"))
-        end,
-        dim = 0.18,
-        cleaning_interval = 1250,
-      },
-      trigger_events = { "InsertLeave" },
-      condition = function(buf)
-        local fn    = vim.fn
-        local utils = require("auto-save.utils.data")
-        if fn.getbufvar(buf, "&modifiable") == 1 and
-            utils.not_in(fn.getbufvar(buf, "&filetype"), {}) then
-          return true
-        end
-        return false
-      end,
+      enabled           = true,
+      trigger_events    = { "InsertLeave" },
       write_all_buffers = false,
       debounce_delay    = 500,
-      callbacks = {
+      execution_message = {
+        dim               = 0.18,
+        cleaning_interval = 1250,
+        message           = function()
+          return ("auto-save: saved at " .. vim.fn.strftime("%H:%M:%S"))
+        end,
+      },
+      condition         = function(buf)
+        local fn        = vim.fn
+        local utils     = require("auto-save.utils.data")
+        local disabling = {
+          "NvimTree",
+          "TelescopePrompt",
+          "aerial",
+          "spectre_panel"
+        };
+        if fn.getbufvar(buf, "&modifiable") == 1 and utils.not_in(fn.getbufvar(buf, "&filetype"), disabling) then
+          return true
+        else
+          return false
+        end
+      end,
+      callbacks         = {
         enabling              = nil,
         disabling             = nil,
         before_saving         = nil,

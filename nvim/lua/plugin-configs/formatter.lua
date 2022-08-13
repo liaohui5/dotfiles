@@ -22,25 +22,25 @@ return {
 					-- 需要安装 stylua: brew install stylua
 					function()
 						return {
-							exe = "stylua",
-							args = { "-" },
+							exe   = "stylua",
+							args  = { "-" },
 							stdin = true,
 						}
 					end,
 				},
-        javascript = prettierFormatter,
+        javascript      = prettierFormatter,
 				javascriptreact = prettierFormatter,
-				typescript = prettierFormatter,
+				typescript      = prettierFormatter,
 				typescriptreact = prettierFormatter,
-				css = prettierFormatter,
-        scss = prettierFormatter,
-        less = prettierFormatter,
-				vue = prettierFormatter,
-        html = prettierFormatter,
-				yaml = prettierFormatter,
-				json = prettierFormatter,
-				markdown = prettierFormatter,
-        graphql = prettierFormatter
+				css             = prettierFormatter,
+        scss            = prettierFormatter,
+        less            = prettierFormatter,
+				vue             = prettierFormatter,
+        html            = prettierFormatter,
+				yaml            = prettierFormatter,
+				json            = prettierFormatter,
+				markdown        = prettierFormatter,
+        graphql         = prettierFormatter
 			},
 		})
 

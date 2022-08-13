@@ -1,51 +1,39 @@
-" Make Ranger replace Netrw and be the file explorer
+" 用 ranger 替换默认的 Netrw 文件管理器
 let g:rnvimr_enable_ex = 1
 
-" Make Ranger to be hidden after picking a file
+" 选择文件后隐藏 ranger
 let g:rnvimr_enable_picker = 1
 
-" Replace `$EDITOR` candidate with this command to open the selected file
+" 用这个命令替换 ranger rc.conf 中的 $EDITOR
 let g:rnvimr_edit_cmd = 'drop'
 
-" Disable a border for floating window
-let g:rnvimr_draw_border = 1
-
-" Hide the files included in gitignore
+" 隐藏 .gigignore 文件中忽略的文件
 let g:rnvimr_hide_gitignore = 1
 
-" Change the border's color
+" 边框属性
 let g:rnvimr_border_attr = {'fg': 14, 'bg': -1}
 
-" Make Neovim wipe the buffers corresponding to the files deleted by Ranger
+" 当 buffer 中的文件被ranger删除时, 关闭对应的buffer
 let g:rnvimr_enable_bw = 1
 
-" Add a shadow window, value is equal to 100 will disable shadow
+" 遮罩层
 let g:rnvimr_shadow_winblend = 70
 
-" Draw border with both
+" 启动 ranger 命令
 let g:rnvimr_ranger_cmd = ['ranger', '--cmd=set draw_borders both']
 
-" Link CursorLine into RnvimrNormal highlight in the Floating window
+" 高亮 ranger 光标所在行
 highlight link RnvimrNormal CursorLine
 
 " 切换显示/隐藏ranger窗口
 nnoremap <silent> <C-n> :RnvimrToggle<CR>
 tnoremap <silent> <C-n> <C-\><C-n>:RnvimrToggle<CR>
 
-" Resize floating window by all preset layouts
-" tnoremap <silent> <M-i> <C-\><C-n>:RnvimrResize<CR>
-
-" Resize floating window by special preset layouts
-" tnoremap <silent> <M-l> <C-\><C-n>:RnvimrResize 1,8,9,11,5<CR>
-
-" Resize floating window by single preset layout
-" tnoremap <silent> <M-y> <C-\><C-n>:RnvimrResize 6<CR>
-
 " Map Rnvimr action
 " 快捷键映射: 
 " <C-e> 用 nvim 编辑
-" ges: 用 nvim 编辑, 并且上下分屏
-" gev: 用 nvim 编辑, 并且左右分屏
+" ges:  用 nvim 编辑, 并且上下分屏
+" gev:  用 nvim 编辑, 并且左右分屏
 let g:rnvimr_action = {
             \ '<Enter>': 'NvimEdit edit',
             \ 'o': 'NvimEdit edit',
@@ -55,14 +43,14 @@ let g:rnvimr_action = {
             \ 'yw': 'EmitRangerCwd'
             \ }
 
-" Add views for Ranger to adapt the size of floating window
+" ranger 打开时的最大大小(宽度/高度)
 let g:rnvimr_ranger_views = [
             \ {'minwidth': 90, 'ratio': []},
             \ {'minwidth': 50, 'maxwidth': 89, 'ratio': [1,1]},
             \ {'maxwidth': 49, 'ratio': [1]}
             \ ]
 
-" Customize the initial layout
+" ranger 打开时距离编辑器左上角的距离(width/height/col/row)
 let g:rnvimr_layout = {
             \ 'relative': 'editor',
             \ 'width': float2nr(round(0.6 * &columns)),
@@ -72,24 +60,8 @@ let g:rnvimr_layout = {
             \ 'style': 'minimal'
             \ }
 
-" Customize multiple preset layouts
-" '{}' represents the initial layout
-" let g:rnvimr_presets = [
-"             \ {'width': 0.500, 'height': 0.500},
-"             \ {},
-"             \ {'width': 0.800, 'height': 0.800},
-"             \ {'width': 0.950, 'height': 0.950},
-"             \ {'width': 0.500, 'height': 0.500, 'col': 0, 'row': 0},
-"             \ {'width': 0.500, 'height': 0.500, 'col': 0, 'row': 0.5},
-"             \ {'width': 0.500, 'height': 0.500, 'col': 0.5, 'row': 0},
-"             \ {'width': 0.500, 'height': 0.500, 'col': 0.5, 'row': 0.5},
-"             \ {'width': 0.500, 'height': 1.000, 'col': 0, 'row': 0},
-"             \ {'width': 0.500, 'height': 1.000, 'col': 0.5, 'row': 0},
-"             \ {'width': 1.000, 'height': 0.500, 'col': 0, 'row': 0},
-"             \ {'width': 1.000, 'height': 0.500, 'col': 0, 'row': 0.5}
-"             \ ]
-
-" Fullscreen for initial layout
+" ranger 打开时全屏
+" let g:rnvimr_presets = [{}]
 " let g:rnvimr_layout = {
 "            \ 'relative': 'editor',
 "            \ 'width': &columns,
@@ -98,5 +70,3 @@ let g:rnvimr_layout = {
 "            \ 'row': 0,
 "            \ 'style': 'minimal'
 "            \ }
-" Only use initial preset layout
-" let g:rnvimr_presets = [{}]
