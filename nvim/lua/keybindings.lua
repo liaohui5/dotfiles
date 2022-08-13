@@ -193,7 +193,7 @@ keybindings.spectreKeys = function()
   nnoremap("<leader>rr", "<cmd>lua require('spectre').open_file_search()<CR>")
 
   -- 打开全局搜索/替换
-  nnoremap("<leader>ra", "<cmd>lua require('spectre').open()<CR>")
+  nnoremap("<leader>rg", "<cmd>lua require('spectre').open()<CR>")
 
   -- 选中模式下, 在所有文件中搜索: 被选中单词
   vnoremap("<leader>rr", "<esc>:lua require('spectre').open_visual({select_word=true})<CR>")
@@ -211,11 +211,6 @@ keybindings.spectreKeys = function()
       cmd = "<cmd>lua require('spectre.actions').select_entry()<CR>",
       desc = "goto current file",
     },
-    ["replace_cmd"] = {
-      map = "<leader>c",
-      cmd = "<cmd>lua require('spectre.actions').replace_cmd()<CR>",
-      desc = "input replace vim command",
-    },
     ["run_current_replace"] = {
       -- 替换当前行
       map = "<leader>rc",
@@ -224,7 +219,7 @@ keybindings.spectreKeys = function()
     },
     ["run_replace"] = {
       -- 替换所有
-      map = "<leader>R",
+      map = "<leader>ra",
       cmd = "<cmd>lua require('spectre.actions').run_replace()<CR>",
       desc = "replace all",
     },
@@ -242,10 +237,15 @@ keybindings.spectreKeys = function()
     },
     ["show_option_menu"] = {
       -- 显示菜单
-      map = "<leader>o",
+      map = "<leader>rm",
       cmd = "<cmd>lua require('spectre').show_options()<CR>",
       desc = "show option",
     },
+    -- ["replace_cmd"] = {
+    --   map = "<leader>rC",
+    --   cmd = "<cmd>lua require('spectre.actions').replace_cmd()<CR>",
+    --   desc = "input replace vim command",
+    -- },
   }
 end
 
