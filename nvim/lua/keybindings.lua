@@ -110,78 +110,77 @@ keybindings.hopKeys = function()
 end
 
 --------------------------------------
--- cmp 自动完成快捷键
+-- cmp 自动完成快捷键 
+-- docs: https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings
 --------------------------------------
-keybindings.cmpKeys = function(cmp, luasnip, cmp_config)
-  -- 载入工具模块
-  local cmpUtils = require("utils.cmp")
-  local check_backspace = cmpUtils.check_backspace
-  local jumpable = cmpUtils.jumpable
-  local is_emmet_active = cmpUtils.is_emmet_active
-  return {
-    ["<C-k>"] = cmp.mapping.select_prev_item(), -- 上一项
-    ["<C-j>"] = cmp.mapping.select_next_item(), -- 下一项
+keybindings.cmpKeys = function(cmp)
+  local has_words_before = function()
+    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+  end
 
-    ["<C-o>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }), -- 显示代码提示
-    ["<C-e>"] = cmp.mapping({ -- 关闭提示
+  local feedkey = function(key, mode)
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
+  end
+
+  return {
+    -- 显示代码提示
+    ["<C-o>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+
+    -- 选中上一项
+    ["<C-k>"] = cmp.mapping.select_prev_item(),
+
+    -- 选中下一项
+    ["<C-j>"] = cmp.mapping.select_next_item(),
+
+    -- 确定选中提示
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+
+    -- 关闭代码提示
+    ["<C-e>"] = cmp.mapping({
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
     }),
 
-    -- 如果窗口内容太多，可以上下滚动
-    ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-    ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
+    -- 如果窗口内容太多，可以上下滚动(有bug, 坐等官方修复)
+    -- ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
+    -- ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
 
     -- snippets 上一个位置
     ["<C-h>"] = cmp.mapping(function(fallback)
-      if jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
+      if vim.fn["vsnip#jumpable"](-1) == 1 then
+        feedkey("<Plug>(vsnip-jump-prev)", "")
       end
     end),
 
     -- snippets 下一个位置
     ["<C-l>"] = cmp.mapping(function(fallback)
-      if jumpable(1) then
-        luasnip.jump(1)
-      else
-        fallback()
+      if vim.fn["vsnip#jumpable"](1) == 1 then
+        feedkey("<Plug>(vsnip-jump-next)", "");
       end
     end),
 
-    -- Tab: 下一个
+    -- Tab: 下一个提示/展开snippets
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      elseif luasnip.expandable() then
-        luasnip.expand()
-      elseif check_backspace() then
-        fallback()
-      elseif is_emmet_active() then
-        return vim.fn["cmp#complete"]()
+      elseif vim.fn["vsnip#available"](1) == 1 then
+        feedkey("<Plug>(vsnip-expand-or-jump)", "")
+      elseif has_words_before() then
+        cmp.complete()
       else
         fallback()
       end
     end, { "i", "s" }),
 
-    -- shift-tab: 上一个
+    -- shift-tab: 上一个提示
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
-      else
-        fallback()
+      elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+        feedkey("<Plug>(vsnip-jump-prev)", "")
       end
     end, { "i", "s" }),
-
-    -- 确定选中提示
-    ["<CR>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.confirm(cmp_config.confirm_opts)
-      else
-        fallback()
-      end
-    end),
   }
 end
 
@@ -241,11 +240,6 @@ keybindings.spectreKeys = function()
       cmd = "<cmd>lua require('spectre').show_options()<CR>",
       desc = "show option",
     },
-    -- ["replace_cmd"] = {
-    --   map = "<leader>rC",
-    --   cmd = "<cmd>lua require('spectre.actions').replace_cmd()<CR>",
-    --   desc = "input replace vim command",
-    -- },
   }
 end
 
@@ -354,60 +348,52 @@ keybindings.lspKeys = function(client, bufnr)
   -- 变量重命名
   -- bufkeyset(bufnr, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opt)
 
-  -- code action, 改用 lsp-saga 的方法
+  -- code action
   -- bufkeyset(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
 
-  -- 查看代码定义的位置
-  bufkeyset(bufnr, "n", "gd", "<cmd>lua require'telescope.builtin'.lsp_definitions()<CR>", opt)
+  -- 查看代码定义的位置(需要 telescope 插件)
+  -- bufkeyset(bufnr, "n", "gd", "<cmd>lua require'telescope.builtin'.lsp_definitions()<CR>", opt)
 
   -- 显示帮助, 改用 lsp-saga 的方法
-  -- bufkeyset(bufnr, "n", "<C-h>", "<cmd>lua vim.lsp.buf.hover()<CR>", opt)
-
-  -- 显示参数提示
-  -- bufkeyset(bufnr, "n", "gf", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opt);
+  -- bufkeyset(bufnr, "n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opt)
 end
 
 --------------------------------------
--- typescript 插件快捷键设置
+-- lspsaga 自定义插件快捷键设置
 --------------------------------------
-keybindings.typescriptKeys = function(actions) end
-
---------------------------------------
--- lsp-ui 自定义插件快捷键设置
---------------------------------------
-keybindings.lspUIKeys = function()
-  -- or use command
-  local keyset = vim.keymap.set;
-  local opts = { silent = true, noremap = true };
+keybindings.lspUISagaKeys = function()
+  local floaterm = require("lspsaga.floaterm");
 
   -- 变量重命名
-  keyset("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts)
-
-  -- 查看帮助文档
-  keyset("n", "<C-h>", "<cmd>Lspsaga hover_doc<CR>", opts)
-
-  -- 查看文件定义
-  keyset("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", opts)
+  nnoremap("<leader>rn", "<cmd>Lspsaga rename<CR>");
 
   -- 代码修复,小灯泡 code action
-  keyset("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)
-  keyset("v", "<leader>ca", "<cmd><C-U>Lspsaga range_code_action<CR>", opts)
+  nnoremap("<leader>ca",  "<cmd>Lspsaga code_action<CR>");
 
-  -- 参数提示
-  keyset("n", "gr", "<cmd>Lspsaga rename<CR>", opts)
+  -- 查看帮助文档
+  nnoremap("gh", "<cmd>Lspsaga hover_doc<CR>");
+
+  -- 查看文件定义
+  nnoremap("gd", "<cmd>Lspsaga lsp_finder<CR>");
 
   -- 参看函数定义
-  keyset("n", "go", "<cmd>Lspsaga preview_definition<CR>", opts)
-  keyset("n", "gl", "<cmd>Lspsaga lsp_finder<CR>", opts)
+  nnoremap("gv", "<cmd>Lspsaga preview_definition<CR>");
+
+  -- 查看文件预览
+  nnoremap("gl", "<cmd>LSoutlineToggle<CR>");
 
   -- 跳到上/下/错误一个代码诊断提示位置
-  keyset("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
-  keyset("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
+  nnoremap("]e", "<cmd>Lspsaga diagnostic_jump_next<CR>");
+  nnoremap("[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>");
+
+  -- 终端(打开时,可以自动执行一个命令, 如: <cmd>Lspsaga open_floaterm ranger<CR>)
+  nnoremap("<C-c>", "<cmd>Lspsaga open_floaterm<CR>");
+  tnoremap("<C-c>", "<C-\\><C-n><cmd>Lspsaga close_floaterm<CR>");
 
   return {
     move_in_saga = {
       prev = '<C-k>', -- k 选中上一项
-      next = '<C-j>' -- j 选中下一项
+      next = '<C-j>'  -- j 选中下一项
     },
     finder_action_keys = {
       open        = "o", -- 进入当前行所在位置
@@ -420,8 +406,9 @@ keybindings.lspUIKeys = function()
     },
     code_action_keys = {
       quit = "<ESC>", -- 退出修复
-      exec = "<CR>", -- 执行修复
-    }
+      exec = "<CR>",  -- 执行修复
+    },
+    rename_action_quit = "<ESC>" -- 退出重命名
   }
 end
 

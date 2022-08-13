@@ -61,13 +61,8 @@ return require("packer").startup({
     use({ "marko-cerovac/material.nvim" })
     use({ "catppuccin/nvim", as = "catppuccin" })
 
-		-- 文件概览导航
-		use({
-			"stevearc/aerial.nvim",
-			requires = {
-				"nvim-treesitter/nvim-treesitter",
-			},
-		})
+		-- 文件概览导航(这个功能在 lspsaga 中集成了)
+		-- use({ "stevearc/aerial.nvim", requires = { "nvim-treesitter/nvim-treesitter" } })
 
 		-- 顶部 buffer 栏
 		use({
@@ -120,10 +115,7 @@ return require("packer").startup({
 		})
 
 		-- 切换命令行
-		use({
-			"akinsho/toggleterm.nvim",
-			tag = "v2.*",
-		})
+		-- use({ "akinsho/toggleterm.nvim", tag = "v2.*" })
 
 		-- 自动注释
 		use({ "numToStr/Comment.nvim" })
@@ -174,31 +166,26 @@ return require("packer").startup({
 		----------------------------------------------
 		-- LSP/CMP: 代码提示/ 补全配置/ 代码格式化 / UI增强
 		---------------------------------------------
-		-- 代码提示/补全
-		use({ "hrsh7th/nvim-cmp" })                    -- 补全引擎
-		use({ "saadparwaiz1/cmp_luasnip" })            -- Snippet 引擎
-		use({ "L3MON4D3/LuaSnip" })                    -- Snippet 引擎
-		use({ "hrsh7th/cmp-nvim-lsp" })                -- { name = 'nvim_lsp' }
-		use({ "hrsh7th/cmp-buffer" })                  -- { name = 'buffer' },
-		use({ "hrsh7th/cmp-path" })                    -- { name = 'path' }
-		use({ "hrsh7th/cmp-cmdline" })                 -- { name = 'cmdline' }
-		use({ "hrsh7th/cmp-nvim-lsp-signature-help" }) -- { name = 'nvim_lsp_signature_help' }
-    use({ "hrsh7th/cmp-nvim-lua" })                -- { name = 'nvim_lua' }
-    use({ "ray-x/cmp-treesitter" })                -- { name = 'treesitter' }
-    -- tabnine 资源内存占用高
-    -- use({                                          -- { name = 'cmp_tabnine' },
-		-- 	"tzachar/cmp-tabnine",
-		-- 	run = "./install.sh",
-		-- 	requires = "hrsh7th/nvim-cmp",
-		-- })
-		use({ "rafamadriz/friendly-snippets" })        -- 常见编程语言代码段
-		use({ "mhartington/formatter.nvim" })          -- 代码格式化
-
     -- LSP
-		use({ "williamboman/nvim-lsp-installer" })     -- LSP 服务器安装工具
-		use({ "neovim/nvim-lspconfig" })               -- lspconfig 配置 server 插件
-		use({ "folke/lua-dev.nvim" })                  -- Lua 增强
-    use({ "b0o/schemastore.nvim" })                -- json 增强
+		use({ "williamboman/nvim-lsp-installer" })        -- LSP 服务器安装工具
+		use({ "neovim/nvim-lspconfig" })                  -- lspconfig 配置 server 插件
+		use({ "folke/lua-dev.nvim" })                     -- Lua 增强
+    use({ "b0o/schemastore.nvim" })                   -- json 增强
+		use({ "mhartington/formatter.nvim" })             -- 代码格式化
+
+		-- 代码提示/补全
+		use({ "hrsh7th/nvim-cmp" })                       -- 补全引擎
+		use({ "rafamadriz/friendly-snippets" })           -- 常见编程语言 snippets
+    use({ "hrsh7th/vim-vsnip" })                      -- vim-vsnip 插件
+    use({ "hrsh7th/cmp-vsnip" })                      -- vim-vsnip 将插件内容加载到补全引擎
+		use({ "hrsh7th/cmp-nvim-lsp" })                   -- { name = 'nvim_lsp' }
+		use({ "hrsh7th/cmp-buffer" })                     -- { name = 'buffer' },
+		use({ "hrsh7th/cmp-path" })                       -- { name = 'path' }
+		use({ "hrsh7th/cmp-cmdline" })                    -- { name = 'cmdline' }
+		use({ "hrsh7th/cmp-nvim-lsp-signature-help" })    -- { name = 'nvim_lsp_signature_help' }
+    use({ "hrsh7th/cmp-nvim-lua" })                   -- { name = 'nvim_lua' }
+    -- tabnine 资源内存占用高, 而且不好用             -- { name = 'cmp_tabnine' },
+    -- use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" })
 
 		-- 代码提示 UI 增强
 		use({ "glepnir/lspsaga.nvim", branch = "main" })

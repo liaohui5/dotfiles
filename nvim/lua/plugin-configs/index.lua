@@ -25,7 +25,7 @@
 -- 不想要哪个插件的功能, 直接注释
 ----------------------------------------------------
 local plugins = {
-	{ require_path = "aerial", config_name = "aerial" },
+	-- { require_path = "aerial", config_name = "aerial" },
 	{ require_path = "align", config_name = "align" },
 	{ require_path = "nvim-autopairs", config_name = "nvim-autopairs" },
 	{ require_path = "bufferline", config_name = "bufferline" },
@@ -40,7 +40,7 @@ local plugins = {
 	{ require_path = "nvim-treesitter.configs", config_name = "nvim-treesitter" },
 	{ require_path = "nvim-web-devicons", config_name = "nvim-web-devicons" },
 	{ require_path = "telescope", config_name = "telescope" },
-	{ require_path = "toggleterm", config_name = "toggleterm" },
+	-- { require_path = "toggleterm", config_name = "toggleterm" },
 	{ require_path = "indent_blankline", config_name = "indent_blankline" },
 	{ require_path = "session_manager", config_name = "session_manager" },
 	{ require_path = "auto-save", config_name = "auto-save" },

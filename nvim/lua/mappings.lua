@@ -18,10 +18,12 @@
 -- cmap     - 查看 command-line 模式快捷键
 -- rmap     - 查看 select 模式快捷键
 -- omap     - 查看 operator 模式快捷键
+--- @diagnostic disable: lowercase-global
 local keymap = vim.api.nvim_set_keymap
+local option = { noremap = true, silent = true }
 
 -- 将空格键设置为 <leader> 键
-keymap("", ";", "<Nop>", { noremap = true, silent = true })
+keymap("", ";", "<Nop>", option)
 vim.g.mapleader = " "
 vim.g.localleader = " "
 
@@ -31,7 +33,7 @@ function nmap(keys, commands)
 end
 
 function nnoremap(keys, commands)
-	keymap("n", keys, commands, { noremap = true, silent = true })
+	keymap("n", keys, commands, option)
 end
 
 -- vmap/vnoremap
@@ -40,7 +42,7 @@ function vmap(keys, commands)
 end
 
 function vnoremap(keys, commands)
-	keymap("v", keys, commands, { noremap = true, silent = true })
+	keymap("v", keys, commands, option)
 end
 
 -- imap/inoremap
@@ -49,7 +51,7 @@ function imap(keys, commands)
 end
 
 function inoremap(keys, commands)
-	keymap("i", keys, commands, { noremap = true, silent = true })
+	keymap("i", keys, commands, option)
 end
 
 -- xmap/xnoremap
@@ -58,7 +60,7 @@ function xmap(keys, commands)
 end
 
 function xnoremap(keys, commands)
-	keymap("x", keys, commands, { noremap = true, silent = true })
+	keymap("x", keys, commands, option)
 end
 
 -- cmap/cnoremap
@@ -67,7 +69,12 @@ function cmap(keys, commands)
 end
 
 function cnoremap(keys, commands)
-	keymap("c", keys, commands, { noremap = true, silent = true })
+	keymap("c", keys, commands, option)
+end
+
+-- tmap/tnoremap
+function tnoremap(keys, commands)
+  keymap("t", keys, commands, option)
 end
 
 -- 退出编辑器

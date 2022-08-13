@@ -21,77 +21,47 @@ if not status then
 	return
 end
 
--- 补全 snippets
-local status1, luasnip = pcall(require, "luasnip")
-if not status1 then
-	vim.notify("[plugin]: luasnip not found")
-	return
-end
-
 -- cmp
 local M = {}
 
 M.onstart = function()
-	-- 从哪加载 snippets, load freindly-snippets
-	require("luasnip.loaders.from_vscode").lazy_load()
-	require("luasnip.loaders.from_snipmate").lazy_load()
-	require("luasnip.loaders.from_vscode").load({
-		-- Load snippets from ~/.config/nvim/snippets folder
-		paths = { "./custom-snippets" },
-	})
+	-- 指定加载自定义 snippets 目录
+  vim.g.vsnip_snippet_dir = "~/.config/nvim/custom-snippets";
 
 	-- 其他配置: 比如图标,补全引擎之类的
 	local cmp_config = {
-		confirm_opts = {
-			behavior = cmp.ConfirmBehavior.Replace,
-			select   = false,
-		},
-		completion = {
-			keyword_length = 1,
-		},
-		experimental = {
-			ghost_text  = false,
-			native_menu = false,
-		},
-		duplicates = {
-			buffer   = 1,
-			path     = 1,
-			nvim_lsp = 1,
-			luasnip  = 1,
-		},
-		duplicates_default = 1,
-		formatting = {
-      format     = lspkind.cmp_format({
-        mode     = "symbol_text",
-        maxwidth = 50,
-        before   = function(entry, vim_item)
-          vim_item.menu = "[" .. string.upper(entry.source.name) .. "]"
-          return vim_item
-        end,
-      }),
-    },
+		-- formatting = {
+    -- format     = lspkind.cmp_format({
+    --   maxwidth = 50,
+    --   before   = function(entry, item)
+    --     item.menu = "[" .. entry.source.name .. "]"
+    --     return item;
+    --   end,
+    -- }),
+    -- },
+
+    -- 指定 snippets 引擎: 
+    -- docs: https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
 		snippet = {
 			expand = function(args)
-				require("luasnip").lsp_expand(args.body)
+        vim.fn["vsnip#anonymous"](args.body)
 			end,
 		},
+
 		window = {
 			-- 给代码提示框加上白色的边框
 			-- completion = cmp.config.window.bordered(),
 			-- documentation = cmp.config.window.bordered(),
 		},
+
+    -- 可以摘这里找到更多的提示源: https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
+    -- 但是建议不要太多, 很多事没用的信息, 且插件太多 会影响速度
 		sources = cmp.config.sources({
-			{ name = "nvim_lsp" },
+      { name = "nvim_lsp" },
 			{ name = "path" },
-			{ name = "luasnip" },
-			{ name = "cmp_tabnine" },
+			{ name = "vsnip" },
 			{ name = "nvim_lua" },
 			{ name = "buffer" },
-			-- { name = "spell" },
-			-- { name = "calc" },
-			-- { name = "emoji" },
-			{ name = "treesitter" },
-			-- { name = "crates" },
 			{ name = "nvim_lsp_signature_help" },
 		}),
 	}
@@ -103,7 +73,6 @@ M.onstart = function()
 			{ name = "buffer" },
 		},
 	})
-
 	cmp.setup.cmdline("?", {
 		mapping = cmp.mapping.preset.cmdline(),
 		sources = {
@@ -118,7 +87,7 @@ M.onstart = function()
 	})
 
 	-- 快捷键绑定
-	cmp_config.mapping = cmp.mapping.preset.insert(require("keybindings").cmpKeys(cmp, luasnip, cmp_config))
+	cmp_config.mapping = cmp.mapping.preset.insert(require("keybindings").cmpKeys(cmp))
 
 	-- 启动
 	cmp.setup(cmp_config)

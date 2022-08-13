@@ -71,8 +71,5 @@ for server_name, config in pairs(settings) do
   end
 end
 
--- LSP 代码提示 UI 增强
-require("lsp-configs.lsp-ui").onstart();
-
 -- LSP 代码提示
 require("lsp-configs.lsp-cmp").onstart();
