@@ -76,3 +76,14 @@ echo "default_linemode devicons" >> $HOME/.config/ranger/rc.conf
 # 不要使用默认的配置文件rc, 如果有这行就不用执行了
 echo "export RANGER_LOAD_DEFAULT_RC=FALSE" >> ~/.bashrc
 ```
+
+### [zellij](https://github.com/zellij-org/zellij)
+
+```js
+# 直接安装
+brew install zellij
+
+# 或者利用 rust 包管理器 cargo 安装
+brew install rust
+cargo-binstall zellij
+```
