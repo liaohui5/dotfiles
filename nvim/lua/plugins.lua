@@ -187,9 +187,8 @@ return require("packer").startup({
     -- tabnine 资源内存占用高, 而且不好用             -- { name = 'cmp_tabnine' },
     -- use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" })
 
-		-- 代码提示 UI 增强
+		-- UI 增强
 		use({ "glepnir/lspsaga.nvim", branch = "main" })
-    use({ "onsails/lspkind.nvim" });
 	end,
 	config = packerConfig,
 })

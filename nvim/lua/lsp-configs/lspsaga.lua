@@ -2,8 +2,14 @@
 -- UI 美化(代码提示|代码诊断)
 -- docs: https://github.com/glepnir/lspsaga.nvim
 ---------------------------------------------------------------------
+local status, lspsaga = pcall(require, "lspsaga")
+if not status then
+  vim.notify("[lsp]: lspsaga not found")
+  return
+end
+
 return {
-  onstart = function(lspsaga)
+  onstart = function()
     local keys = require("keybindings").lspUISagaKeys()
     lspsaga.init_lsp_saga({
       move_in_saga              = keys.move_in_saga,
@@ -15,7 +21,7 @@ return {
       saga_winblend             = 1, -- 0-30
       max_preview_lines         = 10,
       code_action_num_shortcut  = true,
-      code_action_icon          = "", -- 我不喜欢写代码的时候有这个💡, 如果需要把这个emoji放到""中
+      code_action_icon          = "", -- 我不喜欢写代码的时候有这个💡, 如果需要把这个符号放到""中
       definition_preview_icon   = " 👉 ",
       show_diagnostic_source    = true,
       diagnostic_source_bracket = {},

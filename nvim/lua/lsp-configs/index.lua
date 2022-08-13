@@ -9,6 +9,7 @@ if not status then
   vim.notify("[lsp]: lspconfig not found");
   return
 end
+
 local status1, lsp_installer = pcall(require, "nvim-lsp-installer")
 if not status1 then
   vim.notify("[lsp] lsp_installer not found!")
@@ -24,10 +25,7 @@ end
 -- 启动 lspinstaller
 -- https://github.com/williamboman/nvim-lsp-installer#default-configuration
 lsp_installer.setup({
-  -- 自动安装lsp server
   automatic_installation = true,
-
-  -- 确保安装的server, 必须是允许的
   ensure_installed = {
     'bashls',
     'html',
@@ -71,5 +69,11 @@ for server_name, config in pairs(settings) do
   end
 end
 
+-- LSP 代码诊断 UI 修改
+require("lsp-configs.diagnostic").onstart();
+
 -- LSP 代码提示
-require("lsp-configs.lsp-cmp").onstart();
+require("lsp-configs.lspsaga").onstart();
+
+-- 代码提示和 snippets
+require("lsp-configs.cmp").onstart();
