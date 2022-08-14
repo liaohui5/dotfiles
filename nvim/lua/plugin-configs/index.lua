@@ -45,6 +45,7 @@ local plugins = {
 	{ require_path = "session_manager", config_name = "session_manager" },
 	{ require_path = "auto-save", config_name = "auto-save" },
 	{ require_path = nil, config_name = "rnvimr" },
+	{ require_path = nil, config_name = "vim-bookmarks" },
 	-- { require_path = nil, config_name = "coc" },
 	-- { require_path = "catppuccin", config_name = "catppuccin" },
 	-- { require_path = "material", config_name = "material" },

@@ -114,6 +114,10 @@ return require("packer").startup({
 			},
 		})
 
+    -- 书签
+    use({ "MattesGroeger/vim-bookmarks" })
+    use({ "tom-anders/telescope-vim-bookmarks.nvim" })
+
 		-- 切换命令行
 		-- use({ "akinsho/toggleterm.nvim", tag = "v2.*" })
 

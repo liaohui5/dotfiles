@@ -311,6 +311,9 @@ keybindings.telescopeKeys = function()
   nnoremap("<leader>fs", "<cmd>Telescope live_grep prompt_prefix=🔍[string]<CR>")
   nnoremap("<leader>fh", "<cmd>Telescope help_tags prompt_prefix=🔍[telescopeHelpTags]<CR>")
 
+  -- 查看所有书签
+  nnoremap("<leader>fm", ":Telescope vim_bookmarks all prompt_prefix=🔍[bookmarks]<CR>")
+
   local actions = require("telescope.actions")
   return {
     i = {

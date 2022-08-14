@@ -41,5 +41,8 @@ return {
         }
       }
     });
+
+    -- 加载管理书签的插件
+    telescope.load_extension('vim_bookmarks')
   end
 }
