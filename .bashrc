@@ -19,8 +19,9 @@ alias mvim='nvim'
 # tmux
 alias tnew='tmux new -s'
 
-# zellij
+# zellij & auto start zellij
 alias zj='zellij'
+# eval "$(zellij setup --generate-auto-start bash)"
 
 # vifm
 alias vifm='vifm . ~/Desktop/codes'
@@ -76,5 +77,3 @@ export LC_ALL="zh_CN.UTF-8"
 # ranger
 export RANGER_LOAD_DEFAULT_RC=FALSE
 
-# auto start zellij
-eval "$(zellij setup --generate-auto-start bash)"
