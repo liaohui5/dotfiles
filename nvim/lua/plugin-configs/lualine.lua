@@ -14,7 +14,15 @@ config.onstart = function(lualine)
       component_separators = { left = '', right = '' },
       section_separators   = { left = '', right = '' },
       disabled_filetypes   = {
-        statusline         = {},
+        statusline         = {
+          -- 在 dapui 中禁用
+          'dapui_scope',
+          'dapui_breakpoints',
+          'dapui_stacks',
+          'dapui_watchers',
+          'dapui_repl',
+          'dapui_console',
+        },
         winbar             = {},
       },
       refresh              = {

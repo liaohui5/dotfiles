@@ -165,30 +165,37 @@ return require("packer").startup({
 
 		----------------------------------------------
 		-- LSP/CMP: 代码提示/ 补全配置/ 代码格式化 / UI增强
-		---------------------------------------------
-    -- LSP
-		use({ "williamboman/nvim-lsp-installer" })        -- LSP 服务器安装工具
+		----------------------------------------------
+		-- use({ "williamboman/nvim-lsp-installer" })        -- LSP 服务器安装工具
+    use({ "williamboman/mason.nvim" })                -- LSP/DAP 服务器安装管理工具
+    use({ "williamboman/mason-lspconfig.nvim" })      -- LSP/DAP 服务器安装管理工具
 		use({ "neovim/nvim-lspconfig" })                  -- lspconfig 配置 server 插件
 		use({ "folke/lua-dev.nvim" })                     -- Lua 增强
     use({ "b0o/schemastore.nvim" })                   -- json 增强
 		use({ "mhartington/formatter.nvim" })             -- 代码格式化
-
-		-- 代码提示/补全
 		use({ "hrsh7th/nvim-cmp" })                       -- 补全引擎
 		use({ "rafamadriz/friendly-snippets" })           -- 常见编程语言 snippets
     use({ "hrsh7th/vim-vsnip" })                      -- vim-vsnip 插件
-    use({ "hrsh7th/cmp-vsnip" })                      -- vim-vsnip 将插件内容加载到补全引擎
+    use({ "hrsh7th/cmp-vsnip" })                      -- 将vim-vsnip 插件提供的内容加载到补全引擎
 		use({ "hrsh7th/cmp-nvim-lsp" })                   -- { name = 'nvim_lsp' }
 		use({ "hrsh7th/cmp-buffer" })                     -- { name = 'buffer' },
 		use({ "hrsh7th/cmp-path" })                       -- { name = 'path' }
 		use({ "hrsh7th/cmp-cmdline" })                    -- { name = 'cmdline' }
 		use({ "hrsh7th/cmp-nvim-lsp-signature-help" })    -- { name = 'nvim_lsp_signature_help' }
     use({ "hrsh7th/cmp-nvim-lua" })                   -- { name = 'nvim_lua' }
+		use({ "glepnir/lspsaga.nvim", branch = "main" })  -- UI 增强
+    -- use({ "jose-elias-alvarez/null-ls.nvim" })        -- 多语言代码检查工具, 功能类似 ESLint
     -- tabnine 资源内存占用高, 而且不好用             -- { name = 'cmp_tabnine' },
     -- use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" })
 
-		-- UI 增强
-		use({ "glepnir/lspsaga.nvim", branch = "main" })
+		----------------------------------------------
+		-- dap 代码调试插件
+		---------------------------------------------
+    use({ "mfussenegger/nvim-dap" })
+    use({ "theHamsta/nvim-dap-virtual-text" })
+    use({ "rcarriga/nvim-dap-ui", requires = "mfussenegger/nvim-dap" })
+    use({ "mxsdev/nvim-dap-vscode-js", requires = "mfussenegger/nvim-dap" });
+    use({ "microsoft/vscode-js-debug", opt = true, run = "npm install --legacy-peer-deps && npm run compile" })
 	end,
 	config = packerConfig,
 })

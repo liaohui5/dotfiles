@@ -110,7 +110,7 @@ keybindings.hopKeys = function()
 end
 
 --------------------------------------
--- cmp 自动完成快捷键 
+-- cmp 自动完成快捷键
 -- docs: https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings
 --------------------------------------
 keybindings.cmpKeys = function(cmp)
@@ -251,25 +251,25 @@ keybindings.nvimtreeKeys = function()
   nnoremap("<C-t>", ":NvimTreeToggle<CR>")
 
   return {
-    { key = "o", action = "edit" },                -- 打开并编辑
-    { key = "<CR>", action = "edit" },             -- 打开并编辑
-    { key = "<C-\\>", action = "system_open" },    -- 用系统 open 命令打开
-    { key = "v", action = "vsplit" },              -- 左右拆分窗口并打开编辑
-    { key = "i", action = "toggle_ignored" },      -- 切换忽略
-    { key = ".", action = "toggle_dotfiles" },     -- 切换隐藏文件是否可见
-    { key = "R", action = "refresh" },             -- 刷新
-    { key = "a", action = "create" },              -- 创建文件/目录(/结尾就是目录)
-    { key = "r", action = "rename" },              -- 重命名
-    { key = "x", action = "remove" },              -- 删除
-    { key = "d", action = "cut" },                 -- 剪切
-    { key = "y", action = "copy" },                -- 复制
-    { key = "p", action = "paste" },               -- 粘贴
-    { key = "Yn", action = "copy_name" },          -- 复制文件名
-    { key = "Yp", action = "copy_path" },          -- 否则文件路径
+    { key = "o", action = "edit" }, -- 打开并编辑
+    { key = "<CR>", action = "edit" }, -- 打开并编辑
+    { key = "<C-\\>", action = "system_open" }, -- 用系统 open 命令打开
+    { key = "v", action = "vsplit" }, -- 左右拆分窗口并打开编辑
+    { key = "i", action = "toggle_ignored" }, -- 切换忽略
+    { key = ".", action = "toggle_dotfiles" }, -- 切换隐藏文件是否可见
+    { key = "R", action = "refresh" }, -- 刷新
+    { key = "a", action = "create" }, -- 创建文件/目录(/结尾就是目录)
+    { key = "r", action = "rename" }, -- 重命名
+    { key = "x", action = "remove" }, -- 删除
+    { key = "d", action = "cut" }, -- 剪切
+    { key = "y", action = "copy" }, -- 复制
+    { key = "p", action = "paste" }, -- 粘贴
+    { key = "Yn", action = "copy_name" }, -- 复制文件名
+    { key = "Yp", action = "copy_path" }, -- 否则文件路径
     { key = "YP", action = "copy_absolute_path" }, -- 复制文件绝对路径
-    { key = "I", action = "toggle_file_info" },    -- 查看文件信息
-    { key = { "]" }, action = "cd" },              -- 切换目录
-    { key = { "[" }, action = "dir_up" },          -- 切换到上级目录
+    { key = "I", action = "toggle_file_info" }, -- 查看文件信息
+    { key = { "]" }, action = "cd" }, -- 切换目录
+    { key = { "[" }, action = "dir_up" }, -- 切换到上级目录
     -- { key = "n", action = "tabnew" },              -- 不知道干嘛的
   }
 end
@@ -284,7 +284,7 @@ keybindings.sessionManagerKeys = function()
   -- nnoremap("<leader>ps", ":SessionManager save_current_session<CR>")
 
   -- 在退出编辑器之前 & 自动保存当前 session 状态
-  vim.cmd[[
+  vim.cmd [[
     function SaveSessionBeforeQuit()
       :SessionManager save_current_session
       :quitall!
@@ -296,7 +296,7 @@ end
 --------------------------------------
 -- telescope projects 项目管理工具快捷键
 --------------------------------------
-keybindings.projectsKeys = function ()
+keybindings.projectsKeys = function()
   -- 因为功能和 sessionManager 非常相似,
   -- 二者开启一个就好了, 所以用一样快捷键
   nnoremap("<leader>pm", ":Telescope projects<CR>");
@@ -306,10 +306,10 @@ end
 -- telescope 搜索文件快捷键
 --------------------------------------
 keybindings.telescopeKeys = function()
-  nnoremap("<C-p>", "<cmd>Telescope find_files prompt_prefix=[files]<CR>")
-  nnoremap("<leader>fb", "<cmd>Telescope buffers prompt_prefix=[buffers]<CR>")
-  nnoremap("<leader>fs", "<cmd>Telescope live_grep prompt_prefix=[string]<CR>")
-  nnoremap("<leader>fh", "<cmd>Telescope help_tags prompt_prefix=[telescope help tags]<CR>")
+  nnoremap("<C-p>", "<cmd>Telescope find_files prompt_prefix=🔍[files]<CR>")
+  nnoremap("<leader>fb", "<cmd>Telescope buffers prompt_prefix=🔍[buffers]<CR>")
+  nnoremap("<leader>fs", "<cmd>Telescope live_grep prompt_prefix=🔍[string]<CR>")
+  nnoremap("<leader>fh", "<cmd>Telescope help_tags prompt_prefix=🔍[telescopeHelpTags]<CR>")
 
   local actions = require("telescope.actions")
   return {
@@ -328,6 +328,23 @@ end
 --------------------------------------
 keybindings.toggletermKeys = function()
   return [[<M-t>]] -- 注意是一个字符串
+end
+
+--------------------------------------
+-- mason 快捷键设置
+--------------------------------------
+keybindings.lspMasonKeys = function()
+  return {
+    toggle_package_expand   = "o", -- 展开
+    install_package         = "i", -- 安装
+    update_package          = "u", -- 更新
+    update_all_packages     = "U", -- 更新所有
+    check_package_version   = "c", -- 检查版本
+    check_outdated_packages = "C", -- 检查所有
+    uninstall_package       = "X", -- 删除
+    cancel_installation     = "<C-c>", -- 取消安装
+    apply_language_filter   = "<C-f>", -- 筛选
+  }
 end
 
 --------------------------------------
@@ -358,6 +375,7 @@ keybindings.lspKeys = function(client, bufnr)
   -- bufkeyset(bufnr, "n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opt)
 end
 
+
 --------------------------------------
 -- lspsaga 自定义插件快捷键设置
 --------------------------------------
@@ -368,7 +386,7 @@ keybindings.lspUISagaKeys = function()
   nnoremap("<leader>rn", "<cmd>Lspsaga rename<CR>");
 
   -- 代码修复,小灯泡 code action
-  nnoremap("<leader>ca",  "<cmd>Lspsaga code_action<CR>");
+  nnoremap("<leader>ca", "<cmd>Lspsaga code_action<CR>");
 
   -- 查看帮助文档
   nnoremap("gh", "<cmd>Lspsaga hover_doc<CR>");
@@ -393,7 +411,7 @@ keybindings.lspUISagaKeys = function()
   return {
     move_in_saga = {
       prev = '<C-k>', -- k 选中上一项
-      next = '<C-j>'  -- j 选中下一项
+      next = '<C-j>' -- j 选中下一项
     },
     finder_action_keys = {
       open        = "o", -- 进入当前行所在位置
@@ -406,12 +424,56 @@ keybindings.lspUISagaKeys = function()
     },
     code_action_keys = {
       quit = "<ESC>", -- 退出修复
-      exec = "<CR>",  -- 执行修复
+      exec = "<CR>", -- 执行修复
     },
     rename_action_quit = "<ESC>" -- 退出重命名
   }
 end
 
+--------------------------------------
+-- dap 调试快捷键
+--------------------------------------
+keybindings.dapKeys = function()
+  -- nnoremap("<F3>", "<cmd>lua require'dap'.toggle_breakpoint(); require'user.dap.dap-util'.store_breakpoints(true)<cr>");
+  -- 标记断点
+  nnoremap("<F4>", "<cmd>lua require'dap'.toggle_breakpoint()<CR>")
 
+  -- 开启调试
+  nnoremap("<F5>", "<cmd>lua require'dap'.continue()<CR>")
+
+  -- 步入
+  nnoremap("<F6>", "<cmd>lua require'dap'.step_into()<CR>")
+
+  -- 步出
+  nnoremap("<F7>", "<cmd>lua require'dap'.step_out()<CR>")
+
+  -- 结束当前函数
+  nnoremap("<F8>", "<cmd>lua require'dap'.step_over()<CR>")
+
+  -- 重启
+  nnoremap("<F9>", "<cmd>lua require'dap'.run_last()<CR>")
+
+  -- 终止调试
+  nnoremap("<F10>", "<cmd>lua require'dap'.terminate()<CR>")
+end
+
+--------------------------------------
+-- dapUI 快捷键
+--------------------------------------
+keybindings.dapUIKeys = function()
+  return {
+    mappings = {
+      expand = { "<CR>" },
+      open   = "o",
+      remove = "d",
+      edit   = "e",
+      repl   = "r",
+      toggle = "t",
+    },
+    floatingMappings = {
+      close = { "q", "<Esc>" },
+    },
+  }
+end
 
 return keybindings

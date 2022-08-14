@@ -21,7 +21,7 @@ return {
     -- 配置代码诊断选项
     -- 文档: :h vim.diagnostic.config()
     vim.diagnostic.config({
-      virtual_text     = true, -- 是否显示显示提示文字
+      virtual_text     = false, -- 是否显示显示提示文字
       update_in_insert = true,
       underline        = true,
       severity_sort    = true,
