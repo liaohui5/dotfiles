@@ -3,6 +3,7 @@
 -- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#Javascript
 -- https://github.com/mxsdev/nvim-dap-vscode-js
 -- https://github.com/microsoft/vscode-js-debug
+-- 目前只能调试 node(javascript/typescript) 无法调试 vue.js
 ---------------------------------------------------------------------------------------
 local ok, dap_vscode_js = pcall(require, "dap-vscode-js")
 if not ok then

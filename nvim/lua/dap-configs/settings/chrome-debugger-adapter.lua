@@ -6,7 +6,7 @@ return {
   onstart = function(dap, datapath, utils)
     local debugger_path = datapath .. "/mason/packages/vscode-chrome-debug/out/src/chromeDebug.js"
     dap.adapters.chrome = {
-      type    = "chrome",
+      type    = "executable",
       command = "node",
       args    = { debugger_path }
     }

@@ -75,14 +75,12 @@ local function config_debuggers()
   -- 加载对应语言的debugger配置
   local utils             = require("dap.utils")
   local datapath          = vim.fn.stdpath("data")
+  -- TODO: 现在只能调试node, 无法调试vue/react项目
   local debugger_adapters = {
-    -- nvim-dap-vscode-js 这个调试器的功能和第二个
-    -- node-debug2-adapter 功能是一样的, 但是这个需要安装一个插件, 
-    -- 但是配置更简单一点, 暂时先用底下那个 dap 官网推荐的配置
-    -- "nvim-dap-vscode-js",
-    "node-debug2-adapter",
-    "chrome-debugger-adapter",
-    "firefox-debugger-adapter",
+    "nvim-dap-vscode-js",
+    -- "node-debug2-adapter",
+    -- "chrome-debugger-adapter",
+    -- "firefox-debbugger-adapter",
   };
 
   for _, item in pairs(debugger_adapters) do

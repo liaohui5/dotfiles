@@ -5,7 +5,7 @@
 return {
   onstart = function(dap, datapath, utils)
     local debugger_path = datapath .. "/mason/packages/vscode-firefox-debug/dist/adapter.bundle.js"
-    dap.adapters.node2 = {
+    dap.adapters.firefox = {
       type    = "executable",
       command = "node",
       args    = { debugger_path }
