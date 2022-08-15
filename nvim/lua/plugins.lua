@@ -58,18 +58,18 @@ return require("packer").startup({
 		-- 颜色主题 onedark
 		use({ "navarasu/onedark.nvim" })
     use({ "tanvirtin/monokai.nvim" })
-    use({ "marko-cerovac/material.nvim" })
-    use({ "catppuccin/nvim", as = "catppuccin" })
+    -- use({ "marko-cerovac/material.nvim" })
+    -- use({ "catppuccin/nvim", as = "catppuccin" })
 
 		-- 文件概览导航(这个功能在 lspsaga 中集成了)
 		-- use({ "stevearc/aerial.nvim", requires = { "nvim-treesitter/nvim-treesitter" } })
 
 		-- 顶部 buffer 栏
-		use({
-			"akinsho/bufferline.nvim",
-			tag = "v2.*",
-			requires = "kyazdani42/nvim-web-devicons",
-		})
+		-- use({
+		-- 	"akinsho/bufferline.nvim",
+		-- 	tag = "v2.*",
+		-- 	requires = "kyazdani42/nvim-web-devicons",
+		-- })
 
 		-- 底部状态栏
 		use({
@@ -94,7 +94,7 @@ return require("packer").startup({
 
 		-- 自动读取/自动保存文件
 		use({ "djoshea/vim-autoread" })
-		use({ "Pocco81/auto-save.nvim" })
+		-- use({ "Pocco81/auto-save.nvim" })
 
 		-- 添加/删除/修改字符两边字符
 		use({ "tpope/vim-surround" })
@@ -128,10 +128,7 @@ return require("packer").startup({
 		use({ "gpanders/editorconfig.nvim" })
 
 		-- 类似easy-montion的快速移动插件
-		use({
-			"phaazon/hop.nvim",
-			branch = "v2",
-		})
+		use({ "phaazon/hop.nvim", branch = "v2" })
 
 		-- git 状态显示
 		use({
@@ -154,7 +151,7 @@ return require("packer").startup({
 		-- 替换增强插件
 		use({ "nvim-pack/nvim-spectre" })
 
-		-- 代码对齐插件, 类似的如: https://github.com/junegunn/vim-easy-align
+		-- 代码对齐插件, 类似 vim-easy-align
 		use({ "Vonr/align.nvim" })
 
 		-- coc 代码提示, 自动完成, Node写的, 速度比Lua写的的LSP要慢
@@ -170,7 +167,7 @@ return require("packer").startup({
 		----------------------------------------------
 		-- LSP/CMP: 代码提示/ 补全配置/ 代码格式化 / UI增强
 		----------------------------------------------
-		-- use({ "williamboman/nvim-lsp-installer" })        -- LSP 服务器安装工具
+		-- use({ "williamboman/nvim-lsp-installer" })     -- LSP 服务器安装工具(改用mason)
     use({ "williamboman/mason.nvim" })                -- LSP/DAP 服务器安装管理工具
     use({ "williamboman/mason-lspconfig.nvim" })      -- LSP/DAP 服务器安装管理工具
 		use({ "neovim/nvim-lspconfig" })                  -- lspconfig 配置 server 插件

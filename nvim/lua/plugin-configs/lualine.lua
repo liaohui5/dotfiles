@@ -11,8 +11,10 @@ config.onstart = function(lualine)
       theme                = 'auto',
       always_divide_middle = true,
       globalstatus         = false,
-      component_separators = { left = '', right = '' },
-      section_separators   = { left = '', right = '' },
+      -- component_separators = { left = '', right = '' },
+      -- section_separators   = { left = '', right = '' },
+      component_separators = { left = '', right = '' },
+      section_separators   = { left = '', right = '' },
       disabled_filetypes   = {
         statusline         = {
           -- 在 dapui 中禁用
@@ -47,7 +49,11 @@ config.onstart = function(lualine)
       lualine_y = {},
       lualine_z = {}
     },
-    tabline         = {},
+    tabline         = {
+      lualine_a = {
+        "buffers"
+      },
+    },
     winbar          = {},
     inactive_winbar = {},
     extensions      = {}

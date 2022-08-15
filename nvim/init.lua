@@ -16,4 +16,4 @@ require("plugins")
 require("autocmd")
 require("plugin-configs.index")
 require("lsp-configs.index")
-require("dap-configs.index");
+-- require("dap-configs.index");

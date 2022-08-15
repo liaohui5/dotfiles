@@ -25,14 +25,10 @@
 -- 不想要哪个插件的功能, 直接注释
 ----------------------------------------------------
 local plugins = {
-	{ require_path = "catppuccin", config_name = "catppuccin" },
-	-- { require_path = "material", config_name = "material" },
-	-- { require_path = "monokai", config_name = "monokai" },
+	{ require_path = "monokai", config_name = "monokai" },
 	{ require_path = "onedark", config_name = "onedark" },
-	-- { require_path = "aerial", config_name = "aerial" },
-	{ require_path = "align", config_name = "align" },
 	{ require_path = "nvim-autopairs", config_name = "nvim-autopairs" },
-	{ require_path = "bufferline", config_name = "bufferline" },
+	{ require_path = "align", config_name = "align" },
 	{ require_path = "Comment", config_name = "comment" },
 	{ require_path = "editorconfig", config_name = "editorconfig" },
 	{ require_path = "formatter", config_name = "formatter" },
@@ -44,12 +40,16 @@ local plugins = {
 	{ require_path = "nvim-treesitter.configs", config_name = "nvim-treesitter" },
 	{ require_path = "nvim-web-devicons", config_name = "nvim-web-devicons" },
 	{ require_path = "telescope", config_name = "telescope" },
-	-- { require_path = "toggleterm", config_name = "toggleterm" },
 	{ require_path = "indent_blankline", config_name = "indent_blankline" },
 	{ require_path = "session_manager", config_name = "session_manager" },
-	{ require_path = "auto-save", config_name = "auto-save" },
 	{ require_path = nil, config_name = "rnvimr" },
 	{ require_path = nil, config_name = "vim-bookmarks" },
+	-- { require_path = "catppuccin", config_name = "catppuccin" },
+	-- { require_path = "material", config_name = "material" },
+	-- { require_path = "aerial", config_name = "aerial" },
+	-- { require_path = "bufferline", config_name = "bufferline" },
+	-- { require_path = "toggleterm", config_name = "toggleterm" },
+	-- { require_path = "auto-save", config_name = "auto-save" },
 	-- { require_path = nil, config_name = "coc" },
 }
 

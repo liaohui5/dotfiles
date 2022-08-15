@@ -11,14 +11,14 @@ return {
 				floating_windows    = false,
 				line_numbers        = false,
 				sign_column         = false,
-				cursor_line         = false, 
+				cursor_line         = false,
 				non_current_windows = false,
 				popup_menu          = false,
 			},
 
 			italics = {
-				comments  = false, 
-				keywords  = false, 
+				comments  = false,
+				keywords  = false,
 				functions = false,
 				strings   = false,
 				variables = false,
@@ -32,7 +32,7 @@ return {
 
 			high_visibility = {
 				lighter = false,
-				darker  = false, 
+				darker  = false,
 			},
 
 			disable = {
@@ -43,7 +43,7 @@ return {
 				eob_lines      = false,
 			},
 
-			lualine_style     = "default",
+			lualine_style     = "darker",
 			async_loading     = true,
 			custom_highlights = {},
 			plugins = {
@@ -68,7 +68,7 @@ return {
 		})
 
   -- 使用主题
-  vim.g.material_style = "Palenight";
-  vim.cmd[[colorscheme material]]
+  -- vim.g.material_style = "Darker";
+  -- vim.cmd[[colorscheme material]]
 	end,
 }
