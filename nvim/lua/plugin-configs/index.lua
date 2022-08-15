@@ -25,7 +25,7 @@
 -- 不想要哪个插件的功能, 直接注释
 ----------------------------------------------------
 local plugins = {
-	-- { require_path = "catppuccin", config_name = "catppuccin" },
+	{ require_path = "catppuccin", config_name = "catppuccin" },
 	-- { require_path = "material", config_name = "material" },
 	-- { require_path = "monokai", config_name = "monokai" },
 	{ require_path = "onedark", config_name = "onedark" },

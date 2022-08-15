@@ -17,19 +17,18 @@ return {
         end,
       },
       condition         = function(buf)
-        local fn        = vim.fn
-        local utils     = require("auto-save.utils.data")
-        local disabling = {
+        local disabled_buffers = {
           "NvimTree",
           "TelescopePrompt",
           "aerial",
           "spectre_panel"
         };
-        if fn.getbufvar(buf, "&modifiable") == 1 and utils.not_in(fn.getbufvar(buf, "&filetype"), disabling) then
+        local fn    = vim.fn
+        local utils = require("auto-save.utils.data")
+        if fn.getbufvar(buf, "&modifiable") == 1 and utils.not_in(fn.getbufvar(buf, "&filetype"), disabled_buffers) then
           return true
-        else
-          return false
         end
+        return false
       end,
       callbacks         = {
         enabling              = nil,

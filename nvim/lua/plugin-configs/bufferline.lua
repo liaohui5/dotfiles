@@ -10,7 +10,6 @@ return {
         mode                     = "buffers", -- buffers | tabs
         themable                 = false,
         numbers                  = "none", -- "none" | "ordinal" | "buffer_id" | "both"
-        mappings                 = false, -- 不要绑定快捷键
         show_buffer_icons        = true,
         show_buffer_close_icons  = false,
         show_buffer_default_icon = true,
@@ -30,7 +29,6 @@ return {
           {
             filetype   = "NvimTree",
             text       = "File Explorer",
-            highlight  = "Directory",
             text_align = "center"
           }
         },
