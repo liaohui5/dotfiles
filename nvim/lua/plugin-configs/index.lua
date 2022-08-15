@@ -25,6 +25,10 @@
 -- 不想要哪个插件的功能, 直接注释
 ----------------------------------------------------
 local plugins = {
+	-- { require_path = "catppuccin", config_name = "catppuccin" },
+	-- { require_path = "material", config_name = "material" },
+	-- { require_path = "monokai", config_name = "monokai" },
+	{ require_path = "onedark", config_name = "onedark" },
 	-- { require_path = "aerial", config_name = "aerial" },
 	{ require_path = "align", config_name = "align" },
 	{ require_path = "nvim-autopairs", config_name = "nvim-autopairs" },
@@ -47,10 +51,6 @@ local plugins = {
 	{ require_path = nil, config_name = "rnvimr" },
 	{ require_path = nil, config_name = "vim-bookmarks" },
 	-- { require_path = nil, config_name = "coc" },
-	-- { require_path = "catppuccin", config_name = "catppuccin" },
-	-- { require_path = "material", config_name = "material" },
-	{ require_path = "monokai", config_name = "monokai" },
-	{ require_path = "onedark", config_name = "onedark" },
 }
 
 for _, item in pairs(plugins) do

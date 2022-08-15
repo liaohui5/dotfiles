@@ -116,6 +116,7 @@ nnoremap("<S-l>", ":bnext<CR>")
 nnoremap("gT", ":bprevious<CR>")
 nnoremap("gt", ":bnext<CR>")
 nnoremap("<leader>x", ":bp|bd #<CR>")
+-- nnoremap("<leader>x", ":bw %|bn<CR>")
 nnoremap("<leader>X", ":%bd|e#|bd#<cr>|'\"")
 
 -- 左右缩进
