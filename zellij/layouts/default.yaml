@@ -48,18 +48,18 @@ tabs:
             location: "zellij:status-bar"
 
   # nvim
-  - name: "nvim"
-    direction: Horizontal
-    parts:
-      - direction: Vertical
-        body: true
+  # - name: "nvim"
+  #   direction: Horizontal
+  #   parts:
+  #     - direction: Vertical
+  #       body: true
 
   # ranger
-  - name: "ranger"
-    direction: Horizontal
-    parts:
-      - direction: Vertical
-        body: true
+  # - name: "ranger"
+  #   direction: Horizontal
+  #   parts:
+  #     - direction: Vertical
+  #       body: true
 
   # cmds
   - name: "cmds"
