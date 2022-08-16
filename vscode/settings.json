@@ -79,7 +79,7 @@
   /////////////////////////////////////////
   // 颜色主题/图标主题
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.colorTheme": "rimless-monokai",
+  "workbench.colorTheme": "One Dark Pro",
 
   // 打开设置使用左右json
   "workbench.settings.editor": "json",
