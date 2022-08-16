@@ -1,0 +1,308 @@
+// Place your key bindings in this file to override the defaults
+[
+  {
+    // 切换 vim 插件禁用状态
+    "key": "ctrl+alt+0",
+    "command": "toggleVim"
+  },
+  {
+    // 切换侧边栏显示
+    "key": "ctrl+t",
+    "command": "workbench.action.toggleSidebarVisibility"
+  },
+  {
+    // 预览本文件变量/方法等简要信息
+    "key": "alt+p",
+    "command": "workbench.action.gotoSymbol"
+  },
+  {
+    // ctrl+\ 注释
+    "key": "ctrl+\\",
+    "command": "editor.action.commentLine",
+    "when": "editorTextFocus && vim.active && vim.mode !== 'Insert'"
+  },
+  {
+    // ctrl+l 显示代码提示
+    "key": "ctrl+o",
+    "command": "editor.action.triggerSuggest",
+    "when": "!suggestWidgetVisible && editorTextFocus && vim.active && vim.mode == 'Insert'"
+  },
+  {
+    // 搜索文件快速打开
+    "key": "ctrl+p",
+    "command": "workbench.action.quickOpen",
+    "when": "!suggestWidgetVisible"
+  },
+  {
+    // 代码提示显示时: 选中上一个代码提示
+    "key": "ctrl+k",
+    "command": "selectPrevSuggestion",
+    "when": "suggestWidgetVisible && suggestWidgetMultipleSuggestions"
+  },
+  {
+    // 代码提示显示时: 选中下一个代码提示
+    "key": "ctrl+j",
+    "command": "selectNextSuggestion",
+    "when": "suggestWidgetVisible && suggestWidgetMultipleSuggestions"
+  },
+  {
+    // 在显示搜索文件输入框时: 选中上一个
+    "key": "ctrl+k",
+    "command": "workbench.action.quickOpenSelectPrevious",
+    "when": "inQuickOpen"
+  },
+  {
+    // 在显示搜索文件输入框时: 选中下一个
+    "key": "ctrl+j",
+    "command": "workbench.action.quickOpenSelectNext",
+    "when": "inQuickOpen"
+  },
+  {
+    // 在编辑器/任意输入框没有焦点的时: 获取焦点
+    "key": "[space]",
+    "command": "workbench.action.focusFirstEditorGroup",
+    "when": "!editorTextFocus && !textInputFocus && !editorFocus && !inputFocus"
+  },
+
+  ////////////////////////////////////////////////////////
+  // 光标在侧边栏的时候: 配合 vim 使用
+  ////////////////////////////////////////////////////////
+  {
+    // enter 或者 l: 打开文件
+    "key": "enter",
+    "command": "explorer.openAndPassFocus",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsFolder && !inputFocus"
+  },
+  {
+    // a: 新建文件
+    "key": "a",
+    "command": "explorer.newFile",
+    "when": "explorerViewletFocus && !explorerResourceReadonly && !inputFocus && vim.active"
+  },
+  {
+    // f: 新建目录
+    "key": "f",
+    "command": "explorer.newFolder",
+    "when": "explorerViewletFocus && !explorerResourceReadonly && !inputFocus && vim.active"
+  },
+  {
+    // r: 修改文件名
+    "key": "r",
+    "command": "renameFile",
+    "when": "explorerViewletFocus && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    // x: 删除文件
+    "key": "x",
+    "command": "moveFileToTrash",
+    "when": "explorerViewletFocus && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    // s: 在侧边打开文件, 会新开一个窗口
+    "key": "s",
+    "command": "explorer.openToSide",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsFolder && !inputFocus"
+  },
+  {
+    // o: 预览文件(不会直接获取光标)
+    "key": "o",
+    "command": "filesExplorer.openFilePreserveFocus",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsFolder && !inputFocus"
+  },
+  {
+    // c: 复制文件并且重命名(需要插件: File Utils)
+    "key": "c",
+    "command": "fileutils.duplicateFile",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsFolder && !inputFocus"
+  },
+  {
+    // y: 直接复制文件使用默认的复制文件名(需要插件: macro-commander)
+    "key": "y",
+    "command": "macros.copyExplorerFileWithoutRename",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsFolder && !inputFocus"
+  },
+  {
+    // d: 剪切文件
+    "key": "d",
+    "command": "filesExplorer.cut",
+    "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+  },
+  {
+    // p: 粘贴文件
+    "key": "p",
+    "command": "filesExplorer.paste",
+    "when": "explorerViewletVisible && filesExplorerFocus && vim.active && !inputFocus"
+  },
+
+  ////////////////////////////////////////////////////////
+  // 取消默认
+  ////////////////////////////////////////////////////////
+  {
+    // 取消默认: ctrl+b
+    "key": "ctrl+b",
+    "command": "-workbench.action.toggleSidebarVisibility"
+  },
+  {
+    // 取消默认: alt+p
+    "key": "alt+p",
+    "command": "-keybindings.editor.toggleSortByPrecedence",
+    "when": "inKeybindings"
+  },
+  {
+    // 取消默认: ctrl+shift+o
+    "key": "ctrl+shift+o",
+    "command": "-workbench.action.gotoSymbol"
+  },
+  {
+    // 取消默认: ctrl+p
+    "key": "ctrl+p",
+    "command": "-workbench.action.quickOpenSelectPrevious",
+    "when": "inQuickOpen"
+  },
+  ////////////////////////////////////////////////////////
+  // VSCode which key
+  ////////////////////////////////////////////////////////
+  {
+    "key": "cmd+down",
+    "command": "-explorer.openAndPassFocus",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsFolder && !inputFocus"
+  },
+  {
+    "key": "space",
+    "command": "vspacecode.space",
+    "when": "activeEditorGroupEmpty && focusedView == '' && !whichkeyActive && !inputFocus"
+  },
+  {
+    "key": "space",
+    "command": "vspacecode.space",
+    "when": "sideBarFocus && !inputFocus && !whichkeyActive"
+  },
+  {
+    "key": "tab",
+    "command": "extension.vim_tab",
+    "when": "editorFocus && vim.active && !inDebugRepl && vim.mode != 'Insert' && editorLangId != 'magit'"
+  },
+  {
+    "key": "tab",
+    "command": "-extension.vim_tab",
+    "when": "editorFocus && vim.active && !inDebugRepl && vim.mode != 'Insert'"
+  },
+  {
+    "key": "x",
+    "command": "magit.discard-at-point",
+    "when": "editorTextFocus && editorLangId == 'magit' && vim.mode =~ /^(?!SearchInProgressMode|CommandlineInProgress).*$/"
+  },
+  {
+    "key": "k",
+    "command": "-magit.discard-at-point"
+  },
+  {
+    "key": "-",
+    "command": "magit.reverse-at-point",
+    "when": "editorTextFocus && editorLangId == 'magit' && vim.mode =~ /^(?!SearchInProgressMode|CommandlineInProgress).*$/"
+  },
+  {
+    "key": "v",
+    "command": "-magit.reverse-at-point"
+  },
+  {
+    "key": "shift+-",
+    "command": "magit.reverting",
+    "when": "editorTextFocus && editorLangId == 'magit' && vim.mode =~ /^(?!SearchInProgressMode|CommandlineInProgress).*$/"
+  },
+  {
+    "key": "shift+v",
+    "command": "-magit.reverting"
+  },
+  {
+    "key": "shift+o",
+    "command": "magit.resetting",
+    "when": "editorTextFocus && editorLangId == 'magit' && vim.mode =~ /^(?!SearchInProgressMode|CommandlineInProgress).*$/"
+  },
+  {
+    "key": "shift+x",
+    "command": "-magit.resetting"
+  },
+  {
+    "key": "x",
+    "command": "-magit.reset-mixed"
+  },
+  {
+    "key": "ctrl+u x",
+    "command": "-magit.reset-hard"
+  },
+  {
+    "key": "y",
+    "command": "-magit.show-refs"
+  },
+  {
+    "key": "y",
+    "command": "vspacecode.showMagitRefMenu",
+    "when": "editorTextFocus && editorLangId == 'magit' && vim.mode == 'Normal'"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "selectNextSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "selectPrevSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "acceptSelectedSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "showNextParameterHint",
+    "when": "editorFocus && parameterHintsMultipleSignatures && parameterHintsVisible"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "showPrevParameterHint",
+    "when": "editorFocus && parameterHintsMultipleSignatures && parameterHintsVisible"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "file-browser.stepOut",
+    "when": "inFileBrowser"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "file-browser.stepIn",
+    "when": "inFileBrowser"
+  },
+  {
+    "key": "ctrl+u",
+    "command": "list.focusPageUp",
+    "when": "listFocus && !inputFocus && !vim.active"
+  },
+  {
+    "key": "ctrl+u",
+    "command": "-list.focusPageUp",
+    "when": "listFocus && !inputFocus"
+  },
+  {
+    "key": "ctrl+d",
+    "command": "list.focusPageDown",
+    "when": "listFocus && !inputFocus && !vim.active"
+  },
+  {
+    "key": "ctrl+d",
+    "command": "-list.focusPageDown",
+    "when": "listFocus && !inputFocus"
+  },
+  {
+    "key": "ctrl+d",
+    "command": "deleteRight",
+    "when": "textInputFocus && !vim.active "
+  },
+  {
+    "key": "ctrl+d",
+    "command": "-deleteRight",
+    "when": "textInputFocus"
+  },
+]

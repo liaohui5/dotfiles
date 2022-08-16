@@ -1,0 +1,948 @@
+{
+  // 缩放比例
+  "window.zoomLevel": 0.5,
+
+  // 面包屑导航
+  "breadcrumbs.enabled": false,
+
+  // 关闭代码小地图
+  "editor.minimap.enabled": false,
+
+  // 编辑器字体
+  "editor.fontSize": 14,
+  "editor.fontLigatures": true,
+  "editor.fontFamily": "'Operator Mono', 'Hack Nerd Font Mono', Hack",
+
+  // 光标宽度 && 行高
+  "editor.cursorWidth": 1,
+  "editor.lineHeight": 1.5,
+
+  // 是否允许 hover
+  "editor.hover.enabled": true,
+  "editor.hover.sticky": true,
+  "editor.hover.delay": 500,
+
+  // 100 毫秒后显示代码提示
+  "editor.quickSuggestionsDelay": 200,
+
+  // 多个窗口可以共享代码提示
+  "editor.suggest.shareSuggestSelections": true,
+
+  // 代码提示的类型
+  "editor.quickSuggestions": {
+    "other": "on", // 其他(snippets + suggest)
+    "comments": "off", // 注释内容
+    "strings": "on" // 代码中的字符串
+  },
+
+  // 匹配括号
+  "editor.matchBrackets": "never",
+
+  // 匹配当前光标所在位置单词高亮
+  "editor.occurrencesHighlight": false,
+
+  // 同步 Git 存储库前请先进行确认
+  "git.confirmSync": false,
+
+  // 允许直接提交 git -am
+  "git.enableSmartCommit": true,
+
+  // git: 自动拉取代码
+  "git.autofetch": true,
+
+  // 自动保存文件
+  "files.autoSave": "onFocusChange",
+
+  // 文件删除之前确认
+  "explorer.confirmDelete": false,
+
+  // 资源管理器内拖放移动文件时是否进行确认
+  "explorer.confirmDragAndDrop": false,
+
+  // 如果 true 文件夹中只有一个文件时,显示 "dir/file"
+  "explorer.compactFolders": false,
+
+  // 忽略插件提示
+  "extensions.ignoreRecommendations": true,
+
+  // 更新模式: 启动的时候检查
+  "update.mode": "start",
+
+  // 在侧边栏修改文件名时,代码自动跟新路径
+  "javascript.updateImportsOnFileMove.enabled": "always",
+
+  // 是否高亮
+  "editor.semanticHighlighting.enabled": true,
+
+  /////////////////////////////////////////
+  // workbench
+  /////////////////////////////////////////
+  // 颜色主题/图标主题
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorTheme": "rimless-monokai",
+
+  // 打开设置使用左右json
+  "workbench.settings.editor": "json",
+  "workbench.settings.useSplitJSON": true,
+
+  // 在启动时不打开编辑器
+  "workbench.startupEditor": "none",
+
+  /////////////////////////////////////////
+  // extensions
+  /////////////////////////////////////////
+  "typescript.updateImportsOnFileMove.enabled": "always",
+
+  // live server
+  "liveServer.settings.donotShowInfoMsg": true,
+
+  // jest & jest runner
+  "jest.autoEnable": false,
+  "jest.runAllTestsFirst": false,
+
+  // Template String Converter
+  "template-string-converter.validLanguages": ["svelte", "typescript", "javascript", "typescriptreact", "javascriptreact", "vue"],
+
+  // 图标插件(vsicons/material-icon-theme): 隐藏左边的箭头
+  "vsicons.presets.hideExplorerArrows": true,
+  "material-icon-theme.hidesExplorerArrows": true,
+
+  // volar插件不显示 references
+  "volar.codeLens.references": false,
+
+  // markdown github styling
+  "markdown-preview-github-styles.colorTheme": "light",
+
+  // 自定义宏(也就是自定义命令: 在 vscode/vim/whichkey/vspcecode 快捷键中可以用)
+  "macros": {
+    "copyExplorerFileWithoutRename": ["filesExplorer.copy", "filesExplorer.paste"]
+  },
+
+  // eslint 格式化
+  "eslint.format.enable": true,
+  "eslint.lintTask.enable": true,
+  "eslint.quiet": true,
+  "eslint.probe": ["javascript", "javascriptreact", "typescript", "typescriptreact", "html", "vue", "jsx"],
+  "eslint.alwaysShowStatus": true,
+  "eslint.debug": true,
+
+  // todo-tree 插件
+  "todo-tree.highlights.enabled": true,
+  "todo-tree.general.tags": ["BUG", "HACK", "FIXME", "TODO", "XXX", "[ ]", "[x]"],
+  "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
+  "todo-tree.highlights.defaultHighlight": {
+    "icon": "alert",
+    "type": "text",
+    "foreground": "#f00",
+    "background": "#000",
+    "opacity": 0,
+    "iconColour": "#00f"
+  },
+
+  // prettier 格式化默认设置
+  "prettier.printWidth": 140,
+  "prettier.vueIndentScriptAndStyle": true,
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "Vue.volar"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[less]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  //////////////////////////////////////////////////////////////////////////////
+  //                                VIM 插件配置                               //
+  //                   _                              __ _                    //
+  //                  (_)                            / _(_)                   //
+  //            __   ___ _ __ ___     ___ ___  _ __ | |_ _  __ _              //
+  //            \ \ / / | '_ ` _ \   / __/ _ \| '_ \|  _| |/ _` |             //
+  //             \ V /| | | | | | | | (_| (_) | | | | | | | (_| |             //
+  //              \_/ |_|_| |_| |_|  \___\___/|_| |_|_| |_|\__  |             //
+  //                                                        __/ |             //
+  //                                                       |___/              //
+  //////////////////////////////////////////////////////////////////////////////
+  // 自动切换输入法
+  "vim.autoSwitchInputMethod.enable": true,
+  "vim.autoSwitchInputMethod.defaultIM": "com.apple.keylayout.ABC",
+  "vim.autoSwitchInputMethod.obtainIMCmd": "/usr/local/bin/im-select",
+  "vim.autoSwitchInputMethod.switchIMCmd": "/usr/local/bin/im-select {im}",
+
+  // 开启 easymontion 插件: https://github.com/easymotion/vim-easymotion
+  "vim.easymotion": true,
+
+  // 开启 CamelCaseMotion 插件: https://github.com/bkad/CamelCaseMotion
+  "vim.camelCaseMotion.enable": false,
+  "vim.autoindent": true,
+
+  // 开启 targets 插件: https://github.com/wellle/targets.vim#quote-text-objects
+  "vim.targets.enable": false,
+
+  // 移动到折叠代码时候, 不要自动打开(false会自动打开折叠)
+  "vim.foldfix": true,
+
+  // 高亮被复制的内容
+  "vim.highlightedyank.enable": true,
+
+  // 高亮被复制的内容(高亮时的背景颜色)
+  "vim.highlightedyank.color": "rgba(0, 0, 0, 0.8)",
+
+  // 在切换 VIM 模式时,不要设置状态栏的颜色
+  "vim.statusBarColorControl": false,
+
+  // 高亮搜索内容
+  "vim.hlsearch": true,
+
+  // 搜索的时候忽略大小写
+  "vim.ignorecase": false,
+
+  // 更改单词包括前后的空格
+  "vim.changeWordIncludesWhitespace": true,
+
+  // 使用系统粘贴板
+  "vim.useSystemClipboard": true,
+
+  // leader 键映射
+  "vim.leader": "\\",
+
+  // insert 模式光标样式
+  "vim.cursorStylePerMode.insert": "line",
+
+  // noraml 模式光标样式
+  "vim.cursorStylePerMode.normal": "block",
+
+  // visual 模式光标样式
+  "vim.cursorStylePerMode.visual": "line",
+  "vim.cursorStylePerMode.visualline": "line",
+  "vim.cursorStylePerMode.visualblock": "line",
+
+  // visual 模式快捷键
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<space>"],
+      "commands": ["vspacecode.space"]
+    },
+    {
+      "before": [","],
+      "commands": ["vspacecode.space", { "command": "whichkey.triggerKey", "args": "m" }]
+    },
+    {
+      // $ 移动到本行结尾(不包括换行符)
+      "before": ["$"],
+      "after": ["$", "h"]
+    },
+    {
+      // s 删除而不是剪切
+      "before": ["s"],
+      "after": ["\"", "_", "s"]
+    },
+    {
+      // x 删除而不是剪切
+      "before": ["x"],
+      "after": ["\"", "_", "x"]
+    },
+    {
+      // 向下滚动(10行)
+      "before": ["<C-d>"],
+      "after": ["<C-d>", "z", "z"]
+    },
+    {
+      // 向上滚动(10行)
+      "before": ["<C-u>"],
+      "after": ["<C-u>", "z", "z"]
+    },
+    {
+      // 向上滚动(一屏)
+      "before": ["<C-b>"],
+      "after": ["<C-b>", "z", "z"]
+    },
+    {
+      // 向下滚动(一屏)
+      "before": ["<C-f>"],
+      "after": ["<C-f>", "z", "z"]
+    },
+    {
+      // tab: 向后缩进
+      "before": [">"],
+      "commands": ["tab"]
+    },
+    {
+      // shift + tab: 向前缩进
+      "before": ["<"],
+      "commands": ["outdent"]
+    },
+    {
+      // 对齐(需要插件: alignVertically)
+      "before": ["a", "a"],
+      "commands": ["extension.alignVertically"]
+    },
+    {
+      // Ctrl + \: 切换注释状态
+      "before": ["ctrl", "\\"],
+      "commands": ["editor.action.commentLine"]
+    },
+    {
+      // 将选中的内容 console.log 输出(需要插件: javascript console utils)
+      "before": ["<leader>", "l"],
+      "commands": ["extension.insertLogStatement"]
+    },
+    {
+      // 仅粘贴操作(不会影响剪切板)
+      "before": ["p"],
+      "commands": ["editor.action.clipboardPasteAction", "extension.vim_escape"]
+    }
+  ],
+
+  // normal 模式快捷键
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      // whick key
+      "before": ["<space>"],
+      "commands": ["vspacecode.space"]
+    },
+    {
+      // whick key
+      "before": [","],
+      "commands": ["vspacecode.space", { "command": "whichkey.triggerKey", "args": "m" }]
+    },
+    {
+      // 到当前行括号, 并进入插入模式
+      "before": ["<C-i>"],
+      "after": ["0", "%", "i"]
+    },
+    {
+      // 到当前行括号, 但不进入插入模式
+      "before": ["<C-o>"],
+      "after": ["0", "%"]
+    },
+    {
+      // - :取消高亮
+      "before": ["-"],
+      "commands": [":nohl"]
+    },
+    {
+      // \+x: save file and close current tab
+      "before": ["<leader>", "x"],
+      "commands": [":x"]
+    },
+    {
+      // \+x: save file
+      "before": ["<leader>", "s"],
+      "commands": [":w"]
+    },
+    {
+      // x: delete selection chars
+      "before": ["x"],
+      "after": ["\"", "_", "x"]
+    },
+    {
+      // Ctrl+h: 显示帮助文档
+      "before": ["<C-h>"],
+      "commands": ["editor.action.showHover"]
+    },
+    {
+      // 向下滚动(10行)
+      "before": ["<C-d>"],
+      "after": ["<C-d>", "z", "z"]
+    },
+    {
+      // 向上滚动(10行)
+      "before": ["<C-u>"],
+      "after": ["<C-u>", "z", "z"]
+    },
+    {
+      // 向上滚动(一屏)
+      "before": ["<C-b>"],
+      "after": ["<C-b>", "z", "z"]
+    },
+    {
+      // 向下滚动(一屏)
+      "before": ["<C-f>"],
+      "after": ["<C-f>", "z", "z"]
+    },
+    {
+      // 上一个标签页
+      "before": ["L"],
+      "after": ["g", "t"]
+    },
+    {
+      // 下一个标签页
+      "before": ["H"],
+      "after": ["g", "T"]
+    },
+    {
+      // <leader> + d: 快速跳到定义, 也可以用于文件跳转(ctrl+MouseClick)
+      "before": ["g", "d"],
+      "commands": ["editor.action.revealDefinition"]
+    },
+    {
+      // s: 用 easymotion 全局搜索自定字符
+      "before": ["s"],
+      "after": ["<leader>", "<leader>", "s"]
+    },
+    {
+      // <leader>j: 用 easymotion 向后指定行
+      "before": ["<leader>", "j"],
+      "after": ["<leader>", "<leader>", "j"]
+    },
+    {
+      // <leader>k: 用 easymotion 向前指定行
+      "before": ["<leader>", "k"],
+      "after": ["<leader>", "<leader>", "k"]
+    }
+  ],
+
+  // =============================================//
+  //                  vspacecode                  //
+  // =============================================//
+  "vspacecode.bindingOverrides": [
+    {
+      // 搜索命令
+      "keys": "\t",
+      "name": "Search keybindings",
+      "type": "command",
+      "command": "whichkey.searchBindings",
+      "icon": "search"
+    },
+    {
+      // 最近编辑过的tab
+      "keys": "`",
+      "name": "Last editor",
+      "type": "commands",
+      "icon": "arrow-both",
+      "commands": ["workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup", "list.select"]
+    },
+    {
+      // 搜索
+      "keys": "s.f",
+      "name": "Search in current file",
+      "type": "command",
+      "icon": "search",
+      "command": "actions.find"
+    },
+    {
+      // 当前文件 fuzzy 搜索
+      "keys": "s.F",
+      "name": "Fuzzy search in current buffer",
+      "icon": "file",
+      "type": "command",
+      "command": "fuzzySearch.activeTextEditorWithCurrentSelection"
+    },
+    {
+      // 使用 vim-search-replace 搜索/替换
+      "keys": "r.r",
+      "name": "VIM search and replace",
+      "icon": "replace",
+      "type": "command",
+      "command": "vim-search-and-replace.start"
+    },
+    {
+      // 保存当前文件
+      "keys": "s.s",
+      "name": "Save current file",
+      "type": "command",
+      "command": "workbench.action.files.save"
+    },
+    {
+      // code action
+      "keys": "c.a",
+      "name": "Code Action quickFix",
+      "type": "command",
+      "command": "editor.action.quickFix"
+    },
+    {
+      // 插入一个指定尺寸的图片
+      "keys": "i.i",
+      "name": "Insert image",
+      "type": "command",
+      "command": "lorem-space.image",
+      "icon": "device-camera"
+    },
+    {
+      // 格式化并保存
+      "keys": "f.f",
+      "name": "Format and save current file",
+      "type": "command",
+      "icon": "save",
+      "commands": ["editor.action.formatDocument", "workbench.action.files.save"]
+    },
+    {
+      // 格式化并保存(选择格式化程序)
+      "keys": "f.w",
+      "name": "FormatWith and save current file",
+      "type": "command",
+      "icon": "save",
+      "commands": ["editor.action.formatDocument.multiple", "workbench.action.files.save"]
+    },
+    {
+      // 选择 tab
+      "keys": "l.l",
+      "name": "List all editors",
+      "type": "command",
+      "icon": "list-unordered",
+      "command": "workbench.action.quickOpenPreviousRecentlyUsedEditor"
+    },
+    {
+      // 查看 Project Manager, 需要 Project Manager 插件
+      "command": "workbench.view.extension.project-manager",
+      "keys": "S.M",
+      "name": "Show Project Manager",
+      "type": "command",
+      "icon": "folder-library"
+    },
+    {
+      // 查看 todo-tree, 需要 todo-tree 插件
+      "command": "workbench.view.extension.todo-tree-container",
+      "keys": "S.T",
+      "name": "Show TODOs",
+      "type": "command",
+      "icon": "checklist"
+    },
+    {
+      // 找系统的文件管理器中打开
+      "command": "workbench.action.files.openFileFolder",
+      "keys": "S.f",
+      "name": "Show OS file picker",
+      "type": "command",
+      "icon": "root-folder-opened"
+    },
+    {
+      // 关闭其他标签页
+      "command": "workbench.action.closeOtherEditors",
+      "keys": "b.D",
+      "name": "Close unmodified editors",
+      "type": "command",
+      "icon": "debug-rerun"
+    },
+    {
+      // 命令行
+      "command": "editor.action.commentLine",
+      "keys": "c.l",
+      "name": "Comment/uncomment line(s)",
+      "type": "command",
+      "icon": "comment"
+    },
+    {
+      // code runner 需要插件 code runner
+      "command": "code-runner.run",
+      "keys": "c.r",
+      "name": "Run code in curent file",
+      "type": "command",
+      "icon": "play-circle"
+    },
+    {
+      // 复制并注释当前行(选中内容)
+      "commands": ["editor.action.clipboardCopyAction", "editor.action.commentLine"],
+      "keys": "c.y",
+      "name": "Copy selection and comment line",
+      "type": "command",
+      "icon": "clippy"
+    },
+    {
+      // 调试命令行
+      "command": "workbench.debug.action.toggleRepl",
+      "keys": "d.t",
+      "name": "Toggle Debug Console view",
+      "type": "command",
+      "icon": "debug-alt"
+    },
+    {
+      // 调试命令行
+      "command": "workbench.action.output.toggleOutput",
+      "keys": "e.o",
+      "name": "Toggle output view",
+      "type": "command",
+      "icon": "debug-console"
+    },
+    {
+      // 重命名当前文件(需要插件 fileutils)
+      "command": "fileutils.renameFile",
+      "keys": "f.R",
+      "name": "Rename file",
+      "type": "command",
+      "icon": "diff-renamed"
+    },
+    {
+      // 打开设置(json文件)
+      "command": "workbench.action.openSettingsJson",
+      "keys": "f.e.d",
+      "name": "Open settings JSON",
+      "type": "command",
+      "icon": "settings"
+    },
+    {
+      // 在系统文件管理器中选择打开文件
+      "command": "workbench.action.files.openFileFolder",
+      "keys": "f.o",
+      "name": "Open file browser",
+      "type": "command",
+      "icon": "remote-explorer"
+    },
+    {
+      // 跳到指定的方法
+      "command": "workbench.action.gotoMethod",
+      "keys": "j.m",
+      "name": "Jump to method/function in file",
+      "type": "command",
+      "icon": "symbol-method"
+    },
+    {
+      // 切换 sidebar 显示隐藏(ctrl + t)
+      "command": "workbench.action.toggleSidebarVisibility",
+      "keys": "l.b",
+      "name": "Toggle sidebar",
+      "type": "command",
+      "icon": "layout-sidebar-left"
+    },
+    {
+      // 编辑 Project Manger config
+      "command": "projectManager.editProjects",
+      "keys": "p.e",
+      "name": "Edit projects",
+      "type": "command",
+      "icon": "project"
+    },
+    {
+      // 刷新 Project Manager
+      "command": "projectManager.refreshAnyProjects",
+      "keys": "p.r",
+      "name": "Refresh projects",
+      "type": "command",
+      "icon": "refresh"
+    },
+    {
+      // 保存项目到 Project Manger
+      "command": "projectManager.saveProject",
+      "keys": "p.s",
+      "name": "Save project",
+      "type": "command",
+      "icon": "save-as"
+    },
+    {
+      // 关闭所有tab group
+      "command": "workbench.action.closeEditorsInAllGroups",
+      "keys": "q.A",
+      "name": "Close current file in all groups",
+      "type": "command",
+      "icon": "close-all"
+    },
+    {
+      // 关闭当前tab左边的所有tab
+      "command": "workbench.action.closeEditorsToTheLeft",
+      "keys": "q.H",
+      "name": "Close editors to the left",
+      "type": "command",
+      "icon": "arrow-circle-left"
+    },
+    {
+      // 关闭当前tab由右边的所有tab
+      "command": "workbench.action.closeEditorsToTheRight",
+      "keys": "q.L",
+      "name": "Close editors to the right",
+      "type": "command",
+      "icon": "arrow-circle-right"
+    },
+    {
+      // 关闭所有tab
+      "command": "workbench.action.closeAllEditors",
+      "keys": "q.a",
+      "name": "Close all editors",
+      "type": "command",
+      "icon": "arrow-circle-right"
+    },
+    {
+      // 全局搜索替换
+      "command": "workbench.action.replaceInFiles",
+      "keys": "x.R",
+      "name": "Replace in files",
+      "type": "command",
+      "icon": "replace-all"
+    },
+    {
+      // 设置相关
+      "keys": ",",
+      "name": "Settings/Preferences",
+      "type": "bindings",
+      "icon": "settings-gear",
+      "bindings": [
+        {
+          // 选择图标主题
+          "command": "workbench.action.selectIconTheme",
+          "key": "i",
+          "name": "Choose icon theme",
+          "type": "command",
+          "icon": "eye"
+        },
+        {
+          // 打开设置
+          "command": "workbench.action.openGlobalSettings",
+          "key": ",",
+          "name": "Open global settings",
+          "type": "command",
+          "icon": "settings-gear"
+        },
+        {
+          // 打开按键绑定设置
+          "command": "workbench.action.openGlobalKeybindings",
+          "key": "k",
+          "name": "Open global keybindings",
+          "type": "command",
+          "icon": "record-keys"
+        },
+        {
+          // 打开按键绑定设置文件
+          "command": "workbench.action.openGlobalKeybindingsFile",
+          "key": "K",
+          "name": "Open global keybindings JSON",
+          "type": "command",
+          "icon": "record-keys"
+        },
+        {
+          // 打开特定的编程语言设置
+          "command": "workbench.action.configureLanguageBasedSettings",
+          "key": "l",
+          "name": "Open language settings",
+          "type": "command",
+          "icon": "file-code"
+        },
+        {
+          // 打开 snippets 设置
+          "command": "workbench.action.openSnippets",
+          "key": "n",
+          "name": "Open user snippets",
+          "type": "command",
+          "icon": "code"
+        },
+        {
+          // 打开设置(json 文件)
+          "command": "workbench.action.openSettingsJson",
+          "key": "s",
+          "name": "Open global settings JSON",
+          "type": "command",
+          "icon": "json"
+        },
+        {
+          // 选择主题颜色
+          "command": "workbench.action.selectTheme",
+          "key": "t",
+          "name": "Choose color theme",
+          "type": "command",
+          "icon": "symbol-color"
+        }
+      ]
+    },
+    {
+      // 书签设置: 需要 Bookmarks 插件
+      "keys": "B",
+      "name": "Bookmarks",
+      "type": "bindings",
+      "icon": "bookmark",
+      "bindings": [
+        {
+          // 标记/取消标记书签
+          "command": "bookmarks.toggle",
+          "key": "m",
+          "name": "Toggle bookmark",
+          "type": "command",
+          "icon": "check"
+        },
+        {
+          // 下一个书签
+          "command": "bookmarks.jumpToNext",
+          "key": "n",
+          "name": "Jump to next bookmark",
+          "type": "command",
+          "icon": "arrow-downext"
+        },
+        {
+          // 上一个书签
+          "command": "bookmarks.jumpToPrevious",
+          "key": "p",
+          "name": "Jump to previous bookmark",
+          "type": "command",
+          "icon": "arrow-up"
+        },
+        {
+          // 切换侧边栏到书签栏目
+          "command": "workbench.view.extension.bookmarks",
+          "key": "o",
+          "name": "Open Bookmarks explorer",
+          "type": "command"
+        },
+        {
+          // 列出当前文件所有书签
+          "command": "bookmarks.list",
+          "key": "b",
+          "name": "Open list of bookmarks in current file",
+          "type": "command",
+          "icon": "bookmark"
+        },
+        {
+          // 所有项目所有书签
+          "command": "bookmarks.listFromAllFiles",
+          "key": "B",
+          "name": "Open list of bookmarks in all files",
+          "type": "command",
+          "icon": "checklist"
+        }
+      ]
+    },
+    {
+      // 侧边功能栏目切换
+      "keys": "o",
+      "name": "Open...",
+      "type": "bindings",
+      "icon": "layout-sidebar-left-off",
+      "bindings": [
+        {
+          // 打开 vim 备忘录(需要插件: vim cheatsheet)
+          "key": "v",
+          "name": "Open vim Cheatsheet",
+          "type": "command",
+          "icon": "preview",
+          "command": "vim-cheatsheet.open"
+        },
+        {
+          // 在默认浏览器中打开(需要插件: open in browser)
+          "key": "b",
+          "name": "Open in Browser",
+          "type": "commands",
+          "icon": "browser",
+          "command": "extension.openInDefaultBrowser"
+        },
+        {
+          // 打开浏览文件
+          "command": "workbench.view.explorer",
+          "key": "e",
+          "name": "Explorer view",
+          "type": "command",
+          "icon": "file-submodule"
+        },
+        {
+          // 打开 project manager
+          "command": "workbench.view.extension.project-manager",
+          "key": "p",
+          "name": "Project Manager view",
+          "type": "command",
+          "icon": "project"
+        },
+        {
+          // 打开 todo tree
+          "command": "workbench.view.extension.todo-tree-container",
+          "key": "t",
+          "name": "TODO View",
+          "type": "command",
+          "icon": "checklist"
+        },
+        {
+          // 打开扩展
+          "command": "workbench.view.extensions",
+          "key": "x",
+          "name": "Extensions Marketplace",
+          "type": "command",
+          "icon": "extensions"
+        }
+      ]
+    },
+    {
+      // 在新的窗口打开文件
+      "keys": ["w", "f"],
+      "name": "Open file in new group...",
+      "type": "bindings",
+      "icon": "split-horizontal",
+      "bindings": [
+        {
+          // 在右边打开
+          "commands": ["workbench.action.splitEditorRight", "workbench.action.quickOpen"],
+          "key": "l",
+          "name": "...to the right",
+          "type": "commands",
+          "icon": "arrow-right"
+        },
+        {
+          // 在左边打开
+          "commands": ["workbench.action.splitEditorLeft", "workbench.action.quickOpen"],
+          "key": "h",
+          "name": "...to the left",
+          "type": "commands",
+          "icon": "arrow-right"
+        },
+        {
+          // 在底下打开
+          "commands": ["workbench.action.splitEditorDown", "workbench.action.quickOpen"],
+          "key": "j",
+          "name": "...to below",
+          "type": "commands",
+          "icon": "arrow-down"
+        },
+        {
+          // 在上面打开(把当前放到下面)
+          "commands": ["workbench.action.splitEditorUp", "workbench.action.quickOpen"],
+          "key": "k",
+          "name": "...to above",
+          "type": "commands"
+        },
+      ]
+    },
+    {
+      "keys": "y",
+      "name": "Yank/Copy...",
+      "type": "bindings",
+      "icon": "clippy",
+      "bindings": [
+        {
+          // 复制文件名
+          "command": "fileutils.copyFileName",
+          "key": "n",
+          "name": "Copy current file name",
+          "type": "command",
+          "icon": "file-binary"
+        },
+        {
+          // 复制文件绝对路径
+          "command": "copyFilePath",
+          "key": "p",
+          "name": "Copy current file absolute path",
+          "type": "command",
+          "icon": "file-symlink-file"
+        },
+        {
+          // 复制文件相对路径
+          "command": "copyRelativeFilePath",
+          "key": "P",
+          "name": "Copy current file relative path",
+          "type": "command",
+          "icon": "file-symlink-directory"
+        }
+      ]
+    }
+  ]
+}
