@@ -10,7 +10,7 @@ config.onstart = function(onedark)
     term_colors          = true,
     ending_tildes        = false,
     cmp_itemkind_reverse = false,
-    toggle_style_key     = '<leader>ts',
+    toggle_style_key     = nil,
     toggle_style_list    = { 
       'dark',
       'darker', 
@@ -38,6 +38,7 @@ config.onstart = function(onedark)
 
   -- 使用 onedark 主题
   onedark.load();
+  require("keybindings").onedarkKeys();
 end
 
 return config;

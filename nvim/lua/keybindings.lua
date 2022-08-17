@@ -23,69 +23,157 @@
 ------------------------------------------------------------------------------
 --  插件的快捷键配置
 ------------------------------------------------------------------------------
+local wk = require("which-key");
 local keybindings = {}
 
+local message = 'hello'
+print(message);
+
 --------------------------------------
--- aerial 自动完成快捷键
+-- kommentary 注释快捷键
 --------------------------------------
-keybindings.aerialKeys = function()
-  nnoremap("<leader>=", "<cmd>AerialToggle!<CR>")
-  nnoremap("[a", "<cmd>AerialPrev<CR>")
-  nnoremap("]a", "<cmd>AerialNext<CR>")
+keybindings.onedarkKeys = function ()
+  wk.register({
+    ["<leader>tc"] = {
+      "<cmd>lua require('onedark').toggle()<CR>",
+      "toggle colorscheme[onedark]"
+    },
+  })
 end
 
 --------------------------------------
--- align 自动完成快捷键
+-- kommentary 注释快捷键
 --------------------------------------
-keybindings.alignKeys = function(align)
-  local keyset = vim.keymap.set
-  local options = { noremap = true, silent = true }
+keybindings.kommentaryKeys = function()
+  nnoremap("<C-\\>", "<Plug>kommentary_line_default")
+  vnoremap("<C-\\>", "<Plug>kommentary_visual_default<C-c>gv-gv")
+  wk.register({
+    ["<leader>cl"] = {
+      "<Plug>kommentary_line_default",
+      "comment current line(<C-\\>)[kommentary]"
+    },
+  })
+  wk.register({
+    ["<leader>cL"] = {
+      "<Plug>kommentary_visual_default<C-c>gv-gv",
+      "comment multi lines(<C-\\>)[kommentary]"
+    },
+  }, { mode = "v" })
+end
 
-  -- 根据字符串对齐
-  keyset("x", "aa", function()
-    align.align_to_string(false, true, true)
-  end, options)
-
-  keyset("x", "aA", function()
-    align.align_to_string(true, true, true)
-  end, options)
-
-  -- 对齐 & 预览
-  vim.keymap.set("n", "ga", function()
-    align.operator(align.align_to_string, {
-      is_pattern = false,
-      reverse = true,
-      preview = true,
-    })
-  end, options)
+--------------------------------------
+-- align 代码对齐快捷键
+--------------------------------------
+keybindings.alignKeys = function()
+  wk.register({
+    ["<leader>aa"] = {
+      "<cmd>lua require('align').align_to_string(false,true,true)<CR>",
+      "align code by string[align]",
+    },
+    ["<leader>aA"] = {
+      "<cmd>lua require('align').align_to_string(true,true,true)<CR>",
+      "align code by pattern[align]",
+    }
+  }, { mode = "v" })
 end
 
 --------------------------------------
 -- bufferline 快捷键
 --------------------------------------
 keybindings.bufferlineKeys = function()
-  nnoremap("<leader>ll", ":BufferLinePick<CR>")
+  wk.register({
+    ["<leader>bb"] = {
+      "<cmd>BufferLinePick<CR>",
+      "show all buffers[bufferline]",
+    },
+    ["<leader>bh"] = {
+      "<cmd>BufferLineMovePrev<CR>",
+      "move buffer to left",
+    },
+    ["<leader>bl"] = {
+      "<cmd>BufferLineMoveNext<CR>",
+      "move buffer to right",
+    },
+    ["<leader>bH"] = {
+      "<cmd>BufferLineCloseLeft<CR>",
+      "close left buffers",
+    },
+    ["<leader>bL"] = {
+      "<cmd>BufferLineCloseRight<CR>",
+      "close right buffers",
+    },
+    ["<leader>qH"] = {
+      "<cmd>BufferLineCloseLeft<CR>",
+      "close left buffers",
+    },
+    ["<leader>qL"] = {
+      "<cmd>BufferLineCloseRight<CR>",
+      "close right buffers",
+    },
+    ["<leader>bt"] = {
+      "<cmd>BufferLineTogglePin<CR>",
+      "toggle buffer pin status",
+    },
+  });
 end
 
 --------------------------------------
 -- formatter 格式化快捷键
 --------------------------------------
 keybindings.formatterKeys = function()
-  nnoremap("<leader>ff", ":FormatWrite<CR>")
+  wk.register({
+    ["<leader>ff"] = {
+      "<cmd>FormatWrite<CR>",
+      "format and save current buffer[formatter]",
+    }
+  })
 end
 
 --------------------------------------
 -- formatter 格式化快捷键
 --------------------------------------
 keybindings.gitsignsKeys = function()
-  nnoremap("[h", ":Gitsigns next_hunk<CR>")
-  nnoremap("]h", ":Gitsigns prev_hunk<CR>")
-  nnoremap("<leader>hR", ":Gitsigns reset_buffer<CR>")
-  nnoremap("<leader>hr", ":Gitsigns reset_hunk<CR>")
-  nnoremap("<leader>hS", ":Gitsigns stage_hunk<CR>")
-  nnoremap("<leader>hs", ":Gitsigns stage_buffer<CR>")
-  nnoremap("<leader>hu", ":Gitsigns undo_stage_hunk<CR>")
-  nnoremap("<leader>hd", ":Gitsigns diffthis<CR>")
+  wk.register({
+    ["<leader>gH"] = {
+      name = "+Gitsigns hunks[gitsigns]",
+    },
+    ["<leader>gHu"] = {
+      "<cmd>Gitsigns undo_stage_hunk<CR>",
+      "undo current hunk",
+    },
+    ["<leader>gHr"] = {
+      "<cmd>Gitsigns reset_buffer<CR>",
+      "reset all hunk in current file",
+    },
+    ["<leader>gHs"] = {
+      "<cmd>Gitsigns stage_hunk<CR>",
+      "stage current hunk",
+    },
+    ["<leader>gHS"] = {
+      "<cmd>Gitsigns stage_buffer<CR>",
+      "stage all hunk in current file",
+    },
+    ["<leader>gHd"] = {
+      "<cmd>Gitsigns diffthis<CR>",
+      "diff hunks[like git diff]",
+    },
+    ["<leader>gHj"] = {
+      "<cmd>Gitsigns next_hunk<CR>",
+      "next hunk",
+    },
+    ["<leader>gHk"] = {
+      "<cmd>Gitsigns prev_hunk<CR>",
+      "previous hunk",
+    },
+    ["<leader>jc"] = {
+      "<cmd>Gitsigns prev_hunk<CR>",
+      "jump to previous change[gitsigns]",
+    },
+    ["<leader>jC"] = {
+      "<cmd>Gitsigns prev_hunk[gitsigns]<CR>",
+      "jump to next previous",
+    },
+  })
 end
 
 --------------------------------------
@@ -93,20 +181,25 @@ end
 --------------------------------------
 keybindings.hopKeys = function()
   -- 当前行内搜索字符: f向后搜索, F向前
-  nnoremap(
-    "f",
-    "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<CR>"
-  )
-  nnoremap(
-    "F",
-    "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<CR>"
-  )
+  nnoremap("f", "<cmd>lua require'hop'.hint_char1({direction=require'hop.hint'.HintDirection.AFTER_CURSOR,current_line_only=true})<CR>")
+  nnoremap("F", "<cmd>lua require'hop'.hint_char1({direction=require'hop.hint'.HintDirection.BEFORE_CURSOR,current_line_only=true})<CR>")
 
   -- 在当前文件中搜索单词
-  nnoremap("s", ":HopChar1<CR>")
-  nnoremap("<leader>w", ":HopWord<CR>")
-  nnoremap("<leader>j", ":HopLine<CR>")
-  nnoremap("<leader>k", ":HopLine<CR>")
+  -- nmap("s", "<cmd>HopChar1<CR>")
+  wk.register({
+    ["<leader>jj"] = {
+      "<cmd>HopChar1<CR>",
+      "jump to character[hop]",
+    },
+    ["<leader>jl"] = {
+      "<cmd>HopLine<CR>",
+      "jump to line[hop]",
+    },
+    ["<leader>jw"] = {
+      "<cmd>HopWord<CR>",
+      "jump to word[hop]",
+    },
+  });
 end
 
 --------------------------------------
@@ -189,13 +282,39 @@ end
 --------------------------------------
 keybindings.spectreKeys = function()
   -- 在当前文件中搜索/替换
-  nnoremap("<leader>rr", "<cmd>lua require('spectre').open_file_search()<CR>")
+  -- nnoremap("<leader>rr", "<cmd>lua require('spectre').open_file_search()<CR>")
 
   -- 打开全局搜索/替换
-  nnoremap("<leader>rg", "<cmd>lua require('spectre').open()<CR>")
+  -- nnoremap("<leader>rR", "<cmd>lua require('spectre').open()<CR>")
 
   -- 选中模式下, 在所有文件中搜索: 被选中单词
-  vnoremap("<leader>rr", "<esc>:lua require('spectre').open_visual({select_word=true})<CR>")
+  -- vnoremap("<leader>rr", "<esc>:lua require('spectre').open_visual({select_word=true})<CR>")
+
+  wk.register({
+    ["<leader>rr"] = {
+      "<cmd>lua require('spectre').open_file_search()<CR>",
+      "search/replace in buffer[spectre]",
+    },
+    ["<leader>sF"] = {
+      "<cmd>lua require('spectre').open_file_search()<CR>",
+      "search/replace in buffer[spectre]",
+    },
+    ["<leader>rR"] = {
+      "<cmd>lua require('spectre').open()<CR>",
+      "search/replace in project[spectre]",
+    }
+  })
+
+  wk.register({
+    ["<leader>rr"] = {
+      "<esc>:lua require('spectre').open_visual({select_word=true})<CR>",
+      "search/replace selection in buffer[spectre]",
+    },
+    ["<leader>sR"] = {
+      "<esc>:lua require('spectre').open_visual({select_word=true})<CR>",
+      "search/replace selection in buffer[spectre]",
+    }
+  }, { mode = "v" })
 
   return {
     ["toggle_line"] = {
@@ -230,13 +349,13 @@ keybindings.spectreKeys = function()
     },
     ["toggle_ignore_case"] = {
       -- 忽略大小写切换
-      map = "ti",
+      map = "<leader>ri",
       cmd = "<cmd>lua require('spectre').change_options('ignore-case')<CR>",
       desc = "toggle ignore case",
     },
     ["show_option_menu"] = {
       -- 显示菜单
-      map = "<leader>rm",
+      map = "<leader>ro",
       cmd = "<cmd>lua require('spectre').show_options()<CR>",
       desc = "show option",
     },
@@ -248,7 +367,25 @@ end
 --------------------------------------
 keybindings.nvimtreeKeys = function()
   -- Ctrl + t: 切换显示/隐藏
-  nnoremap("<C-t>", ":NvimTreeToggle<CR>")
+  nnoremap("<C-t>", "<cmd>NvimTreeToggle<CR>")
+  wk.register({
+    ["<leader>fT"] = {
+      "<cmd>NvimTreeFocus<CR>",
+      "focus in explorer[nvim-tree]"
+    },
+    ["<leader>pt"] = {
+      "<cmd>NvimTreeFocus<CR>",
+      "focus in explorer[nvim-tree]"
+    },
+    ["<leader>oe"] = {
+      "<cmd>NvimTreeToggle<CR>",
+      "toggle file explorer[nvim-tree]"
+    },
+    ["<leader>ft"] = {
+      "<cmd>NvimTreeToggle<CR>",
+      "toggle file explorer[nvim-tree]"
+    }
+  })
 
   return {
     { key = "o", action = "edit" }, -- 打开并编辑
@@ -279,40 +416,82 @@ end
 --------------------------------------
 keybindings.sessionManagerKeys = function()
   -- 打开session列表, 加载某个session
-  nnoremap("<leader>pm", ":SessionManager load_session<CR>")
-  nnoremap("<leader>pd", ":SessionManager delete_session<CR>")
-  -- nnoremap("<leader>ps", ":SessionManager save_current_session<CR>")
+  -- nnoremap("<leader>pm", "<cmd>SessionManager load_session<CR>")
+  -- nnoremap("<leader>pd", "<cmd>SessionManager delete_session<CR>")
+  -- nnoremap("<leader>ps", "<cmd>SessionManager save_current_session<CR>")
 
   -- 在退出编辑器之前 & 自动保存当前 session 状态
-  vim.cmd [[
-    function SaveSessionBeforeQuit()
-      :SessionManager save_current_session
-      :quitall!
-    endfunction
-    nnoremap <leader>q :call SaveSessionBeforeQuit()<CR>
-  ]]
-end
-
---------------------------------------
--- telescope projects 项目管理工具快捷键
---------------------------------------
-keybindings.projectsKeys = function()
-  -- 因为功能和 sessionManager 非常相似,
-  -- 二者开启一个就好了, 所以用一样快捷键
-  nnoremap("<leader>pm", ":Telescope projects<CR>");
+  wk.register({
+    ["<leader>op"] = {
+      "<cmd>SessionManager load_session<CR>",
+      "open session manager[session-manager]",
+    },
+    ["<leader>pl"] = {
+      "<cmd>SessionManager load_session<CR>",
+      "switch session[session-manager]",
+    },
+    ["<leader>pp"] = {
+      "<cmd>SessionManager load_session<CR>",
+      "switch session[session-manager]",
+    },
+    ["<leader>pe"] = {
+      "<cmd>SessionManager delete_session<CR>",
+      "delete sessions[session-manager]",
+    },
+    ["<leader>ps"] = {
+      "<cmd>SessionManager save_current_session<CR>",
+      "save sessions[session-manager]",
+    },
+    ["<leader>qs"] = {
+      function ()
+        vim.cmd [[
+          :SessionManager save_current_session
+          :quitall!
+        ]]
+      end,
+      "save session before quit",
+    },
+  })
 end
 
 --------------------------------------
 -- telescope 搜索文件快捷键
 --------------------------------------
 keybindings.telescopeKeys = function()
-  nnoremap("<C-p>", "<cmd>Telescope find_files prompt_prefix=🔍[files]<CR>")
-  nnoremap("<leader>fb", "<cmd>Telescope buffers prompt_prefix=🔍[buffers]<CR>")
-  nnoremap("<leader>fs", "<cmd>Telescope live_grep prompt_prefix=🔍[string]<CR>")
-  nnoremap("<leader>fh", "<cmd>Telescope help_tags prompt_prefix=🔍[telescopeHelpTags]<CR>")
+  nnoremap("<C-p>", "<cmd>Telescope find_files prompt_prefix=[files]<CR>")
+  -- nnoremap("<leader>fb", "<cmd>Telescope buffers prompt_prefix=[buffers]<CR>")
+  -- nnoremap("<leader>fs", "<cmd>Telescope live_grep prompt_prefix=[string]<CR>")
+  -- nnoremap("<leader>fh", "<cmd>Telescope help_tags prompt_prefix=[telescopeHelpTags]<CR>")
+
+  wk.register({
+    ["<leader>bs"] = {
+      "<cmd>Telescope buffers prompt_prefix=[buffers]<CR>",
+      "search buffers[telescope]"
+    },
+    ["<leader>ot"] = {
+      "<cmd>Telescope vim_bookmarks all prompt_prefix=[bookmarks]<CR>",
+      "open TODO view[telescope]",
+    },
+    ["<leader>pf"] = {
+      "<cmd>Telescope find_files prompt_prefix=[files]<CR>",
+      "find file in project[telescope]",
+    },
+    ["<leader>sp"] = {
+      "<cmd>Telescope live_grep prompt_prefix=[string]<CR>",
+      "search string in project[telescope]",
+    },
+  })
+
+  -- TODO: search string in project with seclection
+   wk.register({
+    ["<leader>sP"] = {
+      "<cmd>Telescope live_grep prompt_prefix=[string]<CR>",
+      "search string in project with seclection[telescope]",
+    },
+  });
 
   -- 查看所有书签
-  nnoremap("<leader>fm", ":Telescope vim_bookmarks all prompt_prefix=🔍[bookmarks]<CR>")
+  -- nnoremap("<leader>fm", ":Telescope vim_bookmarks all prompt_prefix=[bookmarks]<CR>")
 
   local actions = require("telescope.actions")
   return {
@@ -362,20 +541,61 @@ keybindings.lspKeys = function(client, bufnr)
 
   -- 利用 LSP 格式化, 如果支持的话
   if client.resolved_capabilities.document_formatting then
-    bufkeyset(bufnr, "n", "<leader>ff", "<cmd>lua vim.lsp.buf.formatting_seq_sync()<CR>", opt);
+    wk.register({
+      ["<leader>ff"] = {
+        "<cmd>lua vim.lsp.buf.formatting_seq_sync()<CR>",
+        "format and save current file[lsp]"
+      },
+    });
   end
 
-  -- 变量重命名
-  -- bufkeyset(bufnr, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opt)
-
-  -- code action
-  -- bufkeyset(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
-
-  -- 查看代码定义的位置(需要 telescope 插件)
-  -- bufkeyset(bufnr, "n", "gd", "<cmd>lua require'telescope.builtin'.lsp_definitions()<CR>", opt)
-
-  -- 显示帮助, 改用 lsp-saga 的方法
-  -- bufkeyset(bufnr, "n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opt)
+  wk.register({
+    ["<leader>j+"] = {
+      "<cmd>lua vim.lsp.buf.formatting()<CR>",
+      "format current buffer[lsp]",
+    },
+    ["<leader>ca"] = {
+      "<cmd>lua vim.lsp.buf.code_action()<CR>",
+      "code action quickFix[lsp]"
+    },
+    -- 用 lspsaga, 这个暂时不用了
+    -- ["<leader>se"] = {
+    --   "<cmd>lua vim.lsp.buf.rename()<CR>",
+    --   "edit symbol name[lsp]"
+    -- },
+    -- ["<leader>xr"] = {
+    --   "<cmd>lua vim.lsp.buf.rename()<CR>",
+    --   "rename symbol[lsp]"
+    -- },
+    -- 用 lspsaga, 这个暂时不用了
+    -- ["<leader>sj"] = {
+    --   "<cmd>lua vim.lsp.buf.document_symbol()<CR>",
+    --   "jump to symbol in buffer[lsp]"
+    -- },
+    ["<leader>sJ"] = {
+      "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>",
+      "jump to symbol in project[telescope]",
+    },
+    ["<leader>jI"] = {
+      "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>",
+      "jump to symbol in project[lsp]",
+    },
+  })
+  -- 格式化选中模式
+  wk.register({
+    ["<leader>j="] = {
+      "<cmd>lua vim.lsp.buf.range_formatting()<CR>",
+      "format selection[lsp]"
+    },
+    ["<leader>se"] = {
+      "<cmd>lua vim.lsp.buf.rename()<CR>",
+      "edit symbol name[lsp]"
+    },
+    ["<leader>xr"] = {
+      "<cmd>lua vim.lsp.buf.rename()<CR>",
+      "rename symbol[lsp]"
+    },
+  }, { mode = "v" })
 end
 
 
@@ -384,26 +604,72 @@ end
 --------------------------------------
 keybindings.lspUISagaKeys = function()
   -- 变量重命名
-  nnoremap("<leader>rn", "<cmd>Lspsaga rename<CR>");
+  -- nnoremap("<leader>rn", "<cmd>Lspsaga rename<CR>");
 
   -- 代码修复,小灯泡 code action
-  nnoremap("<leader>ca", "<cmd>Lspsaga code_action<CR>");
+  -- nnoremap("<leader>ca", "<cmd>Lspsaga code_action<CR>");
+
+  -- 上一个/下一个代码错误位置
+  -- nnoremap("]e", "<cmd>Lspsaga diagnostic_jump_next<CR>");
+  -- nnoremap("[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>");
 
   -- 查看帮助文档
   nnoremap("gh", "<cmd>Lspsaga hover_doc<CR>");
 
   -- 查看文件定义
-  nnoremap("gd", "<cmd>Lspsaga lsp_finder<CR>");
+  -- nnoremap("gd", "<cmd>Lspsaga lsp_finder<CR>");
 
   -- 参看函数定义
   nnoremap("gv", "<cmd>Lspsaga preview_definition<CR>");
 
   -- 查看文件预览
-  nnoremap("gl", "<cmd>LSoutlineToggle<CR>");
+  -- nnoremap("gl", "<cmd>LSoutlineToggle<CR>");
 
   -- 跳到上/下/错误一个代码诊断提示位置
-  nnoremap("]e", "<cmd>Lspsaga diagnostic_jump_next<CR>");
-  nnoremap("[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>");
+  wk.register({
+    ["<leader>ej"] = {
+      "<cmd>Lspsaga diagnostic_jump_next<CR>",
+      "next error[lspsaga]"
+    },
+    ["<leader>ek"] = {
+      "<cmd>Lspsaga diagnostic_jump_next<CR>",
+      "previous error[lspsaga]"
+    },
+    ["<leader>ef"] = {
+      "<cmd>lua vim.lsp.buf.code_action()<CR>",
+      "fix error[lspsaga]"
+    },
+    ["<leader>ji"] = {
+      "<cmd>LSoutlineToggle<CR>",
+      "jump to symbol in buffer[lspsaga]"
+    },
+    ["<leader>sj"] = {
+      "<cmd>LSoutlineToggle<CR>",
+      "jump to symbol in buffer[lspsaga]"
+    },
+    ["<leader>sr"] = {
+      "<cmd>Lspsaga lsp_finder<CR>",
+      "search all references[lspsaga]"
+    },
+    ["<leader>xa"] = {
+      "<cmd>Lspsaga lsp_finder<CR>",
+      "find all references[lspsaga]"
+    },
+    ["<leader>se"] = {
+      "<cmd>Lspsaga rename<CR>",
+      "edit symbol name[lsp]"
+    },
+    ["<leader>xr"] = {
+      "<cmd>Lspsaga lsp_finder<CR>",
+      "rename symbol[lspsaga]"
+    },
+  });
+  wk.register({
+    ["<leader>se"] = {
+      "<cmd>Lspsaga rename<CR>",
+      "edit symbol name[lsp]"
+    },
+  }, {mode = "v"})
 
   return {
     move_in_saga = {
@@ -431,6 +697,7 @@ end
 -- dap 调试快捷键
 --------------------------------------
 keybindings.dapKeys = function()
+  -- TODO: 快捷键不全, 查阅: https://github.com/mfussenegger/nvim-dap 尽量和 vscode 保持一致
   -- nnoremap("<F3>", "<cmd>lua require'dap'.toggle_breakpoint(); require'user.dap.dap-util'.store_breakpoints(true)<cr>");
   -- 标记断点
   nnoremap("<F4>", "<cmd>lua require'dap'.toggle_breakpoint()<CR>")
@@ -452,6 +719,38 @@ keybindings.dapKeys = function()
 
   -- 终止调试
   nnoremap("<F10>", "<cmd>lua require'dap'.terminate()<CR>")
+
+  -- 快捷键菜单
+  wk.register({
+    ["<leader>db"] = {
+      "<cmd>lua require'dap'.toggle_breakpoint()<CR>",
+      "toggle breakpoint(F4)[dap]"
+    },
+    ["<leader>dd"] = {
+      "<cmd>lua require'dap'.continue()<CR>",
+      "continue debug(F5)[dap]"
+    },
+    ["<leader>di"] = {
+      "<cmd>lua require'dap'.step_into()<CR>",
+      "debug step in(F6)[dap]"
+    },
+    ["<leader>do"] = {
+      "<cmd>lua require'dap'.step_out()<CR>",
+      "debug step out(F7)[dap]"
+    },
+    ["<leader>ds"] = {
+      "<cmd>lua require'dap'.step_over()<CR>",
+      "debug step over(F8)[dap]"
+    },
+    ["<leader>dR"] = {
+      "<cmd>lua require'dap'.run_last()<CR>",
+      "debug step out(F9)[dap]"
+    },
+    ["<leader>dS"] = {
+      "<cmd>lua require'dap'.terminate()<CR>",
+      "stop debug(F10)[dap]"
+    }
+  })
 end
 
 --------------------------------------

@@ -16,7 +16,7 @@ vim.opt.title           = true;           -- 显示 title
 vim.opt.cursorline      = true;           -- 高亮当前行
 vim.opt.clipboard       = "unnamedplus";  -- 使用系统粘贴板
 vim.opt.updatetime      = 300;            -- 更新间隔时间(ms), 比如按下 <Leader> 键后没有再
-vim.opt.timeoutlen      = 1000;           -- 按其他键多久后自动取消 <Leader>
+vim.opt.timeoutlen      = 0;              -- 按其他键多久后自动取消 <Leader>
 vim.opt.signcolumn      = "yes";          -- 显示图标栏
 vim.opt.undofile        = true;           -- 开启撤销永久化
 vim.opt.laststatus      = 3;              -- 命令行状态 && 命令行高度
@@ -54,9 +54,9 @@ vim.opt.hidden          = true;           -- hidden
 vim.g.loaded_matchparen = false           -- 禁止自动匹配高亮括号
 -- vim.opt.foldmethod      = "expr";         -- 根据缩进折叠
 -- vim.opt.foldexpr        = 'nvim_treesitter#foldexpr()'; -- 使用 treesitter 来折叠
+vim.opt.foldmethod      = "indent";       -- 根据缩进折叠
 vim.opt.foldenable      = true;           -- 开启折叠功能
 vim.opt.foldlevelstart  = 99;             -- 打开文件时,不要自动折叠
-vim.opt.foldmethod      = "indent";       -- 根据缩进折叠
 vim.opt.list            = false;          -- 显示空白符号
 vim.cmd[[ set listchars=eol:↴ ]]          -- 设置空白字符对应显示的符号 listchars=tab:>-,trail:.,extends:>,precedes:<,space:.,eol:↴
 

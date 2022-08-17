@@ -84,3 +84,30 @@ autocmd("InsertEnter", {
 -- 	end,
 -- })
 
+
+-- 在浏览器中打开当前行的 url & 在浏览器中打开当前文件
+vim.cmd[[
+  function! OpenCurrentLineURL()
+    let s:uri = matchstr(getline("."), '[a-z]*:\/\/[^ >,;]*')
+    " echo s:uri
+    if s:uri != ""
+      silent exec "!open '".s:uri."'"
+    else
+      echo "No url found in current line"
+    endif
+  endfunction
+  " nnoremap <leader>ou :call OpenCurrentLineURL()<cr>
+
+  function! OpenFileWithGoogleChrome()
+    let s:filepath = expand('%:p')
+    let s:googlePath = "/Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome"
+    if s:filepath != ""
+      silent exec "!open -a ".s:googlePath." -i=".s:filepath
+    else
+      echo "File not found"
+    endif
+
+    "open -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome /fullpath/to/coc-settings.json
+  endfunction
+]]
+

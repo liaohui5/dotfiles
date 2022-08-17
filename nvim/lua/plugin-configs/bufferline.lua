@@ -19,7 +19,7 @@ return {
         separator_style          = "slant", -- "slant" | "thick" | "padded_slant" | "thick" | "thin"
         enforce_regular_tabs     = false,
         always_show_bufferline   = true,
-        sort_by                  = "insert_after_current", -- insert_after_current |insert_at_end | id | extension
+        sort_by                  = "insert_at_end", -- insert_after_current |insert_at_end | id | extension
         name_formatter           = function(buf)
           if buf.name:match('%.md') then
             return vim.fn.fnamemodify(buf.name, ':t:r')

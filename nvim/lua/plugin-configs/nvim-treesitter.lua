@@ -36,8 +36,14 @@ config.onstart = function(configs)
       additional_vim_regex_highlighting = false
     },
     indent = {
+      -- 允许使用 treesitter 来缩进
       enable = true
-    }
+    },
+    context_commentstring = {
+      -- 集成 Comment.nvim 插件
+      enable         = true,
+      enable_autocmd = false,
+    },
   });
 
 end

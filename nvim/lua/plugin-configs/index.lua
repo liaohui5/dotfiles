@@ -28,9 +28,9 @@
 local plugins = {
   { require_path = "monokai", config_name = "monokai" },
   { require_path = "onedark", config_name = "onedark" },
-  { require_path = "nvim-autopairs", config_name = "nvim-autopairs" },
+  { require_path = "which-key", config_name = "which-key" },
   { require_path = "align", config_name = "align" },
-  { require_path = "Comment", config_name = "comment" },
+  { require_path = "kommentary.config", config_name = "kommentary" },
   { require_path = "editorconfig", config_name = "editorconfig" },
   { require_path = "formatter", config_name = "formatter" },
   { require_path = "gitsigns", config_name = "gitsigns" },

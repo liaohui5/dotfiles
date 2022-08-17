@@ -19,6 +19,7 @@
 -- rmap     - 查看 select 模式快捷键
 -- omap     - 查看 operator 模式快捷键
 --- @diagnostic disable: lowercase-global
+local wk = require("which-key");
 local keymap = vim.api.nvim_set_keymap
 local option = { noremap = true, silent = true }
 
@@ -88,9 +89,8 @@ vnoremap("p", '"_dP')
 
 -- 选中/删除当前单词
 nnoremap("vw", "viw")
-nnoremap("vW", "viW")
 nnoremap("cw", "ciw")
-nnoremap("cW", "ciW")
+nnoremap("dw", "diw")
 
 -- ctrl u / ctrl + d 滚动10行, 并且保持当前行居中屏幕
 nnoremap("<C-u>", "10kzz");
@@ -99,25 +99,14 @@ nnoremap("<C-d>", "10jzz");
 -- 修改默认的 x, r, 直接删除而不剪切
 nnoremap("x", '"_x')
 vnoremap("x", '"_x')
--- s: hop search chars
--- nnoremap('s', '"_s');
--- vnoremap('s', '"_s');
 
 -- 修改默认的 $
 nnoremap("$", "$h")
 vnoremap("$", "$h")
 
--- 保存文件
-nnoremap("<leader>ss", ":write<CR>")
-
 -- buffer 切换/关闭
 nnoremap("<S-h>", ":bprevious<CR>")
 nnoremap("<S-l>", ":bnext<CR>")
-nnoremap("gT", ":bprevious<CR>")
-nnoremap("gt", ":bnext<CR>")
-nnoremap("<leader>x", ":bp|bd #<CR>")
--- nnoremap("<leader>x", ":bw %|bn<CR>")
-nnoremap("<leader>X", ":%bd|e#|bd#<cr>|'\"")
 
 -- 左右缩进
 vnoremap("<", "<gv")
@@ -144,11 +133,285 @@ cmap("<C-j>", "<C-n>")
 cmap("<C-k>", "<C-p>")
 
 -- 创建文件/删除文件
-nnoremap("<leader>nf", ":!touch ")
-nnoremap("<leader>df", ":!rm -rf ")
+-- nnoremap("<leader>nf", ":!touch ")
+-- nnoremap("<leader>df", ":!rm -rf ")
 
 -- 搜索替换
-vnoremap("<C-f>", "gd<ESC>")
+-- vnoremap("<C-f>", "gd<ESC>")
 
 -- 找到当前行的括号并进入Insert模式
-nnoremap("<M-i>", "0%i");
+-- nnoremap("<M-i>", "0%i");
+
+--------------------------------------
+-- 内置功能绑定到快捷键菜单
+--------------------------------------
+wk.register({
+  -- buffers
+  ["<leader>b"]  = {
+    name = "+Buffer",
+  },
+  ["<leader>b1"] = {
+    "<cmd>bfirst",
+    "first Buffer"
+  },
+  ["<leader>b0"] = {
+    "<cmd>blast",
+    "last Buffer"
+  },
+  ["<leader>bb"] = {
+    "<cmd>buffers",
+    "show all buffers"
+  },
+  ["<leader>bs"] = {
+    "<cmd>buffers",
+    "search buffers"
+  },
+  ["<leader>bd"] = {
+    "<cmd>bprevious|bdelete #<CR>",
+    "close current buffer"
+  },
+  ["<leader>bl"] = {
+    "<cmd>vsplit<CR>",
+    "move buffer to right"
+  },
+  ["<leader>bj"] = {
+    "<cmd>vsplit<CR>",
+    "move buffer to bottom"
+  },
+  ["<leader>bn"] = {
+    "<cmd>bnext<CR>", -- H
+    "next buffer"
+  },
+  ["<leader>bp"] = {
+    "<cmd>bprevious<CR>", -- L
+    "previous buffer"
+  },
+  ["<leader>bD"] = {
+    "<cmd>%bd|e#|bd#<cr>|'\"",
+    "close other buffers"
+  },
+  ["<leader>bY"] = {
+    '<cmd>%y "',
+    "copy buffer to clipboard"
+  },
+  ["<leader>bP"] = {
+    function ()
+      vim.cmd[[
+        :%delete _
+        :put+
+      ]]
+    end,
+    "paste clipboard to buffer"
+  },
+
+  -- comments/code_action
+  ["<leader>c"] = {
+    name = "+Comment/CodeAction",
+  },
+
+  -- debugger
+  ["<leader>d"] = {
+    name = "+Debugger",
+  },
+
+  -- errors
+  ["<leader>e"] = {
+    name = "+Error",
+  },
+
+  -- find/file
+  ["<leader>f"] = {
+    name = "+File/Find",
+    R = {
+      "<cmd>RnvimrToggle<CR>",
+      "open with ranger(C-n)[rnvimr]"
+    },
+    o = {
+      "<cmd>!open .<CR>",
+      "open file with system explorer"
+    },
+    L = {
+      "<cmd>!open .<CR>",
+      "open file with system explorer"
+    },
+    s = {
+      "<cmd>write<CR>",
+      "save current buffer"
+    }
+  },
+
+  -- git
+  ["<leader>g"] = {
+    name = "+Git",
+    i = {
+      "<cmd>!git init .<CR>",
+      "git init",
+    },
+  },
+
+  -- helps
+  ["<leader>h"] = {
+    name = "+Help",
+    d = {
+      "<cmd>!open https://neovim.io/doc<CR>",
+      "open neovim documentation"
+    },
+    D = {
+      "<cmd>!open https://github.com/folke/which-key.nvim<CR>",
+      "open which-key documentation"
+    },
+    i = {
+      "<cmd>!open https://github.com/neovim/neovim/issues<CR>",
+      "report neovim issue"
+    },
+  },
+
+  -- insert
+  ["<leader>i"] = {
+    name = "+Insert",
+    i = {
+      "Insert Image URL"
+    },
+  },
+
+  -- jump/join/split
+  ["<leader>j"] = {
+    name = "+Jump/join/split",
+  },
+
+  -- jump/join/split
+  ["<leader>l"] = {
+    name = "+List",
+    l = {
+      "<cmd>buffers<CR>",
+      "show all buffers",
+    },
+  },
+
+  -- open
+  ["<leader>o"] = {
+    name = "+Open",
+    v = {
+      "<cmd>!open https://vim.rtorr.com<CR>",
+      "open vim-cheatsheet"
+    },
+    b = {
+      "<cmd>call OpenFileWithGoogleChrome()<CR>",
+      "open in browser",
+    },
+    u = {
+      "<cmd>call OpenCurrentLineURL()<CR>",
+      "open url in browser",
+    },
+  },
+
+  -- project
+  ["<leader>p"] = {
+    name = "+Project",
+  },
+
+  -- quit
+  ["<leader>q"] = {
+    name = "+Quit",
+    q = {
+      "<cmd>quitall!<CR>",
+      "quit all",
+    },
+  },
+
+  -- Recent/Replace
+  ["<leader>r"] = {
+    name = "+Recent/Replace",
+  },
+
+  -- search/symbol
+  ["<leader>s"] = {
+    name = "+Search/Symbol",
+    s = {
+      "<cmd>write<CR>",
+      "save current buffer",
+    },
+    h = {
+      "Highlight world(gd)"
+    },
+  },
+
+  -- UI toggle
+  ["<leader>t"] = {
+    name = "+UI toggle"
+  },
+
+  -- window
+  ["<leader>w"] = {
+    name = "+Window",
+    S = {
+      "<cmd>split<CR>",
+      "split window to bottom",
+    },
+    V = {
+      "<cmd>vsplit<CR>",
+      "split window to right",
+    },
+    -- TODO: close other window
+    O = {
+      "close other windows"
+    },
+  },
+
+  -- text
+  ["<leader>x"] = {
+    name = "+Text",
+    o = {
+      "<cmd>call OpenCurrentLineURL()<CR>",
+      "open url in browser",
+    },
+  },
+
+  -- yank/copy
+  ["<leader>y"] = {
+    name = "+Yank/Copy",
+    n = {
+      "Copy current file name"
+    },
+    p = {
+      "Copy current file absolute path "
+    },
+    P = {
+      "Copy current file relative path"
+    },
+  }
+});
+
+wk.register({
+  ["<leader>c"] = {
+    name = "+Comment",
+  },
+  ["<leader>a"] = {
+    name = "+Align",
+  },
+  ["<leader>j"] = {
+    name = "+Jump/join/split",
+  },
+  ["<leader>r"] = {
+    name = "+Replace",
+  },
+  ["<leader>s"] = {
+    name = "+Search/Symbol",
+    h = {
+      "Highlight world(gd)"
+    },
+  },
+  ["<leader>x"] = {
+    name = "+Text",
+    K = {
+      "<cmd>move '>+1<CR>gv-gv",
+      "move line up",
+    },
+    J = {
+      "<cmd>move '<-2<CR>gv-gv",
+      "move line down",
+    },
+  },
+
+
+}, { mode = "v" })

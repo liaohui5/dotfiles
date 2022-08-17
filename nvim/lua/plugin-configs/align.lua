@@ -3,8 +3,8 @@
 -- docs: https://github.com/Vonr/align.nvim
 ----------------------------------------------------
 return {
-  onstart = function(align)
+  onstart = function()
     -- 绑定快捷键
-    require("keybindings").alignKeys(align);
+    require("keybindings").alignKeys();
   end
 };

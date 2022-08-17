@@ -72,13 +72,16 @@ return require("packer").startup({
     use({ "akinsho/toggleterm.nvim", tag = "v2.*" })
 
     -- 自动注释
-    use({ "numToStr/Comment.nvim" })
+    use({ "b3nj5m1n/kommentary" })
 
     -- 支持 .editorconfig 文件
     use({ "gpanders/editorconfig.nvim" })
 
     -- 类似easy-montion的快速移动插件
     use({ "phaazon/hop.nvim", branch = "v2" })
+
+    -- which-key 快捷键菜单
+    use({ "folke/which-key.nvim" })
 
     -- 搜索文件/buffer/bookmarks
     use({
