@@ -15,190 +15,171 @@
 -- docs: https://github.com/wbthomason/packer.nvim
 
 vim.cmd([[packadd packer.nvim]])
-
----------------------------------------------------
--- Pakcer 插件配置
----------------------------------------------------
-local packerConfig = {
-	-- 下载插件最大并发数
-	max_jobs = 16,
-
-	-- 不设置超时时间, 如果网速较慢, 设置为 true, 可能插件安装失败
-	clone_timeout = false,
-
-	-- Packer 显示面板
-	display = {
-		open_fn = function()
-			return require("packer.util").float({ border = "single" })
-		end,
-	},
-}
-
--- 启动 packer & 插件列表 & 插件配置
 return require("packer").startup({
-	---------------------------------------------------
-	-- Pakcer 插件列表
-	---------------------------------------------------
-	function(use)
-		-- packer 包管理工具可以管理自己
-		use({ "wbthomason/packer.nvim" })
+  ---------------------------------------------------
+  -- Pakcer 插件列表 & 启动插件管理器 packer
+  ---------------------------------------------------
+  function(use)
+    -- packer 包管理工具可以管理自己
+    use({ "wbthomason/packer.nvim" })
 
-		-- 基础工具函数库
-		use({ "nvim-lua/plenary.nvim" })
+    -- 基础工具函数库
+    use({ "nvim-lua/plenary.nvim" })
 
-		-- 更好的编程语言语法高亮支持
-		use({
-			"nvim-treesitter/nvim-treesitter",
-			run = ":TSUpdate",
-		})
+    -- 更好的编程语言语法高亮支持
+    use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 
-		-- 文件图标插件
-		use({ "kyazdani42/nvim-web-devicons" })
+    -- 文件图标插
+    use({ "kyazdani42/nvim-web-devicons" })
 
-		-- 颜色主题 onedark
-		use({ "navarasu/onedark.nvim" })
+    -- 颜色主题
     use({ "tanvirtin/monokai.nvim" })
-    -- use({ "marko-cerovac/material.nvim" })
-    -- use({ "catppuccin/nvim", as = "catppuccin" })
+    use({ "navarasu/onedark.nvim" })
 
-		-- 文件概览导航(这个功能在 lspsaga 中集成了)
-		-- use({ "stevearc/aerial.nvim", requires = { "nvim-treesitter/nvim-treesitter" } })
-
-		-- 顶部 buffer 栏
-		-- use({
-		-- 	"akinsho/bufferline.nvim",
-		-- 	tag = "v2.*",
-		-- 	requires = "kyazdani42/nvim-web-devicons",
-		-- })
-
-		-- 底部状态栏
-		use({
-			"nvim-lualine/lualine.nvim",
-			requires = {
-				"kyazdani42/nvim-web-devicons",
-				opt = true,
-			},
-		})
-
-		-- 侧边栏文件目录树
-		use({
-			"kyazdani42/nvim-tree.lua",
-			tag = "nightly",
-			requires = {
-				"kyazdani42/nvim-web-devicons",
-			},
-		})
+    -- easyclip, 粘贴增强
+    -- use({ "svermeulen/vim-yoink" })
 
     -- 文件管理插件 ranger 集成
     use({ 'kevinhwang91/rnvimr' })
 
-		-- 自动读取/自动保存文件
-		use({ "djoshea/vim-autoread" })
-		-- use({ "Pocco81/auto-save.nvim" })
+    -- 自动读取/自动保存文件
+    use({ "djoshea/vim-autoread" })
+    -- use({ "Pocco81/auto-save.nvim" })
 
-		-- 添加/删除/修改字符两边字符
-		use({ "tpope/vim-surround" })
+    -- 添加/删除/修改字符两边字符
+    use({ "tpope/vim-surround" })
 
-		-- repeat .重复功能增强
-		use({ "tpope/vim-repeat" })
+    -- repeat .重复功能增强
+    use({ "tpope/vim-repeat" })
 
-		-- easyclip, 粘贴增强
-		-- use({ "svermeulen/vim-easyclip" })
+    -- 自动输入匹配的括号
+    use({ "windwp/nvim-autopairs" })
 
-		-- 搜索文件/buffer/bookmarks
-		use({
-			"nvim-telescope/telescope.nvim",
-			tag = "0.1.0",
-			requires = {
-				{ "nvim-lua/plenary.nvim" },
-			},
-		})
+    -- 缩进显示
+    use({ "lukas-reineke/indent-blankline.nvim" })
 
-    -- 书签
+    -- 替换增强插件
+    use({ "nvim-pack/nvim-spectre" })
+
+    -- 代码对齐插件, 类似 vim-easy-align
+    use({ "Vonr/align.nvim" })
+
+    -- 书签管理
     use({ "MattesGroeger/vim-bookmarks" })
     use({ "tom-anders/telescope-vim-bookmarks.nvim" })
 
-		-- 切换命令行
-		-- use({ "akinsho/toggleterm.nvim", tag = "v2.*" })
+    -- 切换命令行
+    use({ "akinsho/toggleterm.nvim", tag = "v2.*" })
 
-		-- 自动注释
-		use({ "numToStr/Comment.nvim" })
+    -- 自动注释
+    use({ "numToStr/Comment.nvim" })
 
-		-- 支持 .editorconfig 文件
-		use({ "gpanders/editorconfig.nvim" })
+    -- 支持 .editorconfig 文件
+    use({ "gpanders/editorconfig.nvim" })
 
-		-- 类似easy-montion的快速移动插件
-		use({ "phaazon/hop.nvim", branch = "v2" })
+    -- 类似easy-montion的快速移动插件
+    use({ "phaazon/hop.nvim", branch = "v2" })
 
-		-- git 状态显示
-		use({
-			"lewis6991/gitsigns.nvim",
-			tag = "release",
-		})
+    -- 搜索文件/buffer/bookmarks
+    use({
+      "nvim-telescope/telescope.nvim",
+      tag = "0.1.0",
+      requires = "nvim-lua/plenary.nvim",
+    })
 
-		-- session 管理, 类似 vscode 的 Project Manager 插件的功能
-		use({
-			"Shatur/neovim-session-manager",
-			requires = { "nvim-lua/plenary.nvim" },
-		})
+    -- 顶部 buffer 栏
+    use({
+      "akinsho/bufferline.nvim",
+      tag = "v2.*",
+      requires = "kyazdani42/nvim-web-devicons",
+    })
 
-		-- 自动输入匹配的括号
-		use({ "windwp/nvim-autopairs" })
+    -- 底部状态栏
+    use({
+      "nvim-lualine/lualine.nvim",
+      requires = {
+        "kyazdani42/nvim-web-devicons",
+        opt = true,
+      },
+    })
 
-		-- 缩进显示
-		use({ "lukas-reineke/indent-blankline.nvim" })
+    -- 侧边栏文件目录树
+    use({
+      "kyazdani42/nvim-tree.lua",
+      tag = "nightly",
+      requires = "kyazdani42/nvim-web-devicons",
+    })
 
-		-- 替换增强插件
-		use({ "nvim-pack/nvim-spectre" })
+    -- git 状态显示
+    use({
+      "lewis6991/gitsigns.nvim",
+      tag = "release",
+    })
 
-		-- 代码对齐插件, 类似 vim-easy-align
-		use({ "Vonr/align.nvim" })
+    -- session 管理, 类似 vscode 的 Project Manager 插件的功能
+    use({
+      "Shatur/neovim-session-manager",
+      requires = "nvim-lua/plenary.nvim",
+    })
 
-		-- coc 代码提示, 自动完成, Node写的, 速度比Lua写的的LSP要慢
-		-- 但是稳定, 所以放到这里方便切换
-		-- 如果网速较慢, 建议开个梯子, 否则特别容易失败
-		-- 注意, 需要提前安装好 Node.js 和 yarn
-		-- use({
-		--   'neoclide/coc.nvim',
-		--   branch = 'release',
-		--   run = 'yarn install --frozen-lockfile'
-		-- });
+    -- coc 代码提示, 自动完成, Node写的, 速度比Lua写的的LSP要慢
+    -- 但是稳定, 所以放到这里方便切换
+    -- 如果网速较慢, 建议开个梯子, 否则特别容易失败
+    -- 注意, 需要提前安装好 Node.js 和 yarn
+    -- use({
+    --   'neoclide/coc.nvim',
+    --   branch = 'release',
+    --   run = 'yarn install --frozen-lockfile'
+    -- });
 
-		----------------------------------------------
-		-- LSP/CMP: 代码提示/ 补全配置/ 代码格式化 / UI增强
-		----------------------------------------------
-		-- use({ "williamboman/nvim-lsp-installer" })     -- LSP 服务器安装工具(改用mason)
-    use({ "williamboman/mason.nvim" })                -- LSP/DAP 服务器安装管理工具
-    use({ "williamboman/mason-lspconfig.nvim" })      -- LSP/DAP 服务器安装管理工具
-		use({ "neovim/nvim-lspconfig" })                  -- lspconfig 配置 server 插件
-		use({ "folke/lua-dev.nvim" })                     -- Lua 增强
-    use({ "b0o/schemastore.nvim" })                   -- json 增强
-		use({ "mhartington/formatter.nvim" })             -- 代码格式化
-		use({ "hrsh7th/nvim-cmp" })                       -- 补全引擎
-		use({ "rafamadriz/friendly-snippets" })           -- 常见编程语言 snippets
-    use({ "hrsh7th/vim-vsnip" })                      -- vim-vsnip 插件
-    use({ "hrsh7th/cmp-vsnip" })                      -- 将vim-vsnip 插件提供的内容加载到补全引擎
-		use({ "hrsh7th/cmp-nvim-lsp" })                   -- { name = 'nvim_lsp' }
-		use({ "hrsh7th/cmp-buffer" })                     -- { name = 'buffer' },
-		use({ "hrsh7th/cmp-path" })                       -- { name = 'path' }
-		use({ "hrsh7th/cmp-cmdline" })                    -- { name = 'cmdline' }
-		use({ "hrsh7th/cmp-nvim-lsp-signature-help" })    -- { name = 'nvim_lsp_signature_help' }
-    use({ "hrsh7th/cmp-nvim-lua" })                   -- { name = 'nvim_lua' }
-		use({ "glepnir/lspsaga.nvim", branch = "main" })  -- UI 增强
-    -- use({ "jose-elias-alvarez/null-ls.nvim" })        -- 多语言代码检查工具, 功能类似 ESLint
-    -- tabnine 资源内存占用高, 而且不好用             -- { name = 'cmp_tabnine' },
-    -- use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" })
+    ----------------------------------------------
+    -- LSP/CMP: 代码提示/ 补全配置/ 代码格式化 / UI增强
+    ----------------------------------------------
+    use({ "williamboman/mason.nvim" })               -- LSP/DAP 服务器安装管理工具
+    use({ "williamboman/mason-lspconfig.nvim" })     -- LSP/DAP 服务器安装管理工具
+    use({ "neovim/nvim-lspconfig" })                 -- lspconfig 配置 server 插件
+    use({ "folke/lua-dev.nvim" })                    -- Lua 增强
+    use({ "b0o/schemastore.nvim" })                  -- json 增强
+    use({ "mhartington/formatter.nvim" })            -- 代码格式化
+    use({ "hrsh7th/nvim-cmp" })                      -- 补全引擎
+    use({ "rafamadriz/friendly-snippets" })          -- 常见编程语言 snippets
+    use({ "hrsh7th/vim-vsnip" })                     -- vim-vsnip 插件
+    use({ "hrsh7th/cmp-vsnip" })                     -- 将vim-vsnip 插件提供的内容加载到补全引擎
+    use({ "hrsh7th/cmp-nvim-lsp" })                  -- { name = 'nvim_lsp' }
+    use({ "hrsh7th/cmp-buffer" })                    -- { name = 'buffer' },
+    use({ "hrsh7th/cmp-path" })                      -- { name = 'path' }
+    use({ "hrsh7th/cmp-cmdline" })                   -- { name = 'cmdline' }
+    use({ "hrsh7th/cmp-nvim-lsp-signature-help" })   -- { name = 'nvim_lsp_signature_help' }
+    use({ "hrsh7th/cmp-nvim-lua" })                  -- { name = 'nvim_lua' }
+    use({ "glepnir/lspsaga.nvim", branch = "main" }) -- UI 增强
+    -- use({ "jose-elias-alvarez/null-ls.nvim" })       -- 多语言代码检查工具, 功能类似 ESLint
 
-		----------------------------------------------
-		-- dap 代码调试插件
-		---------------------------------------------
+    ----------------------------------------------
+    -- dap 代码调试插件
+    ---------------------------------------------
     use({ "mfussenegger/nvim-dap" })
     use({ "theHamsta/nvim-dap-virtual-text" })
     use({ "rcarriga/nvim-dap-ui", requires = "mfussenegger/nvim-dap" })
     use({ "mxsdev/nvim-dap-vscode-js", requires = "mfussenegger/nvim-dap" });
     use({ "microsoft/vscode-js-debug", opt = true, run = "npm install --legacy-peer-deps && npm run compile" })
-	end,
-	config = packerConfig,
+  end,
+  ---------------------------------------------------
+  -- Pakcer 插件配置
+  ---------------------------------------------------
+  config = {
+    -- 下载插件最大并发数
+    max_jobs = 16,
+
+    -- 不设置超时时间, 如果网速较慢, 设置为 true, 可能插件安装失败
+    clone_timeout = false,
+
+    -- Packer 显示面板
+    display = {
+      open_fn = function()
+        return require("packer.util").float({ border = "single" })
+      end,
+    },
+  },
 })
 
 ----------------------------------------------------

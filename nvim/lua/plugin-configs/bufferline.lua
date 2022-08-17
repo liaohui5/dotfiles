@@ -26,11 +26,12 @@ return {
           end
         end,
         offsets                  = {
-          {
-            filetype   = "NvimTree",
-            text       = "File Explorer",
-            text_align = "center"
-          }
+          -- offset 有bug
+          -- {
+          --   filetype   = "NvimTree",
+          --   text       = "File Explorer",
+          --   text_align = "center"
+          -- }
         },
       }
     });

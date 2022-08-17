@@ -14,7 +14,6 @@
 ---------------------------------------------------------------
 
 -- 安装 LSP 服务器
--- require("lsp-configs.lsp-installer").onstart();
 require("lsp-configs.mason").onstart();
 
 -- 配置 LSP 服务器

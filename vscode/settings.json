@@ -79,7 +79,7 @@
   /////////////////////////////////////////
   // 颜色主题/图标主题
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.colorTheme": "One Dark Pro",
+  "workbench.colorTheme": "rimless-monokai",
 
   // 打开设置使用左右json
   "workbench.settings.editor": "json",
@@ -349,19 +349,29 @@
       "commands": [":nohl"]
     },
     {
-      // \+x: save file and close current tab
+      // <leader>+x: 保存文件&关闭当前buffer
       "before": ["<leader>", "x"],
       "commands": [":x"]
     },
     {
-      // \+x: save file
+      // <leader>+x: 保存文件
       "before": ["<leader>", "s"],
       "commands": [":w"]
     },
     {
-      // x: delete selection chars
+      // x: 输出选中的内容
       "before": ["x"],
       "after": ["\"", "_", "x"]
+    },
+    {
+      // n: 找下一个搜索到的内容&居中屏幕
+      "before": ["n"],
+      "after": ["n", "z", "z"]
+    },
+    {
+      // N: 找上一个搜索到的内容&居中屏幕
+      "before": ["N"],
+      "after": ["N", "z", "z"]
     },
     {
       // Ctrl+h: 显示帮助文档
@@ -390,13 +400,13 @@
     },
     {
       // 上一个标签页
-      "before": ["L"],
-      "after": ["g", "t"]
+      "before": ["H"],
+      "commands": ["workbench.action.previousEditorInGroup"]
     },
     {
       // 下一个标签页
-      "before": ["H"],
-      "after": ["g", "T"]
+      "before": ["L"],
+      "commands": ["workbench.action.nextEditorInGroup"]
     },
     {
       // <leader> + d: 快速跳到定义, 也可以用于文件跳转(ctrl+MouseClick)
@@ -478,6 +488,14 @@
       "type": "command",
       "command": "editor.action.quickFix"
     },
+    {
+      // 移除当前文件所有空行(需要插件: Remove empty lines)
+      "keys": "r.r",
+      "name": "Code Action quickFix",
+      "type": "command",
+      "icon": "clear-all",
+      "command": "remove-empty-lines.inSelection"
+    }
     {
       // 插入一个指定尺寸的图片
       "keys": "i.i",

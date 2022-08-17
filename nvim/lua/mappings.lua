@@ -108,7 +108,7 @@ nnoremap("$", "$h")
 vnoremap("$", "$h")
 
 -- 保存文件
-nnoremap("<leader>s", ":write<CR>")
+nnoremap("<leader>ss", ":write<CR>")
 
 -- buffer 切换/关闭
 nnoremap("<S-h>", ":bprevious<CR>")

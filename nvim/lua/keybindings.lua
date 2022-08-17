@@ -64,7 +64,7 @@ end
 -- bufferline 快捷键
 --------------------------------------
 keybindings.bufferlineKeys = function()
-  nnoremap("<leader>l", ":BufferLinePick<CR>")
+  nnoremap("<leader>ll", ":BufferLinePick<CR>")
 end
 
 --------------------------------------
@@ -89,7 +89,7 @@ keybindings.gitsignsKeys = function()
 end
 
 --------------------------------------
--- hop 自动完成快捷键
+-- hop 快速移动快捷键
 --------------------------------------
 keybindings.hopKeys = function()
   -- 当前行内搜索字符: f向后搜索, F向前
@@ -330,7 +330,7 @@ end
 -- alt(meta) + t: 打开/关闭命令行快捷键
 --------------------------------------
 keybindings.toggletermKeys = function()
-  return [[<M-t>]] -- 注意是一个字符串
+  return [[<C-c>]] -- 注意是一个字符串
 end
 
 --------------------------------------
@@ -383,8 +383,6 @@ end
 -- lspsaga 自定义插件快捷键设置
 --------------------------------------
 keybindings.lspUISagaKeys = function()
-  local floaterm = require("lspsaga.floaterm");
-
   -- 变量重命名
   nnoremap("<leader>rn", "<cmd>Lspsaga rename<CR>");
 
@@ -406,10 +404,6 @@ keybindings.lspUISagaKeys = function()
   -- 跳到上/下/错误一个代码诊断提示位置
   nnoremap("]e", "<cmd>Lspsaga diagnostic_jump_next<CR>");
   nnoremap("[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>");
-
-  -- 终端(打开时,可以自动执行一个命令, 如: <cmd>Lspsaga open_floaterm ranger<CR>)
-  nnoremap("<C-c>", "<cmd>Lspsaga open_floaterm<CR>");
-  tnoremap("<C-c>", "<C-\\><C-n><cmd>Lspsaga close_floaterm<CR>");
 
   return {
     move_in_saga = {
