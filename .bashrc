@@ -33,11 +33,14 @@ alias ra='ranger'
 alias gitcmt='gitmoji -c'
 
 # vscode & vscode-insiders
-alias code='/usr/local/bin/code --disable-gpu'
-alias codeins='/usr/local/bin/code-insiders --disable-gpu'
+alias code='/usr/local/bin/code'
+alias codeins='/usr/local/bin/code-insiders'
 
 # mit open source license, username liaohui5
 alias mitlicense="curl -sL https://raw.githubusercontent.com/liaohui5/study-notes/master/LICENSE"
+
+# kitty alias
+alias icat="kitty +kitten icat"
 
 # generate git ignore file
 function gi() { curl -sL https://www.toptal.com/developers/gitignore/api/$@ ;}

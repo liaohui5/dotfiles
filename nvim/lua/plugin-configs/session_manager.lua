@@ -16,30 +16,20 @@ config.onstart = function(sessionMgr)
     autoload_mode = require('session_manager.config').AutoloadMode.CurrentDir,
     path_replacer              = '__',
     colon_replacer             = '++',
-    autosave_last_session      = false, -- 是否自动保存session
-    autosave_ignore_not_normal = true,  -- 如果没有打开buffer或者所有buffer都是只读的就不保存session
-    autosave_ignore_filetypes  = {
-      'gitcommit',
-    },
+    autosave_last_session      = true, -- 是否自动保存session
+    autosave_ignore_not_normal = true, -- 如果没有打开buffer或者所有buffer都是只读的就不保存session
+    autosave_ignore_filetypes  = { 'gitcommit' },
     autosave_only_in_session = true, -- 自动保存当前 session 状态
     max_path_length          = 80,   -- 保存的 session 文件名最大长度
   })
 
   -- 加载session时自动打开目录树
   -- vim.cmd[[
-  --   augroup _open_nvim_tree
-  --     autocnd! * <buffer>
-  --     autocmd SessionLoadPost * silent! Lua require ("nvim-tree"). toggle(false, true)
+  --   augroup open_nvim_tree_group
+  --     autocmd! * <buffer>
+  --     autocmd SessionLoadPost * silent! :lua require("nvim-tree").toggle(false, true)
   --   augroup end
-  -- ]]
-
-  -- 加载session时自动打开目录树, 现在改用rnvimr, 所以禁用
-  -- vim.api.nvim_create_autocmd({ 'SessionLoadPost' }, {
-  --   group = vim.api.nvim_create_augroup('SessionMgrConfig', {}),
-  --   callback = function()
-  --     require("nvim-tree").toggle(false, true)
-  --   end,
-  -- })
+  --]]
 
   -- 绑定快捷键
   require("keybindings").sessionManagerKeys();

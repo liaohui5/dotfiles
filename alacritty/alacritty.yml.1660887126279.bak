@@ -43,53 +43,47 @@ font:
 # selection:
 #   semantic_escape_chars: ',│`|:"'' ()[]{}<>'
 #   save_to_clipboard: true
+
 # 按键绑定
 key_bindings:
-  - { key: V, mods: command, action: Paste }
-  # command + v
-  - { key: C, mods: command, action: Copy }
-  # command + c
-  - { key: T, mods: Alt, chars: "\et" }
-  # alt + t
-  - { key: H, mods: Alt, chars: "\eh" }
-  # alt + h
-  - { key: J, mods: Alt, chars: "\ej" }
-  # alt + j
-  - { key: K, mods: Alt, chars: "\ek" }
-  # alt + k
-  - { key: L, mods: Alt, chars: "\el" }
-  # alt + l
-  - { key: I, mods: Alt, chars: "\ei" }
-  # alt + i
-  - { key: N, mods: Alt, chars: "\en" }
-  # alt + n
+  - { key: V, mods: command, action: Paste } # command + v
+  - { key: C, mods: command, action: Copy }  # command + c
+  - { key: T, mods: Alt, chars: "\x1bt"}     # alt + t
+  - { key: H, mods: Alt, chars: "\x1bh"}     # alt + h
+  - { key: J, mods: Alt, chars: "\x1bj"}     # alt + j
+  - { key: K, mods: Alt, chars: "\x1bk"}     # alt + k
+  - { key: L, mods: Alt, chars: "\x1bl"}     # alt + l
+  - { key: I, mods: Alt, chars: "\x1bi"}     # alt + i
+  - { key: N, mods: Alt, chars: "\x1bn"}     # alt + n
 
 # 颜色主题
-theme: Kitty
+theme: One-Dark
 colors:
   # Default colors
   primary:
-    background: '#000000'
-    foreground: '#dddddd'
+    background: '#282c34'
+    foreground: '#abb2bf'
 
   # Normal colors
   normal:
-    black: '#000000'
-    red: '#cc0403'
-    green: '#19cb00'
-    yellow: '#cecb00'
-    blue: '#0d73cc'
-    magenta: '#cb1ed1'
-    cyan: '#0dcdcd'
-    white: '#dddddd'
+    # NOTE: Use '#131613' for the `black` color if you'd like to see
+    # black text on the background.
+    black: '#282c34'
+    red: '#e06c75'
+    green: '#98c379'
+    yellow: '#d19a66'
+    blue: '#61afef'
+    magenta: '#c678dd'
+    cyan: '#56b6c2'
+    white: '#abb2bf'
 
   # Bright colors
   bright:
-    black: '#767676'
-    red: '#f2201f'
-    green: '#23fd00'
-    yellow: '#fffd00'
-    blue: '#1a8fff'
-    magenta: '#fd28ff'
-    cyan: '#14ffff'
+    black: '#5c6370'
+    red: '#e06c75'
+    green: '#98c379'
+    yellow: '#d19a66'
+    blue: '#61afef'
+    magenta: '#c678dd'
+    cyan: '#56b6c2'
     white: '#ffffff'

@@ -43,22 +43,23 @@ let g:rnvimr_action = {
             \ 'yw': 'EmitRangerCwd'
             \ }
 
-" ranger 打开时的最大大小(宽度/高度)
-let g:rnvimr_ranger_views = [
-            \ {'minwidth': 90, 'ratio': []},
-            \ {'minwidth': 50, 'maxwidth': 89, 'ratio': [1,1]},
-            \ {'maxwidth': 49, 'ratio': [1]}
-            \ ]
+" ranger 打开时的最大大小(宽度/高度), 如果不设置
+" 就使用 ranger 的 rc.conf 中的配置
+" let g:rnvimr_ranger_views = [
+"             \ {'minwidth': 90, 'ratio': []},
+"             \ {'minwidth': 50, 'maxwidth': 89, 'ratio': [1,1]},
+"             \ {'maxwidth': 49, 'ratio': [1]}
+"             \ ]
 
 " ranger 打开时距离编辑器左上角的距离(width/height/col/row)
-let g:rnvimr_layout = {
-            \ 'relative': 'editor',
-            \ 'width': float2nr(round(0.6 * &columns)),
-            \ 'height': float2nr(round(0.8 * &lines)),
-            \ 'col': float2nr(round(0.2 * &columns)),
-            \ 'row': float2nr(round(0.1 * &lines)),
-            \ 'style': 'minimal'
-            \ }
+" let g:rnvimr_layout = {
+"             \ 'relative': 'editor',
+"             \ 'width': float2nr(round(0.6 * &columns)),
+"             \ 'height': float2nr(round(0.8 * &lines)),
+"             \ 'col': float2nr(round(0.2 * &columns)),
+"             \ 'row': float2nr(round(0.1 * &lines)),
+"             \ 'style': 'minimal'
+"             \ }
 
 " ranger 打开时全屏
 " let g:rnvimr_presets = [{}]

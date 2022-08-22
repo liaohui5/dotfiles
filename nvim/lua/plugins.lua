@@ -154,7 +154,8 @@ return require("packer").startup({
     use({ "hrsh7th/cmp-cmdline" })                   -- { name = 'cmdline' }
     use({ "hrsh7th/cmp-nvim-lsp-signature-help" })   -- { name = 'nvim_lsp_signature_help' }
     use({ "hrsh7th/cmp-nvim-lua" })                  -- { name = 'nvim_lua' }
-    use({ "glepnir/lspsaga.nvim", branch = "main" }) -- UI 增强
+    -- use({ "glepnir/lspsaga.nvim", branch = "main" }) -- UI 增强
+    use({ "glepnir/lspsaga.nvim", commit = "37bb464d55ba068ad14befd048c82cef007cea4d" }) -- UI 增强
     -- use({ "jose-elias-alvarez/null-ls.nvim" })       -- 多语言代码检查工具, 功能类似 ESLint
 
     ----------------------------------------------

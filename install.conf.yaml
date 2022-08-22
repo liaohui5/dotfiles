@@ -8,6 +8,7 @@
 - link:
     ~/.config/alacritty: alacritty
     ~/.config/nvim: nvim
+    ~/.config/kitty: kitty 
     ~/.config/ranger: ranger
     ~/.config/zellij: zellij
     ~/.gitconfig: .gitconfig
@@ -17,6 +18,7 @@
     ~/Library/Application Support/Code/User/settings.json: vscode/settings.json
     ~/Library/Application Support/Code/User/keybindings.json: vscode/keybindings.json
     ~/Library/Application Support/Code/User/snippets: vscode/snippets
+    ~/Library/Application Support/Code/User/custom-vscode-assets: vscode/custom-vscode-assets
 
 - create:
 

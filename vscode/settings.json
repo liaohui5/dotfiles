@@ -1,78 +1,70 @@
 {
-  // 缩放比例
-  "window.zoomLevel": 0.5,
+  // 窗口缩放
+  "window.zoomLevel": 0,
 
-  // 面包屑导航
-  "breadcrumbs.enabled": false,
-
-  // 关闭代码小地图
-  "editor.minimap.enabled": false,
-
-  // 编辑器字体
+  // 字体
   "editor.fontSize": 14,
   "editor.fontLigatures": true,
-  "editor.fontFamily": "'Operator Mono', 'Hack Nerd Font Mono', Hack",
+  "editor.fontFamily": "operator, Menlo, Hack,'Hack Nerd Font Mono'",
 
   // 光标宽度 && 行高
   "editor.cursorWidth": 1,
-  "editor.lineHeight": 1.5,
+  "editor.lineHeight": 1.6,
 
-  // 是否允许 hover
+  // 是否开启: 面包屑导航 && 代码小地图
+  "breadcrumbs.enabled": false,
+  "editor.minimap.enabled": true,
+
+  // 代码小地图最大宽度 & 是否渲染字符 & 总是显示当前位置滑块
+  "editor.minimap.maxColumn": 100,
+  "editor.minimap.renderCharacters": false,
+  "editor.minimap.showSlider": "always",
+
+  // 不要显示滚动条
+  "editor.scrollbar.horizontal": "hidden",
+  "editor.scrollbar.vertical": "hidden",
+  "editor.scrollbar.horizontalScrollbarSize": 0,
+  "editor.scrollbar.verticalScrollbarSize": 0,
+
+  // 是否允许 hover & 多少毫秒秒后显示
   "editor.hover.enabled": true,
   "editor.hover.sticky": true,
-  "editor.hover.delay": 500,
+  "editor.hover.delay": 1500,
 
-  // 100 毫秒后显示代码提示
-  "editor.quickSuggestionsDelay": 200,
-
-  // 多个窗口可以共享代码提示
+  // 多少毫秒后显示代码提示 & 多个窗口共享提示 & 代码提示的内容
+  "editor.quickSuggestionsDelay": 100,
   "editor.suggest.shareSuggestSelections": true,
-
-  // 代码提示的类型
   "editor.quickSuggestions": {
-    "other": "on", // 其他(snippets + suggest)
-    "comments": "off", // 注释内容
-    "strings": "on" // 代码中的字符串
+    "other": "on", // 其他(snippets + lsp)
+    "strings": "on", // 代码中的字符串
+    "comments": "off" // 注释内容
   },
 
-  // 匹配括号
+  // 匹配括号高亮 && 匹配当前光标所在位置单词高亮
   "editor.matchBrackets": "never",
+  "editor.occurrencesHighlight": true,
 
-  // 匹配当前光标所在位置单词高亮
-  "editor.occurrencesHighlight": false,
-
-  // 同步 Git 存储库前请先进行确认
+  // 同步 Git 前请先确认 && 允许直接提交(git -am) && 自动拉取代码
   "git.confirmSync": false,
-
-  // 允许直接提交 git -am
   "git.enableSmartCommit": true,
-
-  // git: 自动拉取代码
   "git.autofetch": true,
 
-  // 自动保存文件
+  // 文件删除确认 && 拖放文件确认 && 自动合并目录/文件显示
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.compactFolders": false,
+
+  // 光标变化就自动保存文件
   "files.autoSave": "onFocusChange",
 
-  // 文件删除之前确认
-  "explorer.confirmDelete": false,
-
-  // 资源管理器内拖放移动文件时是否进行确认
-  "explorer.confirmDragAndDrop": false,
-
-  // 如果 true 文件夹中只有一个文件时,显示 "dir/file"
-  "explorer.compactFolders": false,
+  // 在侧边栏修改文件名时,代码自动跟新路径
+  "javascript.updateImportsOnFileMove.enabled": "always",
 
   // 忽略插件提示
   "extensions.ignoreRecommendations": true,
 
   // 更新模式: 启动的时候检查
   "update.mode": "start",
-
-  // 在侧边栏修改文件名时,代码自动跟新路径
-  "javascript.updateImportsOnFileMove.enabled": "always",
-
-  // 是否高亮
-  "editor.semanticHighlighting.enabled": true,
 
   /////////////////////////////////////////
   // workbench
@@ -85,17 +77,12 @@
   "workbench.settings.editor": "json",
   "workbench.settings.useSplitJSON": true,
 
-  // 在启动时不打开编辑器
+  // 在启动时不自动打开任何文件
   "workbench.startupEditor": "none",
 
   /////////////////////////////////////////
   // extensions
   /////////////////////////////////////////
-  "typescript.updateImportsOnFileMove.enabled": "always",
-
-  // live server
-  "liveServer.settings.donotShowInfoMsg": true,
-
   // jest & jest runner
   "jest.autoEnable": false,
   "jest.runAllTestsFirst": false,
@@ -103,20 +90,15 @@
   // Template String Converter
   "template-string-converter.validLanguages": ["svelte", "typescript", "javascript", "typescriptreact", "javascriptreact", "vue"],
 
-  // 图标插件(vsicons/material-icon-theme): 隐藏左边的箭头
+  // 图标插件隐藏左边的箭头
   "vsicons.presets.hideExplorerArrows": true,
   "material-icon-theme.hidesExplorerArrows": true,
 
-  // volar插件不显示 references
+  // volar 插件不显示 references
   "volar.codeLens.references": false,
 
-  // markdown github styling
+  // Markdown Preview Github Styling 默认用 github 亮色主题
   "markdown-preview-github-styles.colorTheme": "light",
-
-  // 自定义宏(也就是自定义命令: 在 vscode/vim/whichkey/vspcecode 快捷键中可以用)
-  "macros": {
-    "copyExplorerFileWithoutRename": ["filesExplorer.copy", "filesExplorer.paste"]
-  },
 
   // eslint 格式化
   "eslint.format.enable": true,
@@ -179,6 +161,15 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
+  // 自定义宏(自定义命令):在 keybindings/vim/vspcecode 快捷键中可以用
+  // 需要安装插件: macro-commander (Command Runner)
+  "macros": {
+    "copyExplorerFileWithoutRename": ["filesExplorer.copy", "filesExplorer.paste"]
+  },
+
+  // vscode 自定义加载 css/js   custom-vscode-assets
+  "vscode_custom_css.imports": ["file:///Users/liaohui5/Desktop/codes/dotfiles/vscode/custom-vscode-assets/explorer-scrollbar.css"],
+
   //////////////////////////////////////////////////////////////////////////////
   //                                VIM 插件配置                               //
   //                   _                              __ _                    //
@@ -197,16 +188,16 @@
   "vim.autoSwitchInputMethod.switchIMCmd": "/usr/local/bin/im-select {im}",
 
   // 开启 easymontion 插件: https://github.com/easymotion/vim-easymotion
-  "vim.easymotion": true,
-
   // 开启 CamelCaseMotion 插件: https://github.com/bkad/CamelCaseMotion
-  "vim.camelCaseMotion.enable": false,
-  "vim.autoindent": true,
-
   // 开启 targets 插件: https://github.com/wellle/targets.vim#quote-text-objects
+  "vim.easymotion": true,
+  "vim.camelCaseMotion.enable": false,
   "vim.targets.enable": false,
 
-  // 移动到折叠代码时候, 不要自动打开(false会自动打开折叠)
+  // 自动缩进
+  "vim.autoindent": true,
+
+  // 不要自动打开折叠的代码
   "vim.foldfix": true,
 
   // 高亮被复制的内容
@@ -214,9 +205,6 @@
 
   // 高亮被复制的内容(高亮时的背景颜色)
   "vim.highlightedyank.color": "rgba(0, 0, 0, 0.8)",
-
-  // 在切换 VIM 模式时,不要设置状态栏的颜色
-  "vim.statusBarColorControl": false,
 
   // 高亮搜索内容
   "vim.hlsearch": true,
@@ -298,11 +286,6 @@
       // shift + tab: 向前缩进
       "before": ["<"],
       "commands": ["outdent"]
-    },
-    {
-      // 对齐(需要插件: alignVertically)
-      "before": ["a", "a"],
-      "commands": ["extension.alignVertically"]
     },
     {
       // Ctrl + \: 切换注释状态
@@ -409,35 +392,25 @@
       "commands": ["workbench.action.nextEditorInGroup"]
     },
     {
-      // <leader> + d: 快速跳到定义, 也可以用于文件跳转(ctrl+MouseClick)
+      // 快速跳到定义, 也可以用于文件跳转(ctrl+MouseClick)
       "before": ["g", "d"],
       "commands": ["editor.action.revealDefinition"]
     },
     {
-      // s: 用 easymotion 全局搜索自定字符
+      // 用 easymotion 全局搜索自定字符
       "before": ["s"],
       "after": ["<leader>", "<leader>", "s"]
-    },
-    {
-      // <leader>j: 用 easymotion 向后指定行
-      "before": ["<leader>", "j"],
-      "after": ["<leader>", "<leader>", "j"]
-    },
-    {
-      // <leader>k: 用 easymotion 向前指定行
-      "before": ["<leader>", "k"],
-      "after": ["<leader>", "<leader>", "k"]
     }
   ],
 
   // =============================================//
-  //                  vspacecode                  //
+  //             vspacecode 按键设置               //
   // =============================================//
   "vspacecode.bindingOverrides": [
     {
       // 搜索命令
       "keys": "\t",
-      "name": "Search keybindings",
+      "name": "search keybindings",
       "type": "command",
       "command": "whichkey.searchBindings",
       "icon": "search"
@@ -445,57 +418,49 @@
     {
       // 最近编辑过的tab
       "keys": "`",
-      "name": "Last editor",
+      "name": "last editor",
       "type": "commands",
       "icon": "arrow-both",
       "commands": ["workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup", "list.select"]
     },
     {
       // 搜索
-      "keys": "s.f",
-      "name": "Search in current file",
+      "keys": "s.F",
+      "name": "editor search in buffer",
       "type": "command",
       "icon": "search",
       "command": "actions.find"
     },
     {
-      // 当前文件 fuzzy 搜索
-      "keys": "s.F",
-      "name": "Fuzzy search in current buffer",
+      // 当前文件 fuzzy 搜索(需要插件 fuzzy-search)
+      "keys": "s.f",
+      "name": "fuzzy search in buffer",
       "icon": "file",
       "type": "command",
       "command": "fuzzySearch.activeTextEditorWithCurrentSelection"
     },
     {
-      // 使用 vim-search-replace 搜索/替换
-      "keys": "r.r",
-      "name": "VIM search and replace",
-      "icon": "replace",
-      "type": "command",
-      "command": "vim-search-and-replace.start"
-    },
-    {
       // 保存当前文件
       "keys": "s.s",
-      "name": "Save current file",
+      "name": "Save buffer",
       "type": "command",
+      "icon": "save",
       "command": "workbench.action.files.save"
     },
     {
-      // code action
+      // 快速修复
       "keys": "c.a",
       "name": "Code Action quickFix",
       "type": "command",
       "command": "editor.action.quickFix"
     },
     {
-      // 移除当前文件所有空行(需要插件: Remove empty lines)
-      "keys": "r.r",
-      "name": "Code Action quickFix",
+      // 变量重命名
+      "keys": "r.n",
+      "name": "rename symbol",
       "type": "command",
-      "icon": "clear-all",
-      "command": "remove-empty-lines.inSelection"
-    }
+      "command": "editor.action.rename"
+    },
     {
       // 插入一个指定尺寸的图片
       "keys": "i.i",
@@ -521,9 +486,17 @@
       "commands": ["editor.action.formatDocument.multiple", "workbench.action.files.save"]
     },
     {
-      // 选择 tab
+      // 选择 buffers
       "keys": "l.l",
-      "name": "List all editors",
+      "name": "List all buffers",
+      "type": "command",
+      "icon": "list-unordered",
+      "command": "workbench.action.quickOpenPreviousRecentlyUsedEditor"
+    },
+    {
+      // 选择 buffers
+      "keys": "b.b",
+      "name": "List all buffers",
       "type": "command",
       "icon": "list-unordered",
       "command": "workbench.action.quickOpenPreviousRecentlyUsedEditor"
@@ -556,7 +529,7 @@
       // 关闭其他标签页
       "command": "workbench.action.closeOtherEditors",
       "keys": "b.D",
-      "name": "Close unmodified editors",
+      "name": "Close other editors",
       "type": "command",
       "icon": "debug-rerun"
     },
@@ -577,28 +550,12 @@
       "icon": "play-circle"
     },
     {
-      // 复制并注释当前行(选中内容)
-      "commands": ["editor.action.clipboardCopyAction", "editor.action.commentLine"],
-      "keys": "c.y",
-      "name": "Copy selection and comment line",
-      "type": "command",
-      "icon": "clippy"
-    },
-    {
       // 调试命令行
       "command": "workbench.debug.action.toggleRepl",
       "keys": "d.t",
       "name": "Toggle Debug Console view",
       "type": "command",
       "icon": "debug-alt"
-    },
-    {
-      // 调试命令行
-      "command": "workbench.action.output.toggleOutput",
-      "keys": "e.o",
-      "name": "Toggle output view",
-      "type": "command",
-      "icon": "debug-console"
     },
     {
       // 重命名当前文件(需要插件 fileutils)
@@ -620,7 +577,7 @@
       // 在系统文件管理器中选择打开文件
       "command": "workbench.action.files.openFileFolder",
       "keys": "f.o",
-      "name": "Open file browser",
+      "name": "Open system file browser",
       "type": "command",
       "icon": "remote-explorer"
     },
@@ -631,14 +588,6 @@
       "name": "Jump to method/function in file",
       "type": "command",
       "icon": "symbol-method"
-    },
-    {
-      // 切换 sidebar 显示隐藏(ctrl + t)
-      "command": "workbench.action.toggleSidebarVisibility",
-      "keys": "l.b",
-      "name": "Toggle sidebar",
-      "type": "command",
-      "icon": "layout-sidebar-left"
     },
     {
       // 编辑 Project Manger config
@@ -665,10 +614,10 @@
       "icon": "save-as"
     },
     {
-      // 关闭所有tab group
-      "command": "workbench.action.closeEditorsInAllGroups",
-      "keys": "q.A",
-      "name": "Close current file in all groups",
+      // 关闭所有tab
+      "command": "workbench.action.closeAllEditors",
+      "keys": "q.q",
+      "name": "Close all editors",
       "type": "command",
       "icon": "close-all"
     },
@@ -687,22 +636,6 @@
       "name": "Close editors to the right",
       "type": "command",
       "icon": "arrow-circle-right"
-    },
-    {
-      // 关闭所有tab
-      "command": "workbench.action.closeAllEditors",
-      "keys": "q.a",
-      "name": "Close all editors",
-      "type": "command",
-      "icon": "arrow-circle-right"
-    },
-    {
-      // 全局搜索替换
-      "command": "workbench.action.replaceInFiles",
-      "keys": "x.R",
-      "name": "Replace in files",
-      "type": "command",
-      "icon": "replace-all"
     },
     {
       // 设置相关
@@ -780,7 +713,7 @@
     {
       // 书签设置: 需要 Bookmarks 插件
       "keys": "B",
-      "name": "Bookmarks",
+      "name": "+Bookmarks",
       "type": "bindings",
       "icon": "bookmark",
       "bindings": [
@@ -798,11 +731,12 @@
           "key": "n",
           "name": "Jump to next bookmark",
           "type": "command",
-          "icon": "arrow-downext"
+          "icon": "arrow-down"
         },
         {
           // 上一个书签
           "command": "bookmarks.jumpToPrevious",
+          "icon": "arrow-up",
           "key": "p",
           "name": "Jump to previous bookmark",
           "type": "command",
@@ -813,7 +747,8 @@
           "command": "workbench.view.extension.bookmarks",
           "key": "o",
           "name": "Open Bookmarks explorer",
-          "type": "command"
+          "type": "command",
+          "icon": "bookmark"
         },
         {
           // 列出当前文件所有书签
@@ -836,10 +771,18 @@
     {
       // 侧边功能栏目切换
       "keys": "o",
-      "name": "Open...",
+      "name": "+Open",
       "type": "bindings",
       "icon": "layout-sidebar-left-off",
       "bindings": [
+        {
+          // 打开url链接
+          "key": "u",
+          "name": "Open URL in browser",
+          "type": "command",
+          "icon": "link",
+          "command": "editor.action.openLink"
+        },
         {
           // 打开 vim 备忘录(需要插件: vim cheatsheet)
           "key": "v",
@@ -927,7 +870,7 @@
           "key": "k",
           "name": "...to above",
           "type": "commands"
-        },
+        }
       ]
     },
     {
@@ -961,6 +904,217 @@
           "icon": "file-symlink-directory"
         }
       ]
-    }
-  ]
+    },
+    {
+      // bD: 关闭所有buffer
+      "keys": "b.D",
+      "name": "Search keybindings",
+      "icon": "close-all",
+      "type": "command",
+      "command": "workbench.action.closeAllEditors"
+    },
+    {
+      // e.j: 下一个错误
+      "keys": "e.j",
+      "name": "Next error",
+      "icon": "arrow-down",
+      "type": "command",
+      "command": "editor.action.marker.nextInFiles"
+    },
+    {
+      // bD: 上一个错误
+      "keys": "e.k",
+      "name": "Search keybindings",
+      "icon": "close-all",
+      "type": "command",
+      "command": "workbench.action.closeAllEditors"
+    },
+    {
+      // 代码对齐插件
+      "keys": "a",
+      "name": "+Align",
+      "type": "bindings",
+      "icon": "list-flat",
+      "bindings": [
+        {
+          // 需要代码对齐插件(Align-Vertically)
+          "command": "extension.alignVertically",
+          "key": "a",
+          "name": "align code by Align-Vertically",
+          "type": "command",
+          "icon": "list-flat"
+        },
+        {
+          // 需要代码对齐插件(Align by RegEx)
+          "command": "align.by.regex",
+          "key": "r",
+          "name": "align code by Align by RegEx",
+          "type": "command",
+          "icon": "list-flat"
+        }
+      ]
+    },
+    {
+      "keys": "r",
+      "name": "+Replace/Recent/Repeat",
+      "icon": "clock",
+      "type": "replace-all",
+      "bindings": [
+        {
+          "key": ".",
+          "name": "Repeat recent actions",
+          "icon": "redo",
+          "type": "command",
+          "command": "whichkey.repeatRecent",
+          "args": "vspacecode.bindings"
+        },
+        {
+          // 使用 vim-search-replace 搜索/替换
+          // 编辑器替换命令: editor.action.startFindReplaceAction
+          "command": "vim-search-and-replace.start",
+          "key": "r",
+          "name": "vim search and replace",
+          "icon": "replace",
+          "type": "command"
+        },
+        {
+          // 整个项目替换
+          // "command": "workbench.action.replaceInFiles",
+          "command": "workbench.action.replaceInFiles",
+          "key": "R",
+          "name": "Replace in project",
+          "type": "command",
+          "icon": "replace-all"
+        }
+      ]
+    },
+    {
+      // 搜索 buffer
+      "keys": "s.b",
+      "name": "search buffers",
+      "icon": "search",
+      "type": "command",
+      "command": "workbench.action.quickOpenPreviousRecentlyUsedEditor",
+    },
+    {
+      // 输出 console.log
+      "keys": "l.o",
+      "name": "console.log",
+      "icon": "code",
+      "type": "command",
+      "command": "extension.insertLogStatement",
+    },
+    {
+      "keys": "g.M",
+      "name": "+Merge conflict",
+      "icon": "git-merge",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "b",
+          "name": "Accept both",
+          "icon": "arrow-both",
+          "type": "command",
+          "command": "merge-conflict.accept.both"
+        },
+        {
+          "key": "c",
+          "name": "Accept current",
+          "icon": "arrow-small-right",
+          "type": "command",
+          "command": "merge-conflict.accept.current"
+        },
+        {
+          "key": "i",
+          "name": "Accept incoming",
+          "icon": "arrow-small-left",
+          "type": "command",
+          "command": "merge-conflict.accept.incoming"
+        },
+        {
+          "key": "k",
+          "name": "Compare current conflict",
+          "icon": "diff",
+          "type": "command",
+          "command": "merge-conflict.compare"
+        },
+        {
+          "key": "n",
+          "name": "Next Conflict",
+          "icon": "arrow-down",
+          "type": "command",
+          "command": "merge-conflict.next"
+        },
+        {
+          "key": "s",
+          "name": "Accept selection",
+          "icon": "selection",
+          "type": "command",
+          "command": "merge-conflict.accept.selection"
+        },
+        {
+          "key": "B",
+          "name": "Accept all both",
+          "icon": "arrow-both",
+          "type": "command",
+          "command": "merge-conflict.accept.all-both"
+        },
+        {
+          "key": "C",
+          "name": "Accept all current",
+          "icon": "arrow-right",
+          "type": "command",
+          "command": "merge-conflict.accept.all-current"
+        },
+        {
+          "key": "I",
+          "name": "Accept all incoming",
+          "icon": "arrow-left",
+          "type": "command",
+          "command": "merge-conflict.accept.all-incoming"
+        },
+        {
+          "key": "N",
+          "name": "Previous Conflict",
+          "icon": "arrow-up",
+          "type": "command",
+          "command": "merge-conflict.previous"
+        }
+      ]
+    },
+    { "keys": "b.B", "position": -1 },
+    { "keys": "e.n", "position": -1 },
+    { "keys": "e.N", "position": -1 },
+    { "keys": "e.p", "position": -1 },
+    { "keys": "j.n", "position": -1 },
+    { "keys": "i.j", "position": -1 },
+    { "keys": "i.k", "position": -1 },
+    { "keys": "q.f", "position": -1 },
+    { "keys": "q.r", "position": -1 },
+    { "keys": "q.s", "position": -1 },
+    { "keys": "q.A", "position": -1 },
+    { "keys": "q.r", "position": -1 },
+    { "keys": "s.c", "position": -1 },
+    { "keys": "w.-", "position": -1 },
+    { "keys": "w./", "position": -1 },
+    { "keys": "w.=", "position": -1 },
+    { "keys": "w..", "position": -1 },
+    { "keys": "w.m", "position": -1 },
+    { "keys": "w.0", "position": -1 },
+    { "keys": "w.w", "position": -1 },
+    { "keys": "w.W", "position": -1 },
+    { "keys": "w.H", "position": -1 },
+    { "keys": "w.J", "position": -1 },
+    { "keys": "w.K", "position": -1 },
+    { "keys": "w.L", "position": -1 },
+    { "keys": "w.f", "position": -1 },
+    { "keys": "w.F", "position": -1 },
+    { "keys": "w.o", "position": -1 },
+    { "keys": "x.u", "position": -1 },
+    { "keys": "x.U", "position": -1 },
+    { "keys": "x.d", "position": -1 },
+    { "keys": "x.d", "position": -1 },
+    { "keys": "x.l", "position": -1 },
+    { "keys": "x.m", "position": -1 }
+  ],
 }

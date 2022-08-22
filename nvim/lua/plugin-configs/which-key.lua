@@ -11,7 +11,7 @@ return {
       show_help      = true,
       -- triggers = "auto", -- 自动决定哪些见可以触发 which-key
       -- 只有这些键可以出发 which-key
-      triggers = { "<leader>", "z", "g", "y", "d", "c", '"'},
+      triggers = { "<leader>", "g", '"'},
       triggers_blacklist = {
         -- 不能触发的按键 i insert模式 v visual 模式
         i = { "j", "k" },
@@ -51,7 +51,7 @@ return {
       },
       window = {
         border   = "single",       -- none | single | double | shadow
-        position = "top",          -- bottom, top
+        position = "bottom",       -- bottom | top
         margin   = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
         padding  = { 1, 0, 3, 0 }, -- extra window padding [top, right, bottom, left]
         winblend = 0

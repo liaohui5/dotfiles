@@ -7,6 +7,6 @@ return {
     -- 不启用默认的快捷键
     vim.g.bookmark_sign = '';
     vim.g.bookmark_no_default_key_mappings = 1;
-    nnoremap("<F3>", "<Plug>BookmarkToggle<CR>");
+    require("keybindings").bookmarkKeys()
   end
 }

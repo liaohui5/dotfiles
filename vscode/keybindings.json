@@ -1,37 +1,37 @@
-// Place your key bindings in this file to override the defaults
 [
+  {
+    // 搜索文件快速打开
+    "key": "ctrl+p",
+    "command": "workbench.action.quickOpen"
+  },
+  {
+    // 切换命令行
+    "key": "ctrl+c",
+    "command": "workbench.action.terminal.toggleTerminal"
+  },
   {
     // 切换 vim 插件禁用状态
     "key": "ctrl+alt+0",
-    "command": "toggleVim"
+    "command": "toggleVim",
+    "when": "vim.active"
   },
   {
     // 切换侧边栏显示
     "key": "ctrl+t",
-    "command": "workbench.action.toggleSidebarVisibility"
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "editorTextFocus"
   },
   {
-    // 预览本文件变量/方法等简要信息
-    "key": "alt+p",
-    "command": "workbench.action.gotoSymbol"
-  },
-  {
-    // ctrl+\ 注释
+    // 注释选中内容(当前行)
     "key": "ctrl+\\",
     "command": "editor.action.commentLine",
     "when": "editorTextFocus && vim.active && vim.mode !== 'Insert'"
   },
   {
-    // ctrl+l 显示代码提示
+    // 显示代码提示
     "key": "ctrl+o",
     "command": "editor.action.triggerSuggest",
     "when": "!suggestWidgetVisible && editorTextFocus && vim.active && vim.mode == 'Insert'"
-  },
-  {
-    // 搜索文件快速打开
-    "key": "ctrl+p",
-    "command": "workbench.action.quickOpen",
-    "when": "!suggestWidgetVisible"
   },
   {
     // 代码提示显示时: 选中上一个代码提示
@@ -58,8 +58,20 @@
     "when": "inQuickOpen"
   },
   {
+    // 在展开 snippets 后, 可以跳到上一个位置
+    "key": "ctrl+l",
+    "command": "jumpToPrevSnippetPlaceholder",
+    "when": "editorTextFocus && hasNextTabstop && inSnippetMode"
+  },
+  {
+    // 在展开 snippets 后, 可以跳到下一个位置
+    "key": "ctrl+l",
+    "command": "jumpToNextSnippetPlaceholder",
+    "when": "editorTextFocus && hasNextTabstop && inSnippetMode"
+  },
+  {
     // 在编辑器/任意输入框没有焦点的时: 获取焦点
-    "key": "[space]",
+    "key": "escape",
     "command": "workbench.action.focusFirstEditorGroup",
     "when": "!editorTextFocus && !textInputFocus && !editorFocus && !inputFocus"
   },
@@ -71,94 +83,81 @@
     // enter 或者 l: 打开文件
     "key": "enter",
     "command": "explorer.openAndPassFocus",
-    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsFolder && !inputFocus"
+    "when": "explorerViewletFocus && filesExplorerFocus && vim.active && !explorerResourceReadonly && !inputFocus"
   },
   {
     // a: 新建文件
     "key": "a",
     "command": "explorer.newFile",
-    "when": "explorerViewletFocus && !explorerResourceReadonly && !inputFocus && vim.active"
+    "when": "explorerViewletFocus && filesExplorerFocus && vim.active && !explorerResourceReadonly && !inputFocus"
   },
   {
-    // f: 新建目录
-    "key": "f",
+    // A: 新建目录
+    "key": "shift+a",
     "command": "explorer.newFolder",
-    "when": "explorerViewletFocus && !explorerResourceReadonly && !inputFocus && vim.active"
+    "when": "explorerViewletFocus && filesExplorerFocus && vim.active && !explorerResourceReadonly && !inputFocus"
   },
   {
     // r: 修改文件名
     "key": "r",
     "command": "renameFile",
-    "when": "explorerViewletFocus && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
+    "when": "explorerViewletFocus && filesExplorerFocus && vim.active && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    // R: 刷新
+    "key": "shift+r",
+    "command": "workbench.files.action.refreshFilesExplorer",
+    "when": "explorerViewletFocus && filesExplorerFocus && vim.active && !explorerResourceReadonly && !inputFocus"
   },
   {
     // x: 删除文件
     "key": "x",
     "command": "moveFileToTrash",
-    "when": "explorerViewletFocus && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
+    "when": "explorerViewletFocus && filesExplorerFocus && vim.active && !explorerResourceReadonly && !inputFocus"
   },
   {
     // s: 在侧边打开文件, 会新开一个窗口
     "key": "s",
     "command": "explorer.openToSide",
-    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsFolder && !inputFocus"
+    "when": "explorerViewletVisible && filesExplorerFocus && vim.active && !explorerResourceIsFolder && !inputFocus"
   },
   {
     // o: 预览文件(不会直接获取光标)
     "key": "o",
     "command": "filesExplorer.openFilePreserveFocus",
-    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsFolder && !inputFocus"
-  },
-  {
-    // c: 复制文件并且重命名(需要插件: File Utils)
-    "key": "c",
-    "command": "fileutils.duplicateFile",
-    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsFolder && !inputFocus"
+    "when": "explorerViewletVisible && filesExplorerFocus && vim.active && !explorerResourceIsFolder && !inputFocus"
   },
   {
     // y: 直接复制文件使用默认的复制文件名(需要插件: macro-commander)
     "key": "y",
     "command": "macros.copyExplorerFileWithoutRename",
-    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsFolder && !inputFocus"
+    "when": "explorerViewletVisible && filesExplorerFocus && vim.active && !explorerResourceIsFolder && !inputFocus"
   },
   {
     // d: 剪切文件
     "key": "d",
     "command": "filesExplorer.cut",
-    "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+    "when": "explorerViewletVisible && filesExplorerFocus && vim.active && !explorerResourceIsFolder && !inputFocus"
+  },
+  {
+    // D: 取消文件
+    "key": "shift+d",
+    "command": "filesExplorer.cancelCut",
+    "when": "explorerViewletVisible && filesExplorerFocus && vim.active && !explorerResourceIsFolder && !inputFocus"
   },
   {
     // p: 粘贴文件
     "key": "p",
     "command": "filesExplorer.paste",
-    "when": "explorerViewletVisible && filesExplorerFocus && vim.active && !inputFocus"
+    "when": "explorerViewletVisible && filesExplorerFocus && vim.active && !explorerResourceIsFolder && !inputFocus"
+  },
+  {
+    // u: 撤销操作
+    "key": "u",
+    "command": "undo",
+    "when": "explorerViewletVisible && filesExplorerFocus && vim.active && !explorerResourceIsFolder && !inputFocus"
   },
 
-  ////////////////////////////////////////////////////////
-  // 取消默认
-  ////////////////////////////////////////////////////////
-  {
-    // 取消默认: ctrl+b
-    "key": "ctrl+b",
-    "command": "-workbench.action.toggleSidebarVisibility"
-  },
-  {
-    // 取消默认: alt+p
-    "key": "alt+p",
-    "command": "-keybindings.editor.toggleSortByPrecedence",
-    "when": "inKeybindings"
-  },
-  {
-    // 取消默认: ctrl+shift+o
-    "key": "ctrl+shift+o",
-    "command": "-workbench.action.gotoSymbol"
-  },
-  {
-    // 取消默认: ctrl+p
-    "key": "ctrl+p",
-    "command": "-workbench.action.quickOpenSelectPrevious",
-    "when": "inQuickOpen"
-  },
   ////////////////////////////////////////////////////////
   // VSCode which key
   ////////////////////////////////////////////////////////
@@ -304,5 +303,10 @@
     "key": "ctrl+d",
     "command": "-deleteRight",
     "when": "textInputFocus"
+  },
+  {
+    "key": "ctrl+c",
+    "command": "-extension.vim_ctrl+c",
+    "when": "editorTextFocus && vim.active && vim.overrideCtrlC && vim.use<C-c> && !inDebugRepl"
   },
 ]

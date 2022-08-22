@@ -23,18 +23,16 @@
 ------------------------------------------------------------------------------
 --  插件的快捷键配置
 ------------------------------------------------------------------------------
+---@diagnostic disable: param-type-mismatch
 local wk = require("which-key");
 local keybindings = {}
-
-local message = 'hello'
-print(message);
 
 --------------------------------------
 -- kommentary 注释快捷键
 --------------------------------------
 keybindings.onedarkKeys = function ()
   wk.register({
-    ["<leader>tc"] = {
+    ["<leader>Tc"] = {
       "<cmd>lua require('onedark').toggle()<CR>",
       "toggle colorscheme[onedark]"
     },
@@ -44,10 +42,35 @@ end
 --------------------------------------
 -- kommentary 注释快捷键
 --------------------------------------
+keybindings.bookmarkKeys = function ()
+  nnoremap("<F3>", "<Plug>BookmarkToggle<CR>");
+  wk.register({
+    ["<leader>Bm"] = {
+      "<Plug>BookmarkToggle<CR>",
+      "toggle bookmark[vim-bookmark]",
+    },
+    ["<leader>Bp"] = {
+      "<Plug>BookmarkPrev<CR>",
+      "jump to next bookmark[vim-bookmark]",
+    },
+    ["<leader>Bn"] = {
+      "<Plug>BookmarkNext<CR>",
+      "jump to previous bookmark[vim-bookmark]",
+    },
+  });
+end
+
+--------------------------------------
+-- kommentary 注释快捷键
+--------------------------------------
 keybindings.kommentaryKeys = function()
   nnoremap("<C-\\>", "<Plug>kommentary_line_default")
   vnoremap("<C-\\>", "<Plug>kommentary_visual_default<C-c>gv-gv")
   wk.register({
+    ["<leader>;"] = {
+      "<Plug>kommentary_line_default",
+      "comment current line(<C-\\>)[kommentary]"
+    },
     ["<leader>cl"] = {
       "<Plug>kommentary_line_default",
       "comment current line(<C-\\>)[kommentary]"
@@ -171,7 +194,7 @@ keybindings.gitsignsKeys = function()
     },
     ["<leader>jC"] = {
       "<cmd>Gitsigns prev_hunk[gitsigns]<CR>",
-      "jump to next previous",
+      "jump to next change",
     },
   })
 end
@@ -240,14 +263,14 @@ keybindings.cmpKeys = function(cmp)
     -- ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
 
     -- snippets 上一个位置
-    ["<C-h>"] = cmp.mapping(function(fallback)
+    ["<C-h>"] = cmp.mapping(function()
       if vim.fn["vsnip#jumpable"](-1) == 1 then
         feedkey("<Plug>(vsnip-jump-prev)", "")
       end
     end),
 
     -- snippets 下一个位置
-    ["<C-l>"] = cmp.mapping(function(fallback)
+    ["<C-l>"] = cmp.mapping(function()
       if vim.fn["vsnip#jumpable"](1) == 1 then
         feedkey("<Plug>(vsnip-jump-next)", "");
       end
@@ -267,7 +290,7 @@ keybindings.cmpKeys = function(cmp)
     end, { "i", "s" }),
 
     -- shift-tab: 上一个提示
-    ["<S-Tab>"] = cmp.mapping(function(fallback)
+    ["<S-Tab>"] = cmp.mapping(function()
       if cmp.visible() then
         cmp.select_prev_item()
       elseif vim.fn["vsnip#jumpable"](-1) == 1 then
@@ -369,6 +392,10 @@ keybindings.nvimtreeKeys = function()
   -- Ctrl + t: 切换显示/隐藏
   nnoremap("<C-t>", "<cmd>NvimTreeToggle<CR>")
   wk.register({
+    ["<leader>0"] = {
+      "<cmd>NvimTreeFocus<CR>",
+      "focus on explorer[nvim-tree]"
+    },
     ["<leader>fT"] = {
       "<cmd>NvimTreeFocus<CR>",
       "focus in explorer[nvim-tree]"
@@ -464,6 +491,10 @@ keybindings.telescopeKeys = function()
   -- nnoremap("<leader>fh", "<cmd>Telescope help_tags prompt_prefix=[telescopeHelpTags]<CR>")
 
   wk.register({
+    ["<leader>/"] = {
+      "<cmd>Telescope live_grep prompt_prefix=[string]<CR>",
+      "search in project[telescope]"
+    },
     ["<leader>bs"] = {
       "<cmd>Telescope buffers prompt_prefix=[buffers]<CR>",
       "search buffers[telescope]"
@@ -480,6 +511,18 @@ keybindings.telescopeKeys = function()
       "<cmd>Telescope live_grep prompt_prefix=[string]<CR>",
       "search string in project[telescope]",
     },
+    ["<leader>Bo"] = {
+      "<cmd>Telescope vim_bookmarks all prompt_prefix=[bookmarks]<CR>",
+      "open bookmarks explorer[telescope]",
+    },
+    ["<leader>Bb"] = {
+      "<cmd>Telescope vim_bookmarks all prompt_prefix=[bookmarks]<CR>",
+      "open bookmarks explorer[telescope]",
+    },
+    ["<leader>BB"] = {
+      "<cmd>Telescope vim_bookmarks all prompt_prefix=[bookmarks]<CR>",
+      "open bookmarks explorer[telescope]",
+    },
   })
 
   -- TODO: search string in project with seclection
@@ -489,9 +532,6 @@ keybindings.telescopeKeys = function()
       "search string in project with seclection[telescope]",
     },
   });
-
-  -- 查看所有书签
-  -- nnoremap("<leader>fm", ":Telescope vim_bookmarks all prompt_prefix=[bookmarks]<CR>")
 
   local actions = require("telescope.actions")
   return {
@@ -533,9 +573,6 @@ end
 -- lsp 回调函数快捷键设置
 --------------------------------------
 keybindings.lspKeys = function(client, bufnr)
-  local bufkeyset = vim.api.nvim_buf_set_keymap
-  local opt = { noremap = true, silent = true }
-
   -- 自动匹配高亮当前光标下的单词
   require("utils.highlight").setup(client, bufnr);
 
@@ -548,17 +585,15 @@ keybindings.lspKeys = function(client, bufnr)
       },
     });
   end
-
   wk.register({
     ["<leader>j+"] = {
       "<cmd>lua vim.lsp.buf.formatting()<CR>",
       "format current buffer[lsp]",
     },
-    ["<leader>ca"] = {
-      "<cmd>lua vim.lsp.buf.code_action()<CR>",
-      "code action quickFix[lsp]"
-    },
-    -- 用 lspsaga, 这个暂时不用了
+    -- ["<leader>ca"] = {
+    --   "<cmd>lua vim.lsp.buf.code_action()<CR>",
+    --   "code action quickFix[lsp]"
+    -- },
     -- ["<leader>se"] = {
     --   "<cmd>lua vim.lsp.buf.rename()<CR>",
     --   "edit symbol name[lsp]"
@@ -567,7 +602,6 @@ keybindings.lspKeys = function(client, bufnr)
     --   "<cmd>lua vim.lsp.buf.rename()<CR>",
     --   "rename symbol[lsp]"
     -- },
-    -- 用 lspsaga, 这个暂时不用了
     -- ["<leader>sj"] = {
     --   "<cmd>lua vim.lsp.buf.document_symbol()<CR>",
     --   "jump to symbol in buffer[lsp]"
@@ -602,22 +636,12 @@ end
 --------------------------------------
 -- lspsaga 自定义插件快捷键设置
 --------------------------------------
-keybindings.lspUISagaKeys = function()
-  -- 变量重命名
-  -- nnoremap("<leader>rn", "<cmd>Lspsaga rename<CR>");
-
-  -- 代码修复,小灯泡 code action
-  -- nnoremap("<leader>ca", "<cmd>Lspsaga code_action<CR>");
-
-  -- 上一个/下一个代码错误位置
-  -- nnoremap("]e", "<cmd>Lspsaga diagnostic_jump_next<CR>");
-  -- nnoremap("[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>");
-
+keybindings.lspsagaKeys = function()
   -- 查看帮助文档
   nnoremap("gh", "<cmd>Lspsaga hover_doc<CR>");
 
   -- 查看文件定义
-  -- nnoremap("gd", "<cmd>Lspsaga lsp_finder<CR>");
+  nnoremap("gd", "<cmd>Lspsaga lsp_finder<CR>");
 
   -- 参看函数定义
   nnoremap("gv", "<cmd>Lspsaga preview_definition<CR>");
@@ -627,45 +651,49 @@ keybindings.lspUISagaKeys = function()
 
   -- 跳到上/下/错误一个代码诊断提示位置
   wk.register({
-    ["<leader>ej"] = {
+    ["<leader>ej"] = { -- 下一个错误
       "<cmd>Lspsaga diagnostic_jump_next<CR>",
       "next error[lspsaga]"
     },
-    ["<leader>ek"] = {
-      "<cmd>Lspsaga diagnostic_jump_next<CR>",
+    ["<leader>ek"] = { -- 上一个错误
+      "<cmd>Lspsaga diagnostic_jump_prev<CR>",
       "previous error[lspsaga]"
     },
-    ["<leader>ef"] = {
-      "<cmd>lua vim.lsp.buf.code_action()<CR>",
+    ["<leader>ca"] = { -- 快速修复
+      "<cmd>Lspsaga code_action<CR>",
       "fix error[lspsaga]"
     },
-    ["<leader>ji"] = {
+    ["<leader>ji"] = { -- 打开 outline
       "<cmd>LSoutlineToggle<CR>",
       "jump to symbol in buffer[lspsaga]"
     },
-    ["<leader>sj"] = {
+    ["<leader>sj"] = { -- 打开 outline
       "<cmd>LSoutlineToggle<CR>",
       "jump to symbol in buffer[lspsaga]"
     },
-    ["<leader>sr"] = {
+    ["<leader>sr"] = { -- 查看引用
       "<cmd>Lspsaga lsp_finder<CR>",
       "search all references[lspsaga]"
     },
-    ["<leader>xa"] = {
+    ["<leader>xa"] = { -- 查看引用
       "<cmd>Lspsaga lsp_finder<CR>",
       "find all references[lspsaga]"
     },
-    ["<leader>se"] = {
+    ["<leader>xr"] = { -- gd: 查看引用
+      "<cmd>Lspsaga lsp_finder<CR>",
+      "find all references[lspsaga]"
+    },
+    ["<leader>se"] = { -- 重命名变量
       "<cmd>Lspsaga rename<CR>",
       "edit symbol name[lsp]"
     },
-    ["<leader>xr"] = {
-      "<cmd>Lspsaga lsp_finder<CR>",
+    ["<leader>rn"] = { -- 重命名变量
+      "<cmd>Lspsaga rename<CR>",
       "rename symbol[lspsaga]"
-    },
+    }
   });
   wk.register({
-    ["<leader>se"] = {
+    ["<leader>se"] = { -- 重命名变量
       "<cmd>Lspsaga rename<CR>",
       "edit symbol name[lsp]"
     },
@@ -689,7 +717,8 @@ keybindings.lspUISagaKeys = function()
       quit = "<ESC>", -- 退出修复
       exec = "<CR>", -- 执行修复
     },
-    rename_action_quit = "<ESC>" -- 退出重命名
+    rename_action_quit = "<ESC>", -- 退出重命名
+    outline_enter_key  = "o",     -- 进入 symbol 对应的文件位置
   }
 end
 

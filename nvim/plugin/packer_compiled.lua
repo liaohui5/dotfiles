@@ -69,30 +69,15 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
-  ["Comment.nvim"] = {
-    loaded = true,
-    path = "/Users/liaohui5/.local/share/nvim/site/pack/packer/start/Comment.nvim",
-    url = "https://github.com/numToStr/Comment.nvim"
-  },
   ["align.nvim"] = {
     loaded = true,
     path = "/Users/liaohui5/.local/share/nvim/site/pack/packer/start/align.nvim",
     url = "https://github.com/Vonr/align.nvim"
   },
-  ["auto-save.nvim"] = {
-    loaded = true,
-    path = "/Users/liaohui5/.local/share/nvim/site/pack/packer/start/auto-save.nvim",
-    url = "https://github.com/Pocco81/auto-save.nvim"
-  },
   ["bufferline.nvim"] = {
     loaded = true,
     path = "/Users/liaohui5/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
     url = "https://github.com/akinsho/bufferline.nvim"
-  },
-  catppuccin = {
-    loaded = true,
-    path = "/Users/liaohui5/.local/share/nvim/site/pack/packer/start/catppuccin",
-    url = "https://github.com/catppuccin/nvim"
   },
   ["cmp-buffer"] = {
     loaded = true,
@@ -159,6 +144,11 @@ _G.packer_plugins = {
     path = "/Users/liaohui5/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
   },
+  kommentary = {
+    loaded = true,
+    path = "/Users/liaohui5/.local/share/nvim/site/pack/packer/start/kommentary",
+    url = "https://github.com/b3nj5m1n/kommentary"
+  },
   ["lspsaga.nvim"] = {
     loaded = true,
     path = "/Users/liaohui5/.local/share/nvim/site/pack/packer/start/lspsaga.nvim",
@@ -183,11 +173,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/liaohui5/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
-  },
-  ["material.nvim"] = {
-    loaded = true,
-    path = "/Users/liaohui5/.local/share/nvim/site/pack/packer/start/material.nvim",
-    url = "https://github.com/marko-cerovac/material.nvim"
   },
   ["monokai.nvim"] = {
     loaded = true,
@@ -289,6 +274,11 @@ _G.packer_plugins = {
     path = "/Users/liaohui5/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
+  ["toggleterm.nvim"] = {
+    loaded = true,
+    path = "/Users/liaohui5/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
+    url = "https://github.com/akinsho/toggleterm.nvim"
+  },
   ["vim-autoread"] = {
     loaded = true,
     path = "/Users/liaohui5/.local/share/nvim/site/pack/packer/start/vim-autoread",
@@ -319,6 +309,11 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/Users/liaohui5/.local/share/nvim/site/pack/packer/opt/vscode-js-debug",
     url = "https://github.com/microsoft/vscode-js-debug"
+  },
+  ["which-key.nvim"] = {
+    loaded = true,
+    path = "/Users/liaohui5/.local/share/nvim/site/pack/packer/start/which-key.nvim",
+    url = "https://github.com/folke/which-key.nvim"
   }
 }
 

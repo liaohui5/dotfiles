@@ -336,11 +336,6 @@ wk.register({
     },
   },
 
-  -- UI toggle
-  ["<leader>t"] = {
-    name = "+UI toggle"
-  },
-
   -- window
   ["<leader>w"] = {
     name = "+Window",
@@ -379,7 +374,17 @@ wk.register({
     P = {
       "Copy current file relative path"
     },
-  }
+  },
+
+  -- UI toggle
+  ["<leader>T"] = {
+    name = "+UI toggle"
+  },
+
+  -- Bookmarks
+  ["<leader>B"] = {
+    name = "+Bookmarks",
+  },
 });
 
 wk.register({

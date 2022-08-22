@@ -5,15 +5,15 @@
 local config = {};
 config.onstart = function(onedark)
   onedark.setup({
-    style                = 'dark',
+    style                = 'warmer',
     transparent          = false,
     term_colors          = true,
     ending_tildes        = false,
     cmp_itemkind_reverse = false,
     toggle_style_key     = nil,
-    toggle_style_list    = { 
+    toggle_style_list    = {
       'dark',
-      'darker', 
+      'darker',
       'cool',
       'deep',
       'warm',
