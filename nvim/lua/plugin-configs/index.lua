@@ -36,7 +36,7 @@ local plugins = {
   { require_path = "gitsigns", config_name = "gitsigns" },
   { require_path = "hop", config_name = "hop" },
   { require_path = "lualine", config_name = "lualine" },
-  { require_path = "spectre", config_name = "nvim-spectre" },
+  { require_path = "spectre", config_name = "spectre" },
   { require_path = "nvim-tree", config_name = "nvim-tree" },
   { require_path = "nvim-treesitter.configs", config_name = "nvim-treesitter" },
   { require_path = "nvim-web-devicons", config_name = "nvim-web-devicons" },

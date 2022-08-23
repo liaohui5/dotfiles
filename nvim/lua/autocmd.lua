@@ -110,4 +110,3 @@ vim.cmd[[
     "open -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome /fullpath/to/coc-settings.json
   endfunction
 ]]
-

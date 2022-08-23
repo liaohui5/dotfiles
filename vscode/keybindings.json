@@ -12,8 +12,7 @@
   {
     // 切换 vim 插件禁用状态
     "key": "ctrl+alt+0",
-    "command": "toggleVim",
-    "when": "vim.active"
+    "command": "toggleVim"
   },
   {
     // 切换侧边栏显示

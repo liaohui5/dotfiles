@@ -3,9 +3,9 @@
   "window.zoomLevel": 0,
 
   // 字体
-  "editor.fontSize": 14,
+  "editor.fontSize": 15,
   "editor.fontLigatures": true,
-  "editor.fontFamily": "operator, Menlo, Hack,'Hack Nerd Font Mono'",
+  "editor.fontFamily": "'Operator Mono', Menlo, Hack,'Hack Nerd Font Mono'",
 
   // 光标宽度 && 行高
   "editor.cursorWidth": 1,
@@ -526,12 +526,12 @@
       "icon": "root-folder-opened"
     },
     {
-      // 关闭其他标签页
+      // 关闭其他 buffer
       "command": "workbench.action.closeOtherEditors",
       "keys": "b.D",
-      "name": "Close other editors",
+      "name": "close other buffers",
       "type": "command",
-      "icon": "debug-rerun"
+      "icon": "close-all"
     },
     {
       // 命令行
@@ -904,14 +904,6 @@
           "icon": "file-symlink-directory"
         }
       ]
-    },
-    {
-      // bD: 关闭所有buffer
-      "keys": "b.D",
-      "name": "Search keybindings",
-      "icon": "close-all",
-      "type": "command",
-      "command": "workbench.action.closeAllEditors"
     },
     {
       // e.j: 下一个错误

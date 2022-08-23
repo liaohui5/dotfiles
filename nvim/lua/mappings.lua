@@ -19,7 +19,7 @@
 -- rmap     - 查看 select 模式快捷键
 -- omap     - 查看 operator 模式快捷键
 --- @diagnostic disable: lowercase-global
-local wk = require("which-key");
+local wk = require("which-key")
 local keymap = vim.api.nvim_set_keymap
 local option = { noremap = true, silent = true }
 
@@ -84,25 +84,38 @@ nnoremap("<C-q>", ":quitall!<CR>")
 -- 取消高亮
 nnoremap("-", ":nohl<CR>")
 
--- P: 仅粘贴, 而不是粘贴后复制
-vnoremap("p", '"_dP')
+-- p: 仅粘贴, 而不是粘贴后复制
+vnoremap("p", '"_c<C-r><C-o>+<Esc>')
 
 -- 选中/删除当前单词
 nnoremap("vw", "viw")
 nnoremap("cw", "ciw")
 nnoremap("dw", "diw")
 
--- ctrl u / ctrl + d 滚动10行, 并且保持当前行居中屏幕
-nnoremap("<C-u>", "10kzz");
-nnoremap("<C-d>", "10jzz");
-
--- 修改默认的 x, r, 直接删除而不剪切
-nnoremap("x", '"_x')
-vnoremap("x", '"_x')
+-- 滚动并且保持当前行居中屏幕
+nnoremap("<C-u>", "10kzz")
+nnoremap("<C-d>", "10jzz")
+nnoremap("<C-f>", "<C-f>zz")
+nnoremap("<C-b>", "<C-b>zz")
 
 -- 修改默认的 $
 nnoremap("$", "$h")
 vnoremap("$", "$h")
+
+-- c/s/x 删除而不是剪切
+nnoremap("c", '"_c')
+xnoremap("c", '"_c')
+nnoremap("C", '"_C')
+xnoremap("C", '"_C')
+nnoremap("cc", '"_S')
+nnoremap("s", '"_s')
+xnoremap("s", '"_s')
+nnoremap("S", '"_S')
+xnoremap("S", '"_S')
+nnoremap("x", '"_x')
+xnoremap("x", '"_x')
+nnoremap("X", '"_X')
+xnoremap("X", '"_X')
 
 -- buffer 切换/关闭
 nnoremap("<S-h>", ":bprevious<CR>")
@@ -113,8 +126,8 @@ vnoremap("<", "<gv")
 vnoremap(">", ">gv")
 
 -- 上下移动选中行
-xnoremap("<M-j>", ":move '>+1<CR>gv-gv")
-xnoremap("<M-k>", ":move '<-2<CR>gv-gv")
+xnoremap("<C-j>", ":move '>+1<CR>gv-gv")
+xnoremap("<C-k>", ":move '<-2<CR>gv-gv")
 
 -- 跳转当前窗口大小
 nnoremap("<C-Right>", ":vertical resize-1<CR>")
@@ -122,7 +135,7 @@ nnoremap("<C-Left>", ":vertical resize+1<CR>")
 nnoremap("<C-Down>", ":resize-1<CR>")
 nnoremap("<C-Up>", ":resize+1 <CR>")
 
--- 在窗口之间跳转光标(与zellij有冲突,所以禁用)
+-- 在窗口之间跳转光标(与zellij有冲突,暂时禁用)
 -- nnoremap("<M-h>", "<C-w>h")
 -- nnoremap("<M-j>", "<C-w>j")
 -- nnoremap("<M-k>", "<C-w>k")
@@ -132,15 +145,8 @@ nnoremap("<C-Up>", ":resize+1 <CR>")
 cmap("<C-j>", "<C-n>")
 cmap("<C-k>", "<C-p>")
 
--- 创建文件/删除文件
--- nnoremap("<leader>nf", ":!touch ")
--- nnoremap("<leader>df", ":!rm -rf ")
-
--- 搜索替换
--- vnoremap("<C-f>", "gd<ESC>")
-
--- 找到当前行的括号并进入Insert模式
--- nnoremap("<M-i>", "0%i");
+-- 找到当前行的括号
+nnoremap("%", "0%");
 
 --------------------------------------
 -- 内置功能绑定到快捷键菜单

@@ -40,7 +40,7 @@ keybindings.onedarkKeys = function ()
 end
 
 --------------------------------------
--- kommentary 注释快捷键
+-- 书签管理快捷键
 --------------------------------------
 keybindings.bookmarkKeys = function ()
   nnoremap("<F3>", "<Plug>BookmarkToggle<CR>");

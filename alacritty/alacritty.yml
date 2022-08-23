@@ -65,31 +65,31 @@ key_bindings:
   # alt + n
 
 # 颜色主题
-theme: Kitty
+theme: Dracula
 colors:
   # Default colors
   primary:
-    background: '#000000'
-    foreground: '#dddddd'
+    background: '#282a36'
+    foreground: '#f8f8f2'
 
   # Normal colors
   normal:
     black: '#000000'
-    red: '#cc0403'
-    green: '#19cb00'
-    yellow: '#cecb00'
-    blue: '#0d73cc'
-    magenta: '#cb1ed1'
-    cyan: '#0dcdcd'
-    white: '#dddddd'
+    red: '#ff5555'
+    green: '#50fa7b'
+    yellow: '#f1fa8c'
+    blue: '#caa9fa'
+    magenta: '#ff79c6'
+    cyan: '#8be9fd'
+    white: '#bfbfbf'
 
   # Bright colors
   bright:
-    black: '#767676'
-    red: '#f2201f'
-    green: '#23fd00'
-    yellow: '#fffd00'
-    blue: '#1a8fff'
-    magenta: '#fd28ff'
-    cyan: '#14ffff'
-    white: '#ffffff'
+    black: '#575b70'
+    red: '#ff6e67'
+    green: '#5af78e'
+    yellow: '#f4f99d'
+    blue: '#caa9fa'
+    magenta: '#ff92d0'
+    cyan: '#9aedfe'
+    white: '#e6e6e6'

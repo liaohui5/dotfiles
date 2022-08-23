@@ -36,9 +36,6 @@ return require("packer").startup({
     use({ "tanvirtin/monokai.nvim" })
     use({ "navarasu/onedark.nvim" })
 
-    -- easyclip, 粘贴增强
-    -- use({ "svermeulen/vim-yoink" })
-
     -- 文件管理插件 ranger 集成
     use({ 'kevinhwang91/rnvimr' })
 
