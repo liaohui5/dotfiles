@@ -28,7 +28,7 @@ local wk = require("which-key");
 local keybindings = {}
 
 --------------------------------------
--- kommentary 注释快捷键
+-- onedark 切换主题快捷键
 --------------------------------------
 keybindings.onedarkKeys = function ()
   wk.register({

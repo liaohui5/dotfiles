@@ -289,6 +289,11 @@ _G.packer_plugins = {
     path = "/Users/liaohui5/.local/share/nvim/site/pack/packer/start/vim-bookmarks",
     url = "https://github.com/MattesGroeger/vim-bookmarks"
   },
+  ["vim-expand-region"] = {
+    loaded = true,
+    path = "/Users/liaohui5/.local/share/nvim/site/pack/packer/start/vim-expand-region",
+    url = "https://github.com/terryma/vim-expand-region"
+  },
   ["vim-repeat"] = {
     loaded = true,
     path = "/Users/liaohui5/.local/share/nvim/site/pack/packer/start/vim-repeat",

@@ -30,6 +30,7 @@ local plugins = {
   { require_path = "onedark", config_name = "onedark" },
   { require_path = "which-key", config_name = "which-key" },
   { require_path = "align", config_name = "align" },
+  { require_path = "nvim-autopairs", config_name = "nvim-autopairs" },
   { require_path = "kommentary.config", config_name = "kommentary" },
   { require_path = "editorconfig", config_name = "editorconfig" },
   { require_path = "formatter", config_name = "formatter" },
