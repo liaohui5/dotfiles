@@ -87,11 +87,6 @@ nnoremap("-", ":nohl<CR>")
 -- p: 仅粘贴, 而不是粘贴后复制
 vnoremap("p", '"_c<C-r><C-o>+<Esc>')
 
--- 选中/删除当前单词
-nnoremap("vw", "viw")
-nnoremap("cw", "ciw")
-nnoremap("dw", "diw")
-
 -- 滚动并且保持当前行居中屏幕
 nnoremap("<C-u>", "10kzz")
 nnoremap("<C-d>", "10jzz")
@@ -103,8 +98,8 @@ nnoremap("$", "$h")
 vnoremap("$", "$h")
 
 -- c/s/x 删除而不是剪切
-nnoremap("c", '"_c')
-xnoremap("c", '"_c')
+-- nnoremap("c", '"_c')
+-- xnoremap("c", '"_c')
 nnoremap("C", '"_C')
 xnoremap("C", '"_C')
 nnoremap("cc", '"_S')
@@ -116,6 +111,11 @@ nnoremap("x", '"_x')
 xnoremap("x", '"_x')
 nnoremap("X", '"_X')
 xnoremap("X", '"_X')
+
+-- 选中/删除当前单词
+nnoremap("vw", "viw")
+nnoremap("cw", "ciw")
+nnoremap("dw", "diw")
 
 -- buffer 切换/关闭
 nnoremap("<S-h>", ":bprevious<CR>")
@@ -146,7 +146,7 @@ cmap("<C-j>", "<C-n>")
 cmap("<C-k>", "<C-p>")
 
 -- 找到当前行的括号
-nnoremap("%", "0%");
+-- nnoremap("%", "0%");
 
 --------------------------------------
 -- 内置功能绑定到快捷键菜单

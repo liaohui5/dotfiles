@@ -5,7 +5,7 @@
 local config = {};
 config.onstart = function(onedark)
   onedark.setup({
-    style                = 'warmer',
+    style                = 'dark',
     transparent          = false,
     term_colors          = true,
     ending_tildes        = false,
@@ -18,18 +18,22 @@ config.onstart = function(onedark)
       'deep',
       'warm',
       'warmer',
-      'light'
+      'light',
     },
-    code_style = {
+    code_style           = {
       comments  = 'none',
       keywords  = 'none',
       functions = 'none',
       strings   = 'none',
       variables = 'none'
     },
-    colors     = {},
-    highlights = {},
-    diagnostics = {
+    -- colors: https://github.com/navarasu/onedark.nvim/blob/master/lua/onedark/palette.lua
+    colors               = {
+      -- bg0 = "#23241f"
+    },
+    -- highlights: https://github.com/navarasu/onedark.nvim/blob/master/lua/onedark/highlights.lua
+    highlights           = {},
+    diagnostics          = {
       darker     = true,
       undercurl  = true,
       background = true,

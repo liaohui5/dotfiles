@@ -3,7 +3,7 @@
   "window.zoomLevel": 0,
 
   // 字体
-  "editor.fontSize": 15,
+  "editor.fontSize": 16,
   "editor.fontLigatures": true,
   "editor.fontFamily": "'Operator Mono', Menlo, Hack,'Hack Nerd Font Mono'",
 

@@ -28,6 +28,26 @@ local wk = require("which-key");
 local keybindings = {}
 
 --------------------------------------
+-- nvim-treesitter 插件快捷键
+--------------------------------------
+keybindings.treesitterKeys = function ()
+  return {
+    keymaps = {
+      init_selection    = '<CR>',
+      node_incremental  = '<CR>',
+      node_decremental  = '<BS>',
+      scope_incremental = '<TAB>',
+    },
+    textsubjects_prev_selection = ",",
+    textsubjects_keymaps = {
+      ['0'] = 'textsubjects-smart',
+      ['='] = 'textsubjects-container-outer',
+      ['-'] = 'textsubjects-container-inner',
+    }
+  }
+end
+
+--------------------------------------
 -- onedark 切换主题快捷键
 --------------------------------------
 keybindings.onedarkKeys = function ()
@@ -491,9 +511,17 @@ keybindings.telescopeKeys = function()
   -- nnoremap("<leader>fh", "<cmd>Telescope help_tags prompt_prefix=[telescopeHelpTags]<CR>")
 
   wk.register({
+    ["<leader><leader>"] = {
+      "<cmd>Telescope commands prompt_prefix=[commands]<CR>",
+      "search commands[telescope]"
+    },
     ["<leader>/"] = {
       "<cmd>Telescope live_grep prompt_prefix=[string]<CR>",
       "search in project[telescope]"
+    },
+    ["<leader>?"] = {
+      "<cmd>Telescope keymaps prompt_prefix=[keybindings]<CR>",
+      "search keymaps[telescope]"
     },
     ["<leader>bs"] = {
       "<cmd>Telescope buffers prompt_prefix=[buffers]<CR>",

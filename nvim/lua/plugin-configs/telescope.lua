@@ -1,12 +1,9 @@
 -----------------------------------------------------------
 -- 搜索文件/buffer/字符串
 -- docs: https://github.com/nvim-telescope/telescope.nvim
+-- plugins: https://github.com/nvim-telescope/telescope.nvim/wiki/Extensions
 -----------------------------------------------------------
 return {
-
-  -- TODO:添加书签插件
-  -- https://github.com/MattesGroeger/vim-bookmarks
-  -- https://github.com/tom-anders/telescope-vim-bookmarks.nvim
   onstart = function(telescope)
     telescope.setup({
       defaults = {
@@ -14,12 +11,6 @@ return {
         layout_config = {
           prompt_position = "top", -- top | bottom
         },
-        -- mappings = {
-        --   i = {
-        --     ["<C-j>"] = actions.move_selection_next,
-        --     ["<C-k>"] = actions.move_selection_previous,
-        --   }
-        -- },
         -- 绑定快捷键
         mappings = require("keybindings").telescopeKeys(),
         file_ignore_patterns = {

@@ -23,13 +23,15 @@ font:
     style: Regular
   bold:
     family: "Hack Nerd Font Mono"
-    style: Bold
+    #style: Bold
+    style: Regular
   italic:
     family: "Hack Nerd Font Mono"
     style: Italic
   bold_italic:
     family: "Hack Nerd Font Mono"
-    style: Bold Italic
+    style: Italic
+    #style: Bold Italic
 
   # 字大小
   size: 16.0
@@ -37,7 +39,12 @@ font:
   # y: 文字行高 x: 文字间距
   offset:
     x: 0
-    y: 1
+    y: 2
+
+# 光标样式
+cursor:
+  blinking: Off
+  unfocused_hollow: true
 
 # 选中
 # selection:
@@ -64,32 +71,31 @@ key_bindings:
   - { key: N, mods: Alt, chars: "\en" }
   # alt + n
 
-# 颜色主题
-theme: Dracula
+# 颜色主题 #23241f
+theme: Monokai-Sublime
 colors:
-  # Default colors
+  name: Monokai-Sublime
   primary:
-    background: '#282a36'
-    foreground: '#f8f8f2'
-
-  # Normal colors
+    background: "#23241f"
+    foreground: "#f8f8f2"
+  cursor:
+    text: "#f5f5f5"
+    cursor: "#4f7beb"
   normal:
-    black: '#000000'
-    red: '#ff5555'
-    green: '#50fa7b'
-    yellow: '#f1fa8c'
-    blue: '#caa9fa'
-    magenta: '#ff79c6'
-    cyan: '#8be9fd'
-    white: '#bfbfbf'
-
-  # Bright colors
+    black: "#272822"
+    red: "#f92672"
+    green: "#a6e22e"
+    yellow: "#f4bf75"
+    blue: "#66d9ef"
+    magenta: "#ae81ff"
+    cyan: "#a1efe4"
+    white: "#f0f0f0"
   bright:
-    black: '#575b70'
-    red: '#ff6e67'
-    green: '#5af78e'
-    yellow: '#f4f99d'
-    blue: '#caa9fa'
-    magenta: '#ff92d0'
-    cyan: '#9aedfe'
-    white: '#e6e6e6'
+    black: "#75715e"
+    red: "#f92672"
+    green: "#a6e22e"
+    yellow: "#f4bf75"
+    blue: "#66d9ef"
+    magenta: "#ae81ff"
+    cyan: "#a1efe4"
+    white: "#f9f8f5"

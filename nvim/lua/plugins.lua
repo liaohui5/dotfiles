@@ -37,7 +37,27 @@ return require("packer").startup({
     use({ "navarasu/onedark.nvim" })
 
     -- 区域选择增强
-    use({ "terryma/vim-expand-region" })
+    -- use({ "terryma/vim-expand-region" })
+    -- use({
+    --   "nvim-treesitter/nvim-treesitter-textobjects",
+    --   requires = "nvim-treesitter/nvim-treesitter"
+    -- })
+    use({
+      "RRethy/nvim-treesitter-textsubjects",
+      requires = "nvim-treesitter/nvim-treesitter"
+    })
+
+    -- 不同对的括号不同颜色显示
+    use({
+      "p00f/nvim-ts-rainbow",
+      requires = "nvim-treesitter/nvim-treesitter"
+    })
+
+    -- 标签自动闭合
+    use({
+      "windwp/nvim-ts-autotag",
+      requires = "nvim-treesitter/nvim-treesitter"
+    })
 
     -- 文件管理插件 ranger 集成
     use({ 'kevinhwang91/rnvimr' })
@@ -64,10 +84,6 @@ return require("packer").startup({
     -- 代码对齐插件, 类似 vim-easy-align
     use({ "Vonr/align.nvim" })
 
-    -- 书签管理
-    use({ "MattesGroeger/vim-bookmarks" })
-    use({ "tom-anders/telescope-vim-bookmarks.nvim" })
-
     -- 切换命令行
     use({ "akinsho/toggleterm.nvim", tag = "v2.*" })
 
@@ -90,7 +106,15 @@ return require("packer").startup({
       requires = "nvim-lua/plenary.nvim",
     })
 
+    -- 书签管理
+    use({ "MattesGroeger/vim-bookmarks" })
+    use({ "tom-anders/telescope-vim-bookmarks.nvim" })
+
     -- 顶部 buffer 栏
+    -- use({
+    --   "romgrk/barbar.nvim",
+    --   requires = "kyazdani42/nvim-web-devicons",
+    -- })
     use({
       "akinsho/bufferline.nvim",
       tag = "v2.*",
