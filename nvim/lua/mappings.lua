@@ -79,7 +79,7 @@ function tnoremap(keys, commands)
 end
 
 -- 退出编辑器
-nnoremap("<C-q>", ":quitall!<CR>")
+nnoremap("<C-q>q", ":quitall!<CR>")
 
 -- 取消高亮
 nnoremap("-", ":nohl<CR>")

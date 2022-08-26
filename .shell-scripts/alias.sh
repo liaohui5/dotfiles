@@ -18,6 +18,9 @@ alias vi='nvim'
 alias vim='nvim'
 alias mvim='nvim'
 
+# tmux
+alias tnew='tmux new -s'
+
 # zellij: https://github.com/zellij-org/zellij
 alias zj='zellij'
 # auto start zellij on bash loaded

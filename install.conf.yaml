@@ -8,14 +8,17 @@
 - link:
     ~/.config/alacritty: alacritty
     ~/.config/nvim: nvim
-    ~/.config/kitty: kitty 
+    ~/.config/kitty: kitty
     ~/.config/ranger: ranger
+    ~/.config/vifm: vifm
     ~/.config/zellij: zellij
     ~/.gitconfig: .gitconfig
     ~/.zprofile: .zprofile
     ~/.zshrc: .zshrc
     ~/.bashrc: .bashrc
     ~/.shell-scripts: .shell-scripts
+    ~/.tmux.conf: .tmux/.tmux.conf
+    ~/.tmux.conf.local: .tmux/.tmux.conf.local
     ~/Library/Application Support/Code/User/settings.json: vscode/settings.json
     ~/Library/Application Support/Code/User/keybindings.json: vscode/keybindings.json
     ~/Library/Application Support/Code/User/snippets: vscode/snippets
