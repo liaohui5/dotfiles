@@ -5,6 +5,12 @@
     "command": "workbench.action.quickOpen"
   },
   {
+    // 切换 命令行
+    "key": "ctrl+x",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
+  },
+  {
     // 切换 vim 插件禁用状态
     "key": "ctrl+alt+0",
     "command": "toggleVim"

@@ -79,7 +79,7 @@ function tnoremap(keys, commands)
 end
 
 -- 退出编辑器
-nnoremap("<C-q>q", ":quitall!<CR>")
+nnoremap("<C-q>", ":quitall!<CR>")
 
 -- 取消高亮
 nnoremap("-", ":nohl<CR>")
@@ -100,8 +100,8 @@ vnoremap("$", "$h")
 -- c/s/x 删除而不是剪切
 -- nnoremap("c", '"_c')
 -- xnoremap("c", '"_c')
-nnoremap("C", '"_C')
-xnoremap("C", '"_C')
+-- nnoremap("C", '"_C')
+-- xnoremap("C", '"_C')
 nnoremap("cc", '"_S')
 nnoremap("s", '"_s')
 xnoremap("s", '"_s')

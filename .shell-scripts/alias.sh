@@ -26,6 +26,9 @@ alias zj='zellij'
 # auto start zellij on bash loaded
 # eval "$(zellij setup --generate-auto-start bash)"
 
+# vifm: https://github.com/vifm/vifm
+alias vifm='vifm . ~/Desktop/codes'
+
 # ranger: https://github.com/ranger/ranger
 alias ra='ranger'
 
