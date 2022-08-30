@@ -23,6 +23,8 @@ alias tnew='tmux new -s'
 
 # zellij: https://github.com/zellij-org/zellij
 alias zj='zellij'
+alias zjws='zellij --layout=/Users/liaohui5/.config/zellij/layouts/workspace.yaml'
+
 # auto start zellij on bash loaded
 # eval "$(zellij setup --generate-auto-start bash)"
 

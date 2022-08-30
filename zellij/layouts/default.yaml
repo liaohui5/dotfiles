@@ -1,36 +1,20 @@
 ---
-session:
-  name: "ws"
-  attach: true
-
 template:
   direction: Horizontal
   parts:
-    - direction: Vertical # tabs bar
+    - direction: Vertical  # part 1
       borderless: true
       split_size:
         Fixed: 1
       run:
         plugin:
           location: "zellij:tab-bar"
-    - direction: Vertical # command lines
+    - direction: Vertical # part 2
       body: true
-    - direction: Vertical # status bar
+    - direction: Vertical # part 3
       borderless: true
       split_size:
         Fixed: 2
       run:
         plugin:
           location: "zellij:status-bar"
-
-tabs:
-  - name: "runner"
-    direction: Horizontal
-    parts:
-      - direction: Vertical
-        body: true
-  - name: "nvim"
-    direction: Horizontal
-    parts:
-      - direction: Vertical
-        body: true
