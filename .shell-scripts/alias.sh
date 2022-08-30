@@ -19,7 +19,9 @@ alias vim='nvim'
 alias mvim='nvim'
 
 # tmux
-alias tnew='tmux new -s'
+alias tmxn='tmux new -s'
+alias tmxa='tmux attach'
+alias tmxd='tmux detach'
 
 # zellij: https://github.com/zellij-org/zellij
 alias zj='zellij'
