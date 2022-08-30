@@ -28,6 +28,283 @@ local wk = require("which-key");
 local keybindings = {}
 
 --------------------------------------
+-- 内置功能绑定到快捷键菜单
+--------------------------------------
+wk.register({
+  -- buffers
+  ["<leader>b"]  = {
+    name = "+Buffer",
+  },
+  ["<leader>b1"] = {
+    "<cmd>bfirst",
+    "first Buffer"
+  },
+  ["<leader>b0"] = {
+    "<cmd>blast",
+    "last Buffer"
+  },
+  ["<leader>bb"] = {
+    "<cmd>buffers",
+    "show all buffers"
+  },
+  ["<leader>bs"] = {
+    "<cmd>buffers",
+    "search buffers"
+  },
+  ["<leader>bd"] = {
+    "<cmd>bprevious|bdelete #<CR>",
+    "close current buffer"
+  },
+  ["<leader>bl"] = {
+    "<cmd>vsplit<CR>",
+    "move buffer to right"
+  },
+  ["<leader>bj"] = {
+    "<cmd>vsplit<CR>",
+    "move buffer to bottom"
+  },
+  ["<leader>bn"] = {
+    "<cmd>bnext<CR>", -- H
+    "next buffer"
+  },
+  ["<leader>bp"] = {
+    "<cmd>bprevious<CR>", -- L
+    "previous buffer"
+  },
+  ["<leader>bD"] = {
+    "<cmd>%bd|e#|bd#<cr>|'\"",
+    "close other buffers"
+  },
+  ["<leader>bY"] = {
+    '<cmd>%y "',
+    "copy buffer to clipboard"
+  },
+  ["<leader>bP"] = {
+    function ()
+      vim.cmd[[
+        :%delete _
+        :put+
+      ]]
+    end,
+    "paste clipboard to buffer"
+  },
+
+  -- comments/code_action
+  ["<leader>c"] = {
+    name = "+Comment/CodeAction",
+  },
+
+  -- debugger
+  ["<leader>d"] = {
+    name = "+Debugger",
+  },
+
+  -- errors
+  ["<leader>e"] = {
+    name = "+Error",
+  },
+
+  -- find/file
+  ["<leader>f"] = {
+    name = "+File/Find",
+    R = {
+      "<cmd>RnvimrToggle<CR>",
+      "open with ranger(C-n)[rnvimr]"
+    },
+    o = {
+      "<cmd>!open .<CR>",
+      "open file with system explorer"
+    },
+    L = {
+      "<cmd>!open .<CR>",
+      "open file with system explorer"
+    },
+    s = {
+      "<cmd>write<CR>",
+      "save current buffer"
+    }
+  },
+
+  -- git
+  ["<leader>g"] = {
+    name = "+Git",
+    i = {
+      "<cmd>!git init .<CR>",
+      "git init",
+    },
+  },
+
+  -- helps
+  ["<leader>h"] = {
+    name = "+Help",
+    d = {
+      "<cmd>!open https://neovim.io/doc<CR>",
+      "open neovim documentation"
+    },
+    D = {
+      "<cmd>!open https://github.com/folke/which-key.nvim<CR>",
+      "open which-key documentation"
+    },
+    i = {
+      "<cmd>!open https://github.com/neovim/neovim/issues<CR>",
+      "report neovim issue"
+    },
+  },
+
+  -- insert
+  ["<leader>i"] = {
+    name = "+Insert",
+    i = {
+      "Insert Image URL"
+    },
+  },
+
+  -- jump/join/split
+  ["<leader>j"] = {
+    name = "+Jump/join/split",
+  },
+
+  -- jump/join/split
+  ["<leader>l"] = {
+    name = "+List",
+    l = {
+      "<cmd>buffers<CR>",
+      "show all buffers",
+    },
+  },
+
+  -- open
+  ["<leader>o"] = {
+    name = "+Open",
+    v = {
+      "<cmd>!open https://vim.rtorr.com<CR>",
+      "open vim-cheatsheet"
+    },
+    b = {
+      "<cmd>call OpenFileWithGoogleChrome()<CR>",
+      "open in browser",
+    },
+    u = {
+      "<cmd>call OpenCurrentLineURL()<CR>",
+      "open url in browser",
+    },
+  },
+
+  -- project
+  ["<leader>p"] = {
+    name = "+Project",
+  },
+
+  -- quit
+  ["<leader>q"] = {
+    name = "+Quit",
+    q = {
+      "<cmd>quitall!<CR>",
+      "quit all",
+    },
+  },
+
+  -- Recent/Replace
+  ["<leader>r"] = {
+    name = "+Recent/Replace",
+  },
+
+  -- search/symbol
+  ["<leader>s"] = {
+    name = "+Search/Symbol",
+    s = {
+      "<cmd>write<CR>",
+      "save current buffer",
+    },
+    h = {
+      "Highlight world(gd)"
+    },
+  },
+
+  -- window
+  ["<leader>w"] = {
+    name = "+Window",
+    S = {
+      "<cmd>split<CR>",
+      "split window to bottom",
+    },
+    V = {
+      "<cmd>vsplit<CR>",
+      "split window to right",
+    },
+    -- TODO: close other window
+    O = {
+      "close other windows"
+    },
+  },
+
+  -- text
+  ["<leader>x"] = {
+    name = "+Text",
+    o = {
+      "<cmd>call OpenCurrentLineURL()<CR>",
+      "open url in browser",
+    },
+  },
+
+  -- yank/copy
+  ["<leader>y"] = {
+    name = "+Yank/Copy",
+    n = {
+      "Copy current file name"
+    },
+    p = {
+      "Copy current file absolute path "
+    },
+    P = {
+      "Copy current file relative path"
+    },
+  },
+
+  -- UI toggle
+  ["<leader>T"] = {
+    name = "+UI toggle"
+  },
+
+  -- Bookmarks
+  ["<leader>B"] = {
+    name = "+Bookmarks",
+  },
+});
+
+wk.register({
+  ["<leader>c"] = {
+    name = "+Comment",
+  },
+  ["<leader>a"] = {
+    name = "+Align",
+  },
+  ["<leader>j"] = {
+    name = "+Jump/join/split",
+  },
+  ["<leader>r"] = {
+    name = "+Replace",
+  },
+  ["<leader>s"] = {
+    name = "+Search/Symbol",
+    h = {
+      "Highlight world(gd)"
+    },
+  },
+  ["<leader>x"] = {
+    name = "+Text",
+    K = {
+      "<cmd>move '>+1<CR>gv-gv",
+      "move line up",
+    },
+    J = {
+      "<cmd>move '<-2<CR>gv-gv",
+      "move line down",
+    },
+  },
+}, { mode = "v" })
+
+--------------------------------------
 -- nvim-treesitter 插件快捷键
 --------------------------------------
 keybindings.treesitterKeys = function ()

@@ -10,7 +10,8 @@
 
 ## 关于代码提示和补全
 
-因为lsp 老是报错, 经常一更新, 就报错, 不能用了, 所以我就改用 coc 来做代码补全了
+我之前用的是 [coc.nvim](https://github.com/neoclide/coc.nvim), 但是后来发现, coc.nvim 缺点也很多,
+比如无法使用 lsp 提供的一些补全, 只能自定义 snippets, 或者安装别人写好的 snippets
 
 ## 安装
 
@@ -24,12 +25,17 @@ brew install neovim
 
 ```bash
 git clone https://github.com/liaohui5/nvim  ~/.config/nvim
+# 注: 直接打开可能报错 xxx not found , 请按照以下步骤操作:
+# 1. 安装插件 PackerInstall, 建议开梯子, 否则特别慢(可能会有失败的)
+# 2. 退出(:qa!)重启, 此时会自动安装 lsp 和 dap 
+# 3. 等待安装完成
 ```
 
 ### 安装 [packer.nvim](https://github.com/wbthomason/packer.nvim)
 
 ```bash
-nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+ ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 ```
 
 ### 安装插件(建议开梯子)
