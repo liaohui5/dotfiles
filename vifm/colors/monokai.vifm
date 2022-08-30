@@ -13,8 +13,8 @@ highlight  Directory   cterm=bold               ctermfg=12       ctermbg=default
 highlight  ErrorMsg    cterm=none               ctermfg=red      ctermbg=233
 highlight  Executable  cterm=bold               ctermfg=green    ctermbg=default
 highlight  Fifo        cterm=bold               ctermfg=cyan     ctermbg=default
-highlight  Link        cterm=bold               ctermfg=green    ctermbg=default
-highlight  OtherLine   cterm=bold               ctermfg=default  ctermbg=233
+highlight  Link        cterm=bold               ctermfg=Green    ctermbg=default
+highlight  OtherLine   cterm=bold               ctermfg=default  ctermbg=8
 highlight  Selected    cterm=bold               ctermfg=Green    ctermbg=default
 highlight  Socket      cterm=bold               ctermfg=magenta  ctermbg=default
 highlight  StatusLine  cterm=none               ctermfg=white    ctermbg=default
