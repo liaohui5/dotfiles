@@ -304,11 +304,6 @@ _G.packer_plugins = {
     path = "/Users/liaohui5/.local/share/nvim/site/pack/packer/start/vim-bookmarks",
     url = "https://github.com/MattesGroeger/vim-bookmarks"
   },
-  ["vim-repeat"] = {
-    loaded = true,
-    path = "/Users/liaohui5/.local/share/nvim/site/pack/packer/start/vim-repeat",
-    url = "https://github.com/tpope/vim-repeat"
-  },
   ["vim-surround"] = {
     loaded = true,
     path = "/Users/liaohui5/.local/share/nvim/site/pack/packer/start/vim-surround",

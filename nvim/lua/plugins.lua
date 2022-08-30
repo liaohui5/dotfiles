@@ -29,15 +29,7 @@ return require("packer").startup({
     -- 更好的编程语言语法高亮支持
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 
-    -- 文件图标插
-    use({ "kyazdani42/nvim-web-devicons" })
-
-    -- 颜色主题
-    use({ "tanvirtin/monokai.nvim" })
-    use({ "navarasu/onedark.nvim" })
-
     -- 区域选择增强
-    -- use({ "terryma/vim-expand-region" })
     -- use({
     --   "nvim-treesitter/nvim-treesitter-textobjects",
     --   requires = "nvim-treesitter/nvim-treesitter"
@@ -59,6 +51,13 @@ return require("packer").startup({
       requires = "nvim-treesitter/nvim-treesitter"
     })
 
+    -- 文件图标插
+    use({ "kyazdani42/nvim-web-devicons" })
+
+    -- 颜色主题
+    use({ "tanvirtin/monokai.nvim" })
+    use({ "navarasu/onedark.nvim" })
+
     -- 文件管理插件 ranger 集成
     use({ 'kevinhwang91/rnvimr' })
 
@@ -70,7 +69,7 @@ return require("packer").startup({
     use({ "tpope/vim-surround" })
 
     -- repeat .重复功能增强
-    use({ "tpope/vim-repeat" })
+    -- use({ "tpope/vim-repeat" })
 
     -- 自动输入匹配的括号
     use({ "windwp/nvim-autopairs" })
@@ -102,7 +101,7 @@ return require("packer").startup({
     -- 搜索文件/buffer/bookmarks
     use({
       "nvim-telescope/telescope.nvim",
-      tag = "0.1.0",
+      tag = "nvim-0.6",
       requires = "nvim-lua/plenary.nvim",
     })
 
