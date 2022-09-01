@@ -6,9 +6,9 @@
 # 设置窗口
 window:
   decorations: "buttonless" # full | buttonless, 设置为 buttonless 就不显示标题栏
-  padding:
-    x: 0
-    y: 0
+  # padding:
+  #   x: 0
+  #   y: 0
 
 # 修改配置文件后立即生效
 live_config_reload: true
@@ -52,6 +52,7 @@ cursor:
 #   save_to_clipboard: true
 # 按键绑定
 key_bindings:
+  - { key: Q,      mods: Control,                   chars: "\x11"                   } # ctrl-q seems to be temporarily broken
   - { key: T,      mods: Alt,     mode: ~Search,    chars: "\et"                    } # alt + t
   - { key: H,      mods: Alt,     mode: ~Search,    chars: "\eh"                    } # alt + h
   - { key: J,      mods: Alt,     mode: ~Search,    chars: "\ej"                    } # alt + j

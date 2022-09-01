@@ -407,19 +407,19 @@ keybindings.alignKeys = function(align)
   wk.register({
     ["<leader>aa"] = {
       "<cmd>lua require('align').align_to_string(false,true,false)<CR>",
-      "align code by string[align]",
+      "align by string[align]",
     },
     ["<leader>aA"] = {
       "<cmd>lua require('align').align_to_char(1,true,false)<CR>",
-      "align code by char[align]",
+      "align by char[align]",
     },
     ["<leader>ap"] = {
       "<cmd>lua require('align').align_to_string(false,true,true)<CR>",
-      "align code by string(preview)[align]",
+      "align by string(preview)[align]",
     },
     ["<leader>ar"] = {
       "<cmd>lua require('align').align_to_string(true,true,true)<CR>",
-      "align code by string or pattern(preview)[align]",
+      "align by string or pattern(preview)[align]",
     },
   }, { mode = "v" })
 end
