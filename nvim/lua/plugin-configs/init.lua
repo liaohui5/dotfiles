@@ -1,7 +1,7 @@
 ------------------------------------------------------------------------
---         _                _                              __  _        
---        | |              (_)                            / _|(_)       
---  _ __  | | _   _   __ _  _  _ __     ___  ___   _ __  | |_  _   __ _ 
+--         _                _                              __  _
+--        | |              (_)                            / _|(_)
+--  _ __  | | _   _   __ _  _  _ __     ___  ___   _ __  | |_  _   __ _
 -- | '_ \ | || | | | / _` || || '_ \   / __|/ _ \ | '_ \ |  _|| | / _` |
 -- | |_) || || |_| || (_| || || | | | | (__| (_) || | | || |  | || (_| |
 -- | .__/ |_| \__,_| \__, ||_||_| |_|  \___|\___/ |_| |_||_|  |_| \__, |
@@ -13,32 +13,34 @@
 -- 需要在 plugins.lua 中注释, 并且执行 PackerClean 卸载掉
 ------------------------------------------------------------------------
 local plugins = {
-  { require_path = "nvim-web-devicons", config_name = "nvim-web-devicons" },
-  { require_path = "monokai", config_name = "monokai" },
-  { require_path = "onedark", config_name = "onedark" },
-  { require_path = "which-key", config_name = "which-key" },
-  { require_path = "align", config_name = "align" },
-  { require_path = "nvim-autopairs", config_name = "nvim-autopairs" },
-  { require_path = "nvim-ts-autotag", config_name = "nvim-ts-autotag" },
-  { require_path = "kommentary.config", config_name = "kommentary" },
-  { require_path = "editorconfig", config_name = "editorconfig" },
-  { require_path = "formatter", config_name = "formatter" },
-  { require_path = "gitsigns", config_name = "gitsigns" },
-  { require_path = "hop", config_name = "hop" },
-  { require_path = "lualine", config_name = "lualine" },
-  { require_path = "spectre", config_name = "spectre" },
-  { require_path = "nvim-tree", config_name = "nvim-tree" },
-  { require_path = "indent_blankline", config_name = "indent_blankline" },
-  { require_path = "bufferline", config_name = "bufferline" },
-  -- { require_path = "bufferline", config_name = "barbar" },
-  { require_path = "session_manager", config_name = "session_manager" },
-  { require_path = "toggleterm", config_name = "toggleterm" },
-  { require_path = "nvim-treesitter.configs", config_name = "nvim-treesitter" },
-  { require_path = "telescope", config_name = "telescope" },
-  { require_path = nil, config_name = "rnvimr" },
-  { require_path = nil, config_name = "vim-bookmarks" },
-  -- { require_path = "auto-save", config_name = "auto-save" },
-  -- { require_path = nil, config_name = "coc" },
+  { require_path = "nvim-web-devicons"       , config_name = "nvim-web-devicons" },
+  { require_path = "monokai"                 , config_name = "monokai" },
+  { require_path = "onedark"                 , config_name = "onedark" },
+  { require_path = "which-key"               , config_name = "which-key" },
+  { require_path = "align"                   , config_name = "align" },
+  { require_path = "nvim-autopairs"          , config_name = "nvim-autopairs" },
+  { require_path = "nvim-ts-autotag"         , config_name = "nvim-ts-autotag" },
+  { require_path = "nvim-surround"           , config_name = "nvim-surround" },
+  { require_path = "kommentary.config"       , config_name = "kommentary" },
+  { require_path = "editorconfig"            , config_name = "editorconfig" },
+  { require_path = "formatter"               , config_name = "formatter" },
+  { require_path = "gitsigns"                , config_name = "gitsigns" },
+  { require_path = "hop"                     , config_name = "hop" },
+  { require_path = "lualine"                 , config_name = "lualine" },
+  { require_path = "spectre"                 , config_name = "spectre" },
+  -- { require_path = "nvim-tree"               , config_name = "nvim-tree" },
+  { require_path = "indent_blankline"        , config_name = "indent_blankline" },
+  { require_path = "bufferline"              , config_name = "bufferline" },
+  -- { require_path = "bufferline"              , config_name = "barbar" },
+  { require_path = "session_manager"         , config_name = "session_manager" },
+  { require_path = "toggleterm"              , config_name = "toggleterm" },
+  { require_path = "nvim-treesitter.configs" , config_name = "nvim-treesitter" },
+  { require_path = "telescope"               , config_name = "telescope" },
+  -- { require_path = nil                       , config_name = "rnvimr" },
+  { require_path = nil                       , config_name = "vifm" },
+  { require_path = nil                       , config_name = "vim-bookmarks" },
+  -- { require_path = "auto-save"               , config_name = "auto-save" },
+  -- { require_path = nil                       , config_name = "coc" },
 }
 
 for _, item in pairs(plugins) do

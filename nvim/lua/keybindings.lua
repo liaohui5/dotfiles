@@ -1,28 +1,13 @@
---  .----------------.  .----------------.  .----------------.  .----------------.  .----------------.  .-----------------. .----------------.
--- | .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. |
--- | |   ______     | || |   _____      | || | _____  _____ | || |    ______    | || |     _____    | || | ____  _____  | || |    _______   | |
--- | |  |_   __ \   | || |  |_   _|     | || ||_   _||_   _|| || |  .' ___  |   | || |    |_   _|   | || ||_   \|_   _| | || |   /  ___  |  | |
--- | |    | |__) |  | || |    | |       | || |  | |    | |  | || | / .'   \_|   | || |      | |     | || |  |   \ | |   | || |  |  (__ \_|  | |
--- | |    |  ___/   | || |    | |   _   | || |  | '    ' |  | || | | |    ____  | || |      | |     | || |  | |\ \| |   | || |   '.___`-.   | |
--- | |   _| |_      | || |   _| |__/ |  | || |   \ `--' /   | || | \ `.___]  _| | || |     _| |_    | || | _| |_\   |_  | || |  |`\____) |  | |
--- | |  |_____|     | || |  |________|  | || |    `.__.'    | || |  `._____.'   | || |    |_____|   | || ||_____|\____| | || |  |_______.'  | |
--- | |              | || |              | || |              | || |              | || |              | || |              | || |              | |
--- | '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' |
---  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'
---  .----------------.  .----------------.  .----------------.  .----------------.  .----------------.  .-----------------. .----------------.
--- | .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. |
--- | | ____    ____ | || |      __      | || |   ______     | || |   ______     | || |     _____    | || | ____  _____  | || |    ______    | |
--- | ||_   \  /   _|| || |     /  \     | || |  |_   __ \   | || |  |_   __ \   | || |    |_   _|   | || ||_   \|_   _| | || |  .' ___  |   | |
--- | |  |   \/   |  | || |    / /\ \    | || |    | |__) |  | || |    | |__) |  | || |      | |     | || |  |   \ | |   | || | / .'   \_|   | |
--- | |  | |\  /| |  | || |   / ____ \   | || |    |  ___/   | || |    |  ___/   | || |      | |     | || |  | |\ \| |   | || | | |    ____  | |
--- | | _| |_\/_| |_ | || | _/ /    \ \_ | || |   _| |_      | || |   _| |_      | || |     _| |_    | || | _| |_\   |_  | || | \ `.___]  _| | |
--- | ||_____||_____|| || ||____|  |____|| || |  |_____|     | || |  |_____|     | || |    |_____|   | || ||_____|\____| | || |  `._____.'   | |
--- | |              | || |              | || |              | || |              | || |              | || |              | || |              | |
--- | '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' |
---  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'
-------------------------------------------------------------------------------
+--------------------------------------------------------
+--  _              _     _           _ _
+-- | | _____ _   _| |__ (_)_ __   __| (_)_ __   __ _ ___
+-- | |/ / _ \ | | | '_ \| | '_ \ / _` | | '_ \ / _` / __|
+-- |   <  __/ |_| | |_) | | | | | (_| | | | | | (_| \__ \
+-- |_|\_\___|\__, |_.__/|_|_| |_|\__,_|_|_| |_|\__, |___/
+--           |___/                             |___/
+--------------------------------------------------------
 --  插件的快捷键配置
-------------------------------------------------------------------------------
+--------------------------------------------------------
 ---@diagnostic disable: param-type-mismatch
 local wk = require("which-key");
 local keybindings = {}
@@ -80,8 +65,8 @@ wk.register({
     "copy buffer to clipboard"
   },
   ["<leader>bP"] = {
-    function ()
-      vim.cmd[[
+    function()
+      vim.cmd [[
         :%delete _
         :put+
       ]]
@@ -164,13 +149,13 @@ wk.register({
     name = "+Jump/join/split",
   },
 
-  -- jump/join/split
+  -- List
   ["<leader>l"] = {
     name = "+List",
-    l = {
-      "<cmd>buffers<CR>",
-      "show all buffers",
-    },
+    -- l = {
+    --   "<cmd>buffers<CR>",
+    --   "show all buffers",
+    -- },
   },
 
   -- open
@@ -304,10 +289,29 @@ wk.register({
   },
 }, { mode = "v" })
 
+
+--------------------------------------
+-- nvim-surround 快捷键
+--------------------------------------
+keybindings.nvimSurroundKeys = function ()
+  return {
+    insert          = "<C-g>s",
+    insert_line     = "<C-g>S",
+    normal          = "ys",
+    normal_cur      = "yss",
+    normal_line     = "yS",
+    normal_cur_line = "ySS",
+    visual          = "S",
+    visual_line     = "gS",
+    delete          = "ds",
+    change          = "cs",
+  }
+end
+
 --------------------------------------
 -- nvim-treesitter 插件快捷键
 --------------------------------------
-keybindings.treesitterKeys = function ()
+keybindings.treesitterKeys = function()
   return {
     keymaps = {
       init_selection    = '<CR>',
@@ -327,7 +331,7 @@ end
 --------------------------------------
 -- onedark 切换主题快捷键
 --------------------------------------
-keybindings.onedarkKeys = function ()
+keybindings.onedarkKeys = function()
   wk.register({
     ["<leader>Tc"] = {
       "<cmd>lua require('onedark').toggle()<CR>",
@@ -339,7 +343,7 @@ end
 --------------------------------------
 -- 书签管理快捷键
 --------------------------------------
-keybindings.bookmarkKeys = function ()
+keybindings.bookmarkKeys = function()
   nnoremap("<F3>", "<Plug>BookmarkToggle<CR>");
   wk.register({
     ["<leader>Bm"] = {
@@ -384,16 +388,39 @@ end
 --------------------------------------
 -- align 代码对齐快捷键
 --------------------------------------
-keybindings.alignKeys = function()
+keybindings.alignKeys = function(align)
+  local options = { noremap = true, silent = true };
+  vim.keymap.set("n", "gaw", function()
+    align.operator(align.align_to_string, {
+      is_pattern = false,
+      reverse    = true,
+      preview    = false
+    })
+  end, options);
+  vim.keymap.set("n", "gaa", function ()
+    align.operator(align.align_to_char, {
+      is_pattern = false,
+      reverse    = true,
+      preview    = false
+    })
+  end, options);
   wk.register({
     ["<leader>aa"] = {
-      "<cmd>lua require('align').align_to_string(false,true,true)<CR>",
+      "<cmd>lua require('align').align_to_string(false,true,false)<CR>",
       "align code by string[align]",
     },
     ["<leader>aA"] = {
+      "<cmd>lua require('align').align_to_char(1,true,false)<CR>",
+      "align code by char[align]",
+    },
+    ["<leader>ap"] = {
+      "<cmd>lua require('align').align_to_string(false,true,true)<CR>",
+      "align code by string(preview)[align]",
+    },
+    ["<leader>ar"] = {
       "<cmd>lua require('align').align_to_string(true,true,true)<CR>",
-      "align code by pattern[align]",
-    }
+      "align code by string or pattern(preview)[align]",
+    },
   }, { mode = "v" })
 end
 
@@ -402,6 +429,10 @@ end
 --------------------------------------
 keybindings.bufferlineKeys = function()
   wk.register({
+    ["<leader>ll"] = {
+      "<cmd>BufferLinePick<CR>",
+      "show all buffers[bufferline]",
+    },
     ["<leader>bb"] = {
       "<cmd>BufferLinePick<CR>",
       "show all buffers[bufferline]",
@@ -500,12 +531,14 @@ end
 -- hop 快速移动快捷键
 --------------------------------------
 keybindings.hopKeys = function()
+  -- 搜索字符
+  nnoremap("s", "<cmd>HopChar1<CR>");
+
   -- 当前行内搜索字符: f向后搜索, F向前
-  nnoremap("f", "<cmd>lua require'hop'.hint_char1({direction=require'hop.hint'.HintDirection.AFTER_CURSOR,current_line_only=true})<CR>")
-  nnoremap("F", "<cmd>lua require'hop'.hint_char1({direction=require'hop.hint'.HintDirection.BEFORE_CURSOR,current_line_only=true})<CR>")
+  nnoremap("f", "<cmd>HopChar1CurrentLineAC<CR>");
+  nnoremap("F", "<cmd>HopChar1CurrentLineBC<CR>");
 
   -- 在当前文件中搜索单词
-  -- nmap("s", "<cmd>HopChar1<CR>")
   wk.register({
     ["<leader>jj"] = {
       "<cmd>HopChar1<CR>",
@@ -683,6 +716,19 @@ keybindings.spectreKeys = function()
 end
 
 --------------------------------------
+-- vifm 终端管理文件器(功能和rnvimr一样)
+--------------------------------------
+keybindings.vifmKeys = function()
+  nnoremap("<C-t>", "<cmd>Vifm<CR>");
+  wk.register({
+    ["<leader>oV"] = {
+      "<cmd>Vifm<CR>",
+      "open vifm[vifm]"
+    }
+  });
+end
+
+--------------------------------------
 -- nvimtree 侧边栏目录树快捷键
 --------------------------------------
 keybindings.nvimtreeKeys = function()
@@ -767,7 +813,7 @@ keybindings.sessionManagerKeys = function()
       "save sessions[session-manager]",
     },
     ["<leader>qs"] = {
-      function ()
+      function()
         vim.cmd [[
           :SessionManager save_current_session
           :quitall!
@@ -831,7 +877,7 @@ keybindings.telescopeKeys = function()
   })
 
   -- TODO: search string in project with seclection
-   wk.register({
+  wk.register({
     ["<leader>sP"] = {
       "<cmd>Telescope live_grep prompt_prefix=[string]<CR>",
       "search string in project with seclection[telescope]",
@@ -851,10 +897,10 @@ keybindings.telescopeKeys = function()
 end
 
 --------------------------------------
--- alt(meta) + t: 打开/关闭命令行快捷键
+-- ctrl + x : 打开/关闭命令行快捷键
 --------------------------------------
 keybindings.toggletermKeys = function()
-  return [[<C-x>]] -- 注意是一个字符串
+  return "<C-x>"; -- toggle
 end
 
 --------------------------------------
@@ -1002,10 +1048,10 @@ keybindings.lspsagaKeys = function()
       "<cmd>Lspsaga rename<CR>",
       "edit symbol name[lsp]"
     },
-  }, {mode = "v"})
+  }, { mode = "v" })
 
   return {
-    move_in_saga = {
+    move_in_saga       = {
       prev = '<C-k>', -- k 选中上一项
       next = '<C-j>' -- j 选中下一项
     },
@@ -1018,12 +1064,12 @@ keybindings.lspsagaKeys = function()
       scroll_down = "<C-u>", -- 向上滚动
       scroll_up   = "<C-d>", -- 向下滚动
     },
-    code_action_keys = {
+    code_action_keys   = {
       quit = "<ESC>", -- 退出修复
       exec = "<CR>", -- 执行修复
     },
     rename_action_quit = "<ESC>", -- 退出重命名
-    outline_enter_key  = "o",     -- 进入 symbol 对应的文件位置
+    outline_enter_key  = "o", -- 进入 symbol 对应的文件位置
   }
 end
 

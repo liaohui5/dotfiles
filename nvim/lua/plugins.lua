@@ -58,18 +58,17 @@ return require("packer").startup({
     use({ "tanvirtin/monokai.nvim" })
     use({ "navarasu/onedark.nvim" })
 
-    -- 文件管理插件 ranger 集成
-    use({ 'kevinhwang91/rnvimr' })
+    -- 文件管理插件 ranger/vifm 集成
+    -- use({ "kevinhwang91/rnvimr" })
+    use({ "vifm/vifm.vim" })
 
     -- 自动读取/自动保存文件
     use({ "djoshea/vim-autoread" })
     -- use({ "Pocco81/auto-save.nvim" })
 
-    -- 添加/删除/修改字符两边字符
-    use({ "tpope/vim-surround" })
-
-    -- repeat .重复功能增强
-    -- use({ "tpope/vim-repeat" })
+    -- 添加/删除/修改字符两边字,两个功能一样,任意一个即可
+    -- use({ "tpope/vim-surround" })
+    use({ "kylechui/nvim-surround", tag = "*" })
 
     -- 自动输入匹配的括号
     use({ "windwp/nvim-autopairs" })
@@ -130,11 +129,11 @@ return require("packer").startup({
     })
 
     -- 侧边栏文件目录树
-    use({
-      "kyazdani42/nvim-tree.lua",
-      tag = "nightly",
-      requires = "kyazdani42/nvim-web-devicons",
-    })
+    -- use({
+    --   "kyazdani42/nvim-tree.lua",
+    --   tag = "nightly",
+    --   requires = "kyazdani42/nvim-web-devicons",
+    -- })
 
     -- git 状态显示
     use({

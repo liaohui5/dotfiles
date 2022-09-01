@@ -1,6 +1,6 @@
 [user]
-	name = liaohui5 # 用户名
-	email = liaohui5@foxmail.com # 用户邮箱
+	name = liaohui5
+	email = liaohui5@foxmail.com
 [core]
 	excludesfile = /Users/liaohui5/.gitignore_global
 [difftool "sourcetree"]

@@ -16,7 +16,7 @@ return {
         show_close_icon          = false,
         show_tab_indicators      = false,
         persist_buffer_sort      = true,
-        separator_style          = "slant", -- "slant" | "thick" | "padded_slant" | "thick" | "thin"
+        separator_style          = "slant", -- "slant" | "thick" | "padded_slant" | "thin"
         enforce_regular_tabs     = false,
         always_show_bufferline   = true,
         sort_by                  = "insert_at_end", -- insert_after_current |insert_at_end | id | extension

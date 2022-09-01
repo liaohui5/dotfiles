@@ -86,30 +86,13 @@ nnoremap("-", ":nohl<CR>")
 -- p: 仅粘贴, 而不是粘贴后复制
 vnoremap("p", '"_c<C-r><C-o>+<Esc>')
 
--- 滚动并且保持当前行居中屏幕
-nnoremap("<C-u>", "10kzz")
-nnoremap("<C-d>", "10jzz")
-nnoremap("<C-f>", "<C-f>zz")
-nnoremap("<C-b>", "<C-b>zz")
-
 -- 修改默认的 $
 nnoremap("$", "$h")
 vnoremap("$", "$h")
 
--- c/s/x 删除而不是剪切
--- nnoremap("c", '"_c')
--- xnoremap("c", '"_c')
--- nnoremap("C", '"_C')
--- xnoremap("C", '"_C')
-nnoremap("cc", '"_S')
-nnoremap("s", '"_s')
-xnoremap("s", '"_s')
-nnoremap("S", '"_S')
-xnoremap("S", '"_S')
+-- x 删除而不是剪切
 nnoremap("x", '"_x')
 xnoremap("x", '"_x')
-nnoremap("X", '"_X')
-xnoremap("X", '"_X')
 
 -- 选中/删除当前单词
 nnoremap("vw", "viw")
@@ -124,17 +107,22 @@ nnoremap("<S-l>", ":bnext<CR>")
 vnoremap("<", "<gv")
 vnoremap(">", ">gv")
 
--- 上下移动选中行
-xnoremap("<C-j>", ":move '>+1<CR>gv-gv")
-xnoremap("<C-k>", ":move '<-2<CR>gv-gv")
-
--- 跳转当前窗口大小
+-- 在分屏时调整当前窗口大小
 nnoremap("<C-Right>", ":vertical resize-1<CR>")
 nnoremap("<C-Left>", ":vertical resize+1<CR>")
 nnoremap("<C-Down>", ":resize-1<CR>")
 nnoremap("<C-Up>", ":resize+1 <CR>")
 
+-- 滚动并且保持当前行居中屏幕
+nnoremap("<C-u>", "10kzz")
+nnoremap("<C-d>", "10jzz")
+nnoremap("<C-f>", "<C-f>zz")
+nnoremap("<C-b>", "<C-b>zz")
+
 -- 命令行左右移动/上下选中
 cmap("<C-j>", "<C-n>")
 cmap("<C-k>", "<C-p>")
 
+-- 上下移动选中行
+xnoremap("<C-j>", ":move '>+1<CR>gv-gv")
+xnoremap("<C-k>", ":move '<-2<CR>gv-gv")

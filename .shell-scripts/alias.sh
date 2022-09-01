@@ -47,3 +47,7 @@ alias codeins='/usr/local/bin/code-insiders'
 # neofetch: https://github.com/dylanaraps/neofetch
 alias nf='neofetch'
 
+# generator ascii text command: npm install -g figlet-cli
+# https://github.com/patorjk/figlet.js
+# https://github.com/patorjk/figlet-cli
+alias figlet-cli='figlet'
