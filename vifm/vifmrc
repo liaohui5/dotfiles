@@ -98,6 +98,9 @@ set statusline="  Hint: %z%= %A %10u:%-7g %15s %20d  "
 " Confirmation is required only for permanent deletion
 set confirm="permdelete"
 
+" preview content wrap settings
+set nowrap
+
 " ------------------------------------------------------------------------------
 "                                   bookmarks
 " ------------------------------------------------------------------------------
