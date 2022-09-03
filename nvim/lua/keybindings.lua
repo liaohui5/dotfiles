@@ -255,6 +255,27 @@ wk.register({
   ["<leader>B"] = {
     name = "+Bookmarks",
   },
+
+  -- Packer/Plugin
+  ["<leader>P"] = {
+    name = "+Packer/Plugin",
+    i = {
+      "<cmd>PackerInstall<CR>",
+      "install plugins"
+    },
+    s = {
+      "<cmd>PackerSync<CR>",
+      "plugins sync(upgrade)"
+    },
+    S = {
+      "<cmd>PackerStatus<CR>",
+      "show all plugins status"
+    },
+    c = {
+      "<cmd>PackerClean<CR>",
+      "plugins clean"
+    }
+  },
 });
 
 wk.register({
@@ -719,7 +740,7 @@ end
 -- vifm 终端管理文件器(功能和rnvimr一样)
 --------------------------------------
 keybindings.vifmKeys = function()
-  nnoremap("<C-t>", "<cmd>Vifm<CR>");
+  nnoremap("<C-n>", "<cmd>Vifm<CR>");
   wk.register({
     ["<leader>oV"] = {
       "<cmd>Vifm<CR>",

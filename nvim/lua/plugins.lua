@@ -63,7 +63,7 @@ return require("packer").startup({
     use({ "vifm/vifm.vim" })
 
     -- 自动读取/自动保存文件
-    use({ "djoshea/vim-autoread" })
+    use({ "chrisbra/vim-autoread" })
     -- use({ "Pocco81/auto-save.nvim" })
 
     -- 添加/删除/修改字符两边字,两个功能一样,任意一个即可
@@ -129,11 +129,11 @@ return require("packer").startup({
     })
 
     -- 侧边栏文件目录树
-    -- use({
-    --   "kyazdani42/nvim-tree.lua",
-    --   tag = "nightly",
-    --   requires = "kyazdani42/nvim-web-devicons",
-    -- })
+    use({
+      "kyazdani42/nvim-tree.lua",
+      tag = "nightly",
+      requires = "kyazdani42/nvim-web-devicons",
+    })
 
     -- git 状态显示
     use({

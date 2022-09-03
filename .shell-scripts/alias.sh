@@ -9,6 +9,9 @@ alias ..='cd ..'
 # clear
 alias c='clear'
 
+# cp
+alias cp='cp -r'
+
 # lsd: https://github.com/Peltoche/lsd
 alias ls='lsd'
 alias la='ls -al'

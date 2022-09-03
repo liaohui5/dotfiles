@@ -108,7 +108,8 @@ set nowrap
 " :mark mark /full/directory/path [filename]
 mark h ~/
 mark c ~/Desktop/codes
-mark C ~/config
+mark d ~/Desktop/codes/dotfiles
+mark C ~/.config
 mark D ~/Downloads
 
 " ------------------------------------------------------------------------------
@@ -301,7 +302,7 @@ filetype {*.ppt,*.pptx} open -a /Applications/Microsoft\ PowerPoint.app %f
 " 256-color terminal
 " fileviewer *.[ch],*.[ch]pp highlight -O xterm256 -s dante --syntax c %c
 " fileviewer Makefile,Makefile.* highlight -O xterm256 -s dante --syntax make %c
-fileviewer *.html,*.yaml,*.css,*.js,*.ts,*.jsx,*.tsx,*.vue,*.json,*.md,*.go,*.lua,*.py,*.vim,*.sh highlight -O xterm256 -s dante %c
+fileviewer *.html,*.yaml,*.css,*.less,*.scss,*.js,*.ts,*.vue,*.jsx,*.tsx,*.json,*.md,*.go,*.lua,*.py,*.vim,*.sh,*.php,*.c,*.cpp highlight -O xterm256 -s dante %c
 
 " 16-color terminal
 " fileviewer *.c,*.h highlight -O ansi -s dante %c
@@ -369,6 +370,9 @@ set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,phistory,fhistory,dir
 " Filter-out build and temporary files
 "
 " filter! /^.*\.(lo|o|d|class|py[co])$|.*~$/
+
+" 自动显示隐藏文件
+windo normal zo
 
 " ------------------------------------------------------------------------------
 "                                  keybindings

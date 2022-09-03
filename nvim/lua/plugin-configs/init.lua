@@ -28,7 +28,7 @@ local plugins = {
   { require_path = "hop"                     , config_name = "hop" },
   { require_path = "lualine"                 , config_name = "lualine" },
   { require_path = "spectre"                 , config_name = "spectre" },
-  -- { require_path = "nvim-tree"               , config_name = "nvim-tree" },
+  { require_path = "nvim-tree"               , config_name = "nvim-tree" },
   { require_path = "indent_blankline"        , config_name = "indent_blankline" },
   { require_path = "bufferline"              , config_name = "bufferline" },
   -- { require_path = "bufferline"              , config_name = "barbar" },

@@ -78,7 +78,8 @@ ZSH_THEME="gentoo"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git history history-substring-search last-working-dir zsh-autosuggestions copypath vi-mode z)
+# plugins=(git history history-substring-search last-working-dir zsh-autosuggestions copypath vi-mode z)
+plugins=(git history history-substring-search last-working-dir zsh-autosuggestions copypath z)
 
 # previous input command 
 bindkey -M vicmd 'k' history-substring-search-up
