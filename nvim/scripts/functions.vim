@@ -1,0 +1,42 @@
+"#######################################################################################
+" #####  ####   ####  #         ###### #    # #    #  ####  ##### #  ####  #    #  ####
+"   #   #    # #    # #         #      #    # ##   # #    #   #   # #    # ##   # #
+"   #   #    # #    # #         #####  #    # # #  # #        #   # #    # # #  #  ####
+"   #   #    # #    # #         #      #    # #  # # #        #   # #    # #  # #      #
+"   #   #    # #    # #         #      #    # #   ## #    #   #   # #    # #   ## #    #
+"   #    ####   ####  ######    #       ####  #    #  ####    #   #  ####  #    #  ####
+"#######################################################################################
+
+" 打开当前行的url
+function! OpenCurrentLineURL()
+  let l:uri = matchstr(getline('.'), 'https\?:\/\/\(\w\+\(:\w\+\)\?@\)\?\([A-Za-z][-_0-9A-Za-z]*\.\)\{1,}\(\w\{2,}\.\?\)\{1,}\(:[0-9]\{1,5}\)\?\S*')
+  if l:uri != ''
+    let l:uri = substitute(l:uri, '#', '\\\#', '')
+    let l:uri = substitute(l:uri, '%', '\\\%', '')
+    let l:uri = substitute(l:uri, '?', '\\\?', '')
+    let l:uri = substitute(l:uri, '&', '\\\&', '')
+    let l:cmdstr = '!open -u ' . l:uri
+    silent execute l:cmdstr
+  else
+    echo 'Not found url in current line'
+  endif
+endfunction
+
+" 在浏览器中打开当前文件
+function! OpenFileWithGoogleChrome()
+  let l:filepath = expand('%:p')
+  if l:filepath != ''
+    let l:appname  = 'Google\ Chrome.app' " Google\ Chrome.app | Firefox.app | Safari.app
+    let l:cmdstr = '!open -a '. l:appname .' --url=file://' . l:filepath
+    silent execute l:cmdstr
+  else
+    echo 'File not found'
+  endif
+endfunction
+
+" 在浏览器中打开url, 并且静默执行, 不要提示
+function! SilentOpenURL(uri)
+  let l:cmdstr = '!open --url=' . a:uri
+  silent execute l:cmdstr
+endfunction
+

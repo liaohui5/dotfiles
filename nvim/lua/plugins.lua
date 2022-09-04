@@ -147,6 +147,12 @@ return require("packer").startup({
       requires = "nvim-lua/plenary.nvim",
     })
 
+    -- preview markdown
+    use({
+      "iamcco/markdown-preview.nvim",
+      run = function() vim.fn["mkdp#util#install"]() end
+    })
+
     -- coc 代码提示, 自动完成, Node写的, 速度比Lua写的的LSP要慢
     -- 但是稳定, 所以放到这里方便切换
     -- 如果网速较慢, 建议开个梯子, 否则特别容易失败

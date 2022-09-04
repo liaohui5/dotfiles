@@ -123,15 +123,15 @@ wk.register({
   ["<leader>h"] = {
     name = "+Help",
     d = {
-      "<cmd>!open https://neovim.io/doc<CR>",
+      "<cmd>call SilentOpenURL('https://neovim.io/doc')<CR>",
       "open neovim documentation"
     },
     D = {
-      "<cmd>!open https://github.com/folke/which-key.nvim<CR>",
+      "<cmd>call SilentOpenURL('https://github.com/folke/which-key.nvim')<CR>",
       "open which-key documentation"
     },
     i = {
-      "<cmd>!open https://github.com/neovim/neovim/issues<CR>",
+      "<cmd>call SilentOpenURL('https://github.com/neovim/neovim/issues')<CR>",
       "report neovim issue"
     },
   },
@@ -162,12 +162,31 @@ wk.register({
   ["<leader>o"] = {
     name = "+Open",
     v = {
-      "<cmd>!open https://vim.rtorr.com<CR>",
-      "open vim-cheatsheet"
+      name = "+VIM-links",
+      ["0"] = {
+        "<cmd>call SilentOpenURL('https://vim-adventures.com')<CR>",
+        "open vim game",
+      },
+      ["1"] = {
+        "<cmd>call SilentOpenURL('https://vim.rtorr.com')<CR>",
+        "open vim tips"
+      },
+      ["2"] = {
+        "<cmd>call SilentOpenURL('https://github.com/chloneda/vim-cheatsheet')<CR>",
+        "open vim cheatsheet"
+      },
+      ["3"] = {
+        "<cmd>call SilentOpenURL('https://www.w3cschool.cn/vim/4xnd1hsw.html')<CR>",
+        "open w3cschool study vimscript"
+      },
+      ["4"] = {
+        "https://yianwillis.github.io/vimcdoc/doc/help.html",
+        "open vim help  docs chinese"
+      }
     },
     b = {
       "<cmd>call OpenFileWithGoogleChrome()<CR>",
-      "open in browser",
+      "open in google chrome",
     },
     u = {
       "<cmd>call OpenCurrentLineURL()<CR>",
@@ -276,6 +295,11 @@ wk.register({
       "plugins clean"
     }
   },
+
+  -- Markdown
+  ["<leader>M"] = {
+    name = "+Markdown",
+  }
 });
 
 wk.register({
@@ -310,6 +334,23 @@ wk.register({
   },
 }, { mode = "v" })
 
+
+
+--------------------------------------
+-- 预览markdown快捷键
+--------------------------------------
+keybindings.markdownPreviewKeys = function ()
+  wk.register({
+    ["<leader>Ms"] = {
+      "<cmd>MarkdownPreview<CR>",
+      "start preview server[markdown-preview]",
+    },
+    ["<leader>MS"] = {
+      "<cmd>MarkdownPreviewStop<CR>",
+      "stop preview server[markdown-preview]",
+    }
+  })
+end
 
 --------------------------------------
 -- nvim-surround 快捷键

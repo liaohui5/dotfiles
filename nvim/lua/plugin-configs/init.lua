@@ -39,6 +39,7 @@ local plugins = {
   -- { require_path = nil                       , config_name = "rnvimr" },
   { require_path = nil                       , config_name = "vifm" },
   { require_path = nil                       , config_name = "vim-bookmarks" },
+  { require_path = nil                       , config_name = "markdown-preview" },
   -- { require_path = "auto-save"               , config_name = "auto-save" },
   -- { require_path = nil                       , config_name = "coc" },
 }
