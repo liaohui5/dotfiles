@@ -9,12 +9,21 @@
 -- | |              | || |              | || |              | || |              | || |              | || |              | || |              | |
 -- | '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' |
 --  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'
+---@diagnostic disable: missing-parameter
 -- 所有插件在这里安装
 -- 注意先安装插件管理器 Packer.nvim:
 -- nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 -- docs: https://github.com/wbthomason/packer.nvim
+local fn = vim.fn
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim';
+local compile_path = install_path .. "/plugin/packer_compiled.lua";
+local packer_bootstrap = nil;
 
-vim.cmd([[packadd packer.nvim]])
+if fn.empty(fn.glob(install_path)) > 0 then
+  packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
+end
+
+-- vim.cmd([[packadd packer.nvim]])
 return require("packer").startup({
   ---------------------------------------------------
   -- Pakcer 插件列表 & 启动插件管理器 packer
@@ -29,26 +38,29 @@ return require("packer").startup({
     -- 更好的编程语言语法高亮支持
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 
+    -- 识别文件设置filetype
+    use({ "nathom/filetype.nvim" })
+
     -- 区域选择增强
     -- use({
     --   "nvim-treesitter/nvim-treesitter-textobjects",
-    --   requires = "nvim-treesitter/nvim-treesitter"
+    --   after = "nvim-treesitter/nvim-treesitter"
     -- })
     use({
       "RRethy/nvim-treesitter-textsubjects",
-      requires = "nvim-treesitter/nvim-treesitter"
+      after = "nvim-treesitter/nvim-treesitter"
     })
 
     -- 不同对的括号不同颜色显示
     use({
       "p00f/nvim-ts-rainbow",
-      requires = "nvim-treesitter/nvim-treesitter"
+      after = "nvim-treesitter/nvim-treesitter"
     })
 
     -- 标签自动闭合
     use({
       "windwp/nvim-ts-autotag",
-      requires = "nvim-treesitter/nvim-treesitter"
+      after = "nvim-treesitter/nvim-treesitter"
     })
 
     -- 文件图标插
@@ -101,7 +113,7 @@ return require("packer").startup({
     use({
       "nvim-telescope/telescope.nvim",
       tag = "nvim-0.6",
-      requires = "nvim-lua/plenary.nvim",
+      after = "nvim-lua/plenary.nvim",
     })
 
     -- 书签管理
@@ -116,7 +128,7 @@ return require("packer").startup({
     use({
       "akinsho/bufferline.nvim",
       tag = "v2.*",
-      requires = "kyazdani42/nvim-web-devicons",
+      after = "kyazdani42/nvim-web-devicons",
     })
 
     -- 底部状态栏
@@ -126,13 +138,14 @@ return require("packer").startup({
         "kyazdani42/nvim-web-devicons",
         opt = true,
       },
+      after = "kyazdani42/nvim-web-devicons",
     })
 
     -- 侧边栏文件目录树
     use({
       "kyazdani42/nvim-tree.lua",
       tag = "nightly",
-      requires = "kyazdani42/nvim-web-devicons",
+      after = "kyazdani42/nvim-web-devicons",
     })
 
     -- git 状态显示
@@ -144,13 +157,14 @@ return require("packer").startup({
     -- session 管理, 类似 vscode 的 Project Manager 插件的功能
     use({
       "Shatur/neovim-session-manager",
-      requires = "nvim-lua/plenary.nvim",
+      after = "nvim-lua/plenary.nvim",
     })
 
     -- preview markdown
     use({
       "iamcco/markdown-preview.nvim",
-      run = function() vim.fn["mkdp#util#install"]() end
+      run = function() vim.fn["mkdp#util#install"]() end,
+      ft = { "markdown" }
     })
 
     -- coc 代码提示, 自动完成, Node写的, 速度比Lua写的的LSP要慢
@@ -184,22 +198,34 @@ return require("packer").startup({
     use({ "hrsh7th/cmp-nvim-lua" })                  -- { name = 'nvim_lua' }
     use({ "glepnir/lspsaga.nvim", branch = "main" }) -- UI 增强
     -- use({ "jose-elias-alvarez/null-ls.nvim" })       -- 多语言代码检查工具, 功能类似 ESLint
+    -- use { 'L3MON4D3/LuaSnip', requires = { 'rafamadriz/friendly-snippets' }, after = 'cmp_luasnip' }
 
     ----------------------------------------------
     -- dap 代码调试插件
     ---------------------------------------------
     use({ "mfussenegger/nvim-dap" })
     use({ "theHamsta/nvim-dap-virtual-text" })
-    use({ "rcarriga/nvim-dap-ui", requires = "mfussenegger/nvim-dap" })
-    use({ "mxsdev/nvim-dap-vscode-js", requires = "mfussenegger/nvim-dap" });
+    use({ "rcarriga/nvim-dap-ui", after = "mfussenegger/nvim-dap" })
+    use({ "mxsdev/nvim-dap-vscode-js", after = "mfussenegger/nvim-dap" });
     use({ "microsoft/vscode-js-debug", opt = true, run = "npm install --legacy-peer-deps && npm run compile" })
+
+
+    ----------------------------------------------
+    -- dap 代码调试插件
+    ---------------------------------------------
+    if packer_bootstrap then
+      require('packer').sync()
+    end
   end,
   ---------------------------------------------------
   -- Pakcer 插件配置
   ---------------------------------------------------
   config = {
+    -- 编译路径
+    compile_path = compile_path,
+
     -- 下载插件最大并发数
-    max_jobs = 16,
+    max_jobs = 32,
 
     -- 不设置超时时间, 如果网速较慢, 设置为 true, 可能插件安装失败
     clone_timeout = false,

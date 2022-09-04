@@ -33,10 +33,23 @@ autocmd("TermOpen", {
 
 -- 复制时高亮一下复制的内容
 autocmd("TextYankPost", {
-	callback = vim.highlight.on_yank,
+	callback = function ()
+    vim.highlight.on_yank();
+	end,
 	group    = InitAutoGroup,
 	pattern  = "*",
 })
+
+-- node_modules 禁止代码诊断
+autocmd("BufRead", {
+  pattern = "*/node_modules/*",
+  command = "lua vim.diagnostic.disable(0)"
+})
+autocmd("BufNewFile", {
+  pattern = "*/node_modules/*",
+  command = "lua vim.diagnostic.disable(0)"
+})
+
 
 -- 回车/用o 换行不要自动注释新的行
 -- autocmd("BufEnter", {
