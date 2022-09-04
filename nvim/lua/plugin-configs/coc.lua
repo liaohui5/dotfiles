@@ -2,10 +2,6 @@
 -- 代码提示和自动完成
 -- docs: https://github.com/neoclide/coc.nvim
 ----------------------------------------------------
-return {
-  onstart = function ()
-    -- 因为coc的配置全部用 vimscript 的, 所以, 直接加载 /coc.vim
-    vim.cmd [[runtime ./scripts/coc.vim]]
-  end
-}
+-- 因为coc的配置全部用 vimscript 的, 所以, 直接加载 /coc.vim
+vim.cmd [[runtime ./scripts/coc.vim]]
 

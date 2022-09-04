@@ -847,16 +847,19 @@ end
 -- session session管理工具快捷键
 --------------------------------------
 keybindings.sessionManagerKeys = function()
-  -- 打开session列表, 加载某个session
-  -- nnoremap("<leader>pm", "<cmd>SessionManager load_session<CR>")
-  -- nnoremap("<leader>pd", "<cmd>SessionManager delete_session<CR>")
-  -- nnoremap("<leader>ps", "<cmd>SessionManager save_current_session<CR>")
-
   -- 在退出编辑器之前 & 自动保存当前 session 状态
   wk.register({
     ["<leader>op"] = {
       "<cmd>SessionManager load_session<CR>",
       "open session manager[session-manager]",
+    },
+    ["<leader><CR>"] = {
+      "<cmd>SessionManager load_current_dir_session<CR>",
+      "Load Current Dir [session-manager]",
+    },
+    ["<leader>pr"] = {
+      "<cmd>SessionManager load_last_session<CR>",
+      "load last session[session-manager]",
     },
     ["<leader>pl"] = {
       "<cmd>SessionManager load_session<CR>",

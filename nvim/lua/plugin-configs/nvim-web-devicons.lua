@@ -1,8 +1,9 @@
 ----------------------------------------------------------------------------------
 -- 文件图标插: https://github.com/kyazdani42/nvim-web-devicons
 ----------------------------------------------------------------------------------
-return {
-  onstart = function(devicons)
-    devicons.setup({});
-  end
-}
+local ok, devicons = pcall(require, "devicons")
+if not ok then
+  vim.notify("[plugin]: devicons not found")
+end
+
+devicons.setup({})

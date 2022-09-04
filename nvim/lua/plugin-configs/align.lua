@@ -2,9 +2,9 @@
 -- 代码对齐
 -- docs: https://github.com/Vonr/align.nvim
 ----------------------------------------------------
-return {
-  onstart = function(align)
-    -- 绑定快捷键
-    require("keybindings").alignKeys(align);
-  end
-};
+local ok, align = pcall(require,"align")
+if not ok then
+  vim.notify("[plugin]: align not found")
+end
+
+require("keybindings").alignKeys(align);
