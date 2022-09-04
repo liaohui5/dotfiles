@@ -1,6 +1,7 @@
 ----------------------------------------------------
 -- 注释快捷键插件
 -- docs: https://github.com/b3nj5m1n/kommentary
+-- others: https://github.com/JoosepAlviste/nvim-ts-context-commentstring
 ----------------------------------------------------
 
 return {

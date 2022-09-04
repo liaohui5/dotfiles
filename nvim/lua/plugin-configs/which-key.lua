@@ -8,8 +8,10 @@ return {
       ignore_missing     = false,
       hidden             = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ ", "<Plug>" },
       show_help          = true,
-      triggers           = "auto", -- 自动决定哪些按键可以触发 which-key
-      -- triggers           = { "<leader>", "g", "d", "y" ,"s", "v", "\"", "'" }, -- 只有这些键可以触发 which-key
+      triggers           = "auto", -- 所有键都显示提示
+      -- 只有这些键可以触发 which-key, 修改这个设定会让一些插件的功能失效
+      -- 比如: nvim-surround, 如果没有 y 提示, yss 就会失效
+      -- triggers           = { "<leader>", "g", "d", "y" ,"s", "v", "\"", "'" },
       triggers_blacklist = {
         -- 不能触发的按键 i insert模式 v visual 模式
         i = { "j", "k" },
