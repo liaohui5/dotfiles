@@ -20,7 +20,7 @@ config.onstart = function(nvimtree)
     },
     log = { enable = false },
     git = {
-      enable = true,
+      enable = false,
       ignore = true,
       timeout = 400,
       show_on_dirs = false,

@@ -224,6 +224,11 @@ _G.packer_plugins = {
     path = "/Users/liaohui5/.local/share/nvim/site/pack/packer/start/nvim-spectre",
     url = "https://github.com/nvim-pack/nvim-spectre"
   },
+  ["nvim-surround"] = {
+    loaded = true,
+    path = "/Users/liaohui5/.local/share/nvim/site/pack/packer/start/nvim-surround",
+    url = "https://github.com/kylechui/nvim-surround"
+  },
   ["nvim-tree.lua"] = {
     loaded = true,
     path = "/Users/liaohui5/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
@@ -269,11 +274,6 @@ _G.packer_plugins = {
     path = "/Users/liaohui5/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
-  rnvimr = {
-    loaded = true,
-    path = "/Users/liaohui5/.local/share/nvim/site/pack/packer/start/rnvimr",
-    url = "https://github.com/kevinhwang91/rnvimr"
-  },
   ["schemastore.nvim"] = {
     loaded = true,
     path = "/Users/liaohui5/.local/share/nvim/site/pack/packer/start/schemastore.nvim",
@@ -294,20 +294,20 @@ _G.packer_plugins = {
     path = "/Users/liaohui5/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
     url = "https://github.com/akinsho/toggleterm.nvim"
   },
+  ["vifm.vim"] = {
+    loaded = true,
+    path = "/Users/liaohui5/.local/share/nvim/site/pack/packer/start/vifm.vim",
+    url = "https://github.com/vifm/vifm.vim"
+  },
   ["vim-autoread"] = {
     loaded = true,
     path = "/Users/liaohui5/.local/share/nvim/site/pack/packer/start/vim-autoread",
-    url = "https://github.com/djoshea/vim-autoread"
+    url = "https://github.com/chrisbra/vim-autoread"
   },
   ["vim-bookmarks"] = {
     loaded = true,
     path = "/Users/liaohui5/.local/share/nvim/site/pack/packer/start/vim-bookmarks",
     url = "https://github.com/MattesGroeger/vim-bookmarks"
-  },
-  ["vim-surround"] = {
-    loaded = true,
-    path = "/Users/liaohui5/.local/share/nvim/site/pack/packer/start/vim-surround",
-    url = "https://github.com/tpope/vim-surround"
   },
   ["vim-vsnip"] = {
     loaded = true,
