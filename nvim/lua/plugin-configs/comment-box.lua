@@ -32,4 +32,3 @@ commentBox.setup({
 });
 
 require("keybindings").commentBoxKeys();
--- vnoremap("<leader>cbb", "<cmd>CBcbox<CR>")
