@@ -162,6 +162,11 @@ return require("packer").startup({
       config = [[require("plugin-configs.indent_blankline")]],
     })
 
+    use({
+      "norcalli/nvim-colorizer.lua",
+      config = [[require("plugin-configs.colorizer")]],
+    })
+
     -- ╭──────────────────────────────────────────────────────────────────────────────╮
     -- │                                 替换增强插件                                 │
     -- ╰──────────────────────────────────────────────────────────────────────────────╯
