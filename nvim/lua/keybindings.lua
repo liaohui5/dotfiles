@@ -18,7 +18,33 @@ local keybindings = {}
 -- │                                   npm 操作                                   │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 keybindings.packageInfoKeys = function ()
-  
+  local packageInfo = loadModule("package-info", "keybindings");
+  wk.register({
+    [ "<leader>ns" ] = {  
+      packageInfo.show,
+      "show dependency versions",
+    },
+    [ "<leader>nh" ] = {  
+      packageInfo.hide,
+      "hide dependency versions",
+    },
+    [ "<leader>nu" ] = {  
+      packageInfo.update,
+      "update dependency",
+    },
+    [ "<leader>nd" ] = {  
+      packageInfo.delete,
+      "delete dependency",
+    },
+    [ "<leader>ni" ] = {  
+      packageInfo.install,
+      "install dependency",
+    },
+    [ "<leader>nc" ] = {  
+      packageInfo.change_version,
+      "Install different dependency version",
+    }
+  })
 end
 
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
