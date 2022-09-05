@@ -2,10 +2,7 @@
 -- onedark 主题颜色
 -- docs: https://github.com/navarasu/onedark.nvim
 ----------------------------------------------------
-local ok, onedark = pcall(require, "onedark")
-if not ok then
-  vim.notify("[plugin]: onedark not found")
-end
+local onedark = loadModule("onedark", "plugin-configs")
 
 onedark.setup({
   style                = 'dark',

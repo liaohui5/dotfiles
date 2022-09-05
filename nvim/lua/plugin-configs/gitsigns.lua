@@ -2,10 +2,7 @@
 -- 文件 git 状态显示
 -- docs: https://github.com/lewis6991/gitsigns.nvim
 ----------------------------------------------------
-local ok, gitsigns = pcall(require, "gitsigns")
-if not ok then
-  vim.notify("[plugin]: gitsigns not found")
-end
+local gitsigns = loadModule("gitsigns", "plugin-configs")
 
 gitsigns.setup({
   signcolumn              = true, -- Toggle with `:Gitsigns toggle_signs`

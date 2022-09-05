@@ -39,18 +39,22 @@ return require("packer").startup({
     use({
       "nvim-treesitter/nvim-treesitter",
       run = ":TSUpdate",
-      conifg = [[require("plugin-configs.nvim-treesitter")]],
+      config = [[require("plugin-configs.nvim-treesitter")]],
     })
 
-    -- 区域选择增强
-    -- use({
-    --   "nvim-treesitter/nvim-treesitter-textobjects",
-    --   requires = "nvim-treesitter/nvim-treesitter"
-    -- })
+    -- 区域选择/移动增强
     use({
-      "RRethy/nvim-treesitter-textsubjects",
+      "nvim-treesitter/nvim-treesitter-textobjects",
       requires = "nvim-treesitter/nvim-treesitter",
     })
+    -- use({
+    --   "terryma/vim-expand-region",
+    --   config = [[require("plugin-configs.vim-expand-region")]],
+    -- })
+    -- use({
+    --   "RRethy/nvim-treesitter-textsubjects",
+    --   requires = "nvim-treesitter/nvim-treesitter",
+    -- })
 
     -- 不同对的括号不同颜色显示
     use({
@@ -68,14 +72,14 @@ return require("packer").startup({
     -- 文件图标插
     use({
       "kyazdani42/nvim-web-devicons",
-      conifg = [[require("plugin-configs.nvim-web-devicons")]]
+      config = [[require("plugin-configs.nvim-web-devicons")]]
     })
 
     -- 颜色主题
-    use({
-      "marko-cerovac/material.nvim",
-      config = [[require("plugin-configs.material")]]
-    })
+    -- use({
+    --   "tanvirtin/monokai.nvim",
+    --   config = [[require("plugin-configs.monokai")]]
+    -- })
     use({
       "navarasu/onedark.nvim",
       config = [[require("plugin-configs.onedark")]]
@@ -158,6 +162,7 @@ return require("packer").startup({
     -- which-key 快捷键菜单
     use({
       "folke/which-key.nvim",
+      commit = "f11260251ad942ba1635db9bc25c2efaf75caf0a",
       config = [[require("plugin-configs.which-key")]]
     })
 
@@ -192,13 +197,17 @@ return require("packer").startup({
     })
 
     -- 底部状态栏
+    -- use({
+    --   "nvim-lualine/lualine.nvim",
+    --   requires = {
+    --     "kyazdani42/nvim-web-devicons",
+    --     opt = true,
+    --   },
+    --   config = [[require("plugin-configs.lualine")]],
+    -- })
     use({
-      "nvim-lualine/lualine.nvim",
-      requires = {
-        "kyazdani42/nvim-web-devicons",
-        opt = true,
-      },
-      config = [[require("plugin-configs.lualine")]],
+      'feline-nvim/feline.nvim',
+      config = [[require("plugin-configs.feline")]],
     })
 
     -- 侧边栏文件目录树
@@ -217,10 +226,10 @@ return require("packer").startup({
     })
 
     -- 启动页插件
-    use({
-      "glepnir/dashboard-nvim",
-      config = [[require("plugin-configs.dashboard")]],
-    })
+    -- use({
+    --   "glepnir/dashboard-nvim",
+    --   config = [[require("plugin-configs.dashboard")]],
+    -- })
 
     -- session 管理, 类似 vscode 的 Project Manager 插件的功能
     use({
@@ -237,11 +246,16 @@ return require("packer").startup({
       config = [[require("plugin-configs.markdown-preview")]],
     })
 
+    -- 合并/切分当前行
+    use({
+      "AndrewRadev/splitjoin.vim",
+      config = [[require("plugin-configs.splitjoin")]],
+    })
 
     -- 格式化代码
     use({
       "mhartington/formatter.nvim",
-      conifg = [[require("plugin-configs.formatter")]]
+      config = [[require("plugin-configs.formatter")]]
     })
 
     -- coc 代码提示, 自动完成, Node写的, 速度比Lua写的的LSP要慢
@@ -257,7 +271,7 @@ return require("packer").startup({
 
 
     ----------------------------------------------
-    -- LSP/CMP: 代码提示/ 补全配置/ 代码格式化 / UI增强
+    -- LSP/CMP: 代码提示/ 补全配置/ UI增强
     ----------------------------------------------
     use({ "williamboman/mason.nvim" })               -- LSP/DAP 服务器安装管理工具
     use({ "williamboman/mason-lspconfig.nvim" })     -- LSP/DAP 服务器安装管理工具

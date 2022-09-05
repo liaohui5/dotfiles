@@ -4,23 +4,9 @@
 -- https://github.com/neovim/nvim-lspconfig
 -- https://github.com/williamboman/mason-lspconfig.nvim
 ---------------------------------------------------------------------
-local ok1, lspconfig = pcall(require, "lspconfig")
-if not ok1 then
-	vim.notify("[lsp]: lspconfig not found")
-	return
-end
-
-local ok3, mason_lspconfig = pcall(require, "mason-lspconfig")
-if not ok3 then
-	vim.notify("[lsp]: mason-lspconfig not found")
-	return
-end
-
-local ok2, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if not ok2 then
-	vim.notify("[lsp] cmp_nvim_lsp not found!")
-	return
-end
+local lspconfig       = loadModule("lspconfig", "lsp");
+local mason_lspconfig = loadModule("mason-lspconfig", "lsp");
+local cmp_nvim_lsp    = loadModule("cmp_nvim_lsp", "lsp");
 
 return {
 	onstart = function()
@@ -43,7 +29,7 @@ return {
     })
 
 		-- server_name = 配置文件名
-		-- server_name 必须是允许的: https://github.com/williamboman/mason-lspconfig.nvim#default-configuration 
+		-- server_name 必须是允许的: https://github.com/williamboman/mason-lspconfig.nvim#default-configuration
 		-- 配置文件路径: 如 typescript 在 /lua/lsp-configs/settings/typescript.lua
 		local settings  = {
 			sumneko_lua   = "lua",

@@ -3,10 +3,8 @@
 -- docs: https://github.com/nvim-telescope/telescope.nvim
 -- plugins: https://github.com/nvim-telescope/telescope.nvim/wiki/Extensions
 -----------------------------------------------------------
-local ok, telescope = pcall(require, "telescope")
-if not ok then
-  vim.notify("[plugin]: telescope not found")
-end
+local telescope = loadModule("telescope", "plugin-configs");
+
 telescope.setup({
   defaults = {
     -- 绑定快捷键

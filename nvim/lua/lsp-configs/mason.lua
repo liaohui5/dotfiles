@@ -3,11 +3,7 @@
 -- docs:
 -- https://github.com/williamboman/mason.nvim
 ---------------------------------------------------------------------
-local ok, mason = pcall(require, "mason")
-if not ok then
-	vim.notify("[lsp] mason not found!")
-	return
-end
+local mason = loadModule("mason", "lsp");
 
 return {
 	onstart = function()

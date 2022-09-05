@@ -2,11 +2,7 @@
 -- UI 美化(代码提示|代码诊断)
 -- docs: https://github.com/glepnir/lspsaga.nvim
 ---------------------------------------------------------------------
-local status, lspsaga = pcall(require, "lspsaga")
-if not status then
-  vim.notify("[lsp]: lspsaga not found")
-  return
-end
+local lspsaga = loadModule("lspsaga", "lsp");
 
 return {
   onstart = function()

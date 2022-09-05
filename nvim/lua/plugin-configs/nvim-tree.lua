@@ -2,10 +2,7 @@
 -- 侧边栏目录树
 -- docs: https://github.com/kyazdani42/nvim-tree.lua
 ----------------------------------------------------
-local ok, nvimtree = pcall(require, "nvim-tree")
-if not ok then
-  vim.notify("[plugin]: nvim-tree not found")
-end
+local nvimtree = loadModule("nvim-tree", "plugin-configs")
 
 nvimtree.setup({
   open_on_setup = false, -- 启动时直接打开

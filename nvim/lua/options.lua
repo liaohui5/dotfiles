@@ -105,3 +105,15 @@ local default_providers = {
 for _, provider in ipairs(default_providers) do
   vim.g["loaded_" .. provider .. "_provider"] = 0;
 end
+
+-- 加载模块
+---@diagnostic disable-next-line
+function loadModule(require_path, scope)
+  local status_ok, module = pcall(require, require_path);
+  if status_ok then
+    return module;
+  else
+    vim.notify("[".. scope .."]: ".. require_path .." not found");
+    return {}
+  end
+end

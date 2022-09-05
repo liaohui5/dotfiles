@@ -2,10 +2,7 @@
 -- 书签管理
 -- docs: https://github.com/folke/which-key.nvim
 -----------------------------------------------------------
-local ok, wk = pcall(require, "which-key")
-if not ok then
-  vim.notify("[plugin]: which-key not found")
-end
+local wk = loadModule("which-key", "plugin-configs");
 
 wk.setup({
   ignore_missing     = false,

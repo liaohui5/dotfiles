@@ -3,10 +3,7 @@
 -- docs: https://github.com/b3nj5m1n/kommentary
 -- others: https://github.com/JoosepAlviste/nvim-ts-context-commentstring
 ----------------------------------------------------
-local ok, config = pcall(require, "kommentary.config")
-if not ok then
-  vim.notify("[plugin]: kommentary.config not found")
-end
+local kommentaryConfig = loadModule("kommentary.config", "plugin-configs")
 
 vim.g.kommentary_create_default_mappings = false
 
@@ -47,7 +44,7 @@ local languages = {
 };
 
 for language, item in pairs(languages) do
-  config.configure_language(language, item)
+  kommentaryConfig.configure_language(language, item)
 end
 
 require("keybindings").kommentaryKeys()

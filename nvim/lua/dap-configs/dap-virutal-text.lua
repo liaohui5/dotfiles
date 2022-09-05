@@ -2,15 +2,12 @@
 -- dap 调试插件UI扩展
 -- docs: https://github.com/theHamsta/nvim-dap-virtual-text
 -----------------------------------------------------------------
-local ok1, nvim_dap_virtual_text = pcall(require, "nvim-dap-virtual-text")
-if not ok1 then
-  vim.notify("[dap] nvim-dap-virtual-text not found!")
-  return
-end
+local dapVirtualText = loadModule("nvim-dap-virtual-text", "dap");
+
 
 return {
   onstart = function()
-    nvim_dap_virtual_text.setup({
+    dapVirtualText.setup({
       enabled                     = true,      -- enable this plugin (the default)
       enabled_commands            = true,      -- create commands DapVirtualTextEnable, DapVirtualTextDisable, DapVirtualTextToggle, (DapVirtualTextForceRefresh for refreshing when debug adapter did not notify its termination)
       highlight_changed_variables = true,      -- highlight changed values with NvimDapVirtualTextChanged, else always NvimDapVirtualText

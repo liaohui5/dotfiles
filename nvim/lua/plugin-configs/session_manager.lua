@@ -4,22 +4,16 @@
 -- 依赖插件: https://github.com/nvim-lua/plenary.nvim
 -- 同类插件: https://github.com/charludo/projectmgr.nvim
 -----------------------------------------------------------
-local ok, session_manager = pcall(require, "session_manager")
-if not ok then
-  vim.notify("[plugin]: session_manager not found")
-end
-
-local ok1, Path = pcall(require, "plenary.path")
-if not ok1 then
-  vim.notify("[plugin]: plenary.path not found")
-end
+local session_manager = loadModule("session_manager", "plugin-configs")
+local Path = loadModule("plenary.path", "plugin-configs")
 
 session_manager.setup({
   -- session 保存目录
   sessions_dir = Path:new(vim.fn.stdpath('data'), 'sessions'),
 
   -- 以什么方式加载 session: Disabled, CurrentDir, LastSession
-  autoload_mode              = require('session_manager.config').AutoloadMode.Disabled,
+  -- autoload_mode              = require('session_manager.config').AutoloadMode.Disabled,
+  autoload_mode              = require('session_manager.config').AutoloadMode.CurrentDir,
   path_replacer              = '__',
   colon_replacer             = '++',
   autosave_last_session      = true, -- 是否自动保存session

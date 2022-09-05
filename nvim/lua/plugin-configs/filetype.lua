@@ -1,5 +1,0 @@
-return {
-  onstart = function ()
-    
-  end
-}

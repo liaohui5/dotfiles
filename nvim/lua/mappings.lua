@@ -23,7 +23,7 @@ local keymap = vim.api.nvim_set_keymap
 local option = { noremap = true, silent = true }
 
 -- 将空格键设置为 <leader> 键
-keymap("", ";", "<Nop>", option)
+keymap("", " ", "<Nop>", option)
 vim.g.mapleader = " "
 vim.g.localleader = " "
 

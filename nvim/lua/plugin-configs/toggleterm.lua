@@ -2,11 +2,7 @@
 -- 切换命令行
 -- docs: https://github.com/akinsho/toggleterm.nvim
 -----------------------------------------------------------
-
-local ok, toggleterm = pcall(require, "toggleterm")
-if not ok then
-  vim.notify("[plugin]: toggleterm not found")
-end
+local toggleterm = loadModule("toggleterm", "plugin-configs");
 
 toggleterm.setup({
   -- on_open           = function() end

@@ -10,7 +10,7 @@
 --  | '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' |
 --   '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'
 -- 启动 neovim 自动执行的脚本在这里执行
-local imSelect = require("utils.im-select");
+local imSelect = loadModule("utils.im-select", "autocmd");
 local autocmd = vim.api.nvim_create_autocmd
 local InitAutoGroup = vim.api.nvim_create_augroup("InitAutoGroup", { clear = true })
 
@@ -72,18 +72,24 @@ autocmd("BufEnter", {
 -- https://github.com/daipeihust/im-select
 autocmd("InsertLeave", {
   group    = InitAutoGroup,
-  callback = imSelect.macInsertLeave,
+  callback = function ()
+    imSelect.macInsertLeave()
+  end
 });
 autocmd("InsertEnter", {
   group    = InitAutoGroup,
-  callback = imSelect.macInsertEnter,
+  callback = function ()
+    imSelect.macInsertEnter()
+  end
 });
 
 -- 保存时自动格式化
 -- autocmd("BufWritePre", {
 --   group = InitAutoGroup,
 --   pattern = { "*.lua", "*.sh" },
---   callback = vim.lsp.buf.formatting_sync,
+--   callback = function ()
+--     vim.lsp.buf.formatting_sync();
+--   end
 -- });
 
 -- nvim-tree 自动关闭

@@ -2,10 +2,7 @@
 -- 增强neovim默认的搜索替换操作
 -- docs: https://github.com/nvim-pack/nvim-spectre
 ----------------------------------------------------
-local ok, spectre = pcall(require, "spectre")
-if not ok then
-  vim.notify("[plugin]: spectre not found")
-end
+local spectre = loadModule("spectre", "plugin-configs");
 
 spectre.setup({
   color_devicons     = true,

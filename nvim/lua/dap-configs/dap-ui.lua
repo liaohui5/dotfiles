@@ -2,11 +2,7 @@
 -- dap 调试插件UI扩展
 -- docs: https://github.com/rcarriga/nvim-dap-ui
 -----------------------------------------------------------------
-local ok1, dapui = pcall(require, "dapui")
-if not ok1 then
-  vim.notify("[dap] dapui not found!")
-  return
-end
+local dapui = loadModule("dapui", "dap");
 
 return {
   onstart = function()

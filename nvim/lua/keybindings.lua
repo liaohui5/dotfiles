@@ -6,34 +6,45 @@
 -- |_|\_\___|\__, |_.__/|_|_| |_|\__,_|_|_| |_|\__, |___/
 --           |___/                             |___/
 --------------------------------------------------------
---  插件的快捷键配置
+--  插件的配置
 --------------------------------------------------------
----@diagnostic disable: param-type-mismatch
-local wk = require("which-key");
+---@diagnostic disable
+local wk = loadModule("which-key", "keybindings");
 local keybindings = {}
 
 --------------------------------------
--- 内置功能绑定到快捷键菜单
+-- 内置功能绑定到菜单
 --------------------------------------
 wk.register({
+  -- splitjoin
+  ["gJ"] = { nil, "join line[splitjoin]" },
+  ["gS"] = { nil, "split line[splitjoin]" },
+
+  -- arguments
+  ["<leader>A"] = {
+    name = "+Arguments",
+    p = { nil, "swap arguments previous[textobjects]" };
+    n = { nil, "swap arguments next[textobjects]" };
+  },
+
   -- buffers
   ["<leader>b"]  = {
     name = "+Buffer",
   },
   ["<leader>b1"] = {
-    "<cmd>bfirst",
+    "<cmd>bfirst<CR>",
     "first Buffer"
   },
   ["<leader>b0"] = {
-    "<cmd>blast",
+    "<cmd>blast<CR>",
     "last Buffer"
   },
   ["<leader>bb"] = {
-    "<cmd>buffers",
+    "<cmd>buffers<CR>",
     "show all buffers"
   },
   ["<leader>bs"] = {
-    "<cmd>buffers",
+    "<cmd>buffers<CR>",
     "search buffers"
   },
   ["<leader>bd"] = {
@@ -57,16 +68,16 @@ wk.register({
     "previous buffer"
   },
   ["<leader>bD"] = {
-    "<cmd>%bd|e#|bd#<cr>|'\"",
+    "<cmd>%bd|e#|bd#<cr>|'\"<CR>",
     "close other buffers"
   },
   ["<leader>bY"] = {
-    '<cmd>%y "',
+    '<cmd>%y "<CR>',
     "copy buffer to clipboard"
   },
   ["<leader>bP"] = {
     function()
-      vim.cmd [[
+      vim.cmd[[
         :%delete _
         :put+
       ]]
@@ -258,7 +269,7 @@ wk.register({
       "Copy current file name"
     },
     p = {
-      "Copy current file absolute path "
+      "Copy current file absolute path"
     },
     P = {
       "Copy current file relative path"
@@ -277,7 +288,7 @@ wk.register({
 
   -- Packer/Plugin
   ["<leader>P"] = {
-    name = "+Packer/Plugin",
+    name = "+Packer/treesitter/Mason",
     i = {
       "<cmd>PackerInstall<CR>",
       "install plugins"
@@ -293,13 +304,68 @@ wk.register({
     c = {
       "<cmd>PackerClean<CR>",
       "plugins clean"
+    },
+    t = {
+      name = "treesitter",
+      i = {
+        "<cmd>TSInstallInfo<CR>",
+        "treesitter install info[treesitter]"
+      },
+      c = {
+        "<cmd>TSConfigInfo<CR>",
+        "treesitter config info[treesitter]"
+      },
+      m = {
+        "<cmd>TSModuleInfo<CR>",
+        "treesitter module info[treesitter]"
+      },
     }
   },
 
   -- Markdown
   ["<leader>M"] = {
     name = "+Markdown",
-  }
+  },
+
+  -- treesitter textobjects move
+  ["["] = {
+    name = "Move previous",
+    m = {
+      "",
+      "previous function start[textobjects]"
+    },
+    M = {
+      "",
+      "previous function end[textobjects]"
+    },
+    c = {
+      "",
+      "previous class start[textobjects]"
+    },
+    C = {
+      "",
+      "previous class end[textobjects]"
+    }
+  },
+  ["]"] = {
+    name = "Move next",
+    m = {
+      "",
+      "next function start[textobjects]",
+    },
+    M = {
+      "",
+      "next function end[textobjects]",
+    },
+    c = {
+      "",
+      "next class start[textobjects]"
+    },
+    C = {
+      "",
+      "next class end[textobjects]"
+    }
+  },
 });
 
 wk.register({
@@ -335,9 +401,15 @@ wk.register({
 }, { mode = "v" })
 
 
+--------------------------------------
+-- 单行/多行切换
+--------------------------------------
+keybindings.splitjoinKeys = function ()
+
+end
 
 --------------------------------------
--- 预览markdown快捷键
+-- 预览markdown
 --------------------------------------
 keybindings.markdownPreviewKeys = function ()
   wk.register({
@@ -353,7 +425,7 @@ keybindings.markdownPreviewKeys = function ()
 end
 
 --------------------------------------
--- nvim-surround 快捷键
+-- nvim-surround 两边围绕字符操作
 --------------------------------------
 keybindings.nvimSurroundKeys = function ()
   return {
@@ -371,7 +443,7 @@ keybindings.nvimSurroundKeys = function ()
 end
 
 --------------------------------------
--- nvim-treesitter 插件快捷键
+-- nvim-treesitter 语法高亮
 --------------------------------------
 keybindings.treesitterKeys = function()
   return {
@@ -391,7 +463,7 @@ keybindings.treesitterKeys = function()
 end
 
 --------------------------------------
--- onedark 切换主题快捷键
+-- onedark 切换主题
 --------------------------------------
 keybindings.onedarkKeys = function()
   wk.register({
@@ -403,7 +475,7 @@ keybindings.onedarkKeys = function()
 end
 
 --------------------------------------
--- 书签管理快捷键
+-- 书签管理
 --------------------------------------
 keybindings.bookmarkKeys = function()
   nnoremap("<F3>", "<Plug>BookmarkToggle<CR>");
@@ -424,7 +496,7 @@ keybindings.bookmarkKeys = function()
 end
 
 --------------------------------------
--- kommentary 注释快捷键
+-- 注释
 --------------------------------------
 keybindings.kommentaryKeys = function()
   nnoremap("<C-\\>", "<Plug>kommentary_line_default")
@@ -432,23 +504,23 @@ keybindings.kommentaryKeys = function()
   wk.register({
     ["<leader>;"] = {
       "<Plug>kommentary_line_default",
-      "comment current line(<C-\\>)[kommentary]"
+      "comment current line[kommentary]"
     },
     ["<leader>cl"] = {
       "<Plug>kommentary_line_default",
-      "comment current line(<C-\\>)[kommentary]"
+      "comment current line[kommentary]"
     },
   })
   wk.register({
     ["<leader>cL"] = {
       "<Plug>kommentary_visual_default<C-c>gv-gv",
-      "comment multi lines(<C-\\>)[kommentary]"
+      "comment multi lines[kommentary]"
     },
   }, { mode = "v" })
 end
 
 --------------------------------------
--- align 代码对齐快捷键
+-- align 代码对齐
 --------------------------------------
 keybindings.alignKeys = function(align)
   local options = { noremap = true, silent = true };
@@ -487,7 +559,7 @@ keybindings.alignKeys = function(align)
 end
 
 --------------------------------------
--- bufferline 快捷键
+-- bufferline
 --------------------------------------
 keybindings.bufferlineKeys = function()
   wk.register({
@@ -531,7 +603,7 @@ keybindings.bufferlineKeys = function()
 end
 
 --------------------------------------
--- formatter 格式化快捷键
+-- formatter 格式化
 --------------------------------------
 keybindings.formatterKeys = function()
   wk.register({
@@ -543,7 +615,7 @@ keybindings.formatterKeys = function()
 end
 
 --------------------------------------
--- formatter 格式化快捷键
+-- formatter 格式化
 --------------------------------------
 keybindings.gitsignsKeys = function()
   wk.register({
@@ -590,7 +662,7 @@ keybindings.gitsignsKeys = function()
 end
 
 --------------------------------------
--- hop 快速移动快捷键
+-- hop 快速移动
 --------------------------------------
 keybindings.hopKeys = function()
   -- 搜索字符
@@ -618,7 +690,7 @@ keybindings.hopKeys = function()
 end
 
 --------------------------------------
--- cmp 自动完成快捷键
+-- cmp 自动完成
 -- docs: https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings
 --------------------------------------
 keybindings.cmpKeys = function(cmp)
@@ -693,7 +765,7 @@ keybindings.cmpKeys = function(cmp)
 end
 
 --------------------------------------
--- nvim-spectre 搜索替换增强插件快捷键
+-- nvim-spectre 搜索替换增强插件
 --------------------------------------
 keybindings.spectreKeys = function()
   -- 在当前文件中搜索/替换
@@ -791,7 +863,7 @@ keybindings.vifmKeys = function()
 end
 
 --------------------------------------
--- nvimtree 侧边栏目录树快捷键
+-- nvimtree 侧边栏目录树
 --------------------------------------
 keybindings.nvimtreeKeys = function()
   -- Ctrl + t: 切换显示/隐藏
@@ -844,7 +916,7 @@ keybindings.nvimtreeKeys = function()
 end
 
 --------------------------------------
--- session session管理工具快捷键
+-- session session管理工具
 --------------------------------------
 keybindings.sessionManagerKeys = function()
   -- 在退出编辑器之前 & 自动保存当前 session 状态
@@ -890,7 +962,7 @@ keybindings.sessionManagerKeys = function()
 end
 
 --------------------------------------
--- telescope 搜索文件快捷键
+-- telescope 搜索文件
 --------------------------------------
 keybindings.telescopeKeys = function()
   nnoremap("<C-p>", "<cmd>Telescope find_files prompt_prefix=[files]<CR>")
@@ -949,10 +1021,10 @@ keybindings.telescopeKeys = function()
     },
   });
 
-  local actions = require("telescope.actions")
+  local actions = loadModule("telescope.actions", "keybindings");
   return {
     i = {
-      -- 在显示 telescope 输入框时, insert 模式的时候快捷键
+      -- 在显示 telescope 输入框时, insert 模式的时候
       ["<C-j>"] = actions.move_selection_next,
       ["<C-k>"] = actions.move_selection_previous,
       ["<M-j>"] = actions.cycle_history_next,
@@ -962,14 +1034,14 @@ keybindings.telescopeKeys = function()
 end
 
 --------------------------------------
--- ctrl + x : 打开/关闭命令行快捷键
+-- ctrl + x : 打开/关闭命令行
 --------------------------------------
 keybindings.toggletermKeys = function()
   return "<C-x>"; -- toggle
 end
 
 --------------------------------------
--- mason 快捷键设置
+-- mason 设置
 --------------------------------------
 keybindings.lspMasonKeys = function()
   return {
@@ -986,11 +1058,12 @@ keybindings.lspMasonKeys = function()
 end
 
 --------------------------------------
--- lsp 回调函数快捷键设置
+-- lsp 回调函数设置
 --------------------------------------
 keybindings.lspKeys = function(client, bufnr)
   -- 自动匹配高亮当前光标下的单词
-  require("utils.highlight").setup(client, bufnr);
+  local highlight = loadModule("utils.highlight", "keybindings");
+  highlight.setup(client, bufnr);
 
   -- 利用 LSP 格式化, 如果支持的话
   if client.resolved_capabilities.document_formatting then
@@ -1050,7 +1123,7 @@ end
 
 
 --------------------------------------
--- lspsaga 自定义插件快捷键设置
+-- lspsaga 自定义插件设置
 --------------------------------------
 keybindings.lspsagaKeys = function()
   -- 查看帮助文档
@@ -1139,10 +1212,10 @@ keybindings.lspsagaKeys = function()
 end
 
 --------------------------------------
--- dap 调试快捷键
+-- dap 调试
 --------------------------------------
 keybindings.dapKeys = function()
-  -- TODO: 快捷键不全, 查阅: https://github.com/mfussenegger/nvim-dap 尽量和 vscode 保持一致
+  -- TODO: 不全, 查阅: https://github.com/mfussenegger/nvim-dap 尽量和 vscode 保持一致
   -- nnoremap("<F3>", "<cmd>lua require'dap'.toggle_breakpoint(); require'user.dap.dap-util'.store_breakpoints(true)<cr>");
   -- 标记断点
   nnoremap("<F4>", "<cmd>lua require'dap'.toggle_breakpoint()<CR>")
@@ -1165,7 +1238,7 @@ keybindings.dapKeys = function()
   -- 终止调试
   nnoremap("<F10>", "<cmd>lua require'dap'.terminate()<CR>")
 
-  -- 快捷键菜单
+  -- 菜单
   wk.register({
     ["<leader>db"] = {
       "<cmd>lua require'dap'.toggle_breakpoint()<CR>",
@@ -1199,7 +1272,7 @@ keybindings.dapKeys = function()
 end
 
 --------------------------------------
--- dapUI 快捷键
+-- dapUI
 --------------------------------------
 keybindings.dapUIKeys = function()
   return {

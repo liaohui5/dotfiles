@@ -2,10 +2,7 @@
 -- 代码格式刷配置
 -- docs: https://github.com/mhartington/formatter.nvim
 ----------------------------------------------------
-local ok, formatter = pcall(require, "formatter")
-if not ok then
-  vim.notify("[plugin]: formatter not found")
-end
+local formatter = loadModule("formatter", "plugin-configs")
 
 -- prettier 格式化
 local prettierFormatter = {

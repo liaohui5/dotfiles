@@ -4,11 +4,7 @@
 -- https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion
 -- https://github.com/hrsh7th/nvim-cmp
 ----------------------------------------------------
-local status, cmp = pcall(require, "cmp")
-if not status then
-  vim.notify("[lsp]: cmp not found")
-  return
-end
+local cmp = loadModule("cmp", "lsp");
 
 local M = {}
 

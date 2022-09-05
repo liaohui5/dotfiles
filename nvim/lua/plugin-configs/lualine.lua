@@ -2,10 +2,7 @@
 -- 底部状态栏美化插件
 -- docs: https://github.com/nvim-lualine/lualine.nvim
 ----------------------------------------------------
-local ok, lualine = pcall(require, "lualine")
-if not ok then
-  vim.notify("[plugin]: lualine not found")
-end
+local lualine = loadModule("lualine", "plugin-configs")
 
 lualine.setup({
   options           = {

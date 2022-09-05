@@ -2,10 +2,7 @@
 -- 顶部标签页
 -- docs: https://github.com/akinsho/bufferline.nvim
 ----------------------------------------------------
-local ok, bufferline = pcall(require, "bufferline")
-if not ok then
-  vim.notify("[plugin]: bufferline not found")
-end
+local bufferline = loadModule("bufferline", "plugin-config")
 
 bufferline.setup({
   options = {

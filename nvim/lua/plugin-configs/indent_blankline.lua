@@ -2,11 +2,7 @@
 -- 垂直显示缩进距离
 -- docs: https://github.com/lukas-reineke/indent-blankline.nvim
 ----------------------------------------------------
-
-local ok, indent_blankline = pcall(require, "indent_blankline")
-if not ok then
-  vim.notify("[plugin]: indent_blankline not found")
-end
+local indent_blankline = loadModule("indent_blankline", "plugin-configs")
 
 indent_blankline.setup({
   filetype_exclude = { "dashboard" },

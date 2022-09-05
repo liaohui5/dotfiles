@@ -6,17 +6,8 @@
 -- https://github.com/mxsdev/nvim-dap-vscode-js
 -- https://github.com/rcarriga/nvim-dap-ui
 -----------------------------------------------------------------
-local ok, dap = pcall(require, "dap")
-if not ok then
-  vim.notify("[dap] dap not found!")
-  return
-end
-
-local ok1, dapui = pcall(require, "dapui")
-if not ok1 then
-  vim.notify("[dap] dapui not found!")
-  return
-end
+local dap = loadModule("dap", "dap");
+local dapui = loadModule("dapui", "dap");
 
 -- 配置断点图标
 local function set_breakpoint_icon()

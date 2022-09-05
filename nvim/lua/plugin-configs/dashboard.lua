@@ -4,10 +4,7 @@
 -- wiki: https://github.com/glepnir/dashboard-nvim/wiki/Ascii-Header-Text
 -- preview: https://github.com/glepnir/dashboard-nvim/wiki/Header-Preview
 -----------------------------------------------------------
-local ok, dashboard = pcall(require, "dashboard");
-if not ok then
-  vim.notify("[plugin]: dashboard not found");
-end
+local dashboard = loadModule("dashboard", "plugin-config")
 
 local home = os.getenv('HOME');
 -- dashboard.disable_at_vimenter = 0

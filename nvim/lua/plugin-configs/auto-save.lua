@@ -2,10 +2,7 @@
 -- 自动保存文件
 -- docs: https://github.com/Pocco81/auto-save.nvim
 ----------------------------------------------------
-local ok, autosave = pcall(require, "auto-save")
-if not ok then
-  vim.notify("[plugin]: auto-save not found")
-end
+local autosave = loadModule("auto-save", "plugins-config");
 
 autosave.setup({
   enabled           = true,

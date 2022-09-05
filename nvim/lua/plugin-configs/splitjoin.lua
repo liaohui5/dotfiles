@@ -1,0 +1,5 @@
+----------------------------------------------------
+-- 多行/单行切换
+-- docs:https://github.com/AndrewRadev/splitjoin.vim
+----------------------------------------------------
+require("keybindings").splitjoinKeys();
