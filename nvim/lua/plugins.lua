@@ -152,6 +152,10 @@ return require("packer").startup({
       "b3nj5m1n/kommentary",
       config = [[require("plugin-configs.kommentary")]],
     })
+    use({
+      "LudoPinelli/comment-box.nvim",
+      config = [[require("plugin-configs.comment-box")]],
+    })
 
     -- 支持 .editorconfig 文件
     use({
