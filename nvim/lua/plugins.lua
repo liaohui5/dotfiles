@@ -62,6 +62,13 @@ return require("packer").startup({
       requires = "nvim-treesitter/nvim-treesitter",
     })
 
+    -- 自动装换字符串成模板字符串
+    use({
+      "axelvc/template-string.nvim",
+      requires = "nvim-treesitter/nvim-treesitter",
+      config = [[require("plugin-configs.template-string")]],
+    })
+
     -- 标签自动闭合
     use({
       "windwp/nvim-ts-autotag",

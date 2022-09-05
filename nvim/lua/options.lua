@@ -106,6 +106,12 @@ for _, provider in ipairs(default_providers) do
   vim.g["loaded_" .. provider .. "_provider"] = 0;
 end
 
+-----------------------------------------------------------------------
+--                                                                   --
+--                         global functions                          --
+--                                                                   --
+-----------------------------------------------------------------------
+
 -- 加载模块
 ---@diagnostic disable-next-line
 function loadModule(require_path, scope)

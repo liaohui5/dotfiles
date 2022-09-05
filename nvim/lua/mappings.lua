@@ -126,3 +126,7 @@ cmap("<C-k>", "<C-p>")
 -- 上下移动选中行
 xnoremap("<C-j>", ":move '>+1<CR>gv-gv")
 xnoremap("<C-k>", ":move '<-2<CR>gv-gv")
+
+-- 快速输出: javascript console.log
+nnoremap("<leader>il", [["ayiwoconsole.log('<C-R>a:', <C-R>a);<Esc>]])
+xnoremap("<leader>il", [["ayoconsole.log('<C-R>a:', <C-R>a);<Esc>]])

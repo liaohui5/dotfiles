@@ -151,8 +151,13 @@ wk.register({
   ["<leader>i"] = {
     name = "+Insert",
     i = {
+      nil,
       "Insert Image URL"
     },
+    l = {
+      nil,
+      "insert console.log",
+    }
   },
 
   -- jump/join/split
@@ -369,6 +374,14 @@ wk.register({
 });
 
 wk.register({
+
+  ["<leader>i"] = {
+    name = "+Insert",
+    ["l"] = {
+      nil,
+      "insert console.log",
+    },
+  },
   ["<leader>c"] = {
     name = "+Comment",
   },
