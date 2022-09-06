@@ -355,11 +355,11 @@ keybindings.barbarKeys = function ()
       "close right buffers[barbar]",
     },
     ["<leader>qH"] = {
-      "<cmd>BufferLineCloseLeft<CR>",
+      "<cmd>BufferCloseBuffersLeft<CR>",
       "close left buffers[barbar]",
     },
     ["<leader>qL"] = {
-      "<cmd>BufferLineCloseRight<CR>",
+      "<cmd>BufferCloseBuffersRight<CR>",
       "close right buffers[barbar]",
     },
     ["<leader>bt"] = {

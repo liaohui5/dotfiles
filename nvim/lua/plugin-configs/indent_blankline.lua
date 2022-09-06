@@ -1,6 +1,7 @@
 ----------------------------------------------------
 -- 垂直显示缩进距离
 -- docs: https://github.com/lukas-reineke/indent-blankline.nvim
+-- 类似插件: https://github.com/glepnir/indent-guides.nvim
 ----------------------------------------------------
 local indent_blankline = loadModule("indent_blankline", "plugin-configs")
 

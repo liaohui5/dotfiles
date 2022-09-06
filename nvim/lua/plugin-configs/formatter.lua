@@ -1,7 +1,8 @@
-----------------------------------------------------
--- 代码格式刷配置
--- docs: https://github.com/mhartington/formatter.nvim
-----------------------------------------------------
+-- ╭──────────────────────────────────────────────────────────────────────────────╮
+-- │                                代码格式刷配置                                │
+-- │             docs: https://github.com/mhartington/formatter.nvim              │
+-- │                同类插件: https://github.com/sbdchd/neoformat                 │
+-- ╰──────────────────────────────────────────────────────────────────────────────╯
 local formatter = loadModule("formatter", "plugin-configs")
 
 -- prettier 格式化

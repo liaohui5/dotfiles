@@ -25,9 +25,9 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 return require("packer").startup({
-  -- ╭──────────────────────────────────────────────────────────────────────────────╮
-  -- │                   Pakcer 插件列表 & 启动插件管理器 packer                    │
-  -- ╰──────────────────────────────────────────────────────────────────────────────╯
+    -- ╭──────────────────────────────────────────────────────────────────────────────╮
+    -- │                   Pakcer 插件列表 & 启动插件管理器 packer                    │
+    -- ╰──────────────────────────────────────────────────────────────────────────────╯
   function(use)
     -- ╭──────────────────────────────────────────────────────────────────────────────╮
     -- │                        packer 包管理工具可以管理自己                         │
@@ -276,7 +276,7 @@ return require("packer").startup({
     -- │                                 -- 高亮TODO                                  │
     -- ╰──────────────────────────────────────────────────────────────────────────────╯
     use({
-      "folke/todo-comments.nvim", 
+      "folke/todo-comments.nvim",
       requires = "nvim-lua/plenary.nvim",
       config = [[require("plugin-configs.todo-comments")]],
     })
@@ -291,7 +291,7 @@ return require("packer").startup({
     })
     -- use({
     --   "akinsho/bufferline.nvim",
-    --   tag = "v2.*", 
+    --   tag = "v2.*",
     --   requires = "kyazdani42/nvim-web-devicons",
     --   config = [[require("plugin-configs.bufferline")]],
     -- })
@@ -334,10 +334,10 @@ return require("packer").startup({
     -- ╭──────────────────────────────────────────────────────────────────────────────╮
     -- │                                  启动页插件                                  │
     -- ╰──────────────────────────────────────────────────────────────────────────────╯
-    -- use({
-    --   "glepnir/dashboard-nvim",
-    --   config = [[require("plugin-configs.dashboard")]],
-    -- })
+    use({
+      "glepnir/dashboard-nvim",
+      config = [[require("plugin-configs.dashboard")]],
+    })
 
     -- ╭──────────────────────────────────────────────────────────────────────────────╮
     -- │           session 管理, 类似 vscode 的 Project Manager 插件的功能            │
@@ -374,6 +374,9 @@ return require("packer").startup({
       config = [[require("plugin-configs.formatter")]]
     })
 
+    -- ╭──────────────────────────────────────────────────────────────────────────────╮
+    -- │                             coc 代码提示补全插件                             │
+    -- ╰──────────────────────────────────────────────────────────────────────────────╯
     -- coc 代码提示, 自动完成, Node写的, 速度比Lua写的的LSP要慢
     -- 但是稳定, 所以放到这里方便切换
     -- 如果网速较慢, 建议开个梯子, 否则特别容易失败
@@ -406,7 +409,6 @@ return require("packer").startup({
     use({ "hrsh7th/cmp-nvim-lua" })                  -- { name = 'nvim_lua' }
     use({ "glepnir/lspsaga.nvim", branch = "main" }) -- UI 增强
     -- use({ "jose-elias-alvarez/null-ls.nvim" })       -- 多语言代码检查工具, 功能类似 ESLint
-    -- use { 'L3MON4D3/LuaSnip', requires = { 'rafamadriz/friendly-snippets' }, after = 'cmp_luasnip' }
 
     -- ╭──────────────────────────────────────────────────────────────────────────────╮
     -- │                               dap 代码调试插件                               │

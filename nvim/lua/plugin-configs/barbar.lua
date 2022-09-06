@@ -6,22 +6,24 @@
 local barbar           = loadModule("bufferline", "plugins-config");
 local nvim_tree_events = loadModule('nvim-tree.events', 'plugin-configs');
 local bufferline_state = loadModule('bufferline.state', 'plugin-configs');
-local nvimtree_view    = loadModule('nvim-tree.view', 'plugin-configs');
 
--- offsetWidth
-local offsetWidth = nvimtree_view.View.width + 1;
+-- nvim_view.View.width was not working
+-- local offsetWidth = nvimtree_view.View.width + 1;
+-- local nvimtree_view = loadModule('nvim-tree.view', 'plugin-configs');
+
+local offsetWidth = 33;
 nvim_tree_events.subscribe('TreeOpen', function()
-  print(nvimtree_view.View.width)
-  bufferline_state.set_offset(offsetWidth)
-end)
-
-nvim_tree_events.subscribe('Resize', function()
   bufferline_state.set_offset(offsetWidth)
 end)
 
 nvim_tree_events.subscribe('TreeClose', function()
   bufferline_state.set_offset(0)
 end)
+
+-- nvim_tree_events.subscribe('Resize', function()
+--   bufferline_state.set_offset(offsetWidth)
+-- end)
+
 
 barbar.setup({
   exclude_ft              = {},
