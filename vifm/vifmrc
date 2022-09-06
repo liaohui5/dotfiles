@@ -101,6 +101,9 @@ set confirm="permdelete"
 " preview content wrap settings
 set nowrap
 
+" set border charater
+set fillchars='vborder:┃'
+
 " ------------------------------------------------------------------------------
 "                                   bookmarks
 " ------------------------------------------------------------------------------
