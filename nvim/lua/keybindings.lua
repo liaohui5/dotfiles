@@ -15,6 +15,39 @@ loadModule("keymenus", "keybindings").onstart(wk);
 local keybindings = {}
 
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
+-- │                               ufo 缩进美化插件                               │
+-- ╰──────────────────────────────────────────────────────────────────────────────╯
+keybindings.ufoKeys = function (ufo)
+  wk.register({
+    ["zR"] = {
+      ufo.openAllFolds,
+      "open all folds",
+    },
+    ["zM"] = {
+      ufo.closeAllFolds,
+      "close all folds",
+    },
+    ["zr"] = {
+      ufo.openFoldsExceptKinds,
+      "open more folds",
+    },
+    ["zm"] = {
+      ufo.closeFoldsWith,
+      "close more folds",
+    },
+    ["zh"] = {
+      function ()
+        local winid = ufo.peekFoldedLinesUnderCursor()
+        if not winid then
+          vim.lsp.buf.hover();
+        end
+      end,
+      "preview fold content",
+    }
+  })
+end
+
+-- ╭──────────────────────────────────────────────────────────────────────────────╮
 -- │                                   npm 操作                                   │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 keybindings.packageInfoKeys = function ()

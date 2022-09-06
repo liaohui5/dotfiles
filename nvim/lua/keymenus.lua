@@ -15,6 +15,9 @@ local create_noremal_menus = function(wk)
     ["gJ"] = { nil, "join line[splitjoin]" },
     ["gS"] = { nil, "split line[splitjoin]" },
 
+    -- fold
+    ["z"] = { name = "+Fold" },
+
     -- arguments
     ["<leader>A"] = {
       name = "+Arguments",
