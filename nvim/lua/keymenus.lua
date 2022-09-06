@@ -11,6 +11,10 @@
 --------------------------------------
 local create_noremal_menus = function(wk)
   wk.register({
+    ["<C-\\>"] = { nil, "toggle comment[kommentary]" },
+    ["<C-b>"] = { nil, "Back" },
+    ["<C-d>"] = { nil, "scroll down" },
+
     -- splitjoin
     ["gJ"] = { nil, "join line[splitjoin]" },
     ["gS"] = { nil, "split line[splitjoin]" },
@@ -160,7 +164,10 @@ local create_noremal_menus = function(wk)
 
     -- jump/join/split
     ["<leader>j"] = {
-      name = "+Jump/join/split",
+      name = "+Jump",
+      ["t"] = {
+        name = "+TODO",
+      }
     },
 
     -- List
@@ -255,8 +262,8 @@ local create_noremal_menus = function(wk)
         "<cmd>vsplit<CR>",
         "split window to right",
       },
-      -- TODO: close other window
       O = {
+        "<cmd>only<CR>",
         "close other windows"
       },
     },
@@ -274,12 +281,15 @@ local create_noremal_menus = function(wk)
     ["<leader>y"] = {
       name = "+Yank/Copy",
       n = {
+        "<cmd>let @+ = expand('%:t')<CR>",
         "Copy current file name"
       },
       p = {
+        "<cmd>let @+ = expand('%:p')<CR>",
         "Copy current file absolute path"
       },
       P = {
+        "<cmd>let @+ = expand('%')<CR>",
         "Copy current file relative path"
       },
     },

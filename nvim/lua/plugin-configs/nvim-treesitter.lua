@@ -4,10 +4,11 @@
 ----------------------------------------------------
 local treesitterConfigs = loadModule("nvim-treesitter.configs", "plugin-configs")
 
+-- TODO: 整理快捷键
 local keys = require("keybindings").treesitterKeys()
 treesitterConfigs.setup({
-  sync_install = true,
-  auto_install = true,
+  sync_install     = true,
+  auto_install     = true,
   ensure_installed = {
     "css",
     "dot",
@@ -24,19 +25,19 @@ treesitterConfigs.setup({
     "vue",
     "yaml",
   },
-
-  keymaps = keys.keymaps,
-  highlight = {
-    -- 语法高亮
+  indent           = { enable = false }, -- 不使用treesitter缩进功能
+  keymaps          = keys.keymaps,
+  -- ╭──────────────────────────────────────────────────────────────────────────────╮
+  -- │                                   语法高亮                                   │
+  -- ╰──────────────────────────────────────────────────────────────────────────────╯
+  highlight        = {
     enable                            = true,
     additional_vim_regex_highlighting = false
   },
-  indent = {
-    -- 允许使用 treesitter 来缩进
-    enable = false
-  },
-  rainbow = {
-    -- 不同括号不同颜色显示: https://github.com/p00f/nvim-ts-rainbow
+  -- ╭──────────────────────────────────────────────────────────────────────────────╮
+  -- │        不同括号不同颜色显示: https://github.com/p00f/nvim-ts-rainbow         │
+  -- ╰──────────────────────────────────────────────────────────────────────────────╯
+  rainbow          = {
     enable         = true,
     disable        = { "jsx" }, -- 对某些语言禁用该功能
     extended_mode  = true,
@@ -44,17 +45,21 @@ treesitterConfigs.setup({
     -- colors         = {},
     -- termcolors     = {}
   },
-  textsubjects = {
-    -- 选中增强: https://github.com/RRethy/nvim-treesitter-textsubjects
+  textsubjects     = {
+    -- ╭──────────────────────────────────────────────────────────────────────────────╮
+    -- │       选中增强: https://github.com/RRethy/nvim-treesitter-textsubjects       │
+    -- ╰──────────────────────────────────────────────────────────────────────────────╯
     enable         = true,
     prev_selection = keys.textsubjects_prev_selection,
     keymaps        = keys.textsubjects_keymaps,
   },
-  autotag = {
-    -- xml标签自动闭合: https://github.com/windwp/nvim-ts-autotag
+  autotag          = {
+    -- ╭──────────────────────────────────────────────────────────────────────────────╮
+    -- │          xml标签自动闭合: https://github.com/windwp/nvim-ts-autotag          │
+    -- ╰──────────────────────────────────────────────────────────────────────────────╯
     enable = true
   },
-  textobjects = {
+  textobjects      = {
     -- 众多功能集合体: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
     swap = {
       -- 调换函数参数的位置
@@ -127,4 +132,3 @@ treesitterConfigs.setup({
 --     vim.cmd[[:TSDisable indent]]
 --   end
 -- })
-

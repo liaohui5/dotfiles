@@ -18,19 +18,15 @@ telescope.setup({
     }
   },
   pickers = {
-    find_files = {
-      previewer = false,
-      theme = "dropdown",
+    find_files     = {
+      previewer    = false,
+      theme        = "dropdown",
       find_command = { "fd", "-H", "-I" }, -- "-H" search hidden files, "-I" do not respect to gitignore
     },
     buffers = {
       previewer = false,
-      theme = "dropdown",
+      theme     = "dropdown",
     },
-    recent_projects = { -- nvim_projects plugins
-      previewer = false,
-      theme = "dropdown",
-    }
   }
 });
 

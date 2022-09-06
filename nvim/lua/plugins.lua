@@ -187,7 +187,6 @@ return require("packer").startup({
       config = [[require("plugin-configs.spectre")]]
     })
 
-
     -- ╭──────────────────────────────────────────────────────────────────────────────╮
     -- │                                   npm 操作                                   │
     -- ╰──────────────────────────────────────────────────────────────────────────────╯
@@ -274,18 +273,28 @@ return require("packer").startup({
     })
 
     -- ╭──────────────────────────────────────────────────────────────────────────────╮
+    -- │                                 -- 高亮TODO                                  │
+    -- ╰──────────────────────────────────────────────────────────────────────────────╯
+    use({
+      "folke/todo-comments.nvim", 
+      requires = "nvim-lua/plenary.nvim",
+      config = [[require("plugin-configs.todo-comments")]],
+    })
+
+    -- ╭──────────────────────────────────────────────────────────────────────────────╮
     -- │                                顶部 buffer 栏                                │
     -- ╰──────────────────────────────────────────────────────────────────────────────╯
-    -- use({
-    --   "romgrk/barbar.nvim",
-    --   requires = "kyazdani42/nvim-web-devicons",
-    -- })
     use({
-      "akinsho/bufferline.nvim",
-      tag = "v2.*",
+      "romgrk/barbar.nvim",
       requires = "kyazdani42/nvim-web-devicons",
-      config = [[require("plugin-configs.bufferline")]],
+      config = [[require("plugin-configs.barbar")]],
     })
+    -- use({
+    --   "akinsho/bufferline.nvim",
+    --   tag = "v2.*", 
+    --   requires = "kyazdani42/nvim-web-devicons",
+    --   config = [[require("plugin-configs.bufferline")]],
+    -- })
 
     -- ╭──────────────────────────────────────────────────────────────────────────────╮
     -- │                                  底部状态栏                                  │

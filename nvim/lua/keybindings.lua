@@ -15,6 +15,22 @@ loadModule("keymenus", "keybindings").onstart(wk);
 local keybindings = {}
 
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
+-- │                                todo 高亮显示                                 │
+-- ╰──────────────────────────────────────────────────────────────────────────────╯
+keybindings.todoCommentKeys = function (todoComments)
+  wk.register({
+    ["<leader>jtp"] = {
+      todoComments.jump_prev,
+      "previous todo[todo-comments]",
+    },
+    ["<leader>jtn"] = {
+      todoComments.jump_next,
+      "next todo[todo-comments]",
+    }
+  })
+end
+
+-- ╭──────────────────────────────────────────────────────────────────────────────╮
 -- │                               ufo 缩进美化插件                               │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 keybindings.ufoKeys = function (ufo)
@@ -280,31 +296,83 @@ keybindings.bufferlineKeys = function()
     },
     ["<leader>bh"] = {
       "<cmd>BufferLineMovePrev<CR>",
-      "move buffer to left",
+      "move buffer to left[bufferline]",
     },
     ["<leader>bl"] = {
       "<cmd>BufferLineMoveNext<CR>",
-      "move buffer to right",
+      "move buffer to right[bufferline]",
     },
     ["<leader>bH"] = {
       "<cmd>BufferLineCloseLeft<CR>",
-      "close left buffers",
+      "close left buffers[bufferline]",
     },
     ["<leader>bL"] = {
       "<cmd>BufferLineCloseRight<CR>",
-      "close right buffers",
+      "close right buffers[bufferline]",
     },
     ["<leader>qH"] = {
       "<cmd>BufferLineCloseLeft<CR>",
-      "close left buffers",
+      "close left buffers[bufferline]",
     },
     ["<leader>qL"] = {
       "<cmd>BufferLineCloseRight<CR>",
-      "close right buffers",
+      "close right buffers[bufferline]",
     },
     ["<leader>bt"] = {
       "<cmd>BufferLineTogglePin<CR>",
-      "toggle buffer pin status",
+      "toggle buffer pin status[bufferline]",
+    },
+  });
+end
+
+-- ╭──────────────────────────────────────────────────────────────────────────────╮
+-- │                                    barbar                                    │
+-- ╰──────────────────────────────────────────────────────────────────────────────╯
+keybindings.barbarKeys = function ()
+  wk.register({
+    ["<leader>ll"] = {
+      "<cmd>Telescope buffers<CR>",
+      "show all buffers[barbar]",
+    },
+    ["<leader>bb"] = {
+      "<cmd>Telescope buffers<CR>",
+      "show all buffers[barbar]",
+    },
+    ["<leader>bh"] = {
+      "<cmd>BufferMovePrevious<CR>",
+      "move buffer to left[barbar]",
+    },
+    ["<leader>bl"] = {
+      "<cmd>BufferMoveNext<CR>",
+      "move buffer to right[barbar]",
+    },
+    ["<leader>bH"] = {
+      "<cmd>BufferCloseBuffersLeft<CR>",
+      "close left buffers[barbar]",
+    },
+    ["<leader>bL"] = {
+      "<cmd>BufferCloseBuffersRight<CR>",
+      "close right buffers[barbar]",
+    },
+    ["<leader>qH"] = {
+      "<cmd>BufferLineCloseLeft<CR>",
+      "close left buffers[barbar]",
+    },
+    ["<leader>qL"] = {
+      "<cmd>BufferLineCloseRight<CR>",
+      "close right buffers[barbar]",
+    },
+    ["<leader>bt"] = {
+      "<cmd>BufferPin<CR>",
+      "toggle buffer pin status[barbar]",
+    },
+    ["<leader>bd"] = {
+      "<cmd>BufferClose<CR>",
+      "close buffer[barbar]",
+    },
+    ["<leader>bD"] = {
+      "<cmd>BufferCloseAllButCurrentOrPinned<CR>",
+      "close other buffers[barbar]",
     },
   });
 end
@@ -326,44 +394,43 @@ end
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 keybindings.gitsignsKeys = function()
   wk.register({
-    ["<leader>gH"] = {
-      name = "+Gitsigns hunks[gitsigns]",
-    },
-    ["<leader>gHu"] = {
-      "<cmd>Gitsigns undo_stage_hunk<CR>",
-      "undo current hunk",
-    },
-    ["<leader>gHr"] = {
-      "<cmd>Gitsigns reset_buffer<CR>",
-      "reset all hunk in current file",
-    },
-    ["<leader>gHs"] = {
-      "<cmd>Gitsigns stage_hunk<CR>",
-      "stage current hunk",
-    },
-    ["<leader>gHS"] = {
-      "<cmd>Gitsigns stage_buffer<CR>",
-      "stage all hunk in current file",
-    },
-    ["<leader>gHd"] = {
-      "<cmd>Gitsigns diffthis<CR>",
-      "diff hunks[like git diff]",
-    },
-    ["<leader>gHj"] = {
-      "<cmd>Gitsigns next_hunk<CR>",
-      "next hunk",
-    },
-    ["<leader>gHk"] = {
-      "<cmd>Gitsigns prev_hunk<CR>",
-      "previous hunk",
+    ["<leader>g"] = {
+      ["r"] = {
+        "<cmd>Gitsigns undo_stage_hunk<CR>",
+        "undo current hunk[gitsigns]",
+      },
+      ["R"] = {
+        "<cmd>Gitsigns reset_buffer<CR>",
+        "reset buffer all hunk[gitsigns]",
+      },
+      ["s"] = {
+        "<cmd>Gitsigns stage_hunk<CR>",
+        "stage current hunk[gitsigns]",
+      },
+      ["S"] = {
+        "<cmd>Gitsigns stage_buffer<CR>",
+        "stage buffer all hunk[gitsigns]",
+      },
+      ["d"] = {
+        "<cmd>Gitsigns diffthis<CR>",
+        "diff hunks[gitsigns]",
+      },
+      ["j"] = {
+        "<cmd>Gitsigns next_hunk<CR>",
+        "next hunk[gitsigns]",
+      },
+      ["k"] = {
+        "<cmd>Gitsigns prev_hunk<CR>",
+        "previous hunk[gitsigns]",
+      },
     },
     ["<leader>jc"] = {
       "<cmd>Gitsigns prev_hunk<CR>",
       "jump to previous change[gitsigns]",
     },
     ["<leader>jC"] = {
-      "<cmd>Gitsigns prev_hunk[gitsigns]<CR>",
-      "jump to next change",
+      "<cmd>Gitsigns prev_hunk<CR>",
+      "jump to next change[gitsigns]",
     },
   })
 end
@@ -706,6 +773,14 @@ keybindings.telescopeKeys = function()
       "<cmd>Telescope live_grep prompt_prefix=[string]<CR>",
       "search string in project[telescope]",
     },
+    ["<leader>sb"] = {
+      "<cmd>Telescope buffers<CR>",
+      "search buffers[telescope]",
+    },
+    ["<leader>st"] = {
+      "<cmd>TodoTelescope<CR>",
+      "search todos[todo-comments]",
+    },
     ["<leader>Bo"] = {
       "<cmd>Telescope vim_bookmarks all prompt_prefix=[bookmarks]<CR>",
       "open bookmarks explorer[telescope]",
@@ -864,7 +939,7 @@ keybindings.lspsagaKeys = function()
     },
     ["<leader>sj"] = { -- 打开 outline
       "<cmd>LSoutlineToggle<CR>",
-      "jump to symbol in buffer[lspsaga]"
+      "jump to symbol in outline[lspsaga]"
     },
     ["<leader>sr"] = { -- 查看引用
       "<cmd>Lspsaga lsp_finder<CR>",

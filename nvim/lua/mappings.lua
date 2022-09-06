@@ -116,8 +116,8 @@ nnoremap("<C-Up>", ":resize+1 <CR>")
 -- 滚动并且保持当前行居中屏幕
 nnoremap("<C-u>", "10kzz")
 nnoremap("<C-d>", "10jzz")
-nnoremap("<C-f>", "<C-f>zz")
-nnoremap("<C-b>", "<C-b>zz")
+-- nnoremap("<C-f>", "<C-f>zz")
+-- nnoremap("<C-b>", "<C-b>zz")
 
 -- 命令行左右移动/上下选中
 cmap("<C-j>", "<C-n>")
