@@ -334,10 +334,10 @@ return require("packer").startup({
     -- ╭──────────────────────────────────────────────────────────────────────────────╮
     -- │                                  启动页插件                                  │
     -- ╰──────────────────────────────────────────────────────────────────────────────╯
-    use({
-      "glepnir/dashboard-nvim",
-      config = [[require("plugin-configs.dashboard")]],
-    })
+    -- use({
+    --   "glepnir/dashboard-nvim",
+    --   config = [[require("plugin-configs.dashboard")]],
+    -- })
 
     -- ╭──────────────────────────────────────────────────────────────────────────────╮
     -- │           session 管理, 类似 vscode 的 Project Manager 插件的功能            │
