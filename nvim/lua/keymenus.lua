@@ -7,13 +7,13 @@
 -- │         #    # ######   #         #    # ###### #    #  ####   ####          │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 --------------------------------------
--- 菜单描述修改
+-- Normal 菜单
 --------------------------------------
-local create_munes_desc = function (wk)
+local create_noremal_menus = function(wk)
   wk.register({
-    ["%"]      = { nil, "matching brackets:() {} []" },
-    ["<C-x>"]  = { nil, "toggle terminal display" },
-    ["x"]      = { nil, "delete" },
+    ["<leader>"] = { nil, "show key menus" },
+    ["<C-x>"]    = { nil, "toggle terminal display" },
+    ["x"]        = { nil, "delete" },
 
     -- comment
     ["<C-\\>"] = { nil, "toggle comment[kommentary]" },
@@ -21,15 +21,9 @@ local create_munes_desc = function (wk)
     ["<C-d>"]  = { nil, "scroll down" },
 
     -- splitjoin
-    ["gJ"]     = { nil, "join line[splitjoin]" },
-    ["gS"]     = { nil, "split line[splitjoin]" },
-  });
-end
---------------------------------------
--- Normal 菜单
---------------------------------------
-local create_noremal_menus = function(wk)
-  wk.register({
+    ["gJ"] = { nil, "join line[splitjoin]" },
+    ["gS"] = { nil, "split line[splitjoin]" },
+
     -- selection
     ["vs"] = { name = "+Selection" },
 
@@ -48,55 +42,55 @@ local create_noremal_menus = function(wk)
       name = "+Buffer",
     },
     ["<leader>b1"] = {
-      "<cmd>bfirst<CR>",
+      nil,
       "first Buffer"
     },
     ["<leader>b0"] = {
-      "<cmd>blast<CR>",
+      nil,
       "last Buffer"
     },
     ["<leader>bb"] = {
-      "<cmd>buffers<CR>",
+      nil,
       "show all buffers"
     },
     ["<leader>bs"] = {
-      "<cmd>buffers<CR>",
+      nil,
       "search buffers"
     },
     ["<leader>bd"] = {
-      "<cmd>bprevious|bdelete #<CR>",
+      nil,
       "close current buffer"
     },
     ["<leader>bl"] = {
-      "<cmd>vsplit<CR>",
+      nil,
       "move buffer to right"
     },
     ["<leader>bj"] = {
-      "<cmd>vsplit<CR>",
+      nil,
       "move buffer to bottom"
     },
     ["<leader>bn"] = {
-      "<cmd>bnext<CR>", -- H
+      nil, -- H
       "next buffer"
     },
     ["<leader>bp"] = {
-      "<cmd>bprevious<CR>", -- L
+      nil, -- L
       "previous buffer"
     },
     ["<leader>bD"] = {
-      "<cmd>%bd|e#|bd#<cr>|'\"<CR>",
+      nil,
       "close other buffers"
     },
     ["<leader>bY"] = {
-      '<cmd>%y "<CR>',
+      nil,
       "copy buffer to clipboard"
     },
     ["<leader>bP"] = {
       function()
         vim.cmd [[
-        :%delete _
-        :put+
-      ]]
+          :%delete _
+          :put+
+        ]]
       end,
       "paste clipboard to buffer"
     },
@@ -120,19 +114,20 @@ local create_noremal_menus = function(wk)
     ["<leader>f"] = {
       name = "+File/Find",
       R = {
-        "<cmd>RnvimrToggle<CR>",
+        -- "<cmd>RnvimrToggle<CR>",
+        "<cmd>Vifm<CR>",
         "open with ranger(C-n)[rnvimr]"
       },
       o = {
-        "<cmd>!open .<CR>",
+        nil,
         "open file with system explorer"
       },
       L = {
-        "<cmd>!open .<CR>",
+        nil,
         "open file with system explorer"
       },
       s = {
-        "<cmd>write<CR>",
+        nil,
         "save current buffer"
       }
     },
@@ -140,58 +135,33 @@ local create_noremal_menus = function(wk)
     -- git
     ["<leader>g"] = {
       name = "+Git",
-      i = {
-        "<cmd>!git init .<CR>",
-        "git init",
-      },
+      i = { nil, "git init" },
     },
 
     -- helps
     ["<leader>h"] = {
       name = "+Help",
-      d = {
-        "<cmd>call SilentOpenURL('https://neovim.io/doc')<CR>",
-        "open neovim documentation"
-      },
-      D = {
-        "<cmd>call SilentOpenURL('https://github.com/folke/which-key.nvim')<CR>",
-        "open which-key documentation"
-      },
-      i = {
-        "<cmd>call SilentOpenURL('https://github.com/neovim/neovim/issues')<CR>",
-        "report neovim issue"
-      },
+      d = { nil, "open neovim documentation" },
+      D = { nil, "open which-key documentation" },
+      i = { nil, "report neovim issue" },
     },
 
-    -- insert
     -- TODO: insert image
     ["<leader>i"] = {
       name = "+Insert",
-      i = {
-        nil,
-        "Insert Image URL"
-      },
-      l = {
-        nil,
-        "insert console.log",
-      }
+      i = { nil, "Insert Image URL" },
+      l = { nil, "insert console.log" }
     },
 
     -- jump/join/split
     ["<leader>j"] = {
       name = "+Jump",
-      ["t"] = {
-        name = "+TODO",
-      }
+      ["t"] = { name = "+TODO" }
     },
 
     -- List
     ["<leader>l"] = {
       name = "+List",
-      t = {
-        "<cmd>TODOTelescope<CR>",
-        "list todos"
-      }
     },
 
     -- NPM
@@ -204,35 +174,14 @@ local create_noremal_menus = function(wk)
       name = "+Open",
       v = {
         name = "+VIM-links",
-        ["0"] = {
-          "<cmd>call SilentOpenURL('https://vim-adventures.com')<CR>",
-          "open vim game",
-        },
-        ["1"] = {
-          "<cmd>call SilentOpenURL('https://vim.rtorr.com')<CR>",
-          "open vim tips"
-        },
-        ["2"] = {
-          "<cmd>call SilentOpenURL('https://github.com/chloneda/vim-cheatsheet')<CR>",
-          "open vim cheatsheet"
-        },
-        ["3"] = {
-          "<cmd>call SilentOpenURL('https://www.w3cschool.cn/vim/4xnd1hsw.html')<CR>",
-          "open w3cschool study vimscript"
-        },
-        ["4"] = {
-          "https://yianwillis.github.io/vimcdoc/doc/help.html",
-          "open vim help  docs chinese"
-        }
+        ["0"] = { nil, "open vim game" },
+        ["1"] = { nil, "open vim tips" },
+        ["2"] = { nil, "open vim cheatsheet" },
+        ["3"] = { nil, "open w3cschool study vimscript" },
+        ["4"] = { nil, "open vim help  docs chinese" }
       },
-      b = {
-        "<cmd>call OpenFileWithGoogleChrome()<CR>",
-        "open in google chrome",
-      },
-      u = {
-        "<cmd>call OpenCurrentLineURL()<CR>",
-        "open url in browser",
-      },
+      b = { nil, "open in google chrome" },
+      u = { nil, "open url in browser" },
     },
 
     -- project
@@ -244,7 +193,7 @@ local create_noremal_menus = function(wk)
     ["<leader>q"] = {
       name = "+Quit",
       q = {
-        "<cmd>quitall!<CR>",
+        nil,
         "quit all",
       },
     },
@@ -258,7 +207,7 @@ local create_noremal_menus = function(wk)
     ["<leader>s"] = {
       name = "+Search/Symbol",
       s = {
-        "<cmd>write<CR>",
+        nil,
         "save current buffer",
       },
       h = {
@@ -269,44 +218,23 @@ local create_noremal_menus = function(wk)
     -- window
     ["<leader>w"] = {
       name = "+Window",
-      S = {
-        "<cmd>split<CR>",
-        "split window to bottom",
-      },
-      V = {
-        "<cmd>vsplit<CR>",
-        "split window to right",
-      },
-      O = {
-        "<cmd>only<CR>",
-        "close other windows"
-      },
+      S = { nil, "split window to bottom" },
+      V = { nil, "split window to right" },
+      O = { nil, "close other windows" },
     },
 
     -- text
     ["<leader>x"] = {
       name = "+Text",
-      o = {
-        "<cmd>call OpenCurrentLineURL()<CR>",
-        "open url in browser",
-      },
+      o = { nil, "open url in browser" },
     },
 
     -- yank/copy
     ["<leader>y"] = {
       name = "+Yank/Copy",
-      n = {
-        "<cmd>let @+ = expand('%:t')<CR>",
-        "Copy current file name"
-      },
-      p = {
-        "<cmd>let @+ = expand('%:p')<CR>",
-        "Copy current file absolute path"
-      },
-      P = {
-        "<cmd>let @+ = expand('%')<CR>",
-        "Copy current file relative path"
-      },
+      n = { nil, "Copy current file name" },
+      p = { nil, "Copy current file absolute path" },
+      P = { nil, "Copy current file relative path" },
     },
 
     -- UI toggle
@@ -349,38 +277,38 @@ local create_noremal_menus = function(wk)
     ["["] = {
       name = "Move previous",
       m = {
-        "",
+        nil,
         "previous function start[textobjects]"
       },
       M = {
-        "",
+        nil,
         "previous function end[textobjects]"
       },
       c = {
-        "",
+        nil,
         "previous class start[textobjects]"
       },
       C = {
-        "",
+        nil,
         "previous class end[textobjects]"
       }
     },
     ["]"] = {
       name = "Move next",
       m = {
-        "",
+        nil,
         "next function start[textobjects]",
       },
       M = {
-        "",
+        nil,
         "next function end[textobjects]",
       },
       c = {
-        "",
+        nil,
         "next class start[textobjects]"
       },
       C = {
-        "",
+        nil,
         "next class end[textobjects]"
       }
     },
@@ -392,6 +320,7 @@ end
 --------------------------------------
 local create_visual_menus = function(wk)
   wk.register({
+    ["s"] = { name = "+Selection" },
     ["<leader>i"] = {
       name = "+Insert",
       ["l"] = { nil, "insert console.log" },
@@ -410,30 +339,18 @@ local create_visual_menus = function(wk)
     },
     ["<leader>s"] = {
       name = "+Search/Symbol",
-      h = {
-        nil,
-        "Highlight world(gd)"
-      },
+      h = { nil, "Highlight world(gd)" },
     },
     ["<leader>x"] = {
       name = "+Text",
-      K = {
-        -- "<cmd>move '>+1<CR>gv-gv",
-        nil,
-        "move line up",
-      },
-      J = {
-        -- "<cmd>move '<-2<CR>gv-gv",
-        nil,
-        "move line down",
-      },
+      K = { nil, "move line up" },
+      J = { nil, "move line down" },
     },
   }, { mode = "v", noremap = false, silent = true })
 end
 
 return {
   onstart = function(wk)
-    create_munes_desc(wk);
     create_noremal_menus(wk);
     create_visual_menus(wk);
   end

@@ -19,8 +19,15 @@ local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 local compile_path = install_path .. "/plugin/packer_compiled.lua";
 local packer_bootstrap = nil;
 if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
-    install_path })
+  local args = {
+    'git',
+    'clone',
+    '--depth',
+    '1',
+    'https://github.com/wbthomason/packer.nvim',
+    install_path,
+  }
+  packer_bootstrap = fn.system(args);
   vim.cmd [[packadd packer.nvim]]
 end
 
@@ -387,21 +394,21 @@ return require("packer").startup({
     -- ╭──────────────────────────────────────────────────────────────────────────────╮
     -- │                     LSP/CMP: 代码提示/ 补全配置/ UI增强                      │
     -- ╰──────────────────────────────────────────────────────────────────────────────╯
-    use({ "williamboman/mason.nvim" })               -- LSP/DAP 服务器安装管理工具
-    use({ "williamboman/mason-lspconfig.nvim" })     -- LSP/DAP 服务器安装管理工具
-    use({ "neovim/nvim-lspconfig" })                 -- lspconfig 配置 server 插件
-    use({ "folke/lua-dev.nvim" })                    -- Lua 增强
-    use({ "b0o/schemastore.nvim" })                  -- json 增强
-    use({ "hrsh7th/nvim-cmp" })                      -- 补全引擎
-    use({ "rafamadriz/friendly-snippets" })          -- 常见编程语言 snippets
-    use({ "hrsh7th/vim-vsnip" })                     -- vim-vsnip 插件
-    use({ "hrsh7th/cmp-vsnip" })                     -- 将vim-vsnip 插件提供的内容加载到补全引擎
-    use({ "hrsh7th/cmp-nvim-lsp" })                  -- { name = 'nvim_lsp' }
-    use({ "hrsh7th/cmp-buffer" })                    -- { name = 'buffer' },
-    use({ "hrsh7th/cmp-path" })                      -- { name = 'path' }
-    use({ "hrsh7th/cmp-cmdline" })                   -- { name = 'cmdline' }
-    use({ "hrsh7th/cmp-nvim-lsp-signature-help" })   -- { name = 'nvim_lsp_signature_help' }
-    use({ "hrsh7th/cmp-nvim-lua" })                  -- { name = 'nvim_lua' }
+    use({ "williamboman/mason.nvim" })             -- LSP/DAP 服务器安装管理工具
+    use({ "williamboman/mason-lspconfig.nvim" })   -- LSP/DAP 服务器安装管理工具
+    use({ "neovim/nvim-lspconfig" })               -- lspconfig 配置 server 插件
+    use({ "folke/lua-dev.nvim" })                  -- Lua 增强
+    use({ "b0o/schemastore.nvim" })                -- json 增强
+    use({ "hrsh7th/nvim-cmp" })                    -- 补全引擎
+    use({ "rafamadriz/friendly-snippets" })        -- 常见编程语言 snippets
+    use({ "hrsh7th/vim-vsnip" })                   -- vim-vsnip 插件
+    use({ "hrsh7th/cmp-vsnip" })                   -- 将vim-vsnip 插件提供的内容加载到补全引擎
+    use({ "hrsh7th/cmp-nvim-lsp" })                -- { name = 'nvim_lsp' }
+    use({ "hrsh7th/cmp-buffer" })                  -- { name = 'buffer' },
+    use({ "hrsh7th/cmp-path" })                    -- { name = 'path' }
+    use({ "hrsh7th/cmp-cmdline" })                 -- { name = 'cmdline' }
+    use({ "hrsh7th/cmp-nvim-lsp-signature-help" }) -- { name = 'nvim_lsp_signature_help' }
+    use({ "hrsh7th/cmp-nvim-lua" })                -- { name = 'nvim_lua' }
     use({ "glepnir/lspsaga.nvim", branch = "main", commit = "b075b515e0c6ca6d9a79ae677a830c321eaf74fb" }) -- UI 增强
     -- use({ "jose-elias-alvarez/null-ls.nvim" })       -- 多语言代码检查工具, 功能类似 ESLint
 

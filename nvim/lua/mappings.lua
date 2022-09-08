@@ -29,47 +29,47 @@ vim.g.localleader = " "
 
 -- nmap/nnoremap
 function nmap(keys, commands)
-	keymap("n", keys, commands, { silent = true })
+  keymap("n", keys, commands, { silent = true })
 end
 
 function nnoremap(keys, commands)
-	keymap("n", keys, commands, option)
+  keymap("n", keys, commands, option)
 end
 
 -- vmap/vnoremap
 function vmap(keys, commands)
-	keymap("v", keys, commands, { silent = true })
+  keymap("v", keys, commands, { silent = true })
 end
 
 function vnoremap(keys, commands)
-	keymap("v", keys, commands, option)
+  keymap("v", keys, commands, option)
 end
 
 -- imap/inoremap
 function imap(keys, commands)
-	keymap("i", keys, commands, { silent = true })
+  keymap("i", keys, commands, { silent = true })
 end
 
 function inoremap(keys, commands)
-	keymap("i", keys, commands, option)
+  keymap("i", keys, commands, option)
 end
 
 -- xmap/xnoremap
 function xmap(keys, commands)
-	keymap("x", keys, commands, { silent = true })
+  keymap("x", keys, commands, { silent = true })
 end
 
 function xnoremap(keys, commands)
-	keymap("x", keys, commands, option)
+  keymap("x", keys, commands, option)
 end
 
 -- cmap/cnoremap
 function cmap(keys, commands)
-	keymap("c", keys, commands, { silent = true })
+  keymap("c", keys, commands, { silent = true })
 end
 
 function cnoremap(keys, commands)
-	keymap("c", keys, commands, option)
+  keymap("c", keys, commands, option)
 end
 
 -- tmap/tnoremap
@@ -78,10 +78,10 @@ function tnoremap(keys, commands)
 end
 
 -- 退出编辑器
-nnoremap("<C-q>", ":quitall!<CR>")
+nnoremap("<C-q>", "<cmd>quitall!<CR>")
 
 -- 取消高亮
-nnoremap("-", ":nohl<CR>")
+nnoremap("-", "<cmd>nohl<CR>")
 
 -- p: 仅粘贴, 而不是粘贴后复制
 vnoremap("p", '"_c<C-r><C-o>+<Esc>')
@@ -100,24 +100,35 @@ nnoremap("cw", "ciw")
 nnoremap("dw", "diw")
 
 -- buffer 切换
-nnoremap("<S-h>", ":bprevious<CR>")
-nnoremap("<S-l>", ":bnext<CR>")
+nnoremap("<leader>b1", "<cmd>bfirst<CR>")
+nnoremap("<leader>b0", "<cmd>blast<CR>")
+nnoremap("<leader>bb", "<cmd>buffers<CR>")
+nnoremap("<leader>bs", "<cmd>buffers<CR>")
+nnoremap("<leader>bd", "<cmd>bprevious|bdelete #<CR>")
+nnoremap("<leader>bl", "<cmd>vsplit<CR>")
+nnoremap("<leader>bj", "<cmd>split<CR>")
+nnoremap("<leader>bn", "<cmd>bnext<CR>")
+nnoremap("<leader>bp", "<cmd>bprevious<CR>")
+nnoremap("<leader>bD", "<cmd>%bd|e#|bd#<cr>|'\"<CR>")
+nnoremap("<leader>bY", '<cmd>%y "<CR>')
+nnoremap("<S-h>", "<cmd>bprevious<CR>")
+nnoremap("<S-l>", "<cmd>bnext<CR>")
 
 -- 左右缩进
 vnoremap("<", "<gv")
 vnoremap(">", ">gv")
 
 -- 在分屏时调整当前窗口大小
-nnoremap("<C-Right>", ":vertical resize-1<CR>")
-nnoremap("<C-Left>", ":vertical resize+1<CR>")
-nnoremap("<C-Down>", ":resize-1<CR>")
-nnoremap("<C-Up>", ":resize+1 <CR>")
+nnoremap("<C-Right>", "<cmd>vertical resize-1<CR>")
+nnoremap("<C-Left>", "<cmd>vertical resize+1<CR>")
+nnoremap("<C-Down>", "<cmd>resize-1<CR>")
+nnoremap("<C-Up>", "<cmd>resize+1 <CR>")
 
 -- 滚动并且保持当前行居中屏幕
 nnoremap("<C-u>", "10kzz")
 nnoremap("<C-d>", "10jzz")
--- nnoremap("<C-f>", "<C-f>zz")
--- nnoremap("<C-b>", "<C-b>zz")
+nnoremap("<C-f>", "<C-f>zz")
+nnoremap("<C-b>", "<C-b>zz")
 
 -- 命令行左右移动/上下选中
 cmap("<C-j>", "<C-n>")
@@ -132,3 +143,47 @@ xnoremap("<leader>xK", "<cmd>move '<-2<CR>gv-gv")
 -- 快速输出: javascript console.log
 nnoremap("<leader>il", [["ayiwoconsole.log('<C-R>a:', <C-R>a);<Esc>]])
 xnoremap("<leader>il", [["ayoconsole.log('<C-R>a:', <C-R>a);<Esc>]])
+
+-- find/file
+nnoremap("<leader>fo", [[<cmd>silent execute "open ."<CR>]])
+nnoremap("<leader>fL", [[<cmd>silent execute "open ."<CR>]])
+nnoremap("<leader>fs", [[<cmd>wirte<CR>]])
+
+-- git
+nnoremap("<leader>gi", [[<cmd>silent execute "!git init"<CR>]])
+
+-- helps
+nnoremap("<leader>hd", "<cmd>call SilentOpenURL('https://neovim.io/doc')<CR>")
+nnoremap("<leader>hD", "<cmd>call SilentOpenURL('https://github.com/folke/which-key.nvim')<CR>")
+nnoremap("<leader>hi", "<cmd>call SilentOpenURL('https://github.com/neovim/neovim/issues')<CR>")
+
+-- vim links
+nnoremap("<leader>ov0", "<cmd>call SilentOpenURL('https://vim-adventures.com')<CR>")
+nnoremap("<leader>ov1", "<cmd>call SilentOpenURL('https://vim.rtorr.com')<CR>")
+nnoremap("<leader>ov2", "<cmd>call SilentOpenURL('https://github.com/chloneda/vim-cheatsheet')<CR>")
+nnoremap("<leader>ov3", "<cmd>call SilentOpenURL('https://www.w3cschool.cn/vim/4xnd1hsw.html')<CR>")
+nnoremap("<leader>ov4", "<cmd>call SilentOpenURL('https://yianwillis.github.io/vimcdoc/doc/help.html')")
+
+-- open
+nnoremap("<leader>ob", "<cmd>call OpenFileWithGoogleChrome()<CR>")
+nnoremap("<leader>ou", "<cmd>call OpenCurrentLineURL()<CR>")
+
+-- quitall
+nnoremap("<leader>qq", "<cmd>quitall!<CR>")
+
+-- save
+nnoremap("<leader>ss", "<cmd>write<CR>")
+
+-- window
+nnoremap("<leader>wS", "<cmd>split<CR>")
+nnoremap("<leader>wV", "<cmd>vsplit<CR>")
+nnoremap("<leader>wO", "<cmd>only<CR>")
+
+-- text
+nnoremap("<leader>xo", "<cmd>call OpenCurrentLineURL()<CR>")
+
+-- yank
+nnoremap("<leader>yn", "<cmd>let @+ = expand('%:t')<CR>")
+nnoremap("<leader>yp", "<cmd>let @+ = expand('%:p')<CR>")
+nnoremap("<leader>yp", "<cmd>let @+ = expand('%')<CR>")
+

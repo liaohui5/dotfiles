@@ -19,6 +19,10 @@ local keybindings = {}
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 keybindings.todoCommentKeys = function (todoComments)
   wk.register({
+    ["<leader>lt"] = {
+      "<cmd>TODOTelescope<CR>",
+      "list todos"
+    },
     ["<leader>jtp"] = {
       todoComments.jump_prev,
       "previous todo[todo-comments]",
@@ -833,6 +837,7 @@ keybindings.telescopeKeys = function()
   -- nnoremap("<leader>fh", "<cmd>Telescope help_tags prompt_prefix=[telescopeHelpTags]<CR>")
 
   wk.register({
+    ["<C-p>"] = { nil, "search files" },
     ["<leader><leader>"] = {
       "<cmd>Telescope commands prompt_prefix=[commands]<CR>",
       "search commands[telescope]"
@@ -1093,54 +1098,82 @@ keybindings.dapKeys = function()
   -- TODO: 不全, 查阅: https://github.com/mfussenegger/nvim-dap 尽量和 vscode 保持一致
   -- nnoremap("<F3>", "<cmd>lua require'dap'.toggle_breakpoint(); require'user.dap.dap-util'.store_breakpoints(true)<cr>");
   -- 标记断点
-  nnoremap("<F4>", "<cmd>lua require'dap'.toggle_breakpoint()<CR>")
+  -- nnoremap("<F4>", "<cmd>lua require'dap'.toggle_breakpoint()<CR>")
 
-  -- 开启调试
-  nnoremap("<F5>", "<cmd>lua require'dap'.continue()<CR>")
+  -- -- 开启调试
+  -- nnoremap("<F5>", "<cmd>lua require'dap'.continue()<CR>")
 
-  -- 步入
-  nnoremap("<F6>", "<cmd>lua require'dap'.step_into()<CR>")
+  -- -- 步入
+  -- nnoremap("<F6>", "<cmd>lua require'dap'.step_into()<CR>")
 
-  -- 步出
-  nnoremap("<F7>", "<cmd>lua require'dap'.step_out()<CR>")
+  -- -- 步出
+  -- nnoremap("<F7>", "<cmd>lua require'dap'.step_out()<CR>")
 
-  -- 结束当前函数
-  nnoremap("<F8>", "<cmd>lua require'dap'.step_over()<CR>")
+  -- -- 结束当前函数
+  -- nnoremap("<F8>", "<cmd>lua require'dap'.step_over()<CR>")
 
-  -- 重启
-  nnoremap("<F9>", "<cmd>lua require'dap'.run_last()<CR>")
+  -- -- 重启
+  -- nnoremap("<F9>", "<cmd>lua require'dap'.run_last()<CR>")
 
-  -- 终止调试
-  nnoremap("<F10>", "<cmd>lua require'dap'.terminate()<CR>")
+  -- -- 终止调试
+  -- nnoremap("<F10>", "<cmd>lua require'dap'.terminate()<CR>")
 
   -- 菜单
   wk.register({
-    ["<leader>db"] = {
-      "<cmd>lua require'dap'.toggle_breakpoint()<CR>",
+    ["<F4>"] = {
+      "<cmd>lua require('dap').toggle_breakpoint()<CR>",
       "toggle breakpoint(F4)[dap]"
     },
-    ["<leader>dd"] = {
-      "<cmd>lua require'dap'.continue()<CR>",
+    ["<leader>db"] = {
+      "<cmd>lua require('dap').toggle_breakpoint()<CR>",
+      "toggle breakpoint(F4)[dap]"
+    },
+    ["<F5>"] = {
+      "<cmd>lua require('dap').continue()<CR>",
       "continue debug(F5)[dap]"
     },
-    ["<leader>di"] = {
-      "<cmd>lua require'dap'.step_into()<CR>",
+    ["<leader>dd"] = {
+      "<cmd>lua require('dap').continue()<CR>",
+      "continue debug(F5)[dap]"
+    },
+    ["<F6>"] = {
+      "<cmd>lua require('dap').step_into()<CR>",
       "debug step in(F6)[dap]"
     },
-    ["<leader>do"] = {
-      "<cmd>lua require'dap'.step_out()<CR>",
+    ["<leader>di"] = {
+      "<cmd>lua require('dap').step_into()<CR>",
+      "debug step in(F6)[dap]"
+    },
+    ["<F7>"] = {
+      "<cmd>lua require('dap').step_out()<CR>",
       "debug step out(F7)[dap]"
     },
-    ["<leader>ds"] = {
-      "<cmd>lua require'dap'.step_over()<CR>",
+    ["<leader>do"] = {
+      "<cmd>lua require('dap').step_out()<CR>",
+      "debug step out(F7)[dap]"
+    },
+    ["<F8>"] = {
+      "<cmd>lua require('dap').step_over()<CR>",
       "debug step over(F8)[dap]"
     },
-    ["<leader>dR"] = {
-      "<cmd>lua require'dap'.run_last()<CR>",
+    ["<leader>ds"] = {
+      "<cmd>lua require('dap').step_over()<CR>",
+      "debug step over(F8)[dap]"
+    },
+    ["<F9>"] = {
+      "<cmd>lua require('dap').run_last()<CR>",
       "debug step out(F9)[dap]"
     },
+    ["<leader>dR"] = {
+      "<cmd>lua require('dap').run_last()<CR>",
+      "debug step out(F9)[dap]"
+    },
+    ["<F10>"] = {
+      "<cmd>lua require('dap').terminate()<CR>",
+      "stop debug(F10)[dap]"
+    },
     ["<leader>dS"] = {
-      "<cmd>lua require'dap'.terminate()<CR>",
+      "<cmd>lua require('dap').terminate()<CR>",
       "stop debug(F10)[dap]"
     }
   })

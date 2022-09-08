@@ -1,11 +1,10 @@
------------------------------------------------------------------
--- dap 调试插件
--- docs:
--- https://github.com/mfussenegger/nvim-dap
--- https://github.com/mfussenegger/nvim-dap/wiki
--- https://github.com/mxsdev/nvim-dap-vscode-js
--- https://github.com/rcarriga/nvim-dap-ui
------------------------------------------------------------------
+-- ╭──────────────────────────────────────────────────────────────────────────────╮
+-- │  dap 调试插件                                                                │
+-- │  https://github.com/mfussenegger/nvim-dap                                    │
+-- │  https://github.com/mfussenegger/nvim-dap/wiki                               │
+-- │  https://github.com/mxsdev/nvim-dap-vscode-js                                │
+-- │  https://github.com/rcarriga/nvim-dap-ui                                     │
+-- ╰──────────────────────────────────────────────────────────────────────────────╯
 local dap = loadModule("dap", "dap");
 local dapui = loadModule("dapui", "dap");
 
