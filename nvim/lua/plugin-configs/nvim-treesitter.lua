@@ -1,11 +1,10 @@
-----------------------------------------------------
--- 侧边栏目录树
--- docs: https://github.com/nvim-treesitter/nvim-treesitter
-----------------------------------------------------
+-- ╭──────────────────────────────────────────────────────────────────────────────╮
+-- │  侧边栏目录树                                                                │
+-- │  docs: https://github.com/nvim-treesitter/nvim-treesitter                    │
+-- ╰──────────────────────────────────────────────────────────────────────────────╯
 local treesitterConfigs = loadModule("nvim-treesitter.configs", "plugin-configs")
-
--- TODO: 整理快捷键
 local keys = require("keybindings").treesitterKeys()
+
 treesitterConfigs.setup({
   sync_install     = true,
   auto_install     = true,
@@ -60,75 +59,32 @@ treesitterConfigs.setup({
     enable = true
   },
   textobjects      = {
-    -- 众多功能集合体: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+    -- ╭──────────────────────────────────────────────────────────────────────────────╮
+    -- │                               众多功能集合体:                                │
+    -- │        https://github.com/nvim-treesitter/nvim-treesitter-textobjects        │
+    -- ╰──────────────────────────────────────────────────────────────────────────────╯
     swap = {
       -- 调换函数参数的位置
-      enable = true,
-      swap_next = {
-        ["<leader>An"] = "@parameter.inner",
-      },
-      swap_previous = {
-        ["<leader>Ap"] = "@parameter.inner",
-      },
+      enable        = true,
+      swap_next     = keys.textobjects_swap_next,
+      swap_previous = keys.textobjects_swap_prev,
     },
     move = {
       -- 快速移动
-      enable = true,
-      set_jumps = true,
-      goto_next_start = {
-        ["]m"] = "@function.outer", -- 下一个
-        ["]c"] = "@class.outer",
-      },
-      goto_next_end = {
-        ["]M"] = "@function.outer",
-        ["]C"] = "@class.outer",
-      },
-      goto_previous_start = {
-        ["[m"] = "@function.outer",
-        ["[c"] = "@class.outer",
-      },
-      goto_previous_end = {
-        ["[M"] = "@function.outer",
-        ["[C"] = "@class.outer",
-      },
-    },
-    lsp_interop = {
-      -- LSP 交互
-      enable = true,
-      border = 'none',
-      peek_definition_code = {
-        ["<leader>dF"] = "@function.outer",
-        ["<leader>dC"] = "@class.outer",
-      },
+      enable              = true,
+      set_jumps           = true,
+      goto_next_start     = keys.textobjects_move_goto_next_start,
+      goto_next_end       = keys.textobjects_move_goto_next_end,
+      goto_previous_start = keys.textobjects_goto_previous_start,
+      goto_previous_end   = keys.textobjects_goto_previous_end,
     },
     select = {
       -- 快速选中: https://github.com/nvim-treesitter/nvim-treesitter-textobjects#built-in-textobjects
-      enable = true,
-      lookahead = true,
-      include_surrounding_whitespace = false, -- not working
-      keymaps = {
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-        ["ac"] = "@class.outer",
-        ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
-      },
-      -- selection_modes = {
-      --   ['@parameter.outer'] = 'v'     , -- charwise
-      --   ['@function.outer']  = 'V'     , -- linewise
-      --   ['@class.outer']     = '<c-v>' , -- blockwise
-      -- },
+      enable                         = true,
+      lookahead                      = true,
+      include_surrounding_whitespace = false, -- BUG:not working
+      keymaps                        = keys.textobjects_select_keymaps,
     },
   }
 });
 
-
--- 自动启动 treeistter 的插件功能
--- vim.api.nvim_create_autocmd("BufEnter", {
---   group = vim.api.nvim_create_augroup("my_treesitter_groups", { clear = true }),
---   callback = function ()
---     vim.cmd[[:TSEnable autotag]]
---     vim.cmd[[:TSEnable textsubjects]]
---     vim.cmd[[:TSEnable highlight]]
---     vim.cmd[[:TSDisable indent]]
---   end
--- })

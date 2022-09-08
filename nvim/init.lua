@@ -11,15 +11,14 @@
 --  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'
 -- 初始化
 
--- neovide
-IsNeovideEnv = false;
-if vim.fn.exists("g:neovide") == 1 then
-  IsNeovideEnv = true;
-  require("neovide")
-end
 require("options")
 require("mappings")
 require("plugins")
 require("autocmd")
 require("lsp-configs")
 require("dap-configs")
+
+-- neovide
+if vim.fn.exists("g:neovide") == 1 then
+  require("neovide")
+end

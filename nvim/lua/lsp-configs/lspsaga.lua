@@ -1,7 +1,7 @@
----------------------------------------------------------------------
--- UI 美化(代码提示|代码诊断)
--- docs: https://github.com/glepnir/lspsaga.nvim
----------------------------------------------------------------------
+-- ╭──────────────────────────────────────────────────────────────────────────────╮
+-- │  UI 美化(代码提示|代码诊断)                                                  │
+-- │  docs: https://github.com/glepnir/lspsaga.nvim                               │
+-- ╰──────────────────────────────────────────────────────────────────────────────╯
 local lspsaga = loadModule("lspsaga", "lsp");
 
 return {
@@ -16,14 +16,16 @@ return {
       max_preview_lines         = 15,
       code_action_num_shortcut  = true,
       code_action_icon          = "", -- 我不喜欢写代码的时候有这个💡, 如果需要把这个符号放到""中
-      definition_preview_icon   = "👉 ",
-      diagnostic_header         = { "😡", "😥", "😤", "😐" },
+      definition_preview_icon   = "➜ ",
+      -- diagnostic_header         = { "😡", "😥", "😤", "😐" },
+      diagnostic_header         = { ' ', ' ', ' ', ' ' },
       finder_icons              = { def  = " ", ref  = " ", link = " " },
       code_action_lightbulb     = {
-        enable = true, -- 启用会让 html 文件报错, 没有 textDocument/codeAction is not suppouted
+        enable            = false,
+        cache_code_action = false,
       },
       symbol_in_winbar          = {
-        enable = false, -- 暂时无法启用, 坐等官方修复
+        enable = false, -- 暂时无法启用, 需要 neovim v0.8+
       },
       server_filetype_map       = {
         enable = false, -- 不知道这个有什么用, 所以关闭

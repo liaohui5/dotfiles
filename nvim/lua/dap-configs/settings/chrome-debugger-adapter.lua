@@ -1,7 +1,9 @@
+
 ---------------------------------------------------------------------------------------
 -- js 调试配置
 -- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#javascript-chrome
 ---------------------------------------------------------------------------------------
+
 return {
   onstart = function(dap, datapath, utils)
     local debugger_path = datapath .. "/mason/packages/vscode-chrome-debug/out/src/chromeDebug.js"

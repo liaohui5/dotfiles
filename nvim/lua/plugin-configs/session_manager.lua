@@ -1,9 +1,10 @@
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
--- │                            搜索文件/buffer/字符串                            │
--- │            docs: https://github.com/Shatur/neovim-session-manager            │
--- │              依赖插件: https://github.com/nvim-lua/plenary.nvim              │
--- │            同类插件: https://github.com/charludo/projectmgr.nvim             │
--- │              同类插件: https://github.com/rmagatti/auto-session              │
+-- │  搜索文件/buffer/字符串                                                      │
+-- │  docs: https://github.com/Shatur/neovim-session-manager                      │
+-- │  依赖插件: https://github.com/nvim-lua/plenary.nvim                          │
+-- │  同类插件: https://github.com/charludo/projectmgr.nvim                       │
+-- │  同类插件: https://github.com/rmagatti/auto-session                          │
+-- │  同类插件:  https://github.com/olimorris/persisted.nvim                      │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 local session_manager = loadModule("session_manager", "plugin-configs")
 local Path = loadModule("plenary.path", "plugin-configs")

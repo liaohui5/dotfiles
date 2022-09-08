@@ -1,6 +1,6 @@
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
--- │                       在 package.json 中执行 npm 操作                        │
--- │              docs: https://github.com/vuki656/package-info.nvim              │
+-- │ 在 package.json 中执行 npm 操作                                              │
+-- │ docs: https://github.com/vuki656/package-info.nvim                           │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 local packageInfo = loadModule("package-info", "plugin-configs");
 

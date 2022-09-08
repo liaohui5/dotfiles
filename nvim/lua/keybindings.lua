@@ -1,11 +1,11 @@
---------------------------------------------------------
---  _              _     _           _ _
--- | | _____ _   _| |__ (_)_ __   __| (_)_ __   __ _ ___
--- | |/ / _ \ | | | '_ \| | '_ \ / _` | | '_ \ / _` / __|
--- |   <  __/ |_| | |_) | | | | | (_| | | | | | (_| \__ \
--- |_|\_\___|\__, |_.__/|_|_| |_|\__,_|_|_| |_|\__, |___/
---           |___/                             |___/
---------------------------------------------------------
+-- ╭──────────────────────────────────────────────────────────────────────────────╮
+-- │                     _              _     _           _ _                     │
+-- │            | | _____ _   _| |__ (_)_ __   __| (_)_ __   __ _ ___             │
+-- │            | |/ / _ \ | | | '_ \| | '_ \ / _` | | '_ \ / _` / __|            │
+-- │            |   <  __/ |_| | |_) | | | | | (_| | | | | | (_| \__ \            │
+-- │            |_|\_\___|\__, |_.__/|_|_| |_|\__,_|_|_| |_|\__, |___/            │
+-- │                   |___/                             |___/                    │
+-- ╰──────────────────────────────────────────────────────────────────────────────╯
 ---@diagnostic disable
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
 -- │                         快捷键配置 & 快捷键菜单配置                          │
@@ -33,32 +33,55 @@ end
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
 -- │                               ufo 缩进美化插件                               │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
-keybindings.ufoKeys = function (ufo)
+keybindings.ufoKeys = function(ufo)
+  local previewFold = function ()
+    local winid = ufo.peekFoldedLinesUnderCursor()
+    if not winid then
+      vim.lsp.buf.hover();
+    end
+  end;
   wk.register({
+    ["zj"] = { 
+      ufo.goNextClosedFold,
+      "next closed fold[ufo]",
+    },
+    ["zk"] = { 
+      ufo.goPreviousClosedFold,
+      "prev closed fold[ufo]",
+    },
+    ["zJ"] = { 
+      function ()
+        ufo.goNextClosedFold();
+        ufo.peekFoldedLinesUnderCursor();
+      end,
+      "preview next closed fold[ufo]",
+    },
+    ["zK"] = { 
+      function ()
+        ufo.goPreviousClosedFold();
+        ufo.peekFoldedLinesUnderCursor();
+      end,
+      "preview prev closed fold[ufo]",
+    },
     ["zR"] = {
       ufo.openAllFolds,
-      "open all folds",
+      "open all folds[ufo]",
     },
     ["zM"] = {
       ufo.closeAllFolds,
-      "close all folds",
+      "close all folds[ufo]",
     },
     ["zr"] = {
       ufo.openFoldsExceptKinds,
-      "open more folds",
+      "open more folds[ufo]",
     },
     ["zm"] = {
       ufo.closeFoldsWith,
-      "close more folds",
+      "close more folds[ufo]",
     },
-    ["zh"] = {
-      function ()
-        local winid = ufo.peekFoldedLinesUnderCursor()
-        if not winid then
-          vim.lsp.buf.hover();
-        end
-      end,
-      "preview fold content",
+    ["zp"] = {
+      previewFold,
+      "preview fold content[ufo]",
     }
   })
 end
@@ -115,8 +138,8 @@ keybindings.commentBoxKeys = function()
       },
     },
     ["<leader>cbb"] = {
-      [[<cmd>CBcbox<CR>]],
-      "text:center length:auto",
+      [[<cmd>CBlbox<CR>]],
+      "text:left length:auto",
     },
     ["<leader>cb1"] = {
       [[<cmd>CBcbox<CR>]],
@@ -169,6 +192,23 @@ end
 -- │                           nvim-treesitter 语法高亮                           │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 keybindings.treesitterKeys = function()
+  wk.register({
+    ["<leader>Pt"] = {
+      name = "treesitter",
+      i = {
+        "<cmd>TSInstallInfo<CR>",
+        "treesitter install info[treesitter]"
+      },
+      c = {
+        "<cmd>TSConfigInfo<CR>",
+        "treesitter config info[treesitter]"
+      },
+      m = {
+        "<cmd>TSModuleInfo<CR>",
+        "treesitter module info[treesitter]"
+      },
+    }
+  })
   return {
     keymaps = {
       init_selection    = '<CR>',
@@ -181,6 +221,44 @@ keybindings.treesitterKeys = function()
       ['0'] = 'textsubjects-smart',
       ['='] = 'textsubjects-container-outer',
       ['-'] = 'textsubjects-container-inner',
+    },
+    textobjects_swap_next = {
+      ["<leader>An"] = "@parameter.inner",
+    },
+    textobjects_swap_prev = {
+      ["<leader>An"] = "@parameter.inner",
+    },
+    textobjects_move_goto_next_start = {
+      ["]m"] = "@function.outer",
+      ["]c"] = "@class.outer",
+    },
+    textobjects_move_goto_next_end = {
+      ["]M"] = "@function.outer",
+      ["]C"] = "@class.outer",
+    },
+    textobjects_goto_previous_start = {
+      ["[m"] = "@function.outer",
+      ["[c"] = "@class.outer",
+    },
+    textobjects_goto_previous_end = {
+      ["[M"] = "@function.outer",
+      ["[C"] = "@class.outer",
+    },
+    textobjects_select_keymaps = {
+      ["sa"] = { query = "@attribute.inner",   desc = "attribute inner[textobjects]"       },
+      ["sA"] = { query = "@attribute.outer",   desc = "attribute outer[textobjects]"       },
+      ["sb"] = { query = "@block.inner",       desc = "block inner[textobjects]"           },
+      ["sB"] = { query = "@block.outer",       desc = "block outer[textobjects]"           },
+      ["sc"] = { query = "@class.inner",       desc = "class inner[textobjects]"           },
+      ["sC"] = { query = "@class.outer",       desc = "class outer[textobjects]"           },
+      ["sf"] = { query = "@function.inner",    desc = "function inner[textobjects]"        },
+      ["sF"] = { query = "@function.outer",    desc = "function outer[textobjects]"        },
+      ["si"] = { query = "@conditional.inner", desc = "conditional inner[textobjects]"     },
+      ["sI"] = { query = "@conditional.outer", desc = "conditional outer[textobjects]"     },
+      ["sl"] = { query = "@loop.inner",        desc = "loop(for/while) inner[textobjects]" },
+      ["sL"] = { query = "@loop.outer",        desc = "loop(for/while) outer[textobjects]" },
+      ["sp"] = { query = "@parameter.inner",   desc = "arguments inner[textobjects]"       },
+      ["sP"] = { query = "@parameter.outer",   desc = "arguments outer[textobjects]"       },
     }
   }
 end
@@ -335,7 +413,7 @@ keybindings.barbarKeys = function ()
       "show all buffers[barbar]",
     },
     ["<leader>bb"] = {
-      "<cmd>Telescope buffers<CR>",
+      "<cmd>BufferLinePick<CR>",
       "show all buffers[barbar]",
     },
     ["<leader>bh"] = {
@@ -536,6 +614,16 @@ keybindings.cmpKeys = function(cmp)
       end
     end, { "i", "s" }),
   }
+end
+
+-- ╭──────────────────────────────────────────────────────────────────────────────╮
+-- │                          vim-expand-region 选择增强                          │
+-- ╰──────────────────────────────────────────────────────────────────────────────╯
+keybindings.vimExpandRegionKeys = function ()
+  -- nnoremap("J", "<Plug>(expand_region_expand)<CR>");
+  -- nnoremap("K", "<Plug>(expand_region_shrink)<CR>");
+  -- vnoremap("J", "<Plug>(expand_region_expand)<CR>");
+  -- vnoremap("K", "<Plug>(expand_region_shrink)<CR>");
 end
 
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
@@ -826,6 +914,12 @@ end
 -- │                                  mason 设置                                  │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 keybindings.lspMasonKeys = function()
+  wk.register({
+    ["<leader>Pm"] = {
+      "<cmd>Mason<CR>",
+      "Mason[mason]"
+    }
+  })
   return {
     toggle_package_expand   = "o", -- 展开
     install_package         = "i", -- 安装

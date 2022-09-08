@@ -1,6 +1,6 @@
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
--- │                                  顶部标签页                                  │
--- │               docs: https://github.com/akinsho/bufferline.nvim               │
+-- │ 顶部标签页                                                                   │
+-- │ docs: https://github.com/akinsho/bufferline.nvim                             │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 local bufferline = loadModule("bufferline", "plugin-config")
 

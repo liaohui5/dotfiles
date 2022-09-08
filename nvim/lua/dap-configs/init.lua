@@ -13,9 +13,9 @@
 -- 调试 debugger 配置, 注意配置文件加载顺序
 --------------------------------------------------------------
 local dap_configs = {
-  "dap",              -- 断点服务器配置
-  "dap-ui",           -- 断点UI配置
   "dap-virutal-text", -- 断点 virtual-text 配置
+  "dap-ui",           -- 断点UI配置
+  "dap",              -- 断点服务器配置
 }
 
 for _, item in pairs(dap_configs) do

@@ -9,11 +9,12 @@
 --  | |              | || |              | || |              | || |              | || |              | || |              | || |              | |
 --  | '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' |
 --   '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'
--- 在这里定义启动 neovim 的选项
+-- 内置选项
 vim.opt.shortmess:append("c"); -- 禁用 neovim 启动页介绍
 vim.opt.compatible      = false; -- 缺省vi兼容模式,不能用退格.设置为不兼容模式
 vim.opt.title           = true; -- 显示 title
 vim.opt.cursorline      = true; -- 高亮当前行
+vim.opt.list            = false; -- 是否显示空白符号
 vim.opt.clipboard       = "unnamedplus"; -- 使用系统粘贴板
 vim.opt.updatetime      = 300; -- 更新间隔时间(ms), 比如按下 <Leader> 键后没有再
 vim.opt.timeoutlen      = 0; -- 按其他键多久后自动取消 <Leader>
@@ -51,14 +52,15 @@ vim.opt.writebackup     = false; -- 不创建备份文件
 vim.opt.showmatch       = true; -- 当输入一个左括号时自动匹配右括号
 vim.opt.autochdir       = false; -- 自动切换当前目录为当前文件所在的目录
 vim.opt.hidden          = true; -- hidden
-vim.g.loaded_matchparen = false -- 禁止自动匹配高亮括号
--- vim.opt.foldmethod      = "expr";         -- 根据缩进折叠
--- vim.opt.foldexpr        = 'nvim_treesitter#foldexpr()'; -- 使用 treesitter 来折叠
-vim.opt.foldmethod      = "indent"; -- 根据缩进折叠
-vim.opt.foldenable      = true; -- 开启折叠功能
+vim.opt.foldlevel       = 99; -- 打开文件时,不要自动折叠
 vim.opt.foldlevelstart  = 99; -- 打开文件时,不要自动折叠
-vim.opt.list            = false; -- 显示空白符号
-vim.cmd [[ set listchars=eol:↴ ]] -- 设置空白字符对应显示的符号 listchars=tab:>-,trail:.,extends:>,precedes:<,space:.,eol:↴
+vim.opt.foldenable      = true; -- 开启折叠功能
+vim.opt.foldmethod      = "indent"; -- 根据缩进折叠
+-- vim.opt.foldmethod      = "expr";        -- 根据缩进折叠
+-- vim.opt.foldexpr        = 'nvim_treesitter#foldexpr()'; -- 使用 treesitter 来折叠
+
+-- 全局变量
+vim.g.loaded_matchparen = false; -- 禁止自动匹配高亮括号
 
 -- 内置插件
 local default_plugins = {

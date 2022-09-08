@@ -1,23 +1,37 @@
-----------------------------------------------------------------
--- #    # ###### #   #       #    # ###### #    # #    #  ####
--- #   #  #       # #        ##  ## #      ##   # #    # #
--- ####   #####    #   ##### # ## # #####  # #  # #    #  ####
--- #  #   #        #         #    # #      #  # # #    #      #
--- #   #  #        #         #    # #      #   ## #    # #    #
--- #    # ######   #         #    # ###### #    #  ####   ####
-----------------------------------------------------------------
+-- ╭──────────────────────────────────────────────────────────────────────────────╮
+-- │         #    # ###### #   #       #    # ###### #    # #    #  ####          │
+-- │         #   #  #       # #        ##  ## #      ##   # #    # #              │
+-- │         ####   #####    #   ##### # ## # #####  # #  # #    #  ####          │
+-- │         #  #   #        #         #    # #      #  # # #    #      #         │
+-- │         #   #  #        #         #    # #      #   ## #    # #    #         │
+-- │         #    # ######   #         #    # ###### #    #  ####   ####          │
+-- ╰──────────────────────────────────────────────────────────────────────────────╯
+--------------------------------------
+-- 菜单描述修改
+--------------------------------------
+local create_munes_desc = function (wk)
+  wk.register({
+    ["%"]      = { nil, "matching brackets:() {} []" },
+    ["<C-x>"]  = { nil, "toggle terminal display" },
+    ["x"]      = { nil, "delete" },
+
+    -- comment
+    ["<C-\\>"] = { nil, "toggle comment[kommentary]" },
+    ["<C-b>"]  = { nil, "Back" },
+    ["<C-d>"]  = { nil, "scroll down" },
+
+    -- splitjoin
+    ["gJ"]     = { nil, "join line[splitjoin]" },
+    ["gS"]     = { nil, "split line[splitjoin]" },
+  });
+end
 --------------------------------------
 -- Normal 菜单
 --------------------------------------
 local create_noremal_menus = function(wk)
   wk.register({
-    ["<C-\\>"] = { nil, "toggle comment[kommentary]" },
-    ["<C-b>"] = { nil, "Back" },
-    ["<C-d>"] = { nil, "scroll down" },
-
-    -- splitjoin
-    ["gJ"] = { nil, "join line[splitjoin]" },
-    ["gS"] = { nil, "split line[splitjoin]" },
+    -- selection
+    ["vs"] = { name = "+Selection" },
 
     -- fold
     ["z"] = { name = "+Fold" },
@@ -150,6 +164,7 @@ local create_noremal_menus = function(wk)
     },
 
     -- insert
+    -- TODO: insert image
     ["<leader>i"] = {
       name = "+Insert",
       i = {
@@ -173,10 +188,10 @@ local create_noremal_menus = function(wk)
     -- List
     ["<leader>l"] = {
       name = "+List",
-      -- l = {
-      --   "<cmd>buffers<CR>",
-      --   "show all buffers",
-      -- },
+      t = {
+        "<cmd>TODOTelescope<CR>",
+        "list todos"
+      }
     },
 
     -- NPM
@@ -323,21 +338,6 @@ local create_noremal_menus = function(wk)
         "<cmd>PackerClean<CR>",
         "plugins clean"
       },
-      t = {
-        name = "treesitter",
-        i = {
-          "<cmd>TSInstallInfo<CR>",
-          "treesitter install info[treesitter]"
-        },
-        c = {
-          "<cmd>TSConfigInfo<CR>",
-          "treesitter config info[treesitter]"
-        },
-        m = {
-          "<cmd>TSModuleInfo<CR>",
-          "treesitter module info[treesitter]"
-        },
-      }
     },
 
     -- Markdown
@@ -433,6 +433,7 @@ end
 
 return {
   onstart = function(wk)
+    create_munes_desc(wk);
     create_noremal_menus(wk);
     create_visual_menus(wk);
   end

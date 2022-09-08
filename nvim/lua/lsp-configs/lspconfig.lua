@@ -1,9 +1,8 @@
----------------------------------------------------------------------
--- 配置LSP服务器工具
--- docs:
--- https://github.com/neovim/nvim-lspconfig
--- https://github.com/williamboman/mason-lspconfig.nvim
----------------------------------------------------------------------
+-- ╭──────────────────────────────────────────────────────────────────────────────╮
+-- │  配置LSP服务器工具                                                           │
+-- │  docs: https://github.com/neovim/nvim-lspconfig                              │
+-- │  docs: https://github.com/williamboman/mason-lspconfig.nvim                  │
+-- ╰──────────────────────────────────────────────────────────────────────────────╯
 local lspconfig       = loadModule("lspconfig", "lsp");
 local mason_lspconfig = loadModule("mason-lspconfig", "lsp");
 local cmp_nvim_lsp    = loadModule("cmp_nvim_lsp", "lsp");

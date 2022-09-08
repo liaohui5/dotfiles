@@ -1,8 +1,8 @@
------------------------------------------------------------
--- 搜索文件/buffer/字符串
--- docs: https://github.com/nvim-telescope/telescope.nvim
--- plugins: https://github.com/nvim-telescope/telescope.nvim/wiki/Extensions
------------------------------------------------------------
+-- ╭──────────────────────────────────────────────────────────────────────────────╮
+-- │  搜索文件/buffer/字符串                                                      │
+-- │  docs: https://github.com/nvim-telescope/telescope.nvim                      │
+-- │  plugins: https://github.com/nvim-telescope/telescope.nvim/wiki/Extensions   │
+-- ╰──────────────────────────────────────────────────────────────────────────────╯
 local telescope = loadModule("telescope", "plugin-configs");
 
 telescope.setup({

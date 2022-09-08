@@ -24,10 +24,12 @@ if fn.empty(fn.glob(install_path)) > 0 then
   vim.cmd [[packadd packer.nvim]]
 end
 
+
+-- ╭──────────────────────────────────────────────────────────────────────────────╮
+-- │                       Pakcer 插件列表 & 启动插件管理器                       │
+-- ╰──────────────────────────────────────────────────────────────────────────────╯
+-- WARNING: 带有commit选项的就是有main分支bug
 return require("packer").startup({
-    -- ╭──────────────────────────────────────────────────────────────────────────────╮
-    -- │                   Pakcer 插件列表 & 启动插件管理器 packer                    │
-    -- ╰──────────────────────────────────────────────────────────────────────────────╯
   function(use)
     -- ╭──────────────────────────────────────────────────────────────────────────────╮
     -- │                        packer 包管理工具可以管理自己                         │
@@ -55,10 +57,6 @@ return require("packer").startup({
       "nvim-treesitter/nvim-treesitter-textobjects",
       requires = "nvim-treesitter/nvim-treesitter",
     })
-    -- use({
-    --   "terryma/vim-expand-region",
-    --   config = [[require("plugin-configs.vim-expand-region")]],
-    -- })
     -- use({
     --   "RRethy/nvim-treesitter-textsubjects",
     --   requires = "nvim-treesitter/nvim-treesitter",
@@ -221,6 +219,7 @@ return require("packer").startup({
     })
     use({
       "LudoPinelli/comment-box.nvim",
+      commit = "",
       config = [[require("plugin-configs.comment-box")]],
     })
 
@@ -246,7 +245,6 @@ return require("packer").startup({
     -- ╰──────────────────────────────────────────────────────────────────────────────╯
     use({
       "folke/which-key.nvim",
-      commit = "f11260251ad942ba1635db9bc25c2efaf75caf0a",
       config = [[require("plugin-configs.which-key")]]
     })
 
@@ -361,10 +359,7 @@ return require("packer").startup({
     -- ╭──────────────────────────────────────────────────────────────────────────────╮
     -- │                               合并/切分当前行                                │
     -- ╰──────────────────────────────────────────────────────────────────────────────╯
-    use({
-      "AndrewRadev/splitjoin.vim",
-      config = [[require("plugin-configs.splitjoin")]],
-    })
+    use({ "AndrewRadev/splitjoin.vim" })
 
     -- ╭──────────────────────────────────────────────────────────────────────────────╮
     -- │                                  格式化代码                                  │
@@ -407,7 +402,7 @@ return require("packer").startup({
     use({ "hrsh7th/cmp-cmdline" })                   -- { name = 'cmdline' }
     use({ "hrsh7th/cmp-nvim-lsp-signature-help" })   -- { name = 'nvim_lsp_signature_help' }
     use({ "hrsh7th/cmp-nvim-lua" })                  -- { name = 'nvim_lua' }
-    use({ "glepnir/lspsaga.nvim", branch = "main" }) -- UI 增强
+    use({ "glepnir/lspsaga.nvim", branch = "main", commit = "b075b515e0c6ca6d9a79ae677a830c321eaf74fb" }) -- UI 增强
     -- use({ "jose-elias-alvarez/null-ls.nvim" })       -- 多语言代码检查工具, 功能类似 ESLint
 
     -- ╭──────────────────────────────────────────────────────────────────────────────╮
@@ -457,4 +452,5 @@ return require("packer").startup({
 -- │ https://github.com/altermo/vim-plugin-list                                   │
 -- │ https://github.com/neovim/neovim/wiki/Related-projects#plugins               │
 -- │ https://github.com/mhinz/vim-galore/blob/master/PLUGINS.md                   │
+-- │ https://github.com/altermo/vim-plugin-list                                   │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯

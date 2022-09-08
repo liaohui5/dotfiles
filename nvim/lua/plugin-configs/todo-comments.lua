@@ -1,6 +1,6 @@
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
--- │                                 高亮TODO注释                                 │
--- │              docs: https://github.com/folke/todo-comments.nvim               │
+-- │  高亮TODO注释                                                                │
+-- │  docs: https://github.com/folke/todo-comments.nvim                           │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 local todoComments = loadModule("todo-comments", "plugin-configs");
 

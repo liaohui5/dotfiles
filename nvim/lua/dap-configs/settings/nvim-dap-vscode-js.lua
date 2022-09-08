@@ -5,11 +5,7 @@
 -- https://github.com/microsoft/vscode-js-debug
 -- 目前只能调试 node(javascript/typescript) 无法调试 vue.js
 ---------------------------------------------------------------------------------------
-local ok, dap_vscode_js = pcall(require, "dap-vscode-js")
-if not ok then
-  vim.notify("[dap] dap_vscode_js not found!")
-  return
-end
+local dap_vscode_js = loadModule("dap-vscode-js", "dap");
 
 return {
   onstart = function(dap, datapath, utils)

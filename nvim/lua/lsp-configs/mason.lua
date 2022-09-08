@@ -1,14 +1,14 @@
----------------------------------------------------------------------
--- 安装LSP服务器工具
--- docs:
--- https://github.com/williamboman/mason.nvim
----------------------------------------------------------------------
+-- ╭──────────────────────────────────────────────────────────────────────────────╮
+-- │  安装LSP服务器工具                                                           │
+-- │  docs: https://github.com/williamboman/mason.nvim                                  │
+-- ╰──────────────────────────────────────────────────────────────────────────────╯
 local mason = loadModule("mason", "lsp");
 
 return {
 	onstart = function()
+    local keymaps = require("keybindings").lspMasonKeys();
 		mason.setup({
-			keymaps = require("keybindings").lspMasonKeys,
+			keymaps = keymaps,
       max_concurrent_installers = 10,
 			ui = {
 				icons = {

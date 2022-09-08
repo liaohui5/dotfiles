@@ -1,14 +1,16 @@
--- 启动高亮
+-- ╭──────────────────────────────────────────────────────────────────────────────╮
+-- │  启动高亮                                                                    │
+-- ╰──────────────────────────────────────────────────────────────────────────────╯
+
 return {
   setup = function(client, bufnr)
     -- 注: 不要使用 pattern="*"(代表所有buffer),
     -- 要使用 buffer="bufnr" 代表当前 buffer
     -- 因为使用 pattern="*" 可能导致报错,有的文件没有lsp支持
     if client.resolved_capabilities.document_highlight then
-      -- exec vim script
       -- vim.cmd([[
       --   augroup lsp_document_highlight
-      --     autocmd! *.js <buffer>
+      --     autocmd! * <buffer>
       --     autocmd CursorHold  <buffer> silent lua vim.lsp.buf.document_highlight()
       --     autocmd CursorHoldI <buffer> silent lua vim.lsp.buf.document_highlight()
       --     autocmd CursorMoved <buffer> silent lua vim.lsp.buf.clear_references()
@@ -17,10 +19,10 @@ return {
 
       local group   = vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
       local autocmd = vim.api.nvim_create_autocmd
-      local buf = vim.lsp.buf;
+      local buf     = vim.lsp.buf;
 
       -- normal 模式: 自动高亮光标位置的单词
-      autocmd("CursorHold", { 
+      autocmd("CursorHold", {
         group    = group,
         buffer   = bufnr,
         callback = buf.document_highlight
@@ -37,7 +39,7 @@ return {
       autocmd("CursorMoved", {
         group    = group,
         buffer   = bufnr,
-        callback = buf.clear_references 
+        callback = buf.clear_references
       })
     end
   end

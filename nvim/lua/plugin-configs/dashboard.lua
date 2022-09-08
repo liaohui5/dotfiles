@@ -1,8 +1,8 @@
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
--- │                                  -- 启动页                                   │
--- │              -- docs: https://github.com/glepnir/dashboard-nvim              │
--- │  -- wiki: https://github.com/glepnir/dashboard-nvim/wiki/Ascii-Header-Text   │
--- │  -- preview: https://github.com/glepnir/dashboard-nvim/wiki/Header-Preview   │
+-- │ 启动页                                                                       │
+-- │ docs: https://github.com/glepnir/dashboard-nvim                              │
+-- │ wiki: https://github.com/glepnir/dashboard-nvim/wiki/Ascii-Header-Text       │
+-- │ preview: https://github.com/glepnir/dashboard-nvim/wiki/Header-Preview       │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 -- 这个插件会影响 neovide 客户端 bufferline 和 statusline
 local dashboard = loadModule("dashboard", "plugin-config")

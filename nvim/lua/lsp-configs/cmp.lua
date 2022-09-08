@@ -1,9 +1,9 @@
-----------------------------------------------------
--- LSP 启动配置
--- docs:
--- https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion
--- https://github.com/hrsh7th/nvim-cmp
-----------------------------------------------------
+-- ╭──────────────────────────────────────────────────────────────────────────────╮
+-- │ LSP 启动配置                                                                 │
+-- │ docs:                                                                        │
+-- │ https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion                 │
+-- │ https://github.com/hrsh7th/nvim-cmp                                          │
+-- ╰──────────────────────────────────────────────────────────────────────────────╯
 local cmp = loadModule("cmp", "lsp");
 
 local M = {}

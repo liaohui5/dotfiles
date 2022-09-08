@@ -9,6 +9,11 @@
 local dap = loadModule("dap", "dap");
 local dapui = loadModule("dapui", "dap");
 
+-- 自动安装对应的dap-server, 需要Mason
+local function auto_install_dap_server()
+
+end
+
 -- 配置断点图标
 local function set_breakpoint_icon()
   local breakpoint = {
@@ -67,6 +72,7 @@ local function config_debuggers()
   local utils             = require("dap.utils")
   local datapath          = vim.fn.stdpath("data")
   -- TODO: 现在只能调试node, 无法调试vue/react项目
+  -- TODO: 参考配置: https://github.com/ecosse3/nvim/blob/master/lua/plugins/dap.lua#L132
   local debugger_adapters = {
     "nvim-dap-vscode-js",
     -- "node-debug2-adapter",

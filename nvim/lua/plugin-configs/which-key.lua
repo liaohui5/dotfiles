@@ -1,7 +1,7 @@
------------------------------------------------------------
--- 书签管理
--- docs: https://github.com/folke/which-key.nvim
------------------------------------------------------------
+-- ╭──────────────────────────────────────────────────────────────────────────────╮
+-- │ 书签管理                                                                     │
+-- │ docs: https://github.com/folke/which-key.nvim                                │
+-- ╰──────────────────────────────────────────────────────────────────────────────╯
 local wk = loadModule("which-key", "plugin-configs");
 
 wk.setup({
@@ -18,9 +18,9 @@ wk.setup({
     v = { "j", "k" },
   },
 
-  plugins = {
-    marks     = true,                -- 查看所有标记用 ' 和 ` 触发
-    registers = true,                -- 查看所有寄存器(registers) 用 " 触发
+  plugins        = {
+    marks     = true, -- 查看所有标记用 ' 和 ` 触发
+    registers = true, -- 查看所有寄存器(registers) 用 " 触发
     spelling  = { enabled = false }, -- 单词检测
     presets   = {
       -- which-key 内置的按键提示
@@ -33,30 +33,32 @@ wk.setup({
       g            = true,
     },
   },
-  operators = { gc = "Comments" },
-  key_labels = {
+  operators      = {
+    gc = "Comments",
+  },
+  key_labels     = {
     -- 特殊按键显示的样式
     ["<space>"] = "<Space>",
     ["<cr>"]    = "<Enter>",
     ["<tab>"]   = "<Tab>",
   },
-  icons = {
+  icons          = {
     breadcrumb = "»",
     separator  = "➜",
     group      = "+",
   },
   popup_mappings = {
-    scroll_down = '<c-d>', -- 如果按键太多, 向下滚动
-    scroll_up   = '<c-u>', -- 如果按键太多, 向下滚动
+    scroll_down = "<c-d>", -- 如果按键太多, 向下滚动
+    scroll_up   = "<c-u>", -- 如果按键太多, 向下滚动
   },
-  window = {
-    border   = "none",         -- none | single | double | shadow
-    position = "bottom",       -- bottom | top
+  window         = {
+    border   = "none", -- none | single | double | shadow
+    position = "bottom", -- bottom | top
     margin   = { 0, 0, 0, 0 }, -- extra window margin [top, right, bottom, left]
-    padding  = { 3, 0, 3, 0 }, -- extra window padding [top, right, bottom, left]
+    padding  = { 1, 0, 1, 0 }, -- extra window padding [top, right, bottom, left]
     winblend = 0
   },
-  layout = {
+  layout         = {
     height  = { min = 4, max = 30 },
     width   = { min = 20, max = 50 },
     spacing = 4,
