@@ -5,7 +5,6 @@
 -- ╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 
 local feline = loadModule("feline", "plugin-config")
-local packageInfo = loadModule("package-info", "plugin-config")
 local devicons = loadModule("nvim-web-devicons", "plugin-config")
 local felineUtils = loadModule("feline.utils", "plugin-config")
 local lazy_require = felineUtils.lazy_require;
@@ -240,20 +239,6 @@ table.insert(components.active[1], {
     fg = 'blue',
     bg = 'bg',
   },
-})
-
--- -----------------------------------------------------------------------------
--- npm 命令执行的状态
--- -----------------------------------------------------------------------------
-table.insert(components.active[1], {
-  provider = function()
-    return packageInfo.get_status()
-  end,
-  hl = {
-    style = "bold",
-  },
-  left_sep = " ",
-  right_sep = " ",
 })
 
 -- -----------------------------------------------------------------------------
