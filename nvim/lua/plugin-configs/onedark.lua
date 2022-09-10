@@ -5,7 +5,7 @@
 local onedark = loadModule("onedark", "plugin-configs")
 
 onedark.setup({
-  style                = 'dark',
+  style                = 'darker',
   transparent          = false,
   term_colors          = true,
   ending_tildes        = false,
@@ -28,9 +28,7 @@ onedark.setup({
     variables = 'none'
   },
   -- colors: https://github.com/navarasu/onedark.nvim/blob/master/lua/onedark/palette.lua
-  colors               = {
-    -- bg0 = "#23241f"
-  },
+  colors               = {},
   -- highlights: https://github.com/navarasu/onedark.nvim/blob/master/lua/onedark/highlights.lua
   highlights           = {},
   diagnostics          = {

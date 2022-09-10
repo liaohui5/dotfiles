@@ -379,6 +379,14 @@ end
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 keybindings.barbarKeys = function ()
   wk.register({
+    ["H"] = {
+      "<cmd>BufferPrevious<CR>",
+      "previous buffer"
+    },
+    ["L"] = {
+      "<cmd>BufferNext<CR>",
+      "next buffer"
+    },
     ["<leader>ll"] = {
       "<cmd>Telescope buffers<CR>",
       "show all buffers[barbar]",
@@ -725,71 +733,58 @@ keybindings.nvimtreeKeys = function()
   })
 
   return {
-    { key = "o", action = "edit" }, -- 打开并编辑
-    { key = "<CR>", action = "edit" }, -- 打开并编辑
-    { key = "<C-\\>", action = "system_open" }, -- 用系统 open 命令打开
-    { key = "v", action = "vsplit" }, -- 左右拆分窗口并打开编辑
-    { key = "i", action = "toggle_ignored" }, -- 切换忽略
-    { key = ".", action = "toggle_dotfiles" }, -- 切换隐藏文件是否可见
-    { key = "R", action = "refresh" }, -- 刷新
-    { key = "a", action = "create" }, -- 创建文件/目录(/结尾就是目录)
-    { key = "r", action = "rename" }, -- 重命名
-    { key = "x", action = "remove" }, -- 删除
-    { key = "d", action = "cut" }, -- 剪切
-    { key = "y", action = "copy" }, -- 复制
-    { key = "p", action = "paste" }, -- 粘贴
-    { key = "Yn", action = "copy_name" }, -- 复制文件名
-    { key = "Yp", action = "copy_path" }, -- 否则文件路径
-    { key = "YP", action = "copy_absolute_path" }, -- 复制文件绝对路径
-    { key = "I", action = "toggle_file_info" }, -- 查看文件信息
-    { key = { "]" }, action = "cd" }, -- 切换目录
-    { key = { "[" }, action = "dir_up" }, -- 切换到上级目录
-    -- { key = "n", action = "tabnew" },              -- 不知道干嘛的
+    { key = "o",      action = "edit"               }, -- 打开并编辑
+    { key = "<CR>",   action = "edit"               }, -- 打开并编辑
+    { key = "<C-\\>", action = "system_open"        }, -- 用系统 open 命令打开
+    { key = "v",      action = "vsplit"             }, -- 左右拆分窗口并打开编辑
+    { key = "i",      action = "toggle_ignored"     }, -- 切换忽略
+    { key = ".",      action = "toggle_dotfiles"    }, -- 切换隐藏文件是否可见
+    { key = "R",      action = "refresh"            }, -- 刷新
+    { key = "a",      action = "create"             }, -- 创建文件/目录(/结尾就是目录)
+    { key = "r",      action = "rename"             }, -- 重命名
+    { key = "x",      action = "remove"             }, -- 删除
+    { key = "d",      action = "cut"                }, -- 剪切
+    { key = "y",      action = "copy"               }, -- 复制
+    { key = "p",      action = "paste"              }, -- 粘贴
+    { key = "Yn",     action = "copy_name"          }, -- 复制文件名
+    { key = "Yp",     action = "copy_path"          }, -- 否则文件路径
+    { key = "YP",     action = "copy_absolute_path" }, -- 复制文件绝对路径
+    { key = "I",      action = "toggle_file_info"   }, -- 查看文件信息
+    -- { key = { "]" }, action = "cd" }, -- 切换目录
+    -- { key = { "[" }, action = "dir_up" }, -- 切换到上级目录
+    -- { key = "n", action = "tabnew" }, -- 不知道干嘛的
   }
 end
 
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
--- │                           session session管理工具                            │
+-- │                           session管理工具                                    │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
-keybindings.sessionManagerKeys = function()
+keybindings.autoSessionKeys = function()
   -- 在退出编辑器之前 & 自动保存当前 session 状态
   wk.register({
     ["<leader>op"] = {
-      "<cmd>SessionManager load_session<CR>",
-      "open session manager[session-manager]",
-    },
-    ["<leader><CR>"] = {
-      "<cmd>SessionManager load_current_dir_session<CR>",
-      "Load Current Dir [session-manager]",
+      "<cmd>Autosession search<CR>",
+      "open session manager[auto-session]",
     },
     ["<leader>pr"] = {
-      "<cmd>SessionManager load_last_session<CR>",
-      "load last session[session-manager]",
+      "<cmd>RestoreSession<CR>",
+      "load last session[auto-session]",
     },
     ["<leader>pl"] = {
-      "<cmd>SessionManager load_session<CR>",
-      "switch session[session-manager]",
+      "<cmd>Autosession search<CR>",
+      "switch session[auto-session]",
     },
     ["<leader>pp"] = {
-      "<cmd>SessionManager load_session<CR>",
-      "switch session[session-manager]",
+      "<cmd>Autosession search<CR>",
+      "switch session[auto-session]",
     },
-    ["<leader>pe"] = {
-      "<cmd>SessionManager delete_session<CR>",
-      "delete sessions[session-manager]",
+    ["<leader>pd"] = {
+      "<cmd>Autosession delete<CR>",
+      "delete sessions[auto-session]",
     },
     ["<leader>ps"] = {
-      "<cmd>SessionManager save_current_session<CR>",
-      "save sessions[session-manager]",
-    },
-    ["<leader>qs"] = {
-      function()
-        vim.cmd [[
-          :SessionManager save_current_session
-          :quitall!
-        ]]
-      end,
-      "save session before quit",
+      "<cmd>SaveSession<CR>",
+      "save sessions[auto-session]",
     },
   })
 end
@@ -797,7 +792,7 @@ end
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
 -- │                              telescope 搜索文件                              │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
-keybindings.telescopeKeys = function()
+keybindings.telescopeKeys = function(builtin, actions)
   nnoremap("<C-p>", "<cmd>Telescope find_files prompt_prefix=[files]<CR>")
   -- nnoremap("<leader>fb", "<cmd>Telescope buffers prompt_prefix=[buffers]<CR>")
   -- nnoremap("<leader>fs", "<cmd>Telescope live_grep prompt_prefix=[string]<CR>")
@@ -820,6 +815,10 @@ keybindings.telescopeKeys = function()
     ["<leader>bs"] = {
       "<cmd>Telescope buffers prompt_prefix=[buffers]<CR>",
       "search buffers[telescope]"
+    },
+    ["<leader>sf"] = {
+      "<cmd>Telescope current_buffer_fuzzy_find prompt_prefix=[fuzzy]<CR>",
+      "fuzzy search[telescope]"
     },
     ["<leader>ot"] = {
       "<cmd>Telescope vim_bookmarks all prompt_prefix=[bookmarks]<CR>",
@@ -863,7 +862,6 @@ keybindings.telescopeKeys = function()
     },
   });
 
-  local actions = loadModule("telescope.actions", "keybindings");
   return {
     i = {
       -- 在显示 telescope 输入框时, insert 模式的时候

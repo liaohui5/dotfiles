@@ -147,7 +147,7 @@ xnoremap("<leader>il", [["ayoconsole.log('<C-R>a:', <C-R>a);<Esc>]])
 -- find/file
 nnoremap("<leader>fo", [[<cmd>silent execute "open ."<CR>]])
 nnoremap("<leader>fL", [[<cmd>silent execute "open ."<CR>]])
-nnoremap("<leader>fs", [[<cmd>wirte<CR>]])
+nnoremap("<leader>fs", [[<cmd>write<CR>]])
 
 -- git
 nnoremap("<leader>gi", [[<cmd>silent execute "!git init"<CR>]])

@@ -4,15 +4,14 @@
 -- │ components: https://github.com/feline-nvim/feline.nvim/blob/master/lua/feline/default_components.lua           │
 -- ╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 
-local feline = loadModule("feline", "plugin-config")
-local devicons = loadModule("nvim-web-devicons", "plugin-config")
-local felineUtils = loadModule("feline.utils", "plugin-config")
+local feline       = loadModule("feline", "plugin-config")
+local sessionLib   = loadModule("auto-session-library", "plugin-config")
+local felineUtils  = loadModule("feline.utils", "plugin-config")
 local lazy_require = felineUtils.lazy_require;
-local vi_mode = lazy_require('feline.providers.vi_mode')
-local api, fn = vim.api, vim.fn
+local vi_mode      = lazy_require('feline.providers.vi_mode')
 
 local colors = {
-  bg = '#23241f',
+  bg = '#080808',
   fg = '#e5e5e5',
   section_bg = '#38393f',
   blue = '#61afef',
@@ -88,7 +87,7 @@ local components = {
 -- VIM 模式信息提示(左)
 -- -----------------------------------------------------------------------------
 local function mode()
-  return mode_alias[api.nvim_get_mode().mode]
+  return mode_alias[vim.api.nvim_get_mode().mode]
 end
 
 table.insert(components.active[1], {
@@ -110,35 +109,43 @@ table.insert(components.active[1], {
 })
 
 -- -----------------------------------------------------------------------------
--- 文件类型
+-- session
+-- 如果执行命令有参数(如: nvim a.txt)就不显示, 没有参数(如: nvim)就显示session名
 -- -----------------------------------------------------------------------------
-table.insert(components.active[1], {
-  provider = 'file_type',
-  hl = {
-    fg = 'white',
-    bg = 'oceanblue'
-  },
-  left_sep = {
-    'slant_left_2',
-    {
-      str = ' ',
-      hl = {
-        fg = 'NONE',
-        bg = 'oceanblue',
+local hasCmdArgs = vim.v.argv[2];
+if (not hasCmdArgs) then
+  table.insert(components.active[1], {
+    provider = function ()
+      local session_name = sessionLib.current_session_name()
+      return string.format(" %s", session_name)
+    end,
+    icon = "",
+    hl = {
+      fg = 'white',
+      bg = 'oceanblue'
+    },
+    left_sep = {
+      'slant_left_2',
+      {
+        str = ' ',
+        hl = {
+          fg = 'NONE',
+          bg = 'oceanblue',
+        },
       },
     },
-  },
-  right_sep = {
-    {
-      str = ' ',
-      hl = {
-        fg = 'NONE',
-        bg = 'oceanblue',
+    right_sep = {
+      {
+        str = ' ',
+        hl = {
+          fg = 'NONE',
+          bg = 'oceanblue',
+        },
       },
+      'slant_right',
     },
-    'slant_right',
-  },
-});
+  });
+end
 
 
 -- -----------------------------------------------------------------------------
