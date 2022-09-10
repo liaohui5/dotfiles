@@ -164,11 +164,6 @@ local create_noremal_menus = function(wk)
       name = "+List",
     },
 
-    -- NPM
-    ["<leader>n"] = {
-      name = "+npm/pnpm/yarn"
-    },
-
     -- open
     ["<leader>o"] = {
       name = "+Open",
