@@ -3,6 +3,14 @@
 # themes: https://www.npmjs.com/package/alacritty-themes
 #############################################################################
 
+# 自动执行
+shell:
+  program: /bin/zsh
+  args:
+    - --login
+    - -c
+    - cd ~/Desktop/codes && tmux
+
 # 设置窗口
 window:
   decorations: "buttonless" # full | buttonless, 设置为 buttonless 就不显示标题栏

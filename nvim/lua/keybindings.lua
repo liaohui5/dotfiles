@@ -947,14 +947,14 @@ keybindings.lspKeys = function(client, bufnr)
   highlight.setup(client, bufnr);
 
   -- 利用 LSP 格式化, 如果支持的话
-  if client.resolved_capabilities.document_formatting then
-    wk.register({
-      ["<leader>ff"] = {
-        "<cmd>lua vim.lsp.buf.formatting_seq_sync()<CR>",
-        "format and save current file[lsp]"
-      },
-    });
-  end
+  -- if client.resolved_capabilities.document_formatting then
+  --   wk.register({
+  --     ["<leader>ff"] = {
+  --       "<cmd>lua vim.lsp.buf.formatting_seq_sync()<CR>",
+  --       "format and save current file[lsp]"
+  --     },
+  --   });
+  -- end
   wk.register({
     ["<leader>j+"] = {
       "<cmd>lua vim.lsp.buf.formatting()<CR>",
