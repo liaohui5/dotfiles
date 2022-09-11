@@ -54,3 +54,6 @@ alias nf='neofetch'
 # https://github.com/patorjk/figlet.js
 # https://github.com/patorjk/figlet-cli
 alias figlet-cli='figlet'
+
+# lazygit: https://github.com/jesseduffield/lazygit
+alias lg='lazygit'

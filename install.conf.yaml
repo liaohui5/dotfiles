@@ -23,6 +23,7 @@
     ~/Library/Application Support/Code/User/keybindings.json: vscode/keybindings.json
     ~/Library/Application Support/Code/User/snippets: vscode/snippets
     ~/Library/Application Support/Code/User/custom-vscode-assets: vscode/custom-vscode-assets
+    ~/Library/Application Support/lazygit/config.yml: lazygit/config.yml
 
 - create:
 
