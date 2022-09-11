@@ -102,7 +102,3 @@ autocmd("InsertEnter", {
 -- 		end
 -- 	end,
 -- })
-
-
--- 加载工具函数
-vim.cmd [[runtime ./scripts/functions.vim]]
