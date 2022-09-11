@@ -177,6 +177,7 @@ local create_noremal_menus = function(wk)
       },
       b = { nil, "open in google chrome" },
       u = { nil, "open url in browser" },
+      g = { nil, "open with github desktop" }
     },
 
     -- project

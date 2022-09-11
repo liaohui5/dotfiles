@@ -12,6 +12,7 @@
 -- 初始化
 
 require("options")
+require("functions")
 require("mappings")
 require("plugins")
 require("autocmd")
