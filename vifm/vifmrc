@@ -102,8 +102,10 @@ set confirm="permdelete"
 set nowrap
 
 " set border charater
-set fillchars='vborder:┃'
+set fillchars='vborder:│'
 
+" hide the two sides of the borders
+set tuioptions-=s
 " ------------------------------------------------------------------------------
 "                                   bookmarks
 " ------------------------------------------------------------------------------

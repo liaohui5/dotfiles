@@ -167,7 +167,7 @@ local create_noremal_menus = function(wk)
     -- open
     ["<leader>o"] = {
       name = "+Open",
-      v = {
+      V = {
         name = "+VIM-links",
         ["0"] = { nil, "open vim game" },
         ["1"] = { nil, "open vim tips" },

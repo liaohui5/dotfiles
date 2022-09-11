@@ -640,9 +640,8 @@ end
 -- │                    vifm 终端管理文件器(功能和rnvimr一样)                     │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 keybindings.vifmKeys = function()
-  nnoremap("<C-n>", "<cmd>Vifm<CR>");
   wk.register({
-    ["<leader>oV"] = {
+    ["<leader>ov"] = {
       "<cmd>Vifm<CR>",
       "open vifm[vifm]"
     }
@@ -837,13 +836,13 @@ end
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 keybindings.toggletermKeys = function(getLazygit, getVifm)
   wk.register({
-    ["<leader>gg"] = {
+    ["<C-g>"] = {
       function ()
         getLazygit():toggle();
       end,
       "toggle lazygit[toggleterm]"
     },
-    ["<leader>fm"] = {
+    ["<C-n>"] = {
       function ()
         getVifm():toggle();
       end,

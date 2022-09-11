@@ -19,7 +19,7 @@
 -- rmap     - 查看 select 模式快捷键
 -- omap     - 查看 operator 模式快捷键
 -- 将空格键设置为 <leader> 键
-vim.api.nvim_set_keymap("", " ", "<Nop>", { 
+vim.api.nvim_set_keymap("", " ", "<Nop>", {
   noremap = true,
   silent = true
 })
@@ -107,11 +107,11 @@ nnoremap("<leader>hD", "<cmd>call SilentOpenURL('https://github.com/folke/which-
 nnoremap("<leader>hi", "<cmd>call SilentOpenURL('https://github.com/neovim/neovim/issues')<CR>")
 
 -- vim links
-nnoremap("<leader>ov0", "<cmd>call SilentOpenURL('https://vim-adventures.com')<CR>")
-nnoremap("<leader>ov1", "<cmd>call SilentOpenURL('https://vim.rtorr.com')<CR>")
-nnoremap("<leader>ov2", "<cmd>call SilentOpenURL('https://github.com/chloneda/vim-cheatsheet')<CR>")
-nnoremap("<leader>ov3", "<cmd>call SilentOpenURL('https://www.w3cschool.cn/vim/4xnd1hsw.html')<CR>")
-nnoremap("<leader>ov4", "<cmd>call SilentOpenURL('https://yianwillis.github.io/vimcdoc/doc/help.html')")
+nnoremap("<leader>oV0", "<cmd>call SilentOpenURL('https://vim-adventures.com')<CR>")
+nnoremap("<leader>oV1", "<cmd>call SilentOpenURL('https://vim.rtorr.com')<CR>")
+nnoremap("<leader>oV2", "<cmd>call SilentOpenURL('https://github.com/chloneda/vim-cheatsheet')<CR>")
+nnoremap("<leader>oV3", "<cmd>call SilentOpenURL('https://www.w3cschool.cn/vim/4xnd1hsw.html')<CR>")
+nnoremap("<leader>oV4", "<cmd>call SilentOpenURL('https://yianwillis.github.io/vimcdoc/doc/help.html')")
 
 -- open
 nnoremap("<leader>ob", "<cmd>call OpenFileWithGoogleChrome()<CR>")
