@@ -331,50 +331,6 @@ keybindings.alignKeys = function(align)
 end
 
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
--- │                                  bufferline                                  │
--- ╰──────────────────────────────────────────────────────────────────────────────╯
-keybindings.bufferlineKeys = function()
-  wk.register({
-    ["<leader>ll"] = {
-      "<cmd>BufferLinePick<CR>",
-      "show all buffers[bufferline]",
-    },
-    ["<leader>bb"] = {
-      "<cmd>BufferLinePick<CR>",
-      "show all buffers[bufferline]",
-    },
-    ["<leader>bh"] = {
-      "<cmd>BufferLineMovePrev<CR>",
-      "move buffer to left[bufferline]",
-    },
-    ["<leader>bl"] = {
-      "<cmd>BufferLineMoveNext<CR>",
-      "move buffer to right[bufferline]",
-    },
-    ["<leader>bH"] = {
-      "<cmd>BufferLineCloseLeft<CR>",
-      "close left buffers[bufferline]",
-    },
-    ["<leader>bL"] = {
-      "<cmd>BufferLineCloseRight<CR>",
-      "close right buffers[bufferline]",
-    },
-    ["<leader>qH"] = {
-      "<cmd>BufferLineCloseLeft<CR>",
-      "close left buffers[bufferline]",
-    },
-    ["<leader>qL"] = {
-      "<cmd>BufferLineCloseRight<CR>",
-      "close right buffers[bufferline]",
-    },
-    ["<leader>bt"] = {
-      "<cmd>BufferLineTogglePin<CR>",
-      "toggle buffer pin status[bufferline]",
-    },
-  });
-end
-
--- ╭──────────────────────────────────────────────────────────────────────────────╮
 -- │                                    barbar                                    │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 keybindings.barbarKeys = function ()
@@ -593,16 +549,6 @@ keybindings.cmpKeys = function(cmp)
       end
     end, { "i", "s" }),
   }
-end
-
--- ╭──────────────────────────────────────────────────────────────────────────────╮
--- │                          vim-expand-region 选择增强                          │
--- ╰──────────────────────────────────────────────────────────────────────────────╯
-keybindings.vimExpandRegionKeys = function ()
-  -- nnoremap("J", "<Plug>(expand_region_expand)<CR>");
-  -- nnoremap("K", "<Plug>(expand_region_shrink)<CR>");
-  -- vnoremap("J", "<Plug>(expand_region_expand)<CR>");
-  -- vnoremap("K", "<Plug>(expand_region_shrink)<CR>");
 end
 
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
@@ -833,11 +779,11 @@ keybindings.telescopeKeys = function(builtin, actions)
       "search string in project[telescope]",
     },
     ["<leader>sb"] = {
-      "<cmd>Telescope buffers<CR>",
+      "<cmd>Telescope buffers prompt_prefix=[buffers]<CR>",
       "search buffers[telescope]",
     },
     ["<leader>st"] = {
-      "<cmd>TodoTelescope<CR>",
+      "<cmd>TodoTelescope prompt_prefix=[todos]<CR>",
       "search todos[todo-comments]",
     },
     ["<leader>Bo"] = {
@@ -854,13 +800,26 @@ keybindings.telescopeKeys = function(builtin, actions)
     },
   })
 
-  -- TODO: search string in project with seclection
   wk.register({
-    ["<leader>sP"] = {
-      "<cmd>Telescope live_grep prompt_prefix=[string]<CR>",
-      "search string in project with seclection[telescope]",
+    ["<leader>sp"] = {
+      function ()
+	      builtin.current_buffer_fuzzy_find({
+          default_text  = getVisualSelection(),
+          prompt_prefix = "[fuzzy]"
+        })
+      end,
+      "search string in buffer with seclection[telescope]",
     },
-  });
+    ["<leader>sP"] = {
+      function ()
+	      builtin.live_grep({
+          default_text  = getVisualSelection(),
+          prompt_prefix = "[string]"
+        })
+      end,
+      "search string in workspace with seclection[telescope]",
+    },
+  }, { mode = "v" });
 
   return {
     i = {
@@ -912,40 +871,69 @@ keybindings.lspKeys = function(client, bufnr)
   highlight.setup(client, bufnr);
 
   -- 利用 LSP 格式化, 如果支持的话
-  -- if client.resolved_capabilities.document_formatting then
-  --   wk.register({
-  --     ["<leader>ff"] = {
-  --       "<cmd>lua vim.lsp.buf.formatting_seq_sync()<CR>",
-  --       "format and save current file[lsp]"
-  --     },
-  --   });
-  -- end
+  if client.resolved_capabilities.document_formatting then
+    wk.register({
+      ["<leader>ff"] = {
+        "<cmd>lua vim.lsp.buf.formatting_seq_sync()<CR>",
+        "format and save current file[lsp]"
+      },
+    });
+  end
+
   wk.register({
-    ["<leader>j+"] = {
-      "<cmd>lua vim.lsp.buf.formatting()<CR>",
-      "format current buffer[lsp]",
+    ["gh"] = { -- 查看帮助文档
+      "<cmd>lua vim.lsp.buf.hover()<CR>",
+      "LSP hover[lsp]"
     },
-    -- ["<leader>ca"] = {
+    ["gd"] = { -- 跳到函数定义位置
+      "<cmd>lua vim.lsp.buf.definition()<CR>",
+      "LSP goto definition[lsp]"
+    },
+    ["gr"] = { -- 查看引用
+      "<cmd>lua vim.lsp.buf.references()<CR>",
+      "LSP references[lsp]"
+    },
+    -- ["<leader>ca"] = { -- 快速修复
     --   "<cmd>lua vim.lsp.buf.code_action()<CR>",
     --   "code action quickFix[lsp]"
     -- },
-    -- ["<leader>se"] = {
-    --   "<cmd>lua vim.lsp.buf.rename()<CR>",
-    --   "edit symbol name[lsp]"
-    -- },
-    -- ["<leader>xr"] = {
-    --   "<cmd>lua vim.lsp.buf.rename()<CR>",
-    --   "rename symbol[lsp]"
-    -- },
-    -- ["<leader>sj"] = {
+    -- ["<leader>ji"] = { -- 打开 outline
     --   "<cmd>lua vim.lsp.buf.document_symbol()<CR>",
     --   "jump to symbol in buffer[lsp]"
     -- },
-    ["<leader>sJ"] = {
-      "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>",
-      "jump to symbol in project[telescope]",
+    -- ["<leader>ls"] = { -- 打开 outline
+    --   "<cmd>lua vim.lsp.buf.document_symbol()<CR>",
+    --   "show symbols[lsp]"
+    -- },
+    -- ["<leader>sj"] = { -- 打开 outline
+    --   "<cmd>lua vim.lsp.buf.document_symbol()<CR>",
+    --   "show symbols[lsp]"
+    -- },
+    ["<leader>sr"] = { -- 查看引用
+      "<cmd>lua vim.lsp.buf.references()<CR>",
+      "search all references[lsp]"
     },
-    ["<leader>jI"] = {
+    ["<leader>xa"] = { -- 查看引用
+      "<cmd>lua vim.lsp.buf.references()<CR>",
+      "find all references[lsp]"
+    },
+    ["<leader>xr"] = { -- 查看引用
+      "<cmd>lua vim.lsp.buf.references()<CR>",
+      "find all references[lsp]"
+    },
+    -- ["<seader>se"] = { -- 重命名变量
+    --   "<cmd>lua vim.lsp.buf.rename()<CR>",
+    --   "rename symbol[lsp]"
+    -- },
+    -- ["<leader>rn"] = { -- 重命名变量
+    --   "<cmd>lua vim.lsp.buf.rename()<CR>",
+    --   "rename symbol[lsp]"
+    -- },
+    ["<leader>sJ"] = { -- 搜索symbol
+      "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>",
+      "jump to symbol in project[lsp]",
+    },
+    ["<leader>jI"] = { -- 搜索symbol
       "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>",
       "jump to symbol in project[lsp]",
     },
@@ -956,14 +944,18 @@ keybindings.lspKeys = function(client, bufnr)
       "<cmd>lua vim.lsp.buf.range_formatting()<CR>",
       "format selection[lsp]"
     },
-    ["<leader>se"] = {
-      "<cmd>lua vim.lsp.buf.rename()<CR>",
-      "edit symbol name[lsp]"
-    },
-    ["<leader>xr"] = {
-      "<cmd>lua vim.lsp.buf.rename()<CR>",
-      "rename symbol[lsp]"
-    },
+    -- ["<leader>rn"] = {
+    --   "<cmd>lua vim.lsp.buf.rename()<CR>",
+    --   "edit symbol name[lsp]"
+    -- },
+    -- ["<leader>se"] = {
+    --   "<cmd>lua vim.lsp.buf.rename()<CR>",
+    --   "edit symbol name[lsp]"
+    -- },
+    -- ["<leader>xr"] = {
+    --   "<cmd>lua vim.lsp.buf.rename()<CR>",
+    --   "rename symbol[lsp]"
+    -- },
   }, { mode = "v" })
 end
 
@@ -971,20 +963,20 @@ end
 -- │                            lspsaga 自定义插件设置                            │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 keybindings.lspsagaKeys = function()
-  -- 查看帮助文档
-  nnoremap("gh", "<cmd>Lspsaga hover_doc<CR>");
-
-  -- 查看文件定义
-  nnoremap("gd", "<cmd>Lspsaga lsp_finder<CR>");
-
-  -- 参看函数定义
-  nnoremap("gv", "<cmd>Lspsaga preview_definition<CR>");
-
-  -- 查看文件预览
-  -- nnoremap("gl", "<cmd>LSoutlineToggle<CR>");
-
   -- 跳到上/下/错误一个代码诊断提示位置
   wk.register({
+    -- ["gh"] = { -- 查看帮助文档
+    --   "<cmd>Lspsaga hover_doc<CR>",
+    --   "Lspsaga hover[lspsaga]"
+    -- },
+    -- ["gd"] = { -- 跳到函数定义位置
+    --   "<cmd>Lspsaga lsp_finder<CR>",
+    --   "Lspsaga finder[lspsaga]"
+    -- },
+    -- ["gr"] = { -- BUG: 查看引用会闪退
+    --   "<cmd>Lspsaga lsp_finder<CR>",
+    --   "find all references[lspsaga]"
+    -- },
     ["<leader>ej"] = { -- 下一个错误
       "<cmd>Lspsaga diagnostic_jump_next<CR>",
       "next error[lspsaga]"
@@ -993,31 +985,35 @@ keybindings.lspsagaKeys = function()
       "<cmd>Lspsaga diagnostic_jump_prev<CR>",
       "previous error[lspsaga]"
     },
-    ["<leader>ca"] = { -- 快速修复
-      "<cmd>Lspsaga code_action<CR>",
-      "fix error[lspsaga]"
-    },
+    -- ["<leader>ca"] = { -- 快速修复
+    --   "<cmd>Lspsaga code_action<CR>",
+    --   "code action quickFix[lspsaga]"
+    -- },
     ["<leader>ji"] = { -- 打开 outline
       "<cmd>LSoutlineToggle<CR>",
       "jump to symbol in buffer[lspsaga]"
+    },
+    ["<leader>ls"] = { -- 打开 outline
+      "<cmd>LSoutlineToggle<CR>",
+      "show symbols[lspsaga]"
     },
     ["<leader>sj"] = { -- 打开 outline
       "<cmd>LSoutlineToggle<CR>",
       "jump to symbol in outline[lspsaga]"
     },
-    ["<leader>sr"] = { -- 查看引用
-      "<cmd>Lspsaga lsp_finder<CR>",
-      "search all references[lspsaga]"
-    },
-    ["<leader>xa"] = { -- 查看引用
-      "<cmd>Lspsaga lsp_finder<CR>",
-      "find all references[lspsaga]"
-    },
-    ["<leader>xr"] = { -- gd: 查看引用
-      "<cmd>Lspsaga lsp_finder<CR>",
-      "find all references[lspsaga]"
-    },
-    ["<leader>se"] = { -- 重命名变量
+    -- ["<leader>sr"] = { -- 查看引用
+    --   "<cmd>Lspsaga lsp_finder<CR>",
+    --   "search all references[lspsaga]"
+    -- },
+    -- ["<leader>xa"] = { -- 查看引用
+    --   "<cmd>Lspsaga lsp_finder<CR>",
+    --   "find all references[lspsaga]"
+    -- },
+    -- ["<leader>xr"] = { -- 查看引用
+    --   "<cmd>Lspsaga lsp_finder<CR>",
+    --   "find all references[lspsaga]"
+    -- },
+    ["<leader>se"] = { -- 重命名变量()
       "<cmd>Lspsaga rename<CR>",
       "edit symbol name[lsp]"
     },
@@ -1027,9 +1023,17 @@ keybindings.lspsagaKeys = function()
     }
   });
   wk.register({
+    ["<leader>rn"] = { -- 重命名变量
+      "<cmd>Lspsaga rename<CR>",
+      "edit symbol name[lsp]"
+    },
     ["<leader>se"] = { -- 重命名变量
       "<cmd>Lspsaga rename<CR>",
       "edit symbol name[lsp]"
+    },
+    ["<leader>xr"] = { -- 重命名变量
+      "<cmd>Lspsaga rename<CR>",
+      "rename symbol[lsp]"
     },
   }, { mode = "v" })
 

@@ -21,7 +21,7 @@ window:
 # 修改配置文件后立即生效
 live_config_reload: true
 
-# 如果为true，则使用亮色变体绘制粗体文本。
+# 如果为true，则使用亮色变体绘制粗体文本
 draw_bold_text_with_bright_colors: false
 
 # 设置字体

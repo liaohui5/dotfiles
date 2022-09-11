@@ -35,10 +35,6 @@ telescope.setup({
       previewer = false,
       theme     = "dropdown",
     },
-    current_buffer_fuzzy_find = {
-      previewer = true,
-      theme     = "dropdown",
-    }
   }
 });
 

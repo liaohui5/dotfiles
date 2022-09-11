@@ -16,7 +16,7 @@ return {
       max_preview_lines         = 15,
       code_action_num_shortcut  = true,
       code_action_icon          = "", -- 我不喜欢写代码的时候有这个💡, 如果需要把这个符号放到""中
-      definition_preview_icon   = "➜ ",
+      -- definition_preview_icon   = "➜ ",
       -- diagnostic_header         = { "😡", "😥", "😤", "😐" },
       diagnostic_header         = { ' ', ' ', ' ', ' ' },
       finder_icons              = { def  = " ", ref  = " ", link = " " },

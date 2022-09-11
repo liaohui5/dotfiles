@@ -6,8 +6,17 @@
 local indent_blankline = loadModule("indent_blankline", "plugin-configs")
 
 indent_blankline.setup({
-  filetype_exclude = { "dashboard" },
   space_char_blankline = " ",
   show_current_context = true,
   show_current_context_start = false,
+  -- 禁止缩进
+  indent_blankline_filetype_exclude = {
+    "man",
+    "help",
+    "dashboard",
+    "lspsagaoutline",
+    "lspinfo",
+    "packer",
+    "checkhealth",
+  }
 });

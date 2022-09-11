@@ -9,7 +9,7 @@
 --  | |              | || |              | || |              | || |              | || |              | || |              | || |              | |
 --  | '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' |
 --   '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'
--- 内置选项
+-- 在这里定义启动 neovim 的选项
 vim.opt.shortmess:append("c"); -- 禁用 neovim 启动页介绍
 vim.opt.compatible      = false; -- 缺省vi兼容模式,不能用退格.设置为不兼容模式
 vim.opt.title           = true; -- 显示 title
@@ -52,7 +52,7 @@ vim.opt.writebackup     = false; -- 不创建备份文件
 vim.opt.showmatch       = true; -- 当输入一个左括号时自动匹配右括号
 vim.opt.autochdir       = false; -- 自动切换当前目录为当前文件所在的目录
 vim.opt.hidden          = true; -- hidden
-vim.opt.foldlevel       = 99; -- 打开文件时,不要自动折叠
+vim.o.foldlevel         = 99; -- 打开文件时,不要自动折叠
 vim.opt.foldlevelstart  = 99; -- 打开文件时,不要自动折叠
 vim.opt.foldenable      = true; -- 开启折叠功能
 vim.opt.foldmethod      = "indent"; -- 根据缩进折叠
@@ -114,17 +114,34 @@ end
 --                                                                   --
 -----------------------------------------------------------------------
 
--- 加载模块
+-- 安全的加载模块
 ---@diagnostic disable-next-line
 function loadModule(require_path, scope)
   local status_ok, module = pcall(require, require_path);
   if status_ok then
     return module;
   else
-    vim.notify("[" .. scope .. "]: " .. require_path .. " not found");
+    vim.notify(string.format("[%s]%s not found", scope, require_path));
     return {}
   end
 end
+
+-- 获取选中的
+---@diagnostic disable-next-line
+function getVisualSelection()
+  vim.cmd('noautocmd normal! "vy"');
+  ---@diagnostic disable-next-line
+	local text = vim.fn.getreg('v');
+	vim.fn.setreg('v', {});
+
+	text = string.gsub(text, "\n", "");
+	if #text > 0 then
+		return text;
+	else
+		return '';
+	end
+end
+
 
 -- 将table转换为字符串, 方便输出调试
 ---@diagnostic disable-next-line
