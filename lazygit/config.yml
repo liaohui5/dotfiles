@@ -13,9 +13,6 @@ git:
   autoRefresh: true     # 自动刷新
   mouseevents: false    # 禁用鼠标
   parseEmoji: true      # 解析 gitmoji 表情
-  paging:
-    colorArg: always
-    pager: delta --dark --paging=never --24-bit-color=never --syntax-theme="OneHalfDark"
 
 os:
   editCommand: 'nvim'   # 编辑文件命令

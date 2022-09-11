@@ -3,6 +3,35 @@
 -- │  docs: https://github.com/akinsho/toggleterm.nvim                            │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 local toggleterm = loadModule("toggleterm", "plugin-configs");
+local terminal   = loadModule("toggleterm.terminal", "plugin-configs");
+local Terminal   = terminal.Terminal;
+
+-- ╭──────────────────────────────────────────────────────────────────────────────╮
+-- │  集成 lazygit 需要安装命令                                                   │
+-- │  https://github.com/jesseduffield/lazygit                                    │
+-- ╰──────────────────────────────────────────────────────────────────────────────╯
+local getLazygit = function()
+  return Terminal:new({
+    cmd = 'lazygit',
+    hidden = true,
+  });
+end
+
+-- ╭──────────────────────────────────────────────────────────────────────────────╮
+-- │  集成 vifm 需要外部命令                                                      │
+-- │  https://github.com/vifm/vifm                                                │
+-- ╰──────────────────────────────────────────────────────────────────────────────╯
+local getVifm = function()
+  return Terminal:new({
+    cmd = 'vifm . .',
+    hidden = true,
+  });
+end
+
+-- ╭──────────────────────────────────────────────────────────────────────────────╮
+-- │  绑定集成软件的快捷键                                                        │
+-- ╰──────────────────────────────────────────────────────────────────────────────╯
+local keys    = require("keybindings").toggletermKeys(getLazygit, getVifm);
 
 toggleterm.setup({
   -- on_open           = function() end
@@ -10,7 +39,7 @@ toggleterm.setup({
   -- on_stdout         = function() end
   -- on_stderr         = function() end
   -- on_exit           = function() end
-  open_mapping      = require("keybindings").toggletermKeys(),
+  open_mapping      = keys,
   shell             = vim.o.shell, -- 默认的 shell
   hide_numbers      = false,
   shade_terminals   = false,

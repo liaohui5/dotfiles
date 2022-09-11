@@ -835,8 +835,23 @@ end
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
 -- │                          ctrl + x : 打开/关闭命令行                          │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
-keybindings.toggletermKeys = function()
-  return "<C-x>"; -- toggle
+keybindings.toggletermKeys = function(getLazygit, getVifm)
+  wk.register({
+    ["<leader>gg"] = {
+      function ()
+        getLazygit():toggle();
+      end,
+      "toggle lazygit[toggleterm]"
+    },
+    ["<leader>fm"] = {
+      function ()
+        getVifm():toggle();
+      end,
+      "toggle vifm[toggleterm]"
+    }
+  })
+
+  return "<C-x>"; -- toggle terminal
 end
 
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
