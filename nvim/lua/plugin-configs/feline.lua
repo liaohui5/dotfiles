@@ -113,12 +113,12 @@ table.insert(components.active[1], {
 table.insert(components.active[1], {
   provider = function()
     local rootDir = table.remove(vim.fn.split(vim.fn.getcwd(), '/'));
-    if type(rootDir) == "nil" then
-      return "";
+    if rootDir ~= nil then
+      return rootDir;
     end
-    return " " .. rootDir;
+    return "";
   end,
-  icon = "",
+  icon = " ",
   hl = {
     fg = 'white',
     bg = 'oceanblue'
