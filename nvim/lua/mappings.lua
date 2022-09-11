@@ -111,7 +111,7 @@ nnoremap("<leader>oV0", "<cmd>call SilentOpenURL('https://vim-adventures.com')<C
 nnoremap("<leader>oV1", "<cmd>call SilentOpenURL('https://vim.rtorr.com')<CR>")
 nnoremap("<leader>oV2", "<cmd>call SilentOpenURL('https://github.com/chloneda/vim-cheatsheet')<CR>")
 nnoremap("<leader>oV3", "<cmd>call SilentOpenURL('https://www.w3cschool.cn/vim/4xnd1hsw.html')<CR>")
-nnoremap("<leader>oV4", "<cmd>call SilentOpenURL('https://yianwillis.github.io/vimcdoc/doc/help.html')")
+nnoremap("<leader>oV4", "<cmd>call SilentOpenURL('https://yianwillis.github.io/vimcdoc/doc/help.html')<CR>")
 
 -- open
 nnoremap("<leader>ob", "<cmd>call OpenFileWithGoogleChrome()<CR>")

@@ -5,7 +5,6 @@
 -- ╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 
 local feline       = loadModule("feline", "plugin-config")
-local sessionLib   = loadModule("auto-session-library", "plugin-config")
 local felineUtils  = loadModule("feline.utils", "plugin-config")
 local lazy_require = felineUtils.lazy_require;
 local vi_mode      = lazy_require('feline.providers.vi_mode')
@@ -109,43 +108,43 @@ table.insert(components.active[1], {
 })
 
 -- -----------------------------------------------------------------------------
--- session
--- 如果执行命令有参数(如: nvim a.txt)就不显示, 没有参数(如: nvim)就显示session名
+-- nvim 运行的跟目录
 -- -----------------------------------------------------------------------------
-local hasCmdArgs = vim.v.argv[2];
-if (not hasCmdArgs) then
-  table.insert(components.active[1], {
-    provider = function ()
-      local session_name = sessionLib.current_session_name()
-      return string.format(" %s", session_name)
-    end,
-    icon = "",
-    hl = {
-      fg = 'white',
-      bg = 'oceanblue'
-    },
-    left_sep = {
-      'slant_left_2',
-      {
-        str = ' ',
-        hl = {
-          fg = 'NONE',
-          bg = 'oceanblue',
-        },
+table.insert(components.active[1], {
+  provider = function()
+    local rootDir = table.remove(vim.fn.split(vim.fn.getcwd(), '/'));
+    if type(rootDir) == "nil" then
+      return "";
+    end
+    return " " .. rootDir;
+  end,
+  icon = "",
+  hl = {
+    fg = 'white',
+    bg = 'oceanblue'
+  },
+  left_sep = {
+    'slant_left_2',
+    {
+      str = ' ',
+      hl = {
+        fg = 'NONE',
+        bg = 'oceanblue',
       },
     },
-    right_sep = {
-      {
-        str = ' ',
-        hl = {
-          fg = 'NONE',
-          bg = 'oceanblue',
-        },
+  },
+  right_sep = {
+    {
+      str = ' ',
+      hl = {
+        fg = 'NONE',
+        bg = 'oceanblue',
       },
-      'slant_right',
     },
-  });
-end
+    'slant_right',
+  }
+});
+
 
 
 -- -----------------------------------------------------------------------------
@@ -247,6 +246,22 @@ table.insert(components.active[1], {
     bg = 'bg',
   },
 })
+
+-- -----------------------------------------------------------------------------
+-- 当前日期
+-- -----------------------------------------------------------------------------
+table.insert(components.active[2], {
+  provider = function()
+    return vim.fn.strftime("%F")
+  end,
+  right_sep = {
+    ' ',
+    {
+      str = 'vertical_bar_thin',
+      hl = { fg = 'fg' },
+    },
+  },
+});
 
 -- -----------------------------------------------------------------------------
 -- 文件图标/文件名(右)

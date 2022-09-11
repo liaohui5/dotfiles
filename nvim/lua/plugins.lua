@@ -323,8 +323,9 @@ return require("packer").startup({
     -- │           session 管理, 类似 vscode 的 Project Manager 插件的功能            │
     -- ╰──────────────────────────────────────────────────────────────────────────────╯
     use({
-      "rmagatti/auto-session",
-      config = [[require("plugin-configs.auto-session")]],
+      "Shatur/neovim-session-manager",
+      config = [[require("plugin-configs.session-manager")]],
+      requires = "nvim-lua/plenary.nvim",
     })
 
     -- ╭──────────────────────────────────────────────────────────────────────────────╮

@@ -704,32 +704,28 @@ end
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
 -- │                           session管理工具                                    │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
-keybindings.autoSessionKeys = function()
+keybindings.sessionManagerKeys = function()
   -- 在退出编辑器之前 & 自动保存当前 session 状态
   wk.register({
-    ["<leader>op"] = {
-      "<cmd>Autosession search<CR>",
-      "open session manager[auto-session]",
-    },
     ["<leader>pr"] = {
-      "<cmd>RestoreSession<CR>",
-      "load last session[auto-session]",
+      "<cmd>SessionManager load_current_dir_session<CR>",
+      "load last session[session-manager]",
     },
     ["<leader>pl"] = {
-      "<cmd>Autosession search<CR>",
-      "switch session[auto-session]",
+      "<cmd>SessionManager load_session<CR>",
+      "switch session[session-manager]",
     },
     ["<leader>pp"] = {
-      "<cmd>Autosession search<CR>",
-      "switch session[auto-session]",
+      "<cmd>SessionManager load_session<CR>",
+      "switch session[session-manager]",
     },
     ["<leader>pd"] = {
-      "<cmd>Autosession delete<CR>",
-      "delete sessions[auto-session]",
+      "<cmd>SessionManager delete_session<CR>",
+      "delete sessions[session-manager]",
     },
     ["<leader>ps"] = {
-      "<cmd>SaveSession<CR>",
-      "save sessions[auto-session]",
+      "<cmd>SessionManager save_current_session<CR>",
+      "save sessions[session-manager]",
     },
   })
 end
