@@ -18,6 +18,7 @@ require("plugins")
 require("autocmd")
 require("lsp-configs")
 require("dap-configs")
+require("highlights")
 
 -- neovide
 if vim.fn.exists("g:neovide") == 1 then
