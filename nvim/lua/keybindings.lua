@@ -899,18 +899,18 @@ keybindings.lspKeys = function(client, bufnr)
       "<cmd>lua vim.lsp.buf.hover()<CR>",
       "LSP hover[lsp]"
     },
-    ["gd"] = { -- 跳到函数定义位置
-      "<cmd>lua vim.lsp.buf.definition()<CR>",
-      "LSP goto definition[lsp]"
-    },
-    ["gr"] = { -- 查看引用
-      "<cmd>lua vim.lsp.buf.references()<CR>",
-      "LSP references[lsp]"
-    },
-    ["<leader>ca"] = { -- 快速修复
-      "<cmd>lua vim.lsp.buf.code_action()<CR>",
-      "code action quickFix[lsp]"
-    },
+    -- ["gd"] = { -- 跳到函数定义位置
+    --   "<cmd>lua vim.lsp.buf.definition()<CR>",
+    --   "LSP goto definition[lsp]"
+    -- },
+    -- ["gr"] = { -- 查看引用
+    --   "<cmd>lua vim.lsp.buf.references()<CR>",
+    --   "LSP references[lsp]"
+    -- },
+    -- ["<leader>ca"] = { -- 快速修复
+    --   "<cmd>lua vim.lsp.buf.code_action()<CR>",
+    --   "code action quickFix[lsp]"
+    -- },
     -- ["<leader>ji"] = { -- 打开 outline
     --   "<cmd>lua vim.lsp.buf.document_symbol()<CR>",
     --   "jump to symbol in buffer[lsp]"
@@ -983,14 +983,14 @@ keybindings.lspsagaKeys = function()
     --   "<cmd>Lspsaga hover_doc<CR>",
     --   "Lspsaga hover[lspsaga]"
     -- },
-    -- ["gd"] = { -- 跳到函数定义位置
-    --   "<cmd>Lspsaga lsp_finder<CR>",
-    --   "Lspsaga finder[lspsaga]"
-    -- },
-    -- ["gr"] = { -- BUG: 查看引用会闪退
-    --   "<cmd>Lspsaga lsp_finder<CR>",
-    --   "find all references[lspsaga]"
-    -- },
+    ["gd"] = { -- 跳到函数定义位置
+      "<cmd>Lspsaga lsp_finder<CR>",
+      "Lspsaga finder[lspsaga]"
+    },
+    ["gr"] = {
+      "<cmd>Lspsaga lsp_finder<CR>",
+      "find all references[lspsaga]"
+    },
     ["<leader>ej"] = { -- 下一个错误
       "<cmd>Lspsaga diagnostic_jump_next<CR>",
       "next error[lspsaga]"
@@ -999,10 +999,10 @@ keybindings.lspsagaKeys = function()
       "<cmd>Lspsaga diagnostic_jump_prev<CR>",
       "previous error[lspsaga]"
     },
-    -- ["<leader>ca"] = { -- 快速修复
-    --   "<cmd>Lspsaga code_action<CR>",
-    --   "code action quickFix[lspsaga]"
-    -- },
+    ["<leader>ca"] = { -- 快速修复
+      "<cmd>Lspsaga code_action<CR>",
+      "code action quickFix[lspsaga]"
+    },
     ["<leader>ji"] = { -- 打开 outline
       "<cmd>LSoutlineToggle<CR>",
       "jump to symbol in buffer[lspsaga]"

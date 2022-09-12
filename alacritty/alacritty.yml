@@ -24,20 +24,20 @@ live_config_reload: true
 # 如果为true，则使用亮色变体绘制粗体文本
 draw_bold_text_with_bright_colors: false
 
-# 设置字体
+# 设置字体: https://github.com/subframe7536/Maple-font
 font:
   normal:
-    family: "Hack Nerd Font Mono"
+    family: "Maple Mono NF light"
     style: Regular
   bold:
-    family: "Hack Nerd Font Mono"
+    family: "Maple Mono NF light"
     #style: Bold
     style: Regular
   italic:
-    family: "Hack Nerd Font Mono"
+    family: "Maple Mono NF light"
     style: Italic
   bold_italic:
-    family: "Hack Nerd Font Mono"
+    family: "Maple Mono NF light"
     style: Italic
     #style: Bold Italic
 
