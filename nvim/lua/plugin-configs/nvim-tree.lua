@@ -49,7 +49,7 @@ nvimtree.setup({
     width            = 32,
     signcolumn       = "yes",
     side             = "left",
-    hide_root_folder = false,
+    hide_root_folder = true,
     mappings         = {
       custom_only = true,
       list        = require("keybindings").nvimtreeKeys(), -- 绑定快捷键

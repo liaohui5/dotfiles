@@ -45,22 +45,22 @@ keybindings.ufoKeys = function(ufo)
     end
   end;
   wk.register({
-    ["zj"] = { 
+    ["zj"] = {
       ufo.goNextClosedFold,
       "next closed fold[ufo]",
     },
-    ["zk"] = { 
+    ["zk"] = {
       ufo.goPreviousClosedFold,
       "prev closed fold[ufo]",
     },
-    ["zJ"] = { 
+    ["zJ"] = {
       function ()
         ufo.goNextClosedFold();
         ufo.peekFoldedLinesUnderCursor();
       end,
       "preview next closed fold[ufo]",
     },
-    ["zK"] = { 
+    ["zK"] = {
       function ()
         ufo.goPreviousClosedFold();
         ufo.peekFoldedLinesUnderCursor();
@@ -749,67 +749,70 @@ end
 -- │                              telescope 搜索文件                              │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 keybindings.telescopeKeys = function(builtin, actions)
-  nnoremap("<C-p>", "<cmd>Telescope find_files prompt_prefix=[files]<CR>")
+  -- nnoremap("<C-p>", "<cmd>Telescope find_files prompt_prefix=[files]<CR>")
   -- nnoremap("<leader>fb", "<cmd>Telescope buffers prompt_prefix=[buffers]<CR>")
   -- nnoremap("<leader>fs", "<cmd>Telescope live_grep prompt_prefix=[string]<CR>")
   -- nnoremap("<leader>fh", "<cmd>Telescope help_tags prompt_prefix=[telescopeHelpTags]<CR>")
 
   wk.register({
-    ["<C-p>"] = { nil, "search files" },
+    ["<C-p>"] = {
+      "<cmd>Telescope find_files<CR>",
+      "search files[telescope]"
+    },
     ["<leader><leader>"] = {
-      "<cmd>Telescope commands prompt_prefix=[commands]<CR>",
+      "<cmd>Telescope commands<CR>",
       "search commands[telescope]"
     },
     ["<leader>/"] = {
-      "<cmd>Telescope live_grep prompt_prefix=[string]<CR>",
+      "<cmd>Telescope live_grep<CR>",
       "search in project[telescope]"
     },
     ["<leader>?"] = {
-      "<cmd>Telescope keymaps prompt_prefix=[keybindings]<CR>",
+      "<cmd>Telescope keymaps<CR>",
       "search keymaps[telescope]"
     },
     ["<leader>bs"] = {
-      "<cmd>Telescope buffers prompt_prefix=[buffers]<CR>",
+      "<cmd>Telescope buffers<CR>",
       "search buffers[telescope]"
     },
     ["<leader>sf"] = {
-      "<cmd>Telescope current_buffer_fuzzy_find prompt_prefix=[fuzzy]<CR>",
+      "<cmd>Telescope current_buffer_fuzzy_find<CR>",
       "fuzzy search[telescope]"
     },
     ["<leader>ot"] = {
-      "<cmd>Telescope vim_bookmarks all prompt_prefix=[bookmarks]<CR>",
+      "<cmd>Telescope vim_bookmarks all<CR>",
       "open TODO view[telescope]",
     },
     ["<leader>pf"] = {
-      "<cmd>Telescope find_files prompt_prefix=[files]<CR>",
+      "<cmd>Telescope find_files<CR>",
       "find file in project[telescope]",
     },
     ["<leader>sp"] = {
-      "<cmd>Telescope live_grep prompt_prefix=[string]<CR>",
+      "<cmd>Telescope live_grep<CR>",
       "search string in project[telescope]",
     },
     ["<leader>sb"] = {
-      "<cmd>Telescope buffers prompt_prefix=[buffers]<CR>",
+      "<cmd>Telescope buffers<CR>",
       "search buffers[telescope]",
     },
     ["<leader>st"] = {
-      "<cmd>TodoTelescope prompt_prefix=[todos]<CR>",
+      "<cmd>TodoTelescope<CR>",
       "search todos[todo-comments]",
     },
     ["<leader>sH"] = {
-      "<cmd>Telescope highlights prompt_prefix=[highlights]<CR>",
+      "<cmd>Telescope highlights<CR>",
       "search highlights[telescope]",
     },
     ["<leader>Bo"] = {
-      "<cmd>Telescope vim_bookmarks all prompt_prefix=[bookmarks]<CR>",
+      "<cmd>Telescope vim_bookmarks all<CR>",
       "open bookmarks explorer[telescope]",
     },
     ["<leader>Bb"] = {
-      "<cmd>Telescope vim_bookmarks all prompt_prefix=[bookmarks]<CR>",
+      "<cmd>Telescope vim_bookmarks all<CR>",
       "open bookmarks explorer[telescope]",
     },
     ["<leader>BB"] = {
-      "<cmd>Telescope vim_bookmarks all prompt_prefix=[bookmarks]<CR>",
+      "<cmd>Telescope vim_bookmarks all<CR>",
       "open bookmarks explorer[telescope]",
     },
   })
@@ -1197,3 +1200,5 @@ keybindings.dapUIKeys = function()
 end
 
 return keybindings
+
+
