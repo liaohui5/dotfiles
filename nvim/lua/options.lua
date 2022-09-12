@@ -52,10 +52,11 @@ vim.opt.writebackup     = false; -- 不创建备份文件
 vim.opt.showmatch       = true; -- 当输入一个左括号时自动匹配右括号
 vim.opt.autochdir       = false; -- 自动切换当前目录为当前文件所在的目录
 vim.opt.hidden          = true; -- hidden
-vim.o.foldlevel         = 99; -- 打开文件时,不要自动折叠
+vim.opt.foldlevel       = 99; -- 打开文件时,不要自动折叠
 vim.opt.foldlevelstart  = 99; -- 打开文件时,不要自动折叠
 vim.opt.foldenable      = true; -- 开启折叠功能
 vim.opt.foldmethod      = "indent"; -- 根据缩进折叠
+vim.opt.fillchars       = 'eob: '; -- 影藏空白区域~符号
 -- vim.opt.foldmethod      = "expr";        -- 根据缩进折叠
 -- vim.opt.foldexpr        = 'nvim_treesitter#foldexpr()'; -- 使用 treesitter 来折叠
 

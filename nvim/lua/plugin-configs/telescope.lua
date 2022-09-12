@@ -12,8 +12,10 @@ local mappings         = require("keybindings").telescopeKeys(telescopeBuiltin, 
 telescope.setup({
   defaults = {
     mappings             = mappings,
+    selection_caret      = ' ',
     layout_strategy      = "horizontal",
     sorting_strategy     = "ascending",
+    prompt_title         = '',
     layout_config        = {
       prompt_position = "top",
     },

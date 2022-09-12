@@ -235,7 +235,7 @@ keybindings.treesitterKeys = function()
 end
 
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
--- │                               onedark 切换主题                               │
+-- │                               切换主题                                       │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 keybindings.onedarkKeys = function()
   wk.register({
@@ -243,6 +243,17 @@ keybindings.onedarkKeys = function()
       "<cmd>lua require('onedark').toggle()<CR>",
       "toggle colorscheme[onedark]"
     },
+  })
+end
+
+keybindings.base16Keys = function(setColorScheme)
+  wk.register({
+    ["<leader>Tc"] = {
+      function ()
+        setColorScheme();
+      end,
+      "toggle colorscheme[base16]"
+    }
   })
 end
 

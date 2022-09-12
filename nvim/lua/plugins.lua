@@ -105,14 +105,18 @@ return require("packer").startup({
     -- ╭──────────────────────────────────────────────────────────────────────────────╮
     -- │                                   颜色主题                                   │
     -- ╰──────────────────────────────────────────────────────────────────────────────╯
+    use({
+      "RRethy/nvim-base16",
+      config = [[require("plugin-configs.base16")]]
+    })
     -- use({
     --   "tanvirtin/monokai.nvim",
     --   config = [[require("plugin-configs.monokai")]]
     -- })
-    use({
-      "navarasu/onedark.nvim",
-      config = [[require("plugin-configs.onedark")]]
-    })
+    -- use({
+    --   "navarasu/onedark.nvim",
+    --   config = [[require("plugin-configs.onedark")]]
+    -- })
 
     -- ╭──────────────────────────────────────────────────────────────────────────────╮
     -- │                        文件管理插件 ranger/vifm 集成                         │
