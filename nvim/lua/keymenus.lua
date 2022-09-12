@@ -308,6 +308,12 @@ local create_noremal_menus = function(wk)
         "next class end[textobjects]"
       }
     },
+
+    -- refresh
+    ["<leader>R"] = {
+      name = "+Refresh",
+      f = { nil, "refresh file contents" }
+    }
   });
 end
 

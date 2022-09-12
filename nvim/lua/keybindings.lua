@@ -674,7 +674,11 @@ keybindings.nvimtreeKeys = function()
     ["<leader>ft"] = {
       "<cmd>NvimTreeToggle<CR>",
       "toggle file explorer[nvim-tree]"
-    }
+    },
+    ["<leader>Rt"] = {
+      "<cmd>NvimTreeRefresh<CR>",
+      "refresh file explorer[nvim-tree]"
+    },
   })
 
   return {

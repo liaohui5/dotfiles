@@ -137,3 +137,5 @@ nnoremap("<leader>yn", "<cmd>let @+ = expand('%:t')<CR>")
 nnoremap("<leader>yp", "<cmd>let @+ = expand('%:p')<CR>")
 nnoremap("<leader>yp", "<cmd>let @+ = expand('%')<CR>")
 
+-- refresh: auto read file changes
+nnoremap("<leader>Rf", "<cmd>checktime<CR>")

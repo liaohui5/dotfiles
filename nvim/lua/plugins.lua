@@ -129,7 +129,7 @@ return require("packer").startup({
     -- ╭──────────────────────────────────────────────────────────────────────────────╮
     -- │                            自动读取/自动保存文件                             │
     -- ╰──────────────────────────────────────────────────────────────────────────────╯
-    use({ "chrisbra/vim-autoread" })
+    -- use({ "djoshea/vim-autoread" })
     -- use({
     --   "Pocco81/auto-save.nvim",
     --   config = [[require("plugin-configs.auto-save")]],
