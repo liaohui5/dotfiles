@@ -71,10 +71,10 @@ return require("packer").startup({
     -- ╭──────────────────────────────────────────────────────────────────────────────╮
     -- │                           不同对的括号不同颜色显示                           │
     -- ╰──────────────────────────────────────────────────────────────────────────────╯
-    use({
-      "p00f/nvim-ts-rainbow",
-      requires = "nvim-treesitter/nvim-treesitter",
-    })
+    -- use({
+    --   "p00f/nvim-ts-rainbow",
+    --   requires = "nvim-treesitter/nvim-treesitter",
+    -- })
 
     -- ╭──────────────────────────────────────────────────────────────────────────────╮
     -- │                          自动装换字符串成模板字符串                          │
@@ -121,10 +121,6 @@ return require("packer").startup({
     --   "kevinhwang91/rnvimr",
     --   config = [[require("plugin-configs.rnvimr")]],
     -- })
-    use({
-      "vifm/vifm.vim",
-      config = [[require("plugin-configs.vifm")]],
-    })
 
     -- ╭──────────────────────────────────────────────────────────────────────────────╮
     -- │                            自动读取/自动保存文件                             │
@@ -169,10 +165,10 @@ return require("packer").startup({
     -- ╭──────────────────────────────────────────────────────────────────────────────╮
     -- │                               颜色代码直接显示                               │
     -- ╰──────────────────────────────────────────────────────────────────────────────╯
-    use({
-      "norcalli/nvim-colorizer.lua",
-      config = [[require("plugin-configs.colorizer")]],
-    })
+    -- use({
+    --   "norcalli/nvim-colorizer.lua",
+    --   config = [[require("plugin-configs.colorizer")]],
+    -- })
 
     -- ╭──────────────────────────────────────────────────────────────────────────────╮
     -- │                                   缩进美化                                   │

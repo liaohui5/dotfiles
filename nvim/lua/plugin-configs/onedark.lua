@@ -5,7 +5,7 @@
 local onedark = loadModule("onedark", "plugin-configs")
 
 onedark.setup({
-  style                = 'darker',
+  style                = 'dark',
   transparent          = false,
   term_colors          = true,
   ending_tildes        = false,
