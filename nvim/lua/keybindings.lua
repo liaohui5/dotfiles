@@ -903,10 +903,10 @@ keybindings.lspKeys = function(client, bufnr)
       "<cmd>lua vim.lsp.buf.references()<CR>",
       "LSP references[lsp]"
     },
-    -- ["<leader>ca"] = { -- 快速修复
-    --   "<cmd>lua vim.lsp.buf.code_action()<CR>",
-    --   "code action quickFix[lsp]"
-    -- },
+    ["<leader>ca"] = { -- 快速修复
+      "<cmd>lua vim.lsp.buf.code_action()<CR>",
+      "code action quickFix[lsp]"
+    },
     -- ["<leader>ji"] = { -- 打开 outline
     --   "<cmd>lua vim.lsp.buf.document_symbol()<CR>",
     --   "jump to symbol in buffer[lsp]"

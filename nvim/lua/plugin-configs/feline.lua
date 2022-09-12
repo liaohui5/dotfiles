@@ -268,6 +268,7 @@ table.insert(components.active[2], {
 -- -----------------------------------------------------------------------------
 table.insert(components.active[2], {
   provider = 'file_info',
+  left_sep = ' ',
   right_sep = {
     ' ',
     {
