@@ -107,11 +107,13 @@ nnoremap("<leader>hD", "<cmd>call SilentOpenURL('https://github.com/folke/which-
 nnoremap("<leader>hi", "<cmd>call SilentOpenURL('https://github.com/neovim/neovim/issues')<CR>")
 
 -- vim links
+nnoremap("<leader>oVV",  "<cmd>call SilentOpenURL('https://neovim.io/doc/user/')<CR>")
 nnoremap("<leader>oV0", "<cmd>call SilentOpenURL('https://vim-adventures.com')<CR>")
 nnoremap("<leader>oV1", "<cmd>call SilentOpenURL('https://vim.rtorr.com')<CR>")
 nnoremap("<leader>oV2", "<cmd>call SilentOpenURL('https://github.com/chloneda/vim-cheatsheet')<CR>")
 nnoremap("<leader>oV3", "<cmd>call SilentOpenURL('https://www.w3cschool.cn/vim/4xnd1hsw.html')<CR>")
 nnoremap("<leader>oV4", "<cmd>call SilentOpenURL('https://yianwillis.github.io/vimcdoc/doc/help.html')<CR>")
+nnoremap("<leader>oV5", "<cmd>call SilentOpenURL('https://github.com/glepnir/nvim-lua-guide-zh')<CR>")
 
 -- open
 nnoremap("<leader>ob", "<cmd>call OpenFileWithGoogleChrome()<CR>")

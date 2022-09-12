@@ -650,14 +650,14 @@ end
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
 -- │                    vifm 终端管理文件器(功能和rnvimr一样)                     │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
--- keybindings.vifmKeys = function()
---   wk.register({
---     ["<leader>ov"] = {
---       "<cmd>Vifm<CR>",
---       "open vifm[vifm]"
---     }
---   });
--- end
+keybindings.vifmKeys = function()
+  wk.register({
+    ["<C-n>"] = {
+      "<cmd>Vifm<CR>",
+      "open vifm[vifm]"
+    }
+  });
+end
 
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
 -- │                            nvimtree 侧边栏目录树                             │
@@ -796,6 +796,10 @@ keybindings.telescopeKeys = function(builtin, actions)
       "<cmd>TodoTelescope prompt_prefix=[todos]<CR>",
       "search todos[todo-comments]",
     },
+    ["<leader>sH"] = {
+      "<cmd>Telescope highlights prompt_prefix=[highlights]<CR>",
+      "search highlights[telescope]",
+    },
     ["<leader>Bo"] = {
       "<cmd>Telescope vim_bookmarks all prompt_prefix=[bookmarks]<CR>",
       "open bookmarks explorer[telescope]",
@@ -853,7 +857,7 @@ keybindings.toggletermKeys = function(getLazygit, getVifm)
       end,
       "toggle lazygit[toggleterm]"
     },
-    ["<C-n>"] = {
+    ["<leader>ov"] = {
       function ()
         getVifm():toggle();
       end,

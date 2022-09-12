@@ -172,8 +172,11 @@ local create_noremal_menus = function(wk)
         ["0"] = { nil, "open vim game" },
         ["1"] = { nil, "open vim tips" },
         ["2"] = { nil, "open vim cheatsheet" },
-        ["3"] = { nil, "open w3cschool study vimscript" },
-        ["4"] = { nil, "open vim help  docs chinese" }
+        ["3"] = { nil, "open w3cschool vimscript" },
+        ["4"] = { nil, "open vim help docs chinese" },
+        ["5"] = { nil, "open nvim lua guide" },
+        ["6"] = { nil, "open typescript to lua playground" },
+        ["V"] = { nil, "open nvim docs" },
       },
       b = { nil, "open in google chrome" },
       u = { nil, "open url in browser" },

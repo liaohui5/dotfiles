@@ -125,6 +125,10 @@ return require("packer").startup({
     --   "kevinhwang91/rnvimr",
     --   config = [[require("plugin-configs.rnvimr")]],
     -- })
+    use({
+      "vifm/vifm.vim",
+      config = [[require("plugin-configs.vifm")]],
+    })
 
     -- ╭──────────────────────────────────────────────────────────────────────────────╮
     -- │                            自动读取/自动保存文件                             │
@@ -169,10 +173,10 @@ return require("packer").startup({
     -- ╭──────────────────────────────────────────────────────────────────────────────╮
     -- │                               颜色代码直接显示                               │
     -- ╰──────────────────────────────────────────────────────────────────────────────╯
-    -- use({
-    --   "norcalli/nvim-colorizer.lua",
-    --   config = [[require("plugin-configs.colorizer")]],
-    -- })
+    use({
+      "norcalli/nvim-colorizer.lua",
+      config = [[require("plugin-configs.colorizer")]],
+    })
 
     -- ╭──────────────────────────────────────────────────────────────────────────────╮
     -- │                                   缩进美化                                   │
