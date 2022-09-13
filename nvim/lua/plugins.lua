@@ -133,11 +133,11 @@ return require("packer").startup({
     -- ╭──────────────────────────────────────────────────────────────────────────────╮
     -- │                            自动读取/自动保存文件                             │
     -- ╰──────────────────────────────────────────────────────────────────────────────╯
-    use({ "djoshea/vim-autoread" })
-    use({
-      "Pocco81/auto-save.nvim",
-      config = [[require("plugin-configs.auto-save")]],
-    })
+    -- use({ "djoshea/vim-autoread" })
+    -- use({
+    --   "Pocco81/auto-save.nvim",
+    --   config = [[require("plugin-configs.auto-save")]],
+    -- })
 
     -- ╭──────────────────────────────────────────────────────────────────────────────╮
     -- │             添加/删除/修改两边字符,两个插件功能一样,任意一个即可             │
