@@ -15,19 +15,19 @@ local languages = {
   },
   javascript = {
     single_line_comment_string = "//",
-    multi_line_comment_strings = { "/*", "*/" },
+    prefer_single_line_comments = true,
   },
   javascriptreact = {
-    single_line_comment_string = "//",
-    multi_line_comment_strings = { "/*", "*/" },
+    multi_line_comment_strings = { "{/*", "*/}" },
+    prefer_multi_line_comments = true,
   },
   typescript = {
     single_line_comment_string = "//",
-    multi_line_comment_strings = { "/*", "*/" },
+    prefer_single_line_comments = true,
   },
   typescriptreact = {
-    single_line_comment_string = "//",
-    multi_line_comment_strings = { "/*", "*/" },
+    multi_line_comment_strings = { "{/*", "*/}" },
+    prefer_multi_line_comments = true,
   },
   css = {
     multi_line_comment_strings = { "/*", "*/" },
