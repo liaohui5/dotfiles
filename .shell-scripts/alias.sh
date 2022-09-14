@@ -1,7 +1,8 @@
 #!/bin/bash 
 
-# cd to codes
+# cd to codes & works
 alias cc='cd ~/Desktop/codes'
+alias cw='cd ~/Desktop/works'
 
 # cd ..
 alias ..='cd ..'
