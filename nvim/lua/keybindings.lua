@@ -282,9 +282,13 @@ end
 -- │                                     注释                                     │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 keybindings.kommentaryKeys = function()
-  nnoremap("<C-\\>", "<Plug>kommentary_line_default")
-  vnoremap("<C-\\>", "<Plug>kommentary_visual_default<C-c>gv-gv")
+  -- nnoremap("<C-\\>", "<Plug>kommentary_line_default")
+  -- vnoremap("<C-\\>", "<Plug>kommentary_visual_default<C-c>gv-gv")
   wk.register({
+    ["<C-\\>"] = {
+      "<Plug>kommentary_line_default",
+      "toggle comment[kommentary]",
+    },
     ["<leader>;"] = {
       "<Plug>kommentary_line_default",
       "comment current line[kommentary]"
@@ -295,11 +299,15 @@ keybindings.kommentaryKeys = function()
     },
   })
   wk.register({
+    ["<C-\\>"] = {
+      "<Plug>kommentary_visual_default<C-c>gv-gv",
+      "toggle comment in selection[kommentary]",
+    },
     ["<leader>cL"] = {
       "<Plug>kommentary_visual_default<C-c>gv-gv",
       "comment multi lines[kommentary]"
     },
-  }, { mode = "v" })
+  }, { mode = "v", silent = true, noremap = true })
 end
 
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
@@ -664,8 +672,12 @@ end
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 keybindings.nvimtreeKeys = function()
   -- Ctrl + t: 切换显示/隐藏
-  nnoremap("<C-t>", "<cmd>NvimTreeToggle<CR>")
+  -- nnoremap("<C-t>", "<cmd>NvimTreeToggle<CR>")
   wk.register({
+    ["<C-t>"] = {
+      "<cmd>NvimTreeToggle<CR>",
+      "toggle NvimTree[nvim-tree]"
+    },
     ["<leader>0"] = {
       "<cmd>NvimTreeFocus<CR>",
       "focus on explorer[nvim-tree]"
@@ -836,7 +848,7 @@ keybindings.telescopeKeys = function(builtin, actions)
       end,
       "search string in workspace with seclection[telescope]",
     },
-  }, { mode = "v" });
+  }, { mode = "v", silent = true, noremap = true });
 
   return {
     i = {
@@ -913,10 +925,10 @@ keybindings.lspKeys = function(client, bufnr)
   end
 
   wk.register({
-    ["gh"] = { -- 查看帮助文档
-      "<cmd>lua vim.lsp.buf.hover()<CR>",
-      "LSP hover[lsp]"
-    },
+    -- ["gh"] = { -- 查看帮助文档
+    --   "<cmd>lua vim.lsp.buf.hover()<CR>",
+    --   "LSP hover[lsp]"
+    -- },
     -- ["gd"] = { -- 跳到函数定义位置
     --   "<cmd>lua vim.lsp.buf.definition()<CR>",
     --   "LSP goto definition[lsp]"
@@ -941,18 +953,18 @@ keybindings.lspKeys = function(client, bufnr)
     --   "<cmd>lua vim.lsp.buf.document_symbol()<CR>",
     --   "show symbols[lsp]"
     -- },
-    ["<leader>sr"] = { -- 查看引用
-      "<cmd>lua vim.lsp.buf.references()<CR>",
-      "search all references[lsp]"
-    },
-    ["<leader>xa"] = { -- 查看引用
-      "<cmd>lua vim.lsp.buf.references()<CR>",
-      "find all references[lsp]"
-    },
-    ["<leader>xr"] = { -- 查看引用
-      "<cmd>lua vim.lsp.buf.references()<CR>",
-      "find all references[lsp]"
-    },
+    -- ["<leader>sr"] = { -- 查看引用
+    --   "<cmd>lua vim.lsp.buf.references()<CR>",
+    --   "search all references[lsp]"
+    -- },
+    -- ["<leader>xa"] = { -- 查看引用
+    --   "<cmd>lua vim.lsp.buf.references()<CR>",
+    --   "find all references[lsp]"
+    -- },
+    -- ["<leader>xr"] = { -- 查看引用
+    --   "<cmd>lua vim.lsp.buf.references()<CR>",
+    --   "find all references[lsp]"
+    -- },
     -- ["<seader>se"] = { -- 重命名变量
     --   "<cmd>lua vim.lsp.buf.rename()<CR>",
     --   "rename symbol[lsp]"
@@ -988,7 +1000,7 @@ keybindings.lspKeys = function(client, bufnr)
     --   "<cmd>lua vim.lsp.buf.rename()<CR>",
     --   "rename symbol[lsp]"
     -- },
-  }, { mode = "v" })
+  }, { mode = "v", silent = true, noremap = true })
 end
 
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
@@ -997,10 +1009,10 @@ end
 keybindings.lspsagaKeys = function()
   -- 跳到上/下/错误一个代码诊断提示位置
   wk.register({
-    -- ["gh"] = { -- 查看帮助文档
-    --   "<cmd>Lspsaga hover_doc<CR>",
-    --   "Lspsaga hover[lspsaga]"
-    -- },
+    ["gh"] = { -- 查看帮助文档
+      "<cmd>Lspsaga hover_doc<CR>",
+      "Lspsaga hover[lspsaga]"
+    },
     ["gd"] = { -- 跳到函数定义位置
       "<cmd>Lspsaga lsp_finder<CR>",
       "Lspsaga finder[lspsaga]"
@@ -1033,18 +1045,18 @@ keybindings.lspsagaKeys = function()
       "<cmd>LSoutlineToggle<CR>",
       "jump to symbol in outline[lspsaga]"
     },
-    -- ["<leader>sr"] = { -- 查看引用
-    --   "<cmd>Lspsaga lsp_finder<CR>",
-    --   "search all references[lspsaga]"
-    -- },
-    -- ["<leader>xa"] = { -- 查看引用
-    --   "<cmd>Lspsaga lsp_finder<CR>",
-    --   "find all references[lspsaga]"
-    -- },
-    -- ["<leader>xr"] = { -- 查看引用
-    --   "<cmd>Lspsaga lsp_finder<CR>",
-    --   "find all references[lspsaga]"
-    -- },
+    ["<leader>sr"] = { -- 查看引用
+      "<cmd>Lspsaga lsp_finder<CR>",
+      "search all references[lspsaga]"
+    },
+    ["<leader>xa"] = { -- 查看引用
+      "<cmd>Lspsaga lsp_finder<CR>",
+      "find all references[lspsaga]"
+    },
+    ["<leader>xr"] = { -- 查看引用
+      "<cmd>Lspsaga lsp_finder<CR>",
+      "find all references[lspsaga]"
+    },
     ["<leader>se"] = { -- 重命名变量()
       "<cmd>Lspsaga rename<CR>",
       "edit symbol name[lsp]"
