@@ -5,23 +5,40 @@
 local wk = loadModule("which-key", "plugin-configs");
 
 wk.setup({
-  ignore_missing     = false,
-  hidden             = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ ", "<Plug>" },
-  show_help          = true,
-  triggers           = "auto", -- 所有键都显示提示
-  -- 只有这些键可以触发 which-key, 修改这个设定会让一些插件的功能失效
-  -- 比如: nvim-surround, 如果没有 y 提示, yss 就会失效
-  -- triggers           = { "<leader>", "g", "d", "y" ,"s", "v", "\"", "'" },
+  ignore_missing     = false, -- 忽略没有wk.register 的快捷键映射
+  show_help          = true,  -- 显示帮助信息
+  -- 设置哪些按键可以触发 which-key, 修改这个设定可能会让一些插件
+  -- 的功能失效比如: nvim-surround, 如果没有 d 提示, ds" 就会失效
+  -- 设置为 auto 代表所有键都显示提示
+  -- triggers = { "<leader>", "g", "d", "y" ,"s", "v", "\"", "'" },
+  triggers           = "auto",
+  operators      = {
+    gc = "Comments",
+  },
   triggers_blacklist = {
-    -- 不能触发的按键 i insert模式 v visual 模式
+    -- 禁止处罚 which-key 的按钮
+    -- i:insert模式 v:visual模式
     i = { "j", "k" },
     v = { "j", "k" },
   },
-
+  hidden             = {
+    "<silent>",
+    "<cmd>",
+    "<Cmd>",
+    "<CR>",
+    "call",
+    "lua",
+    "^:",
+    "^ ",
+    "<Plug>",
+  },
   plugins        = {
+    -- 内置插件设置
     marks     = true, -- 查看所有标记用 ' 和 ` 触发
     registers = true, -- 查看所有寄存器(registers) 用 " 触发
-    spelling  = { enabled = false }, -- 单词检测
+    spelling  = {     -- 单词检测
+      enabled = false,
+    }, 
     presets   = {
       -- which-key 内置的按键提示
       operators    = true,
@@ -33,9 +50,6 @@ wk.setup({
       g            = true,
     },
   },
-  operators      = {
-    gc = "Comments",
-  },
   key_labels     = {
     -- 特殊按键显示的样式
     ["<space>"] = "<Space>",
@@ -43,15 +57,18 @@ wk.setup({
     ["<tab>"]   = "<Tab>",
   },
   icons          = {
+    -- 图标
     breadcrumb = "»",
     separator  = "➜",
     group      = "+",
   },
   popup_mappings = {
+    -- 滚动面板
     scroll_down = "<c-d>", -- 如果按键太多, 向下滚动
     scroll_up   = "<c-u>", -- 如果按键太多, 向下滚动
   },
   window         = {
+    -- 窗口样式
     border   = "none", -- none | single | double | shadow
     position = "bottom", -- bottom | top
     margin   = { 0, 0, 0, 0 }, -- extra window margin [top, right, bottom, left]
@@ -59,6 +76,7 @@ wk.setup({
     winblend = 0
   },
   layout         = {
+    -- 布局
     height  = { min = 4, max = 30 },
     width   = { min = 20, max = 50 },
     spacing = 4,
