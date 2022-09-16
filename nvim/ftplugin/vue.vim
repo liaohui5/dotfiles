@@ -5,4 +5,3 @@ augroup resolve_webpack_alias_path
  autocmd BufEnter <buffer> setlocal isfname+=@-@
 augroup END
 
-
