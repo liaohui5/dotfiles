@@ -58,8 +58,8 @@ wk.setup({
   },
   icons          = {
     -- 图标
-    breadcrumb = "»",
-    separator  = "➜",
+    breadcrumb = "↣",
+    separator  = "➤",
     group      = "+",
   },
   popup_mappings = {

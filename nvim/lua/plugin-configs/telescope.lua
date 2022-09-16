@@ -14,7 +14,7 @@ telescope.setup({
     mappings             = mappings,     -- 快捷键
     selection_caret      = ' ',         -- 选择指示图标
     sorting_strategy     = "ascending",  -- 布局方式
-    prompt_prefix        = '🔎 ',         -- 输入框前缀
+    prompt_prefix        = '🔎 ',        -- 输入框前缀
     prompt_title         = false,        -- 输入框标题
     show_line            = false,
     border               = true,         -- 边框
