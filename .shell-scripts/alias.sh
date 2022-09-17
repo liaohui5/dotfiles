@@ -58,3 +58,4 @@ alias figlet-cli='figlet'
 
 # lazygit: https://github.com/jesseduffield/lazygit
 alias lg='lazygit'
+alias gs='git status'
