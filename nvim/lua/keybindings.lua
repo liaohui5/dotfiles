@@ -922,22 +922,11 @@ keybindings.lspKeys = function(client, bufnr)
   local highlight = loadModule("utils.highlight", "keybindings");
   highlight.setup(client, bufnr);
 
-  -- 如果当前文件支持 LSP 就使用 LSP 格式化, 否则使用 formatter 格式化
-  local lspFormatKey = nil;
-  if client.resolved_capabilities.document_formatting then
-    lspFormatKey = {
-      "<cmd>lua vim.lsp.buf.formatting_seq_sync()<CR>",
-      "format and save current file[lsp]"
-    }
-  else
-    lspFormatKey = {
-      "<cmd>FormatWrite<CR>",
-      "format and save current file[formatter]"
-    }
-  end
-
   wk.register({
-    ["<leader>ff"] = lspFormatKey,
+    ["<leader>fF"] = {
+      "<cmd>lua vim.lsp.buf.formatting_sync()<CR>",
+      "format current buffer[lsp]"
+    },
     -- ["gh"] = { -- 查看帮助文档
     --   "<cmd>lua vim.lsp.buf.hover()<CR>",
     --   "LSP hover[lsp]"

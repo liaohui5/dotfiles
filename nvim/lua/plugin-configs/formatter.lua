@@ -21,17 +21,6 @@ local prettierFormatter = {
 
 formatter.setup({
   filetype = {
-    -- lua = {
-    -- 	-- 格式化 lua 的程序, 所以使用 lsp server
-    -- 	-- 需要安装 stylua: brew install stylua
-    -- 	function()
-    -- 		return {
-    -- 			exe   = "stylua",
-    -- 			args  = { "-" },
-    -- 			stdin = true,
-    -- 		}
-    -- 	end,
-    -- },
     javascript      = prettierFormatter,
     javascriptreact = prettierFormatter,
     typescript      = prettierFormatter,
