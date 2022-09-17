@@ -427,9 +427,17 @@ end
 keybindings.gitsignsKeys = function()
   wk.register({
     ["<leader>g"] = {
-      ["r"] = {
+      ["f"] = {
+        "<cmd>Gitsigns refresh<CR>",
+        "refresh gitsigns[gitsigns]",
+      },
+      ["u"] = {
         "<cmd>Gitsigns undo_stage_hunk<CR>",
         "undo current hunk[gitsigns]",
+      },
+      ["r"] = {
+        "<cmd>Gitsigns reset_hunk<CR>",
+        "reset current hunk[gitsigns]",
       },
       ["R"] = {
         "<cmd>Gitsigns reset_buffer<CR>",
