@@ -67,11 +67,6 @@ api.mapkey("p", "Open the clipboard's URL in the current tab", function () {
   });
 });
 
-// 选择 tabs
-api.mapkey("<Space>", "Choose a tab with omnibar", function () {
-  api.Front.openOmnibar({ type: "Tabs" });
-});
-
 // 自定义搜索
 var searchUrls = [
   {
