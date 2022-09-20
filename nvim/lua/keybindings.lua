@@ -1,5 +1,5 @@
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
--- │                     _              _     _           _ _                     │
+-- │             _              _     _           _ _                             │
 -- │            | | _____ _   _| |__ (_)_ __   __| (_)_ __   __ _ ___             │
 -- │            | |/ / _ \ | | | '_ \| | '_ \ / _` | | '_ \ / _` / __|            │
 -- │            |   <  __/ |_| | |_) | | | | | (_| | | | | | (_| \__ \            │
@@ -91,10 +91,16 @@ keybindings.ufoKeys = function(ufo)
 end
 
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
--- │                                单行/多行切换                                 │
+-- │                                  格式化代码                                  │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
--- keybindings.splitjoinKeys = function ()
--- end
+keybindings.formatterKeys = function(format)
+  wk.register({
+    ["<leader>ff"] = {
+      format,
+      "document format[formatter]",
+    }
+  })
+end
 
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
 -- │                                 预览markdown                                 │
@@ -911,18 +917,7 @@ keybindings.lspKeys = function(client, bufnr)
   highlight.setup(client, bufnr);
 
   wk.register({
-    ["<leader>ff"] = {
-      function()
-        local prettierSupported     = getPrettierSupportedLanguages();
-        local currentBufferFiletype = vim.bo.filetype;
-        if prettierSupported[currentBufferFiletype] then
-          vim.cmd("FormatWrite");
-        else
-          vim.lsp.buf.formatting_sync();
-        end
-      end,
-      "format current buffer[lsp]"
-    },
+    -- ["<leader>ff"] = ,
     -- ["gh"] = { -- 查看帮助文档
     --   "<cmd>lua vim.lsp.buf.hover()<CR>",
     --   "LSP hover[lsp]"

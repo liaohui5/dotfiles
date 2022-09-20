@@ -6,9 +6,24 @@
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 local formatter = loadModule("formatter", "plugin-configs")
 
--- prettier 支持的文件就用 prettier 格式化
-local filetype          = {};
-local prettierSupported = getPrettierSupportedLanguages();
+-- prettier 支持的语言
+local prettierSupported = {
+  javascript      = true,
+  javascriptreact = true,
+  typescript      = true,
+  typescriptreact = true,
+  css             = true,
+  scss            = true,
+  less            = true,
+  vue             = true,
+  html            = true,
+  yaml            = true,
+  json            = true,
+  markdown        = true,
+  graphql         = true,
+};
+
+-- 使用 prettier 格式化
 local prettierFormatter = function()
   return {
     exe = "prettier",
@@ -19,13 +34,30 @@ local prettierFormatter = function()
     },
   }
 end
+local filetype = {};
+for key in pairs(prettierSupported) do
+  filetype[key] = {
+    prettierFormatter,
+  }
+end
 
-for key, item in ipairs(prettierSupported) do
-  if item then
-    filetype[key] = { prettierFormatter }
+-- prettier 支持的文件就用 prettier 格式化, 否则用 lsp 来格式化
+local documentFormat = function()
+  local scope = "";
+  if prettierSupported[vim.bo.filetype] then
+    scope = "[formatter]";
+    vim.cmd("FormatWrite");
+  else
+    scope = "[lsp]";
+    ---@diagnostic disable-next-line: missing-parameter
+    vim.lsp.buf.formatting_sync();
+    vim.cmd("write")
   end
+  print(scope .. "Document formated at " .. vim.fn.strftime("%T"));
 end
 
 formatter.setup({
   filetype = filetype,
 })
+
+require("keybindings").formatterKeys(documentFormat);
