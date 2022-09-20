@@ -16,28 +16,28 @@ local highlights = {}
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
 -- │ which-key                                                                    │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
-highlights["WhichKeyFloat"] = {
+highlights.WhichKeyFloat = {
   bg = "#383830" -- which-key 面板背景颜色
 };
 
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
 -- │ barbar                                                                       │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
-highlights["BufferCurrentSign"] = {
+highlights.BufferCurrentSign = {
   fg = "#66d9ef", -- 当前buffer左边|颜色
 }
-highlights["BufferCurrent"] = {
+highlights.BufferCurrent = {
   fg = "#66d9ef", -- 当前buffer的文字颜色
 }
-highlights["BufferInactive"] = {
+highlights.BufferInactive = {
   fg = "#888888", -- 其他buffer的文字颜色
   bg = "#23241e", -- 其他buffer背景颜色(右)
 }
-highlights["BufferInactiveSign"] = {
+highlights.BufferInactiveSign = {
   fg = "#888888",
   -- bg = "#23241e" -- 其他buffer背景颜色(左)
 };
-highlights["BufferTabpageFill"] = {
+highlights.BufferTabpageFill = {
   fg = "#888888",
   bg = "#23241e",
 }
@@ -45,10 +45,10 @@ highlights["BufferTabpageFill"] = {
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
 -- │ nvim-tree                                                                    │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
-highlights["NvimTreeNormal"] = {
+highlights.NvimTreeNormal = {
   bg = "#23241e" -- 背景颜色
 };
-highlights["NvimTreeVertSplit"] = {
+highlights.NvimTreeVertSplit = {
   bg = "#23241e", -- 右边分割线背景
   fg = "#23241e" -- 右边分割线颜色
 };
@@ -56,19 +56,35 @@ highlights["NvimTreeVertSplit"] = {
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
 -- │ telescope                                                                    │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
-highlights["TelescopePromptTitle"] = {
+highlights.TelescopePromptTitle = {
   bg = "#414037",
   fg = "#f92672"
 }
-highlights["TelescopePreviewTitle"] = {
+highlights.TelescopePreviewTitle = {
   fg = "#a6e22e"
 }
+
+-- ╭──────────────────────────────────────────────────────────────────────────────╮
+-- │ treesitter                                                                   │
+-- ╰──────────────────────────────────────────────────────────────────────────────╯
+local clearItalic = function()
+  local itialicItems = {
+    "Comment",
+    "TSComment",
+    "javaScriptComment",
+    "LuaScriptComment"
+  };
+  for _, item in pairs(itialicItems) do
+    vim.cmd(string.format("highlight %s gui=none", item))
+  end
+end
 
 -- 必须要延迟执行, 不能立即执行, 立即执行有些高亮组不生效
 vim.api.nvim_create_autocmd("BufEnter", {
   group    = vim.api.nvim_create_augroup("override_highlights", { clear = true }),
   pattern  = "*",
   callback = function()
+    clearItalic();
     for key, val in pairs(highlights) do
       vim.api.nvim_set_hl(0, key, val)
     end

@@ -50,8 +50,7 @@ local documentFormat = function()
   else
     scope = "[lsp]";
     ---@diagnostic disable-next-line: missing-parameter
-    vim.lsp.buf.formatting_sync();
-    vim.cmd("write")
+    vim.lsp.buf.formatting_seq_sync();
   end
   print(scope .. "Document formated at " .. vim.fn.strftime("%T"));
 end
