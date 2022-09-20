@@ -9,24 +9,24 @@
     "body": ["let ${1:name} = ${0};"],
     "description": "Let Variable"
   },
-  "Named Function": {
+  "Named function": {
     "prefix": "fun",
-    "body": ["function ${1:name}(${2:args}) {", "\t${0}", "}"],
-    "description": "Named Function"
+    "body": ["function ${1:name}(${2}){", "${0}", "}"],
+    "description": "Named function"
   },
   "Arrow Function": {
     "prefix": "af",
-    "body": ["(${1:args}) => {${0}}"],
+    "body": ["(${1}) => {${0}}"],
     "description": "Arrow Function"
   },
   "Const Arrow Function": {
     "prefix": "caf",
-    "body": ["const ${1:name} = (${2:args}) => {${0}};"],
+    "body": ["const ${1:name} = (${2}) => {${0}};"],
     "description": "Const Arrow Function"
   },
   "IIFE": {
     "prefix": "iife",
-    "body": [";((${1:args}) => {", "\t${0}", "})();"],
+    "body": [";((${1}) => {", "\t${0}", "})();"],
     "description": "IIFE"
   },
   "ES Export": {
@@ -76,7 +76,7 @@
   },
   "Typeof": {
     "prefix": "typeof",
-    "body": ["typeof ${0:source}"],
+    "body": ["typeof ${0}"],
     "description": "Typeof"
   },
   "Instanceof": {
@@ -98,16 +98,6 @@
     "prefix": "cin",
     "body": ["console.info(${0});"],
     "description": "Info output to console"
-  },
-  "Console log1": {
-    "prefix": "clog",
-    "body": ["console.log(${0});"],
-    "description": "Log output to console"
-  },
-  "Console log2": {
-    "prefix": "clg",
-    "body": ["console.log(${0});"],
-    "description": "Log output to console"
   },
   "Promise Executor": {
     "prefix": "resrej",

@@ -19,16 +19,6 @@
     "body": ["console.info(${0});"],
     "description": "Info output to console"
   },
-  "Console log1": {
-    "prefix": "clog",
-    "body": ["console.log(${0});"],
-    "description": "Log output to console"
-  },
-  "Console log2": {
-    "prefix": "clg",
-    "body": ["console.log(${0});"],
-    "description": "Log output to console"
-  },
   "Console log": {
     "prefix": "log",
     "body": ["console.log(${0});"],

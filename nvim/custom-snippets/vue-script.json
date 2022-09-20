@@ -100,7 +100,7 @@
   },
   "Vue Import File": {
     "prefix": "vimport",
-    "body": ["import ${1:New} from '@/components/${1:New}.vue';"],
+    "body": ["import ${1:New} from \"@/components/${1:New}\";"],
     "description": "Import one component into another"
   },
   "Vue Import into the Component": {
@@ -111,7 +111,7 @@
   "Vue Import Export": {
     "prefix": "vimport-export",
     "body": [
-      "import ${1:Name} from '@/components/${1:Name}.vue';",
+      "import ${1:Name} from \"@/components/${1:Name}\";",
       "",
       "export default {",
       "\tcomponents: {",
@@ -123,13 +123,13 @@
   },
   "Vue Import Component Dynamically": {
     "prefix": "vimport-dynamic",
-    "body": ["${1:New} = () => import('@/components/${1:New}.vue')"],
+    "body": ["${1:New} = () => import(\"@/components/${1:New}\")"],
     "description": "Import component that should be lazy loaded"
   },
   "Vue MapState": {
     "prefix": "vmapstate",
     "body": [
-      "import { mapState } from 'vuex';",
+      "import { mapState } from \"vuex\";",
       "",
       "export default {",
       "\tcomputed: {",
@@ -144,7 +144,7 @@
   "Vue MapGetters": {
     "prefix": "vmapgetters",
     "body": [
-      "import { mapGetters } from 'vuex';",
+      "import { mapGetters } from \"vuex\";",
       "",
       "export default {",
       "\tcomputed: {",
@@ -159,7 +159,7 @@
   "Vue MapMutations": {
     "prefix": "vmapmutations",
     "body": [
-      "import { mapMutations } from 'vuex';",
+      "import { mapMutations } from \"vuex\";",
       "",
       "export default {",
       "\tmethods: {",
