@@ -53,6 +53,28 @@ function loadModule(require_path, scope)
 end
 
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
+-- │                             prettier 支持的语言                              │
+-- ╰──────────────────────────────────────────────────────────────────────────────╯
+function getPrettierSupportedLanguages()
+  return {
+    lua             = false,
+    javascript      = true,
+    javascriptreact = true,
+    typescript      = true,
+    typescriptreact = true,
+    css             = true,
+    scss            = true,
+    less            = true,
+    vue             = true,
+    html            = true,
+    yaml            = true,
+    json            = true,
+    markdown        = true,
+    graphql         = true,
+  };
+end
+
+-- ╭──────────────────────────────────────────────────────────────────────────────╮
 -- │ 获取选中的内容                                                               │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 function getVisualSelection()

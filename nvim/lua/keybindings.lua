@@ -17,7 +17,7 @@ local keybindings = {}
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
 -- │                                todo 高亮显示                                 │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
-keybindings.todoCommentKeys = function (todoComments)
+keybindings.todoCommentKeys = function(todoComments)
   wk.register({
     ["<leader>lt"] = {
       "<cmd>TODOTelescope<CR>",
@@ -38,7 +38,7 @@ end
 -- │                               ufo 缩进美化插件                               │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 keybindings.ufoKeys = function(ufo)
-  local previewFold = function ()
+  local previewFold = function()
     local winid = ufo.peekFoldedLinesUnderCursor()
     if not winid then
       vim.lsp.buf.hover();
@@ -54,14 +54,14 @@ keybindings.ufoKeys = function(ufo)
       "prev closed fold[ufo]",
     },
     ["zJ"] = {
-      function ()
+      function()
         ufo.goNextClosedFold();
         ufo.peekFoldedLinesUnderCursor();
       end,
       "preview next closed fold[ufo]",
     },
     ["zK"] = {
-      function ()
+      function()
         ufo.goPreviousClosedFold();
         ufo.peekFoldedLinesUnderCursor();
       end,
@@ -216,20 +216,20 @@ keybindings.treesitterKeys = function()
       ["[C"] = "@class.outer",
     },
     textobjects_select_keymaps = {
-      ["sa"] = { query = "@attribute.inner",   desc = "attribute inner[textobjects]"       },
-      ["sA"] = { query = "@attribute.outer",   desc = "attribute outer[textobjects]"       },
-      ["sb"] = { query = "@block.inner",       desc = "block inner[textobjects]"           },
-      ["sB"] = { query = "@block.outer",       desc = "block outer[textobjects]"           },
-      ["sc"] = { query = "@class.inner",       desc = "class inner[textobjects]"           },
-      ["sC"] = { query = "@class.outer",       desc = "class outer[textobjects]"           },
-      ["sf"] = { query = "@function.inner",    desc = "function inner[textobjects]"        },
-      ["sF"] = { query = "@function.outer",    desc = "function outer[textobjects]"        },
-      ["si"] = { query = "@conditional.inner", desc = "conditional inner[textobjects]"     },
-      ["sI"] = { query = "@conditional.outer", desc = "conditional outer[textobjects]"     },
-      ["sl"] = { query = "@loop.inner",        desc = "loop(for/while) inner[textobjects]" },
-      ["sL"] = { query = "@loop.outer",        desc = "loop(for/while) outer[textobjects]" },
-      ["sp"] = { query = "@parameter.inner",   desc = "arguments inner[textobjects]"       },
-      ["sP"] = { query = "@parameter.outer",   desc = "arguments outer[textobjects]"       },
+      ["sa"] = { query = "@attribute.inner", desc = "attribute inner[textobjects]" },
+      ["sA"] = { query = "@attribute.outer", desc = "attribute outer[textobjects]" },
+      ["sb"] = { query = "@block.inner", desc = "block inner[textobjects]" },
+      ["sB"] = { query = "@block.outer", desc = "block outer[textobjects]" },
+      ["sc"] = { query = "@class.inner", desc = "class inner[textobjects]" },
+      ["sC"] = { query = "@class.outer", desc = "class outer[textobjects]" },
+      ["sf"] = { query = "@function.inner", desc = "function inner[textobjects]" },
+      ["sF"] = { query = "@function.outer", desc = "function outer[textobjects]" },
+      ["si"] = { query = "@conditional.inner", desc = "conditional inner[textobjects]" },
+      ["sI"] = { query = "@conditional.outer", desc = "conditional outer[textobjects]" },
+      ["sl"] = { query = "@loop.inner", desc = "loop(for/while) inner[textobjects]" },
+      ["sL"] = { query = "@loop.outer", desc = "loop(for/while) outer[textobjects]" },
+      ["sp"] = { query = "@parameter.inner", desc = "arguments inner[textobjects]" },
+      ["sP"] = { query = "@parameter.outer", desc = "arguments outer[textobjects]" },
     }
   }
 end
@@ -249,7 +249,7 @@ end
 keybindings.base16Keys = function(setColorScheme)
   wk.register({
     ["<leader>Tc"] = {
-      function ()
+      function()
         setColorScheme();
       end,
       "toggle colorscheme[base16]"
@@ -352,7 +352,7 @@ end
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
 -- │                                    barbar                                    │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
-keybindings.barbarKeys = function ()
+keybindings.barbarKeys = function()
   wk.register({
     ["H"] = {
       "<cmd>BufferPrevious<CR>",
@@ -407,18 +407,6 @@ keybindings.barbarKeys = function ()
       "close other buffers[barbar]",
     },
   });
-end
-
--- ╭──────────────────────────────────────────────────────────────────────────────╮
--- │                               formatter 格式化                               │
--- ╰──────────────────────────────────────────────────────────────────────────────╯
-keybindings.formatterKeys = function()
-  wk.register({
-    ["<leader>ff"] = {
-      "<cmd>FormatWrite<CR>",
-      "format and save current buffer[formatter]",
-    }
-  })
 end
 
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
@@ -713,23 +701,23 @@ keybindings.nvimtreeKeys = function()
   })
 
   return {
-    { key = "o",      action = "edit"               }, -- 打开并编辑
-    { key = "<CR>",   action = "edit"               }, -- 打开并编辑
-    { key = "<C-\\>", action = "system_open"        }, -- 用系统 open 命令打开
-    { key = "v",      action = "vsplit"             }, -- 左右拆分窗口并打开编辑
-    { key = "i",      action = "toggle_ignored"     }, -- 切换忽略
-    { key = ".",      action = "toggle_dotfiles"    }, -- 切换隐藏文件是否可见
-    { key = "R",      action = "refresh"            }, -- 刷新
-    { key = "a",      action = "create"             }, -- 创建文件/目录(/结尾就是目录)
-    { key = "r",      action = "rename"             }, -- 重命名
-    { key = "x",      action = "remove"             }, -- 删除
-    { key = "d",      action = "cut"                }, -- 剪切
-    { key = "y",      action = "copy"               }, -- 复制
-    { key = "p",      action = "paste"              }, -- 粘贴
-    { key = "Yn",     action = "copy_name"          }, -- 复制文件名
-    { key = "Yp",     action = "copy_path"          }, -- 否则文件路径
-    { key = "YP",     action = "copy_absolute_path" }, -- 复制文件绝对路径
-    { key = "I",      action = "toggle_file_info"   }, -- 查看文件信息
+    { key = "o", action = "edit" }, -- 打开并编辑
+    { key = "<CR>", action = "edit" }, -- 打开并编辑
+    { key = "<C-\\>", action = "system_open" }, -- 用系统 open 命令打开
+    { key = "v", action = "vsplit" }, -- 左右拆分窗口并打开编辑
+    { key = "i", action = "toggle_ignored" }, -- 切换忽略
+    { key = ".", action = "toggle_dotfiles" }, -- 切换隐藏文件是否可见
+    { key = "R", action = "refresh" }, -- 刷新
+    { key = "a", action = "create" }, -- 创建文件/目录(/结尾就是目录)
+    { key = "r", action = "rename" }, -- 重命名
+    { key = "x", action = "remove" }, -- 删除
+    { key = "d", action = "cut" }, -- 剪切
+    { key = "y", action = "copy" }, -- 复制
+    { key = "p", action = "paste" }, -- 粘贴
+    { key = "Yn", action = "copy_name" }, -- 复制文件名
+    { key = "Yp", action = "copy_path" }, -- 否则文件路径
+    { key = "YP", action = "copy_absolute_path" }, -- 复制文件绝对路径
+    { key = "I", action = "toggle_file_info" }, -- 查看文件信息
     -- { key = { "]" }, action = "cd" }, -- 切换目录
     -- { key = { "[" }, action = "dir_up" }, -- 切换到上级目录
     -- { key = "n", action = "tabnew" }, -- 不知道干嘛的
@@ -839,8 +827,8 @@ keybindings.telescopeKeys = function(builtin, actions)
 
   wk.register({
     ["<leader>sp"] = {
-      function ()
-	      builtin.current_buffer_fuzzy_find({
+      function()
+        builtin.current_buffer_fuzzy_find({
           default_text  = getVisualSelection(),
           prompt_prefix = "[fuzzy]"
         })
@@ -848,8 +836,8 @@ keybindings.telescopeKeys = function(builtin, actions)
       "search string in buffer with seclection[telescope]",
     },
     ["<leader>sP"] = {
-      function ()
-	      builtin.live_grep({
+      function()
+        builtin.live_grep({
           default_text  = getVisualSelection(),
           prompt_prefix = "[string]"
         })
@@ -875,13 +863,13 @@ end
 keybindings.toggletermKeys = function(getLazygit, getVifm)
   wk.register({
     ["<C-g>"] = {
-      function ()
+      function()
         getLazygit():toggle();
       end,
       "toggle lazygit[toggleterm]"
     },
     ["<leader>ov"] = {
-      function ()
+      function()
         getVifm():toggle();
       end,
       "toggle vifm[toggleterm]"
@@ -923,8 +911,16 @@ keybindings.lspKeys = function(client, bufnr)
   highlight.setup(client, bufnr);
 
   wk.register({
-    ["<leader>fF"] = {
-      "<cmd>lua vim.lsp.buf.formatting_sync()<CR>",
+    ["<leader>ff"] = {
+      function()
+        local prettierSupported     = getPrettierSupportedLanguages();
+        local currentBufferFiletype = vim.bo.filetype;
+        if prettierSupported[currentBufferFiletype] then
+          vim.cmd("FormatWrite");
+        else
+          vim.lsp.buf.formatting_sync();
+        end
+      end,
       "format current buffer[lsp]"
     },
     -- ["gh"] = { -- 查看帮助文档
@@ -1214,5 +1210,3 @@ keybindings.dapUIKeys = function()
 end
 
 return keybindings
-
-

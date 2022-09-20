@@ -1,6 +1,6 @@
 -- ╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
 -- │ 底部状态栏美化插件                                                                                             │
--- │ docs: https://github.com/glepnir/galaxyline.nvim                                                               │
+-- │ docs: https://github.com/feline-nvim/feline.nvim                                                               │
 -- │ components: https://github.com/feline-nvim/feline.nvim/blob/master/lua/feline/default_components.lua           │
 -- ╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 
