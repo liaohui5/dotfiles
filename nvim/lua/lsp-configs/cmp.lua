@@ -79,10 +79,10 @@ M.onstart = function()
     -- 可以摘这里找到更多的提示源: https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
     -- 但是建议不要太多, 很多事没用的信息, 且插件太多 会影响速度
     sources = cmp.config.sources({
-      { name = "nvim_lsp" },
-      { name = "path" },
       { name = "vsnip" },
+      { name = "nvim_lsp" },
       { name = "nvim_lua" },
+      { name = "path" },
       { name = "buffer" },
       { name = "nvim_lsp_signature_help" },
     }),
