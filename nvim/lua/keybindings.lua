@@ -537,7 +537,7 @@ keybindings.cmpKeys = function(cmp)
     -- snippets 上一个位置
     ["<C-h>"] = cmp.mapping(function()
       if vim.fn["vsnip#jumpable"](-1) == 1 then
-        feedkey("<Plug>(vsnip-jump-prev)", "")
+        feedkey("<Plug>(vsnip-jump-prev)", "");
       end
     end),
 
@@ -551,20 +551,20 @@ keybindings.cmpKeys = function(cmp)
     -- Tab: 下一个提示/展开snippets
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
-        cmp.select_next_item()
+        cmp.select_next_item();
       elseif vim.fn["vsnip#available"](1) == 1 then
         feedkey("<Plug>(vsnip-expand-or-jump)", "")
       elseif has_words_before() then
-        cmp.complete()
+        cmp.complete();
       else
-        fallback()
+        fallback("<Tab>", "")
       end
     end, { "i", "s" }),
 
     -- shift-tab: 上一个提示
     ["<S-Tab>"] = cmp.mapping(function()
       if cmp.visible() then
-        cmp.select_prev_item()
+        cmp.select_prev_item();
       elseif vim.fn["vsnip#jumpable"](-1) == 1 then
         feedkey("<Plug>(vsnip-jump-prev)", "")
       end
