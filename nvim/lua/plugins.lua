@@ -223,6 +223,7 @@ return require("packer").startup({
     -- ╭──────────────────────────────────────────────────────────────────────────────╮
     -- │                                     注释                                     │
     -- ╰──────────────────────────────────────────────────────────────────────────────╯
+    use({ "JoosepAlviste/nvim-ts-context-commentstring" })
     use({
       "b3nj5m1n/kommentary",
       config = [[require("plugin-configs.kommentary")]],

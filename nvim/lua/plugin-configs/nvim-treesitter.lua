@@ -33,6 +33,16 @@ treesitterConfigs.setup({
     enable                            = true,
     additional_vim_regex_highlighting = false
   },
+
+  -- ╭──────────────────────────────────────────────────────────────────────────────╮
+  -- │  识别语法注释:                                                               │
+  -- │  https://github.com/JoosepAlviste/nvim-ts-context-commentstring              │
+  -- ╰──────────────────────────────────────────────────────────────────────────────╯
+  context_commentstring = {
+    enable = true,
+    enable_autocmd = false,
+  },
+
   -- ╭──────────────────────────────────────────────────────────────────────────────╮
   -- │        不同括号不同颜色显示: https://github.com/p00f/nvim-ts-rainbow         │
   -- ╰──────────────────────────────────────────────────────────────────────────────╯
