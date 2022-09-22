@@ -7,15 +7,15 @@
 shell:
   program: /bin/zsh
   # run nvim on startup: /bin/zsh --login -c nvim
-  args:
-    - --login
-    - -c 
-    - nvim
-  # run tmux on startup: /bin/zsh --login -c cd ~ && tmux
   # args:
   #   - --login
   #   - -c 
-  #   - cd ~ && tmux
+  #   - nvim
+  run tmux on startup: /bin/zsh --login -c cd ~ && tmux
+  args:
+    - --login
+    - -c 
+    - cd ~ && tmux
 
 
 # 设置窗口
