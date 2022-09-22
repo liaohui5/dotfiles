@@ -15,6 +15,7 @@
     ~/.gitconfig: .gitconfig
     ~/.zprofile: .zprofile
     ~/.zshrc: .zshrc
+    ~/.oh-my-zsh/custom/themes/gtarrow.zsh-theme: gtarrow.zsh-theme
     ~/.bashrc: .bashrc
     ~/.shell-scripts: .shell-scripts
     ~/.tmux.conf: .tmux/.tmux.conf

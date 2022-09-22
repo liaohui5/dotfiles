@@ -16,7 +16,7 @@ export ZSH="/Users/liaohui5/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
-ZSH_THEME="gentoo"
+ZSH_THEME="gtarrow"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -79,12 +79,10 @@ ZSH_THEME="gentoo"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # plugins=(git history history-substring-search last-working-dir zsh-autosuggestions copypath vi-mode z)
-plugins=(git history history-substring-search last-working-dir zsh-autosuggestions copypath z)
+plugins=(git history history-substring-search zsh-autosuggestions copypath z vi-mode)
 
-# previous input command 
+# previous/next command history
 bindkey -M vicmd 'k' history-substring-search-up
-
-# next input command if have
 bindkey -M vicmd 'j' history-substring-search-down
 
 source $ZSH/oh-my-zsh.sh
