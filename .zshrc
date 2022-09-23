@@ -79,11 +79,11 @@ ZSH_THEME="gtarrow"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # plugins=(git history history-substring-search last-working-dir zsh-autosuggestions copypath vi-mode z)
-plugins=(git history history-substring-search zsh-autosuggestions copypath z vi-mode)
+plugins=(git history history-substring-search zsh-autosuggestions copypath vi-mode z)
 
 # previous/next command history
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
+bindkey -M vicmd 'p' history-substring-search-up
+bindkey -M vicmd 'n' history-substring-search-down
 
 source $ZSH/oh-my-zsh.sh
 
