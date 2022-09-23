@@ -10,6 +10,7 @@ local M = {}
 
 M.onstart = function()
   -- 指定加载自定义 snippets 目录
+  -- WARN: 如果是 windows 系统, 这个路径是有问题的, 需要修改
   vim.g.vsnip_snippet_dir = "~/.config/nvim/custom-snippets";
 
   -- 其他配置: 比如图标,补全引擎之类的

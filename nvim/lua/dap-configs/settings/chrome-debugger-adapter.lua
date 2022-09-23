@@ -13,7 +13,7 @@ return {
       args    = { debugger_path }
     }
 
-    local languages = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" };
+    local languages = { "typescript", "javascript", "javascriptreact", "typescriptreact" };
     for _, item in ipairs(languages) do
       dap.configurations[item] = {
         {

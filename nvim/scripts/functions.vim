@@ -54,3 +54,12 @@ function! OpenInGithubDesktop()
   let l:cmdstr = '!github open ' . getcwd()
   silent execute l:cmdstr
 endfunction
+
+
+" ╭──────────────────────────────────────────────────────────────────────────────╮
+" │ 将当前项目在vscode中打开                                                     │
+" ╰──────────────────────────────────────────────────────────────────────────────╯
+function! OpenInVisualStudioCode()
+  let l:cmdstr = '!code ' . getcwd()
+  silent execute l:cmdstr
+endfunction

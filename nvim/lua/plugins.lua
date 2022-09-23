@@ -88,11 +88,11 @@ return require("packer").startup({
     -- ╭──────────────────────────────────────────────────────────────────────────────╮
     -- │                                 标签自动闭合                                 │
     -- ╰──────────────────────────────────────────────────────────────────────────────╯
-    use({
-      "windwp/nvim-ts-autotag",
-      requires = "nvim-treesitter/nvim-treesitter",
-      config = [[require("plugin-configs.nvim-ts-autotag")]],
-    })
+    -- use({
+    --   "windwp/nvim-ts-autotag",
+    --   requires = "nvim-treesitter/nvim-treesitter",
+    --   config = [[require("plugin-configs.nvim-ts-autotag")]],
+    -- })
 
     -- ╭──────────────────────────────────────────────────────────────────────────────╮
     -- │                                  文件图标插                                  │

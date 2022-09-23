@@ -5,7 +5,8 @@
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 -- 设置 neovide 选项
 local neovide_settings = {
-  neovide_cursor_vfx_mode         = "",    -- ""取消光标动画效果
+  -- neovide_cursor_vfx_mode         = "",    -- ""取消光标动画效果
+  -- neovide_transparency            = 0.5,   -- 透明度
   neovide_cursor_animation_length = 0,     -- 0禁用动画
   neovide_fullscreen              = false, -- 全屏打开
   neovide_remember_window_size    = true,  -- 记住之前的大小
@@ -21,7 +22,7 @@ end
 local setFontSize = function (font_family, font_size)
   vim.opt.guifont = string.format("%s:h%s", font_family, font_size or "14")
 end
-setFontSize("Hack Nerd Font Mono", 16)
+setFontSize("Maple Mono NF", 15)
 
 -- 设置快捷键
 local keyset = vim.api.nvim_set_keymap;

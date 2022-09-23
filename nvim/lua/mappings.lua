@@ -118,6 +118,7 @@ nnoremap("<leader>oV5", "<cmd>call SilentOpenURL('https://github.com/glepnir/nvi
 
 -- open
 nnoremap("<leader>ob", "<cmd>call OpenFileWithGoogleChrome()<CR>")
+nnoremap("<leader>oc", "<cmd>call OpenInVisualStudioCode()<CR>")
 nnoremap("<leader>ou", "<cmd>call OpenCurrentLineURL()<CR>")
 nnoremap("<leader>og", "<cmd>call OpenInGithubDesktop()<CR>")
 

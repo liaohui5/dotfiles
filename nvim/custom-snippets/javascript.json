@@ -41,8 +41,13 @@
   },
   "ES Export Default": {
     "prefix": "expd",
-    "body": ["export default ${0:member};"],
+    "body": ["export default ${0};"],
     "description": "ES Export Default"
+  },
+  "ES Export Const": {
+    "prefix": "expc",
+    "body": ["export const ${1} = ${0};"],
+    "description": "ES Export Const"
   },
   "ES Export Function": {
     "prefix": "expf",

@@ -8,10 +8,7 @@
 local dap = loadModule("dap", "dap");
 local dapui = loadModule("dapui", "dap");
 
--- 自动安装对应的dap-server, 需要Mason
-local function auto_install_dap_server()
-
-end
+-- TODO: 自动安装对应的dap-server, 需要Mason
 
 -- 配置断点图标
 local function set_breakpoint_icon()

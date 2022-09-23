@@ -16,13 +16,15 @@ local languages = {
   javascript = {
     prefer_single_line_comments = true,
   },
-  javascriptreact = {
-    prefer_multi_line_comments = true,
-  },
   typescript = {
     prefer_single_line_comments = true,
   },
-  typescriptreact = {
+  javascriptreact = { -- jsx
+    multi_line_comment_strings = { "{/*", "*/}" },
+    prefer_multi_line_comments = true,
+  },
+  typescriptreact = { -- tsx
+    multi_line_comment_strings = { "{/*", "*/}" },
     prefer_multi_line_comments = true,
   },
   css = {
@@ -38,8 +40,12 @@ local languages = {
 };
 
 for language, item in pairs(languages) do
-  item.single_line_comment_string = 'auto';
-  item.multi_line_comment_strings = 'auto';
+  if not item.single_line_comment_string then
+    item.single_line_comment_string = 'auto';
+  end
+  if not item.multi_line_comment_strings then
+    item.multi_line_comment_strings = 'auto';
+  end
   item.hook_function = function()
     tsCtxCommentStr.update_commentstring();
   end
