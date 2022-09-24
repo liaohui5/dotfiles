@@ -953,7 +953,7 @@
       "keys": "r",
       "name": "+Replace/Recent/Repeat",
       "icon": "clock",
-      "type": "replace-all",
+      "type": "commands",
       "bindings": [
         {
           "key": ".",
@@ -981,6 +981,31 @@
           "type": "command",
           "icon": "replace-all"
         }
+      ]
+    },
+    {
+      // markdown preview
+      "keys": "M",
+      "name": "+Markdown",
+      "icon": "markdown",
+      "type": "commands",
+      "bindings": [
+        {
+          // 预览当前文件
+          "command": "markdown.showPreviewToSide",
+          "key": "p",
+          "name": "preview markdown in side",
+          "type": "command",
+          "icon": "markdown"
+        },
+        {
+          // 刷新预览
+          "command": "markdown.preview.refresh",
+          "key": "r",
+          "name": "refresh preview markdown",
+          "type": "command",
+          "icon": "refresh"
+        },
       ]
     },
     {
