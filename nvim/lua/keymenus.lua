@@ -12,7 +12,7 @@
 local create_noremal_menus = function(wk)
   wk.register({
     ["<leader>"] = { nil, "show key menus" },
-    ["<C-x>"]    = { nil, "toggle terminal display" },
+    ["<C-t>"]    = { nil, "toggle terminal display" },
     ["x"]        = { nil, "delete" },
 
     -- comment

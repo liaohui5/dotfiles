@@ -143,3 +143,14 @@ nnoremap("<leader>yp", "<cmd>let @+ = expand('%')<CR>")
 
 -- refresh: auto read file changes
 nnoremap("<leader>Rf", "<cmd>checktime<CR>")
+
+-- ╭──────────────────────────────────────────────────────────────────────────────╮
+-- │                                     Ctrl                                     │
+-- ╰──────────────────────────────────────────────────────────────────────────────╯
+-- C-q   : quit neovim
+-- C-e   : toggle file explorer
+-- C-p   : telescope search
+-- C-t   : toggle terminal
+-- C-g   : toggle lazygit
+-- C-n   : toggle vifm(file manager like ranger)
+-- C-F12 : toggle zellij terminal
