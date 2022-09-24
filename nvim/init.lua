@@ -21,6 +21,8 @@ require("dap-configs")
 require("highlights")
 
 -- neovide
+vim.g.isNeovide = false;
 if vim.fn.exists("g:neovide") == 1 then
+  vim.g.isNeovide = true;
   require("neovide")
 end
