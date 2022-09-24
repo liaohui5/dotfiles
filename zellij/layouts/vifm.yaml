@@ -1,0 +1,38 @@
+---
+session:
+  name: "ws-vifm"
+  attach: true
+
+template:
+  direction: Horizontal
+  parts:
+    - direction: Vertical # tabs bar
+      borderless: true
+      split_size:
+        Fixed: 1
+      run:
+        plugin:
+          location: "zellij:tab-bar"
+    - direction: Vertical # command lines
+      body: true
+    - direction: Vertical # status bar
+      borderless: true
+      split_size:
+        Fixed: 2
+      run:
+        plugin:
+          location: "zellij:status-bar"
+
+tabs:
+  - name: "vifm"
+    direction: Horizontal
+    parts:
+      - direction: Vertical
+        body: true
+        run:
+          command: { cmd: zsh, args: ["-c", "cd ~/Desktop/codes && vifm . ."] }
+  - name: "cmds"
+    direction: Horizontal
+    parts:
+      - direction: Vertical
+        body: true
