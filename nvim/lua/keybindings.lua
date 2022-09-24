@@ -662,7 +662,7 @@ end
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 keybindings.vifmKeys = function()
   wk.register({
-    ["<C-n>"] = {
+    ["<leader>ov"] = {
       "<cmd>Vifm<CR>",
       "open vifm[vifm]"
     }
@@ -874,7 +874,7 @@ keybindings.toggletermKeys = function(getLazygit, getVifm)
       end,
       "toggle lazygit[toggleterm]"
     },
-    ["<leader>ov"] = {
+    ["<C-n>"] = {
       function()
         getVifm():toggle();
       end,
