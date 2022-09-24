@@ -8,35 +8,31 @@
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
 -- │ 加载vimscript 全局工具函数                                                   │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
-vim.cmd [[runtime ./scripts/functions.vim]]
+vim.cmd [[runtime ./scripts/functions.vim]];
 
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
 -- │ 快捷键映射                                                                   │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 local keymap = vim.api.nvim_set_keymap
-local option = { noremap = true, silent = true }
+local option = { noremap = true, silent = true };
 function nnoremap(keys, commands)
-  keymap("n", keys, commands, option)
+  keymap("n", keys, commands, option);
 end
 
 function vnoremap(keys, commands)
-  keymap("v", keys, commands, option)
+  keymap("v", keys, commands, option);
 end
 
 function inoremap(keys, commands)
-  keymap("i", keys, commands, option)
+  keymap("i", keys, commands, option);
 end
 
 function xnoremap(keys, commands)
-  keymap("x", keys, commands, option)
+  keymap("x", keys, commands, option);
 end
 
 function cmap(keys, commands)
-  keymap("c", keys, commands, { silent = true })
-end
-
-function tnoremap(keys, commands)
-  keymap("t", keys, commands, option)
+  keymap("c", keys, commands, { silent = true });
 end
 
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
@@ -48,7 +44,7 @@ function loadModule(require_path, scope)
     return module;
   else
     vim.notify(string.format("[%s]%s not found", scope, require_path));
-    return {}
+    return {};
   end
 end
 
@@ -58,15 +54,15 @@ end
 function getVisualSelection()
   vim.cmd('noautocmd normal! "vy"');
   ---@diagnostic disable-next-line: missing-parameter
-	local text = vim.fn.getreg('v');
-	vim.fn.setreg('v', {});
+  local text = vim.fn.getreg('v');
+  vim.fn.setreg('v', {});
 
-	text = string.gsub(text, "\n", "");
-	if #text > 0 then
-		return text;
-	else
-		return '';
-	end
+  text = string.gsub(text, "\n", "");
+  if #text > 0 then
+    return text;
+  else
+    return "";
+  end
 end
 
 -- 将table转换为字符串, 方便输出调试

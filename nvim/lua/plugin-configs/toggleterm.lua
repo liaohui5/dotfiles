@@ -1,37 +1,76 @@
--- ╭──────────────────────────────────────────────────────────────────────────────╮
--- │  切换命令行                                                                  │
--- │  docs: https://github.com/akinsho/toggleterm.nvim                            │
--- ╰──────────────────────────────────────────────────────────────────────────────╯
+-- ╭───────────────────────────────────────────────────────────────────────────────────╮
+-- │  切换命令行                                                                       │
+-- │  docs: https://github.com/akinsho/toggleterm.nvim                                 │
+-- ╰───────────────────────────────────────────────────────────────────────────────────╯
+-- ╭──────────────────────────────────────────────────────────────────────────────────╮
+-- │ Terminal API                                                                     │
+-- │ https://github.com/akinsho/toggleterm.nvim/blob/main/lua/toggleterm/terminal.lua │
+-- ╰──────────────────────────────────────────────────────────────────────────────────╯
+-- new      : 创建新的 terminal 实例
+-- toggle   : 切换 terminal 实例显示/隐藏
+-- is_open  : 获取 terminal 实例是否显示
+-- open     : 显示 terminal 实例
+-- close    : 隐藏 terminal 实例
+-- shutdown : 退出(Ctrl+d) terminal 实例进程
 local toggleterm = loadModule("toggleterm", "plugin-configs");
 local terminal   = loadModule("toggleterm.terminal", "plugin-configs");
 local Terminal   = terminal.Terminal;
+local plugins    = {};
+local float_opts = {
+  border   = "single", -- 浮动终端样式: single | double | shadow | curved
+  width    = 150,
+  height   = 38,
+  winblend = 1,
+};
 
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
--- │  集成 lazygit 需要安装命令                                                   │
+-- │  集成 lazygit                                                                │
 -- │  https://github.com/jesseduffield/lazygit                                    │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
-local getLazygit = function()
-  return Terminal:new({
-    cmd = 'lazygit',
-    hidden = true,
-  });
-end
+plugins.lazygit = Terminal:new({
+  cmd        = "lazygit",
+  hidden     = true,
+  direction  = "float",
+  float_opts = float_opts,
+});
 
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
--- │  集成 vifm 需要外部命令                                                      │
+-- │  集成 vifm                                                                   │
 -- │  https://github.com/vifm/vifm                                                │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
-local getVifm = function()
-  return Terminal:new({
-    cmd = 'vifm . .',
-    hidden = true,
-  });
-end
+plugins.vifm = Terminal:new({
+  cmd        = "vifm . .",
+  hidden     = true,
+  direction  = "float",
+  float_opts = float_opts,
+});
 
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
--- │  绑定集成软件的快捷键                                                        │
+-- │ 集成zellij                                                                   │
+-- │ https://github.com/zellij-org/zellij                                         │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
-local keys    = require("keybindings").toggletermKeys(getLazygit, getVifm);
+plugins.zellij = Terminal:new({
+  cmd        = "zellij",
+  hidden     = true,
+  direction  = "float",
+  float_opts = float_opts,
+});
+
+-- ╭──────────────────────────────────────────────────────────────────────────────╮
+-- │ 集成 tmux                                                                    │
+-- │ https://github.com/tmux/tmux                                                 │
+-- ╰──────────────────────────────────────────────────────────────────────────────╯
+plugins.tmux = Terminal:new({
+  cmd        = "tmux",
+  hidden     = true,
+  direction  = "float",
+  float_opts = float_opts,
+});
+
+-- ╭──────────────────────────────────────────────────────────────────────────────╮
+-- │ 快捷键                                                                       │
+-- ╰──────────────────────────────────────────────────────────────────────────────╯
+local keys = require("keybindings").toggletermKeys(plugins);
 
 toggleterm.setup({
   -- on_open           = function() end
@@ -41,7 +80,7 @@ toggleterm.setup({
   -- on_exit           = function() end
   open_mapping      = keys,
   shell             = vim.o.shell, -- 默认的 shell
-  hide_numbers      = false,
+  hide_numbers      = true, -- 打开的终端中是否要显示行号
   shade_terminals   = false,
   persist_size      = true,
   start_in_insert   = true,
@@ -49,18 +88,11 @@ toggleterm.setup({
   insert_mappings   = true, -- 插入模式是否应用快捷键
   terminal_mappings = true, -- 在终端中是否应用快捷键
   persist_mode      = true, -- 记住进入终端时vim的模式
-  direction         = 'float', -- 终端打开方式 'vertical' | 'horizontal' | 'tab' | 'float',
+  direction         = "horizontal", -- 终端打开方式 vertical | horizontal | tab | float
   close_on_exit     = true, -- close the terminal window when the process exits
   auto_scroll       = true, -- automatically scroll to the bottom on terminal output
   shade_filetypes   = {},
-  float_opts        = {
-    border   = 'single', -- 浮动终端样式: 'single' | 'double' | 'shadow' | 'curved'
-    width    = 150,
-    height   = 38,
-    winblend = 1,
-  },
-  -- 非浮动终端的大小
-  size              = function(term)
+  size              = function(term) -- 非浮动终端的大小
     if term.direction == "horizontal" then
       return 15
     elseif term.direction == "vertical" then

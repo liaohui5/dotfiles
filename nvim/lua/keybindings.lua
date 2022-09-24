@@ -673,12 +673,10 @@ end
 -- │                            nvimtree 侧边栏目录树                             │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 keybindings.nvimtreeKeys = function()
-  -- Ctrl + t: 切换显示/隐藏
-  -- nnoremap("<C-t>", "<cmd>NvimTreeToggle<CR>")
   wk.register({
-    ["<C-t>"] = {
+    ["<C-e>"] = {
       "<cmd>NvimTreeToggle<CR>",
-      "toggle NvimTree[nvim-tree]"
+      "toggle file explorer[nvim-tree]"
     },
     ["<leader>0"] = {
       "<cmd>NvimTreeFocus<CR>",
@@ -866,23 +864,38 @@ end
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
 -- │                          ctrl + x : 打开/关闭命令行                          │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
-keybindings.toggletermKeys = function(getLazygit, getVifm)
+keybindings.toggletermKeys = function(plugins)
   wk.register({
     ["<C-g>"] = {
       function()
-        getLazygit():toggle();
+        plugins.lazygit:toggle();
       end,
       "toggle lazygit[toggleterm]"
     },
     ["<C-n>"] = {
       function()
-        getVifm():toggle();
+        plugins.vifm:toggle();
       end,
       "toggle vifm[toggleterm]"
+    },
+    ["<C-F12>"] = {
+      function()
+        plugins.zellij:toggle();
+      end,
+      "toggle zellij[toggleterm]"
     }
-  })
+  });
 
-  return "<C-x>"; -- toggle terminal
+  wk.register({
+    ["<C-F12>"] = {
+      function ()
+        plugins.zellij:close();
+      end,
+      "hide zellij[floatrm]",
+    },
+  }, { mode = "t", silent = true, noremap = true })
+
+  return "<C-t>"; -- toggle terminal
 end
 
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
