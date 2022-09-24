@@ -966,6 +966,10 @@ keybindings.lspKeys = function(client, bufnr)
     --   "<cmd>lua vim.lsp.buf.rename()<CR>",
     --   "rename symbol[lsp]"
     -- },
+    ["gt"] = { -- 跳到函数定义位置
+      "<cmd>lua vim.lsp.buf.definition()<CR>",
+      "go to definition[lsp]"
+    },
     ["<leader>sJ"] = { -- 搜索symbol
       "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>",
       "jump to symbol in project[lsp]",
