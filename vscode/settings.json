@@ -917,7 +917,7 @@
       "command": "editor.action.marker.nextInFiles"
     },
     {
-      // bD: 上一个错误
+      // e.k: 上一个错误
       "keys": "e.k",
       "name": "Search keybindings",
       "icon": "close-all",

@@ -6,7 +6,7 @@
   },
   {
     // 切换 命令行
-    "key": "ctrl+x",
+    "key": "ctrl+t",
     "command": "workbench.action.terminal.toggleTerminal",
     "when": "terminal.active"
   },
@@ -17,7 +17,7 @@
   },
   {
     // 切换侧边栏显示
-    "key": "ctrl+t",
+    "key": "ctrl+e",
     "command": "workbench.action.toggleSidebarVisibility",
     "when": "editorTextFocus"
   },
