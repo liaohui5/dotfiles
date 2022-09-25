@@ -878,28 +878,9 @@ keybindings.toggletermKeys = function(plugins)
       end,
       "toggle vifm[toggleterm]"
     },
-    ["<C-t>"] = { -- tmux or zellij
-      function()
-        plugins.zellij:toggle();
-      end,
-      "toggle zellij[toggleterm]",
-      -- function()
-      --   plugins.tmux:toggle();
-      -- end,
-      -- "toggle tmux[toggleterm]"
-    }
   });
 
-  wk.register({
-    ["<C-t>"] = {
-      function ()
-        plugins.zellij:close();
-      end,
-      "hide zellij[floatrm]",
-    },
-  }, { mode = "t", silent = true, noremap = true })
-
-  return "<C-x>"; -- toggle terminal
+  return "<C-t>"; -- toggle terminal
 end
 
 -- ╭──────────────────────────────────────────────────────────────────────────────╮

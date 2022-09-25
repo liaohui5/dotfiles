@@ -18,14 +18,8 @@ local Terminal        = terminal.Terminal;
 local plugins         = {};
 local float_opts      = {
   border   = "single", -- 浮动终端样式: single | double | shadow | curved
-  width    = 150,
+  width    = 150, -- 全屏(width & height: 设置一个比较大的数字就会全屏显示)
   height   = 38,
-  winblend = 1,
-};
-local fullscreen_opts = { -- 全屏(设置一个比较大的数字就会全屏显示)
-  border   = "single",
-  width    = 300,
-  height   = 100,
   winblend = 1,
 };
 
@@ -52,26 +46,26 @@ plugins.vifm = Terminal:new({
 });
 
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
--- │ 集成zellij                                                                   │
+-- │ 集成zellij, 有bug, 终端嵌套太多层                                            │
 -- │ https://github.com/zellij-org/zellij                                         │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
-plugins.zellij = Terminal:new({
-  cmd        = "zellij",
-  hidden     = true,
-  direction  = "float",
-  float_opts = fullscreen_opts
-});
+-- plugins.zellij = Terminal:new({
+--   cmd        = "zellij",
+--   hidden     = true,
+--   direction  = "float",
+--   float_opts = fullscreen_opts
+-- });
 
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
--- │ 集成 tmux                                                                    │
+-- │ 集成tmux, 有bug, 终端嵌套太多层                                              │
 -- │ https://github.com/tmux/tmux                                                 │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
-plugins.tmux = Terminal:new({
-  cmd        = "tmux",
-  hidden     = true,
-  direction  = "float",
-  float_opts = fullscreen_opts
-});
+-- plugins.tmux = Terminal:new({
+--   cmd        = "tmux",
+--   hidden     = true,
+--   direction  = "float",
+--   float_opts = fullscreen_opts
+-- });
 
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
 -- │ 快捷键                                                                       │
