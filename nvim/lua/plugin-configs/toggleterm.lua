@@ -88,7 +88,8 @@ toggleterm.setup({
   insert_mappings   = true, -- 插入模式是否应用快捷键
   terminal_mappings = true, -- 在终端中是否应用快捷键
   persist_mode      = true, -- 记住进入终端时vim的模式
-  direction         = "horizontal", -- 终端打开方式 vertical | horizontal | tab | float
+  direction         = "float", -- 终端打开方式 vertical | horizontal | tab | float
+  float_opts        = float_opts,
   close_on_exit     = true, -- close the terminal window when the process exits
   auto_scroll       = true, -- automatically scroll to the bottom on terminal output
   shade_filetypes   = {},
