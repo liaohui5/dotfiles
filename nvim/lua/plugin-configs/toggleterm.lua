@@ -39,7 +39,7 @@ plugins.lazygit = Terminal:new({
 -- │  https://github.com/vifm/vifm                                                │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 plugins.vifm = Terminal:new({
-  cmd        = "vifm . .",
+  cmd        = "vifm . ~",
   hidden     = true,
   direction  = "float",
   float_opts = float_opts,
