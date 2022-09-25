@@ -878,7 +878,7 @@ keybindings.toggletermKeys = function(plugins)
       end,
       "toggle vifm[toggleterm]"
     },
-    ["<C-F12>"] = {
+    ["<F12>"] = {
       function()
         plugins.zellij:toggle();
       end,
@@ -887,7 +887,7 @@ keybindings.toggletermKeys = function(plugins)
   });
 
   wk.register({
-    ["<C-F12>"] = {
+    ["<F12>"] = {
       function ()
         plugins.zellij:close();
       end,

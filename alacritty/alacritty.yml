@@ -1,26 +1,26 @@
 #############################################################################
-# docs: https://github.com/alacritty/alacritty/blob/master/alacritty.yml
-# themes: https://www.npmjs.com/package/alacritty-themes
+# docs: https://github.com/alacritty/alacritty/blob/master/alacritty.yml    #
+# themes: https://www.npmjs.com/package/alacritty-themes                    #
 #############################################################################
 
 # 自动执行
 shell:
   program: /bin/zsh
   # run nvim on startup: /bin/zsh --login -c nvim
-  # args:
-  #   - --login
-  #   - -c 
-  #   - nvim
+  args:
+    - --login
+    - -c 
+    - nvim
   # run tmux on startup: /bin/zsh --login -c cd ~ && tmux
   # args:
   #   - --login
   #   - -c 
   #   - cd ~ && tmux
   # run zellij on startup: /bin/zsh --login -c cd ~ && zellij
-  args:
-    - --login
-    - -c 
-    - cd ~ && zellij --layout=/Users/liaohui5/.config/zellij/layouts/vifm.yaml
+  # args:
+  #   - --login
+  #   - -c 
+  #   - cd ~ && zellij --layout=/Users/liaohui5/.config/zellij/layouts/vifm.yaml
 
 
 # 设置窗口
