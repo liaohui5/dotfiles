@@ -12,14 +12,20 @@
 -- open     : 显示 terminal 实例
 -- close    : 隐藏 terminal 实例
 -- shutdown : 退出(Ctrl+d) terminal 实例进程
-local toggleterm = loadModule("toggleterm", "plugin-configs");
-local terminal   = loadModule("toggleterm.terminal", "plugin-configs");
-local Terminal   = terminal.Terminal;
-local plugins    = {};
-local float_opts = {
+local toggleterm      = loadModule("toggleterm", "plugin-configs");
+local terminal        = loadModule("toggleterm.terminal", "plugin-configs");
+local Terminal        = terminal.Terminal;
+local plugins         = {};
+local float_opts      = {
   border   = "single", -- 浮动终端样式: single | double | shadow | curved
   width    = 150,
   height   = 38,
+  winblend = 1,
+};
+local fullscreen_opts = { -- 全屏(设置一个比较大的数字就会全屏显示)
+  border   = "single",
+  width    = 300,
+  height   = 100,
   winblend = 1,
 };
 
@@ -53,7 +59,7 @@ plugins.zellij = Terminal:new({
   cmd        = "zellij",
   hidden     = true,
   direction  = "float",
-  float_opts = float_opts,
+  float_opts = fullscreen_opts
 });
 
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
@@ -64,14 +70,13 @@ plugins.tmux = Terminal:new({
   cmd        = "tmux",
   hidden     = true,
   direction  = "float",
-  float_opts = float_opts,
+  float_opts = fullscreen_opts
 });
 
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
 -- │ 快捷键                                                                       │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 local keys = require("keybindings").toggletermKeys(plugins);
-
 toggleterm.setup({
   -- on_open           = function() end
   -- on_close          = function() end

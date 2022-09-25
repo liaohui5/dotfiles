@@ -878,16 +878,20 @@ keybindings.toggletermKeys = function(plugins)
       end,
       "toggle vifm[toggleterm]"
     },
-    ["<F12>"] = {
+    ["<C-t>"] = { -- tmux or zellij
       function()
         plugins.zellij:toggle();
       end,
-      "toggle zellij[toggleterm]"
+      "toggle zellij[toggleterm]",
+      -- function()
+      --   plugins.tmux:toggle();
+      -- end,
+      -- "toggle tmux[toggleterm]"
     }
   });
 
   wk.register({
-    ["<F12>"] = {
+    ["<C-t>"] = {
       function ()
         plugins.zellij:close();
       end,
@@ -895,7 +899,7 @@ keybindings.toggletermKeys = function(plugins)
     },
   }, { mode = "t", silent = true, noremap = true })
 
-  return "<C-t>"; -- toggle terminal
+  return "<C-x>"; -- toggle terminal
 end
 
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
