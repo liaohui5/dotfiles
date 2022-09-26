@@ -21,12 +21,38 @@
 // │                 |_|  \__,_|_| |_|\___|\__|_|\___/|_| |_|___/                 │ //
 // ╰──────────────────────────────────────────────────────────────────────────────╯ //
 //////////////////////////////////////////////////////////////////////////////////////
+// 遍历数组, 并执行 callback
 function each(array, callback) {
   var item;
   for (var i = 0, l = array.length; i < l; i++) {
     item = array[i];
     typeof callback === "function" && callback(item, i);
   }
+}
+
+// 判断一个字符串是否是url
+function isURL(str) {
+  var pattern = new RegExp('^(https?:\\/\\/)?' +        // protocol
+  '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|' + // domain name
+  '((\\d{1,3}\\.){3}\\d{1,3}))' +                       // OR ip (v4) address
+  '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' +                   // port and path
+  '(\\?[;&a-z\\d%_.~+=-]*)?' +                          // query string
+  '(\\#[-a-z\\d_]*)?$','i');                            // fragment locator
+  return pattern.test(str);
+}
+
+// 打开prompt弹窗,输入url并打开
+function getPromptURL(url) {
+  var inputUrl = window.prompt("Please input url", url);
+  if (!inputUrl) {
+    return;
+  }
+  inputUrl = inputUrl.trim();
+  if (!isURL(inputUrl)) {
+    api.Front.showPopup("input string is not a url");
+    return;
+  }
+  return inputUrl;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -67,6 +93,34 @@ api.mapkey("p", "Open the clipboard's URL in the current tab", function () {
   });
 });
 
+// 打开输入框, 输入网址并打开(新标签页)
+api.mapkey("oo", "open prompt input url", function () {
+  var url = getPromptURL("");
+  url && window.open(url);
+});
+
+// 打开输入框, 输入网址并打开(当前页)
+api.mapkey("oO", "open prompt input url(current tab)", function () {
+  var url = getPromptURL("");
+  if (url) {
+    window.location.href = url;
+  }
+});
+
+// 编辑当前网址, 并且打开(新标签页)
+api.mapkey("oe", "edit current url", function () {
+  var url = getPromptURL(window.location.href);
+  url && window.open(url);
+});
+
+// 编辑当前网址, 并且打开(当前页)
+api.mapkey("oE", "edit current url(current tab)", function () {
+  var url = getPromptURL(window.location.href);
+  if (url) {
+    window.location.href = url;
+  }
+});
+
 // 自定义搜索
 var searchUrls = [
   {
@@ -80,7 +134,7 @@ var searchUrls = [
     engine: "npm",
     url: "https://www.npmjs.com/search?q=",
     favicon_url:
-      "https://static.npmjs.com/7a7ffabbd910fc60161bc04f2cee4160.png",
+      "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJAAAACQCAYAAADnRuK4AAAAAklEQVR4AewaftIAAAJMSURBVO3BMWocVhiF0e9dpkjh0gtI50UYLcYgrcqN9zK4ygoGFdEG0qmY7qUNGFTkMn788J2z/oKN9D8FqRCkQpAKQSoEqRCkQpAKQSoEqRCkQpAKQSoEqRCkQpAKQSoEqRCkQpAKQSoEqRCkQpAKFx7sjy9f+PT0hH6/9+uV++3GI114sE9PT/z5/Tv6/d5eXrjfbjxSkApBKgSpEKRCkApBKgSpEKRCkApBKgSpEKRCkApBKgSpEKRCkApBKgSpEKRCkApBKlzQh/7+9o3/WsDmYwvYfGwBn75+5fPzM5Nd0If++fGDR9nA5+dnJgs6ZjFf0DGb+YKOWcwXdMxmviAVgo5ZzBd0zGa+IBWCVAg6ZjFf0DGb+YKOWcwXdMxmviAVgo5ZzBd0zGa+IBWCVAg6ZjFf0DGb+YKOWcwXdMxmviAVgo5ZzBd0zGa+IBWCVAg6ZjFf0DGb+YKOWcwXdMxmviAVgo5ZzBd0zGa+IBWCVAg6ZjFf0DGb+YKOWcwXdMxmviAVgo5ZzBd0zGa+IBWCVAg6ZjFf0DGb+YKOWcwXdMxmviAVgo5ZzBd0zGa+IBWCVAg6ZjFf0DGb+YKOWcwXdMxmviAVgo5ZzBd0zGa+IBWCVAg6ZjFf0DGb+YKOWcwXdMxmviAVgo5ZzHfhwd6vV95eXtCv3n/+5O3lhUd5v155tAsPdr/duN9u6Ff311fur69MFqRCkApBKgSpEKRCkApBKgSpEKRCkApBKgSpEKRCkApBKgSpEKRCkApBKgSpEKRCkApBKvwLKw1EpVhhTq4AAAAASUVORK5CYII=",
   },
   {
     key: "M",
@@ -185,3 +239,4 @@ settings.theme = `
 #sk_status, #sk_find {
   font-size: 15pt;
 }`;
+
