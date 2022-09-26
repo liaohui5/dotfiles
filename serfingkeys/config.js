@@ -133,8 +133,7 @@ var searchUrls = [
     key: "N",
     engine: "npm",
     url: "https://www.npmjs.com/search?q=",
-    favicon_url:
-      "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJAAAACQCAYAAADnRuK4AAAAAklEQVR4AewaftIAAAJMSURBVO3BMWocVhiF0e9dpkjh0gtI50UYLcYgrcqN9zK4ygoGFdEG0qmY7qUNGFTkMn788J2z/oKN9D8FqRCkQpAKQSoEqRCkQpAKQSoEqRCkQpAKQSoEqRCkQpAKQSoEqRCkQpAKQSoEqRCkQpAKFx7sjy9f+PT0hH6/9+uV++3GI114sE9PT/z5/Tv6/d5eXrjfbjxSkApBKgSpEKRCkApBKgSpEKRCkApBKgSpEKRCkApBKgSpEKRCkApBKgSpEKRCkApBKlzQh/7+9o3/WsDmYwvYfGwBn75+5fPzM5Nd0If++fGDR9nA5+dnJgs6ZjFf0DGb+YKOWcwXdMxmviAVgo5ZzBd0zGa+IBWCVAg6ZjFf0DGb+YKOWcwXdMxmviAVgo5ZzBd0zGa+IBWCVAg6ZjFf0DGb+YKOWcwXdMxmviAVgo5ZzBd0zGa+IBWCVAg6ZjFf0DGb+YKOWcwXdMxmviAVgo5ZzBd0zGa+IBWCVAg6ZjFf0DGb+YKOWcwXdMxmviAVgo5ZzBd0zGa+IBWCVAg6ZjFf0DGb+YKOWcwXdMxmviAVgo5ZzBd0zGa+IBWCVAg6ZjFf0DGb+YKOWcwXdMxmviAVgo5ZzBd0zGa+IBWCVAg6ZjFf0DGb+YKOWcwXdMxmviAVgo5ZzHfhwd6vV95eXtCv3n/+5O3lhUd5v155tAsPdr/duN9u6Ff311fur69MFqRCkApBKgSpEKRCkApBKgSpEKRCkApBKgSpEKRCkApBKgSpEKRCkApBKgSpEKRCkApBKvwLKw1EpVhhTq4AAAAASUVORK5CYII=",
+    favicon_url: "https://static.npmjs.com/3dc95981de4241b35cd55fe126ab6b2c.png",
   },
   {
     key: "M",
