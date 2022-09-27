@@ -404,11 +404,11 @@ return require("packer").startup({
     -- ╭──────────────────────────────────────────────────────────────────────────────╮
     -- │                               dap 代码调试插件                               │
     -- ╰──────────────────────────────────────────────────────────────────────────────╯
-    use({ "mfussenegger/nvim-dap" })
-    use({ "theHamsta/nvim-dap-virtual-text" })
-    use({ "rcarriga/nvim-dap-ui", requires = "mfussenegger/nvim-dap" })
-    use({ "mxsdev/nvim-dap-vscode-js", requires = "mfussenegger/nvim-dap" });
-    use({ "microsoft/vscode-js-debug", opt = true, run = "npm install --legacy-peer-deps && npm run compile" })
+    -- use({ "mfussenegger/nvim-dap" })
+    -- use({ "theHamsta/nvim-dap-virtual-text" })
+    -- use({ "rcarriga/nvim-dap-ui", requires = "mfussenegger/nvim-dap" })
+    -- use({ "mxsdev/nvim-dap-vscode-js", requires = "mfussenegger/nvim-dap" });
+    -- use({ "microsoft/vscode-js-debug", opt = true, run = "npm install --legacy-peer-deps && npm run compile" })
 
     -- ╭──────────────────────────────────────────────────────────────────────────────╮
     -- │                                 安装插件插件                                 │

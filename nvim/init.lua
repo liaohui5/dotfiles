@@ -17,7 +17,7 @@ require("mappings")
 require("plugins")
 require("autocmd")
 require("lsp-configs")
-require("dap-configs")
+-- require("dap-configs")
 require("highlights")
 
 -- neovide
