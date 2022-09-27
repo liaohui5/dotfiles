@@ -42,20 +42,10 @@ draw_bold_text_with_bright_colors: false
 # https://github.com/40huo/Patched-Fonts
 font:
   normal:
-    family: "Maple Mono NF"
-    style: Regular
-  bold:
-    family: "Maple Mono NF"
-    style: Bold
-  italic:
-    family: "Maple Mono NF"
-    style: Italic
-  bold_italic:
-    family: "Maple Mono NF"
-    style: Bold Italic
+    family: "OperatorMono Nerd Font"
 
   # 字大小
-  size: 16.0
+  size: 16
 
   # y: 文字行高 x: 文字间距
   offset:
