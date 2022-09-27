@@ -5,7 +5,7 @@
   // 编辑器 & 终端字体设置
   "editor.fontSize": 15,
   "editor.fontLigatures": true,
-  "editor.fontFamily": "'Maple Mono NF', Menlo, Hack,'Hack Nerd Font Mono'",
+  "editor.fontFamily": "'OperatorMono Nerd Font','Maple Mono NF', Menlo, Hack,'Hack Nerd Font Mono'",
   "editor.fontWeight": 1,
   "terminal.integrated.fontFamily": "'Hack Nerd Font Mono'",
   "terminal.integrated.fontSize": 14,
