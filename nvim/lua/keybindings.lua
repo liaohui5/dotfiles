@@ -103,7 +103,7 @@ keybindings.formatterKeys = function(format)
 end
 
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
--- │                                 预览markdown                                 │
+-- │                                 特殊块级注释                                 │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 keybindings.commentBoxKeys = function()
   local mappings = {
@@ -136,13 +136,13 @@ end
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 keybindings.markdownPreviewKeys = function()
   wk.register({
-    ["<leader>Ms"] = {
+    ["<leader>Mp"] = {
       "<cmd>MarkdownPreview<CR>",
-      "start preview server[markdown-preview]",
+      "start preview markdown server[markdown-preview]",
     },
-    ["<leader>MS"] = {
+    ["<leader>MP"] = {
       "<cmd>MarkdownPreviewStop<CR>",
-      "stop preview server[markdown-preview]",
+      "stop preview markdown server[markdown-preview]",
     }
   })
 end
