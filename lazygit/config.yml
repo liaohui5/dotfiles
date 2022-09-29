@@ -3,10 +3,11 @@
 #  │ https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md          │
 #  ╰──────────────────────────────────────────────────────────────────────────────╯
 gui:
-  language: 'en'
+  language: "en"
   showIcons: true       # 显示图标需要 Nerd Font
   showListFooter: false # 不显示页脚
   showRandomTip: false  # 不随机显示提示
+  showFileTree: false   # 不显示文件目录结构树(平铺显示文件)
 
 git:
   autoFetch: true       # 自动拉取远程代码
@@ -15,17 +16,17 @@ git:
   parseEmoji: true      # 解析 gitmoji 表情
 
 os:
-  editCommand: 'nvim'   # 编辑文件命令
-  editCommandTemplate: 'nvim +{{line}} -- {{filename}}'
+  openCommand: "code {{filename}}" # 编辑文件命令(需要安装vscode)
+  editCommand: "nvim"              # 编辑文件命令
+  editCommandTemplate: "{{editor}} +{{line}} -- {{filename}}"
 
+reporting: "off" # 不提供日志报告
 update:
   method: prompt # 询问是否要更新
   days: 7        # 每7天检查一次是否有更新
 
-reporting: "off" # 不提供日志报告
-
-# 快捷键绑定
+# 快捷键绑定:
 keybinding:
   universal:
-    quit: '<c-q>' # 退出
-    edit: 'o'     # 编辑
+    quit: "<c-q>" # 退出
+    edit: "e"     # 编辑
