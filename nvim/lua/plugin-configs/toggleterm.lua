@@ -12,11 +12,11 @@
 -- open     : 显示 terminal 实例
 -- close    : 隐藏 terminal 实例
 -- shutdown : 退出(Ctrl+d) terminal 实例进程
-local toggleterm      = loadModule("toggleterm", "plugin-configs");
-local terminal        = loadModule("toggleterm.terminal", "plugin-configs");
-local Terminal        = terminal.Terminal;
-local plugins         = {};
-local float_opts      = {
+local toggleterm = loadModule("toggleterm", "plugin-configs");
+local terminal   = loadModule("toggleterm.terminal", "plugin-configs");
+local Terminal   = terminal.Terminal;
+local plugins    = {};
+local float_opts = {
   border   = "single", -- 浮动终端样式: single | double | shadow | curved
   width    = 150, -- 全屏(width & height: 设置一个比较大的数字就会全屏显示)
   height   = 38,
@@ -24,26 +24,40 @@ local float_opts      = {
 };
 
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
+-- │  集成插件注意:                                                               │
+-- │  如果需要缓存终端实例, 就直接 Terminal:new({}) 如果不需要缓存实例            │
+-- │  而是每次刷新, 就必须用方法, 每次执行都返回一个新的实例                      │
+-- │  有的插件需要缓存: 比如 zellij / tmux 这种(不依赖执行目录)                   │
+-- │  有的插件不能缓存: 比如 lazygit/ vifm 因为他是依赖执行目录的, 如果           │
+-- │  没有强制刷新的话, 那么切换 session 之后, vifm 还是在原来的目录,而           │
+-- │  不是当前 session 的目录                                                     │
+-- ╰──────────────────────────────────────────────────────────────────────────────╯
+
+-- ╭──────────────────────────────────────────────────────────────────────────────╮
 -- │  集成 lazygit                                                                │
 -- │  https://github.com/jesseduffield/lazygit                                    │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
-plugins.lazygit = Terminal:new({
-  cmd        = "lazygit",
-  hidden     = true,
-  direction  = "float",
-  float_opts = float_opts,
-});
+plugins.lazygit = function()
+  return Terminal:new({
+    cmd        = "lazygit",
+    hidden     = true,
+    direction  = "float",
+    float_opts = float_opts,
+  });
+end;
 
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
 -- │  集成 vifm                                                                   │
 -- │  https://github.com/vifm/vifm                                                │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
-plugins.vifm = Terminal:new({
-  cmd        = "vifm . ~",
-  hidden     = true,
-  direction  = "float",
-  float_opts = float_opts,
-});
+plugins.vifm = function ()
+  return Terminal:new({
+    cmd        = "vifm . ~",
+    hidden     = true,
+    direction  = "float",
+    float_opts = float_opts,
+  });
+end
 
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
 -- │ 集成zellij, 有bug, 终端嵌套太多层                                            │

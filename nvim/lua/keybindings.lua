@@ -871,13 +871,13 @@ keybindings.toggletermKeys = function(plugins)
   wk.register({
     ["<C-g>"] = {
       function()
-        plugins.lazygit:toggle();
+        plugins.lazygit():toggle();
       end,
       "toggle lazygit[toggleterm]"
     },
     ["<C-n>"] = {
       function()
-        plugins.vifm:toggle();
+        plugins.vifm():toggle();
       end,
       "toggle vifm[toggleterm]"
     },
