@@ -10,8 +10,7 @@ local M = {}
 
 M.onstart = function()
   -- 指定加载自定义 snippets 目录
-  -- WARN: 如果是 windows 系统, 这个路径是有问题的, 需要修改
-  vim.g.vsnip_snippet_dir = "~/.config/nvim/custom-snippets";
+  vim.g.vsnip_snippet_dir = vim.fn.stdpath("config") .. "/custom-snippets";
 
   -- 其他配置: 比如图标,补全引擎之类的
   local cmp_config = {
@@ -23,13 +22,12 @@ M.onstart = function()
           Method        = "",
           Function      = "",
           Constructor   = "",
-          Field         = "ﰠ",
+          Field         = "",
           Variable      = "",
-          Class         = "ﴯ",
+          Class         = "",
           Interface     = "",
           Module        = "",
-          Property      = "ﰠ",
-          Unit          = "ﭧ",
+          Property      = "",
           Value         = "",
           Enum          = "",
           Keyword       = "",
@@ -40,20 +38,20 @@ M.onstart = function()
           Folder        = "",
           EnumMember    = "",
           Constant      = "",
-          Struct        = "פּ",
+          Struct        = "",
           Event         = "",
           Operator      = "",
           TypeParameter = ''
         }
         local meta_type = vim_item.kind
-        vim_item.kind = lspkind_icons[vim_item.kind] .. ''
+        vim_item.kind = lspkind_icons[vim_item.kind] .. "";
         vim_item.menu = ({
-          nvim_lsp                = ' [' .. string.lower(meta_type) ..']',
-          path                    = ' [path]',
-          vsnip                   = ' [vsnip]',
-          nvim_lua                = ' [nvim_lua]',
-          buffer                  = ' [buffer]',
-          nvim_lsp_signature_help = ' [signature_help]',
+          nvim_lsp                = " [" .. string.lower(meta_type) .. "]",
+          path                    = " [path]",
+          vsnip                   = " [vsnip]",
+          nvim_lua                = " [nvim_lua]",
+          buffer                  = " [buffer]",
+          nvim_lsp_signature_help = " [signature_help]",
         })[entry.source.name]
 
         return vim_item
