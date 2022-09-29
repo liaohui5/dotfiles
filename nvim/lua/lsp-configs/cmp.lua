@@ -15,7 +15,7 @@ M.onstart = function()
   -- 其他配置: 比如图标,补全引擎之类的
   local cmp_config = {
     formatting = {
-      fields = { 'kind', 'abbr', 'menu' },
+      fields = { "kind", "abbr", "menu" },
       format = function(entry, vim_item)
         local lspkind_icons = {
           Text          = "",
@@ -41,7 +41,7 @@ M.onstart = function()
           Struct        = "",
           Event         = "",
           Operator      = "",
-          TypeParameter = ''
+          TypeParameter = ""
         }
         local meta_type = vim_item.kind
         vim_item.kind = lspkind_icons[vim_item.kind] .. "";

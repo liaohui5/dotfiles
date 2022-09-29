@@ -267,8 +267,11 @@ end
 -- │                                   书签管理                                   │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 keybindings.bookmarkKeys = function()
-  nnoremap("<F3>", "<Plug>BookmarkToggle<CR>");
   wk.register({
+    ["<F3>"] = {
+      "<Plug>BookmarkToggle<CR>",
+      "toggle bookmark[vim-bookmark]",
+    },
     ["<leader>Bm"] = {
       "<Plug>BookmarkToggle<CR>",
       "toggle bookmark[vim-bookmark]",
