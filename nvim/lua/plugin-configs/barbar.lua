@@ -4,27 +4,28 @@
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 
 local barbar = loadModule("bufferline", "plugins-config");
-local events = loadModule('nvim-tree.events', 'plugin-configs');
-local states = loadModule('bufferline.state', 'plugin-configs');
--- local nvimtree_view = loadModule('nvim-tree.view', 'plugin-configs');
+local barApi = loadModule('bufferline.api', 'plugin-configs');
 
--- 当侧边栏打设置 barbar 的左边边距
-events.on_tree_open(function ()
-  -- nvimtree_view.View.width not working
-  -- local offsetWidth   = nvimtree_view.View.width + 1;
-  local offsetWidth = 33;
-  states.set_offset(offsetWidth, string.rep(" ", 10) .. 'File Explorer')
-end);
+-- 当侧边栏打开时, 设置 barbar 的左边边距
+vim.api.nvim_create_autocmd('BufWinEnter', {
+  pattern = "*",
+  callback = function()
+    if vim.bo.filetype == "NvimTree" then
+      local offsetWidth = 33;
+      barApi.set_offset(offsetWidth, string.rep(" ", 10) .. "File Explorer");
+    end
+  end
+});
 
 -- 当侧边栏关闭时设置 barbar 的左边边距
-events.on_tree_close(function ()
-  states.set_offset(0)
-end)
-
--- 当侧边栏删除文件时,自动跳到下一个buffer,否则 nvim-tree 的大小会改变
-events.on_file_removed(function ()
-  vim.cmd(":BufferNext")
-end)
+vim.api.nvim_create_autocmd("BufWinLeave", {
+  pattern = "*",
+  callback = function()
+    if vim.fn.expand("<afile>"):match("NvimTree") then
+      barApi.set_offset(0);
+    end
+  end
+});
 
 -- fixed error: Error executing lua callback: barbar.nvim/lua/bufferline/state.lua:784: bad argument #1 to 'table_insert' (table expected, got nil)
 vim.g.session_save_commands = {};
