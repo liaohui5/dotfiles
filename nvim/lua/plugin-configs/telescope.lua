@@ -11,18 +11,18 @@ local mappings  = require("keybindings").telescopeKeys(buildin, actions);
 
 telescope.setup({
   defaults = {
-    mappings             = mappings,     -- 快捷键
-    selection_caret      = ' ',         -- 选择指示图标
-    sorting_strategy     = "ascending",  -- 布局方式
-    prompt_prefix        = '🔎 ',        -- 输入框前缀
-    prompt_title         = false,        -- 输入框标题
+    mappings             = mappings, -- 快捷键
+    selection_caret      = " ", -- 选择指示图标
+    sorting_strategy     = "ascending", -- 布局方式
+    prompt_prefix        = "🔎 ", -- 输入框前缀
+    prompt_title         = false, -- 输入框标题
     show_line            = false,
-    border               = true,         -- 边框
+    border               = true, -- 边框
     layout_strategy      = "horizontal", -- 布局
     layout_config        = {
-      prompt_position = "top",           -- 输入框位置
+      prompt_position = "top", -- 输入框位置
     },
-    file_ignore_patterns = {             -- 忽略目录
+    file_ignore_patterns = { -- 忽略目录
       "node_modules"
     }
   },
@@ -34,6 +34,10 @@ telescope.setup({
         "fd",
         "-H", -- -H: show hidden files
         "-I", -- -I: dont ignore `.gitignore` rules
+        "--type",
+        "file",   -- --type file & symlink 仅显示文件和软连接,不显示目录
+        "--type", -- 更多选项: https://github.com/chinanf-boy/fd-zh
+        "symlink"
       },
     },
     buffers    = {
