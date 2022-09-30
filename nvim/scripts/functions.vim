@@ -55,11 +55,18 @@ function! OpenInGithubDesktop()
   silent execute l:cmdstr
 endfunction
 
-
 " ╭──────────────────────────────────────────────────────────────────────────────╮
 " │ 将当前项目在vscode中打开                                                     │
 " ╰──────────────────────────────────────────────────────────────────────────────╯
 function! OpenInVisualStudioCode()
   let l:cmdstr = '!code ' . getcwd()
+  silent execute l:cmdstr
+endfunction
+
+" ╭──────────────────────────────────────────────────────────────────────────────╮
+" │ 静默打开App                                                                  │
+" ╰──────────────────────────────────────────────────────────────────────────────╯
+function! SilentOpenApp(app)
+  let l:cmdstr = '!open -a ' . a:app
   silent execute l:cmdstr
 endfunction

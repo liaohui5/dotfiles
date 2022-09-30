@@ -881,9 +881,13 @@ keybindings.toggletermKeys = function(plugins)
       end,
       "toggle vifm[toggleterm]"
     },
+    ["<C-t>"] = {
+      "<cmd>call SilentOpenApp('kitty')<CR>",
+      "open kitty"
+    },
   });
 
-  return "<C-t>"; -- toggle terminal
+  return "<C-x>"; -- toggle terminal
 end
 
 -- ╭──────────────────────────────────────────────────────────────────────────────╮

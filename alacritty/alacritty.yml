@@ -36,22 +36,22 @@ live_config_reload: true
 # 如果为true，则使用亮色变体绘制粗体文本
 draw_bold_text_with_bright_colors: false
 
-# 设置字体: 
+# 设置字体:
 # https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack
 # https://github.com/subframe7536/Maple-font
 # https://github.com/40huo/Patched-Fonts
 font:
   normal:
-    family: "SFMono Nerd Font"
+    family: "Maple Mono NF"
     style: Regular
   bold:
-    family: "SFMono Nerd Font"
+    family: "Maple Mono NF"
     style: Bold
   italic:
-    family: "SFMono Nerd Font"
+    family: "Maple Mono NF"
     style: Italic
   bold_italic:
-    family: "SFMono Nerd Font"
+    family: "Maple Mono NF"
     style: Bold Italic
 
   # 字大小
