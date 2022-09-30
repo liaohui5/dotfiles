@@ -39,6 +39,10 @@ vnoremap("p", '"_c<C-r><C-o>+<Esc>')
 nnoremap("$", "$h")
 vnoremap("$", "$h")
 
+-- 修改默认的 %
+nnoremap("%", "0%");
+nnoremap("<C-i>", "0%i");
+
 -- x 删除而不是剪切
 nnoremap("x", '"_x')
 xnoremap("x", '"_x')
