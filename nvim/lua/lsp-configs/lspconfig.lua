@@ -37,7 +37,7 @@ return {
 			bashls        = "bash",
 			cssls         = "css",
 			html          = "html",
-			jsonls        = "json",
+			-- jsonls        = "json", -- json 文件注释报错, 所以注释
 			volar         = "vue",
 			emmet_ls      = "emmet",
 			-- 使用默认配置
