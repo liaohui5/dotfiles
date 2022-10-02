@@ -27,8 +27,8 @@ return {
 			},
 			on_attach = function(client, bufnr)
 				-- 禁止使用默认的格式化工具
-				client.resolved_capabilities.document_formatting = false
-				client.resolved_capabilities.document_highlight  = false
+				client.server_capabilities.document_formatting = false
+				client.server_capabilities.document_highlight  = false
 				require("keybindings").lspKeys(client, bufnr)
 			end,
 		})

@@ -101,7 +101,7 @@
   "volar.codeLens.references": false,
 
   // Markdown Preview Github Styling 默认用 github 亮色主题
-  "markdown-preview-github-styles.colorTheme": "light",
+  "markdown-preview-github-styles.colorTheme": "system",
 
   // eslint 格式化
   "eslint.format.enable": true,

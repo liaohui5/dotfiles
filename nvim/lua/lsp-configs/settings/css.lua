@@ -22,7 +22,7 @@ return {
       },
       on_attach = function(client, bufnr)
         -- 禁用格式化
-				client.resolved_capabilities.document_formatting = false
+				client.server_capabilities.document_formatting = false
         require("keybindings").lspKeys(client, bufnr)
       end,
     })

@@ -7,7 +7,7 @@ return {
     -- 注: 不要使用 pattern="*"(代表所有buffer),
     -- 要使用 buffer="bufnr" 代表当前 buffer
     -- 因为使用 pattern="*" 可能导致报错,有的文件没有lsp支持
-    if client.resolved_capabilities.document_highlight then
+    if client.server_capabilities.document_highlight then
       -- vim.cmd([[
       --   augroup lsp_document_highlight
       --     autocmd! * <buffer>

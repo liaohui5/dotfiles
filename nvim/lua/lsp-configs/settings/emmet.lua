@@ -22,7 +22,7 @@ return {
       },
       on_attach = function(client, bufnr)
         -- 禁止使用默认的格式化工具
-        client.resolved_capabilities.document_formatting = false
+        client.server_capabilities.document_formatting = false
 
         -- 让 nvim-cmp 显示补全
         capabilities.textDocument.completion.completionItem.snippetSupport = true
