@@ -1,115 +1,86 @@
-" ------------------------------------------------------------------------------
-" docs: https://vifm.info/
-" vim: filetype=vifm :
-" My config file for the vifm terminal file manager.
-" ------------------------------------------------------------------------------
+" ╭──────────────────────────────────────────────────────────────────────────────╮
+" │                              https://vifm.info                               │
+" ╰──────────────────────────────────────────────────────────────────────────────╯
 
-" This is the actual command used to start vi.  The default is vim.
-" If you would like to use emacs or emacsclient, you can use them.
-" Since emacs is a GUI app and not a terminal app like vim, append the command
-" with an ampersand (&).
+" 编辑文件命令
 set vicmd=nvim
 
-" This makes vifm perform file operations on its own instead of relying on
-" standard utilities like `cp`.  While using `cp` and alike is a more universal
-" solution, it's also much slower when processing large amounts of files and
-" doesn't support progress measuring.
+" 处理文件时, 使用系统命令比如 cp/mv/rm 等
 set syscalls
 
-" Trash Directory
-" The default is to move files that are deleted with dd or :d to
-" the trash directory.  If you change this you will not be able to move
-" files by deleting them and then using p to put the file in the new location.
-" I recommend not changing this until you are familiar with vifm.
-" This probably shouldn't be an option.
+" 不直接删除, 而是放到一个垃圾篓目录
 set trash
 
-" This is how many directories to store in the directory history.
+" 最多保存多少个操作历史记录
 set history=100
 
-" Automatically resolve symbolic links on l or Enter.
+" 不要进入 link 指向的目录
 set nofollowlinks
 
-" With this option turned on you can run partially entered commands with
-" unambiguous beginning using :! (e.g. :!Te instead of :!Terminal or :!Te<tab>).
-
+" 打开这个选项, 可以输入部分命令
 " set fastrun
 
-" Natural sort of (version) numbers within text.
+" 不显示行号
 set sortnumbers
 
-" Maximum number of changes that can be undone.
+" 最大undo数
 set undolevels=100
 
-" If you installed the vim.txt help file set vimhelp.
-" If would rather use a plain text help file set novimhelp.
+" 显示neovim帮助文档
 set novimhelp
 
-" If you would like to run an executable file when you
-" press return on the file name set this.
+" 不能直接执行可执行文件比如 xxx.sh
 set norunexec
 
-" Selected color scheme
-" The following line will cause issues if using vifm.vim with regular vim.
-" Either use neovim or comment out the following line.
-" get more themes: https://github.com/vifm/vifm-colors
-" preview themes: https://vifm.info/colorschemes.shtml
+" 主题颜色
+" https://github.com/vifm/vifm-colors
+" https://vifm.info/colorschemes.shtml
 colorscheme monokai
 
-" Format for displaying time in file list. For example:
-" TIME_STAMP_FORMAT=%m/%d-%H:%M
-" See man date or man strftime for details.
+" 显示格式化时间,占位符参考 vimscript strftime 函数
 set timefmt=%m/%d\ %H:%M
 
-" Show list of matches on tab completion in command-line mode
+" 命令行模式下显示命令补全
 set wildmenu
-
-" Display completions in a form of popup with descriptions of the matches
 set wildstyle=popup
-
-" Display suggestions in normal, visual and view modes for keys, marks and
-" registers (at most 5 files).  In other view, when available.
 set suggestoptions=normal,visual,view,otherpane,keys,marks,registers
 
-" Ignore case in search patterns unless it contains at least one uppercase
-" letter
+" 搜索模式下:忽略大小写
 set ignorecase
 set smartcase
 
-" Don't highlight search results automatically
+" 不要高亮显示搜索内容
 set nohlsearch
 
-" Use increment searching (search while typing)
+" 输入直接搜索
 set incsearch
 
-" Try to leave some space from cursor to upper/lower border in lists
+" 列表行高空隙
 set scrolloff=4
 
-" Don't do too many requests to slow file systems
+" 不要执行太多请求, 否则速度回很慢
 if !has('win')
   set slowfs=curlftpfs
 endif
 
-" Set custom status line look
+" 设置自定义状态栏
 set statusline="  Hint: %z%= %A %10u:%-7g %15s %20d  "
 
-" Set line numbers to show
-
-" Confirmation is required only for permanent deletion
+" 删除之前需要确认
 set confirm="permdelete"
 
-" preview content wrap settings
+" 预览内容不要换行, wrap(换行)
 set nowrap
 
-" set border charater
-set fillchars='vborder:│'
+" 设置边框字符
+set fillchars="vborder:│"
 
-" hide the two sides of the borders
+" 隐藏两边的边框
 set tuioptions-=s
-" ------------------------------------------------------------------------------
-"                                   bookmarks
-" ------------------------------------------------------------------------------
 
+" ╭──────────────────────────────────────────────────────────────────────────────╮
+" │                                  bookmarks                                   │
+" ╰──────────────────────────────────────────────────────────────────────────────╯
 " :mark mark /full/directory/path [filename]
 mark h ~/
 mark c ~/Desktop/codes
@@ -117,8 +88,9 @@ mark d ~/Desktop/codes/dotfiles
 mark C ~/.config
 mark D ~/Downloads
 
-" ------------------------------------------------------------------------------
-
+" ╭──────────────────────────────────────────────────────────────────────────────╮
+" │                                   preview                                    │
+" ╰──────────────────────────────────────────────────────────────────────────────╯
 " :com[mand][!] command_name action
 " The following macros can be used in a command
 " %a is replaced with the user arguments.
@@ -358,10 +330,7 @@ set classify+=' ::*.doc,,*.docx::, ::*.xls,,*.xls[mx]::, ::*.pptx,,*.pp
 
 " ------------------------------------------------------------------------------
 
-" What should be saved automatically between vifm runs
-" Like in previous versions of vifm
-" set vifminfo=options,filetypes,commands,bookmarks,dhistory,state,cs
-" Like in vi
+" 当 :w 保存时, 保存哪些东西, 下次打开自动加载
 set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,phistory,fhistory,dirstack,registers,bookmarks,bmarks
 
 " ------------------------------------------------------------------------------
@@ -436,7 +405,6 @@ nnoremap <f5> :copy<cr>
 " 移动
 nnoremap <f6> :move<cr>
 
-" Midnight commander alike mappings
 " Open current directory in the other pane
 nnoremap <a-i> :sync<cr>
 
