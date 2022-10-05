@@ -7,6 +7,7 @@
 "   #    ####   ####  ######    #       ####  #    #  ####    #   #  ####  #    #  ####
 "#######################################################################################
 
+" TODO: 将 vimscript 发法, 全部是用lua实现一遍
 " ╭──────────────────────────────────────────────────────────────────────────────╮
 " │  打开当前行的url                                                             │
 " ╰──────────────────────────────────────────────────────────────────────────────╯
@@ -70,3 +71,14 @@ function! SilentOpenApp(app)
   let l:cmdstr = '!open -a ' . a:app
   silent execute l:cmdstr
 endfunction
+
+" ╭──────────────────────────────────────────────────────────────────────────────╮
+" │ 复制配置文件目录下的 editorconfig 文件                                       │
+" ╰──────────────────────────────────────────────────────────────────────────────╯
+function! EditorConfigGenerator()
+  " cp /Users/xxx/.nvim/config/.editorconfig /Users/xxx/to/path
+  let l:cmdstr = '!cp ' . stdpath('config') . '/.editorconfig ' . getcwd()
+  silent execute l:cmdstr
+endfunction
+
+
