@@ -16,10 +16,8 @@ return {
         "sumneko_lua",
         "tsserver",
         "yamlls",
-        "bashls",
         "cssls",
         "html",
-        "jsonls",
         "volar",
         "emmet_ls",
         "tailwindcss",
@@ -34,14 +32,11 @@ return {
 			sumneko_lua   = "lua",
 			tsserver      = "typescript",
 			yamlls        = "yaml",
-			bashls        = "bash",
 			cssls         = "css",
 			html          = "html",
-			-- jsonls        = "json", -- json 文件注释报错, 所以注释
 			volar         = "vue",
 			emmet_ls      = "emmet",
-			-- 使用默认配置
-			-- tailwindcss = "tailwindcss"
+			-- tailwindcss = "tailwindcss", -- 使用默认配置
 		}
 
 		for server_name, config in pairs(settings) do
