@@ -3,12 +3,7 @@
 -- docs: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#sumneko_lua
 -- lua-dev: https://github.com/folke/lua-dev.nvim
 ------------------------------------------------------------------------------------------------------
-local status, lua_dev = pcall(require, "lua-dev")
-if not status then
-  vim.notify("[lsp]: lua-dev not found");
-  return
-end
-
+local lua_dev = loadModule("lua-dev", "lsp-configs");
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")

@@ -6,10 +6,6 @@
   "contributes": {
     "snippets": [
       {
-        "language": "json",
-        "path": "./debug.json"
-      },
-      {
         "language": "vue",
         "path": "./vue.json"
       },
@@ -38,25 +34,9 @@
         "path": "./vue-script.json"
       },
       {
-        "language": "javascript",
-        "path": "./vue-script-vuex.json"
-      },
-      {
-        "language": "javascript",
-        "path": "./vue-script-router.json"
-      },
-      {
         "language": "typescript",
         "path": "./vue-script.json"
       },
-      {
-        "language": "typescript",
-        "path": "./vue-script-vuex.json"
-      },
-      {
-        "language": "typescript",
-        "path": "./vue-script-router.json"
-      }
     ]
   }
 }

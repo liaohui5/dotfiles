@@ -4,20 +4,11 @@
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#jsonls
 -- https://github.com/b0o/schemastore.nvim 
 ------------------------------------------------------------------------------------------------------
-local status, schemastore = pcall(require, "schemastore")
-if not status then
-	vim.notify("[lsp]: schemastore not found")
-	return
-end
-
 return {
 	onstart = function(server, capabilities)
 		server.setup({
 			capabilities = capabilities,
 			setttings = {
-				json = {
-					schemas = schemastore.json.schemas(),
-				},
         validate = {
           enable = false,
         },
