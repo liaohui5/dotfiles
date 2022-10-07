@@ -8,6 +8,9 @@ filetype.setup({
   overrides = {
     complex = {
       ["vifm/vifmrc"] = "vim", -- 文件路径包含 vifm/vifmrc 的文件, 设置为 vim 文件类型
+      ["yabai/yabairc"] = "sh",
+      ["skhd/skhdrc"] = "sh",
+      ["spacebar/spacebarrc"] = "sh",
     },
     literal = {
       [".env"] = "sh", -- 文件名是 .env 的文件, 设置为 sh 文件类型

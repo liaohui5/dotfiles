@@ -13,6 +13,9 @@
     ~/.config/vifm: vifm
     ~/.config/zellij: zellij
     ~/.gitconfig: .gitconfig
+    ~/.config/yabai: yabai_conf/yabai
+    ~/.config/spacebar: yabai_conf/spacebar
+    ~/.config/skhd: yabai_conf/skhd
     ~/.zprofile: .zprofile
     ~/.zshrc: .zshrc
     ~/.oh-my-zsh/custom/themes/gtarrow.zsh-theme: gtarrow.zsh-theme
