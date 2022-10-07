@@ -118,3 +118,8 @@ source $ZSH/oh-my-zsh.sh
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 
+
+# pnpm
+export PNPM_HOME="/Users/liaohui5/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end

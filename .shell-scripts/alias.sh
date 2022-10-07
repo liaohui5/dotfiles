@@ -59,3 +59,7 @@ alias figlet-cli='figlet'
 # lazygit: https://github.com/jesseduffield/lazygit
 alias lg='lazygit'
 alias gs='git status'
+
+# docker & dockerc-compose
+alias d='docker'
+alias dc='docker-compose'
