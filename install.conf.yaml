@@ -18,8 +18,8 @@
     ~/.oh-my-zsh/custom/themes/gtarrow.zsh-theme: gtarrow.zsh-theme
     ~/.bashrc: .bashrc
     ~/.shell-scripts: .shell-scripts
-    ~/.tmux.conf: .tmux/.tmux.conf
-    ~/.tmux.conf.local: .tmux/.tmux.conf.local
+    ~/.tmux.conf: oh-my-tmux/.tmux.conf
+    ~/.tmux.conf.local: oh-my-tmux/.tmux.conf.local
     ~/Library/Application Support/Code/User/settings.json: vscode/settings.json
     ~/Library/Application Support/Code/User/keybindings.json: vscode/keybindings.json
     ~/Library/Application Support/Code/User/snippets: nvim/custom-snippets
