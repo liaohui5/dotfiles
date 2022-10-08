@@ -70,7 +70,7 @@ shift + alt - return : yabai -m window --toggle native-fullscreen
 #  ╰──────────────────────────────────────────────────────────────────────────────╯
 # 创建/关闭桌面
 shift + alt - n : yabai -m space --create
-shift + alt - c : yabai -m space --destroy
+shift + alt - d : yabai -m space --destroy
 
 # 切换桌面
 cmd - 1 : yabai -m space --focus 1

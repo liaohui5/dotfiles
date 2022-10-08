@@ -6,13 +6,13 @@
 #  ╰──────────────────────────────────────────────────────────────────────────────╯ #
 #####################################################################################
 # 加载配置文件: https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#configure-scripting-addition
-yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 
 # 开启状态栏
 yabai -m config status_bar off
 
-# 使用平铺式的窗口
+# 使用平铺式的窗口(float | bsp | )
 yabai -m config layout bsp
 
 # 垂直分割新窗口在底下, 水平分割新窗口在右边
@@ -42,3 +42,26 @@ yabai -m config window_shadow off
 yabai -m config window_opacity on
 yabai -m config active_window_opacity 1.0
 yabai -m config normal_window_opacity 0.8
+
+#  ╭──────────────────────────────────────────────────────────────────────────────╮
+#  │ 忽略不需要平铺的软件                                                         │
+#  ╰──────────────────────────────────────────────────────────────────────────────╯
+# MacOS applications
+yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
+yabai -m rule --add label="Safari" app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off
+yabai -m rule --add label="macfeh" app="^macfeh$" manage=off
+yabai -m rule --add label="System Preferences" app="^System Preferences$" title=".*" manage=off
+yabai -m rule --add label="App Store" app="^App Store$" manage=off
+yabai -m rule --add label="Activity Monitor" app="^Activity Monitor$" manage=off
+yabai -m rule --add label="KeePassXC" app="^KeePassXC$" manage=off
+yabai -m rule --add label="Calculator" app="^Calculator$" manage=off
+yabai -m rule --add label="Dictionary" app="^Dictionary$" manage=off
+yabai -m rule --add label="mpv" app="^mpv$" manage=off
+yabai -m rule --add label="Software Update" title="Software Update" manage=off
+yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
+# apps
+yabai -m rule --add label="QQ" app="^QQ$" title=".*" manage=off
+yabai -m rule --add label="WeChat" app="^WeChat$" title=".*" manage=off
+yabai -m rule --add label="LetsVPN" app="^LetsVPN$" title=".*" manage=off
+yabai -m rule --add label="Raycast" app="^Raycast$" title=".*" manage=off
+
