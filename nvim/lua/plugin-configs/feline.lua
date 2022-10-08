@@ -152,7 +152,7 @@ table.insert(components.active[1], {
 -- -----------------------------------------------------------------------------
 table.insert(components.active[1], {
   provider = function()
-    local branch = vim.b.gitsigns_head or "";
+    local branch = vim.b.gitsigns_head or "not-git-repo";
     return branch .. " ";
   end,
   icon = '  ',
