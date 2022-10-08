@@ -40,39 +40,6 @@ local vi_mode_colors = {
   TERM = 'blue',
   NONE = 'yellow',
 }
-local mode_alias = {
-  ['n'] = 'NORMAL',
-  ['no'] = 'OP',
-  ['nov'] = 'OP',
-  ['noV'] = 'OP',
-  ['no'] = 'OP',
-  ['niI'] = 'NORMAL',
-  ['niR'] = 'NORMAL',
-  ['niV'] = 'NORMAL',
-  ['v'] = 'VISUAL',
-  ['V'] = 'V-LINE',
-  [''] = 'V-BLOCK',
-  ['s'] = 'SELECT',
-  ['S'] = 'SELECT',
-  [''] = 'V-BLOCK',
-  ['i'] = 'INSERT',
-  ['ic'] = 'INSERT',
-  ['ix'] = 'INSERT',
-  ['R'] = 'REPLACE',
-  ['Rc'] = 'REPLACE',
-  ['Rv'] = 'V-REPLACE',
-  ['Rx'] = 'REPLACE',
-  ['c'] = 'COMMAND',
-  ['cv'] = 'COMMAND',
-  ['ce'] = 'COMMAND',
-  ['r'] = 'ENTER',
-  ['rm'] = 'MORE',
-  ['r?'] = 'CONFIRM',
-  ['!'] = 'SHELL',
-  ['t'] = 'TERMINAL',
-  ['nt'] = 'NORMAL',
-  ['null'] = 'NONE',
-}
 
 -- -----------------------------------------------------------------------------
 -- 总体的 components & 工具函数
@@ -86,25 +53,58 @@ local components = {
 -- VIM 模式信息提示(左)
 -- -----------------------------------------------------------------------------
 local function mode()
+  local mode_alias = {
+    ['n'] = 'NORMAL',
+    ['no'] = 'OP',
+    ['nov'] = 'OP',
+    ['noV'] = 'OP',
+    ['no'] = 'OP',
+    ['niI'] = 'NORMAL',
+    ['niR'] = 'NORMAL',
+    ['niV'] = 'NORMAL',
+    ['v'] = 'VISUAL',
+    ['V'] = 'V-LINE',
+    [''] = 'V-BLOCK',
+    ['s'] = 'SELECT',
+    ['S'] = 'SELECT',
+    [''] = 'V-BLOCK',
+    ['i'] = 'INSERT',
+    ['ic'] = 'INSERT',
+    ['ix'] = 'INSERT',
+    ['R'] = 'REPLACE',
+    ['Rc'] = 'REPLACE',
+    ['Rv'] = 'V-REPLACE',
+    ['Rx'] = 'REPLACE',
+    ['c'] = 'COMMAND',
+    ['cv'] = 'COMMAND',
+    ['ce'] = 'COMMAND',
+    ['r'] = 'ENTER',
+    ['rm'] = 'MORE',
+    ['r?'] = 'CONFIRM',
+    ['!'] = 'SHELL',
+    ['t'] = 'TERMINAL',
+    ['nt'] = 'NORMAL',
+    ['null'] = 'NONE',
+  }
   return mode_alias[vim.api.nvim_get_mode().mode]
 end
 
 table.insert(components.active[1], {
   provider = function()
-    return string.format(' %s ', mode())
+    return string.format(" %s ", mode())
   end,
   short_provider = function()
-    return string.format(' %s ', mode():sub(1, 1))
+    return string.format(" %s ", mode():sub(1, 1))
   end,
   hl = function()
     return {
-      fg = 'bg',
+      fg = "bg",
       bg = vi_mode.get_mode_color(),
-      style = 'bold',
+      style = "bold",
     }
   end,
-  icon = ' ',
-  right_sep = 'slant_right',
+  icon = "  ",
+  -- right_sep = "slant_right_2",
 })
 
 -- -----------------------------------------------------------------------------
@@ -114,35 +114,35 @@ table.insert(components.active[1], {
   provider = function()
     local rootDir = table.remove(vim.fn.split(vim.fn.getcwd(), '/'));
     if rootDir ~= nil then
-      return rootDir;
+      return rootDir .. " ";
     end
     return "";
   end,
-  icon = " ",
+  icon = "  ",
   hl = {
-    fg = 'white',
-    bg = 'oceanblue'
+    fg = "white",
+    bg = "oceanblue"
   },
-  left_sep = {
-    'slant_left_2',
-    {
-      str = ' ',
-      hl = {
-        fg = 'NONE',
-        bg = 'oceanblue',
-      },
-    },
-  },
-  right_sep = {
-    {
-      str = ' ',
-      hl = {
-        fg = 'NONE',
-        bg = 'oceanblue',
-      },
-    },
-    'slant_right',
-  }
+  -- left_sep = {
+  --   "slant_left",
+  --   {
+  --     str = " ",
+  --     hl = {
+  --       fg = "NONE",
+  --       bg = "oceanblue",
+  --     },
+  --   },
+  -- },
+  -- right_sep = {
+  --   {
+  --     str = " ",
+  --     hl = {
+  --       fg = "NONE",
+  --       bg = "oceanblue",
+  --     },
+  --   },
+  --   "slant_right_2",
+  -- }
 });
 
 
@@ -151,59 +151,62 @@ table.insert(components.active[1], {
 -- git 信息提示(左)
 -- -----------------------------------------------------------------------------
 table.insert(components.active[1], {
-  provider = 'git_branch',
+  provider = function()
+    local branch = vim.b.gitsigns_head or "";
+    return branch .. " ";
+  end,
   icon = '  ',
   hl = {
     fg = 'fg',
     bg = 'gitred',
   },
-  left_sep = {
-    {
-      hl = {
-        fg = 'fg',
-        bg = 'gitred',
-      },
-    },
-    'slant_left_2',
-  },
-  right_sep = {
-    {
-      str = ' ',
-      hl = {
-        fg = 'fg',
-        bg = 'gitred',
-      },
-    },
-    'slant_right',
-  },
+  -- left_sep = {
+  --   {
+  --     hl = {
+  --       fg = 'fg',
+  --       bg = 'gitred',
+  --     },
+  --   },
+  --   'slant_left_2',
+  -- },
+  -- right_sep = {
+  --   {
+  --     str = ' ',
+  --     hl = {
+  --       fg = 'fg',
+  --       bg = 'gitred',
+  --     },
+  --   },
+  --   'slant_right',
+  -- },
 })
 
 table.insert(components.active[1], {
-  provider  = 'git_diff_added',
-  icon      = '+',
+  provider  = "git_diff_added",
+  icon      = "+",
   hl        = {
-    fg = 'green',
-    bg = 'bg',
+    fg = "green",
+    bg = "bg",
   },
-  left_sep  = ' ',
-  right_sep = ' ',
+  left_sep  = " ",
+  right_sep = " ",
 })
 table.insert(components.active[1], {
-  provider  = 'git_diff_changed',
-  icon      = '~',
+  provider  = "git_diff_changed",
+  icon      = "~",
   hl        = {
-    fg = 'orange',
-    bg = 'bg',
+    fg = "orange",
+    bg = "bg",
   },
-  left_sep  = ' ',
-  right_sep = ' ',
+  left_sep  = " ",
+  right_sep = " ",
 })
 table.insert(components.active[1], {
-  provider = 'git_diff_removed',
-  icon     = '-',
+  provider = "git_diff_removed",
+  icon     = "-",
   hl       = {
-    fg = 'red',
-    bg = 'bg',
+    fg = "red",
+    bg = "bg",
   },
 })
 
@@ -212,27 +215,27 @@ table.insert(components.active[1], {
 -- -----------------------------------------------------------------------------
 local function get_diagnostic_count(severity)
   local count = #vim.diagnostic.get(0, { severity = severity })
-  return count ~= 0 and count .. ' ' or ''
+  return count ~= 0 and count .. " " or ''
 end
 
 table.insert(components.active[1], {
   provider = function()
     return get_diagnostic_count(vim.diagnostic.severity.ERROR)
   end,
-  icon = '  ',
+  icon = "  ",
   hl = {
-    fg = 'red',
-    bg = 'bg',
+    fg = "red",
+    bg = "bg",
   },
 })
 table.insert(components.active[1], {
   provider = function()
     return get_diagnostic_count(vim.diagnostic.severity.WARN)
   end,
-  icon = '  ',
+  icon = "  ",
   hl = {
-    fg = 'orange',
-    bg = 'bg',
+    fg = "orange",
+    bg = "bg",
   },
 })
 
@@ -240,10 +243,10 @@ table.insert(components.active[1], {
   provider = function()
     return get_diagnostic_count(vim.diagnostic.severity.INFO)
   end,
-  icon = '  ',
+  icon = "  ",
   hl = {
-    fg = 'blue',
-    bg = 'bg',
+    fg = "blue",
+    bg = "bg",
   },
 })
 
@@ -255,10 +258,10 @@ table.insert(components.active[2], {
     return vim.fn.strftime("%F")
   end,
   right_sep = {
-    ' ',
+    " ",
     {
-      str = 'vertical_bar_thin',
-      hl = { fg = 'fg' },
+      str = "vertical_bar_thin",
+      hl = { fg = "fg" },
     },
   },
 });
@@ -267,13 +270,13 @@ table.insert(components.active[2], {
 -- 文件图标/文件名(右)
 -- -----------------------------------------------------------------------------
 table.insert(components.active[2], {
-  provider = 'file_info',
-  left_sep = ' ',
+  provider = "file_info",
+  left_sep = " ",
   right_sep = {
-    ' ',
+    " ",
     {
-      str = 'vertical_bar_thin',
-      hl = { fg = 'fg' },
+      str = "vertical_bar_thin",
+      hl = { fg = "fg" },
     },
   },
 });
@@ -283,17 +286,17 @@ table.insert(components.active[2], {
 -- 光标在当前文件的位置&百分比(右)
 -- -----------------------------------------------------------------------------
 table.insert(components.active[2], {
-  provider = 'position',
-  right_sep = ' ',
-  left_sep = ' ',
+  provider = "position",
+  right_sep = " ",
+  left_sep = " ",
 });
 table.insert(components.active[2], {
-  provider = 'line_percentage',
+  provider = "line_percentage",
   right_sep = {
-    ' ',
+    " ",
     {
-      str = 'vertical_bar_thin',
-      hl = { fg = 'fg' },
+      str = "vertical_bar_thin",
+      hl = { fg = "fg" },
     },
   },
 });
@@ -302,9 +305,9 @@ table.insert(components.active[2], {
 -- 文件大小(右)
 -- -----------------------------------------------------------------------------
 table.insert(components.active[2], {
-  provider = 'file_size',
-  right_sep = ' ',
-  left_sep = ' '
+  provider = "file_size",
+  right_sep = " ",
+  left_sep = " "
 });
 
 feline.setup({
@@ -313,14 +316,14 @@ feline.setup({
   components = components,
   force_inactive = {
     filetypes = {
-      '^packer$',
-      'NvimTree',
-      '^qf$',
-      '^help$',
-      'Outline',
-      'Trouble',
-      'dap-repl',
-      '^dapui',
+      "^packer$",
+      "NvimTree",
+      "^qf$",
+      "^help$",
+      "Outline",
+      "Trouble",
+      "dap-repl",
+      "^dapui",
     },
     buftypes = {},
     bufnames = {},

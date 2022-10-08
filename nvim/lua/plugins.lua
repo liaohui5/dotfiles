@@ -20,11 +20,11 @@ local compile_path = install_path .. "/plugin/packer_compiled.lua";
 local packer_bootstrap = nil;
 if fn.empty(fn.glob(install_path)) > 0 then
   local args = {
-    'git',
-    'clone',
-    '--depth',
-    '1',
-    'https://github.com/wbthomason/packer.nvim',
+    "git",
+    "clone",
+    "--depth",
+    "1",
+    "https://github.com/wbthomason/packer.nvim",
     install_path,
   }
   packer_bootstrap = fn.system(args);
@@ -95,7 +95,7 @@ return require("packer").startup({
     -- })
 
     -- ╭──────────────────────────────────────────────────────────────────────────────╮
-    -- │                                  文件图标插                                  │
+    -- │                                  文件图标                                    │
     -- ╰──────────────────────────────────────────────────────────────────────────────╯
     use({
       "kyazdani42/nvim-web-devicons",
@@ -302,7 +302,7 @@ return require("packer").startup({
     -- │                                  底部状态栏                                  │
     -- ╰──────────────────────────────────────────────────────────────────────────────╯
     use({
-      'feline-nvim/feline.nvim',
+      "feline-nvim/feline.nvim",
       config = [[require("plugin-configs.feline")]],
     })
 

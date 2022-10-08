@@ -4,6 +4,7 @@
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 local todoComments = loadModule("todo-comments", "plugin-configs");
 
+-- TODO: 修改颜色
 todoComments.setup({
   signs          = true,
   sign_priority  = 8,
@@ -24,7 +25,7 @@ todoComments.setup({
     WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
     PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
     NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
-    TEST = { icon = "⏲ ", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
+    TEST = { icon = "ﭧ ", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
   },
   gui_style      = { fg = "NONE", bg = "BOLD" },
   highlight      = {
@@ -56,6 +57,6 @@ todoComments.setup({
     },
   },
 
-})
+});
 
 require("keybindings").todoCommentKeys(todoComments);

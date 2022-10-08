@@ -36,26 +36,23 @@ live_config_reload: true
 # 如果为true，则使用亮色变体绘制粗体文本
 draw_bold_text_with_bright_colors: false
 
-# 设置字体:
-# https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack
-# https://github.com/subframe7536/Maple-font
-# https://github.com/40huo/Patched-Fonts
+# 设置字体: https://liaohui5.github.io/study-notes/#/vscode/install
 font:
   normal:
-    family: "Maple Mono NF"
-    style: Regular
+    family: "OperatorMono Nerd Font"
+    style: Light
   bold:
-    family: "Maple Mono NF"
-    style: Bold
+    family: "OperatorMono Nerd Font"
+    style: Book
   italic:
-    family: "Maple Mono NF"
-    style: Italic
+    family: "OperatorMono Nerd Font"
+    style: Book Italic
   bold_italic:
-    family: "Maple Mono NF"
-    style: Bold Italic
+    family: "OperatorMono Nerd Font"
+    style: Book Italic
 
   # 字大小
-  size: 16
+  size: 15
 
   # y: 文字行高 x: 文字间距
   offset:

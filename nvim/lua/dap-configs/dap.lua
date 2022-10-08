@@ -8,7 +8,8 @@
 local dap = loadModule("dap", "dap");
 local dapui = loadModule("dapui", "dap");
 
--- TODO: 自动安装对应的dap-server, 需要Mason
+-- TODO: 自动安装对应的dap-server, 需要mason-installer-tools
+-- https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim
 
 -- 配置断点图标
 local function set_breakpoint_icon()
