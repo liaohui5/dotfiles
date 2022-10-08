@@ -206,7 +206,7 @@ api.mapkey("oo", "open prompt input url", function () {
   api.Front.showEditor("", function (input) {
     const url = getFilterURL(input);
     url && window.open(url);
-  });
+  }, "url");
 });
 
 // 打开输入框, 输入网址并打开(当前页)
@@ -214,7 +214,7 @@ api.mapkey("oO", "open prompt input url(current tab)", function () {
   api.Front.showEditor("", function (input) {
     const url = getFilterURL(input);
     if (url) window.location.href = url;
-  });
+  }, "url");
 });
 
 // 编辑当前网址, 并且打开(新标签页)
@@ -222,7 +222,7 @@ api.mapkey("oe", "edit current url", function () {
   api.Front.showEditor(window.location.href, function (input) {
     const url = getFilterURL(input);
     url && window.open(url);
-  });
+  }, "url");
 });
 
 // 编辑当前网址, 并且打开(当前页)
@@ -231,7 +231,7 @@ api.mapkey("oE", "edit current url(current tab)", function () {
     const url = getFilterURL(input);
     url && window.open(url);
     if (url) window.location.href = url;
-  });
+  }, "url");
 });
 
 // 自定义搜索
