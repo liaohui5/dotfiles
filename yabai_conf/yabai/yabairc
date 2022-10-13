@@ -5,9 +5,10 @@
 #  │ https://github.com/koekeishiya/yabai/wiki/Configuration#configuration-file   │ #
 #  ╰──────────────────────────────────────────────────────────────────────────────╯ #
 #####################################################################################
+
 # 加载配置文件: https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#configure-scripting-addition
-sudo yabai --load-sa
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
 
 # 开启状态栏
 yabai -m config status_bar off
