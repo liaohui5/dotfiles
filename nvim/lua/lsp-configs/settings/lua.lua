@@ -1,9 +1,9 @@
 ------------------------------------------------------------------------------------------------------
 -- LSP lua 配置
 -- docs: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#sumneko_lua
--- lua-dev: https://github.com/folke/lua-dev.nvim
+-- neodev: https://github.com/folke/lua-dev.nvim
 ------------------------------------------------------------------------------------------------------
-local lua_dev = loadModule("lua-dev", "lsp-configs");
+local lua_dev = loadModule("neodev", "lsp-configs");
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")

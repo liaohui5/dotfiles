@@ -120,5 +120,6 @@ alt - 4: open -a "Visual Studio Code"
 alt - 5: open -a "Typora"
 alt - 6: open -a "QQ"
 alt - 7: open -a "WeChat"
+alt - 9: open -a "Launchpad"
 alt - 0: open -a "Google Chrome"
 

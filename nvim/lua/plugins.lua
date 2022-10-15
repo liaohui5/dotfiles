@@ -385,7 +385,7 @@ return require("packer").startup({
     use({ "williamboman/mason.nvim" })               -- LSP/DAP 服务器安装管理工具
     use({ "williamboman/mason-lspconfig.nvim" })     -- LSP/DAP 服务器安装管理工具
     use({ "neovim/nvim-lspconfig" })                 -- lspconfig 配置 server 插件
-    use({ "folke/lua-dev.nvim" })                    -- Lua 增强
+    use({ "folke/neodev.nvim" })                     -- Lua 增强
     -- use({ "b0o/schemastore.nvim" })                  -- json 增强
     use({ "hrsh7th/nvim-cmp" })                      -- 补全引擎
     use({ "rafamadriz/friendly-snippets" })          -- 常见编程语言 snippets
