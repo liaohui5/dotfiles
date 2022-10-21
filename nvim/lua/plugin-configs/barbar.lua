@@ -2,12 +2,11 @@
 -- │ 注释快捷键插件                                                               │
 -- │ docs: https://github.com/romgrk/barbar.nvim                                  │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
-
 local barbar = loadModule("bufferline", "plugins-config");
-local barApi = loadModule('bufferline.api', 'plugin-configs');
+local barApi = loadModule("bufferline.api", "plugin-configs");
 
 -- 当侧边栏打开时, 设置 barbar 的左边边距
-vim.api.nvim_create_autocmd('BufWinEnter', {
+vim.api.nvim_create_autocmd("BufWinEnter", {
   pattern = "*",
   callback = function()
     if vim.bo.filetype == "NvimTree" then
@@ -27,8 +26,6 @@ vim.api.nvim_create_autocmd("BufWinLeave", {
   end
 });
 
--- fixed error: Error executing lua callback: barbar.nvim/lua/bufferline/state.lua:784: bad argument #1 to 'table_insert' (table expected, got nil)
-vim.g.session_save_commands = {};
 barbar.setup({
   exclude_ft              = {},
   exclude_name            = {},

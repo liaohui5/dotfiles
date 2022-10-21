@@ -838,7 +838,7 @@ keybindings.telescopeKeys = function(builtin, actions)
         builtin.current_buffer_fuzzy_find({
           default_text  = getVisualSelection(),
           prompt_prefix = "[fuzzy]"
-        })
+        });
       end,
       "search string in buffer with seclection[telescope]",
     },
@@ -847,7 +847,7 @@ keybindings.telescopeKeys = function(builtin, actions)
         builtin.live_grep({
           default_text  = getVisualSelection(),
           prompt_prefix = "[string]"
-        })
+        });
       end,
       "search string in workspace with seclection[telescope]",
     },
@@ -858,8 +858,8 @@ keybindings.telescopeKeys = function(builtin, actions)
       -- 在显示 telescope 输入框时, insert 模式的时候
       ["<C-j>"] = actions.move_selection_next,
       ["<C-k>"] = actions.move_selection_previous,
-      ["<M-j>"] = actions.cycle_history_next,
-      ["<M-k>"] = actions.cycle_history_prev,
+      ["<C-n>"] = actions.cycle_history_next,
+      ["<C-p>"] = actions.cycle_history_prev,
     },
   }
 end

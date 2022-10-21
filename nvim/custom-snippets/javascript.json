@@ -31,12 +31,12 @@
   },
   "ES Export": {
     "prefix": "exp",
-    "body": ["export ${0:member};"],
+    "body": ["export ${0:module};"],
     "description": "ES Export"
   },
   "ES Export All": {
     "prefix": "expa",
-    "body": ["export * from ${0:member};"],
+    "body": ["export * from ${0:module};"],
     "description": "ES Export All"
   },
   "ES Export Default As": {

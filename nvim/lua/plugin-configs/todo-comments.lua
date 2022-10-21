@@ -4,7 +4,6 @@
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 local todoComments = loadModule("todo-comments", "plugin-configs");
 
--- TODO: 修改颜色
 todoComments.setup({
   signs          = true,
   sign_priority  = 8,

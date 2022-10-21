@@ -59,10 +59,21 @@ highlights.NvimTreeVertSplit = {
 highlights.TelescopePromptTitle = {
   bg = "#414037",
   fg = "#f92672"
-}
+};
 highlights.TelescopePreviewTitle = {
   fg = "#a6e22e"
-}
+};
+
+--  ╭──────────────────────────────────────────────────────────────────────────────╮
+--  │ todoComments                                                                 │
+--  ╰──────────────────────────────────────────────────────────────────────────────╯
+highlights.TodoBgTODO = {
+  fg = "#f8f8f8",
+  bg = "#10b981"
+};
+highlights.TodoSignTODO = {
+  fg = "#10b981"
+};
 
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
 -- │ treesitter                                                                   │
@@ -80,8 +91,9 @@ local clearItalic = function()
 end
 
 -- 必须要延迟执行, 不能立即执行, 立即执行有些高亮组不生效
+local hlGroup = vim.api.nvim_create_augroup("override_highlights", { clear = true });
 vim.api.nvim_create_autocmd("BufEnter", {
-  group    = vim.api.nvim_create_augroup("override_highlights", { clear = true }),
+  group    = hlGroup,
   pattern  = "*",
   callback = function()
     clearItalic();

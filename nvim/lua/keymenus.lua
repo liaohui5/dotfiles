@@ -146,7 +146,6 @@ local create_noremal_menus = function(wk)
       i = { nil, "report neovim issue" },
     },
 
-    -- TODO: insert image
     ["<leader>i"] = {
       name = "+Insert",
       i = { nil, "Insert Image URL" },

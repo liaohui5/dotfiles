@@ -38,10 +38,11 @@ return {
       volar       = "vue",
       emmet_ls    = "emmet",
       -- tailwindcss = "tailwindcss", -- 使用默认配置
+      -- tailwindcss 配置参考: https://github.com/ecosse3/nvim/blob/master/lua/lsp/servers/tailwindcss.lua
     }
 
     for server_name, config in pairs(settings) do
-      local server = lspconfig[server_name]
+      local server = lspconfig[server_name];
       if config ~= nil then
         -- 使用自定义配置启动LSP server, 必须实现 onstart 方法
         local capabilities = vim.lsp.protocol.make_client_capabilities();

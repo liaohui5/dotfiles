@@ -6,7 +6,7 @@
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 local cmp = loadModule("cmp", "lsp");
 
-local M = {}
+local M = {};
 
 M.onstart = function()
   -- 指定加载自定义 snippets 目录
@@ -22,12 +22,12 @@ M.onstart = function()
           Method        = "",
           Function      = "",
           Constructor   = "",
-          Field         = "",
+          Field         = "ﰠ",
           Variable      = "",
-          Class         = "",
+          Class         = "ﴯ",
           Interface     = "",
           Module        = "",
-          Property      = "",
+          Property      = "ﰠ",
           Value         = "",
           Enum          = "",
           Keyword       = "",
@@ -38,13 +38,13 @@ M.onstart = function()
           Folder        = "",
           EnumMember    = "",
           Constant      = "",
-          Struct        = "",
+          Struct        = "פּ",
           Event         = "",
           Operator      = "",
           TypeParameter = ""
         }
         local meta_type = vim_item.kind
-        vim_item.kind = lspkind_icons[vim_item.kind] .. "";
+        vim_item.kind = lspkind_icons[vim_item.kind] or "";
         vim_item.menu = ({
           nvim_lsp                = " [" .. string.lower(meta_type) .. "]",
           path                    = " [path]",
@@ -85,7 +85,7 @@ M.onstart = function()
       { name = "buffer" },
       { name = "nvim_lsp_signature_help" },
     }),
-  }
+  };
 
   -- 命令行搜搜补全
   cmp.setup.cmdline("/", {
@@ -93,25 +93,25 @@ M.onstart = function()
     sources = {
       { name = "buffer" },
     },
-  })
+  });
   cmp.setup.cmdline("?", {
     mapping = cmp.mapping.preset.cmdline(),
     sources = {
       { name = "buffer" },
     },
-  })
+  });
 
   -- 命令行命令补全
   cmp.setup.cmdline(":", {
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({ { name = "cmdline" } }, { { name = "path" } }),
-  })
+  });
 
   -- 快捷键绑定
-  cmp_config.mapping = cmp.mapping.preset.insert(require("keybindings").cmpKeys(cmp))
+  cmp_config.mapping = cmp.mapping.preset.insert(require("keybindings").cmpKeys(cmp));
 
   -- 启动
-  cmp.setup(cmp_config)
+  cmp.setup(cmp_config);
 end
 
 return M

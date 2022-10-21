@@ -48,6 +48,6 @@ return {
 				client.server_capabilities.document_formatting = false
 				require("keybindings").lspKeys(client, bufnr)
 			end,
-		})
+		});
 	end,
 }

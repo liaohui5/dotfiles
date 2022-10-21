@@ -60,6 +60,7 @@ yabai -m rule --add label="Dictionary"         app="^Dictionary$"         manage
 yabai -m rule --add label="mpv"                app="^mpv$"                manage=off
 yabai -m rule --add label="Software Update"                               manage=off
 yabai -m rule --add label="About This Mac"     app="System Information"   manage=off
+yabai -m rule --add label="Preview"            app="^Preview$"            manage=off
 # Users applications
 yabai -m rule --add label="QQ"                 app="^QQ$"                 manage=off
 yabai -m rule --add label="WeChat"             app="^WeChat$"             manage=off
@@ -67,4 +68,5 @@ yabai -m rule --add label="LetsVPN"            app="^LetsVPN$"            manage
 yabai -m rule --add label="Raycast"            app="^Raycast$"            manage=off
 yabai -m rule --add label="Lemon"              app="^Tencent Lemon$"      manage=off
 yabai -m rule --add label="Parsec"             app="^Parsec$"             manage=off
+yabai -m rule --add label="Docker"             app="^Docker Desktop$"     manage=off
 
