@@ -251,6 +251,11 @@
       "after": ["$", "h"]
     },
     {
+      // $ 移动到本行结尾(不包括换行符)
+      "before": ["%"],
+      "after": ["0", "%"]
+    },
+    {
       // s 删除而不是剪切
       "before": ["s"],
       "after": ["\"", "_", "s"]
@@ -294,6 +299,11 @@
       // Ctrl + \: 切换注释状态
       "before": ["ctrl", "\\"],
       "commands": ["editor.action.commentLine"]
+    },
+    {
+      // Ctrl + i: 当前行的括号位置进入插入模式
+      "before": ["<C-i>"],
+      "after": ["%", "i"]
     },
     {
       // 将选中的内容 console.log 输出(需要插件: javascript console utils)
