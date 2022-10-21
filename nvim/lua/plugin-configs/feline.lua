@@ -10,35 +10,35 @@ local lazy_require = felineUtils.lazy_require;
 local vi_mode      = lazy_require('feline.providers.vi_mode')
 
 local colors = {
-  bg = '#080808',
-  fg = '#e5e5e5',
-  section_bg = '#38393f',
-  blue = '#61afef',
-  green = '#98c379',
-  purple = '#c678dd',
-  orange = '#e5c07b',
-  red = '#e06c75',
-  yellow = '#e5c07b',
-  darkgrey = '#2c323d',
-  middlegrey = '#8791A5',
-  gitred = '#d44e32',
+  bg         = "#080808",
+  fg         = "#e5e5e5",
+  section_bg = "#38393f",
+  blue       = "#61afef",
+  green      = "#98c379",
+  purple     = "#c678dd",
+  orange     = "#e5c07b",
+  red        = "#e06c75",
+  yellow     = "#e5c07b",
+  darkgrey   = "#2c323d",
+  middlegrey = "#8791A5",
+  gitred     = "#d44e32",
 }
 local vi_mode_colors = {
-  NORMAL = 'green',
-  OP = 'red',
-  INSERT = 'blue',
-  VISUAL = 'purple',
-  LINES = 'purple',
-  BLOCK = 'purple',
-  REPLACE = 'red',
-  ['V-REPLACE'] = 'purple',
-  ENTER = 'blue',
-  MORE = 'blue',
-  SELECT = 'orange',
-  COMMAND = 'green',
-  SHELL = 'green',
-  TERM = 'blue',
-  NONE = 'yellow',
+  NORMAL        = "green",
+  OP            = "red",
+  INSERT        = "blue",
+  VISUAL        = "purple",
+  LINES         = "purple",
+  BLOCK         = "purple",
+  REPLACE       = "red",
+  ["V-REPLACE"] = "purple",
+  ENTER         = "blue",
+  MORE          = "blue",
+  SELECT        = "orange",
+  COMMAND       = "green",
+  SHELL         = "green",
+  TERM          = "blue",
+  NONE          = "yellow",
 }
 
 -- -----------------------------------------------------------------------------
@@ -54,37 +54,37 @@ local components = {
 -- -----------------------------------------------------------------------------
 local function mode()
   local mode_alias = {
-    ['n'] = 'NORMAL',
-    ['no'] = 'OP',
-    ['nov'] = 'OP',
-    ['noV'] = 'OP',
-    ['no'] = 'OP',
-    ['niI'] = 'NORMAL',
-    ['niR'] = 'NORMAL',
-    ['niV'] = 'NORMAL',
-    ['v'] = 'VISUAL',
-    ['V'] = 'V-LINE',
-    [''] = 'V-BLOCK',
-    ['s'] = 'SELECT',
-    ['S'] = 'SELECT',
-    [''] = 'V-BLOCK',
-    ['i'] = 'INSERT',
-    ['ic'] = 'INSERT',
-    ['ix'] = 'INSERT',
-    ['R'] = 'REPLACE',
-    ['Rc'] = 'REPLACE',
-    ['Rv'] = 'V-REPLACE',
-    ['Rx'] = 'REPLACE',
-    ['c'] = 'COMMAND',
-    ['cv'] = 'COMMAND',
-    ['ce'] = 'COMMAND',
-    ['r'] = 'ENTER',
-    ['rm'] = 'MORE',
-    ['r?'] = 'CONFIRM',
-    ['!'] = 'SHELL',
-    ['t'] = 'TERMINAL',
-    ['nt'] = 'NORMAL',
-    ['null'] = 'NONE',
+    ["n"]    = "NORMAL",
+    ["no"]   = "OP",
+    ["nov"]  = "OP",
+    ["noV"]  = "OP",
+    ["no"]  = "OP",
+    ["niI"]  = "NORMAL",
+    ["niR"]  = "NORMAL",
+    ["niV"]  = "NORMAL",
+    ["v"]    = "VISUAL",
+    ["V"]    = "V-LINE",
+    [""]    = "V-BLOCK",
+    ["s"]    = 'SELECT',
+    ["S"]    = "SELECT",
+    [""]    = "V-BLOCK",
+    ["i"]    = "INSERT",
+    ["ic"]   = "INSERT",
+    ["ix"]   = "INSERT",
+    ["R"]    = "REPLACE",
+    ["Rc"]   = "REPLACE",
+    ["Rv"]   = "V-REPLACE",
+    ["Rx"]   = "REPLACE",
+    ["c"]    = "COMMAND",
+    ["cv"]   = "COMMAND",
+    ["ce"]   = "COMMAND",
+    ["r"]    = "ENTER",
+    ["rm"]   = "MORE",
+    ["r?"]   = "CONFIRM",
+    ["!"]    = "SHELL",
+    ["t"]    = "TERMINAL",
+    ["nt"]   = "NORMAL",
+    ["null"] = "NONE",
   }
   return mode_alias[vim.api.nvim_get_mode().mode]
 end
@@ -103,8 +103,8 @@ table.insert(components.active[1], {
       style = "bold",
     }
   end,
-  icon = "  ",
-  -- right_sep = "slant_right_2",
+  icon = " ",
+  right_sep = "slant_right_2",
 })
 
 -- -----------------------------------------------------------------------------
@@ -123,26 +123,12 @@ table.insert(components.active[1], {
     fg = "white",
     bg = "oceanblue"
   },
-  -- left_sep = {
-  --   "slant_left",
-  --   {
-  --     str = " ",
-  --     hl = {
-  --       fg = "NONE",
-  --       bg = "oceanblue",
-  --     },
-  --   },
-  -- },
-  -- right_sep = {
-  --   {
-  --     str = " ",
-  --     hl = {
-  --       fg = "NONE",
-  --       bg = "oceanblue",
-  --     },
-  --   },
-  --   "slant_right_2",
-  -- }
+  left_sep = {
+    "slant_left",
+  },
+  right_sep = {
+    "slant_right_2",
+  }
 });
 
 
@@ -160,25 +146,12 @@ table.insert(components.active[1], {
     fg = 'fg',
     bg = 'gitred',
   },
-  -- left_sep = {
-  --   {
-  --     hl = {
-  --       fg = 'fg',
-  --       bg = 'gitred',
-  --     },
-  --   },
-  --   'slant_left_2',
-  -- },
-  -- right_sep = {
-  --   {
-  --     str = ' ',
-  --     hl = {
-  --       fg = 'fg',
-  --       bg = 'gitred',
-  --     },
-  --   },
-  --   'slant_right',
-  -- },
+  left_sep = {
+    'slant_left',
+  },
+  right_sep = {
+    'slant_right_2',
+  },
 })
 
 table.insert(components.active[1], {
