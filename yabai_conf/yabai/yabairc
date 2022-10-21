@@ -69,4 +69,5 @@ yabai -m rule --add label="Raycast"            app="^Raycast$"            manage
 yabai -m rule --add label="Lemon"              app="^Tencent Lemon$"      manage=off
 yabai -m rule --add label="Parsec"             app="^Parsec$"             manage=off
 yabai -m rule --add label="Docker"             app="^Docker Desktop$"     manage=off
+yabai -m rule --add label="NetEaseMusic"       app="^NetEaseMusic$"       manage=off
 

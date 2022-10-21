@@ -113,13 +113,14 @@ shift + cmd - 0 : yabai -m window --space 9 && yabai -m space --focus 10
 #  ╭──────────────────────────────────────────────────────────────────────────────╮
 #  │ launcher                                                                     │
 #  ╰──────────────────────────────────────────────────────────────────────────────╯
-alt - 1: open -a "Microsoft To Do"
-alt - 2: open -a "kitty"
-alt - 3: open -a "Alacritty"
-alt - 4: open -a "Visual Studio Code"
-alt - 5: open -a "Typora"
-alt - 6: open -a "QQ"
-alt - 7: open -a "WeChat"
-alt - 9: open -a "Launchpad"
-alt - 0: open -a "Google Chrome"
+alt - 1: open -a "Microsoft To Do"    # 任务清单
+alt - 2: open -a "kitty"              # 终端
+alt - 3: open -a "Alacritty"          # nvim
+alt - 4: open -a "Visual Studio Code" # vscode
+alt - 5: open -a "Typora"             # typora
+alt - 6: open -a "QQ"                 # QQ
+alt - 7: open -a "WeChat"             # 微信
+alt - 8: open -a "NetEaseMusic"       # 网易云音乐
+alt - 9: open -a "Launchpad"          # 启动项
+alt - 0: open -a "Google Chrome"      # chrome 浏览器
 
