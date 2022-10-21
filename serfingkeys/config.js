@@ -58,6 +58,9 @@ function setTheme(theme) {
       left: 0;
       right: auto;
       border-radius: 0;
+      border: none !important;
+      background-color: rgba(81, 162, 116, 0.15);
+      color: #888;
     }
     #sk_status, #sk_find {
       font-size: 12pt;
@@ -107,6 +110,9 @@ function setTheme(theme) {
         left: 0;
         right: auto;
         border-radius: 0;
+        border: none !important;
+        background-color: rgba(81, 162, 116, 0.15);
+        color: #888;
       }
       #sk_status, #sk_find {
         font-size: 12pt;
