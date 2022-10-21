@@ -37,19 +37,33 @@ live_config_reload: true
 draw_bold_text_with_bright_colors: false
 
 # 设置字体: https://liaohui5.github.io/study-notes/#/vscode/install
+# font:
+#   normal:
+#     family: "OperatorMono Nerd Font"
+#     style: Light
+#   bold:
+#     family: "OperatorMono Nerd Font"
+#     style: Book
+#   italic:
+#     family: "OperatorMono Nerd Font"
+#     style: Book Italic
+#   bold_italic:
+#     family: "OperatorMono Nerd Font"
+#     style: Book Italic
+
 font:
   normal:
-    family: "OperatorMono Nerd Font"
-    style: Light
+    family: "JetBrainsMonoNL Nerd Font Mono"
+    style: Thin
   bold:
-    family: "OperatorMono Nerd Font"
-    style: Book
+    family: "JetBrainsMonoNL Nerd Font Mono"
+    style: Light
   italic:
-    family: "OperatorMono Nerd Font"
-    style: Book Italic
+    family: "JetBrainsMonoNL Nerd Font Mono"
+    style: Light Italic
   bold_italic:
-    family: "OperatorMono Nerd Font"
-    style: Book Italic
+    family: "JetBrainsMonoNL Nerd Font Mono"
+    style: Light Italic
 
   # 字大小
   size: 15
