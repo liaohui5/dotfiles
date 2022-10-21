@@ -12,23 +12,24 @@ return {
   onstart = function()
     -- 先启动 mason-lspconfig 确保LSP服务器安装好了
     mason_lspconfig.setup({
-      automatic_installation = true, -- 自动安装LSP服务器
-      ensure_installed       = { -- 要安装的LSP服务器: https://github.com/williamboman/mason-lspconfig.nvim#available-lsp-servers
+      automatic_installation = true, -- 自动安装LSP服务端
+      ensure_installed       = { -- 要安装的LSP服务: https://github.com/williamboman/mason-lspconfig.nvim#available-lsp-servers
         "sumneko_lua",
         "tsserver",
         "yamlls",
         "cssls",
         "html",
         "volar",
+        -- "vuels",
         "emmet_ls",
         "tailwindcss",
-        "vimls"
       }
-    })
+    });
 
     -- server_name = 配置文件名
     -- server_name 必须是允许的: https://github.com/williamboman/mason-lspconfig.nvim#default-configuration
     -- 配置文件路径: 如 typescript 在 /lua/lsp-configs/settings/typescript.lua
+    -- volar | vuels 都可以支持vue语法, 2选1启用即可, 但是 vuels 对vue3不太友好
     local settings = {
       sumneko_lua = "lua",
       tsserver    = "typescript",
@@ -37,7 +38,8 @@ return {
       html        = "html",
       volar       = "vue",
       emmet_ls    = "emmet",
-      -- tailwindcss = "tailwindcss", -- 使用默认配置
+      -- vuels       = "vue2",
+      -- tailwindcss = "", -- tailwindcss 使用默认配置
       -- tailwindcss 配置参考: https://github.com/ecosse3/nvim/blob/master/lua/lsp/servers/tailwindcss.lua
     }
 

@@ -1,6 +1,6 @@
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
 -- │  安装LSP服务器工具                                                           │
--- │  docs: https://github.com/williamboman/mason.nvim                                  │
+-- │  docs: https://github.com/williamboman/mason.nvim                            │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 local mason = loadModule("mason", "lsp");
 
