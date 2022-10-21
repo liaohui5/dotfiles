@@ -38,7 +38,7 @@ wk.setup({
     registers = true, -- 查看所有寄存器(registers) 用 " 触发
     spelling  = {     -- 单词检测
       enabled = false,
-    }, 
+    },
     presets   = {
       -- which-key 内置的按键提示
       operators    = true,
