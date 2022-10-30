@@ -2,6 +2,7 @@
 #####################################################################################
 #  ╭──────────────────────────────────────────────────────────────────────────────╮ #
 #  │ yabai 配置                                                                   │ #
+#  │ https://github.com/koekeishiya/yabai/blob/master/doc/yabai.asciidoc#config   │ #
 #  │ https://github.com/koekeishiya/yabai/wiki/Configuration#configuration-file   │ #
 #  ╰──────────────────────────────────────────────────────────────────────────────╯ #
 #####################################################################################
@@ -13,27 +14,29 @@ sudo yabai --load-sa
 # 开启状态栏
 yabai -m config status_bar off
 
-# 使用平铺式的窗口(float | bsp | )
+# 使用平铺式的窗口(float | bsp)
 yabai -m config layout bsp
 
 # 垂直分割新窗口在底下, 水平分割新窗口在右边
 yabai -m config window_placement second_child
 
 # 上下左右边距和空隙 
-yabai -m config top_padding    5
-yabai -m config bottom_padding 5
-yabai -m config left_padding   5
-yabai -m config right_padding  5
-yabai -m config window_gap     5
+yabai -m config top_padding    8
+yabai -m config bottom_padding 8
+yabai -m config left_padding   8
+yabai -m config right_padding  8
+yabai -m config window_gap     8
 
 # 添加上填充25(spacebar 高度)
 yabai -m config external_bar main:0:25
 
-# 开启边框
+# 开启边框(非活动窗口边框透明)
 yabai -m config window_border on
 yabai -m config window_border_width 1
 yabai -m config active_window_border_color 0xff00ff00
-yabai -m config normal_window_border_color 0xff888888
+yabai -m config normal_window_border_color 0x00888888
+# yabai -m config normal_window_border_color 0xff888888
+# yabai -m config window_border_radius 0
 
 # 关闭窗口阴影
 yabai -m config window_topmost off
@@ -42,7 +45,7 @@ yabai -m config window_shadow off
 # 窗口透明
 yabai -m config window_opacity on
 yabai -m config active_window_opacity 1.0
-yabai -m config normal_window_opacity 0.8
+yabai -m config normal_window_opacity 0.9
 
 #  ╭──────────────────────────────────────────────────────────────────────────────╮
 #  │ 忽略不需要平铺的软件                                                         │
