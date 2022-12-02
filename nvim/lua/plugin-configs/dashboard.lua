@@ -64,7 +64,7 @@ dashboard.custom_center = {
     icon = '  ',
     desc = 'File Explorer                            ',
     action = '',
-    shortcut = '<C-t>  '
+    shortcut = '<C-e>  '
   },
   {
     icon = '  ',

@@ -881,7 +881,7 @@ keybindings.toggletermKeys = function(plugins)
       end,
       "toggle vifm[toggleterm]"
     },
-    ["<C-t>"] = {
+    ["<M-t>"] = {
       "<cmd>call SilentOpenApp('kitty')<CR>",
       "open kitty"
     },
