@@ -1,0 +1,57 @@
+[
+  {
+    "appDisplayName" : "Microsoft To Do.app",
+    "appBundleURL" : "file:\/\/\/Applications\/Microsoft%20To%20Do.app\/",
+    "shortcut" : "alt+1"
+  },
+  {
+    "shortcut" : "alt+2",
+    "appBundleURL" : "file:\/\/\/Applications\/kitty.app\/",
+    "appDisplayName" : "kitty.app"
+  },
+  {
+    "appBundleURL" : "file:\/\/\/Applications\/Alacritty.app\/",
+    "appDisplayName" : "Alacritty.app",
+    "shortcut" : "alt+3"
+  },
+  {
+    "shortcut" : "alt+4",
+    "appBundleURL" : "file:\/\/\/Applications\/Visual%20Studio%20Code.app\/",
+    "appDisplayName" : "Visual Studio Code.app"
+  },
+  {
+    "appDisplayName" : "Typora.app",
+    "shortcut" : "alt+5",
+    "appBundleURL" : "file:\/\/\/Applications\/Typora.app\/"
+  },
+  {
+    "appBundleURL" : "file:\/\/\/Applications\/QQ.app\/",
+    "appDisplayName" : "QQ.app",
+    "shortcut" : "alt+6"
+  },
+  {
+    "shortcut" : "alt+7",
+    "appBundleURL" : "file:\/\/\/Applications\/WeChat.app\/",
+    "appDisplayName" : "WeChat.app"
+  },
+  {
+    "shortcut" : "alt+8",
+    "appBundleURL" : "file:\/\/\/Applications\/NeteaseMusic.app\/",
+    "appDisplayName" : "NetEaseMusic.app"
+  },
+  {
+    "shortcut" : "alt+9",
+    "appDisplayName" : "Launchpad.app",
+    "appBundleURL" : "file:\/\/\/System\/Applications\/Launchpad.app\/"
+  },
+  {
+    "appBundleURL" : "file:\/\/\/Applications\/Google%20Chrome.app\/",
+    "appDisplayName" : "Google Chrome.app",
+    "shortcut" : "alt+0"
+  },
+  {
+    "appBundleURL" : "file:\/\/\/Applications\/%E5%AD%A6%E6%B5%AA%E5%AD%A6%E7%94%9F%E7%89%88.app\/",
+    "shortcut" : "alt+\\",
+    "appDisplayName" : "学浪学生版.app"
+  }
+]
