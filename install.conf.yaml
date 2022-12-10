@@ -25,7 +25,7 @@
     ~/.tmux.conf.local: oh-my-tmux/.tmux.conf.local
     ~/Library/Application Support/Code/User/settings.json: vscode/settings.json
     ~/Library/Application Support/Code/User/keybindings.json: vscode/keybindings.json
-    ~/Library/Application Support/Code/User/snippets: nvim/custom-snippets
+    ~/Library/Application Support/Code/User/snippets: nvim/snippets
     ~/Library/Application Support/Code/User/custom-vscode-assets: vscode/custom-vscode-assets
     ~/Library/Application Support/lazygit/config.yml: lazygit/config.yml
 

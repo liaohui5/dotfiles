@@ -27,15 +27,7 @@
       },
       {
         "language": "typescriptreact",
-        "path": "./typescript.json"
-      },
-      {
-        "language": "javascript",
-        "path": "./vue-script.json"
-      },
-      {
-        "language": "typescript",
-        "path": "./vue-script.json"
+        "path": "./typescriptreact.json"
       },
     ]
   }

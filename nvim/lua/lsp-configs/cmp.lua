@@ -10,7 +10,7 @@ local M = {};
 
 M.onstart = function()
   -- 指定加载自定义 snippets 目录
-  vim.g.vsnip_snippet_dir = vim.fn.stdpath("config") .. "/custom-snippets";
+  vim.g.vsnip_snippet_dir = vim.fn.stdpath("config") .. "/snippets";
 
   -- 其他配置: 比如图标,补全引擎之类的
   local cmp_config = {
