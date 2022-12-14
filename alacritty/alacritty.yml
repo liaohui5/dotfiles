@@ -52,7 +52,7 @@ font:
     style: Light Italic
 
   # 字大小
-  size: 15
+  size: 16
 
   # y: 文字行高 x: 文字间距
   offset:
