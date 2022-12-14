@@ -22,7 +22,7 @@ end
 local setFontSize = function (font_family, font_size)
   vim.opt.guifont = string.format("%s:h%s", font_family, font_size or "14")
 end
-setFontSize("Operator Mono SSm Nerd Lig", 15)
+setFontSize("Hack Nerd Font Mono", 15)
 
 -- 设置快捷键
 local keyset = vim.api.nvim_set_keymap;

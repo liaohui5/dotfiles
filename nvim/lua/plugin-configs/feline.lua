@@ -89,6 +89,12 @@ local function mode()
   return mode_alias[vim.api.nvim_get_mode().mode]
 end
 
+-- 分割符号
+local sep = {
+  left = 'slant_left',
+  right = 'slant_right_2',
+}
+
 table.insert(components.active[1], {
   provider = function()
     return string.format(" %s ", mode())
@@ -104,7 +110,10 @@ table.insert(components.active[1], {
     }
   end,
   icon = " ",
-  right_sep = "slant_right_2",
+  left_sep = {},
+  right_sep = {
+    sep.right
+  },
 })
 
 -- -----------------------------------------------------------------------------
@@ -123,12 +132,8 @@ table.insert(components.active[1], {
     fg = "white",
     bg = "oceanblue"
   },
-  left_sep = {
-    "slant_left",
-  },
-  right_sep = {
-    "slant_right_2",
-  }
+  left_sep = { sep.left },
+  right_sep = { sep.right }
 });
 
 
@@ -146,12 +151,8 @@ table.insert(components.active[1], {
     fg = 'fg',
     bg = 'gitred',
   },
-  left_sep = {
-    'slant_left',
-  },
-  right_sep = {
-    'slant_right_2',
-  },
+  left_sep = { sep.left },
+  right_sep = { sep.right }
 })
 
 table.insert(components.active[1], {

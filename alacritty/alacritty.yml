@@ -39,16 +39,16 @@ draw_bold_text_with_bright_colors: false
 # 设置字体: https://liaohui5.github.io/study-notes/#/vscode/install
 font:
   normal:
-    family: "Operator Mono SSm Nerd Lig"
+    family: "OperatorMono Nerd Font Mono"
     style: Light
   bold:
-    family: "Operator Mono SSm Nerd Lig"
+    family: "OperatorMono Nerd Font Mono"
     style: Light
   italic:
-    family: "Operator Mono SSm Nerd Lig"
+    family: "OperatorMono Nerd Font Mono"
     style: Light Italic
   bold_italic:
-    family: "Operator Mono SSm Nerd Lig"
+    family: "OperatorMono Nerd Font Mono"
     style: Light Italic
 
   # 字大小
