@@ -27,5 +27,5 @@ gtarrow_precmd() {
 }
 autoload -U add-zsh-hook
 add-zsh-hook precmd gtarrow_precmd
-PROMPT='%F{green}  %F{cyan}%(!.%1~.%~)%F{green}[%T]${vcs_info_msg_0_}%F{green}%f%k'
+PROMPT='%F{green}  %F{cyan}%(!.%1~.%~)%F{green}[%T]${vcs_info_msg_0_}%F{green}%f%k '
 

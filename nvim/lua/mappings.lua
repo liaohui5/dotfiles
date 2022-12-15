@@ -94,8 +94,8 @@ xnoremap("<leader>xJ", "<cmd>move '>+1<CR>gv-gv")
 xnoremap("<leader>xK", "<cmd>move '<-2<CR>gv-gv")
 
 -- 快速输出: javascript console.log
-nnoremap("<leader>il", [["ayiwoconsole.log('<C-R>a:', <C-R>a);<Esc>]])
-xnoremap("<leader>il", [["ayoconsole.log('<C-R>a:', <C-R>a);<Esc>]])
+nnoremap("<leader>il", [["ayiwoconsole.log("<C-R>a:", <C-R>a);<Esc>]])
+xnoremap("<leader>il", [["ayoconsole.log("<C-R>a:", <C-R>a);<Esc>]])
 
 -- 快速输出一个指定大小的图片URL使用的是 https://lorem.space/api
 nnoremap("<leader>ii", [["ayiwohttps://api.lorem.space/image/movie?w=150&h=150<Esc>]])

@@ -6,7 +6,7 @@
   },
   {
     // 切换 命令行
-    "key": "ctrl+t",
+    "key": "ctrl+x",
     "command": "workbench.action.terminal.toggleTerminal",
     "when": "terminal.active"
   },

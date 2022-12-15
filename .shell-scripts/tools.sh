@@ -1,11 +1,13 @@
 #!/bin/bash 
 
-# generate git ignore file
+# generate .gitignore
 function gi() { curl -sL https://www.toptal.com/developers/gitignore/api/$@ ; }
 
-# generate mit license file, username liaohui5
-# alias mitlicense="curl -sL https://raw.githubusercontent.com/liaohui5/study-notes/master/LICENSE"
+# generate mit license(username liaohui5)
 function mitlicense(){ curl -sL https://raw.githubusercontent.com/liaohui5/study-notes/master/LICENSE; }
 
-# generate .editorconfig template file
+# generate .editorconfig
 function editorconfig(){ curl -sL https://raw.githubusercontent.com/liaohui5/study-notes/master/.editorconfig; }
+
+# generate .prettierrc.js
+function prettierrc(){ curl -sL https://raw.githubusercontent.com/liaohui5/study-notes/master/.prettierrc.js; }

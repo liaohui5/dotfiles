@@ -1,9 +1,5 @@
 #!/bin/bash 
 
-# cd to codes & works
-alias cc='cd ~/Desktop/codes'
-alias cw='cd ~/Desktop/works'
-
 # cd ..
 alias ..='cd ..'
 
@@ -26,10 +22,6 @@ alias mvim='nvim'
 alias tmxn='tmux new -s'
 alias tmxa='tmux attach'
 alias tmxd='tmux detach'
-
-# zellij: https://github.com/zellij-org/zellij
-alias zj='zellij'
-alias zjws='zellij --layout=/Users/liaohui5/.config/zellij/layouts/workspace.yaml'
 
 # auto start zellij on bash loaded
 # eval "$(zellij setup --generate-auto-start bash)"
