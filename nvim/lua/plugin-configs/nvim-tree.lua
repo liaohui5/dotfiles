@@ -5,6 +5,10 @@
 local events   = loadModule("nvim-tree.events", "plugin-configs");
 local nvimtree = loadModule("nvim-tree", "plugin-configs");
 
+-- disable netrw at the very start of your init.lua (strongly advised)
+vim.g.loaded_netrw       = 1
+vim.g.loaded_netrwPlugin = 1
+
 nvimtree.setup({
   open_on_setup       = false, -- 启动时直接打开
   disable_netrw       = true,
@@ -38,6 +42,9 @@ nvimtree.setup({
     open_file = {
       resize_window = false,
       quit_on_open = false,
+    },
+    remove_file = {
+      close_window = true,
     },
   },
   system_open         = {
@@ -78,4 +85,5 @@ nvimtree.setup({
 })
 
 -- 创建文件时, 自动编辑这个文件
-events.on_file_created(function(file) vim.cmd("edit " .. file.fname) end)
+-- events api source code: https://github.com/nvim-tree/nvim-tree.lua/blob/master/lua/nvim-tree/events.lua
+events.on_file_created(function(file) vim.cmd("silent edit " .. file.fname) end)

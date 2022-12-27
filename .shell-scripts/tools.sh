@@ -10,4 +10,4 @@ function mitlicense(){ curl -sL https://raw.githubusercontent.com/liaohui5/study
 function editorconfig(){ curl -sL https://raw.githubusercontent.com/liaohui5/study-notes/master/.editorconfig; }
 
 # generate .prettierrc.js
-function prettierrc(){ curl -sL https://raw.githubusercontent.com/liaohui5/study-notes/master/.prettierrc.js; }
+function prettierconfig(){ curl -sL https://raw.githubusercontent.com/liaohui5/study-notes/master/.prettierrc.js; }
