@@ -24,7 +24,7 @@
   3. label(标记位置:有多个匹配的结果才会出现到 label)
 -----------------------------------------------------
 注意事项:
-1. 匹配分组: 
+1. 匹配分组:
   如果是匹配结果特别多,超过了最大的labels(52个),
   他就会分组显示, 空格切换至下一个分组, tab切换到上一个tab
 
@@ -33,7 +33,6 @@
 3. 可以配合其他 Operator(dyc) 来使用
 --]]
 local leap = loadModule("leap", "plugin-configs");
-local flit = loadModule("flit", "plugin-configs");
 local api = vim.api;
 
 -- 启动leap: 设定搜索的窗口为当前窗口
@@ -56,11 +55,3 @@ leap.opts.highlight_unlabeled_phase_one_targets = true;
 
 -- 加载默认的按键
 leap.add_default_mappings();
-
--- leap 增强插件: f/t
-flit.setup({
-  keys = { f = 'f', F = 'F', t = 't', T = 'T' },
-  labeled_modes = "v",
-  multiline = true, -- 是否多行匹配
-  opts = {}
-})

@@ -255,7 +255,7 @@ return require("packer").startup({
     })
     use({
       "ggandor/flit.nvim",
-      config = [[require("plugin-configs.leap")]]
+      config = [[require("plugin-configs.leap-flit")]]
     })
 
     -- ╭──────────────────────────────────────────────────────────────────────────────╮
