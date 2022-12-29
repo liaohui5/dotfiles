@@ -59,10 +59,10 @@ return require("packer").startup({
     -- ╭──────────────────────────────────────────────────────────────────────────────╮
     -- │                              区域选择/移动增强                               │
     -- ╰──────────────────────────────────────────────────────────────────────────────╯
-    use({
-      "nvim-treesitter/nvim-treesitter-textobjects",
-      requires = "nvim-treesitter/nvim-treesitter",
-    })
+    -- use({
+    --   "nvim-treesitter/nvim-treesitter-textobjects",
+    --   requires = "nvim-treesitter/nvim-treesitter",
+    -- })
     -- use({
     --   "RRethy/nvim-treesitter-textsubjects",
     --   requires = "nvim-treesitter/nvim-treesitter",
@@ -241,13 +241,21 @@ return require("packer").startup({
       config = [[require("plugin-configs.editorconfig")]],
     })
 
-    -- ╭──────────────────────────────────────────────────────────────────────────────╮
-    -- │                        类似easy-montion的快速移动插件                        │
-    -- ╰──────────────────────────────────────────────────────────────────────────────╯
+    --  ╭──────────────────────────────────────────────────────────────────────────────╮
+    --  │                   类似 easy-montion / sneak 的快速移动插件                   │
+    --  ╰──────────────────────────────────────────────────────────────────────────────╯
+    -- use({
+    --   "phaazon/hop.nvim",
+    --   branch = "v2",
+    --   config = [[require("plugin-configs.hop")]],
+    -- })
     use({
-      "phaazon/hop.nvim",
-      branch = "v2",
-      config = [[require("plugin-configs.hop")]],
+      "ggandor/leap.nvim",
+      config = [[require("plugin-configs.leap")]]
+    })
+    use({
+      "ggandor/flit.nvim",
+      config = [[require("plugin-configs.leap")]]
     })
 
     -- ╭──────────────────────────────────────────────────────────────────────────────╮
@@ -384,19 +392,19 @@ return require("packer").startup({
     -- ╭──────────────────────────────────────────────────────────────────────────────╮
     -- │                     LSP/CMP: 代码提示/ 补全配置/ UI增强                      │
     -- ╰──────────────────────────────────────────────────────────────────────────────╯
-    use({ "williamboman/mason.nvim" })               -- LSP/DAP 服务器安装管理工具
-    use({ "williamboman/mason-lspconfig.nvim" })     -- LSP/DAP 服务器安装管理工具
-    use({ "neovim/nvim-lspconfig" })                 -- lspconfig 配置 server 插件
-    use({ "hrsh7th/nvim-cmp" })                      -- 补全引擎
-    use({ "rafamadriz/friendly-snippets" })          -- 常见编程语言 snippets
-    use({ "hrsh7th/vim-vsnip" })                     -- vim-vsnip 插件
-    use({ "hrsh7th/cmp-vsnip" })                     -- 将vim-vsnip 插件提供的内容加载到补全引擎
-    use({ "hrsh7th/cmp-nvim-lsp" })                  -- { name = 'nvim_lsp' }
-    use({ "hrsh7th/cmp-buffer" })                    -- { name = 'buffer' },
-    use({ "hrsh7th/cmp-path" })                      -- { name = 'path' }
-    use({ "hrsh7th/cmp-cmdline" })                   -- { name = 'cmdline' }
-    use({ "hrsh7th/cmp-nvim-lsp-signature-help" })   -- { name = 'nvim_lsp_signature_help' }
-    use({ "hrsh7th/cmp-nvim-lua" })                  -- { name = 'nvim_lua' }
+    use({ "williamboman/mason.nvim" }) -- LSP/DAP 服务器安装管理工具
+    use({ "williamboman/mason-lspconfig.nvim" }) -- LSP/DAP 服务器安装管理工具
+    use({ "neovim/nvim-lspconfig" }) -- lspconfig 配置 server 插件
+    use({ "hrsh7th/nvim-cmp" }) -- 补全引擎
+    use({ "rafamadriz/friendly-snippets" }) -- 常见编程语言 snippets
+    use({ "hrsh7th/vim-vsnip" }) -- vim-vsnip 插件
+    use({ "hrsh7th/cmp-vsnip" }) -- 将vim-vsnip 插件提供的内容加载到补全引擎
+    use({ "hrsh7th/cmp-nvim-lsp" }) -- { name = 'nvim_lsp' }
+    use({ "hrsh7th/cmp-buffer" }) -- { name = 'buffer' },
+    use({ "hrsh7th/cmp-path" }) -- { name = 'path' }
+    use({ "hrsh7th/cmp-cmdline" }) -- { name = 'cmdline' }
+    use({ "hrsh7th/cmp-nvim-lsp-signature-help" }) -- { name = 'nvim_lsp_signature_help' }
+    use({ "hrsh7th/cmp-nvim-lua" }) -- { name = 'nvim_lua' }
     use({ "glepnir/lspsaga.nvim", branch = "main" }) -- UI 增强
     -- use({ "jose-elias-alvarez/null-ls.nvim" })       -- 多语言代码检查工具, 功能类似 ESLint
 
