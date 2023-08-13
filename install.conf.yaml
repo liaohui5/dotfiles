@@ -1,0 +1,81 @@
+#  ╭──────────────────────────────────────────────────────────────────────────────╮
+#  │ dotbot                                                                       │
+#  │ docs: https://github.com/anishathalye/dotbot#configuration                   │
+#  ╰──────────────────────────────────────────────────────────────────────────────╯
+# 默认选项:
+- defaults:
+    link:
+      create: true
+      relink: true
+      force: true
+    shell:
+      stdin: true
+      stdout: true
+      stderr: true
+
+# 清理
+- clean:
+    [
+      "~",
+      "~/.config",
+      "~/Library/Application Support/Code/User",
+      "~/Library/Application Support/lazygit",
+    ]
+
+# 新建目录/防止目录不存在 https://github.com/anishathalye/dotbot#create
+# - create:
+#   - ~/Downloads/docs
+
+# 链接
+- link:
+    ~/.config/alacritty: alacritty
+    ~/.config/nvim: nvim
+    ~/.config/kitty: kitty
+    ~/.config/vifm: vifm
+    ~/.config/joshuto: joshuto
+    ~/.config/wezterm: wezterm
+    ~/.config/goneovim: goneovim
+    ~/.gitconfig: .gitconfig
+    ~/.config/yabai: yabai_conf/yabai
+    ~/.config/spacebar: yabai_conf/spacebar
+    ~/.config/skhd: yabai_conf/skhd
+    ~/.zprofile: zsh/.zprofile
+    ~/.zshrc: zsh/.zshrc
+    ~/.oh-my-zsh/themes/bsif.zsh-theme: zsh/bsif.zsh-theme
+    ~/.bashrc: .shell-scripts/.bashrc
+    ~/.profile: .shell-scripts/.profile
+    ~/.bash_profile: .shell-scripts/.bash_profile
+    ~/.shell-scripts: .shell-scripts
+    ~/.tmux.conf: tmux_conf/.tmux.conf
+    ~/.tmux.conf.local: tmux_conf/.tmux.conf.local
+    ~/Library/Application Support/Code/User/settings.json: vscode/settings.json
+    ~/Library/Application Support/Code/User/keybindings.json: vscode/keybindings.json
+    ~/Library/Application Support/Code/User/snippets: nvim/snippets
+    ~/Library/Application Support/Code/User/custom-vscode-assets: vscode/custom-vscode-assets
+    ~/Library/Application Support/lazygit/config.yml: lazygit/config.yml
+
+- shell:
+    - git submodule update --init --recursive
+    - brew tap homebrew/cask-fonts && brew install --cask font-jetbrains-mono-nerd-font
+    - brew install lua
+    - brew install luarocks
+    - brew install git
+    - brew install curl
+    - brew install lsd
+    - brew install ripgrep
+    - brew install gnu-sed
+    - brew install fzf
+    - brew install trash
+    - brew install vifm
+    - brew install bat
+    - brew install fuzzy-find
+    - brew install git-delta
+    - brew install lazygit
+    - brew install tree-sitter
+    - brew install neovim
+    - brew tap daipeihust/tap && brew install im-select
+    - brew install koekeishiya/formulae/skhd
+    - brew install cmacrae/formulae/spacebar
+    - brew install koekeishiya/formulae/yabai
+    - sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    - git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions

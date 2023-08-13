@@ -1,0 +1,82 @@
+#############################################################################
+# docs: https://github.com/alacritty/alacritty/blob/master/alacritty.yml    #
+# themes: https://www.npmjs.com/package/alacritty-themes                    #
+#############################################################################
+env:
+  TERM: xterm-256color
+
+# 自动执行
+# shell:
+#   program: /bin/zsh
+#   args:
+#     - --login
+#     - -c
+    # - cd ~ && vifm . # exeute "vifm" command
+    # - nvim # execute "nvim" command
+    # - cd ~ && tmux # execute "tmux" command
+    # - cd ~ && zellij --layout=$HOME/.config/zellij/layouts/ws.kdl # zellij
+
+    # 修改配置文件后立即生效
+live_config_reload: true
+
+# 如果为true，则使用亮色变体绘制粗体文本
+draw_bold_text_with_bright_colors: false
+
+# 设置窗口
+window:
+  decorations: "buttonless" # full | buttonless, 设置为 buttonless 就不显示标题栏
+  option_as_alt: Both
+
+# 设置字体: https://liaohui5.github.io/study-notes/#/vscode/install
+font:
+  size: 16
+  normal:
+    family: "JetBrainsMono Nerd Font Mono"
+    style: Light
+  bold:
+    family: "JetBrainsMono Nerd Font Mono"
+    style: Light
+  italic:
+    family: "JetBrainsMono Nerd Font Mono"
+    style: Light Italic
+  bold_italic:
+    family: "JetBrainsMono Nerd Font Mono"
+    style: Light Italic
+
+# 按键绑定
+key_bindings:
+  - {
+      key: Space,
+      mods: Shift,
+      mode: ~Search,
+      action: ToggleViMode
+    } # shift + space
+
+# 颜色主题 #23241f
+theme: Monokai-Sublime
+colors:
+  name: Monokai-Sublime
+  primary:
+    background: "#23241f"
+    foreground: "#f8f8f2"
+  cursor:
+    text: "#f5f5f5"
+    cursor: "#fbbc07"
+  normal:
+    black: "#272822"
+    red: "#f92672"
+    green: "#a6e22e"
+    yellow: "#f4bf75"
+    blue: "#66d9ef"
+    magenta: "#ae81ff"
+    cyan: "#a1efe4"
+    white: "#f0f0f0"
+  bright:
+    black: "#75715e"
+    red: "#f92672"
+    green: "#a6e22e"
+    yellow: "#f4bf75"
+    blue: "#66d9ef"
+    magenta: "#ae81ff"
+    cyan: "#a1efe4"
+    white: "#f9f8f5"

@@ -1,0 +1,168 @@
+" ╭──────────────────────────────────────────────────────────────────────────────╮
+" │                              https://vifm.info                               │
+" ╰──────────────────────────────────────────────────────────────────────────────╯
+
+" 编辑文件命令
+set vicmd=nvim
+
+" 处理文件时, 使用系统命令比如 cp/mv/rm 等
+set syscalls
+
+" 不直接删除, 而是放到一个垃圾篓目录
+set trash
+
+" 最多保存多少个操作历史记录
+set history=100
+
+" 不要进入 link 指向的目录
+set nofollowlinks
+
+" 打开这个选项, 可以输入部分命令
+" set fastrun
+
+" 不显示行号
+set sortnumbers
+
+" 最大undo数
+set undolevels=100
+
+" 显示neovim帮助文档
+set novimhelp
+
+" 不能直接执行可执行文件比如 xxx.sh
+set norunexec
+
+" 主题颜色
+" https://github.com/vifm/vifm-colors
+" https://vifm.info/colorschemes.shtml
+colorscheme monokai
+
+" 显示格式化时间,占位符参考 vimscript strftime 函数
+set timefmt=%m/%d\ %H:%M
+
+" 命令行模式下显示命令补全
+set wildmenu
+set wildstyle=popup
+set suggestoptions=normal,visual,view,otherpane,keys,marks,registers
+
+" 搜索模式下:忽略大小写
+set ignorecase
+set smartcase
+
+" 不要高亮显示搜索内容
+set nohlsearch
+
+" 输入直接搜索
+set incsearch
+
+" 列表行高空隙
+set scrolloff=4
+
+" 不要执行太多请求, 否则速度回很慢
+if !has('win')
+  set slowfs=curlftpfs
+endif
+
+" 设置自定义状态栏
+set statusline="  Hint: %z%= %A %10u:%-7g %15s %20d  "
+
+" 删除之前需要确认
+set confirm="permdelete"
+
+" 预览内容不要换行, wrap(换行)
+set nowrap
+
+" 设置边框字符
+set fillchars="vborder:│"
+
+" 隐藏两边的边框
+set tuioptions-=s
+
+" ╭──────────────────────────────────────────────────────────────────────────────╮
+" │                                  bookmarks                                   │
+" ╰──────────────────────────────────────────────────────────────────────────────╯
+" :mark mark /full/directory/path [filename]
+mark h ~/
+mark c ~/Desktop/codes
+mark d ~/Desktop/codes/dotfiles
+mark C ~/.config
+mark D ~/Downloads
+
+" Office files(MacOS and Office365)
+filetype {*.doc,*.docx} open -a /Applications/Microsoft\ Word.app %f
+filetype {*.xls,*.xlsx} open -a /Applications/Microsoft\ Excel.app %f
+filetype {*.ppt,*.pptx} open -a /Applications/Microsoft\ PowerPoint.app %f
+
+" highlight syntax
+fileviewer *.c,*.cpp,*.h,*.hpp,*.txt,*.md,*.sh,*.py,*.rb,*.java,*.go,*.rs,*.js,*.ts,*.html,*.css,*.xml,*.json,*.yaml,*.yml,*.toml,*.ini,*.conf,*.php,*.pl,*.sql,*.lua bat --style=numbers --color=always %f
+
+" add nerd font icon by file types
+set classify=' :dir:/, :exe:, :reg:, :link:'
+
+" various file names
+set classify+=' ::../::, ::*.sh::, ::*.[hc]pp::, ::*.[hc]::, ::/^copying|license$/::, ::.git/,,*.git/::, ::*.epub,,*.fb2,,*.djvu::, ::*.pdf::, ::*.htm,,*.html,,**.[sx]html,,*.xml::'
+
+" archives
+set classify+=' ::*.7z,,*.ace,,*.arj,,*.bz2,,*.cpio,,*.deb,,*.dz,,*.gz,,*.jar,,*.lzh,,*.lzma,,*.rar,,*.rpm,,*.rz,,*.tar,,*.taz,,*.tb2,,*.tbz,,*.tbz2,,*.tgz,,*.tlz,,*.trz,,*.txz,,*.tz,,*.tz2,,*.xz,,*.z,,*.zip,,*.zoo::'
+
+" images
+set classify+=' ::*.bmp,,*.gif,,*.jpeg,,*.jpg,,*.ico,,*.png,,*.ppm,,*.svg,,*.svgz,,*.tga,,*.tif,,*.tiff,,*.xbm,,*.xcf,,*.xpm,,*.xspf,,*.xwd::'
+
+" audio
+set classify+=' ::*.aac,,*.anx,,*.asf,,*.au,,*.axa,,*.flac,,*.m2a,,*.m4a,,*.mid,,*.midi,,*.mp3,,*.mpc,,*.oga,,*.ogg,,*.ogx,,*.ra,,*.ram,,*.rm,,*.spx,,*.wav,,*.wma,,*.ac3::'
+
+" media
+set classify+=' ::*.avi,,*.ts,,*.axv,,*.divx,,*.m2v,,*.m4p,,*.m4v,,.mka,,*.mkv,,*.mov,,*.mp4,,*.flv,,*.mp4v,,*.mpeg,,*.mpg,,*.nuv,,*.ogv,,*.pbm,,*.pgm,,*.qt,,*.vob,,*.wmv,,*.xvid::'
+
+" office files
+set classify+=' ::*.doc,,*.docx::, ::*.xls,,*.xls[mx]::, ::*.pptx,,*.ppt::'
+
+" 当 :w 保存时, 保存哪些东西, 下次打开自动加载
+set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,phistory,fhistory,dirstack,registers,bookmarks,bmarks
+
+" 过滤(隐藏)不需要的文件
+" filter! /^.*\.(lo|o|d|class|py[co])$|.*~$/
+filter *.DS_Store
+
+" 自动显示隐藏文件(使用zm可以隐藏.开头的文件)
+windo normal zo
+
+" ------------------------------------------------------------------------------
+"                                  keybindings
+" ------------------------------------------------------------------------------
+" 关闭vifm
+noremap <c-q> :qa!<cr>
+
+" 将当前文件移动到垃圾篓
+nnoremap x :!trash %f<cr>
+
+" 打开命令行
+nnoremap <c-c> :shell<cr>
+
+" 用 nvim 打开当前文件
+nnoremap o :!nvim %f<cr>
+
+" 在 finder 中打开文件所在目录
+nnoremap <c-o> :!open %d<cr>
+
+" 切换预览窗口
+nnoremap w :view<cr>
+vnoremap w :view<cr>gv
+
+" 显示排序窗口
+nnoremap S :sort<cr>
+
+" 复制当前目录
+nnoremap yd :!printf %d | pbcopy<cr>
+
+" 复制当前文件路径
+nnoremap yf :!printf %c:p | pbcopy<cr>
+
+" 重命名, r:光标在最前面, R:覆盖原文件名
+nnoremap r cw<c-u>
+nnoremap R cw
+
+" 新建文件/目录
+nnoremap a :touch<space>
+nnoremap A :mkdir<space>
+

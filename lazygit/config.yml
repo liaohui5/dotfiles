@@ -1,0 +1,38 @@
+#  ╭──────────────────────────────────────────────────────────────────────────────╮
+#  │ lazygit 配置                                                                 │
+#  │ https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md          │
+#  ╰──────────────────────────────────────────────────────────────────────────────╯
+gui:
+  language: "en"
+  showIcons: false      # 显示图标需要 Nerd Font
+  showListFooter: false # 不显示页脚
+  showRandomTip: false  # 不随机显示提示
+  showFileTree: false   # 是否显示文件目录结构树(false平铺显示文件)
+  sidePanelWidth: 0.25  # 左边栏目宽度比例
+
+git:
+  autoFetch: true       # 自动拉取远程代码
+  autoRefresh: true     # 自动刷新
+  mouseevents: false    # 禁用鼠标
+  parseEmoji: true      # 解析 gitmoji 表情
+  paging:
+    colorArg: auto
+    pager: delta --dark --paging=never # 需要安装 git-detal 命令
+    # pager: diff-so-fancy                 # 需要安装 diff-so-fancy 命令
+  log:
+    showGraph: always
+
+os:
+  openCommand: "nvim {{filename}}"                    # 编辑文件命令(需要安装vscode)
+  editCommand: "nvim"                                 # 编辑文件命令
+  editCommandTemplate: "{{editor}} +{{line}} -- {{filename}}"
+
+reporting: "off" # 不提供日志报告
+update:
+  method: prompt # 询问是否要更新
+  days: 7 # 每7天检查一次是否有更新
+
+# 快捷键绑定:
+keybinding:
+  universal:
+    quit: "<c-q>" # 退出

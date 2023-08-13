@@ -1,0 +1,88 @@
+#!/usr/bin/env bash
+####################################################################################
+# ╭──────────────────────────────────────────────────────────────────────────────╮ #
+# │ yabai 配置                                                                   │ #
+# │ https://github.com/koekeishiya/yabai/blob/master/doc/yabai.asciidoc#config   │ #
+# │ https://github.com/koekeishiya/yabai/wiki/Configuration#configuration-file   │ #
+# ╰──────────────────────────────────────────────────────────────────────────────╯ #
+####################################################################################
+## 更新后需要重新配置: https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(from-HEAD)#configure-scripting-addition
+## 再然后重新安装服务: sudo yabai --uninstall-sa && sudo yabai --install-sa && sudo yabai --load-sa
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
+
+# folat 窗口在最上层
+yabai -m config window_topmost off
+
+# 关闭窗口阴影
+yabai -m config window_shadow off
+
+# 使用平铺式的窗口(float | bsp)
+yabai -m config layout bsp
+
+# 垂直分割新窗口在底下, 水平分割新窗口在右边
+yabai -m config window_placement second_child
+
+# 上下左右边距和空隙
+yabai -m config top_padding    3
+yabai -m config bottom_padding 3
+yabai -m config left_padding   3
+yabai -m config right_padding  3
+yabai -m config window_gap     3
+
+# 添加上填充25(spacebar 高度)
+yabai -m config external_bar all:0:25
+
+# 开启边框(非活动窗口边框透明)
+yabai -m config window_border on
+yabai -m config window_border_width 1
+yabai -m config active_window_border_color 0xff00ff00
+yabai -m config normal_window_border_color 0x00888888
+
+# 禁用光标跟随模式
+yabai -m config focus_follows_mouse off
+yabai -m config mouse_follows_focus off
+
+# ╭──────────────────────────────────────────────────────────────────────────────╮
+# │ 忽略不需要平铺的软件                                                         │
+# ╰──────────────────────────────────────────────────────────────────────────────╯
+# 查询软件窗口的的所有软件信息: yabai -m query --windows
+# MacOS applications
+yabai -m rule --add manage=off app="^Finder$"
+yabai -m rule --add manage=off app="^Safari$"
+yabai -m rule --add manage=off app="^macfeh$"
+yabai -m rule --add manage=off app="^System\ Preferences$"
+yabai -m rule --add manage=off app="^App\ Store$"
+yabai -m rule --add manage=off app="^Activity\ Monitor$"
+yabai -m rule --add manage=off app="^KeePassXC$"
+yabai -m rule --add manage=off app="^Calculator$"
+yabai -m rule --add manage=off app="^Dictionary$"
+yabai -m rule --add manage=off app="^mpv$"
+yabai -m rule --add manage=off app="System Information"
+yabai -m rule --add manage=off app="^Preview$"
+yabai -m rule --add manage=off app="^System Settings$"
+
+# Users Applications
+yabai -m rule --add manage=off app="^QQ$"
+yabai -m rule --add manage=off app="^WeChat$"
+yabai -m rule --add manage=off app="^LetsVPN$"
+yabai -m rule --add manage=off app="^Raycast$"
+yabai -m rule --add manage=off app="^Tencent Lemon$"
+yabai -m rule --add manage=off app="^Parsec$"
+yabai -m rule --add manage=off app="^Docker Desktop$"
+yabai -m rule --add manage=off app="^Snipaste$"
+yabai -m rule --add manage=off app="^qView$"
+yabai -m rule --add manage=off app="^Sequel\ Ace$"
+yabai -m rule --add manage=off app="^TickTick$"
+yabai -m rule --add manage=off app="^网易邮箱大师$"
+yabai -m rule --add manage=off app="^网易MuMu$"
+yabai -m rule --add manage=off app="^Navicat\ Premium$"
+yabai -m rule --add manage=off app="^学浪学生版$"
+yabai -m rule --add manage=off app="^LuLu$"
+yabai -m rule --add manage=off app="^IINA$"
+yabai -m rule --add manage=off app="^TTime$"
+yabai -m rule --add manage=off app="^VMware\ Fusion$"
+yabai -m rule --add manage=off app="^MailMaster$"
+
+### config loaded
+echo "yabai config loaded";
