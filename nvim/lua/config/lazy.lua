@@ -35,7 +35,7 @@ require("lazy").setup({
     -- { import = "lazyvim.plugins.extras.dap.core" },
 
     -- import LazyVim unit-test preconfig: https://www.lazyvim.org/extras/test/core
-    { import = "lazyvim.plugins.extras.test.core" },
+    -- { import = "lazyvim.plugins.extras.test.core" },
 
     -- install or override plugins config: https://www.lazyvim.org/configuration/plugins
     { import = "plugins" },
