@@ -9,16 +9,14 @@ return {
         opts = function(_, opts)
             return vim.tbl_deep_extend("force", opts, {
                 options = {
-                    always_show_bufferline = true, -- if false, hiden bufferline when only one buffer
-                    mode = "buffers",              -- "tabs" | "buffers"
-                    numbers = "none",              -- "none" | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
+                    always_show_bufferline = false, -- if true, it whill be display to alpha when start neovim
+                    mode = "buffers",               -- "tabs" | "buffers"
                     offsets = {
                         {
                             filetype   = "neo-tree",      -- neotree
                             highlight  = "Directory",
                             text       = "File Explorer", -- o
                             text_align = "center",        -- "left" | "center" | "right"
-                            separator  = true,
                         },
                     },
                 }

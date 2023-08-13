@@ -51,7 +51,7 @@ return {
   keys = function(_, keys)
     return vim.list_extend(keys, {
       { "<C-p>",      "<cmd>Telescope find_files<cr>", desc = "Find Files (root dir)" },
-      { "<leader>ff", "<cmd>write<cr>",           desc = "Save current file" },
+      { "<leader>ff", "<cmd>write<cr>",                desc = "Save current file" },
     })
   end,
 }
