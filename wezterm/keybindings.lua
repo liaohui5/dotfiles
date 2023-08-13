@@ -40,25 +40,25 @@ return {
   {
     -- 调整分屏面板大小
     key = "LeftArrow",
-    mods = "LEADER",
+    mods = "CTRL|ALT",
     action = api.AdjustPaneSize({ "Left", 1 }),
   },
   {
     -- 调整分屏面板大小
     key = "RightArrow",
-    mods = "LEADER",
+    mods = "CTRL|ALT",
     action = api.AdjustPaneSize({ "Right", 1 }),
   },
   {
     -- 调整分屏面板大小
     key = "UpArrow",
-    mods = "LEADER",
+    mods = "CTRL|ALT",
     action = api.AdjustPaneSize({ "Up", 1 }),
   },
   {
     -- 调整分屏面板大小
     key = "DownArrow",
-    mods = "LEADER",
+    mods = "ALT",
     action = api.AdjustPaneSize({ "Down", 1 }),
   },
   {
