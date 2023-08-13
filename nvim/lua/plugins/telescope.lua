@@ -49,10 +49,9 @@ return {
     })
   end,
   keys = function(_, keys)
-    local Util = require("lazyvim.util")
     return vim.list_extend(keys, {
-      { "<C-p>",      Util.telescope("files"), desc = "Find Files (root dir)" },
-      { "<leader>ff", "<cmd>write<cr>",        desc = "Save current file" },
+      { "<C-p>",      "<cmd>Telescope files<cr>", desc = "Find Files (root dir)" },
+      { "<leader>ff", "<cmd>write<cr>",           desc = "Save current file" },
     })
   end,
 }
