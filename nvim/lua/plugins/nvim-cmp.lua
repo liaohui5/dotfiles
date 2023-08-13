@@ -127,14 +127,14 @@ return {
                 formatting = {
                     fields = { "kind", "abbr", "menu" },
                     format = function(entry, item)
-                        if vim.tbl_contains({ "path" }, entry.source.name) then
-                            local icon, hlGroup = require("devicons").get_icon(entry:get_completion_item().label)
-                            if icon then
-                                item.kind = icon
-                                item.kind_hl_group = hlGroup
-                                return item
-                            end
-                        end
+                        -- if vim.tbl_contains({ "path" }, entry.source.name) then
+                        --     local icon, hlGroup = require("devicons").get_icon(entry:get_completion_item().label)
+                        --     if icon then
+                        --         item.kind = icon
+                        --         item.kind_hl_group = hlGroup
+                        --         return item
+                        --     end
+                        -- end
 
                         local strfmt      = string.format
                         local lspkind     = require("lazyvim.config").icons.kinds
