@@ -5,6 +5,14 @@
 -------------------------------------------------------------------
 return {
     {
+        "echasnovski/mini.bufremove",
+        -- stylua: ignore
+        keys = {
+            { "<leader>bd", function() require("mini.bufremove").delete(0, false) end, desc = "Delete Buffer" },
+            { "<leader>bD", false },
+        },
+    },
+    {
         "akinsho/bufferline.nvim",
         opts = function(_, opts)
             return vim.tbl_deep_extend("force", opts, {
@@ -24,6 +32,10 @@ return {
         end,
         keys = {
             {
+                "<leader>bD",
+                false,
+            },
+            {
                 "<leader>qH",
                 "<cmd>BufferLineCloseLeft<cr>",
                 desc = "close left buffers",
@@ -32,11 +44,6 @@ return {
                 "<leader>qL",
                 "<cmd>BufferLineCloseRight<cr>",
                 desc = "close right buffers",
-            },
-            {
-                "<leader>bd",
-                "<cmd>BufferLineClose<cr>",
-                desc = "close buffer",
             },
             {
                 "<leader>bD",
