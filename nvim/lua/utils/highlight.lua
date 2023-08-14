@@ -113,15 +113,10 @@ return function()
     -- }
 
     ----- cmp: https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance#how-to-get-types-on-the-left-and-offset-the-menu
-    overrides.CmpItemAbbr = {
-        bg = "NONE",
-        fg = "#d8d8d2",
-    }
-
-    ---- 窗口分割线
-    overrides.VertSplit = {
-        link = "TSComment",
-    }
+    -- overrides.CmpItemAbbr = {
+    --     bg = "NONE",
+    --     fg = "#d8d8d2",
+    -- }
 
     -- html标签
     -- overrides.HtmlValue = {
@@ -172,8 +167,12 @@ return function()
     -- overrides.IndentBlanklineSpaceChar = {
     --     fg = "#888888",
     -- }
+    ---- 窗口分割线
+    -- overrides.VertSplit = {
+    --     link = "TSComment",
+    -- }
 
-    ----- 语法相关, 清除倾斜
+    ----- 语法相关, 取消字体倾斜
     local clear_default_groups = {
         "TSComment",
         "Comment",

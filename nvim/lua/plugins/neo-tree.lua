@@ -129,6 +129,7 @@ return {
             mappings = keys.top_window,
         },
         filesystem = {
+            bind_to_cwd = true,
             follow_current_file = {
                 enabled = true,
             },
@@ -165,5 +166,5 @@ return {
                 mappings = keys.git_status_window,
             },
         },
-    }
+    },
 }
