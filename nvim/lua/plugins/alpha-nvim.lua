@@ -72,13 +72,13 @@ return {
 
         -- override highlights
         vim.api.nvim_set_hl(0, "AlphaHeader", {
-            link = "TSFunction"
+            link = "@field"
         })
         vim.api.nvim_set_hl(0, "AlphaShortcut", {
-            link = "GitGutterAdd",
+            link = "@function",
         })
         vim.api.nvim_set_hl(0, "AlphaButtons", {
-            link = "TSKeyword",
+            link = "@boolean",
         })
         vim.api.nvim_set_hl(0, "AlphaFooter", {
             link = "Comment",

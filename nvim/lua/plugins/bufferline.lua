@@ -23,7 +23,7 @@ return {
                         {
                             filetype = "neo-tree", -- neotree
                             highlight = "Directory",
-                            text = "File Explorer", -- o
+                            text = "Explorer",
                             text_align = "center", -- "left" | "center" | "right"
                         },
                     },

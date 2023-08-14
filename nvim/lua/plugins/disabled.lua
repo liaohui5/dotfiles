@@ -21,7 +21,7 @@ return disable_plugins({
     "echasnovski/mini.comment",
     "folke/trouble.nvim",
     "RRethy/vim-illuminate",
-    "folke/tokyonight.nvim",                       -- use base16-monokai colorscheme
+    -- "folke/tokyonight.nvim",                       -- use base16-monokai colorscheme
     "catppuccin/nvim",
     "nvim-treesitter/nvim-treesitter-textobjects", -- use flash.nvim
     "rcarriga/nvim-notify",

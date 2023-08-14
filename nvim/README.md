@@ -1,3 +1,7 @@
 # 💤 LazyVim
 
-debug(https://www.ruanyifeng.com/blog/2018/03/node-debugger.html)
+neotree not changed cw when session changed
+
+lsp: html css emmet support
+https://www.lazyvim.org/plugins/lsp
+

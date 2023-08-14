@@ -35,7 +35,7 @@ return {
             icons_enabled = true,
             always_divide_middle = true,
             globalstatus = true,                              -- 使用全局的状态栏(false 每个窗口显示不同的状态栏)
-            theme = "base16",                                 -- https://github.com/nvim-lualine/lualine.nvim/blob/master/THEMES.md
+            -- theme = "base16",                                 -- https://github.com/nvim-lualine/lualine.nvim/blob/master/THEMES.md
             component_separators = { left = "", right = "" }, -- { left = "", right = "" },
             section_separators = { left = "", right = "" },
             refresh = {
