@@ -21,7 +21,7 @@ local font = wezterm.font_with_fallback({
 })
 
 return {
-  color_scheme = "Monokai (base16)",
+  color_scheme = "Tokyo Night",
   font = font,
   line_height = 1,
   font_size = fontSize,
