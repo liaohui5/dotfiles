@@ -8,9 +8,9 @@ return {
         "L3MON4D3/LuaSnip",
         config = function()
             require("luasnip.loaders.from_vscode").lazy_load({
-                paths = vim.g.snippets_save_dir
+                paths = vim.g.snippets_save_dir,
             })
-        end
+        end,
     },
     {
         "hrsh7th/nvim-cmp",
@@ -28,7 +28,7 @@ return {
         },
         opts = function(_, opts)
             local cmp = require("cmp")
-            local luasnip = require("luasnip");
+            local luasnip = require("luasnip")
             local actions = {
                 jump_prev = cmp.mapping(function()
                     -- 跳到代码片段上一个位置
@@ -126,16 +126,9 @@ return {
                 },
                 formatting = {
                     fields = { "kind", "abbr", "menu" },
-                    format = function(entry, item)
-                        -- if vim.tbl_contains({ "path" }, entry.source.name) then
-                        --     local icon, hlGroup = require("devicons").get_icon(entry:get_completion_item().label)
-                        --     if icon then
-                        --         item.kind = icon
-                        --         item.kind_hl_group = hlGroup
-                        --         return item
-                        --     end
-                        -- end
 
+                    -- stylua: ignore
+                    format = function(entry, item)
                         local strfmt      = string.format
                         local lspkind     = require("lazyvim.config").icons.kinds
                         local source_name = entry.source.name
@@ -146,7 +139,7 @@ return {
                         item.menu = menu
                         item.kind = lspkind[item.kind] or item.kind
                         return item
-                    end
+                    end,
                 },
                 mapping = cmp.mapping.preset.insert({
                     ["<c-o>"] = actions.open,

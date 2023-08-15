@@ -19,7 +19,7 @@ return {
                     ["<Up>"] = "HistoryPrev",
                     ["<Down>"] = "HistoryNext",
                 },
-            }
-        }
+            },
+        },
     },
 }

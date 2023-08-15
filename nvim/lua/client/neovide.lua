@@ -4,6 +4,7 @@
 -- │ github: https://github.com/neovide/neovide                                   │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 -- 设置 neovide 选项
+-- stylua: ignore
 local function setNeovideOptions()
     local neovide_settings = {
         -- neovide_cursor_vfx_mode      = "",    -- ""取消光标动画效果
@@ -37,14 +38,15 @@ local function setGuiFont(font, fontSize, options)
 end
 
 -- 绑定 neovide 快捷键
+-- stylua: ignore
 local function setKeybindings()
     local keymap = vim.api.nvim_set_keymap
     local option = { noremap = true, silent = true }
-    keymap("v", "<D-c>", "\"+y", option)       -- Copy
-    keymap("n", "<D-v>", "\"+P", option)       -- Paste normal mode
-    keymap("v", "<D-v>", "\"+P", option)       -- Paste visual mode
-    keymap("c", "<D-v>", "<c-R>+", option)     -- Paste command mode
-    keymap("i", "<D-v>", "<ESC>\"+PA", option) -- Paste insert mode
+    keymap("v", "<D-c>", '"+y', option)       -- Copy
+    keymap("n", "<D-v>", '"+P', option)       -- Paste normal mode
+    keymap("v", "<D-v>", '"+P', option)       -- Paste visual mode
+    keymap("c", "<D-v>", "<c-R>+", option)    -- Paste command mode
+    keymap("i", "<D-v>", '<ESC>"+PA', option) -- Paste insert mode
 end
 
 -- 调用执行

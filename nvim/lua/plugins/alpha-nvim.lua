@@ -6,9 +6,9 @@ return {
     "goolord/alpha-nvim",
     event = "VimEnter",
     opts = function()
-        local dashboard     = require("alpha.themes.dashboard")
-        local section       = dashboard.section;
-        local header        = {
+        local dashboard = require("alpha.themes.dashboard")
+        local section = dashboard.section
+        local header = {
             " ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗",
             " ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║",
             " ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║",
@@ -16,8 +16,8 @@ return {
             " ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║",
             " ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝",
         }
-        section.header.val  = header
-        section.footer.val  = ""
+        section.header.val = header
+        section.footer.val = ""
         section.buttons.val = {
             dashboard.button("l", "󰥔  " .. "Load last session", "<cmd>SessionManager load_last_session<cr>"),
             dashboard.button("p", "  " .. "Pick session", "<cmd>SessionManager load_session<cr>"),
@@ -31,10 +31,10 @@ return {
             button.opts.hl = "AlphaButtons"
             button.opts.hl_shortcut = "AlphaShortcut"
         end
-        section.header.opts.hl  = "AlphaHeader"
+        section.header.opts.hl = "AlphaHeader"
         section.buttons.opts.hl = "AlphaButtons"
-        section.footer.opts.hl  = "AlphaFooter"
-        dashboard.opts.layout   = {
+        section.footer.opts.hl = "AlphaFooter"
+        dashboard.opts.layout = {
             { type = "padding", val = 8 },
             section.header,
             { type = "padding", val = 6 },
@@ -72,7 +72,7 @@ return {
 
         -- override highlights
         vim.api.nvim_set_hl(0, "AlphaHeader", {
-            link = "@field"
+            link = "@field",
         })
         vim.api.nvim_set_hl(0, "AlphaShortcut", {
             link = "@function",

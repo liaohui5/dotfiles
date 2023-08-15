@@ -15,18 +15,16 @@ return {
     keys = function()
         local keybindings = {
             {
-                "<leader>oU",
+                "<leader>ou",
                 "<cmd>VisitLinkNearCursor<cr>",
                 desc = "Open buffer urls in browser",
             },
             {
-                "<leader>ou",
+                "<leader>oU",
                 "<cmd>VisitLinkInBuffer<cr>",
                 desc = "Open buffer urls in browser",
             },
-
         }
-
         local help_urls = {
             c = {
                 url = "https://yianwillis.github.io/vimcdoc/doc/help.html",
@@ -50,11 +48,11 @@ return {
             },
             k = {
                 url = "https://www.lazyvim.org/keymaps",
-                desc = "LazyVim default keymaps"
+                desc = "LazyVim default keymaps",
             },
         }
         for key, item in pairs(help_urls) do
-            local keystr = "<leader>h" .. key;
+            local keystr = "<leader>h" .. key
             table.insert(keybindings, {
                 keystr,
                 function()

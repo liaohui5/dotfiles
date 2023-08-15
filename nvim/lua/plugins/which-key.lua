@@ -2,6 +2,7 @@
 -- 快捷键管理
 -- github: https://github.com/folke/which-key.nvim
 --------------------------------------------------------------
+-- stylua: ignore
 return {
     "folke/which-key.nvim",
     event = "VeryLazy",

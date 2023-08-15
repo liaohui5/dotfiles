@@ -2,6 +2,7 @@
 -- 命令行集成
 -- github: https://github.com/akinsho/toggleterm.nvim
 ------------------------------------------------------------
+-- stylua: ignore start
 -- terminal style options
 local float_opts = {
     border   = "single", -- 浮动终端样式: single | double | shadow | curved
@@ -10,41 +11,11 @@ local float_opts = {
     winblend = 1,
 }
 
--- use toggleterm api create Terminal instance
-local function createTerminal(cmd)
-    return require("toggleterm.terminal").Terminal:new({
-        cmd = cmd,
-        hidden = true,
-        direction = "float",
-        float_opts = float_opts,
-    })
-end
-
--- toggle terminals
-local actions = {
-    toggle_lazygit = function()
-        createTerminal("lazygit"):toggle()
-    end,
-    toggle_joshuto_in_project_root = function()
-        local open_path = vim.fn.getcwd()
-        return createTerminal(string.format("joshuto %s", open_path)):toggle()
-    end,
-    toggle_joshuto_in_current_buf = function()
-        local open_path = string.format("joshuto %s", vim.fn.expand("%:p:h"))
-        return createTerminal(string.format("joshuto %s", open_path)):toggle()
-    end,
-    toggle_vifm = function()
-        local buffPath = vim.fn.expand("%:p:h")
-        local rootPath = vim.fn.getcwd()
-        local commands = string.format("vifm %s %s", buffPath, rootPath)
-        return createTerminal(commands):toggle()
-    end,
-}
 return {
     "akinsho/toggleterm.nvim",
     version = "*",
-    event = "VeryLazy",
-    opts = {
+    event   = "VeryLazy",
+    opts    = {
         open_mapping      = "<C-x>",
         hide_numbers      = true,          -- 打开的终端中是否要隐藏行号
         shade_terminals   = false,         -- 是否添加阴影
@@ -66,31 +37,63 @@ return {
             end
         end,
     },
-    keys = {
-        {
-            "<leader>og",
-            actions.toggle_lazygit,
-            desc = "toggle lazygit",
-        },
-        {
-            "<C-g>",
-            actions.toggle_lazygit,
-            desc = "toggle lazygit",
-        },
-        {
-            "<c-n>",
-            actions.toggle_joshuto_in_project_root,
-            desc = "toggle joshuto file manager",
-        },
-        {
-            "<leader>of",
-            actions.toggle_vifm,
-            desc = "toggle vifm file manager",
-        },
-        {
-            "<leader><c-x>",
-            "<cmd>ToggleTermToggleAll<cr>",
-            desc = "toggle all terminals",
-        },
-    }
+    keys = function()
+        -- use toggleterm api create Terminal instance
+        local function createTerminal(cmd)
+            return require("toggleterm.terminal").Terminal:new({
+                cmd        = cmd,
+                hidden     = true,
+                direction  = "float",
+                float_opts = float_opts,
+            })
+        end
+
+        -- toggle terminals
+        local actions = {
+            toggle_lazygit = function()
+                createTerminal("lazygit"):toggle()
+            end,
+            toggle_joshuto_in_project_root = function()
+                local open_path = vim.fn.getcwd()
+                return createTerminal(string.format("joshuto %s", open_path)):toggle()
+            end,
+            toggle_joshuto_in_current_buf = function()
+                local open_path = string.format("joshuto %s", vim.fn.expand("%:p:h"))
+                return createTerminal(string.format("joshuto %s", open_path)):toggle()
+            end,
+            toggle_vifm = function()
+                local buffPath = vim.fn.expand("%:p:h")
+                local rootPath = vim.fn.getcwd()
+                local commands = string.format("vifm %s %s", buffPath, rootPath)
+                return createTerminal(commands):toggle()
+            end,
+        }
+        return {
+            {
+                "<leader>og",
+                actions.toggle_lazygit,
+                desc = "toggle lazygit",
+            },
+            {
+                "<C-g>",
+                actions.toggle_lazygit,
+                desc = "toggle lazygit",
+            },
+            {
+                "<c-n>",
+                actions.toggle_joshuto_in_project_root,
+                desc = "toggle joshuto file manager",
+            },
+            {
+                "<leader>of",
+                actions.toggle_vifm,
+                desc = "toggle vifm file manager",
+            },
+            {
+                "<leader><c-x>",
+                "<cmd>ToggleTermToggleAll<cr>",
+                desc = "toggle all terminals",
+            },
+        }
+    end,
 }

@@ -7,12 +7,13 @@
 return {
     "williamboman/mason.nvim",
     opts = function(_, opts)
-        vim.tbl_extend("force", opts.ensure_installed, {
-            "stylua",
-            "shfmt",
-            "prettierd",
-            "rustfmt",
-        });
-        return opts;
-    end
+        return vim.tbl_deep_extend("force", opts, {
+            ensure_installed = {
+                "stylua",
+                "shfmt",
+                "prettierd",
+                "rustfmt",
+            },
+        })
+    end,
 }

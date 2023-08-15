@@ -53,13 +53,13 @@ return {
             "<leader>rf",
             "<cmd>lua require('refactoring').select_refactor()<cr>",
             desc = "show refactoring actions",
-            mode = "v"
+            mode = "v",
         },
         {
             "<leader>il",
             "<cmd>lua require('refactoring').debug.print_var()<cr>",
             desc = "print var",
-            mode = "v"
+            mode = "v",
         },
     },
 }

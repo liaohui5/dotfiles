@@ -28,9 +28,9 @@ return {
                         require("neogen").generate({ type = selected })
                     end)
                 end,
-                desc = "auto generate comments"
-            }
-        }
+                desc = "auto generate comments",
+            },
+        },
     },
     {
         -- 手动注释插件
@@ -69,7 +69,7 @@ return {
                 desc = "toggle comment",
                 mode = "n",
             },
-        }
+        },
     },
     {
         -- 块级注释
@@ -121,7 +121,7 @@ return {
                 desc = "text:left length:auto",
                 mode = "v",
             },
-        }
+        },
     },
 
     {

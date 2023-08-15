@@ -1,11 +1,15 @@
+-----------------------------------------------------------------------
+-- session 管理插件
+-- docs: https://github.com/lewis6991/gitsigns.nvim
+-----------------------------------------------------------------------
 return {
-    -- -- session 管理
     "Shatur/neovim-session-manager",
     event = "VeryLazy",
     dependencies = "nvim-lua/plenary.nvim",
+    -- stylua: ignore
     opts = function(_, opts)
         local config = require("session_manager.config")
-        local Path = require("plenary.path")
+        local Path   = require("plenary.path")
 
         -- session 保存目录
         local sessions_dir = Path:new(vim.fn.stdpath("data"), "sessions")
@@ -53,5 +57,5 @@ return {
             "<cmd>SessionManager save_current_session<cr>",
             desc = "save sessions",
         },
-    }
+    },
 }

@@ -31,15 +31,14 @@ return {
     },
     init = function()
         local vs = require("vite-server")
-        local ok, session = pcall(require, "session_manager.config")
+        local ok = pcall(require, "session_manager.config")
         if ok then
             -- 如果能安装了 neovim-session-manager 才执行: 切换 session 后, 停止运行 vite-server
-            local group = vim.api.nvim_create_augroup("stop_vite_server_on_session_changed", {
-                clear = true,
-            })
             vim.api.nvim_create_autocmd({ "User" }, {
                 pattern = "SessionLoadPost",
-                group = group,
+                group = vim.api.nvim_create_augroup("stop_vite_on_session_changed", {
+                    clear = true,
+                }),
                 callback = function()
                     if vs.is_started then
                         vs.stop()
@@ -47,5 +46,5 @@ return {
                 end,
             })
         end
-    end
+    end,
 }

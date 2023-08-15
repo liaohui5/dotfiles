@@ -15,7 +15,7 @@
 
 local function is_highlight_group_defined(group)
     local hl_group = vim.fn.synIDtrans(vim.fn.hlID(group))
-    return hl_group ~= 0;
+    return hl_group ~= 0
 end
 
 -- 覆盖一些插件的默认高亮色彩, 只会执行一次
@@ -74,7 +74,7 @@ return function()
         -- bg = "#272822",
         -- fg = "#272822",
         fg = "#1a1b26",
-        bg = "#1a1b26"
+        bg = "#1a1b26",
     }
 
     ----- telescope: https://github.com/nvim-telescope/telescope.nvim

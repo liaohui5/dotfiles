@@ -6,10 +6,22 @@
 -- github: https://github.com/CKolkey/ts-node-action
 -----------------------------------------------------------------------
 return {
-    "Wansmer/treesj",
+    "bennypowers/splitjoin.nvim",
     event = "VeryLazy",
     keys = {
-        { 'gJ',  function() require 'splitjoin'.join() end,  desc = 'Join the object under cursor' },
-        { 'gS,', function() require 'splitjoin'.split() end, desc = 'Split the object under cursor' },
+        {
+            "gJ",
+            function()
+                require("splitjoin").join()
+            end,
+            desc = "Join the object under cursor",
+        },
+        {
+            "gS",
+            function()
+                require("splitjoin").split()
+            end,
+            desc = "Split the object under cursor",
+        },
     },
 }

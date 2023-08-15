@@ -13,42 +13,42 @@ return {
         local keys = {
             scroll_preview = {
                 scroll_down = "<c-u>",
-                scroll_up   = "<c-d>",
+                scroll_up = "<c-d>",
             },
             finder = {
                 jump_to = "o",
-                edit    = { "e", "<cr>" },
-                vsplit  = "s",
-                split   = "i",
-                tabe    = "t",
-                quit    = { "q", "<c-c>", "<ESC>" },
+                edit = { "e", "<cr>" },
+                vsplit = "s",
+                split = "i",
+                tabe = "t",
+                quit = { "q", "<c-c>", "<ESC>" },
             },
             definition = {
-                edit   = "<c-c>o",
+                edit = "<c-c>o",
                 vsplit = "<c-c>v",
-                split  = "<c-c>i",
-                tabe   = "<c-c>t",
-                close  = "<Esc>",
-                quit   = "<ESC>",
+                split = "<c-c>i",
+                tabe = "<c-c>t",
+                close = "<Esc>",
+                quit = "<ESC>",
             },
             diagnostic = {
                 exec_action = "o",
-                go_action   = "g",
-                quit        = "<ESC>",
+                go_action = "g",
+                quit = "<ESC>",
             },
             code_action = {
                 quit = "<ESC>",
                 exec = "<cr>",
             },
             outline = {
-                jump            = "o",
+                jump = "o",
                 expand_collapse = "u",
-                quit            = "<ESC>",
+                quit = "<ESC>",
             },
             rename = {
-                quit    = "<c-c>",
-                exec    = "<cr>",
-                mark    = "x",
+                quit = "<c-c>",
+                exec = "<cr>",
+                mark = "x",
                 confirm = "<cr>",
             },
         }
@@ -115,7 +115,7 @@ return {
                 hide_keyword = true,
             },
             ui = {
-                theme = "round",   -- 目前只支持这一个主题
+                theme = "round", -- 目前只支持这一个主题
                 border = "single", -- 可选值: single,double,rounded,solid,shadow.
                 title = true,
                 winblend = 0,
@@ -186,5 +186,5 @@ return {
         --     "<cmd>Lspsaga outline<cr>",
         --     desc = "search outline in buffer",
         -- },
-    }
+    },
 }

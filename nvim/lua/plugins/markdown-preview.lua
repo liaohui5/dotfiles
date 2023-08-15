@@ -19,6 +19,6 @@ return {
             "<leader>MP",
             "<cmd>MarkdownPreviewStop<cr>",
             desc = "stop preview markdown server",
-        }
-    }
+        },
+    },
 }

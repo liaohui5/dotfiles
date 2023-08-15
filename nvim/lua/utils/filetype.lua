@@ -9,33 +9,33 @@
 -- | |              | || |              | || |              | || |              | || |              | || |              | || |              | || |              | |
 -- | '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' |
 --  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'
+-- stylua: ignore start
 -- auto set filetype with this map
 local filetype_mappings = {
     extension = {
-        sh = "bash",
-        env = "bash",
+        sh      = "bash",
+        env     = "bash",
         profile = "bash",
-        json = "jsonc",
+        json    = "jsonc",
     },
     filename = {
-        bashrc = "bash",
-        yabairc = "bash",
-        skhdrc = "bash",
-        spacebarrc = "bash",
-        [".env"] = "bash",
-        [".bashrc"] = "bash",
-        [".zprofile"] = "bash",
-        ["vifmrc"] = "vim",
+        bashrc         = "bash",
+        yabairc        = "bash",
+        skhdrc         = "bash",
+        spacebarrc     = "bash",
+        [".env"]       = "bash",
+        [".bashrc"]    = "bash",
+        [".zprofile"]  = "bash",
+        ["vifmrc"]     = "vim",
         [".gitignore"] = "bash",
     },
-
 }
 
 return function()
     -- 获取当前文件的文件名/后缀名, 如果有值,证明需要重新设置 filetype
-    local filename = vim.fn.expand("%:t")
+    local filename  = vim.fn.expand("%:t")
     local extension = vim.fn.expand("%:e")
-    local filetype = filetype_mappings.filename[filename] or filetype_mappings.extension[extension]
+    local filetype  = filetype_mappings.filename[filename] or filetype_mappings.extension[extension]
     if filetype then
         vim.cmd("setlocal filetype=" .. filetype)
     end
