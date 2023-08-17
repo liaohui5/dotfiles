@@ -44,11 +44,11 @@ require("lazy").setup({
         lazy = true,
         version = true,
     },
-    checker = { -- check plugin updates
-        enabled = false,
+    checker = {
+        enabled = true,
     },
-    change_detection = { -- disable auto reload config files
-        enabled = false,
+    change_detection = {
+        -- enabled = false,
         notify = false,
     },
     performance = { -- disabled some built-in rtp plugins
