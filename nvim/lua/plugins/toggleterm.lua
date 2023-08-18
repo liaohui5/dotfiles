@@ -60,7 +60,7 @@ return {
                 local open_path = vim.fn.getcwd()
                 return createTerminal(string.format("joshuto %s", open_path)):toggle()
             end,
-            toggle_joshuto_root = function()
+            toggle_joshuto_current = function()
                 local open_path = vim.fn.expand("%:p:h")
                 return createTerminal(string.format("joshuto %s", open_path)):toggle()
             end,
@@ -95,6 +95,11 @@ return {
             {
                 "<leader>of",
                 actions.toggle_vifm,
+                desc = "toggle vifm file manager",
+            },
+            {
+                "<leader>oj",
+                actions.toggle_joshuto_current,
                 desc = "toggle vifm file manager",
             },
             {

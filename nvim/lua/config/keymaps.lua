@@ -10,6 +10,7 @@
 -- | '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' |
 --  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'
 -- LazyVim default keymaps: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
+local helpers = require("utils.helpers")
 local function map(mode, lhs, rhs, opts)
     local keys = require("lazy.core.handler").handlers.keys
     -- do not create the keymap if a lazy keys handler exists
@@ -93,3 +94,31 @@ map("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New Tab" })
 map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
 map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
+
+-- open in visual studio code
+if vim.fn.executable("code") then
+    local function open_in_vscode(is_current_buffer)
+        return function()
+            local path = nil
+            if is_current_buffer then
+                path = vim.fn.expand("%:p")
+            else
+                path = vim.fn.getcwd()
+            end
+            vim.cmd("silent !code " .. path)
+        end
+    end
+    map("n", "<leader>ov", open_in_vscode(true), { desc = "open buffer in vscode" })
+    map("n", "<leader>oV", open_in_vscode(false), { desc = "open cwd in vscode" })
+end
+
+-- open file in Google Chrome, only MacOS
+local os_name = helpers.get_os_name()
+if os_name == "MacOS" then
+    local function open_in_chrome()
+        local current_file = vim.fn.expand("%:p")
+        local cmd = string.format("silent !open -b com.google.Chrome file:///%s", current_file)
+        vim.cmd(cmd)
+    end
+    map("n", "<leader>oc", open_in_chrome, { silent = true, desc = "open current buffer in chrome" })
+end

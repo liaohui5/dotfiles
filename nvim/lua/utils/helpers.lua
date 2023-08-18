@@ -10,11 +10,11 @@
 -- | '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' |
 --  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'
 
-local M = {};
+local M = {}
 
 --- get nvim current mode string
 ---@return string
-M.get_mode = function()
+function M.get_mode()
     local modes = {
         ["n"] = "NORMAL",
         ["no"] = "OP",
@@ -51,4 +51,34 @@ M.get_mode = function()
     return modes[vim.api.nvim_get_mode().mode]
 end
 
-return M;
+--- get Operate System name
+--- @return string "Windows" | "MacOS" | "Linux"
+---@diagnostic disable: need-check-nil
+function M.get_os_name()
+    local os_name = "unknown"
+
+    -- 根据不同的操作系统执行不同的命令
+    if package.config:sub(1, 1) == "\\" then
+        -- Windows
+        return "Windows"
+    end
+
+    local handle = io.popen("uname -s")
+    local result = handle:read("*a")
+    handle:close()
+
+    if result:match("Darwin") then
+        -- MacOS
+        os_name = "MacOS"
+    elseif result:match("Linux") then
+        -- Linux
+        os_name = "Linux"
+    else
+        -- unknown
+        os_name = "unknown"
+    end
+
+    return os_name
+end
+
+return M
