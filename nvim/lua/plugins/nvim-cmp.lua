@@ -115,14 +115,8 @@ return {
                     { name = "nvim_lsp_document_symbol" },
                 }),
                 window = {
-                    completion = cmp.config.window.bordered({
-                        scrollbar = false,
-                        winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
-                    }),
-                    documentation = cmp.config.window.bordered({
-                        scrollbar = false,
-                        winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
-                    }),
+                    completion = cmp.config.window.bordered({ scrollbar = false }),
+                    documentation = cmp.config.window.bordered({ scrollbar = false }),
                 },
                 formatting = {
                     fields = { "kind", "abbr", "menu" },
