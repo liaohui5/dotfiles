@@ -7,13 +7,13 @@
 -- stylua: ignore
 local function setNeovideOptions()
     local neovide_settings = {
-        -- neovide_cursor_vfx_mode      = "",    -- ""取消光标动画效果
-        -- neovide_transparency         = 0.5,   -- 透明度
+        -- neovide_cursor_vfx_mode         = "",    -- 取消光标动画效果
+        -- neovide_transparency            = 0.5,   -- 透明度
         neovide_cursor_animation_length = 0,     -- 0禁用动画
-        neovide_fullscreen = false,              -- 全屏打开
-        neovide_remember_window_size = true,     -- 记住之前的大小
+        neovide_fullscreen              = false, -- 全屏打开
+        neovide_remember_window_size    = true,  -- 记住之前的大小
         neovide_input_macos_alt_is_meta = true,  -- 将 meta 映射到 alt
-        neovide_input_use_logo = true,           -- macos only
+        neovide_input_use_logo          = true,  -- macos only
     }
     for k, v in pairs(neovide_settings) do
         vim.g[k] = v

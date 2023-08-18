@@ -25,6 +25,9 @@ local function map(mode, lhs, rhs, opts)
     end
 end
 
+-- better $
+map({ "n", "x" }, "$", "$h", { silent = true, remap = true })
+
 -- better delete
 map({ "n", "x" }, "x", [["_x]], { silent = true, desc = "delete" })
 
@@ -95,7 +98,7 @@ map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
 map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
--- open in visual studio code
+-- open file in visual studio code
 if vim.fn.executable("code") then
     local function open_in_vscode(is_current_buffer)
         return function()
@@ -120,5 +123,5 @@ if os_name == "MacOS" then
         local cmd = string.format("silent !open -b com.google.Chrome file:///%s", current_file)
         vim.cmd(cmd)
     end
-    map("n", "<leader>oc", open_in_chrome, { silent = true, desc = "open current buffer in chrome" })
+    map("n", "<leader>oc", open_in_chrome, { desc = "open current file in chrome" })
 end
