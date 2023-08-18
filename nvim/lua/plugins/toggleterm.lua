@@ -16,7 +16,7 @@ return {
     version = "*",
     event   = "VeryLazy",
     opts    = {
-        open_mapping      = "<C-x>",
+        open_mapping      = "<c-x>",       -- 触发插件的主要按键
         hide_numbers      = true,          -- 打开的终端中是否要隐藏行号
         shade_terminals   = false,         -- 是否添加阴影
         persist_size      = false,         -- 是否保存上一次打开时的尺寸
@@ -33,7 +33,7 @@ return {
             if term.direction == "horizontal" then
                 return 18
             elseif term.direction == "vertical" then
-                return vim.o.columns * 0.4
+                return vim.o.columns * 0.5
             end
         end,
     },
@@ -53,12 +53,15 @@ return {
             toggle_lazygit = function()
                 createTerminal("lazygit"):toggle()
             end,
-            toggle_joshuto_in_project_root = function()
+            toggle_gitui = function()
+                createTerminal("gitui"):toggle()
+            end,
+            toggle_joshuto_cwd = function()
                 local open_path = vim.fn.getcwd()
                 return createTerminal(string.format("joshuto %s", open_path)):toggle()
             end,
-            toggle_joshuto_in_current_buf = function()
-                local open_path = string.format("joshuto %s", vim.fn.expand("%:p:h"))
+            toggle_joshuto_root = function()
+                local open_path = vim.fn.expand("%:p:h")
                 return createTerminal(string.format("joshuto %s", open_path)):toggle()
             end,
             toggle_vifm = function()
@@ -75,13 +78,18 @@ return {
                 desc = "toggle lazygit",
             },
             {
+                "<leader>oG",
+                actions.toggle_gitui,
+                desc = "toggle gitui",
+            },
+            {
                 "<C-g>",
                 actions.toggle_lazygit,
                 desc = "toggle lazygit",
             },
             {
                 "<c-n>",
-                actions.toggle_joshuto_in_project_root,
+                actions.toggle_joshuto_cwd,
                 desc = "toggle joshuto file manager",
             },
             {
