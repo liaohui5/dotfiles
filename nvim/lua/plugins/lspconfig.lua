@@ -30,6 +30,7 @@ return {
                     "scss",
                     "less",
                     "markdown",
+                    "vue",
                 },
                 init_options = { -- better html/css snippets supported
                     html = {

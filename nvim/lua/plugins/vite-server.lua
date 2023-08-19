@@ -9,24 +9,24 @@ return {
         show_cmd = true,
         vite_cli_opts = {
             port = 9988,
-            strictPort = false,
+            strictPort = true,
         },
     },
     keys = {
         {
-            "<leader>vs",
-            "<cmd>lua require('vite-server').start()<cr>",
-            desc = "start server current directory",
-        },
-        {
             "<leader>vq",
-            "<cmd>lua require('vite-server').start()<cr>",
+            "<cmd>lua require('vite-server').stop()<cr>",
             desc = "stop vite server",
         },
         {
-            "<leader>vS",
+            "<leader>vs",
             "<cmd>lua require('vite-server').start(vim.fn.getcwd())<cr>",
             desc = "start vite server project root directory",
+        },
+        {
+            "<leader>vS",
+            "<cmd>lua require('vite-server').start()<cr>",
+            desc = "start server current directory",
         },
     },
     init = function()

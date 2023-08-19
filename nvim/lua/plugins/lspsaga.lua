@@ -4,6 +4,7 @@
 --------------------------------------------------------------
 return {
     "glepnir/lspsaga.nvim",
+    enabled = true,
     event = "LspAttach",
     dependencies = {
         { "nvim-tree/nvim-web-devicons" },
@@ -110,7 +111,7 @@ return {
             symbol_in_winbar = {
                 -- 顶部栏路径显示
                 -- 类似: https://github.com/SmiteshP/nvim-navic
-                enable = true,
+                enable = false,
                 separator = "  ",
                 hide_keyword = true,
             },
@@ -142,19 +143,19 @@ return {
             desc = "Lspsaga show diagnostics",
         },
         { -- 跳到函数定义位置
-            "gd",
+            "gR",
             "<cmd>Lspsaga finder<cr>",
             desc = "Lspsaga finder",
         },
         { -- 预览代码(也可以直接修改)
             "gp",
             "<cmd>Lspsaga peek_definition<cr>",
-            desc = "Lspsaga finder",
+            desc = "Lspsaga peek definition",
         },
         { -- 打开 outline
             "<leader>js",
             "<cmd>Lspsaga outline<cr>",
-            desc = "jump to symbol in buffer",
+            desc = "jump symbol in buffer",
         },
         { -- 打开 outline
             "<leader>ls",
@@ -165,6 +166,16 @@ return {
             "<leader>rn",
             "<cmd>Lspsaga rename<cr>",
             desc = "rename symbol",
+        },
+        { -- 函数调用
+            "<leader>li",
+            "<cmd>Lspsaga incoming_calls<cr>",
+            desc = "List incoming calls"
+        },
+        { -- 函数调用
+            "<leader>lo",
+            "<cmd>Lspsaga outgoing_calls<cr>",
+            desc = "List outgoing calls"
         },
         -- { -- 下一个错误
         --     "<leader>ej",

@@ -40,11 +40,11 @@ return {
                 "vue",
                 "rust",
             },
-            -- incremental_selection = {
-            --     -- 允许使用 treesitter 来选择内容
-            --     enable = true,
-            --     keymaps = keys.incremental_selection,
-            -- },
+            incremental_selection = {
+                -- 允许使用 treesitter 来选择内容
+                enable = true,
+                keymaps = keys.incremental_selection,
+            },
             highlight = {
                 -- 允许 treesitter 来高亮代码内容
                 enable = true,
