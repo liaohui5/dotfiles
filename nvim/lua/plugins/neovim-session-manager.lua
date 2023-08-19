@@ -1,11 +1,12 @@
 -----------------------------------------------------------------------
 -- session 管理插件
--- docs: https://github.com/lewis6991/gitsigns.nvim
+-- docs: https://github.com/Shatur/neovim-session-manager
 -----------------------------------------------------------------------
 return {
     "Shatur/neovim-session-manager",
     event = "VeryLazy",
     dependencies = "nvim-lua/plenary.nvim",
+
     -- stylua: ignore
     opts = function(_, opts)
         local config = require("session_manager.config")
@@ -30,6 +31,25 @@ return {
             },
         })
     end,
+
+    setup = function(_, session)
+        local api, fn = vim.api, vim.fn
+        local autocmd, augroup = api.nvim_create_autocmd, api.nvim_create_augroup
+        autocmd("ExitPre", {
+            group = augroup("auto_save_session_before_quit", { clear = true }),
+            callback = function()
+                local sessions = require("session_manager.utils").get_sessions()
+                local curr_cwd = fn.getcwd()
+                for _, item in ipairs(sessions) do
+                    if item.dir.filename == curr_cwd then
+                        session.save_current_session()
+                        break
+                    end
+                end
+            end,
+        })
+    end,
+
     keys = {
         {
             "<leader>pr",
