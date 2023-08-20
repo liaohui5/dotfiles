@@ -1,6 +1,8 @@
 -----------------------------------------------------
 -- 主题插件
--- RRethy/nvim-base16
+-- https://github.com/RRethy/nvim-base16
+-- https://github.com/folke/tokyonight.nvim
+-- colorschemes: https://github.com/nvim-treesitter/nvim-treesitter/wiki/Colorschemes
 -----------------------------------------------------
 return {
     {
@@ -12,12 +14,37 @@ return {
     },
     {
         "folke/tokyonight.nvim",
+        enabled = true,
         lazy = true,
-        opts = { style = "night" },
+        opts = function()
+            local opts = {
+                style = "night",
+            }
+            -- 隐藏窗口分割线
+            local colors = {
+                night = {
+                    bg = "#1a1b26",
+                    fg = "#1a1b26",
+                },
+                moon = {
+                    fg = "#222436",
+                    bg = "#222436",
+                },
+                storm = {
+                    fg = "#24283b",
+                    bg = "#24283b",
+                },
+            }
+
+            vim.api.nvim_set_hl(0, "NeoTreeWinSeparator", colors[opts.style])
+
+            return opts
+        end,
     },
     -- {
     --     "RRethy/nvim-base16",
-    --     event = "VeryLazy",
+    --     enabled = false,
+    --     lazy = true,
     --     opts = {
     --         -- monokai: https://github.com/RRethy/nvim-base16/blob/master/lua/colors/monokai.lua
     --         base00 = "#272822",

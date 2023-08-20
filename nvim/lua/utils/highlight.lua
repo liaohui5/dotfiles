@@ -27,6 +27,9 @@ return function()
     local overrides = {}
     vim.g.override_highlight_executed = 1
 
+    --------------------------------------------------
+    -- for base16-monokai
+    --------------------------------------------------
     ----- barbar:https://github.com/romgrk/barbar.nvim
     -- overrides.BufferCurrentSign = {
     --     link = "TSFunction", -- 当前buffer左边的分割线
@@ -70,12 +73,11 @@ return function()
     -- overrides.NeoTreeNormalNC = {
     --     bg = "#23241e",
     -- }
-    overrides.NeoTreeWinSeparator = { -- 隐藏窗口分割线
-        -- bg = "#272822",
-        -- fg = "#272822",
-        fg = "#1a1b26",
-        bg = "#1a1b26",
-    }
+    -- overrides.NeoTreeWinSeparator = { -- 隐藏窗口分割线
+    --     -- base16-monokai
+    --     bg = "#272822",
+    --     fg = "#272822",
+    -- }
 
     ----- telescope: https://github.com/nvim-telescope/telescope.nvim
     -- overrides.TelescopePromptTitle = {
