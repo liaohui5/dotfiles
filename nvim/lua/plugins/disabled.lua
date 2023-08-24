@@ -16,7 +16,6 @@ end
 return disable_plugins({
     -- all built-in plugins: https://www.lazyvim.org/plugins/coding
     "catppuccin/nvim",
-    "echasnovski/mini.surround",
     "echasnovski/mini.comment",
     "echasnovski/mini.indentscope",
     "lukas-reineke/indent-blankline.nvim",
