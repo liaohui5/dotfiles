@@ -30,6 +30,7 @@ require("lazy").setup({
         { import = "lazyvim.plugins.extras.lang.typescript" },
         { import = "lazyvim.plugins.extras.lang.docker" },
         { import = "lazyvim.plugins.extras.lang.rust" },
+        { import = "lazyvim.plugins.extras.editor.mini-files" },
 
         -- import LazyVim debug preconfig: https://www.lazyvim.org/extras/dap/core#nvim-dap
         -- { import = "lazyvim.plugins.extras.dap.core" },

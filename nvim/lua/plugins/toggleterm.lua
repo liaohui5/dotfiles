@@ -88,18 +88,18 @@ return {
                 desc = "toggle lazygit",
             },
             {
-                "<c-n>",
+                "<leader>oj",
                 actions.toggle_joshuto_cwd,
                 desc = "toggle joshuto file manager",
             },
             {
-                "<leader>of",
-                actions.toggle_vifm,
+                "<leader>oJ",
+                actions.toggle_joshuto_current,
                 desc = "toggle vifm file manager",
             },
             {
-                "<leader>oj",
-                actions.toggle_joshuto_current,
+                "<leader>of",
+                actions.toggle_vifm,
                 desc = "toggle vifm file manager",
             },
             {
