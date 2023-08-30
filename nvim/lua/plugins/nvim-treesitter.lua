@@ -9,10 +9,6 @@ return {
         "windwp/nvim-ts-autotag",
     },
     opts = function(_, opts)
-        local keys = {
-            node_incremental = "+", -- 扩大选区
-            node_decremental = "_", -- 减少选区
-        }
         return vim.tbl_deep_extend("force", opts, {
             sync_install = true,
             auto_install = true,
@@ -43,7 +39,10 @@ return {
             incremental_selection = {
                 -- 允许使用 treesitter 来选择内容
                 enable = true,
-                keymaps = keys.incremental_selection,
+                keymaps = {
+                    node_incremental = "+", -- 扩大选区
+                    node_decremental = "_", -- 减少选区
+                },
             },
             highlight = {
                 -- 允许 treesitter 来高亮代码内容
@@ -62,7 +61,11 @@ return {
             autotag = {
                 -- xml标签自动闭合: https://github.com/windwp/nvim-ts-autotag
                 enable = true,
+                enable_rename = true,
+                enable_close = true,
+                enable_close_on_slash = true,
+                filetypes = { "html", "xml" },
             },
-        });
-    end
+        })
+    end,
 }
