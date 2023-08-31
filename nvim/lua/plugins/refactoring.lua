@@ -56,7 +56,7 @@ return {
         {
 
             "<leader>iL",
-            "<cmd>lua require('refactoring').cleanup()<cr>",
+            "<cmd>lua require('refactoring').debug.cleanup()<cr>",
             desc = "clear inserted print var",
         },
     },
