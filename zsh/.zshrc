@@ -170,3 +170,6 @@ fi
 #                           cargo
 ################################################################
 export PATH=/Users/liaohui5/.cargo/bin:$PATH
+
+# bun completions
+[ -s "/Users/liaohui5/.bun/_bun" ] && source "/Users/liaohui5/.bun/_bun"

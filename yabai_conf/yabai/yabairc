@@ -83,6 +83,7 @@ yabai -m rule --add manage=off app="^IINA$"
 yabai -m rule --add manage=off app="^TTime$"
 yabai -m rule --add manage=off app="^VMware\ Fusion$"
 yabai -m rule --add manage=off app="^MailMaster$"
+yabai -m rule --add manage=off app="^pot$"
 
 ### config loaded
 echo "yabai config loaded";
