@@ -30,6 +30,7 @@
 - link:
     ~/.config/alacritty: alacritty
     ~/.config/nvim: nvim
+    ~/.config/starship: starship
     ~/.config/kitty: kitty
     ~/.config/vifm: vifm
     ~/.config/joshuto: joshuto
