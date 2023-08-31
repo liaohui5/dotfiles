@@ -10,6 +10,7 @@ brew install lsd
 brew install ripgrep
 brew install gnu-sed
 brew install fzf
+brew install zoxide
 brew install trash
 brew install bat
 brew install fd

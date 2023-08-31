@@ -77,7 +77,7 @@ CASE_SENSITIVE="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git history history-substring-search zsh-autosuggestions copypath vi-mode z)
+plugins=(git history history-substring-search zsh-autosuggestions copypath vi-mode)
 
 # previous/next command history
 bindkey -M vicmd 'k' history-substring-search-up
@@ -141,6 +141,15 @@ export LC_ALL="en_US.UTF-8"
 #   export STARSHIP_CONFIG=$HOME/.config/starship/config.toml
 #   eval "$(starship init zsh)"
 # fi
+
+###############################################################
+# zoxide
+# https://github.com/ajeetdsouza/zoxide
+###############################################################
+if command_exists 'zoxide'; then
+  eval "$(zoxide init zsh)"
+fi
+
 
 ###############################################################
 # fzf
