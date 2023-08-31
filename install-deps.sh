@@ -11,7 +11,6 @@ brew install ripgrep
 brew install gnu-sed
 brew install fzf
 brew install trash
-brew install vifm
 brew install bat
 brew install fd
 brew install git-delta
@@ -19,12 +18,12 @@ brew install lazygit
 brew install tree-sitter
 brew install neovim
 brew tap daipeihust/tap && brew install im-select
-brew install koekeishiya/formulae/skhd
-brew install cmacrae/formulae/spacebar
-brew install koekeishiya/formulae/yabai
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+# brew install vifm
+# brew install joshuto
+# brew install koekeishiya/formulae/skhd
+# brew install cmacrae/formulae/spacebar
+# brew install koekeishiya/formulae/yabai
 
-
-
+# sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 
