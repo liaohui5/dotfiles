@@ -4,8 +4,7 @@
 --------------------------------------------------------------
 return {
     "ThePrimeagen/refactoring.nvim",
-    -- event = "BufEnter",
-    event = "VeryLazy",
+    event = "BufEnter",
     dependencies = {
         "nvim-lua/plenary.nvim",
         "nvim-treesitter/nvim-treesitter",
@@ -43,13 +42,6 @@ return {
             desc = "show refactoring actions",
         },
         {
-
-            "<leader>cl",
-            "<cmd>lua require('refactoring').cleanup()<cr>",
-            desc = "clear debug print var",
-        },
-
-        {
             "<leader>rf",
             "<cmd>lua require('refactoring').select_refactor()<cr>",
             desc = "show refactoring actions",
@@ -60,6 +52,12 @@ return {
             "<cmd>lua require('refactoring').debug.print_var()<cr>",
             desc = "print var",
             mode = "v",
+        },
+        {
+
+            "<leader>iL",
+            "<cmd>lua require('refactoring').cleanup()<cr>",
+            desc = "clear inserted print var",
         },
     },
 }
