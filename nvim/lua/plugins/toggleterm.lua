@@ -95,7 +95,7 @@ return {
             {
                 "<leader>oJ",
                 actions.toggle_joshuto_current,
-                desc = "toggle vifm file manager",
+                desc = "toggle joshuto file manager",
             },
             {
                 "<leader>of",
