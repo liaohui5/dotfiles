@@ -91,8 +91,15 @@ return {
                     end
 
                     -- 禁止在输入框显示提示
-                    local buftype = vim.api.nvim_buf_get_option(0, "buftype")
-                    if buftype == "prompt" or buftype == "minifiles" or buftype == "nofile" then
+                    local bufnr = vim.api.nvim_get_current_buf();
+                    local buftype = vim.api.nvim_buf_get_option(bufnr, "buftype")
+                    if buftype == "prompt" or buftype == "nofile" then
+                        return false
+                    end
+
+                    -- 禁止在一些可以输入的 buffer 显示提示
+                    local filetype = vim.api.nvim_buf_get_option(bufnr, "filetype")
+                    if filetype == "minifiles" or filetype == "spectre_panel" then
                         return false
                     end
 

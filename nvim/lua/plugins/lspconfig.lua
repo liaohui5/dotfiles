@@ -13,7 +13,7 @@ return {
             desc = "Format Dcoument",
             remap = true,
             mode = { "n", "v" },
-            noremap = true
+            noremap = true,
         }
     end,
     opts = {
