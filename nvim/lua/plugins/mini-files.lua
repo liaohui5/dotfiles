@@ -7,20 +7,20 @@ return {
     opts = function(_, opts)
         return vim.tbl_extend("force", opts, {
             mappings = {
-                close = "<C-q>",
+                close = "<c-q>",
             },
         })
     end,
     keys = {
         {
-            "<C-e>",
-            "<leader>fM",
+            "<c-f>",
+            "<leader>fm",
             desc = "Open mini.files",
             remap = true,
         },
         {
-            "<leader><C-e>",
-            "<leader>fm",
+            "<leader><c-f>",
+            "<leader>fM",
             desc = "Open mini.files",
             remap = true,
         },
