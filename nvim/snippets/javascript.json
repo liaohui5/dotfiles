@@ -14,7 +14,7 @@
     "description": "Let Variable"
   },
   "Named function": {
-    "prefix": "fun",
+    "prefix": "fn",
     "body": [
       "function ${1:name}(${2}){",
       "${0}",
@@ -23,7 +23,7 @@
     "description": "Named function"
   },
   "Arrow Function": {
-    "prefix": "afun",
+    "prefix": "afn",
     "body": [
       "(${1}) => {${0}}"
     ],

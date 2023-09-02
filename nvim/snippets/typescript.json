@@ -35,7 +35,7 @@
     "description": "Log output to console"
   },
   "Named Function": {
-    "prefix": "fun",
+    "prefix": "fn",
     "body": [
       "function ${1:name}(${2:arg}:${3:type}):${4:void} {",
       "  ${0}",
