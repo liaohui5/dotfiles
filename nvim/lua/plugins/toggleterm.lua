@@ -88,6 +88,11 @@ return {
                 desc = "toggle lazygit",
             },
             {
+                "<C-n>",
+                actions.toggle_joshuto_cwd,
+                desc = "toggle joshuto file manager",
+            },
+            {
                 "<leader>oj",
                 actions.toggle_joshuto_cwd,
                 desc = "toggle joshuto file manager",

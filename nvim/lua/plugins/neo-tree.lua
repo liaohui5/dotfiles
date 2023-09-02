@@ -8,7 +8,7 @@ return {
     keys = function()
         return {
             {
-                "<c-e>",
+                "<leader>on",
                 "<cmd>Neotree toggle<cr>",
                 desc = "Toggle file explorer",
             },

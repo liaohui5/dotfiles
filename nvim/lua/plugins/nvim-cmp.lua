@@ -91,7 +91,8 @@ return {
                     end
 
                     -- 禁止在输入框显示提示
-                    if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
+                    local buftype = vim.api.nvim_buf_get_option(0, "buftype")
+                    if buftype == "prompt" or buftype == "minifiles" or buftype == "nofile" then
                         return false
                     end
 
