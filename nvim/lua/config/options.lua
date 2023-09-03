@@ -69,6 +69,7 @@ vim.opt.shiftwidth     = 2                            -- (自动) 缩进使用�
 vim.opt.tabstop        = 2                            -- <Tab> 在文件里使用的空格数
 vim.opt.softtabstop    = 2                            -- 编辑时 <Tab> 使用的空格数
 vim.opt.list           = false                        -- 是否显示空白符号
+vim.opt.formatoptions:remove({ "c", "r", "o" })       -- 不要自动延续注释
 vim.opt.listchars      = {                            -- 空白字符显示
     tab = "↔ ",
     eol = "↩",

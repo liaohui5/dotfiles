@@ -3,7 +3,6 @@
 -- github: https://github.com/hrsh7th/nvim-cmp
 -- github: https://github.com/L3MON4D3/LuaSnip
 -----------------------------------------------------------------------
--- TODO: 默认关闭, 用快捷键开启
 return {
     {
         "L3MON4D3/LuaSnip",
