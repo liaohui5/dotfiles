@@ -98,6 +98,19 @@ map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
 map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
+-- toggle auto completation
+map("n", "<leader>tt", function()
+    if vim.g.enable_auto_completation then
+        vim.g.enable_auto_completation = false
+        print("auto completion disabled")
+    else
+        vim.g.enable_auto_completation = true
+        print("auto completion enabled")
+    end
+end, {
+    desc = "toggle auto completion status",
+})
+
 -- open file in visual studio code
 if vim.fn.executable("code") then
     local function open_in_vscode(is_current_buffer)

@@ -3,6 +3,7 @@
 -- github: https://github.com/hrsh7th/nvim-cmp
 -- github: https://github.com/L3MON4D3/LuaSnip
 -----------------------------------------------------------------------
+-- TODO: 默认关闭, 用快捷键开启
 return {
     {
         "L3MON4D3/LuaSnip",
@@ -29,24 +30,30 @@ return {
         opts = function(_, opts)
             local cmp = require("cmp")
             local luasnip = require("luasnip")
+            local has_words_before = function()
+                unpack = unpack or table.unpack
+                local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+                return col ~= 0
+                    and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+            end
             local actions = {
                 jump_prev = cmp.mapping(function()
                     -- 跳到代码片段上一个位置
-                    if luasnip.jumpable(-1) then
+                    if luasnip.locally_jumpable(-1) then
                         luasnip.jump(-1)
                     end
                 end),
                 jump_next = cmp.mapping(function()
                     -- 跳到代码片段下一个位置
-                    if luasnip.expand_or_locally_jumpable() then
-                        luasnip.expand_or_jump()
+                    if luasnip.locally_jumpable(1) then
+                        luasnip.jump(1)
                     end
                 end),
                 super_tab = cmp.mapping(function(fallback)
                     -- 确定选择/展开&跳转代码片段/显示代码提示/tab
                     if cmp.visible() then
                         cmp.select_next_item()
-                    elseif luasnip.expand_or_locally_jumpable() then
+                    elseif has_words_before() and luasnip.expand_or_locally_jumpable() then
                         luasnip.expand_or_jump()
                     else
                         fallback("<tab>", "")
@@ -83,7 +90,12 @@ return {
                 end, { "i", "c" }),
             }
             return vim.tbl_deep_extend("force", opts, {
-                enable = function()
+                enabled = function()
+                    -- 设置必须是开启状态
+                    if not vim.g.enable_auto_completation then
+                        return false
+                    end
+
                     local context = require("cmp.config.context")
                     -- 禁止在注释内容中显示提示
                     if context.in_treesitter_capture("comment") or context.in_syntax_group("Comment") then
@@ -91,7 +103,7 @@ return {
                     end
 
                     -- 禁止在输入框显示提示
-                    local bufnr = vim.api.nvim_get_current_buf();
+                    local bufnr = vim.api.nvim_get_current_buf()
                     local buftype = vim.api.nvim_buf_get_option(bufnr, "buftype")
                     if buftype == "prompt" or buftype == "nofile" then
                         return false
@@ -114,8 +126,8 @@ return {
                 end,
                 sources = cmp.config.sources({
                     -- sources: https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
-                    { name = "luasnip" },
                     { name = "nvim_lsp" },
+                    { name = "luasnip" },
                     { name = "buffer" },
                     { name = "nvim_lua" },
                     { name = "path" },

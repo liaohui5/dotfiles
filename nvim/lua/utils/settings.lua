@@ -23,3 +23,6 @@ vim.g.snippets_save_dir = { "./snippets" }
 
 -- 是否加载不太常用的插件
 vim.g.load_unpopular_plugins = true
+
+-- 默认是否开启自动完成(可以通过快捷键开启)
+vim.g.enable_auto_completation = false
