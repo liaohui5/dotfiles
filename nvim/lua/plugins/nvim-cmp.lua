@@ -29,12 +29,6 @@ return {
         opts = function(_, opts)
             local cmp = require("cmp")
             local luasnip = require("luasnip")
-            local has_words_before = function()
-                unpack = unpack or table.unpack
-                local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-                return col ~= 0
-                    and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-            end
             local actions = {
                 jump_prev = cmp.mapping(function()
                     -- 跳到代码片段上一个位置
@@ -49,11 +43,11 @@ return {
                     end
                 end),
                 super_tab = cmp.mapping(function(fallback)
-                    -- 确定选择/展开&跳转代码片段/显示代码提示/tab
+                    -- 展开代码片段/tab
                     if cmp.visible() then
                         cmp.select_next_item()
-                    elseif has_words_before() and luasnip.expand_or_locally_jumpable() then
-                        luasnip.expand_or_jump()
+                    elseif luasnip.expandable() then
+                        luasnip.expand()
                     else
                         fallback("<tab>", "")
                     end
@@ -162,7 +156,6 @@ return {
                     ["<cr>"] = actions.enter,
                     ["<c-h>"] = actions.jump_prev,
                     ["<c-l>"] = actions.jump_next,
-                    ["<s-tab>"] = actions.jump_prev,
                     ["<tab>"] = actions.super_tab,
                 }),
             })
