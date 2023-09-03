@@ -119,8 +119,8 @@ return {
                 end,
                 sources = cmp.config.sources({
                     -- sources: https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
-                    { name = "nvim_lsp" },
                     { name = "luasnip" },
+                    { name = "nvim_lsp" },
                     { name = "buffer" },
                     { name = "nvim_lua" },
                     { name = "path" },

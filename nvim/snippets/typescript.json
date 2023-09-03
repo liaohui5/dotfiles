@@ -37,7 +37,7 @@
   "Named Function": {
     "prefix": "fn",
     "body": [
-      "function ${1:name}(${2:arg}:${3:type}):${4:void} {",
+      "function ${1:name}($2):${3:void} {",
       "  ${0}",
       "}"
     ],
@@ -46,7 +46,7 @@
   "Const Variable Function": {
     "prefix": "caf",
     "body": [
-      "const ${1:fn} = (${2:arg}:${3:type}):${4:void} => {",
+      "const ${1:fn} = ($2):${3:void} => {",
       "  ${0}",
       "}"
     ],
