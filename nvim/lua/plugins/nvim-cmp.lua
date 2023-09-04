@@ -141,7 +141,7 @@ return {
                         local source_name = entry.source.name
                         local menu        = strfmt("[%s]", source_name)
                         if string.lower(source_name) == "nvim_lsp" then
-                            menu = strfmt("[%s]", item.kind)
+                            menu = strfmt("[lsp %s]]", item.kind)
                         end
                         item.menu = menu
                         item.kind = lspkind[item.kind] or item.kind
