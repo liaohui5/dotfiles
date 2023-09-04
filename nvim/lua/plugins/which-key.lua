@@ -28,6 +28,7 @@ return {
             ["<leader>j"] = { name = "+jump" },
             -- ["<leader>k"] = { name = "+keymaps" },
             ["<leader>l"] = { name = "+list" },
+            ["<leader>M"] = { name = "+markdown" },
             ["<leader>o"] = { name = "+open" },
             ["<leader>p"] = { name = "+project" },
             ["<leader>q"] = { name = "+quit" },
