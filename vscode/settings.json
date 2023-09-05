@@ -62,7 +62,7 @@
   /////////////////////////////////////////
   // 颜色主题/图标主题
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.colorTheme": "Tokyo Night",
+  "workbench.colorTheme": "rimless-monokai",
   // 打开设置使用左右json
   "workbench.settings.editor": "json",
   "workbench.settings.useSplitJSON": true,
