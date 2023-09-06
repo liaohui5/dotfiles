@@ -12,7 +12,6 @@ return {
                 "stylua",
                 "shfmt",
                 "prettierd",
-                "rustfmt",
             },
         })
     end,
