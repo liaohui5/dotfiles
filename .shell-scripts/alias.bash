@@ -58,6 +58,7 @@ alias dc='docker-compose'
 # pnpm
 alias p='pnpm'
 alias pi='pnpm install'
+alias pr='pnpm remove'
 alias pd='bun run dev'
 alias pt='bun run test'
 alias pb='bun run build'
