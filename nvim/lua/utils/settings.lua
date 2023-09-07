@@ -19,7 +19,7 @@ vim.g.file_explorer_width = 38
 vim.g.override_highlight_executed = 0
 
 -- 加载 snippets 目录
-vim.g.snippets_save_dir = { "./snippets" }
+vim.g.snippets_save_dir = "./snippets"
 
 -- 是否加载不太常用的插件
 vim.g.load_unpopular_plugins = true

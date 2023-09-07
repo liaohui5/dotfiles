@@ -6,6 +6,11 @@
 return {
     {
         "L3MON4D3/LuaSnip",
+        keys = {
+            -- cancel luasnip tab mapping, use nvim-cmp tab mapping
+            { "<tab>", false, mode = "i" },
+            { "<tab>", false, mode = "s" },
+        },
         config = function()
             require("luasnip.loaders.from_vscode").lazy_load({
                 paths = vim.g.snippets_save_dir,
@@ -35,19 +40,17 @@ return {
                     if luasnip.locally_jumpable(-1) then
                         luasnip.jump(-1)
                     end
-                end),
+                end, { "i", "s" }),
                 jump_next = cmp.mapping(function()
                     -- 跳到代码片段下一个位置
                     if luasnip.locally_jumpable(1) then
                         luasnip.jump(1)
                     end
-                end),
+                end, { "i", "s" }),
                 super_tab = cmp.mapping(function(fallback)
                     -- 展开代码片段/tab
                     if cmp.visible() then
                         cmp.select_next_item()
-                    elseif luasnip.expandable() then
-                        luasnip.expand()
                     else
                         fallback("<tab>", "")
                     end
@@ -128,8 +131,17 @@ return {
                     { name = "nvim_lsp_document_symbol" },
                 }),
                 window = {
-                    completion = cmp.config.window.bordered({ scrollbar = false }),
-                    documentation = cmp.config.window.bordered({ scrollbar = false }),
+                    -- use bordered window style
+                    -- completion = cmp.config.window.bordered({ scrollbar = false }),
+                    -- documentation = cmp.config.window.bordered({ scrollbar = false }),
+                    completion = {
+                        border = { "", "", "", "", "", "", "", "" },
+                        scrollbar = false,
+                    },
+                    documentation = {
+                        border = { "", "", "", " ", "", "", "", " " },
+                        scrollbar = false,
+                    },
                 },
                 formatting = {
                     fields = { "kind", "abbr", "menu" },
