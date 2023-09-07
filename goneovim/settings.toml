@@ -48,7 +48,7 @@ ModeEnablingIME = [
 Ginitvim = '''
 lua << EOF
 vim.g.isGoNeovim = 1
-require("goneovim")
+require("client.goneovim")
 EOF
 '''
 
