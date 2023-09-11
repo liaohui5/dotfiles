@@ -1,18 +1,24 @@
-#!/bin/bash 
+#!/bin/bash
 
-# generate .gitignore
-function gi() { curl -sL https://www.toptal.com/developers/gitignore/api/$@ ; }
+# generate config file by templates
+function tpl() {
+  template_name="$1"
+  filename=""
+  if [[ $template_name == "prettier" ]]; then
+    filename="prettier.config.mjs"
+  elif [[ $template_name == "gitignore" ]]; then
+    filename=".gitignore"
+  elif [[ $template_name == "editorconfig" ]]; then
+    filename=".editorconfig"
+  else
+    echo "not found template file $1"
+    exit 1
+  fi
+  cmd="cp $HOME/.shell-scripts/templates/${filename} ./${filename}"
+  eval $cmd
+}
 
-# generate mit license(username liaohui5)
-function mitlicense(){ curl -sL https://raw.githubusercontent.com/liaohui5/study-notes/master/LICENSE; }
-
-# generate .editorconfig
-function editorconfig(){ curl -sL https://raw.githubusercontent.com/liaohui5/study-notes/master/.editorconfig; }
-
-# generate .prettierrc.js
-function prettierconfig(){ curl -sL https://raw.githubusercontent.com/liaohui5/study-notes/master/.prettierrc.js; }
-
-# query port
+# query port status
 function lsport() {
   port="$1"
   lsof -n -i:${port}
