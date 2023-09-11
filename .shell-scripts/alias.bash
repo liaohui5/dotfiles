@@ -6,6 +6,9 @@ alias reload='source ~/.zshrc'
 # cd ..
 alias ..='cd ..'
 
+# soft delete
+alias rm='trash'
+
 # clear
 alias c='clear'
 
@@ -25,11 +28,7 @@ alias tmxd='tmux detach'
 # eval "$(zellij setup --generate-auto-start bash)"
 
 # vifm: https://github.com/vifm/vifm
-alias vifm='vifm . ~/Desktop/codes'
-alias fm='joshuto'
-
-# ranger: https://github.com/ranger/ranger
-alias ra='ranger'
+alias fx='joshuto'
 
 # gitmoji-cli: https://github.com/carloscuesta/gitmoji-cli
 alias gitcmt='gitmoji -c'
@@ -56,11 +55,10 @@ alias d='docker'
 alias dc='docker-compose'
 
 # pnpm
-alias p='pnpm'
 alias pi='pnpm install'
 alias pr='pnpm remove'
+alias pu='pnpm i -g pnpm'
 alias pd='bun run dev'
 alias pt='bun run test'
 alias pb='bun run build'
-alias pu='pnpm i -g pnpm'
 
