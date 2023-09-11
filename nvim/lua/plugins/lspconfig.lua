@@ -6,15 +6,16 @@ return {
     "neovim/nvim-lspconfig",
     init = function()
         local keys = require("lazyvim.plugins.lsp.keymaps").get()
-        local lens = #keys + 1
-        keys[lens] = {
+        table.insert(keys, {
             "<leader>ff",
-            "<leader>cf",
+            function()
+                require("lazyvim.plugins.lsp.format").format({ force = true })
+            end,
             desc = "Format Dcoument",
-            remap = true,
             mode = { "n", "v" },
             noremap = true,
-        }
+            silent = true,
+        })
     end,
     opts = {
         servers = {
