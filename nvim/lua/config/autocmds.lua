@@ -26,6 +26,7 @@ autocmd("FileType", {
     group = augroup("disable_auto_format"),
     pattern = "*",
     callback = function()
+        ---@diagnostic disable-next-line: inject-field
         vim.b.autoformat = false
     end,
 })
@@ -39,6 +40,15 @@ autocmd({ "InsertLeave", "TextChanged" }, {
         vim.api.nvim_buf_call(buf, function()
             vim.cmd("silent! write")
         end)
+    end,
+})
+
+-- dot not auto add comment when add new line
+autocmd("OptionSet", {
+    group = augroup("override_opts"),
+    pattern = "*",
+    callback = function()
+        vim.opt.formatoptions:remove({ "c", "r", "o" })
     end,
 })
 
