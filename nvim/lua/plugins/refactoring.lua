@@ -4,36 +4,10 @@
 --------------------------------------------------------------
 return {
     "ThePrimeagen/refactoring.nvim",
-    event = "BufEnter",
+    event = "VeryLazy",
     dependencies = {
         "nvim-lua/plenary.nvim",
         "nvim-treesitter/nvim-treesitter",
-    },
-    opts = {
-        -- stylua: ignore
-        prompt_func_return_type = {
-            go   = true,
-            java = true,
-            cpp  = true,
-            c    = true,
-            h    = true,
-            hpp  = true,
-            cxx  = true,
-            js   = true,
-            ts   = true,
-        },
-        -- stylua: ignore
-        prompt_func_param_type = {
-            go   = true,
-            java = true,
-            cpp  = true,
-            c    = true,
-            h    = true,
-            hpp  = true,
-            cxx  = true,
-            js   = true,
-            ts   = true,
-        },
     },
     keys = {
         {
