@@ -10,7 +10,7 @@
 --  | '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' |
 --   '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'
 -- set neovim options
--- LazyVim default options: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
+-- LazyVim default options: https://github1s.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- online chinese docs    : https://yianwillis.github.io/vimcdoc/doc/help.html
 -- stylua: ignore start
 vim.opt.showmode       = false                        -- 是否在命令行位置显示当前 mode
@@ -69,7 +69,6 @@ vim.opt.shiftwidth     = 2                            -- (自动) 缩进使用�
 vim.opt.tabstop        = 2                            -- <Tab> 在文件里使用的空格数
 vim.opt.softtabstop    = 2                            -- 编辑时 <Tab> 使用的空格数
 vim.opt.list           = false                        -- 是否显示空白符号
-vim.opt.formatoptions:remove({ "c", "r", "o" })       -- 不要自动延续注释
 vim.opt.listchars      = {                            -- 空白字符显示
     tab = "↔ ",
     eol = "↩",
@@ -77,3 +76,4 @@ vim.opt.listchars      = {                            -- 空白字符显示
     extends = "◀",
     precedes = "▶",
 }
+vim.opt.formatoptions:remove({ "c", "r", "o" })       -- 不要自动延续注释(不生效/请使用autocmd)
