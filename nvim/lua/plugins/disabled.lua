@@ -13,17 +13,18 @@ local function disable_plugins(list)
     return disabled_plugins
 end
 
+-- stylua: ignore start
 return disable_plugins({
-    -- all built-in plugins: https://www.lazyvim.org/plugins/coding
-    "catppuccin/nvim",
-    "echasnovski/mini.comment",
-    "echasnovski/mini.indentscope",
-    "lukas-reineke/indent-blankline.nvim",
-    "RRethy/vim-illuminate",
-    "SmiteshP/nvim-navic",
-    "rcarriga/nvim-notify",
-    "folke/persistence.nvim",
-    "folke/noice.nvim",
-    "zbirenbaum/copilot.lua",
-    "zbirenbaum/copilot-cmp",
+    "catppuccin/nvim",                     -- 主题
+    "echasnovski/mini.comment",            -- 注释插件(用习惯了其他的,不喜欢这个)
+    "echasnovski/mini.indentscope",        -- 缩进显示
+    "lukas-reineke/indent-blankline.nvim", -- 缩进显示
+    "RRethy/vim-illuminate",               -- 自动高亮匹配
+    "SmiteshP/nvim-navic",                 -- 顶部代码导航
+    "folke/persistence.nvim",              -- session 管理插件(功能太少, 不如 neovim-session-manager)
+    "folke/noice.nvim",                    -- UI 美化
+    "rcarriga/nvim-notify",                -- 优化通知消息 UI美化
+    "zbirenbaum/copilot.lua",              -- copilot AI 生成代码
+    "zbirenbaum/copilot-cmp",              -- copilot AI 生成代码
+    "echasnovski/mini.surround",           -- 快速操作两边字符
 })
