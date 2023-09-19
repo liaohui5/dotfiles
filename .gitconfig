@@ -29,3 +29,5 @@
 
 [diff]
     colorMoved = default
+[https]
+	proxy = system
