@@ -4,7 +4,7 @@
 --------------------------------------------------------------
 return {
     "glepnir/lspsaga.nvim",
-    enabled = true,
+    enabled = false, -- FIXME: 总是报错,各种小问题,禁用
     event = "LspAttach",
     dependencies = {
         { "nvim-tree/nvim-web-devicons" },
@@ -170,12 +170,12 @@ return {
         { -- 函数调用
             "<leader>li",
             "<cmd>Lspsaga incoming_calls<cr>",
-            desc = "List incoming calls"
+            desc = "List incoming calls",
         },
         { -- 函数调用
             "<leader>lo",
             "<cmd>Lspsaga outgoing_calls<cr>",
-            desc = "List outgoing calls"
+            desc = "List outgoing calls",
         },
         -- { -- 下一个错误
         --     "<leader>ej",
