@@ -58,7 +58,7 @@ return {
   {
     -- 调整分屏面板大小
     key = "DownArrow",
-    mods = "ALT",
+    mods = "CTRL|ALT",
     action = api.AdjustPaneSize({ "Down", 1 }),
   },
   {
