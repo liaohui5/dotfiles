@@ -111,6 +111,18 @@ end, {
     desc = "toggle auto completion status",
 })
 
+-- toggle show invisible characters
+map("n", "<leader>tl", function()
+    local opt = vim.opt
+    if opt.list:get() then
+        opt.list = false
+    else
+        opt.list = true
+    end
+end, {
+    desc = "toggle show invisible characters",
+})
+
 -- open file in visual studio code
 if vim.fn.executable("code") then
     local function open_in_vscode(is_current_buffer)
