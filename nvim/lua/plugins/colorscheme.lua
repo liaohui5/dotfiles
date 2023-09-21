@@ -6,7 +6,6 @@
 -----------------------------------------------------
 return {
     {
-        -- 让 LazyVim 加载 base16
         "LazyVim/LazyVim",
         opts = {
             colorscheme = "tokyonight",
@@ -16,29 +15,21 @@ return {
         "folke/tokyonight.nvim",
         enabled = true,
         lazy = true,
-        opts = function()
-            local opts = {
-                style = "night",
-            }
-            -- 隐藏窗口分割线
-            local colors = {
-                night = {
-                    bg = "#1a1b26",
-                    fg = "#1a1b26",
-                },
-                moon = {
-                    fg = "#222436",
-                    bg = "#222436",
-                },
-                storm = {
-                    fg = "#24283b",
-                    bg = "#24283b",
-                },
-            }
+        opts = function(_, opts)
+            return vim.tbl_deep_extend("force", opts, {
+                style = "night", -- allow values: night, storm, moon
+                on_highlights = function(hl, c)
+                    -- 隐藏 neo-tree 窗口分割线
+                    hl.NeoTreeWinSeparator = {
+                        bg = c.bg,
+                        fg = c.bg,
+                    }
 
-            vim.api.nvim_set_hl(0, "NeoTreeWinSeparator", colors[opts.style])
-
-            return opts
+                    -- 移除关键字斜体效果
+                    hl.Keyword.style.italic = false
+                    hl["@keyword"].style.italic = false
+                end,
+            })
         end,
     },
     -- {
