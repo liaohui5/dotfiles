@@ -19,6 +19,10 @@ return {
             return vim.tbl_deep_extend("force", opts, {
                 style = "night", -- allow values: night, storm, moon
                 on_highlights = function(hl, c)
+                    -- 修改 telescope 的背景颜色
+                    hl.TelescopeNormal.bg = c.bg
+                    hl.TelescopeBorder.bg = c.bg
+
                     -- 隐藏 neo-tree 窗口分割线
                     hl.NeoTreeWinSeparator = {
                         bg = c.bg,
