@@ -28,6 +28,9 @@ return {
                     -- 移除关键字斜体效果
                     hl.Keyword.style.italic = false
                     hl["@keyword"].style.italic = false
+
+                    -- 移除注释斜体效果
+                    hl.Comment.style.italic = false
                 end,
             })
         end,

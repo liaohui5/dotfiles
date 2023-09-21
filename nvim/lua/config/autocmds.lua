@@ -13,7 +13,6 @@
 local autocmd = vim.api.nvim_create_autocmd
 local autogrp = vim.api.nvim_create_augroup
 local auto_set_filetypes = require("utils.filetype")
-local override_highlights = require("utils.highlight")
 
 local function augroup(name)
     return autogrp("user_augroup_" .. name, {
@@ -57,7 +56,6 @@ autocmd("BufEnter", {
     group = augroup("overrides"),
     callback = function()
         auto_set_filetypes()
-        override_highlights()
     end,
 })
 
