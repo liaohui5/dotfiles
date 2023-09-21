@@ -17,12 +17,7 @@ return {
             "<leader>fm",
             desc = "Open mini.files",
             remap = true,
-        },
-        {
-            "<leader><c-f>",
-            "<leader>fM",
-            desc = "Open mini.files",
-            remap = true,
+            noremap = true,
         },
     },
 }

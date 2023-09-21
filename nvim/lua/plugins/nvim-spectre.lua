@@ -51,6 +51,11 @@ return {
         }
     },
     keys = {
-        { "<leader>rr", function() require("spectre").open() end, desc = "Replace in files (Spectre)" },
+        {
+          "<leader>rr",
+          "<leader>sr",
+          desc = "Replace in files (Spectre)",
+          remap = true,
+        },
     }
 }

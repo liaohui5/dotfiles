@@ -16,6 +16,22 @@ return {
             noremap = true,
             silent = true,
         })
+        table.insert(keys, {
+            "<leader>rn",
+            "<leader>cr",
+            desc = "Rename Symbol",
+            mode = { "n", "v" },
+            remap = true,
+            silent = true,
+        })
+        table.insert(keys, {
+            "gh",
+            "gK",
+            desc = "lsp hover",
+            mode = { "n", "v" },
+            remap = true,
+            silent = true,
+        })
     end,
     opts = {
         servers = {
