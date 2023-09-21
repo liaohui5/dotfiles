@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # reload .zshrc
 alias reload='source ~/.zshrc'
