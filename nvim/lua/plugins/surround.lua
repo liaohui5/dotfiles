@@ -9,6 +9,24 @@ return {
         version = "*",
         event = "VeryLazy",
         enabled = true,
+        opts = function(_, opts)
+            return vim.tbl_deep_extend("force", opts, {
+                -- disabled default keybindings
+                keymaps = {
+                    insert = false,
+                    insert_line = false,
+                    normal = false,
+                    normal_cur = false,
+                    normal_line = false,
+                    normal_cur_line = false,
+                    visual = false,
+                    visual_line = false,
+                    delete = false,
+                    change = false,
+                    change_line = false,
+                },
+            })
+        end,
         keys = {
             -- mode: actions that plugins can perform
             -- i: <Plug>(nvim-surround-insert)
