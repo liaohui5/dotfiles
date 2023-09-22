@@ -1,8 +1,10 @@
+#!/usr/local/bin/bash
+
 # command alias
-source ~/.shell-scripts/alias.sh
+source "${HOME}/.shell-scripts/alias.sh"
 
 # tools
-source ~/.shell-scripts/tools.sh
+source "${HOME}/.shell-scripts/tools.sh"
 
 # vmware fusion commands
-source ~/.shell-scripts/vmware.sh
+source "${HOME}/.shell-scripts/vmware.sh"

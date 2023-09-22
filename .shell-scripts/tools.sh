@@ -1,24 +1,20 @@
-#!/bin/zsh
+#!/usr/local/bin/bash
 
 # generate config file by templates
 function tpl() {
-  typeset -A templates
-  templates=(
-    # sub-command template-filename
-    "prettier" "prettier.config.mjs"
-    "gitignore" ".gitignore"
-    "editorconfig" ".editorconfig"
-    "vite" "vite.config.ts"
-    "vite-env" "vite-env.ts"
-    "tsconfig" "tsconfig.json"
-    "tsconfig-node" "tsconfig.node.json"
-  )
+  declare -A templates
+  templates[prettier]="prettier.config.mjs"
+  templates[gitignore]=".gitignore"
+  templates[editorconfig]=".editorconfig"
+  templates[vite]="vite.config.ts"
+  templates["vite-env"]="vite-env.ts"
+  templates[tsconfig]="tsconfig.json"
+  templates["tsconfig-node"]="tsconfig.node.json"
   local key="$1"
-  local val="${templates[$key]}"
-
-  if [[ -n $val ]]; then
-    loacl cmd="cp $HOME/.shell-scripts/templates/${filename} ./${filename}"
-    eval $cmd
+  local filename="${templates[$key]}"
+  if [[ -n "${filename}" ]]; then
+    cp "$HOME/.shell-scripts/templates/${filename}" "./${filename}"
+    echo "config file '${filename}' generated"
   else
     echo "not support paramter '$key'"
   fi
@@ -27,5 +23,5 @@ function tpl() {
 # query port status
 function lsport() {
   local port="$1"
-  lsof -n -i:${port}
+  lsof -n -i:"${port}"
 }

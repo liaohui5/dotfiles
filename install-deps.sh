@@ -18,6 +18,7 @@ brew install git-delta
 brew install lazygit
 brew install tree-sitter
 brew install neovim
+brew install shellcheck
 brew tap daipeihust/tap && brew install im-select
 # brew install vifm
 # brew install joshuto

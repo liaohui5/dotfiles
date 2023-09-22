@@ -159,15 +159,6 @@ if [[ -f ~/.fzf.zsh ]]; then
 fi
 
 ################################################################
-# nvim
-# docs: https://github.com/nvm-sh/nvm
-# nvm-windows: https://github.com/coreybutler/nvm-windows
-################################################################
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-
-################################################################
 # adb
 # https://developer.android.com/studio/command-line/adb.html
 ################################################################
@@ -207,3 +198,19 @@ export PATH=/Users/liaohui5/.cargo/bin:$PATH
 # https://bun.sh/
 ################################################################
 [ -s "/Users/liaohui5/.bun/_bun" ] && source "/Users/liaohui5/.bun/_bun"
+
+################################################################
+# fnm
+# https://github.com/Schniz/fnm#shell-setup
+################################################################
+export PATH="/Users/liaohui5/Library/Caches/fnm_multishells/99384_1695378755640/bin":$PATH
+export FNM_NODE_DIST_MIRROR="https://nodejs.org/dist"
+export FNM_VERSION_FILE_STRATEGY="local"
+export FNM_RESOLVE_ENGINES="false"
+export FNM_DIR="/Users/liaohui5/Library/Application Support/fnm"
+export FNM_LOGLEVEL="info"
+export FNM_COREPACK_ENABLED="false"
+export FNM_ARCH="x64"
+export FNM_MULTISHELL_PATH="/Users/liaohui5/Library/Caches/fnm_multishells/99384_1695378755640"
+rehash
+

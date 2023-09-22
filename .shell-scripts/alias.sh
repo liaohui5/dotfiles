@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/local/bin/bash
 
 # reload .zshrc
 alias reload='source ~/.zshrc'
@@ -7,7 +7,7 @@ alias reload='source ~/.zshrc'
 alias ..='cd ..'
 
 # soft delete
-alias rm='trash'
+# alias rm='trash'
 
 # clear
 alias c='clear'
