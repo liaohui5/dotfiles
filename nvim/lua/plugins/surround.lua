@@ -9,21 +9,6 @@ return {
         version = "*",
         event = "VeryLazy",
         enabled = true,
-        opts = {
-            keymaps = { -- disabled default keymaps
-                insert = nil,
-                insert_line = nil,
-                normal = nil,
-                normal_cur = nil,
-                normal_line = nil,
-                normal_cur_line = nil,
-                visual = nil,
-                visual_line = nil,
-                delete = nil,
-                change = nil,
-                change_line = nil,
-            },
-        },
         keys = {
             -- mode: actions that plugins can perform
             -- i: <Plug>(nvim-surround-insert)
