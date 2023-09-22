@@ -11,31 +11,30 @@
 --  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'
 -- stylua: ignore start
 -- auto set filetype with this map
-local filetype_mappings = {
-    extension = {
-        sh      = "bash",
-        env     = "bash",
-        profile = "bash",
-        json    = "jsonc",
-    },
-    filename = {
-        bashrc         = "bash",
-        yabairc        = "bash",
-        skhdrc         = "bash",
-        spacebarrc     = "bash",
-        [".env"]       = "bash",
-        [".bashrc"]    = "bash",
-        [".zprofile"]  = "bash",
-        ["vifmrc"]     = "vim",
-        [".gitignore"] = "bash",
-    },
-}
-
 return function()
-    -- 获取当前文件的文件名/后缀名, 如果有值,证明需要重新设置 filetype
+    local filetype_maps = {
+        extension = {
+            sh      = "sh",
+            env     = "sh",
+            profile = "sh",
+            json    = "jsonc",
+        },
+        filename = {
+            bashrc         = "sh",
+            yabairc        = "sh",
+            skhdrc         = "sh",
+            spacebarrc     = "sh",
+            [".env"]       = "sh",
+            [".bashrc"]    = "sh",
+            [".zprofile"]  = "sh",
+            [".gitignore"] = "sh",
+            ["vifmrc"]     = "vim",
+        },
+    }
+    -- get current buffer filename and extension, if it's in filetype_maps, then reset filetype
     local filename  = vim.fn.expand("%:t")
     local extension = vim.fn.expand("%:e")
-    local filetype  = filetype_mappings.filename[filename] or filetype_mappings.extension[extension]
+    local filetype  = filetype_maps.filename[filename] or filetype_maps.extension[extension]
     if filetype then
         vim.cmd("setlocal filetype=" .. filetype)
     end

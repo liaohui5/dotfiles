@@ -29,3 +29,14 @@ vim.g.load_unpopular_plugins = true
 
 -- 默认是否开启自动完成(可以通过快捷键开启)
 vim.g.enable_auto_completation = true
+
+-- 禁用 provider, 注释表示开启, 查看状态 :checkheath provider
+local disabled_providers = {
+    -- "node",
+    "python3",
+    "perl",
+    "ruby",
+}
+for _, provider in ipairs(disabled_providers) do
+    vim.g["loaded_" .. provider .. "_provider"] = 0
+end
