@@ -59,6 +59,13 @@ return {
                     },
                 },
             },
+
+            bashls = {
+                filetypes = {
+                    "sh",
+                    "bash",
+                },
+            },
         },
     },
 }
