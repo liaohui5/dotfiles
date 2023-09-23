@@ -48,7 +48,7 @@ return {
                     end
                 end, { "i", "s" }),
                 super_tab = cmp.mapping(function(fallback)
-                    -- 展开代码片段/tab
+                    -- 选择下一个
                     if cmp.visible() then
                         cmp.select_next_item()
                     else
@@ -161,14 +161,14 @@ return {
                     end,
                 },
                 mapping = cmp.mapping.preset.insert({
-                    ["<c-o>"] = actions.open,
-                    ["<c-k>"] = actions.select_prev,
-                    ["<c-j>"] = actions.select_next,
-                    ["<c-e>"] = actions.close,
-                    ["<cr>"] = actions.enter,
-                    ["<c-h>"] = actions.jump_prev,
-                    ["<c-l>"] = actions.jump_next,
-                    ["<tab>"] = actions.super_tab,
+                    ["<C-o>"] = actions.open,
+                    ["<C-k>"] = actions.select_prev,
+                    ["<C-j>"] = actions.select_next,
+                    ["<C-e>"] = actions.close,
+                    ["<CR>"] = actions.enter,
+                    ["<C-h>"] = actions.jump_prev,
+                    ["<C-l>"] = actions.jump_next,
+                    ["<Tab>"] = actions.super_tab,
                 }),
             })
         end,
