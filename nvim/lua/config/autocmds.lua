@@ -60,7 +60,7 @@ autocmd("BufEnter", {
 })
 
 -- Check if we need to reload the file when it changed
-autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
+autocmd({ "FocusGained", "FocusLost", "TermClose", "TermLeave" }, {
     group = augroup("checktime"),
     command = "checktime",
 })
