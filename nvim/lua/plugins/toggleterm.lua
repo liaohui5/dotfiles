@@ -93,6 +93,12 @@ return {
                 desc = "toggle joshuto file manager",
             },
             {
+              "<C-n>",
+              "<leader>oj",
+              remap = true,
+              noremap = true,
+            },
+            {
                 "<leader>oJ",
                 actions.toggle_joshuto_current,
                 desc = "toggle joshuto file manager",
