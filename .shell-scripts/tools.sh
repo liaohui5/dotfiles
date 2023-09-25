@@ -7,17 +7,23 @@ function tpl() {
   templates[gitignore]=".gitignore"
   templates[editorconfig]=".editorconfig"
   templates[vite]="vite.config.ts"
-  templates["vite-env"]="vite-env.ts"
-  templates[tsconfig]="tsconfig.json"
-  templates["tsconfig-node"]="tsconfig.node.json"
+  templates[viteenv]="vite-env.ts"
+  templates[tsc]="tsconfig.json"
+  templates[tscnode]="tsconfig.node.json"
   local key="$1"
   local filename="${templates[$key]}"
-  if [[ -n "${filename}" ]]; then
-    cp "$HOME/.shell-scripts/templates/${filename}" "./${filename}"
-    echo "config file '${filename}' generated"
-  else
+  if [[ -z "${filename}" ]]; then
     echo "not support paramter '$key'"
   fi
+
+  filepath="$HOME/.shell-scripts/templates/${filename}"
+  if [[ -r "${filepath}" ]]; then
+    cp "${filepath}" "./${filename}"
+    echo "config file '${filename}' generated"
+  else
+    echo "not found config file '${filename}'"
+  fi
+
 }
 
 # query port status
