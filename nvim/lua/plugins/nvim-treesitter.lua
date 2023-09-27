@@ -5,7 +5,6 @@
 return {
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
-        "JoosepAlviste/nvim-ts-context-commentstring",
         "windwp/nvim-ts-autotag",
     },
     opts = function(_, opts)
@@ -52,11 +51,6 @@ return {
             indent = {
                 -- 允许 treesitter 来识别缩进
                 enable = false,
-            },
-            context_commentstring = {
-                -- 识别语法注释: https://github.com/JoosepAlviste/nvim-ts-context-commentstring
-                enable = true,
-                enable_autocmd = false,
             },
             autotag = {
                 -- xml标签自动闭合: https://github.com/windwp/nvim-ts-autotag

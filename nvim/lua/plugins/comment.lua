@@ -7,7 +7,7 @@
 -----------------------------------------------------------------------
 return {
     {
-        -- 自动生成注释
+        -- auto generate comment
         "danymat/neogen",
         dependencies = "nvim-treesitter/nvim-treesitter",
         event = "VeryLazy",
@@ -33,27 +33,17 @@ return {
         },
     },
     {
-        -- 手动注释插件
+        -- comment
         "numToStr/Comment.nvim",
         event = "BufEnter",
-        dependencies = {
-            "JoosepAlviste/nvim-ts-context-commentstring",
-            dependencies = "nvim-treesitter/nvim-treesitter",
-            event = { "BufReadPost", "BufNewFile" },
-        },
         opts = function(_, opts)
-            local tscc = require("ts_context_commentstring.integrations.comment_nvim")
-            local pre_hook = tscc.create_pre_hook()
             return vim.tbl_extend("force", opts, {
                 padding = true,
                 sticky = true,
-                ignore = nil,
-                mappings = { -- 禁止默认的快捷键
+                mappings = { -- 禁止使用默认的快捷键
                     basic = false,
                     extra = false,
                 },
-                pre_hook = pre_hook,
-                post_hook = nil,
             })
         end,
         keys = {
@@ -72,7 +62,7 @@ return {
         },
     },
     {
-        -- 块级注释
+        -- comment box
         "LudoPinelli/comment-box.nvim",
         event = "VeryLazy",
         opts = {
@@ -123,15 +113,13 @@ return {
             },
         },
     },
-
     {
-        -- 注释高亮: https://github1s.com/LazyVim/LazyVim/blob/HEAD/lua/lazyvim/plugins/editor.lua
+        -- highlight some comments: https://github1s.com/LazyVim/LazyVim/blob/HEAD/lua/lazyvim/plugins/editor.lua
         "folke/todo-comments.nvim",
         enable = true,
     },
-
-    -- which key integration to comment-box
     {
+        -- which key integration to comment-box
         "folke/which-key.nvim",
         opts = {
             mode = "v",
