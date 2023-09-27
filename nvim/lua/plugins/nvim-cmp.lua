@@ -2,6 +2,9 @@
 -- 代码提示/自动完成/snippets
 -- github: https://github.com/hrsh7th/nvim-cmp
 -- github: https://github.com/L3MON4D3/LuaSnip
+-- AI 代码提示助手
+-- https://github.com/Exafunction/codeium.nvim
+-- https://codeium.com/
 -----------------------------------------------------------------------
 return {
     {
@@ -14,6 +17,21 @@ return {
         config = function()
             require("luasnip.loaders.from_vscode").lazy_load({
                 paths = vim.g.snippets_save_dir,
+            })
+        end,
+    },
+    {
+        -- ai code helper
+        "Exafunction/codeium.nvim",
+        event = "VeryLazy",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "hrsh7th/nvim-cmp",
+        },
+        config = function()
+            local config_path = vim.fn.stdpath("config") .. "/.codeium-api-key"
+            require("codeium").setup({
+                config_path = config_path,
             })
         end,
     },
@@ -122,6 +140,7 @@ return {
                 end,
                 sources = cmp.config.sources({
                     -- sources: https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
+                    { name = "codeium" },
                     { name = "luasnip" },
                     { name = "nvim_lsp" },
                     { name = "buffer" },
@@ -150,10 +169,15 @@ return {
                     format = function(entry, item)
                         local strfmt      = string.format
                         local lspkind     = require("lazyvim.config").icons.kinds
-                        local source_name = entry.source.name
+                        local source_name = string.lower(entry.source.name)
                         local menu        = strfmt("[%s]", source_name)
-                        if string.lower(source_name) == "nvim_lsp" then
+
+                        if source_name == "nvim_lsp" then
+                          -- lsp
                             menu = strfmt("[lsp %s]", item.kind)
+                        elseif source_name == "codeium" then
+                          -- codeium
+                          item.kind = "Event"
                         end
                         item.menu = menu
                         item.kind = lspkind[item.kind] or item.kind
