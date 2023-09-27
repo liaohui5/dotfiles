@@ -1,11 +1,13 @@
 --------------------------------------------------------------
 -- 更好的语法支持
--- docs: https://github.com/nvim-treesitter/nvim-treesitter
+-- https://github.com/nvim-treesitter/nvim-treesitter
 --------------------------------------------------------------
 return {
     "nvim-treesitter/nvim-treesitter",
+    -- stylua: ignore
     dependencies = {
-        "windwp/nvim-ts-autotag",
+        "windwp/nvim-ts-autotag",          -- 自动闭合 xml 标签
+        "HiPhish/rainbow-delimiters.nvim", -- 自动不同颜色高亮不同层级的括号
     },
     opts = function(_, opts)
         return vim.tbl_deep_extend("force", opts, {
