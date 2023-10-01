@@ -2,7 +2,7 @@
 -- 格式化代码插件安装
 -- mason.nvim      : https://github.com/williamboman/mason.nvim
 -- mason-registry  : https://mason-registry.dev/registry/list
--- null-ls-builtin : https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
+-- none-ls builtin : https://github.com/nvimtools/none-ls.nvim
 -----------------------------------------------------------------------
 return {
     {
@@ -18,14 +18,14 @@ return {
         end,
     },
     {
-        "jose-elias-alvarez/null-ls.nvim",
+        "nvimtools/none-ls.nvim",
         opts = function(_, opts)
             local formatting = require("null-ls").builtins.formatting
             return vim.tbl_deep_extend("force", opts, {
                 sources = {
                     formatting.stylua,
                     formatting.shfmt,
-                    formatting.prettierd
+                    formatting.prettierd,
                 },
             })
         end,
