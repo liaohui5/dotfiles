@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 git submodule update --init --recursive
-brew tap homebrew/cask-fonts && brew install --cask font-jetbrains-mono-nerd-font
+brew install --cask homebrew/cask-fonts/font-jetbrains-mono-nerd-font
 brew install lua
 brew install luarocks
 brew install git
@@ -19,7 +19,7 @@ brew install lazygit
 brew install tree-sitter
 brew install neovim
 brew install shellcheck
-brew tap daipeihust/tap && brew install im-select
+brew install daipeihust/tap/im-select
 # brew install vifm
 # brew install joshuto
 # brew install koekeishiya/formulae/skhd

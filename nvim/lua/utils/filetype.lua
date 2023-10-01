@@ -24,6 +24,7 @@ return function()
             yabairc        = "sh",
             skhdrc         = "sh",
             spacebarrc     = "sh",
+            sketchybarrc   = "sh",
             [".env"]       = "sh",
             [".bashrc"]    = "sh",
             [".zprofile"]  = "sh",

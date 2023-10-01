@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
+
 YabaiStopServices() {
-  brew services stop skhd
-  brew services stop spacebar
-  # brew services stop yabai
+  brew services restart sketchybar
   yabai --stop-service
+  skhd --stop-service
   echo "services stop success"
 }
 
 YabaiStopServices
-

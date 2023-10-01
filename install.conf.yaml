@@ -37,7 +37,8 @@
     ~/.config/goneovim: goneovim
     ~/.gitconfig: .gitconfig
     ~/.config/yabai: yabai_conf/yabai
-    ~/.config/spacebar: yabai_conf/spacebar
+    # ~/.config/spacebar: yabai_conf/spacebar
+    ~/.config/sketchybar: yabai_conf/sketchybar
     ~/.config/skhd: yabai_conf/skhd
     ~/.zprofile: zsh/.zprofile
     ~/.zshrc: zsh/.zshrc
