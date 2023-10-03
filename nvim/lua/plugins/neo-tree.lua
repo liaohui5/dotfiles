@@ -1,6 +1,6 @@
 -----------------------------------------------------------------------
 -- 侧边栏目录树
--- docs: https://github.com/lewis6991/gitsigns.nvim
+-- docs: https://github.com/nvim-neo-tree/neo-tree.nvim
 -----------------------------------------------------------------------
 return {
     "nvim-neo-tree/neo-tree.nvim",
