@@ -1,6 +1,10 @@
-numbered_command = false
+####################################################################
+# joshuto: https://github.com/kamiyaa/joshuto
+# configs: https://github.com/kamiyaa/joshuto/tree/main/config
+####################################################################
+numbered_command = true
 
-use_trash = false
+use_trash = true
 watch_files = true
 xdg_open = false
 xdg_open_fork = false
@@ -13,7 +17,7 @@ automatically_count_files = false
 collapse_preview = true
 
 # ratios for parent view (optional), current view and preview
-column_ratio = [0, 5, 5]
+column_ratio = [2, 4, 6]
 scroll_offset = 6
 show_borders = true
 show_hidden = true
@@ -25,15 +29,16 @@ line_number_style = "none"
 
 [display.sort]
 # lexical, mtime, natural
-method = "lexical"
+method = "natural"
 case_sensitive = true
 directories_first = true
 reverse = false
 
 [preview]
-max_preview_size = 2097152                           # 2MB
+# 2MB
+max_preview_size = 2097152
 preview_script = "~/.config/joshuto/preview_file.sh"
 
 [tab]
 # inherit, home, root
-home_page = "home"
+home_page = "inherit"

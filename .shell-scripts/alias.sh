@@ -27,7 +27,8 @@ alias tmxd='tmux detach'
 # auto start zellij on bash loaded
 # eval "$(zellij setup --generate-auto-start bash)"
 
-# vifm: https://github.com/vifm/vifm
+# joshuto: https://github.com/kamiyaa/joshuto
+alias fm='joshuto'
 alias fx='joshuto'
 
 # gitmoji-cli: https://github.com/carloscuesta/gitmoji-cli

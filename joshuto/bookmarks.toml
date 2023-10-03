@@ -1,9 +1,0 @@
-bookmark = [
-  { key = "r", path = "/" },
-  { key = "e", path = "/etc" },
-  { key = "h", path = "~/" },
-  { key = "c", path = "~/.config" },
-  { key = "l", path = "~/.local" },
-  { key = "d", path = "~/Downloads" },
-  { key = "D", path = "~/Desktop" },
-]
