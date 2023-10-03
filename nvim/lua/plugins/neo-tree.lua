@@ -93,7 +93,9 @@ return {
                 event = "file_added",
                 handler = function(filepath)
                     -- 创建文件后立即编辑
-                    vim.cmd("silent edit " .. filepath)
+                    if vim.fn.filereadable(filepath) == 1 then
+                        vim.cmd("silent edit " .. filepath)
+                    end
                 end,
             },
             {
