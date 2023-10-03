@@ -15,6 +15,24 @@ return {
         }
     end,
     opts = function(_, opts)
+        -- custom commands
+        local commands = {
+            copy_filename = {
+                nowait = true,
+                command = function(state)
+                    local node = state.tree:get_node()
+                    vim.fn.setreg("+", node.name)
+                end,
+            },
+            copy_filepath = {
+                nowait = true,
+                command = function(state)
+                    local node = state.tree:get_node()
+                    vim.fn.setreg("+", node:get_id())
+                end,
+            },
+        }
+
         local keys = {
             -- :h neo-tree-mappings
             top_window = {
@@ -48,6 +66,8 @@ return {
                 ["d"] = "cut_to_clipboard",
                 ["p"] = "paste_from_clipboard",
                 ["m"] = "move",
+                ["Y"] = commands.copy_filename,
+                ["<C-y>"] = commands.copy_filepath,
             },
             filesystem_fuzzy_finder = {
                 ["<c-j>"] = "move_cursor_down",
