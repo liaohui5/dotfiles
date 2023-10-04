@@ -60,16 +60,17 @@ return {
                 "<cmd>BufferLineMoveNext<cr>",
                 desc = "move to right",
             },
-            {
-                "<s-h>",
-                "<cmd>BufferLineCyclePrev<cr>",
-                desc = "previous tab",
-            },
-            {
-                "<s-l>",
-                "<cmd>BufferLineCycleNext<cr>",
-                desc = "next tab",
-            },
+            -- binded in keymaps
+            -- {
+            --     "<s-h>",
+            --     "<cmd>BufferLineCyclePrev<cr>",
+            --     desc = "previous tab",
+            -- },
+            -- {
+            --     "<s-l>",
+            --     "<cmd>BufferLineCycleNext<cr>",
+            --     desc = "next tab",
+            -- },
         },
     },
     -- {
@@ -139,6 +140,7 @@ return {
     --             "<cmd>BufferMoveNext<cr>",
     --             desc = "move to right",
     --         },
+    -- binded in keymaps
     --         {
     --             "<s-h>",
     --             "<cmd>BufferPrevious<cr>",

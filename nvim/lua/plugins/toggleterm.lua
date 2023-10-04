@@ -111,7 +111,7 @@ return {
             {
                 "<leader><c-x>",
                 "<cmd>ToggleTermToggleAll<cr>",
-                desc = "toggle all terminals",
+                desc = "Toggle all terminals",
             },
         }
     end,

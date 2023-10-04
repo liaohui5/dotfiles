@@ -81,4 +81,60 @@ function M.get_os_name()
     return os_name
 end
 
+-- toggle auto completation enabled status
+function M.toggle_completation_status()
+    if vim.g.enable_auto_completation then
+        vim.g.enable_auto_completation = false
+        print("auto completion disabled")
+    else
+        vim.g.enable_auto_completation = true
+        print("auto completion enabled")
+    end
+end
+
+-- toggle space characters invisible
+M.toggle_invisible_characters = function()
+    local opt = vim.opt
+    if opt.list:get() then
+        opt.list = false
+    else
+        opt.list = true
+    end
+end
+
+-- open in vscode
+local open_in_vscode = function(is_current_buffer)
+    if not vim.fn.executable("code") then
+        return function()
+            print("[helpers]please install vscode first")
+        end
+    end
+
+    return function()
+        local path = nil
+        if is_current_buffer then
+            path = vim.fn.expand("%:p")
+        else
+            path = vim.fn.getcwd()
+        end
+        vim.cmd("silent !code " .. path)
+    end
+end
+
+M.buf_open_in_vscode = open_in_vscode(true)
+M.cwd_open_in_vscode = open_in_vscode(false)
+
+-- open in google chrome
+M.open_in_chrome = function()
+    local os_name = M.get_os_name()
+    if os_name ~= "MacOS" then
+        print("[helpers]open_in_chrome function only support MacOS")
+        return
+    end
+
+    local current_file = vim.fn.expand("%:p")
+    local cmd = string.format("silent !open -b com.google.Chrome file:///%s", current_file)
+    vim.cmd(cmd)
+end
+
 return M
