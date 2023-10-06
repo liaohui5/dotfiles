@@ -9,6 +9,9 @@ alias ..='cd ..'
 # soft delete
 # alias rm='trash'
 
+# vi
+alias vi='nvim'
+
 # clear
 alias c='clear'
 

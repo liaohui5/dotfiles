@@ -40,39 +40,39 @@ return {
             -- n: <Plug>(nvim-surround-normal-line)
             -- n: <Plug>(nvim-surround-normal-cur-line)
             {
-                "gzz",
+                "gss",
                 "<Plug>(nvim-surround-visual)",
                 desc = "add surround character",
                 mode = "v",
             },
             {
-                "gzl",
+                "gsl",
                 "<Plug>(nvim-surround-visual-line)",
                 desc = "add surround character",
                 mode = "v",
             },
             {
-                "gzz",
+                "gss",
                 "<Plug>(nvim-surround-normal)",
                 desc = "add surround character with range",
             },
             {
-                "gzl",
+                "gsl",
                 "<Plug>(nvim-surround-normal-cur-line)",
                 desc = "add current line surround character",
             },
             {
-                "gzL",
+                "gsL",
                 "<Plug>(nvim-surround-normal-line)",
                 desc = "add lines surround character with range",
             },
             {
-                "gzd",
+                "gsd",
                 "<Plug>(nvim-surround-delete)",
                 desc = "remove surround character",
             },
             {
-                "gzu",
+                "gsu",
                 "<Plug>(nvim-surround-change)",
                 desc = "update surround character",
             },
