@@ -4,7 +4,6 @@
 -- github: https://github.com/L3MON4D3/LuaSnip
 -- AI 代码提示助手
 -- https://github.com/Exafunction/codeium.nvim
--- https://codeium.com/
 -----------------------------------------------------------------------
 return {
     {
@@ -29,10 +28,12 @@ return {
             "hrsh7th/nvim-cmp",
         },
         config = function()
-            local config_path = vim.fn.stdpath("config") .. "/.codeium-api-key"
-            require("codeium").setup({
-                config_path = config_path,
-            })
+            if vim.g.enable_codeium then
+                local config_path = vim.fn.stdpath("config") .. "/.codeium-api-key"
+                require("codeium").setup({
+                    config_path = config_path,
+                })
+            end
         end,
     },
     {
@@ -52,58 +53,94 @@ return {
         opts = function(_, opts)
             local cmp = require("cmp")
             local luasnip = require("luasnip")
-            local actions = {
-                jump_prev = cmp.mapping(function()
-                    -- 跳到代码片段上一个位置
-                    if luasnip.locally_jumpable(-1) then
-                        luasnip.jump(-1)
+            -----------------------------------
+            -- keybindings
+            -----------------------------------
+            local keybindings = {
+                -- 打开代码提示框
+                ["<C-o>"] = cmp.mapping(function()
+                    cmp.complete()
+                end, { "i", "c" }),
+
+                -- 选中上一个
+                ["<C-k>"] = cmp.mapping(function()
+                    if cmp.visible() then
+                        cmp.select_prev_item()
                     end
-                end, { "i", "s" }),
-                jump_next = cmp.mapping(function()
-                    -- 跳到代码片段下一个位置
-                    if luasnip.locally_jumpable(1) then
-                        luasnip.jump(1)
-                    end
-                end, { "i", "s" }),
-                super_tab = cmp.mapping(function(fallback)
-                    -- 选择下一个
+                end, { "i", "c" }),
+
+                -- 选中下一个
+                ["<C-j>"] = cmp.mapping(function()
                     if cmp.visible() then
                         cmp.select_next_item()
-                    else
-                        fallback("<tab>", "")
                     end
-                end),
-                enter = cmp.mapping(function(fallback)
-                    -- 确定选中
+                end, { "i", "c" }),
+
+                -- 关闭代码提示框
+                ["<C-e>"] = cmp.mapping({
+                    i = cmp.abort(),
+                    c = cmp.close(),
+                }),
+
+                -- 确定选中
+                ["<CR>"] = cmp.mapping(function(fallback)
                     if cmp.visible() then
                         cmp.confirm({ select = true })
                     else
                         fallback("<cr>", "")
                     end
                 end),
-                open = cmp.mapping(function()
-                    -- 打开代码提示框
-                    cmp.complete()
-                end, { "i", "c" }),
-                close = cmp.mapping({
-                    -- 关闭代码提示框
-                    i = cmp.abort(),
-                    c = cmp.close(),
-                }),
-                select_prev = cmp.mapping(function()
-                    -- 选中上一个
-                    if cmp.visible() then
-                        cmp.select_prev_item()
+
+                -- 跳到代码片段上一个位置
+                ["<C-h>"] = cmp.mapping(function()
+                    if luasnip.locally_jumpable(-1) then
+                        luasnip.jump(-1)
                     end
-                end, { "i", "c" }),
-                select_next = cmp.mapping(function()
-                    -- 选中下一个
+                end, { "i", "s" }),
+
+                -- 跳到代码片段下一个位置
+                ["<C-l>"] = cmp.mapping(function()
+                    if luasnip.locally_jumpable(1) then
+                        luasnip.jump(1)
+                    end
+                end, { "i", "s" }),
+
+                -- 选择下一个
+                ["<Tab>"] = cmp.mapping(function(fallback)
                     if cmp.visible() then
                         cmp.select_next_item()
+                    else
+                        fallback("<tab>", "")
                     end
-                end, { "i", "c" }),
+                end),
             }
+
             return vim.tbl_deep_extend("force", opts, {
+                mapping = cmp.mapping.preset.insert(keybindings),
+                sources = cmp.config.sources({
+                    -- sources: https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
+                    { name = "codeium" },
+                    { name = "luasnip" },
+                    { name = "nvim_lsp" },
+                    { name = "buffer" },
+                    { name = "nvim_lua" },
+                    { name = "path" },
+                    { name = "nvim_lsp_signature_help" },
+                    { name = "nvim_lsp_document_symbol" },
+                }),
+                window = {
+                    -- use bordered window style
+                    -- completion = cmp.config.window.bordered({ scrollbar = false }),
+                    -- documentation = cmp.config.window.bordered({ scrollbar = false }),
+                    completion = {
+                        border = { "", "", "", "", "", "", "", "" },
+                        scrollbar = false,
+                    },
+                    documentation = {
+                        border = { "", "", "", " ", "", "", "", " " },
+                        scrollbar = false,
+                    },
+                },
                 enabled = function()
                     -- 设置必须是开启状态
                     if not vim.g.enable_auto_completation then
@@ -130,38 +167,11 @@ return {
                     end
 
                     -- 不能在录制模式 & 回放录制模式显示提示
-                    if vim.fn.reg_recording() ~= "" then
-                        return false
-                    end
-                    if vim.fn.reg_executing() ~= "" then
+                    if vim.fn.reg_recording() ~= "" or vim.fn.reg_executing() ~= "" then
                         return false
                     end
                     return true
                 end,
-                sources = cmp.config.sources({
-                    -- sources: https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
-                    { name = "codeium" },
-                    { name = "luasnip" },
-                    { name = "nvim_lsp" },
-                    { name = "buffer" },
-                    { name = "nvim_lua" },
-                    { name = "path" },
-                    { name = "nvim_lsp_signature_help" },
-                    { name = "nvim_lsp_document_symbol" },
-                }),
-                window = {
-                    -- use bordered window style
-                    -- completion = cmp.config.window.bordered({ scrollbar = false }),
-                    -- documentation = cmp.config.window.bordered({ scrollbar = false }),
-                    completion = {
-                        border = { "", "", "", "", "", "", "", "" },
-                        scrollbar = false,
-                    },
-                    documentation = {
-                        border = { "", "", "", " ", "", "", "", " " },
-                        scrollbar = false,
-                    },
-                },
                 formatting = {
                     fields = { "kind", "abbr", "menu" },
 
@@ -184,16 +194,6 @@ return {
                         return item
                     end,
                 },
-                mapping = cmp.mapping.preset.insert({
-                    ["<C-o>"] = actions.open,
-                    ["<C-k>"] = actions.select_prev,
-                    ["<C-j>"] = actions.select_next,
-                    ["<C-e>"] = actions.close,
-                    ["<CR>"] = actions.enter,
-                    ["<C-h>"] = actions.jump_prev,
-                    ["<C-l>"] = actions.jump_next,
-                    ["<Tab>"] = actions.super_tab,
-                }),
             })
         end,
     },

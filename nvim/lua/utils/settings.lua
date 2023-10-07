@@ -30,6 +30,9 @@ vim.g.load_unpopular_plugins = true
 -- 默认是否开启自动完成(可以通过快捷键开启)
 vim.g.enable_auto_completation = true
 
+-- 是否开启 codeium AI 智能生成代码(没有魔法上网无法使用)
+vim.g.enable_codeium = false
+
 -- 禁用 provider, 注释表示开启, 查看状态 :checkheath provider
 local disabled_providers = {
     -- "node",
