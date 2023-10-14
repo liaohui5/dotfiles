@@ -75,17 +75,12 @@ return {
             {
                 "<leader>og",
                 actions.toggle_lazygit,
-                desc = "toggle lazygit",
+                desc = "toggle lazygit[toggleterm.nvim]",
             },
             {
                 "<leader>oG",
                 actions.toggle_gitui,
                 desc = "toggle gitui",
-            },
-            {
-                "<C-g>",
-                actions.toggle_lazygit,
-                desc = "toggle lazygit",
             },
             {
                 "<leader>oj",
