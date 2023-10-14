@@ -2,17 +2,14 @@
 -- 代码提示/自动完成/snippets
 -- github: https://github.com/hrsh7th/nvim-cmp
 -- github: https://github.com/L3MON4D3/LuaSnip
--- AI 代码提示助手
--- https://github.com/Exafunction/codeium.nvim
 -----------------------------------------------------------------------
 return {
     {
         "L3MON4D3/LuaSnip",
-        keys = {
-            -- cancel luasnip tab mapping, use nvim-cmp tab mapping
-            { "<tab>", false, mode = "i" },
-            { "<tab>", false, mode = "s" },
-        },
+        keys = function()
+            -- delete luasnip tab mapping, use nvim-cmp tab mapping
+            return {}
+        end,
         config = function()
             require("luasnip.loaders.from_vscode").lazy_load({
                 paths = vim.g.snippets_save_dir,
@@ -20,27 +17,8 @@ return {
         end,
     },
     {
-        -- ai code helper
-        "Exafunction/codeium.nvim",
-        event = "VeryLazy",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "hrsh7th/nvim-cmp",
-        },
-        config = function()
-            if vim.g.enable_codeium then
-                local config_path = vim.fn.stdpath("config") .. "/.codeium-api-key"
-                require("codeium").setup({
-                    config_path = config_path,
-                })
-            end
-        end,
-    },
-    {
         "hrsh7th/nvim-cmp",
-        event = "InsertEnter",
         dependencies = {
-            "nvim-tree/nvim-web-devicons",
             "hrsh7th/cmp-nvim-lsp",
             "saadparwaiz1/cmp_luasnip",
             "hrsh7th/cmp-buffer",
@@ -143,7 +121,6 @@ return {
                 mapping = cmp.mapping.preset.insert(keybindings),
                 sources = cmp.config.sources({
                     -- sources: https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
-                    { name = "codeium" },
                     { name = "luasnip" },
                     { name = "nvim_lsp" },
                     { name = "buffer" },
