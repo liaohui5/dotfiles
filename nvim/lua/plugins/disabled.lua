@@ -15,6 +15,8 @@ end
 
 -- stylua: ignore start
 return disable_plugins({
+    "folke/persistence.nvim",              -- 禁止默认的session管理插件
+    "goolord/alpha-nvim",                  -- 启动页插件(老版本 LazyVIM 用的是这个)
     "catppuccin/nvim",                     -- 主题
     "echasnovski/mini.comment",            -- 注释插件(用习惯了其他的,不喜欢这个)
     "echasnovski/mini.indentscope",        -- 缩进显示
