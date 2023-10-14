@@ -7,6 +7,9 @@ return {
     event = "VeryLazy",
     ft = { "markdown" },
     build = function()
+        -- WARN: 解决如下报错: https://github.com/iamcco/markdown-preview.nvim/issues/278
+        -- node:internal/modules/cjs/loader:1080
+        -- Error: Cannot find module 'tslib'
         vim.fn["mkdp#util#install"]()
     end,
     keys = {
