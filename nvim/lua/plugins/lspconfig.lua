@@ -7,16 +7,6 @@ return {
     init = function()
         local keys = require("lazyvim.plugins.lsp.keymaps").get()
         table.insert(keys, {
-            "<leader>ff",
-            function()
-                require("lazyvim.plugins.lsp.format").format({ force = true })
-            end,
-            desc = "Format Dcoument",
-            mode = { "n", "v" },
-            noremap = true,
-            silent = true,
-        })
-        table.insert(keys, {
             "<leader>rn",
             "<leader>cr",
             desc = "Rename Symbol",
