@@ -18,11 +18,16 @@ return {
     },
     {
         "hrsh7th/nvim-cmp",
+        event = "VeryLazy",
         dependencies = {
+            -- defaults:
+            -- "hrsh7th/cmp-nvim-lsp",
+            -- "hrsh7th/cmp-buffer",
+            -- "hrsh7th/cmp-path",
+            -- "saadparwaiz1/cmp_luasnip",
+
+            -- customs:
             "hrsh7th/cmp-nvim-lsp",
-            "saadparwaiz1/cmp_luasnip",
-            "hrsh7th/cmp-buffer",
-            "hrsh7th/cmp-path",
             "hrsh7th/cmp-cmdline",
             "hrsh7th/cmp-nvim-lsp-signature-help",
             "hrsh7th/cmp-nvim-lsp-document-symbol",
@@ -31,9 +36,9 @@ return {
         opts = function(_, opts)
             local cmp = require("cmp")
             local luasnip = require("luasnip")
-            -----------------------------------
+            ----------------------------------------------------------------------
             -- cmdline
-            -----------------------------------
+            ----------------------------------------------------------------------
             ---@diagnostic disable-next-line: missing-fields
             cmp.setup.cmdline(":", {
                 mapping = cmp.mapping.preset.cmdline({
@@ -43,9 +48,18 @@ return {
                 sources = cmp.config.sources({ { name = "path" } }, { { name = "cmdline" } }),
             })
 
-            -----------------------------------
+            ----------------------------------------------------------------------
+            -- sources: https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
+            ----------------------------------------------------------------------
+            opts.sources = cmp.config.sources(vim.list_extend(opts.sources, {
+                { name = "nvim_lua" },
+                { name = "nvim_lsp_signature_help" },
+                { name = "nvim_lsp_document_symbol" },
+            }))
+
+            ----------------------------------------------------------------------
             -- keybindings
-            -----------------------------------
+            ----------------------------------------------------------------------
             local keybindings = {
                 -- 打开代码提示框
                 ["<C-o>"] = cmp.mapping(function()
@@ -119,16 +133,6 @@ return {
 
             return vim.tbl_deep_extend("force", opts, {
                 mapping = cmp.mapping.preset.insert(keybindings),
-                sources = cmp.config.sources({
-                    -- sources: https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
-                    { name = "luasnip" },
-                    { name = "nvim_lsp" },
-                    { name = "buffer" },
-                    { name = "nvim_lua" },
-                    { name = "path" },
-                    { name = "nvim_lsp_signature_help" },
-                    { name = "nvim_lsp_document_symbol" },
-                }),
                 window = {
                     -- use bordered window style
                     -- completion = cmp.config.window.bordered({ scrollbar = false }),
