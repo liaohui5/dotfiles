@@ -54,6 +54,18 @@ return {
             local cmp = require("cmp")
             local luasnip = require("luasnip")
             -----------------------------------
+            -- cmdline
+            -----------------------------------
+            ---@diagnostic disable-next-line: missing-fields
+            cmp.setup.cmdline(":", {
+                mapping = cmp.mapping.preset.cmdline({
+                    -- stylua: ignore
+                    ["<C-o>"] = cmp.mapping(function() cmp.complete() end, { "i", "c" }),
+                }),
+                sources = cmp.config.sources({ { name = "path" } }, { { name = "cmdline" } }),
+            })
+
+            -----------------------------------
             -- keybindings
             -----------------------------------
             local keybindings = {
@@ -87,9 +99,21 @@ return {
                     if cmp.visible() then
                         cmp.confirm({ select = true })
                     else
-                        fallback("<cr>", "")
+                        fallback()
                     end
                 end),
+
+                -- 确定选中并且替换
+                ["<S-CR>"] = cmp.mapping.confirm({
+                    behavior = cmp.ConfirmBehavior.Replace,
+                    select = true,
+                }),
+
+                -- 关闭并且换行
+                ["<C-CR>"] = function(fallback)
+                    cmp.abort()
+                    fallback()
+                end,
 
                 -- 跳到代码片段上一个位置
                 ["<C-h>"] = cmp.mapping(function()
@@ -110,7 +134,7 @@ return {
                     if cmp.visible() then
                         cmp.select_next_item()
                     else
-                        fallback("<tab>", "")
+                        fallback()
                     end
                 end),
             }
