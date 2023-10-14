@@ -28,7 +28,6 @@ return function()
             [".env"]       = "sh",
             [".bashrc"]    = "sh",
             [".zprofile"]  = "sh",
-            [".gitignore"] = "sh",
             ["vifmrc"]     = "vim",
         },
     }
