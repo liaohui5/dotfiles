@@ -1,20 +1,20 @@
 ------------------------------------------------------------------------
 -- 开屏启动插件
--- alpha-nvim: https://github.com/goolord/alpha-nvim
--- dashboard-nvim: https://github.com/glepnir/dashboard-nvim
+-- https://github.com/goolord/alpha-nvim
+-- https://github.com/glepnir/dashboard-nvim
 ------------------------------------------------------------------------
 return {
     {
         "glepnir/dashboard-nvim",
         event = "VimEnter",
-
-        -- stylua: ignore
         opts = function(_, opts)
+            ------------------------------------------------------------
             --- set the line-width and paddings of header and center-menus
-            local header_width     = 55
-            local menus_width      = header_width - 20
-            local header_pad_lines = 6
-            local menus_pad_lines  = 5
+            ------------------------------------------------------------
+            local header_width = 55
+            local menus_width = 42
+            local header_pad_lines = 5
+            local footer_pad_lines = 5
 
             ------------------------------------------------------------
             --- header
@@ -51,65 +51,63 @@ return {
                 -- },
                 {
                     icon = "󰥔",
-                    desc = "Load last session",
+                    desc = "Restore session",
                     key = "l",
-                    keymap = "SPC p r",
                     action = "SessionManager load_last_session",
                 },
                 {
                     icon = "",
                     desc = "Pick session",
                     key = "p",
-                    keymap = "SPC p p",
                     action = "SessionManager load_session",
                 },
                 {
                     icon = "",
                     desc = "Find files",
                     key = "f",
-                    keymap = "<c-p>",
                     action = "Telescope find_files",
                 },
                 {
                     icon = "",
                     desc = "Recent files",
                     key = "r",
-                    keymap = "SPC s F",
                     action = "Telescope oldfiles",
                 },
                 {
                     icon = "",
-                    desc = "Configuration",
+                    desc = "Configurations",
                     key = "c",
-                    keymap = "SPC o c",
                     action = "edit $MYVIMRC",
                 },
                 {
                     icon = "",
-                    desc = "Plugins",
+                    desc = "Lazy plugins",
                     key = "P",
-                    keymap = "SPC P p",
                     action = "Lazy",
                 },
                 {
+                    icon = "󰏓",
+                    desc = "Lazy extras",
+                    key = "e",
+                    action = "LazyExtras",
+                },
+                {
                     icon = "",
-                    desc = "Plugins",
+                    desc = "Dotfiles",
                     key = "H",
-                    keymap = "SPC h G",
                     action = "lua require('link-visitor').visit('https://github.com/liaohui5/dotfiles')",
                 },
                 {
                     icon = "",
                     desc = "Quit",
                     key = "q",
-                    keymap = "<c-q>",
                     action = "quitall",
                 },
             }
             for _, menu in pairs(menu_items) do
-                menu.icon_hl = "Title"
-                menu.desc_hl = "String"
-                menu.key_hl = "Number"
+                menu.icon_hl = "DashboardMenuIcon"
+                menu.desc_hl = "DashboardMenuText"
+                menu.key_hl = "DashboardMenuKey"
                 menu.icon = menu.icon .. "  "
                 menu.desc = menu.desc .. string.rep(" ", menus_width - #menu.desc)
             end
@@ -117,24 +115,40 @@ return {
             ------------------------------------------------------------
             --- footer
             ------------------------------------------------------------
-            local footerGenerator = function()
+            local footer = function()
                 local stats = require("lazy").stats()
                 local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-                local footer = {
+                local items = {
                     string.format("🚀 neovim loaded %s/%s packages in %s ms", stats.loaded, stats.count, ms),
                 }
                 ---@diagnostic disable-next-line: unused-local
-                for i = 1, menus_pad_lines do
-                    table.insert(footer, 1, empty_line)
+                for i = 1, footer_pad_lines do
+                    table.insert(items, 1, empty_line)
                 end
-                return footer
+                return items
+            end
+
+            ------------------------------------------------------------
+            --- override highlights
+            ------------------------------------------------------------
+            local highlights = {
+                { group = "DashboardHeader", link = "@field" },
+                { group = "DashboardMenuIcon", link = "@keyword" },
+                { group = "DashboardMenuText", link = "@function" },
+                { group = "DashboardMenuKey", link = "@boolean" },
+                { group = "DashboardFooter", link = "Comment" },
+            }
+            for _, hl in ipairs(highlights) do
+                vim.api.nvim_set_hl(0, hl.group, {
+                    link = hl.link,
+                })
             end
 
             return vim.tbl_deep_extend("force", opts, {
                 config = {
                     header = header,
                     center = menu_items,
-                    footer = footerGenerator,
+                    footer = footer,
                 },
             })
         end,
@@ -156,17 +170,20 @@ return {
             }
             section.header.val = header
             section.footer.val = ""
-        -- stylua: ignore
-        section.buttons.val = {
-            dashboard.button("l", "󰥔  " .. "Load last session", "<cmd>SessionManager load_last_session<cr>"),
-            dashboard.button("p", "  " .. "Pick session", "<cmd>SessionManager load_session<cr>"),
-            dashboard.button("f", "  " .. "Find files", "<cmd>Telescope find_files<cr>"),
-            dashboard.button("r", "  " .. "Recent files", "<cmd>Telescope oldfiles<cr>"),
-            dashboard.button("c", "  " .. "Configurations", "<cmd>edit $MYVIMRC<cr>"),
-            dashboard.button("P", "  " .. "Plugins", "<cmd>Lazy<cr>"),
-            dashboard.button("H", "  " .. "Github", "<cmd>lua require('link-visitor').visit('https://github.com/liaohui5/dotfiles')<cr>"),
-            dashboard.button("q", "  " .. "Quit", "<cmd>quitall<cr>"),
-        }
+            section.buttons.val = {
+                dashboard.button("l", "󰥔  " .. "Load last session", "<cmd>SessionManager load_last_session<cr>"),
+                dashboard.button("p", "  " .. "Pick session", "<cmd>SessionManager load_session<cr>"),
+                dashboard.button("f", "  " .. "Find files", "<cmd>Telescope find_files<cr>"),
+                dashboard.button("r", "  " .. "Recent files", "<cmd>Telescope oldfiles<cr>"),
+                dashboard.button("c", "  " .. "Configurations", "<cmd>edit $MYVIMRC<cr>"),
+                dashboard.button("P", "  " .. "Plugins", "<cmd>Lazy<cr>"),
+                dashboard.button(
+                    "H",
+                    "  " .. "Github",
+                    "<cmd>lua require('link-visitor').visit('https://github.com/liaohui5/dotfiles')<cr>"
+                ),
+                dashboard.button("q", "  " .. "Quit", "<cmd>quitall<cr>"),
+            }
             for _, button in ipairs(section.buttons.val) do
                 button.opts.hl = "AlphaButtons"
                 button.opts.hl_shortcut = "AlphaShortcut"
