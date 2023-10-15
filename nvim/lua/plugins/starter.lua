@@ -1,11 +1,11 @@
 ------------------------------------------------------------------------
 -- 开屏启动插件
 -- https://github.com/goolord/alpha-nvim
--- https://github.com/glepnir/dashboard-nvim
+-- https://github.com/nvimdev/dashboard-nvim
 ------------------------------------------------------------------------
 return {
     {
-        "glepnir/dashboard-nvim",
+        "nvimdev/dashboard-nvim",
         event = "VimEnter",
         opts = function(_, opts)
             ------------------------------------------------------------

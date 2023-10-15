@@ -130,8 +130,8 @@ map({ "n", "x" }, "<c-d>", "10jzz", { silent = true })
 map({ "n", "x" }, "<c-u>", "10kzz", { silent = true })
 
 -- better paste
--- map("n", "p", [["+p]], { noremap = true, silent = true })
--- map("v", "p", [["_c<c-r><c-o>+<Esc>]], { silent = true, noremap = true })
+map("n", "p", [["+p]], { noremap = true, silent = true })
+map("v", "p", [["_c<c-r><c-o>+<Esc>]], { silent = true, noremap = true })
 
 -- search selection word
 map({ "n", "x" }, "gw", "*N", { desc = "Search word under cursor" })
