@@ -182,19 +182,23 @@ return {
 
                     -- stylua: ignore
                     format = function(entry, item)
-                        local strfmt      = string.format
                         local lspkind     = require("lazyvim.config").icons.kinds
-                        local source_name = string.lower(entry.source.name)
-                        local menu        = strfmt("[%s]", source_name)
-
-                        if source_name == "nvim_lsp" then
-                          -- lsp
-                            menu = strfmt("[lsp %s]", item.kind)
-                        elseif source_name == "codeium" then
-                          -- codeium
-                          item.kind = "Event"
+                        local source_maps = {
+                          nvim_lsp = function ()
+                            item.menu = string.format("[lsp %s]", item.kind)
+                          end,
+                          codeium = function ()
+                            item.kind = "Event"
+                          end,
+                          cmp_tabnine = function ()
+                            item.kind = "Event"
+                            item.menu = "[tabnine]"
+                          end
+                        }
+                        local handler = source_maps[string.lower(entry.source.name)];
+                        if type(handler) == "function" then
+                           handler()
                         end
-                        item.menu = menu
                         item.kind = lspkind[item.kind] or item.kind
                         return item
                     end,

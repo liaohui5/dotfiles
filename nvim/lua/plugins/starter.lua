@@ -51,7 +51,7 @@ return {
                 -- },
                 {
                     icon = "󰥔",
-                    desc = "Restore session",
+                    desc = "Restore last session",
                     key = "l",
                     action = "SessionManager load_last_session",
                 },

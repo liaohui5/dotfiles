@@ -12,7 +12,7 @@ return {
             return table.remove(vim.fn.split(vim.fn.getcwd(), "/"))
         end
 
-        -- vite-server.nvim 状态
+        -- vite-server.nvim status
         local function vite_server_status()
             local ok, vs = pcall(require, "vite-server")
             local status = ""
@@ -27,6 +27,35 @@ return {
             return status
         end
 
+        -- TanNine/Codeium: free ai helper status
+        local function ai_helper_status()
+          local icon = "󱍄";
+          local util = require("lazyvim.util");
+          local helpers_lualine_map = {
+            {
+              name = "tabnine",
+              plugin = "cmp-tabnine",
+              lualine = util.lualine.cmp_source("cmp_tabnine", icon)
+            },
+            {
+              name = "codeium",
+              plugin = "codeium.nvim",
+              lualine = util.lualine.cmp_source("codeium", icon)
+            },
+          }
+
+          for _, helper in ipairs(helpers_lualine_map) do
+            if util.has(helper.plugin) then
+              return helper.lualine
+            end
+          end
+
+          -- not install ai helper
+          return function ()
+            return ""
+          end
+        end
+
         return vim.tbl_deep_extend("force", opts, {
             options = {
                 globalstatus         = true,                            -- 使用全局的状态栏(false 每个窗口显示不同的状态栏)
@@ -39,6 +68,7 @@ return {
                 lualine_c = { "diff", "diagnostics", "searchcount" },
                 lualine_x = {
                     vite_server_status,
+                    ai_helper_status(),
                     "filetype",
                     "encoding",
                     "fileformat",
