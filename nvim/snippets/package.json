@@ -28,6 +28,10 @@
       {
         "language": "typescriptreact",
         "path": "./javascript.json"
+      },
+      {
+        "language": "markdown",
+        "path": "./markdown.json"
       }
     ]
   }

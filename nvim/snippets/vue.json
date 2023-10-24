@@ -145,7 +145,7 @@
     "description": "Base for Vue File with no styles"
   },
   "Vue Single File Component Composition API": {
-    "prefix": "vbase3-options",
+    "prefix": "vbase3-opts",
     "body": [
       "<template>",
       "\t<div>",
@@ -189,7 +189,7 @@
     "description": "Base for Vue File Setup Composition API with SCSS"
   },
   "Vue Single File Component Composition API with Typescript": {
-    "prefix": "vbase3-ts",
+    "prefix": "vbase3-ts-opts",
     "body": [
       "<template>",
       "\t<div>",
@@ -215,7 +215,7 @@
     "description": "Base for Vue File Composition API - Typescript"
   },
   "Vue Single File Component Setup Composition API with Typescript": {
-    "prefix": "vbase3-ts-setup",
+    "prefix": "vbase3-ts",
     "body": [
       "<template>",
       "\t<div>",
@@ -259,7 +259,82 @@
   },
   "Console Log": {
     "prefix": "clog",
-    "body": ["console.log(\"###${1}###\",${0});"],
-    "description": "log to console"
+    "body": ["console.log(\"### ${1} ###\", ${1});${0}"],
+    "description": "Output to console"
+  },
+  "Named Function": {
+    "prefix": "fn",
+    "body": ["function ${1:name}($2):${3:void} {", "  ${0}", "}"],
+    "description": "Named Function"
+  },
+  "Async Named function": {
+    "prefix": "asfn",
+    "body": ["async function ${1:name}(${2}){", "  await ${0}", "}"],
+    "description": "Async Named function"
+  },
+  "Const Variable Function": {
+    "prefix": "caf",
+    "body": ["const ${1:fn} = ($2):${3:void} => {", "  ${0}", "}"],
+    "description": "Const Variable Function"
+  },
+  "ES Export": {
+    "prefix": "exp",
+    "body": ["export ${0:module};"],
+    "description": "ES Export"
+  },
+  "ES Export All": {
+    "prefix": "expa",
+    "body": ["export * from ${0:module};"],
+    "description": "ES Export All"
+  },
+  "ES Export Default": {
+    "prefix": "expd",
+    "body": ["export default ${0};"],
+    "description": "ES Export Default"
+  },
+  "ES Export Default As": {
+    "prefix": "expas",
+    "body": ["export { default as ${1} } from \"${0}\";"],
+    "description": "ES Export Default As"
+  },
+  "ES Export Const": {
+    "prefix": "expc",
+    "body": ["export const ${1} = ${0};"],
+    "description": "ES Export Const"
+  },
+  "ES Export Function": {
+    "prefix": "expf",
+    "body": ["export function ${1:name}(${2:args}) {", "\t${0}", "}"],
+    "description": "ES Export Function"
+  },
+  "ES Export Default Function": {
+    "prefix": "expdf",
+    "body": ["export default function ${1:name}(${2:args}) {", "\t${0}", "}"],
+    "description": "ES Export Default Function"
+  },
+  "ES Export Async Function": {
+    "prefix": "expasf",
+    "body": ["export async function ${1}(${2}) {\n\t${0}\n}"],
+    "description": "ES Export Arrow Function"
+  },
+  "ES Export Arrow Function": {
+    "prefix": "expaf",
+    "body": ["export const ${1:name} = (${2:args}) => {", "\t${0}", "}"],
+    "description": "ES Export Arrow Function"
+  },
+  "ES Export Class": {
+    "prefix": "expcl",
+    "body": ["export class ${1:name} {", "\t${0}", "};"],
+    "description": "ES Export class"
+  },
+  "ES Import External Module": {
+    "prefix": "impd",
+    "body": ["import ${0} from \"${1:module}\";"],
+    "description": "ES Import"
+  },
+  "ES Import Module": {
+    "prefix": "impo",
+    "body": ["import {${0}} from \"${1:module}\";"],
+    "description": "ES Destruction Import"
   }
 }

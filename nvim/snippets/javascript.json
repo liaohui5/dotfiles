@@ -1,7 +1,7 @@
 {
   "Console Log": {
     "prefix": "clog",
-    "body": ["console.log(\"###${1}\",${0});"],
+    "body": ["console.log(\"### ${1} ###\", ${1});${0}"],
     "description": "Output to console"
   },
   "Named Function": {
