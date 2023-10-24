@@ -31,6 +31,16 @@ return {
                     vim.fn.setreg("+", node:get_id())
                 end,
             },
+            preview_image_in_wezterm = {
+                nowait = true,
+                command = function(state)
+                    local node = state.tree:get_node()
+                    if not node.type == "file" then
+                        return
+                    end
+                    require("utils.image-preview").preview_image_in_wezterm(node.path)
+                end,
+            },
         }
 
         local keys = {
@@ -66,6 +76,7 @@ return {
                 ["d"] = "cut_to_clipboard",
                 ["p"] = "paste_from_clipboard",
                 ["m"] = "move",
+                ["i"] = commands.preview_image_in_wezterm,
                 ["Y"] = commands.copy_filename,
                 ["<C-y>"] = commands.copy_filepath,
             },
