@@ -117,9 +117,9 @@ return {
             ------------------------------------------------------------
             local footer = function()
                 local stats = require("lazy").stats()
-                local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+                local loaded, count, ms = stats.loaded, stats.count, math.floor(stats.startuptime)
                 local items = {
-                    string.format("🚀 neovim loaded %s/%s packages in %s ms", stats.loaded, stats.count, ms),
+                    string.format("🚀 neovim loaded %s/%s packages in %s ms", loaded, count, ms),
                 }
                 ---@diagnostic disable-next-line: unused-local
                 for i = 1, footer_pad_lines do
