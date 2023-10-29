@@ -29,6 +29,7 @@
 # 链接
 - link:
     ~/.config/alacritty: alacritty
+    ~/.config/starship: starship
     ~/.config/nvim: nvim
     ~/.config/kitty: kitty
     ~/.config/vifm: vifm
