@@ -7,8 +7,8 @@ return {
     {
         "nvim-treesitter/nvim-treesitter",
         keys = {
-            { "+", desc = "Increment selection" },
-            { "_", desc = "Decrement selection", mode = "x" },
+            { "+", desc = "Increment selection", mode = "v" },
+            { "_", desc = "Decrement selection", mode = "v" },
         },
         opts = function(_, opts)
             -- 支持语法高亮的语言: https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
@@ -74,7 +74,7 @@ return {
         event = "BufReadPost",
     },
     {
-        -- 自动闭合 HTML 和 JSx 标签
+        -- 自动闭合 HTML 和 jsx 标签
         "windwp/nvim-ts-autotag",
         event = "InsertEnter",
     },

@@ -1,8 +1,9 @@
 --------------------------------------------------------------
 -- 代码重构工具
--- docs: https://github.com/ThePrimeagen/refactoring.nvim
+-- github: https://github.com/ThePrimeagen/refactoring.nvim
 --------------------------------------------------------------
 return {
+    enabled = false,
     "ThePrimeagen/refactoring.nvim",
     event = "VeryLazy",
     dependencies = {
@@ -28,7 +29,6 @@ return {
             mode = "v",
         },
         {
-
             "<leader>iL",
             "<cmd>lua require('refactoring').debug.cleanup()<cr>",
             desc = "clear inserted print var",

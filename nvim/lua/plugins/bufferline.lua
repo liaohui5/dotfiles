@@ -17,8 +17,7 @@ return {
         opts = function(_, opts)
             return vim.tbl_deep_extend("force", opts, {
                 options = {
-                    always_show_bufferline = false, -- if true, it whill be display to alpha when start neovim
-                    mode = "buffers", -- "tabs" | "buffers"
+                    always_show_bufferline = false, -- 如果为真在启动页也会显示,会破坏启动页的样式
                     offsets = {
                         {
                             filetype = "neo-tree", -- neotree
@@ -31,10 +30,7 @@ return {
             })
         end,
         keys = {
-            {
-                "<leader>bD",
-                false,
-            },
+            { "<leader>bD", false },
             {
                 "<leader>qH",
                 "<cmd>BufferLineCloseLeft<cr>",
@@ -60,97 +56,16 @@ return {
                 "<cmd>BufferLineMoveNext<cr>",
                 desc = "move to right",
             },
-            -- binded in keymaps
-            -- {
-            --     "<s-h>",
-            --     "<cmd>BufferLineCyclePrev<cr>",
-            --     desc = "previous tab",
-            -- },
-            -- {
-            --     "<s-l>",
-            --     "<cmd>BufferLineCycleNext<cr>",
-            --     desc = "next tab",
-            -- },
+            {
+                "<s-h>",
+                "<cmd>BufferLineCyclePrev<cr>",
+                desc = "previous tab",
+            },
+            {
+                "<s-l>",
+                "<cmd>BufferLineCycleNext<cr>",
+                desc = "next tab",
+            },
         },
     },
-    -- {
-    --     "romgrk/barbar.nvim",
-    --     enabled = false,
-    --     version = "v1.6.5",
-    --     event = "VeryLazy",
-    --     dependencies = {
-    --         "lewis6991/gitsigns.nvim",
-    --         "nvim-tree/nvim-web-devicons",
-    --     },
-    --     opts = {
-    --         animation = false,
-    --         auto_hide = false,
-    --         tabpages = false,
-    --         closable = true,
-    --         clickable = false,
-    --         insert_at_end = true,
-    --         insert_at_start = false,
-    --         maximum_padding = 2,
-    --         maximum_length = 30,
-    --         semantic_letters = true,
-    --         no_name_title = nil,
-    --         letters = "asdfjklghnmxcvbziowerutyqpASDFJKLGHNMXCVBZIOWERUTYQP12345",
-    --         icons = {
-    --             button = ""
-    --         }
-    --     },
-    --     keys = {
-    --         {
-    --             "<leader>bp",
-    --             "<cmd>BufferPick<cr>",
-    --             desc = "buffer pick",
-    --         },
-    --         {
-    --             "<leader>qH",
-    --             "<cmd>BufferCloseBuffersLeft<cr>",
-    --             desc = "close left buffers",
-    --         },
-    --         {
-    --             "<leader>ql",
-    --             "<cmd>BufferCloseBuffersRight<cr>",
-    --             desc = "close right buffers",
-    --         },
-    --         {
-    --             "<leader>bt",
-    --             "<cmd>BufferPin<cr>",
-    --             desc = "toggle buffer pin status",
-    --         },
-    --         {
-    --             "<leader>bd",
-    --             "<cmd>BufferClose<cr>",
-    --             desc = "close buffer",
-    --         },
-    --         {
-    --             "<leader>bD",
-    --             "<cmd>BufferCloseAllButCurrentOrPinned<cr>",
-    --             desc = "close other buffers",
-    --         },
-    --         {
-    --             "<leader>bh",
-    --             "<cmd>BufferMove<cr>",
-    --             desc = "move to left",
-    --         },
-    --         {
-    --             "<leader>bl",
-    --             "<cmd>BufferMoveNext<cr>",
-    --             desc = "move to right",
-    --         },
-    -- binded in keymaps
-    --         {
-    --             "<s-h>",
-    --             "<cmd>BufferPrevious<cr>",
-    --             desc = "previous tab",
-    --         },
-    --         {
-    --             "<s-l>",
-    --             "<cmd>BufferNext<cr>",
-    --             desc = "next tab",
-    --         },
-    --     }
-    -- }
 }
