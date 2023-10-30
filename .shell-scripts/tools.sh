@@ -1,33 +1,32 @@
 #!/usr/local/bin/bash
 
-# generate config file by templates
-function tpl() {
-  declare -A templates
-  templates[prettier]="prettier.config.mjs"
-  templates[gitignore]=".gitignore"
-  templates[editorconfig]=".editorconfig"
-  templates[vite]="vite.config.ts"
-  templates[viteenv]="vite-env.ts"
-  templates[tsc]="tsconfig.json"
-  templates[tscnode]="tsconfig.node.json"
-  local key="$1"
-  local filename="${templates[$key]}"
-  if [[ -z "${filename}" ]]; then
-    echo "not support paramter '$key'"
-  fi
-
-  filepath="$HOME/.shell-scripts/templates/${filename}"
-  if [[ -r "${filepath}" ]]; then
-    cp "${filepath}" "./${filename}"
-    echo "config file '${filename}' generated"
-  else
-    echo "not found config file '${filename}'"
-  fi
-
-}
-
 # query port status
 function lsport() {
   local port="$1"
   lsof -n -i:"${port}"
+}
+
+# generate config file by templates
+function tpl() {
+  template_dir="$HOME/.shell-scripts/templates"
+  templates=$(ls "$template_dir")
+  declare -A template_arr
+
+  echo 'please input template id:'
+  local index=1
+  echo "$templates" | while IFS= read -r item; do
+    echo -e "  $index: $item"
+    template_arr["$index"]=$item
+    index=$((index + 1))
+  done
+
+  read -r input_id
+  local filename=${template_arr["${input_id}"]}
+  local filepath="$template_dir/$filename"
+  if [[ -r "$filepath" ]]; then
+    cp "$filepath" .
+    echo "template $filename generate successfully"
+  else
+    echo "not found template id $input_id"
+  fi
 }
