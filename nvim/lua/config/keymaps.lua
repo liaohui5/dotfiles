@@ -160,7 +160,3 @@ map("n", "<leader>oV", helpers.cwd_open_in_vscode, {
     desc = "open cwd in vscode",
 })
 
--- open file in Google Chrome
-map("n", "<leader>oc", helpers.open_in_chrome, {
-    desc = "open current file in chrome",
-})

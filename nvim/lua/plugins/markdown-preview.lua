@@ -5,12 +5,10 @@
 return {
     "iamcco/markdown-preview.nvim",
     event = "VeryLazy",
-    ft = { "markdown" },
-    build = function()
-        -- WARN: 解决如下报错: https://github.com/iamcco/markdown-preview.nvim/issues/278
-        -- node:internal/modules/cjs/loader:1080
-        -- Error: Cannot find module 'tslib'
-        vim.fn["mkdp#util#install"]()
+    ft = "markdown",
+    build = "cd app && npm install",
+    config = function()
+        vim.g.mkdp_auto_start = 1
     end,
     keys = {
         {

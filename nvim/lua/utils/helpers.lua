@@ -51,36 +51,6 @@ function M.get_mode()
     return modes[vim.api.nvim_get_mode().mode]
 end
 
---- get Operate System name
---- @return string "Windows" | "MacOS" | "Linux"
----@diagnostic disable: need-check-nil
-function M.get_os_name()
-    local os_name = "unknown"
-
-    -- 根据不同的操作系统执行不同的命令
-    if package.config:sub(1, 1) == "\\" then
-        -- Windows
-        return "Windows"
-    end
-
-    local handle = io.popen("uname -s")
-    local result = handle:read("*a")
-    handle:close()
-
-    if result:match("Darwin") then
-        -- MacOS
-        os_name = "MacOS"
-    elseif result:match("Linux") then
-        -- Linux
-        os_name = "Linux"
-    else
-        -- unknown
-        os_name = "unknown"
-    end
-
-    return os_name
-end
-
 -- toggle auto completation enabled status
 function M.toggle_completation_status()
     if vim.g.enable_auto_completation then
@@ -123,18 +93,5 @@ end
 
 M.buf_open_in_vscode = open_in_vscode(true)
 M.cwd_open_in_vscode = open_in_vscode(false)
-
--- open in google chrome
-M.open_in_chrome = function()
-    local os_name = M.get_os_name()
-    if os_name ~= "MacOS" then
-        print("[helpers]open_in_chrome function only support MacOS")
-        return
-    end
-
-    local current_file = vim.fn.expand("%:p")
-    local cmd = string.format("silent !open -b com.google.Chrome file:///%s", current_file)
-    vim.cmd(cmd)
-end
 
 return M
