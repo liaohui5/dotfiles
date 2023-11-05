@@ -25,6 +25,21 @@ return {
     end,
     opts = {
         servers = {
+            emmet_language_server = {
+                filetypes = {
+                    "html",
+                    "css",
+                    "less",
+                    "sass",
+                    "scss",
+                    "pug",
+                    "vue",
+                    "javascript",
+                    "javascriptreact",
+                    "typescriptreact",
+                },
+            },
+
             volar = { -- better vue syntax supported
                 filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
             },
