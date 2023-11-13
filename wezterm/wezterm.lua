@@ -21,7 +21,8 @@ local font = wezterm.font_with_fallback({
 })
 
 return {
-  color_scheme = "Tokyo Night",
+  -- colorschemes: https://wezfurlong.org/wezterm/colorschemes/index.html
+  color_scheme = "Tokyo Night Storm",
   font = font,
   line_height = 1,
   font_size = fontSize,
