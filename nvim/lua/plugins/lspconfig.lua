@@ -1,7 +1,8 @@
-------------------------------------------------------------
+--------------------------------------------------------------------------------------
 -- Customizing LSP keymaps
 -- https://www.lazyvim.org/plugins/lsp
-------------------------------------------------------------
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+--------------------------------------------------------------------------------------
 return {
     "neovim/nvim-lspconfig",
     init = function()

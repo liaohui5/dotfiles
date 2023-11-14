@@ -17,23 +17,23 @@ return {
         lazy = true,
         opts = function(_, opts)
             return vim.tbl_deep_extend("force", opts, {
-                style = "storm", -- allow values: night, storm, moon
+                style = "moon", -- allow values: night, storm, moon
                 on_highlights = function(hl, c)
-                    -- 修改 telescope 的背景颜色
+                    -- update telescope prompt background color
                     hl.TelescopeNormal.bg = c.bg
                     hl.TelescopeBorder.bg = c.bg
 
-                    -- 隐藏 neo-tree 窗口分割线
+                    -- hidden neo-tree window separate line
                     hl.NeoTreeWinSeparator = {
                         bg = c.bg,
                         fg = c.bg,
                     }
 
-                    -- 移除关键字斜体效果
+                    -- remove keyworld font italic style
                     hl.Keyword.style.italic = false
                     hl["@keyword"].style.italic = false
 
-                    -- 移除注释斜体效果
+                    -- remove comment font italic style
                     hl.Comment.style.italic = false
                 end,
             })
