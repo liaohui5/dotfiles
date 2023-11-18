@@ -17,6 +17,21 @@ return {
     opts = function(_, opts)
         -- custom commands
         local commands = {
+            remove2trash = {
+                nowait = true,
+                command = function(state)
+                    local node = state.tree:get_node()
+                    local strfmt = string.format
+                    local inputs = require("neo-tree.ui.inputs")
+                    local confirm_msg = strfmt("Are you sure to remove %s ?", node.name)
+                    inputs.confirm(confirm_msg, function(confirmed)
+                        if not confirmed then
+                            return
+                        end
+                        vim.cmd(strfmt("silent !mv %s ~/.Trash/", node.path))
+                    end)
+                end,
+            },
             copy_filename = {
                 nowait = true,
                 command = function(state)
@@ -70,7 +85,8 @@ return {
                 ["<bs>"] = "navigate_up",
                 ["a"] = "add",
                 ["A"] = "add_directory",
-                ["x"] = "delete",
+                -- ["x"] = "delete", -- force delete from disk
+                ["x"] = commands.remove2trash,
                 ["r"] = "rename",
                 ["y"] = "copy_to_clipboard",
                 ["d"] = "cut_to_clipboard",
@@ -85,8 +101,7 @@ return {
                 ["<c-k>"] = "move_cursor_up",
             },
             buffers_window = {
-                ["bd"] = "buffer_delete",
-                -- ["<bs>"] = "navigate_up",
+                ["<bs>"] = "buffer_delete",
             },
             git_status_window = {
                 ["gu"] = "git_unstage_file",
