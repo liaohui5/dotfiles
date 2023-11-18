@@ -38,7 +38,6 @@
     ~/.config/goneovim: goneovim
     ~/.gitconfig: .gitconfig
     ~/.config/yabai: yabai_conf/yabai
-    # ~/.config/spacebar: yabai_conf/spacebar
     ~/.config/sketchybar: yabai_conf/sketchybar
     ~/.config/skhd: yabai_conf/skhd
     ~/.zprofile: zsh/.zprofile
@@ -55,6 +54,7 @@
     ~/Library/Application Support/Code/User/snippets: nvim/snippets
     ~/Library/Application Support/Code/User/custom-vscode-assets: vscode/custom-vscode-assets
     ~/Library/Application Support/lazygit/config.yml: lazygit/config.yml
+    ~/.czrc: lazygit/.czrc
 
 - shell:
     - ./install-deps.sh

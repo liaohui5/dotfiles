@@ -23,8 +23,8 @@ git:
     showGraph: always
 
 os:
-  openCommand: "nvim {{filename}}"                    # 编辑文件命令(需要安装vscode)
-  editCommand: "nvim"                                 # 编辑文件命令
+  openCommand: "vim {{filename}}"                    # 编辑文件命令(需要安装vscode)
+  editCommand: "vim"                                 # 编辑文件命令
   editCommandTemplate: "{{editor}} +{{line}} -- {{filename}}"
 
 reporting: "off" # 不提供日志报告
@@ -36,3 +36,9 @@ update:
 keybinding:
   universal:
     quit: "<c-q>" # 退出
+
+customCommands:
+  - key: '<c-c>'
+    context: 'files'
+    command: 'czg' # 需要安装命令: https://cz-git.qbb.sh/zh/
+    subprocess: true
