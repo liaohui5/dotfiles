@@ -1,6 +1,4 @@
 {
-  // 窗口缩放 & 关闭顶部搜索栏
-  "window.zoomLevel": 0,
   "window.commandCenter": false,
   // 编辑器 & 终端字体设置
   "editor.fontSize": 16,
@@ -9,6 +7,9 @@
   "editor.fontWeight": 300,
   "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font Mono'",
   "terminal.integrated.fontSize": 14,
+  // 不要开启声音提示
+  "audioCues.enabled": false,
+  "editor.accessibilitySupport": "off",
   // 不要自动换行
   "editor.wordWrap": "off",
   // 光标宽度 && 行高
@@ -171,17 +172,11 @@
   // visual 模式快捷键
   "vim.visualModeKeyBindingsNonRecursive": [
     {
-      "before": [
-        "<space>"
-      ],
-      "commands": [
-        "vspacecode.space"
-      ]
+      "before": ["<space>"],
+      "commands": ["vspacecode.space"]
     },
     {
-      "before": [
-        ","
-      ],
+      "before": [","],
       "commands": [
         "vspacecode.space",
         {
@@ -191,113 +186,54 @@
       ]
     },
     {
-      "before": [
-        "$"
-      ],
-      "after": [
-        "$",
-        "h"
-      ]
+      "before": ["$"],
+      "after": ["$", "h"]
     },
     {
-      "before": [
-        "x"
-      ],
-      "after": [
-        "\"",
-        "_",
-        "x"
-      ]
+      "before": ["x"],
+      "after": ["\"", "_", "x"]
     },
     {
-      "before": [
-        "<c-d>"
-      ],
-      "after": [
-        "<c-d>",
-        "z",
-        "z"
-      ]
+      "before": ["<c-d>"],
+      "after": ["<c-d>", "z", "z"]
     },
     {
-      "before": [
-        "<c-u>"
-      ],
-      "after": [
-        "<c-u>",
-        "z",
-        "z"
-      ]
+      "before": ["<c-u>"],
+      "after": ["<c-u>", "z", "z"]
     },
     {
-      "before": [
-        "<c-b>"
-      ],
-      "after": [
-        "<c-b>",
-        "z",
-        "z"
-      ]
+      "before": ["<c-b>"],
+      "after": ["<c-b>", "z", "z"]
     },
     {
-      "before": [
-        "<c-f>"
-      ],
-      "after": [
-        "<c-f>",
-        "z",
-        "z"
-      ]
+      "before": ["<c-f>"],
+      "after": ["<c-f>", "z", "z"]
     },
     {
-      "before": [
-        ">"
-      ],
-      "commands": [
-        "tab"
-      ]
+      "before": [">"],
+      "commands": ["tab"]
     },
     {
-      "before": [
-        "<"
-      ],
-      "commands": [
-        "outdent"
-      ]
+      "before": ["<"],
+      "commands": ["outdent"]
     },
     {
-      "before": [
-        "ctrl",
-        "\\"
-      ],
-      "commands": [
-        "editor.action.commentLine"
-      ]
+      "before": ["ctrl", "\\"],
+      "commands": ["editor.action.commentLine"]
     },
     {
-      "before": [
-        "<leader>",
-        "l"
-      ],
-      "commands": [
-        "extension.insertLogStatement"
-      ]
-    },
+      "before": ["<leader>", "l"],
+      "commands": ["extension.insertLogStatement"]
+    }
   ],
   // normal 模式快捷键
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "before": [
-        "<space>"
-      ],
-      "commands": [
-        "vspacecode.space"
-      ]
+      "before": ["<space>"],
+      "commands": ["vspacecode.space"]
     },
     {
-      "before": [
-        ","
-      ],
+      "before": [","],
       "commands": [
         "vspacecode.space",
         {
@@ -307,106 +243,48 @@
       ]
     },
     {
-      "before": [
-        "-"
-      ],
-      "commands": [
-        ":nohl"
-      ]
+      "before": ["-"],
+      "commands": [":nohl"]
     },
     {
-      "before": [
-        "x"
-      ],
-      "after": [
-        "\"",
-        "_",
-        "x"
-      ]
+      "before": ["x"],
+      "after": ["\"", "_", "x"]
     },
     {
-      "before": [
-        "<c-d>"
-      ],
-      "after": [
-        "<c-d>",
-        "z",
-        "z"
-      ]
+      "before": ["<c-d>"],
+      "after": ["<c-d>", "z", "z"]
     },
     {
-      "before": [
-        "<c-u>"
-      ],
-      "after": [
-        "<c-u>",
-        "z",
-        "z"
-      ]
+      "before": ["<c-u>"],
+      "after": ["<c-u>", "z", "z"]
     },
     {
-      "before": [
-        "<c-b>"
-      ],
-      "after": [
-        "<c-b>",
-        "z",
-        "z"
-      ]
+      "before": ["<c-b>"],
+      "after": ["<c-b>", "z", "z"]
     },
     {
-      "before": [
-        "<c-f>"
-      ],
-      "after": [
-        "<c-f>",
-        "z",
-        "z"
-      ]
+      "before": ["<c-f>"],
+      "after": ["<c-f>", "z", "z"]
     },
     {
-      "before": [
-        "<S-h>"
-      ],
-      "commands": [
-        "workbench.action.previousEditorInGroup"
-      ]
+      "before": ["<S-h>"],
+      "commands": ["workbench.action.previousEditorInGroup"]
     },
     {
-      "before": [
-        "<S-l>"
-      ],
-      "commands": [
-        "workbench.action.nextEditorInGroup"
-      ]
+      "before": ["<S-l>"],
+      "commands": ["workbench.action.nextEditorInGroup"]
     },
     {
-      "before": [
-        "g",
-        "d"
-      ],
-      "commands": [
-        "editor.action.revealDefinition"
-      ]
+      "before": ["g", "d"],
+      "commands": ["editor.action.revealDefinition"]
     },
     {
-      "before": [
-        "g",
-        "h"
-      ],
-      "commands": [
-        "editor.action.showHover"
-      ]
+      "before": ["g", "h"],
+      "commands": ["editor.action.showHover"]
     },
     {
-      "before": [
-        "s"
-      ],
-      "after": [
-        "<leader>",
-        "<leader>",
-        "s"
-      ]
+      "before": ["s"],
+      "after": ["<leader>", "<leader>", "s"]
     }
   ],
   // =============================================//
@@ -533,8 +411,5 @@
       "command": "workbench.action.closeOtherEditors",
       "icon": "close-all"
     }
-  ],
-  "[lua]": {
-    "editor.defaultFormatter": "sumneko.lua"
-  }
+  ]
 }
