@@ -1,5 +1,5 @@
 -----------------------------------------------------------------------
--- 合并/切分当前行(3个都可以)
+-- 合并/切分当前行(这几个都可以)
 -- github: https://github.com/Wansmer/treesj
 -- github: https://github.com/bennypowers/splitjoin.nvim
 -- github: https://github.com/AndrewRadev/splitjoin.vim

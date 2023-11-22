@@ -7,9 +7,7 @@
 return {
     "LazyVim/LazyVim",
     opts = {
-        defaults = {
-            -- keymaps = false, --- disabled LazyVim default keymaps
-            -- autocmds = false, -- disabled LazyVim default autocmds
-        },
+        autocmds = true, -- load lazyvim autocmds
+        keymaps = true, --- load lazyvim keymaps
     },
 }

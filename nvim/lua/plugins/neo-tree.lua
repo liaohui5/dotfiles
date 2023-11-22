@@ -86,12 +86,12 @@ return {
                 ["a"] = "add",
                 ["A"] = "add_directory",
                 -- ["x"] = "delete", -- force delete from disk
-                ["x"] = commands.remove2trash,
                 ["r"] = "rename",
                 ["y"] = "copy_to_clipboard",
                 ["d"] = "cut_to_clipboard",
                 ["p"] = "paste_from_clipboard",
                 ["m"] = "move",
+                ["x"] = commands.remove2trash,
                 ["i"] = commands.preview_image_in_wezterm,
                 ["Y"] = commands.copy_filename,
                 ["<C-y>"] = commands.copy_filepath,

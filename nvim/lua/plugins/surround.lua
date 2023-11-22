@@ -78,33 +78,4 @@ return {
             },
         },
     },
-    -- {
-    --     "echasnovski/mini.surround",
-    --     version = "*",
-    --     enabled = false,
-    --     keys = function(_, keys)
-    --         return vim.list_extend(keys, {
-    --             {
-    --                 "gzz",
-    --                 "gza",
-    --                 mode = "v",
-    --                 remap = true,
-    --                 desc = "add surrounding",
-    --             },
-    --         })
-    --     end,
-    --     -- opts = {
-    --     --     -- LazyVim default surround keys
-    --     --     -- https://github1s.com/LazyVim/LazyVim/blob/HEAD/lua/lazyvim/plugins/coding.lua#L126
-    --     --     -- mappings = {
-    --     --     --     add            = "gza", -- add surrounding in normal and visual modes
-    --     --     --     delete         = "gzd", -- delete surrounding
-    --     --     --     find           = "gzf", -- find surrounding (to the right)
-    --     --     --     find_left      = "gzf", -- find surrounding (to the left)
-    --     --     --     highlight      = "gzh", -- highlight surrounding
-    --     --     --     replace        = "gzr", -- replace surrounding
-    --     --     --     update_n_lines = "gzn", -- update `n_lines`
-    --     --     -- },
-    --     -- },
-    -- },
 }

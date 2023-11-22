@@ -17,25 +17,17 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 require("lazy").setup({
     spec = {
-        {
-            -- use LazyVim
-            "LazyVim/LazyVim",
-            import = "lazyvim.plugins",
-        },
         -- docs: https://www.lazyvim.org
+        { "LazyVim/LazyVim", import = "lazyvim.plugins" },
         { import = "lazyvim.plugins.extras.editor.mini-files" },
         { import = "lazyvim.plugins.extras.lang.typescript" },
         { import = "lazyvim.plugins.extras.lang.rust" },
         { import = "lazyvim.plugins.extras.lang.docker" },
         { import = "lazyvim.plugins.extras.lsp.none-ls" },
-
-        -- ai code helper, codeium unable to get api key token
-        -- { import = "lazyvim.plugins.extras.coding.codeium" },
         { import = "lazyvim.plugins.extras.coding.tabnine" },
-
         { import = "plugins" },
     },
-    defaults = { -- when false use dev version
+    defaults = {
         lazy = true,
         version = true,
     },
@@ -43,7 +35,6 @@ require("lazy").setup({
         enabled = true,
     },
     change_detection = {
-        -- enabled = false,
         notify = false,
     },
     performance = {

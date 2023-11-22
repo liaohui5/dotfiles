@@ -3,7 +3,6 @@
 -- github: https://github.com/ThePrimeagen/refactoring.nvim
 --------------------------------------------------------------
 return {
-    enabled = false,
     "ThePrimeagen/refactoring.nvim",
     event = "VeryLazy",
     dependencies = {

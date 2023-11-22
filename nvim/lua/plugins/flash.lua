@@ -5,30 +5,26 @@
 return {
     "folke/flash.nvim",
     event = "VeryLazy",
-    opts = function(_, opts)
-        return vim.tbl_deep_extend("force", opts, {
-            rainbow = {
-                enabled = true,
-            },
-            highlight = {
-                matches = false,
-            },
-        })
-    end,
-    keys = function(_, keys)
-        return vim.list_extend(keys, {
-            {
-                "<leader>ll",
-                function()
-                    require("flash").jump({
-                        search = { mode = "search", max_length = 0 },
-                        label = { after = { 0, 0 } },
-                        pattern = "^",
-                    })
-                end,
-                mode = "n",
-                desc = "jump to line",
-            },
-        })
-    end,
+    opts = {
+        rainbow = {
+            enabled = true,
+        },
+        highlight = {
+            matches = true,
+        },
+    },
+    keys = {
+        {
+            "<leader>ll",
+            function()
+                require("flash").jump({
+                    search = { mode = "search", max_length = 0 },
+                    label = { after = { 0, 0 } },
+                    pattern = "^",
+                })
+            end,
+            mode = "n",
+            desc = "jump to line",
+        },
+    },
 }

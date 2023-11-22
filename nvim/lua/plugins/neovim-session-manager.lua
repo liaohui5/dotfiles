@@ -27,12 +27,13 @@ return {
             autosave_only_in_session = true,   -- 只有在 session 中, 自动保存 session
             max_path_length = 80,              -- 保存的 session 文件名最大长度
             autosave_ignore_filetypes = {
+                ".DS_Store",
                 "gitcommit",
             },
         })
     end,
 
-    setup = function(_, session)
+    config = function(_, session)
         local api, fn = vim.api, vim.fn
         local autocmd, augroup = api.nvim_create_autocmd, api.nvim_create_augroup
         autocmd("ExitPre", {
