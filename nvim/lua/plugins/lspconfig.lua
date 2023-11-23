@@ -46,14 +46,6 @@ return {
                 -- better vue support
                 filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
             },
-
-            bashls = {
-                -- better shell script support
-                filetypes = {
-                    "sh",
-                    "bash",
-                },
-            },
         },
     },
 }

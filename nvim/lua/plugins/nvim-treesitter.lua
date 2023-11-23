@@ -24,7 +24,6 @@ return {
                 "json",
                 "markdown",
                 "markdown_inline",
-                "dot",
                 "dockerfile",
                 "sql",
                 "tsx",

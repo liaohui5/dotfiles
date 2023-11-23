@@ -9,33 +9,25 @@
 -- | |              | || |              | || |              | || |              | || |              | || |              | || |              | || |              | |
 -- | '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' |
 --  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'
--- stylua: ignore start
 -- auto set filetype with this map
-return function()
-    local filetype_maps = {
-        extension = {
-            sh      = "sh",
-            env     = "sh",
-            profile = "sh",
-            json    = "jsonc",
-        },
-        filename = {
-            bashrc         = "sh",
-            yabairc        = "sh",
-            skhdrc         = "sh",
-            spacebarrc     = "sh",
-            sketchybarrc   = "sh",
-            [".env"]       = "sh",
-            [".bashrc"]    = "sh",
-            [".zprofile"]  = "sh",
-            ["vifmrc"]     = "vim",
-        },
-    }
-    -- get current buffer filename and extension, if it's in filetype_maps, then reset filetype
-    local filename  = vim.fn.expand("%:t")
-    local extension = vim.fn.expand("%:e")
-    local filetype  = filetype_maps.filename[filename] or filetype_maps.extension[extension]
-    if filetype then
-        vim.cmd("setlocal filetype=" .. filetype)
-    end
-end
+vim.filetype.add({
+    extension = {
+        profile = "sh",
+        json = "jsonc",
+        env = "sh",
+    },
+    filename = {
+        env = "sh",
+        bashrc = "sh",
+        yabairc = "sh",
+        skhdrc = "sh",
+        spacebarrc = "sh",
+        sketchybarrc = "sh",
+        [".bashrc"] = "sh",
+        [".zprofile"] = "sh",
+        ["vifmrc"] = "vim",
+    },
+    pattern = {
+        ["%.env%.[%w_.-]+"] = "sh",
+    },
+})
