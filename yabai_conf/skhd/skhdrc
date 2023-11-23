@@ -111,11 +111,14 @@ shift + cmd - 8 : yabai -m window --space 8 && yabai -m space --focus 8
 shift + cmd - 9 : yabai -m window --space 9 && yabai -m space --focus 9
 shift + cmd - 0 : yabai -m window --space 9 && yabai -m space --focus 10
 
-#  ╭──────────────────────────────────────────────────────────────────────────────╮
-#  │ launcher                                                                     │
-#  ╰──────────────────────────────────────────────────────────────────────────────╯
-alt - 1: open -a "Finder"                               # vifm
-alt - 2: open -a "一木清单"                             # 一木清单
+# ╭──────────────────────────────────────────────────────────────────────────────╮
+# │ launcher                                                                     │
+# ╰──────────────────────────────────────────────────────────────────────────────╯
+# 列出所有的软件: mdfind kMDItemKind=Application
+# 查看软件的包名: mdls -name kMDItemCFBundleIdentifier /Applications/Safari.app
+# 查看更多按键码: skhd -o
+alt - 1: open -a "Finder"                               # Finder
+alt - 2: open -b "com.yimutodo.app"                     # 一木清单(根据包名启动)
 alt - 3: open -a "WezTerm"                              # wezterm
 alt - 4: open -a "Visual Studio Code"                   # vscode
 alt - 5: open -a "Typora"                               # typora
@@ -125,4 +128,5 @@ alt - 8: open -a "YesPlayMusic"                         # 网易云音乐
 alt - 9: open -a "Launchpad"                            # 启动项
 alt - 0: open -a "Google Chrome"                        # chrome 浏览器
 alt - 0x1B: open -a "neovide" --args --frame buttonless # neovim(alt + -)
+alt - 0x18: open -b "org.alacritty"                    # Alacritty
 
