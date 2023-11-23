@@ -12,7 +12,7 @@ HideTitlebar = true
 ## 字体: 在 goneovim.lua 中设置
 FontFamily = "JetBrainsMono Nerd Font Mono"
 FontSize = 16
-# Letterspace = 0
+Letterspace = 0
 DisableLigatures = false
 
 ## 使用系统剪切板
@@ -41,13 +41,12 @@ ModeEnablingIME = [
   "visual_select",
   "cmdline_normal",
   "cmdline_insert",
-  "cmdline_replace"
+  "cmdline_replace",
 ]
 
 ## 启动 goneovim 完成后执行已下 vimscript
 Ginitvim = '''
 lua << EOF
-vim.g.isGoNeovim = 1
 require("client.goneovim")
 EOF
 '''

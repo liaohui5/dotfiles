@@ -12,7 +12,6 @@
 -- LazyVim default autocmds: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
 local autocmd = vim.api.nvim_create_autocmd
 local autogrp = vim.api.nvim_create_augroup
-local auto_set_filetypes = require("utils.filetype")
 
 local function augroup(name)
     return autogrp("user_augroup_" .. name, {
@@ -49,12 +48,6 @@ autocmd("OptionSet", {
     callback = function()
         vim.opt.formatoptions:remove({ "c", "r", "o" })
     end,
-})
-
--- auto reset filetypes
-autocmd("BufEnter", {
-    group = augroup("override_ft"),
-    callback = auto_set_filetypes,
 })
 
 -- Override LazyVIM default: Check if we need to reload the file when it changed
