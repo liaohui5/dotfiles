@@ -6,13 +6,14 @@ env:
   TERM: xterm-256color
 
 # 自动执行
-# shell:
-#   program: /bin/zsh
-#   args:
-#     - --login
-#     - -c
-    # - cd ~ && vifm . # exeute "vifm" command
+shell:
+  program: /bin/zsh
+  args:
+    - --login
+    - -c
+    - cd ~/Desktop/codes/blog-docs && nvim today.md # execute "nvim" command
     # - nvim # execute "nvim" command
+    # - cd ~ && vifm . # exeute "vifm" command
     # - cd ~ && tmux # execute "tmux" command
     # - cd ~ && zellij --layout=$HOME/.config/zellij/layouts/ws.kdl # zellij
 
@@ -45,12 +46,7 @@ font:
 
 # 按键绑定
 key_bindings:
-  - {
-      key: Space,
-      mods: Shift,
-      mode: ~Search,
-      action: ToggleViMode
-    } # shift + space
+  - { key: Space, mods: Shift, mode: ~Search, action: ToggleViMode } # shift + space
 
 # 颜色主题 #23241f
 theme: Monokai-Sublime

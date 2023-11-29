@@ -9,7 +9,6 @@ return {
     {
         -- auto generate comment
         "danymat/neogen",
-        dependencies = "nvim-treesitter/nvim-treesitter",
         event = "VeryLazy",
         opts = {
             enable = true,
@@ -24,8 +23,8 @@ return {
                     local options = {
                         prompt = "Please select generate comment type:",
                     }
-                    vim.ui.select(types, options, function(selected)
-                        require("neogen").generate({ type = selected })
+                    vim.ui.select(types, options, function(selectedType)
+                        require("neogen").generate({ type = selectedType })
                     end)
                 end,
                 desc = "auto generate comments",
