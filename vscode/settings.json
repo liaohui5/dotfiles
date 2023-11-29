@@ -411,5 +411,8 @@
       "command": "workbench.action.closeOtherEditors",
       "icon": "close-all"
     }
-  ]
+  ],
+  "genieai.openai.model": "gpt-3.5-turbo",
+  "tabnine.experimentalAutoImports": true,
+  "editor.inlineSuggest.suppressSuggestions": true
 }

@@ -1,13 +1,10 @@
 ################################################################
-# starship
-# https://starship.rs/zh-CN/
+# MacOS language locale
 ################################################################
-eval "$(starship init zsh)"
-export STARSHIP_CONFIG="${HOME}/.config/starship/config.toml"
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
 
-###############################################################
-# source bashrc&profile add /usr/sbin to PATH
-###############################################################
+# get command is installed or not
 function command_exists() {
     if command -v "$1" &> /dev/null; then
         return 0
@@ -16,24 +13,14 @@ function command_exists() {
     fi
 }
 
-source ~/.bashrc
-source ~/.profile
-export PATH="/usr/local/sbin:$PATH"
-
 ################################################################
-# MacOS language locale
-################################################################
-export LANG="en_US.UTF-8"
-export LC_ALL="en_US.UTF-8"
-
-###############################################################
 # starship
-# https://starship.rs/
-###############################################################
-# if command_exists 'starship'; then
-#   export STARSHIP_CONFIG=$HOME/.config/starship/config.toml
-#   eval "$(starship init zsh)"
-# fi
+# https://starship.rs/zh-CN/
+################################################################
+if command_exists 'starship'; then
+  eval "$(starship init zsh)"
+  export STARSHIP_CONFIG="${HOME}/.config/starship/config.toml"
+fi
 
 ###############################################################
 # zoxide
@@ -84,7 +71,7 @@ fi
 # cargo
 # https://github.com/rust-lang/cargo
 ################################################################
-export PATH=/Users/liaohui5/.cargo/bin:$PATH
+export PATH="/Users/liaohui5/.cargo/bin:$PATH"
 
 ################################################################
 # bun completions

@@ -1,15 +1,10 @@
 #!/usr/local/bin/bash
 
-# query port status
-function lsport() {
-  local port="$1"
-  lsof -n -i:"${port}"
-}
-
 # generate config file by templates
 function tpl() {
   template_dir="$HOME/.shell-scripts/templates"
-  templates=$(ls "$template_dir")
+  # list template files and excude . .. and .DS_Store
+  templates=$(ls -a "$template_dir" | grep -vE '^(.|..|.DS_Store)$')
   declare -A template_arr
 
   echo 'please input template id:'
@@ -29,4 +24,14 @@ function tpl() {
   else
     echo "not found template id $input_id"
   fi
+}
+
+function reload-shell-scripts() {
+  source ~/.bashrc
+  source ~/.bash_profile
+  source ~/.zshrc
+  source ~/.zsh_profile
+  source ~/.shell-scripts/alias.sh
+  source ~/.shell-scripts/tools.sh
+  source ~/.shell-scripts/vmware.sh
 }

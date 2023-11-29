@@ -28,33 +28,41 @@
 
 # 链接
 - link:
-    ~/.config/alacritty: alacritty
-    ~/.config/starship: starship
-    ~/.config/nvim: nvim
+    # terminal emulators
     ~/.config/kitty: kitty
+    ~/.config/wezterm: wezterm
+    ~/.config/alacritty: alacritty
+    # bash
+    ~/.bashrc: .shell-scripts/.bashrc
+    ~/.bash_profile: .shell-scripts/.bash_profile
+    ~/.shell-scripts: .shell-scripts
+    # zsh & on-my-zsh-theme
+    ~/.zprofile: zsh/.zprofile
+    ~/.zshrc: zsh/.zshrc
+    ~/.config/starship: starship
+    # tmux
+    ~/.tmux.conf: tmux_conf/.tmux.conf
+    ~/.tmux.conf.local: tmux_conf/.tmux.conf.local
+    # terminal file manager
     ~/.config/vifm: vifm
     ~/.config/joshuto: joshuto
-    ~/.config/wezterm: wezterm
+    ~/.config/yazi: yazi
+    # neovim & gui client
+    ~/.config/nvim: nvim
     ~/.config/goneovim: goneovim
-    ~/.gitconfig: .gitconfig
+    # yabi: bsp window manager like i3wm
     ~/.config/yabai: yabai_conf/yabai
     ~/.config/sketchybar: yabai_conf/sketchybar
     ~/.config/skhd: yabai_conf/skhd
-    ~/.zprofile: zsh/.zprofile
-    ~/.zshrc: zsh/.zshrc
-    ~/.oh-my-zsh/themes/bsif.zsh-theme: zsh/bsif.zsh-theme
-    ~/.bashrc: .shell-scripts/.bashrc
-    ~/.profile: .shell-scripts/.profile
-    ~/.bash_profile: .shell-scripts/.bash_profile
-    ~/.shell-scripts: .shell-scripts
-    ~/.tmux.conf: tmux_conf/.tmux.conf
-    ~/.tmux.conf.local: tmux_conf/.tmux.conf.local
+    # vscode
     ~/Library/Application Support/Code/User/settings.json: vscode/settings.json
     ~/Library/Application Support/Code/User/keybindings.json: vscode/keybindings.json
     ~/Library/Application Support/Code/User/snippets: nvim/snippets
     ~/Library/Application Support/Code/User/custom-vscode-assets: vscode/custom-vscode-assets
-    ~/Library/Application Support/lazygit/config.yml: lazygit/config.yml
-    ~/.czrc: lazygit/.czrc
+    # git & lazygit & cz-git
+    ~/.gitconfig: git/.gitconfig
+    ~/Library/Application Support/lazygit/config.yml: git/lazygit-config.yml
+    ~/.czrc: git/cz-git.czrc
 
 - shell:
     - ./install-deps.sh

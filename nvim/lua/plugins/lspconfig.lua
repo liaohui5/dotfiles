@@ -36,7 +36,6 @@ return {
                     "scss",
                     "pug",
                     "vue",
-                    "javascript",
                     "javascriptreact",
                     "typescriptreact",
                 },
@@ -44,7 +43,7 @@ return {
 
             volar = {
                 -- better vue support
-                filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
+                filetypes = { "javascriptreact", "typescriptreact", "vue" },
             },
         },
     },

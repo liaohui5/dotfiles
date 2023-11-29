@@ -1,14 +1,5 @@
 #!/usr/local/bin/bash
 
-# reload .zshrc
-alias reload='source ~/.zshrc'
-
-# cd ..
-alias ..='cd ..'
-
-# soft delete
-# alias rm='trash'
-
 # vi
 alias vi='nvim'
 
@@ -22,51 +13,51 @@ alias cp='cp -r'
 alias ls='lsd'
 alias la='ls -al'
 
-# tmux
+# tmux: https://github.com/tmux/tmux
 alias tmxn='tmux new -s'
 alias tmxa='tmux attach'
 alias tmxd='tmux detach'
 
-# auto start zellij on bash loaded
-# eval "$(zellij setup --generate-auto-start bash)"
-
+# vifm: https://github.com/vifm/vifm
 # joshuto: https://github.com/kamiyaa/joshuto
-alias fm='joshuto'
-alias fx='joshuto'
-
-# gitmoji-cli: https://github.com/carloscuesta/gitmoji-cli
-alias gitcmt='gitmoji -c'
+# yazi: https://yazi-rs.github.io/
+# alias fm='vifm'
+# alias fm='joshuto'
+alias fm='yazi'
 
 # vscode: https://code.visualstudio.com/
-# vscode-insiders: https://code.visualstudio.com/insiders/
+# vscodium: https://vscodium.com/
 alias code='/usr/local/bin/code'
-alias codeins='/usr/local/bin/code-insiders'
+alias codium='/usr/local/bin/codium'
 
-# neofetch: https://github.com/dylanaraps/neofetch
-alias nf='neofetch'
+# neofetch: https://github.com/fastfetch-cli/fastfetch
+alias fetch='fastfetch'
 
-# generator ascii text command: npm install -g figlet-cli
-# https://github.com/patorjk/figlet.js
-# https://github.com/patorjk/figlet-cli
-alias figlet-cli='figlet'
-
+# git: https://git-scm.com/
 # lazygit: https://github.com/jesseduffield/lazygit
+# czgit: https://github.com/Zhengqbbb/cz-git
 alias lg='lazygit'
 alias gs='git status'
+alias gitcmt='czg'
 
+# docker: https://www.docker.com/
 # docker & dockerc-compose
 alias d='docker'
 alias dc='docker-compose'
 
-# pnpm
+# pnpm: https://pnpm.io/
 alias pi='pnpm install'
 alias pr='pnpm remove'
 alias pu='pnpm update'
 alias pU='pnpm i -g pnpm'
 
-# bun
+# bun: https://bun.sh/
 alias bd='bun run dev'
 alias bt='bun run test'
 alias bb='bun run build'
 alias bs='bun run start'
 alias bm='bun run mock'
+
+# enable or disable clashx proxies
+alias enable-proxy='export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890'
+alias disable-proxy="export https_proxy='' http_proxy='' all_proxy=''"
