@@ -26,12 +26,3 @@ function tpl() {
   fi
 }
 
-function reload-shell-scripts() {
-  source ~/.bashrc
-  source ~/.bash_profile
-  source ~/.zshrc
-  source ~/.zsh_profile
-  source ~/.shell-scripts/alias.sh
-  source ~/.shell-scripts/tools.sh
-  source ~/.shell-scripts/vmware.sh
-}

@@ -36,7 +36,7 @@
     ~/.bashrc: .shell-scripts/.bashrc
     ~/.bash_profile: .shell-scripts/.bash_profile
     ~/.shell-scripts: .shell-scripts
-    # zsh & on-my-zsh-theme
+    # zsh & prompt style
     ~/.zprofile: zsh/.zprofile
     ~/.zshrc: zsh/.zshrc
     ~/.config/starship: starship
