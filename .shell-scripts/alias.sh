@@ -22,8 +22,8 @@ alias tmxd='tmux detach'
 # joshuto: https://github.com/kamiyaa/joshuto
 # yazi: https://yazi-rs.github.io/
 # alias fm='vifm'
-# alias fm='joshuto'
-alias fm='yazi'
+# alias fm='yazi'
+alias fm='joshuto'
 
 # vscode: https://code.visualstudio.com/
 # vscodium: https://vscodium.com/
@@ -59,5 +59,5 @@ alias bs='bun run start'
 alias bm='bun run mock'
 
 # enable or disable clashx proxies
-alias enable-proxy='export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890'
-alias disable-proxy="export https_proxy='' http_proxy='' all_proxy=''"
+alias setproxy='export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890'
+alias resetproxy="export https_proxy='' http_proxy='' all_proxy=''"

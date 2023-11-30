@@ -1,7 +1,7 @@
 #!/usr/local/bin/bash
 
 # bash_profile
-source "${HOME}/.bash_profile.sh"
+source "${HOME}/.bash_profile"
 
 # command alias
 source "${HOME}/.shell-scripts/alias.sh"
