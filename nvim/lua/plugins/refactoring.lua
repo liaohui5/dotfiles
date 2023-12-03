@@ -5,6 +5,10 @@
 return {
     "ThePrimeagen/refactoring.nvim",
     event = "VeryLazy",
+    dependencies = {
+        "nvim-lua/plenary.nvim",
+        "nvim-treesitter/nvim-treesitter",
+    },
     keys = {
         {
             "<leader>rf",

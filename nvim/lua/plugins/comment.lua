@@ -7,7 +7,11 @@
 -----------------------------------------------------------------------
 return {
     {
-        -- auto generate comment
+        -- highlight some comments: https://github1s.com/LazyVim/LazyVim/blob/HEAD/lua/lazyvim/plugins/editor.lua
+        "folke/todo-comments.nvim",
+    },
+    {
+        -- auto generate comment: generate jsDoc format in js file
         "danymat/neogen",
         event = "VeryLazy",
         opts = {
@@ -111,11 +115,6 @@ return {
                 mode = "v",
             },
         },
-    },
-    {
-        -- highlight some comments: https://github1s.com/LazyVim/LazyVim/blob/HEAD/lua/lazyvim/plugins/editor.lua
-        "folke/todo-comments.nvim",
-        enable = true,
     },
     {
         -- which key integration to comment-box
