@@ -5,17 +5,54 @@
 return {
     "nvim-neo-tree/neo-tree.nvim",
     event = "VeryLazy",
-    keys = function()
-        return {
+    keys = {
+        { "<leader>e", false },
+        { "<leader>E", false },
+        {
+            "<c-e>",
+            "<cmd>Neotree toggle<cr>",
+            desc = "Toggle file explorer",
+        },
+    },
+    opts = function(_, opts)
+        ------------------------------------------
+        -- event handlers
+        ------------------------------------------
+        local events = require("neo-tree.events")
+        local event_handlers = {
             {
-                "<c-e>",
-                "<cmd>Neotree toggle<cr>",
-                desc = "Toggle file explorer",
+                -- 创建文件后立即编辑
+                event = events.FILE_ADDED,
+                handler = function(filepath)
+                    if vim.fn.filereadable(filepath) == 1 then
+                        vim.cmd("silent edit " .. filepath)
+                    end
+                end,
+            },
+            {
+
+                -- 文件删除后立即关闭对应的 buffer 标签页
+                event = events.FILE_DELETED,
+                handler = function(filepath)
+                    local ok, bufremove = pcall(require, "mini.bufremove")
+                    if not ok then
+                        return
+                    end
+                    local buflist = vim.api.nvim_list_bufs()
+                    for _, bufnr in ipairs(buflist) do
+                        local bufpath = vim.fn.fnamemodify(vim.fn.bufname(bufnr), ":p")
+                        if filepath == bufpath then
+                            bufremove.delete(bufnr, true)
+                            break
+                        end
+                    end
+                end,
             },
         }
-    end,
-    opts = function(_, opts)
-        -- custom commands
+
+        ------------------------------------------
+        -- commands
+        ------------------------------------------
         local commands = {
             remove2trash = {
                 nowait = true,
@@ -28,7 +65,9 @@ return {
                         if not confirmed then
                             return
                         end
+                        -- 移动到垃圾桶 & 通知事件处理器关闭 node.path 对应的 buffer
                         vim.cmd(strfmt("silent !mv %s ~/.Trash/", node.path))
+                        events.fire_event(events.FILE_DELETED, node.path)
                     end)
                 end,
             },
@@ -58,6 +97,9 @@ return {
             },
         }
 
+        ------------------------------------------
+        -- keys
+        ------------------------------------------
         local keys = {
             -- :h neo-tree-mappings
             top_window = {
@@ -113,56 +155,13 @@ return {
             },
         }
 
-        -- 事件处理
-        local event_handlers = {
-            {
-                event = "file_added",
-                handler = function(filepath)
-                    -- 创建文件后立即编辑
-                    if vim.fn.filereadable(filepath) == 1 then
-                        vim.cmd("silent edit " .. filepath)
-                    end
-                end,
-            },
-            {
-                event = "file_deleted",
-                handler = function(filepath)
-                    -- 遍历所有缓冲区 ID,并获取缓冲区的绝对路径,然后对比
-                    local bufids = vim.api.nvim_list_bufs()
-                    for _, id in ipairs(bufids) do
-                        local buf_path = vim.fn.expand(vim.api.nvim_buf_get_name(id))
-                        if buf_path == filepath then
-                            vim.cmd("silent bd " .. id)
-                        end
-                    end
-                end,
-            },
-        }
-
-        -- 监听打开/关闭事件设置barbar侧边距
-        local status, barApi = pcall(require, "barbar.api")
-        if status then
-            table.insert(event_handlers, {
-                event = "neo_tree_window_before_open",
-                handler = function()
-                    barApi.set_offset(vim.g.file_explorer_width, string.rep(" ", 15) .. "Explorer")
-                end,
-            })
-            table.insert(event_handlers, {
-                event = "neo_tree_window_before_close",
-                handler = function()
-                    barApi.set_offset(0)
-                end,
-            })
-        end
-
         return vim.tbl_deep_extend("force", opts, {
             close_if_last_window = true,
             popup_border_style = "single",
             hide_root_node = true,
             use_default_mappings = false,
             event_handlers = event_handlers,
-            sources = { "filesystem", "buffers", "git_status" },
+            -- sources = { "filesystem", "buffers", "git_status" },
             source_selector = {
                 winbar = true,
             },
@@ -176,7 +175,6 @@ return {
             },
             window = {
                 position = "left",
-                width = vim.g.file_explorer_width,
                 mappings = keys.top_window,
             },
             filesystem = {
@@ -190,12 +188,8 @@ return {
                     hide_gitignored = true,
                     hide_hidden = true,
                     hide_dotfiles = false,
-                    hide_by_name = {
-                        ".DS_Store",
-                    },
-                    never_show = {
-                        ".DS_Store",
-                    },
+                    hide_by_name = { ".DS_Store" },
+                    never_show = { ".DS_Store" },
                 },
                 window = {
                     mappings = keys.filesystem_window,

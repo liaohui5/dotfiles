@@ -2,6 +2,7 @@
 -- 顶部 buffer 栏目(类似bufferline)
 -- barbar     : https://github.com/romgrk/barbar.nvim
 -- bufferline : https://github.com/akinsho/bufferline.nvim
+-- bufremove  : https://github.com/echasnovski/mini.bufremove
 -------------------------------------------------------------------
 return {
     {

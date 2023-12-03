@@ -19,12 +19,6 @@ require("lazy").setup({
     spec = {
         -- docs: https://www.lazyvim.org
         { "LazyVim/LazyVim", import = "lazyvim.plugins" },
-        { import = "lazyvim.plugins.extras.editor.mini-files" },
-        { import = "lazyvim.plugins.extras.lang.typescript" },
-        { import = "lazyvim.plugins.extras.lang.rust" },
-        { import = "lazyvim.plugins.extras.lang.docker" },
-        { import = "lazyvim.plugins.extras.lsp.none-ls" },
-        -- { import = "lazyvim.plugins.extras.coding.tabnine" },
         { import = "plugins" },
     },
     defaults = {

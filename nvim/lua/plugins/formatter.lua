@@ -8,26 +8,10 @@ return {
     {
         "williamboman/mason.nvim",
         opts = function(_, opts)
-            return vim.tbl_deep_extend("force", opts, {
-                ensure_installed = {
-                    "stylua",
-                    "shfmt",
-                    "prettierd",
-                },
-            })
-        end,
-    },
-    {
-        "nvimtools/none-ls.nvim",
-        opts = function(_, opts)
-            local formatting = require("null-ls").builtins.formatting
-            return vim.tbl_deep_extend("force", opts, {
-                sources = {
-                    formatting.stylua,
-                    formatting.shfmt,
-                    formatting.prettierd,
-                },
-            })
+            -- install formatter
+            table.insert(opts.ensure_installed, "prettier")
+            table.insert(opts.ensure_installed, "stylua")
+            table.insert(opts.ensure_installed, "shfmt")
         end,
     },
 }

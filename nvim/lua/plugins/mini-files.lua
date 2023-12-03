@@ -4,13 +4,11 @@
 -----------------------------------------------------------------------
 return {
     "echasnovski/mini.files",
-    opts = function(_, opts)
-        return vim.tbl_extend("force", opts, {
-            mappings = {
-                close = "<c-q>",
-            },
-        })
-    end,
+    opts = {
+        mappings = {
+            close = "<c-q>",
+        },
+    },
     keys = {
         {
             "<c-f>",

@@ -51,22 +51,20 @@ return {
             },
         })
     end,
-    keys = function(_, keys)
-        return vim.list_extend(keys, {
-            { "<leader>ff", false },
-            {
-                "<C-p>",
-                "<cmd>Telescope find_files<cr>",
-                desc = "Find Files (root dir)",
-                noremap = true,
-            },
-            {
-                "<leader>bb",
-                "<leader>,",
-                desc = "Switch Buffers",
-                remap = true,
-                noremap = true,
-            },
-        })
-    end,
+    keys = {
+        { "<leader>ff", false },
+        {
+            "<C-p>",
+            "<cmd>Telescope find_files<cr>",
+            desc = "Find Files (root dir)",
+            noremap = true,
+        },
+        {
+            "<leader>bb",
+            "<leader>,",
+            desc = "Switch Buffers",
+            remap = true,
+            noremap = true,
+        },
+    },
 }

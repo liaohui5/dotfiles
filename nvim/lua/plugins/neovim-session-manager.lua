@@ -5,19 +5,20 @@
 return {
     "Shatur/neovim-session-manager",
     event = "VeryLazy",
-    dependencies = "nvim-lua/plenary.nvim",
+    dependencies = {
+        "nvim-lua/plenary.nvim",
+    },
 
-    -- stylua: ignore
-    opts = function(_, opts)
+    opts = function()
         local config = require("session_manager.config")
-        local Path   = require("plenary.path")
-
-        -- session 保存目录
+        local Path = require("plenary.path")
         local sessions_dir = Path:new(vim.fn.stdpath("data"), "sessions")
 
-        -- 自动加载 session: Disabled(禁止) CurrentDir(当前目录) LastSession(上次session)
+        -- session autoload mode: Disabled, CurrentDir, LastSession
         local autoload_mode = config.AutoloadMode.Disabled
-        return vim.tbl_extend("force", opts, {
+
+        -- stylua: ignore
+        return {
             sessions_dir = sessions_dir,
             autoload_mode = autoload_mode,
             path_replacer = "__",
@@ -30,24 +31,25 @@ return {
                 ".DS_Store",
                 "gitcommit",
             },
-        })
+        }
     end,
 
     config = function(_, session)
-        local api, fn = vim.api, vim.fn
-        local autocmd, augroup = api.nvim_create_autocmd, api.nvim_create_augroup
-        autocmd("ExitPre", {
-            group = augroup("auto_save_session_before_quit", { clear = true }),
-            callback = function()
-                local sessions = require("session_manager.utils").get_sessions()
-                local curr_cwd = fn.getcwd()
-                for _, item in ipairs(sessions) do
-                    if item.dir.filename == curr_cwd then
-                        session.save_current_session()
-                        break
-                    end
+        local save_session_before_exit_nvim = function()
+            local sessions = require("session_manager.utils").get_sessions()
+            local curr_cwd = vim.fn.getcwd()
+            for _, item in ipairs(sessions) do
+                if item.dir.filename == curr_cwd then
+                    session.save_current_session()
+                    break
                 end
-            end,
+            end
+        end
+
+        -- register event handler
+        vim.api.nvim_create_autocmd("ExitPre", {
+            group = vim.api.nvim_create_augroup("save_session_before_exit_nvim", { clear = true }),
+            callback = save_session_before_exit_nvim,
         })
     end,
 

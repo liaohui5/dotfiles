@@ -4,12 +4,7 @@
 --------------------------------------------------------------
 return {
     "iamcco/markdown-preview.nvim",
-    event = "VeryLazy",
     ft = "markdown",
-    build = "cd app && npm install",
-    config = function()
-        vim.g.mkdp_auto_start = 1
-    end,
     keys = {
         {
             "<leader>Mp",
