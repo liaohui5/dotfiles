@@ -56,6 +56,12 @@ return {
                     action = "SessionManager load_last_session",
                 },
                 {
+                    icon = "",
+                    desc = "Current directory session",
+                    key = "c",
+                    action = "SessionManager load_current_dir_session",
+                },
+                {
                     icon = "",
                     desc = "Pick session",
                     key = "p",
@@ -76,7 +82,7 @@ return {
                 {
                     icon = "",
                     desc = "Configurations",
-                    key = "c",
+                    key = "C",
                     action = "edit $MYVIMRC",
                 },
                 {
@@ -90,12 +96,6 @@ return {
                     desc = "Lazy extras",
                     key = "e",
                     action = "LazyExtras",
-                },
-                {
-                    icon = "",
-                    desc = "Dotfiles",
-                    key = "H",
-                    action = "lua require('link-visitor').visit('https://github.com/liaohui5/dotfiles')",
                 },
                 {
                     icon = "",
