@@ -2,43 +2,70 @@
 #  │ lazygit 配置                                                                 │
 #  │ https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md          │
 #  ╰──────────────────────────────────────────────────────────────────────────────╯
+# yaml-language-server: $schema=https://json.schemastore.org/lazygit.json
 gui:
-  language: "en"
-  showIcons: false      # 显示图标需要 Nerd Font
-  showListFooter: false # 不显示页脚
-  showRandomTip: false  # 不随机显示提示
-  showFileTree: false   # 是否显示文件目录结构树(false平铺显示文件)
-  sidePanelWidth: 0.25  # 左边栏目宽度比例
+  # 不显示页脚
+  showListFooter: false
+
+  # 是否显示文件目录结构树(false平铺显示文件)
+  showFileTree: false
+
+  # 左边栏目宽度比例
+  sidePanelWidth: 0.3
+
+  # 显示图标需要 Nerd Font(default: true)
+  # showIcons: true
+
+  # 是否随机显示提示
+  showRandomTip: false
 
 git:
-  autoFetch: true       # 自动拉取远程代码
-  autoRefresh: true     # 自动刷新
-  mouseevents: false    # 禁用鼠标
-  parseEmoji: true      # 解析 gitmoji 表情
+  # 自动拉取远程代码
+  autoFetch: true
+
+  # 自动刷新
+  autoRefresh: true
+
+  # 禁用鼠标
+  mouseevents: false
+
+  # 解析 gitmoji 表情
+  parseEmoji: true
+
+  # 分页
   paging:
     colorArg: auto
-    pager: delta --dark --paging=never # 需要安装 git-detal 命令
-    # pager: diff-so-fancy                 # 需要安装 diff-so-fancy 命令
+
+    # 需要安装 git-detal 命令
+    pager: delta --dark --paging=never
+
+    # 需要安装 diff-so-fancy 命令
+    # pager: diff-so-fancy
   log:
     showGraph: always
 
 os:
-  openCommand: "vim {{filename}}"                    # 编辑文件命令(需要安装vscode)
-  editCommand: "vim"                                 # 编辑文件命令
-  editCommandTemplate: "{{editor}} +{{line}} -- {{filename}}"
+  # 编辑文件命令(需要安装vscode)
+  open: "{{editor}} {{filename}}"
+
+  # 编辑文件命令
+  edit: "{{editor}}"
+  editAtLine: "{{editor}} +{{line}} -- {{filename}}"
 
 reporting: "off" # 不提供日志报告
 update:
   method: prompt # 询问是否要更新
-  days: 7 # 每7天检查一次是否有更新
+  days:
+    7 # 每7天检查一次是否有更新
 
-# 快捷键绑定:
+
+    # 快捷键绑定:
 keybinding:
   universal:
     quit: "<c-q>" # 退出
 
 customCommands:
-  - key: '<c-c>'
-    context: 'files'
-    command: 'czg' # 需要安装命令: https://cz-git.qbb.sh/zh/
+  - key: "<c-c>"
+    context: "files"
+    command: "czg" # 快速生成提交模板, 需要安装命令: https://cz-git.qbb.sh/zh/
     subprocess: true
