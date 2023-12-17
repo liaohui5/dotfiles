@@ -41,7 +41,7 @@
   },
   // 匹配括号高亮 && 匹配当前光标所在位置单词高亮
   "editor.matchBrackets": "never",
-  "editor.occurrencesHighlight": true,
+  "editor.occurrencesHighlight": "singleFile",
   // 同步 Git 前请先确认 && 允许直接提交(git -am) && 自动拉取代码
   "git.confirmSync": false,
   "git.enableSmartCommit": true,

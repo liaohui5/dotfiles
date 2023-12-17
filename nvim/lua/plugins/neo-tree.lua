@@ -30,7 +30,6 @@ return {
                 end,
             },
             {
-
                 -- 文件删除后立即关闭对应的 buffer 标签页
                 event = events.FILE_DELETED,
                 handler = function(filepath)
@@ -161,7 +160,7 @@ return {
             hide_root_node = true,
             use_default_mappings = false,
             event_handlers = event_handlers,
-            -- sources = { "filesystem", "buffers", "git_status" },
+            sources = { "filesystem", "buffers", "git_status" },
             source_selector = {
                 winbar = true,
             },

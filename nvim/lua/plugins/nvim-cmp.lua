@@ -20,15 +20,11 @@ return {
         "hrsh7th/nvim-cmp",
         event = "VeryLazy",
         dependencies = {
-            -- defaults:
-            -- "hrsh7th/cmp-nvim-lsp",
-            -- "hrsh7th/cmp-buffer",
-            -- "hrsh7th/cmp-path",
-            -- "saadparwaiz1/cmp_luasnip",
-
-            -- customs:
-            "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/cmp-cmdline",
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-buffer",
+            "saadparwaiz1/cmp_luasnip",
+            "hrsh7th/cmp-path",
             "hrsh7th/cmp-nvim-lsp-signature-help",
             "hrsh7th/cmp-nvim-lsp-document-symbol",
             "hrsh7th/cmp-nvim-lua",
