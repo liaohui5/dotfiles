@@ -85,6 +85,10 @@ yabai -m rule --add manage=off app="^TTime$"
 yabai -m rule --add manage=off app="^VMware\ Fusion$"
 yabai -m rule --add manage=off app="^MailMaster$"
 yabai -m rule --add manage=off app="^pot$"
+yabai -m rule --add manage=off app="^rubick$"
+yabai -m rule --add manage=off app="^ONLYOFFICE$"
+yabai -m rule --add manage=off app="^RustDesk$"
+yabai -m rule --add manage=off app="^CCTalk$"
 
 ### config loaded
 echo "yabai config loaded"
