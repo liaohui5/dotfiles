@@ -19,10 +19,12 @@ function command_exists() {
 }
 
 ################################################################
-# set homebrew server
+# set homebrew server -> https://brew.idayer.com/guide/change-source
 ################################################################
-export HOMEBREW_API_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/api        #brew.idayer.com
-export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/bottles #brew.idayer.com
+export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.cloud.tencent.com/homebrew/brew.git"
+export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.cloud.tencent.com/homebrew/homebrew-core.git"
+export HOMEBREW_API_DOMAIN="https://mirrors.cloud.tencent.com/homebrew-bottles/api/"
+export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.cloud.tencent.com/homebrew-bottles/bottles"
 
 ################################################################
 # OrbStack command-line tools and integration
@@ -73,18 +75,6 @@ fi
 ################################################################
 export PNPM_HOME="$HOME/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
-
-################################################################
-# nvim
-# https://github.com/neovim/neovim
-################################################################
-if command_exists 'nvim'; then
-  export EDITOR='nvim'
-  alias vi='nvim'
-else
-  export EDITOR='vim'
-  alias vi='vim'
-fi
 
 ################################################################
 # cargo

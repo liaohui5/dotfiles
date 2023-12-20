@@ -58,6 +58,13 @@ alias bb='bun run build'
 alias bs='bun run start'
 alias bm='bun run mock'
 
+# neovim: https://github.com/neovim/neovim
+# helix:  https://helix-editor.com/
+alias v='nvim'
+alias vi='nvim'
+alias vim='nvim'
+
 # enable or disable clashx proxies
 alias setproxy='export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890'
 alias resetproxy="export https_proxy='' http_proxy='' all_proxy=''"
+setproxy
