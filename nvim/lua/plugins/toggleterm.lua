@@ -50,12 +50,17 @@ return {
 
         -- toggle terminals
         local actions = {
+            -- lazygit: https://github.com/jesseduffield/lazygit
             toggle_lazygit = function()
                 createTerminal("lazygit"):toggle()
             end,
+
+            -- gitui: https://github.com/extrawurst/gitui
             toggle_gitui = function()
                 createTerminal("gitui"):toggle()
             end,
+
+            -- joshuto: https://github.com/kamiyaa/joshuto
             toggle_joshuto_cwd = function()
                 local open_path = vim.fn.getcwd()
                 return createTerminal(string.format("joshuto %s", open_path)):toggle()
@@ -64,14 +69,32 @@ return {
                 local open_path = vim.fn.expand("%:p:h")
                 return createTerminal(string.format("joshuto %s", open_path)):toggle()
             end,
+
+            -- vifm: https://vifm.info/
             toggle_vifm = function()
-                local buffPath = vim.fn.expand("%:p:h")
-                local rootPath = vim.fn.getcwd()
-                local commands = string.format("vifm %s %s", buffPath, rootPath)
+                local buff_path = vim.fn.expand("%:p:h")
+                local root_path = vim.fn.getcwd()
+                local commands = string.format("vifm %s %s", buff_path, root_path)
                 return createTerminal(commands):toggle()
+            end,
+
+            -- yazi: https://yazi-rs.github.io/
+            toggle_yazi_cwd = function()
+                local open_path = vim.fn.getcwd()
+                return createTerminal(string.format("yazi %s", open_path)):toggle()
+            end,
+            toggle_yazi_current = function()
+                local open_path = vim.fn.expand("%:p:h")
+                return createTerminal(string.format("yazi %s", open_path)):toggle()
             end,
         }
         return {
+            {
+              "<C-n>",
+              "<leader>oy",
+              remap = true,
+              noremap = true,
+            },
             {
                 "<leader>og",
                 actions.toggle_lazygit,
@@ -83,15 +106,19 @@ return {
                 desc = "toggle gitui",
             },
             {
+                "<leader>oy",
+                actions.toggle_yazi_cwd,
+                desc = "toggle yazi file manager",
+            },
+            {
+                "<leader>oY",
+                actions.toggle_yazi_current,
+                desc = "toggle yazi file manager",
+            },
+            {
                 "<leader>oj",
                 actions.toggle_joshuto_cwd,
                 desc = "toggle joshuto file manager",
-            },
-            {
-              "<C-n>",
-              "<leader>oj",
-              remap = true,
-              noremap = true,
             },
             {
                 "<leader>oJ",

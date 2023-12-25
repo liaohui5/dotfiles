@@ -22,8 +22,8 @@ alias tmxd='tmux detach'
 # joshuto: https://github.com/kamiyaa/joshuto
 # yazi: https://yazi-rs.github.io/
 # alias fm='vifm'
-# alias fm='yazi'
-alias fm='joshuto'
+alias fm='yazi'
+# alias fm='joshuto'
 
 # vscode: https://code.visualstudio.com/
 # vscodium: https://vscodium.com/
@@ -60,8 +60,7 @@ alias bm='bun run mock'
 
 # neovim: https://github.com/neovim/neovim
 # helix:  https://helix-editor.com/
-alias v='nvim'
-alias vi='nvim'
+alias vi='vim'
 alias vim='nvim'
 
 # enable or disable clashx proxies
