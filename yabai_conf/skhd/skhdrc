@@ -126,7 +126,8 @@ alt - 6: open -a "QQ"                                   # QQ
 alt - 7: open -a "WeChat"                               # 微信
 alt - 8: open -a "YesPlayMusic"                         # 网易云音乐
 alt - 9: open -a "Launchpad"                            # 启动项
-alt - 0: open -b "com.google.chrome"                    # Google Chrome 浏览器
+alt - 0: open -b "org.mozilla.firefox"                  # firefox 浏览器
+# alt - 0: open -b "com.google.chrome"                    # Google Chrome 浏览器
 alt - 0x1B: open -a "neovide" --args --frame buttonless # neovim(alt + -)
 alt - 0x18: open -b "org.alacritty"                     # Alacritty
 
