@@ -67,11 +67,11 @@ return {
             })
         end,
     },
-    -- {
-    --     -- 自动不同颜色高亮不同层级的括号
-    --     "HiPhish/rainbow-delimiters.nvim",
-    --     event = "BufReadPost",
-    -- },
+    {
+        -- 自动不同颜色高亮不同层级的括号
+        "HiPhish/rainbow-delimiters.nvim",
+        event = "BufReadPost",
+    },
     {
         -- 自动闭合 HTML 和 jsx 标签
         "windwp/nvim-ts-autotag",
