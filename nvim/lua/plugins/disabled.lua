@@ -20,7 +20,6 @@ return disable_plugins({
     "echasnovski/mini.comment",                -- 注释插件(用习惯了 Comment.nvim, 不喜欢这个)
     "echasnovski/mini.surround",               -- 快速操作两边字符(操作不如 nvim-surround 方便)
     "echasnovski/mini.indentscope",            -- 缩进显示
-    "lukas-reineke/indent-blankline.nvim",     -- 缩进显示
     "SmiteshP/nvim-navic",                     -- 顶部代码导航
     "folke/persistence.nvim",                  -- session 管理插件(功能太少, 不如 neovim-session-manager)
     "folke/noice.nvim",                        -- UI 美化(实验性的功能插件,所以禁用)
@@ -28,4 +27,6 @@ return disable_plugins({
     "zbirenbaum/copilot.lua",                  -- copilot AI 生成代码
     "zbirenbaum/copilot-cmp",                  -- copilot AI 生成代码
     "nvim-treesitter/nvim-treesitter-context", -- nvim-treesitter-context 显示当前光标所在位置上下文
+    "ThePrimeagen/refactoring.nvim",           -- 代码重构工具, 并不常用
+    -- "lukas-reineke/indent-blankline.nvim",     -- 缩进显示(rainbow-delimiters 这个插件性能太差)
 })

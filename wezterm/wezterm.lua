@@ -7,7 +7,7 @@ local strfmt = string.format
 wezterm.on("format-tab-title", formatTabTitle)
 
 -- 字体样式
-local fontSize = 18
+local fontSize = 16
 local font = wezterm.font_with_fallback({
   {
     family = "JetBrainsMono Nerd Font Mono",

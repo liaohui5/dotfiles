@@ -8,7 +8,9 @@
 return {
     "https://github.com/Wansmer/treesj",
     event = "VeryLazy",
-    opts = { use_default_keymaps = false },
+    opts = {
+      use_default_keymaps = false,
+    },
     keys = function()
         local splitJoin = require("treesj")
         return {

@@ -7,7 +7,9 @@
 -----------------------------------------------------------------------
 return {
     "ckolkey/ts-node-action",
-    dependencies = { "nvim-treesitter" },
+    dependencies = {
+        "nvim-treesitter",
+    },
     opts = {},
     keys = {
         { "ga", "<cmd>NodeAction<cr>", desc = "Trigger Node Action" },
