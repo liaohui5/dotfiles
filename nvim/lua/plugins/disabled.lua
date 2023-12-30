@@ -28,5 +28,4 @@ return disable_plugins({
     "zbirenbaum/copilot-cmp",                  -- copilot AI 生成代码
     "nvim-treesitter/nvim-treesitter-context", -- nvim-treesitter-context 显示当前光标所在位置上下文
     "ThePrimeagen/refactoring.nvim",           -- 代码重构工具, 并不常用
-    "lukas-reineke/indent-blankline.nvim",     -- 缩进显示(rainbow-delimiters 这个插件性能太差)
 })
