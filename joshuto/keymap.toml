@@ -27,8 +27,7 @@ keymap = [
   { keys = ["ctrl+r"], command = "reload_dirlist" },
 
   # toggle hidden files
-  { keys = ["z", "h"], command = "toggle_hidden" },
-  { keys = ["ctrl+h"], command = "toggle_hidden" },
+  { keys = ["."], command = "toggle_hidden" },
 
   # map command to number
   { keys = ["1"], command = "numbered_command 1" },
@@ -73,8 +72,8 @@ keymap = [
   { keys = ["y", "d"], command = "copy_dirpath" },
 
   # delete files
-  { keys = ["d", "D"], command = "delete_files" },
   { keys = ["delete"], command = "delete_files" },
+  { keys = ["x"], command = "delete_files" },
 
   # paste files
   { keys = ["p", "p"], command = "paste_files" },
