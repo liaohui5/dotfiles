@@ -5,6 +5,7 @@
 return {
     "nvim-neo-tree/neo-tree.nvim",
     event = "VeryLazy",
+    branch = "v3.x",
     keys = {
         { "<leader>e", false },
         { "<leader>E", false },

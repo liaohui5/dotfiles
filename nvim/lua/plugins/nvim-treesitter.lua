@@ -47,7 +47,7 @@ return {
                 },
                 indent = {
                     -- 允许 treesitter 来识别缩进
-                    enable = false,
+                    enable = true,
                 },
                 incremental_selection = {
                     -- 允许使用 treesitter 来选择内容
@@ -71,13 +71,13 @@ return {
         -- 自动不同颜色高亮不同层级的括号
         "HiPhish/rainbow-delimiters.nvim",
         event = "BufReadPost",
-        enabled = false,
+        enabled = true,
     },
     {
         -- 自动闭合 HTML 和 jsx 标签
         "windwp/nvim-ts-autotag",
         event = "InsertEnter",
-        enabled = false,
+        enabled = true,
     },
     {
         -- 显示当前上下文

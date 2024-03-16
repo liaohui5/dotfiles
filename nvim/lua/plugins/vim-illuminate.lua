@@ -5,7 +5,6 @@
 
 return {
     "RRethy/vim-illuminate",
-    enabled = false,
     opts = function(_, opts)
         -- https://neovim.io/doc/user/api.html#nvim_set_hl()
         local hl = vim.api.nvim_set_hl

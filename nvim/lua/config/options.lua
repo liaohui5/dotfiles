@@ -18,6 +18,7 @@ vim.opt.compatible     = false                        -- 缺省vi兼容模式,�
 vim.opt.title          = true                         -- 显示 title
 vim.opt.titlestring    = "%F - nvim"                  -- 窗口 title 显示内容
 vim.opt.cursorline     = true                         -- 高亮当前行
+vim.opt.confirm        = false                        -- 退出前不显示提示,直接退出
 vim.opt.clipboard      = "unnamedplus"                -- 使用系统粘贴板
 vim.opt.updatetime     = 100                          -- 更新间隔时间(ms), 比如按下 <Leader> 键后没有再
 vim.opt.timeoutlen     = 300                          -- 按其他键多久后自动取消 <Leader>, 不需要太快否则会频繁触发 which-key
