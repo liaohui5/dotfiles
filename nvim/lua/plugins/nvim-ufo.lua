@@ -7,7 +7,6 @@ return {
     event = "VeryLazy",
     version = "v1.*",
     build = "npm install --frozen-lockfile",
-    enabled = false,
     dependencies = {
         "kevinhwang91/promise-async",
     },

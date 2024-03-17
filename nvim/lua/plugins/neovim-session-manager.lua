@@ -34,25 +34,6 @@ return {
         }
     end,
 
-    config = function(_, session)
-        local save_session_before_exit_nvim = function()
-            local sessions = require("session_manager.utils").get_sessions()
-            local curr_cwd = vim.fn.getcwd()
-            for _, item in ipairs(sessions) do
-                if item.dir.filename == curr_cwd then
-                    session.save_current_session()
-                    break
-                end
-            end
-        end
-
-        -- register event handler
-        vim.api.nvim_create_autocmd("ExitPre", {
-            group = vim.api.nvim_create_augroup("save_session_before_exit_nvim", { clear = true }),
-            callback = save_session_before_exit_nvim,
-        })
-    end,
-
     keys = {
         {
             "<leader>pr",

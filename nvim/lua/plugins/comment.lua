@@ -6,10 +6,8 @@
 -- 注释高亮:https://github.com/folke/todo-comments.nvim
 -----------------------------------------------------------------------
 return {
-    {
-        -- highlight some comments: https://github1s.com/LazyVim/LazyVim/blob/HEAD/lua/lazyvim/plugins/editor.lua
-        "folke/todo-comments.nvim",
-    },
+    -- highlight some comments: https://github1s.com/LazyVim/LazyVim/blob/HEAD/lua/lazyvim/plugins/editor.lua#L492
+    -- "folke/todo-comments.nvim",
     {
         -- comment
         "numToStr/Comment.nvim",
@@ -18,7 +16,8 @@ return {
             return vim.tbl_extend("force", opts, {
                 padding = true,
                 sticky = true,
-                mappings = { -- 禁止使用默认的快捷键
+                mappings = {
+                    -- 禁止使用默认的快捷键
                     basic = false,
                     extra = false,
                 },

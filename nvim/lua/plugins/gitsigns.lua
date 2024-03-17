@@ -6,7 +6,9 @@ return {
     "lewis6991/gitsigns.nvim",
     event = "VeryLazy",
     opts = {
-        yadm = { enable = false },
+        yadm = {
+          enable = false,
+        },
     },
     keys = {
         {

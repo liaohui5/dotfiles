@@ -13,6 +13,10 @@ return {
         "nvim-treesitter",
     },
     keys = {
-        { "ga", "<cmd>NodeAction<cr>", desc = "Trigger Node Action" },
+        {
+            "ga",
+            "<cmd>NodeAction<cr>",
+            desc = "Trigger Node Action",
+        },
     },
 }
