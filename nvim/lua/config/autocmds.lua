@@ -19,6 +19,10 @@ local function augroup(name)
     })
 end
 
+local function lazy_augroup(name)
+    return vim.api.nvim_create_augroup("lazyvim_" .. name, { clear = true })
+end
+
 -- disable auto format when save
 autocmd("FileType", {
     group = augroup("disable_auto_format"),
@@ -51,19 +55,15 @@ autocmd("OptionSet", {
 })
 
 -- Override LazyVIM default: Check if we need to reload the file when it changed
--- https://github1s.com/LazyVim/LazyVim/blob/HEAD/lua/lazyvim/config/autocmds.lua#L7
-autocmd({ "FocusGained", "FocusLost", "TermClose", "TermLeave" }, {
-    group = augroup("checktime"),
-    command = "checktime",
-})
+-- https://github1s.com/LazyVim/LazyVim/blob/HEAD/lua/lazyvim/config/autocmds.lua#L8
 
 -- Override LazyVIM default: wrap and check for spell in text filetypes
--- https://github1s.com/LazyVim/LazyVim/blob/HEAD/lua/lazyvim/config/autocmds.lua#L74
+-- https://github1s.com/LazyVim/LazyVim/blob/HEAD/lua/lazyvim/config/autocmds.lua#L87
 autocmd("FileType", {
-    group = augroup("wrap_spell"),
-    pattern = { "gitcommit", "markdown" },
+    group = lazy_augroup("wrap_spell"),
+    pattern = { "gitcommit" },
     callback = function()
-        vim.opt_local.wrap = false
-        vim.opt_local.spell = false
+        vim.opt_local.wrap = true
+        vim.opt_local.spell = true
     end,
 })
