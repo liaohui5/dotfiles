@@ -100,30 +100,4 @@ return {
             },
         },
     },
-
-    -- -- auto generate comment: generate jsDoc format in js file
-    -- {
-    --     "danymat/neogen",
-    --     event = "VeryLazy",
-    --     opts = {
-    --         enable = true,
-    --         snippet_engine = "luasnip",
-    --         input_after_comment = true,
-    --     },
-    --     keys = {
-    --         {
-    --             "<leader>cc",
-    --             function()
-    --                 local types = { "type", "func", "file", "class" }
-    --                 local options = {
-    --                     prompt = "Please select generate comment type:",
-    --                 }
-    --                 vim.ui.select(types, options, function(selectedType)
-    --                     require("neogen").generate({ type = selectedType })
-    --                 end)
-    --             end,
-    --             desc = "auto generate comments",
-    --         },
-    --     },
-    -- },
 }

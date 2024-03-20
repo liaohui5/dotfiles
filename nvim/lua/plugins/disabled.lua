@@ -29,4 +29,5 @@ return disable_plugins({
     "nvim-treesitter/nvim-treesitter-context", -- nvim-treesitter-context 显示当前光标所在位置上下文
     "ThePrimeagen/refactoring.nvim",           -- 代码重构工具, 并不常用
     "kevinhwang91/nvim-ufo",                   -- 代码折叠美化
+    "LudoPinelli/comment-box.nvim",            -- 块级注释
 })
