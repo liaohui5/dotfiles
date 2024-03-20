@@ -30,4 +30,5 @@ return disable_plugins({
     "ThePrimeagen/refactoring.nvim",           -- 代码重构工具, 并不常用
     "kevinhwang91/nvim-ufo",                   -- 代码折叠美化
     "LudoPinelli/comment-box.nvim",            -- 块级注释
+    "folke/neodev.nvim",                       -- neovim lua API 文档说明
 })
