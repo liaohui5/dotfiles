@@ -96,6 +96,12 @@ return {
               noremap = true,
             },
             {
+              "<C-f>",
+              "<leader>oY",
+              remap = true,
+              noremap = true,
+            },
+            {
                 "<leader>og",
                 actions.toggle_lazygit,
                 desc = "toggle lazygit[toggleterm.nvim]",

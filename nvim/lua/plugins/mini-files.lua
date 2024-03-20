@@ -4,6 +4,7 @@
 -----------------------------------------------------------------------
 return {
     "echasnovski/mini.files",
+    enabled = false,
     opts = {
         mappings = {
             close = "<c-q>",

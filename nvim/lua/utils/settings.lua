@@ -28,7 +28,7 @@ vim.g.snippets_save_dir = "./snippets"
 vim.g.load_unpopular_plugins = true
 
 -- 默认是否开启自动完成(可以通过快捷键开启)
-vim.g.enable_auto_completation = true
+vim.g.enable_auto_completation = false
 
 -- 禁用 provider, 注释表示开启, 查看状态 :checkheath provider
 local disabled_providers = {
