@@ -11,6 +11,6 @@ return {
         default_im_select = "com.apple.keylayout.ABC",
 
         -- 自动恢复上一次输入法状态事件(如:InsertEnter)
-        set_previous_events = {},
+        set_previous_events = { "InsertEnter" },
     },
 }
