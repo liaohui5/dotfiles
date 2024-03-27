@@ -64,7 +64,7 @@
     ~/Library/Application Support/lazygit/config.yml: git/lazygit-config.yml
     ~/.czrc: git/cz-git.czrc
     # mpv
-    ~/.config/mvp: mpv
+    ~/.config/mpv: mpv
 
 - shell:
     - ./install-deps.sh
