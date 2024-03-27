@@ -1,26 +1,18 @@
---  .----------------.  .----------------.  .----------------.  .----------------.  .----------------.  .-----------------. .----------------.  .----------------.
--- | .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. |
--- | | ____    ____ | || |      __      | || |   ______     | || |   ______     | || |     _____    | || | ____  _____  | || |    ______    | || |    _______   | |
--- | ||_   \  /   _|| || |     /  \     | || |  |_   __ \   | || |  |_   __ \   | || |    |_   _|   | || ||_   \|_   _| | || |  .' ___  |   | || |   /  ___  |  | |
--- | |  |   \/   |  | || |    / /\ \    | || |    | |__) |  | || |    | |__) |  | || |      | |     | || |  |   \ | |   | || | / .'   \_|   | || |  |  (__ \_|  | |
--- | |  | |\  /| |  | || |   / ____ \   | || |    |  ___/   | || |    |  ___/   | || |      | |     | || |  | |\ \| |   | || | | |    ____  | || |   '.___`-.   | |
--- | | _| |_\/_| |_ | || | _/ /    \ \_ | || |   _| |_      | || |   _| |_      | || |     _| |_    | || | _| |_\   |_  | || | \ `.___]  _| | || |  |`\____) |  | |
--- | ||_____||_____|| || ||____|  |____|| || |  |_____|     | || |  |_____|     | || |    |_____|   | || ||_____|\____| | || |  `._____.'   | || |  |_______.'  | |
--- | |              | || |              | || |              | || |              | || |              | || |              | || |              | || |              | |
--- | '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' |
---  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'
+-----------------------------------------------------------------------
+-- 非插件的基础快捷键绑定
 -- LazyVim default keymaps: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
+-----------------------------------------------------------------------
 local helpers = require("utils.helpers")
 local Util = require("lazyvim.util")
 
 local function map(mode, lhs, rhs, opts)
-    opts = opts or {}
-    vim.keymap.set(mode, lhs, rhs, opts)
+  opts = opts or {}
+  vim.keymap.set(mode, lhs, rhs, opts)
 end
 
 local function unmap(modes, lhs, opts)
-    opts = opts or {}
-    vim.keymap.del(modes, lhs, opts)
+  opts = opts or {}
+  vim.keymap.del(modes, lhs, opts)
 end
 
 -- Move to window using the <ctrl> hjkl keys
@@ -56,11 +48,11 @@ unmap("n", "<leader>xq")
 
 -- Formatting
 map({ "n", "v" }, "<leader>ff", function()
-    Util.format({ force = true })
+  Util.format({ force = true })
 end, {
-    desc = "Format Dcoument",
-    noremap = true,
-    silent = true,
+  desc = "Format Dcoument",
+  noremap = true,
+  silent = true,
 })
 
 -- toggle options
@@ -73,22 +65,22 @@ unmap("n", "<leader>ul")
 unmap("n", "<leader>ud")
 unmap("n", "<leader>uc")
 if vim.lsp.inlay_hint then
-    unmap("n", "<leader>uh")
+  unmap("n", "<leader>uh")
 end
 
 map("n", "<leader>tl", function()
-    Util.toggle("relativenumber")
+  Util.toggle("relativenumber")
 end, { desc = "Toggle Relative Line Numbers" })
 map("n", "<leader>tL", function()
-    Util.toggle.number()
+  Util.toggle.number()
 end, { desc = "Toggle Line Numbers" })
 
 -- lazygit
 map("n", "<c-g>", function()
-    Util.terminal({ "lazygit" }, { esc_esc = false, ctrl_hjkl = false })
+  Util.terminal({ "lazygit" }, { esc_esc = false, ctrl_hjkl = false })
 end, {
-    desc = "Lazygit",
-    silent = true,
+  desc = "Lazygit",
+  silent = true,
 })
 
 -- quit
@@ -99,7 +91,7 @@ unmap("n", "<leader>ui")
 
 -- LazyVim Changelog
 map("n", "<leader>L", function()
-    Util.news.changelog()
+  Util.news.changelog()
 end, { desc = "LazyVim Changelog" })
 
 -- floating terminal
@@ -144,19 +136,18 @@ map("c", "<c-l>", "<Right>", { noremap = true })
 
 -- toggle completation
 map("n", "<leader>tt", helpers.toggle_completation_status, {
-    desc = "toggle auto completion enabled status",
+  desc = "toggle auto completion enabled status",
 })
 
 -- toggle show invisible characters
 map("n", "<leader>tc", helpers.toggle_invisible_characters, {
-    desc = "toggle show invisible characters",
+  desc = "toggle show invisible characters",
 })
 
 -- open file in visual studio code
 map("n", "<leader>ov", helpers.buf_open_in_vscode, {
-    desc = "open buffer in vscode",
+  desc = "open buffer in vscode",
 })
 map("n", "<leader>oV", helpers.cwd_open_in_vscode, {
-    desc = "open cwd in vscode",
+  desc = "open cwd in vscode",
 })
-
