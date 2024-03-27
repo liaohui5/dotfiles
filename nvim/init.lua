@@ -11,9 +11,12 @@
 --  '----------------'  '----------------'  '----------------'  '----------------'
 -- neovide gui client: https://neovide.dev
 if vim.g.neovide then
-    require("client.neovide")
+  require("client.neovide")
 end
 
 require("utils.settings")
 require("utils.filetype")
+
+-- bootstrap LazyVIM and load plugins
+---@diagnostic disable-next-line: different-requires
 require("config.lazy")

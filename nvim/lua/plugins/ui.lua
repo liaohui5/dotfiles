@@ -203,6 +203,7 @@ return {
       --- footer
       ------------------------------------------------------------
       local footer = function()
+        ---@diagnostic disable-next-line: different-requires
         local stats = require("lazy").stats()
         local loaded, count, ms = stats.loaded, stats.count, math.floor(stats.startuptime)
         local items = {
