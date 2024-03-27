@@ -49,19 +49,25 @@ yabai -m config mouse_follows_focus off
 # 查询软件窗口的的所有软件信息: yabai -m query --windows
 # MacOS applications
 yabai -m rule --add manage=off app="Finder"
+yabai -m rule --add manage=off app="访达"
 yabai -m rule --add manage=off app="Safari"
-yabai -m rule --add manage=off app="macfeh"
 yabai -m rule --add manage=off app="System\ Preferences"
+yabai -m rule --add manage=off app="系统设置"
 yabai -m rule --add manage=off app="App\ Store"
 yabai -m rule --add manage=off app="Activity\ Monitor"
-yabai -m rule --add manage=off app="KeePassXC"
+yabai -m rule --add manage=off app="活动监视器"
 yabai -m rule --add manage=off app="Calculator"
+yabai -m rule --add manage=off app="计算器"
 yabai -m rule --add manage=off app="Dictionary"
+yabai -m rule --add manage=off app="词典"
 yabai -m rule --add manage=off app="mpv"
 yabai -m rule --add manage=off app="System\ Information"
+yabai -m rule --add manage=off app="系统信息"
 yabai -m rule --add manage=off app="Preview"
+yabai -m rule --add manage=off app="预览"
 yabai -m rule --add manage=off app="System Settings"
 yabai -m rule --add manage=off app="Stickies"
+yabai -m rule --add manage=off app="便笺"
 
 # Users Applications
 yabai -m rule --add manage=off app="LetsVPN"
