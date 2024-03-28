@@ -6,8 +6,8 @@ local SOLID_LEFT_MOST = utf8.char(0x2588)
 local SOLID_RIGHT_ARROW = utf8.char(0xe0bc)
 
 return function(tab, tabs, panes, config, hover, max_width)
-  local edge_background = "#191b28"
-  local background = "#191b28"
+  local edge_background = "#272822"
+  local background = "#272822"
   local foreground = "#f6f6f6"
 
   if tab.is_active then

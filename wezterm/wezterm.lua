@@ -7,13 +7,13 @@ local strfmt = string.format
 wezterm.on("format-tab-title", formatTabTitle)
 
 -- 字体样式
-local fontSize = 16
+local fontSize = 18
 local font = wezterm.font_with_fallback({
   {
     family = "JetBrainsMono Nerd Font Mono",
     weight = "Light",
     italic = false,
-    harfbuzz_features = { "calt=0", "clig=0", "liga=0" }, -- 禁止使用连体字符
+    harfbuzz_features = { "calt=1", "clig=1", "liga=1" }, -- 全部设置为0禁止使用连体字符
   },
   "OperatorMono Nerd Font Mono",
   "Hack Nerd Font Mono",
@@ -22,7 +22,7 @@ local font = wezterm.font_with_fallback({
 
 return {
   -- colorschemes: https://wezfurlong.org/wezterm/colorschemes/index.html
-  color_scheme = "Tokyo Night Moon",
+  color_scheme = "Monokai (base16)",
   font = font,
   line_height = 1,
   font_size = fontSize,
@@ -35,7 +35,7 @@ return {
   colors = {
     cursor_bg = "#fbbc07",
     cursor_border = "#fbbc07",
-    cursor_fg = "white",
+    cursor_fg = "#f8f8f8",
   },
   leader = {
     -- like tmux prefix key
