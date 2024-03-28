@@ -33,6 +33,7 @@ return {
         },
         {
           -- 文件删除后立即关闭对应的 buffer 标签页
+          -- TODO: 如果删除的是目录那么关闭目录下所有打开的文件对应的buffer
           event = events.FILE_DELETED,
           handler = function(filepath)
             local ok, bufremove = pcall(require, "mini.bufremove")
@@ -67,7 +68,8 @@ return {
                 return
               end
               -- 移动到垃圾桶 & 通知事件处理器关闭 node.path 对应的 buffer
-              vim.cmd(strfmt("silent !mv %s ~/.Trash/", node.path))
+              -- 需要先安装 trash 命令: brew install trash
+              vim.cmd(strfmt("silent !trash %s", node.path))
               events.fire_event(events.FILE_DELETED, node.path)
             end)
           end,
@@ -88,6 +90,59 @@ return {
         },
       }
 
+      local natural_sort = function(a, b)
+        -- 排序规则如下:
+        -- 1. 如果是文件名是数字开头那么就排在字母开头的文件名前面
+        -- 2. 如果文件名都是数字那么就按照数字的从小到大排序
+        -- 3. 如果文件名都是字母开头那么就按照字母的先后顺序排序
+        -- 被排序元素 a, b 的结构如下:
+        -- {
+        --   base = "README",
+        --   ext = "md",
+        --   id = "/Users/xxx/codes/dotfiels/README.md",
+        --   parent_path = "/Users/xxx/codes/dotfiels",
+        --   path = "/Users/xxx/codes/dotfiels/README.md",
+        --   type = "file"
+        -- }
+
+        -- 如果是目录和文件比较那么目录在前,文件在后
+        if a.type ~= b.type then
+          return a.type < b.type
+        end
+
+        -- 如果还没有加载完成(先随意排序,别让后面报错)
+        if type(a.name) ~= "string" or type(b.name) ~= "string" then
+          return a.path < b.path
+        end
+
+        -- 字符串是否是数字开头
+        local function starts_with_number(str)
+          return string.match(str, "^%d") ~= nil
+        end
+
+        -- 如果a以数字开头而b不是, 则返回true, 将a排在b前面
+        if starts_with_number(a.name) and not starts_with_number(b.name) then
+          return true
+        end
+
+        -- 如果b以数字开头而a不是, 则返回false, 将b排在a前面
+        if not starts_with_number(a.name) and starts_with_number(b.name) then
+          return false
+        end
+
+        -- 如果a和b都是数字, 则按照数字大小排序
+        local a_num = tonumber(string.match(a.name, "^%d+"))
+        local b_num = tonumber(string.match(b.name, "^%d+"))
+
+        -- 如果a和b都是数字, 则按照数字大小排序
+        if a_num and b_num then
+          return a_num < b_num
+        end
+
+        -- 如果a和b都不是数字, 则按照字母顺序排序
+        return a.name < b.name
+      end
+
       return vim.tbl_deep_extend("force", opts, {
         enable_git_status = false,
         enable_diagnostics = false,
@@ -96,6 +151,7 @@ return {
         hide_root_node = true,
         use_default_mappings = false,
         event_handlers = event_handlers,
+        sort_function = natural_sort,
         sources = { "filesystem" },
         source_selector = {
           winbar = false,

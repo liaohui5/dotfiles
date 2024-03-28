@@ -499,6 +499,8 @@ return {
   },
 
   {
+    -- 侧边栏文件树插件, 有时候 neot-tree.nvim 更新会报错
+    -- 就用这个暂时替换 neo-tree.nvim, 快捷键和 neo-tree 一直
     "nvim-tree/nvim-tree.lua",
     version = "v1.*",
     event = "VeryLazy",
