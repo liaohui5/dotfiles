@@ -19,10 +19,10 @@ return {
           always_show_bufferline = false, -- 如果为真在启动页也会显示,会破坏启动页的样式
           offsets = {
             {
-              filetype = "neo-tree", -- neotree
-              highlight = "Directory",
+              filetype = "neo-tree", -- neo-tree | NvimTree
+              highlight = "BufferLineTab",
               text = "Explorer",
-              text_align = "center", -- "left" | "center" | "right"
+              text_align = "center", -- left | center | right
             },
           },
         },

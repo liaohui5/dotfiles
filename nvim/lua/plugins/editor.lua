@@ -5,8 +5,8 @@
 return {
   {
     "nvim-neo-tree/neo-tree.nvim",
-    event = "VeryLazy",
     branch = "v3.x",
+    enabled = true,
     keys = {
       { "<leader>e", false },
       { "<leader>E", false },
@@ -88,75 +88,21 @@ return {
         },
       }
 
-      ------------------------------------------
-      -- neotree keys info :h neo-tree-mappings
-      ------------------------------------------
-      local keys = {
-        top_window = {
-          ["<space>"] = "toggle_node",
-          ["o"] = "open",
-          ["<enter>"] = "open",
-          ["<esc>"] = "revert_preview",
-          ["P"] = { "toggle_preview", config = { use_float = true } },
-          ["l"] = "focus_preview",
-          ["S"] = "open_split",
-          ["s"] = "open_vsplit",
-          ["Z"] = "close_node",
-          ["q"] = "close_window",
-          ["R"] = "refresh",
-          ["?"] = "show_help",
-          ["<s-tab>"] = "prev_source",
-          ["<tab>"] = "next_source",
-        },
-        filesystem_window = {
-          ["/"] = "fuzzy_finder", -- filter_on_submit
-          ["<c-x>"] = "clear_filter",
-          ["<c-k>"] = "prev_git_modified",
-          ["<c-j>"] = "next_git_modified",
-          ["."] = "set_root",
-          ["<bs>"] = "navigate_up",
-          ["a"] = "add",
-          ["A"] = "add_directory",
-          -- ["x"] = "delete", -- force delete from disk
-          ["r"] = "rename",
-          ["y"] = "copy_to_clipboard",
-          ["d"] = "cut_to_clipboard",
-          ["p"] = "paste_from_clipboard",
-          ["m"] = "move",
-          ["x"] = commands.remove2trash,
-          ["Y"] = commands.copy_filename,
-          ["<C-y>"] = commands.copy_filepath,
-        },
-        filesystem_fuzzy_finder = {
-          ["<c-j>"] = "move_cursor_down",
-          ["<c-k>"] = "move_cursor_up",
-        },
-        buffers_window = {
-          ["<bs>"] = "buffer_delete",
-        },
-        git_status_window = {
-          ["gu"] = "git_unstage_file",
-          ["ga"] = "git_add_file",
-          ["gA"] = "git_add_all",
-          ["gr"] = "git_revert_file",
-          ["gc"] = "git_commit",
-          ["gp"] = "git_push",
-        },
-      }
-
       return vim.tbl_deep_extend("force", opts, {
+        enable_git_status = false,
+        enable_diagnostics = false,
         close_if_last_window = true,
         popup_border_style = "single",
         hide_root_node = true,
         use_default_mappings = false,
         event_handlers = event_handlers,
-        sources = { "filesystem", "buffers", "git_status" },
+        sources = { "filesystem" },
         source_selector = {
-          winbar = true,
+          winbar = false,
         },
         default_component_configs = {
           indent = {
-            with_expanders = false,
+            with_expanders = false, --- hide arrow icon
             indent_size = 2,
             padding = 1,
             with_markers = true,
@@ -164,7 +110,19 @@ return {
         },
         window = {
           position = "left",
-          mappings = keys.top_window,
+          mappings = {
+            ["o"] = "open",
+            ["<cr>"] = "open",
+            ["<esc>"] = "cancel",
+            ["<tab>"] = { "toggle_preview", config = { use_float = true } },
+            ["l"] = "focus_preview",
+            ["s"] = "open_vsplit",
+            ["S"] = "open_split",
+            ["z"] = "close_node",
+            ["q"] = "close_window",
+            ["R"] = "refresh",
+            ["?"] = "show_help",
+          },
         },
         filesystem = {
           bind_to_cwd = true,
@@ -181,23 +139,24 @@ return {
             never_show = { ".DS_Store" },
           },
           window = {
-            mappings = keys.filesystem_window,
-            fuzzy_finder_mappings = keys.filesystem_fuzzy_finder,
-          },
-        },
-        buffers = {
-          follow_current_file = {
-            enabled = true,
-          },
-          group_empty_dirs = false,
-          show_unloaded = true,
-          window = {
-            mappings = keys.buffers_window,
-          },
-        },
-        git_status = {
-          window = {
-            mappings = keys.git_status_window,
+            mappings = {
+              ["a"] = {
+                "add",
+                config = {
+                  show_path = "absolute", -- none | relative | absolute
+                },
+              },
+              ["r"] = "rename",
+              ["y"] = "copy_to_clipboard",
+              ["d"] = "cut_to_clipboard",
+              ["p"] = "paste_from_clipboard",
+              -- ["x"] = "delete", -- force delete from disk
+              ["x"] = commands.remove2trash,
+              ["Y"] = commands.copy_filename,
+              ["<C-y>"] = commands.copy_filepath,
+              ["oc"] = { "order_by_created", nowait = false },
+            },
+            fuzzy_finder_mappings = {},
           },
         },
       })
