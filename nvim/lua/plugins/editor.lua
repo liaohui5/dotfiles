@@ -33,7 +33,6 @@ return {
         },
         {
           -- 文件删除后立即关闭对应的 buffer 标签页
-          -- TODO: 如果删除的是目录那么关闭目录下所有打开的文件对应的buffer
           event = events.FILE_DELETED,
           handler = function(filepath)
             local ok, bufremove = pcall(require, "mini.bufremove")
@@ -41,11 +40,19 @@ return {
               return
             end
             local buflist = vim.api.nvim_list_bufs()
+            local target_stats = vim.loop.fs_stat(filepath)
+            local target_is_file = target_stats and target_stats.type == "file"
             for _, bufnr in ipairs(buflist) do
+              -- 如果删除的目标是文件就关闭文件对应的标签页然后停止循环
               local bufpath = vim.fn.fnamemodify(vim.fn.bufname(bufnr), ":p")
-              if filepath == bufpath then
+              if target_is_file and filepath == bufpath then
                 bufremove.delete(bufnr, true)
                 break
+              end
+
+              -- 如果删除的目标是目录就关闭目录下所有的标签页
+              if string.sub(bufpath, 1, string.len(filepath)) == filepath then
+                bufremove.delete(bufnr, true)
               end
             end
           end,
@@ -69,6 +76,9 @@ return {
               end
               -- 移动到垃圾桶 & 通知事件处理器关闭 node.path 对应的 buffer
               -- 需要先安装 trash 命令: brew install trash
+              -- 推荐使用 trash 命令, 因为 trash 会自动重命名(如果垃圾桶有同名文件)
+              -- 如果使用 mv 命令, -f 只能强制覆盖, 否则会 mv 失败
+              -- vim.cmd(strfmt("silent !mv -f %s ~/.Trash", node.path))
               vim.cmd(strfmt("silent !trash %s", node.path))
               events.fire_event(events.FILE_DELETED, node.path)
             end)
@@ -218,6 +228,177 @@ return {
       })
     end,
   },
+  {
+    -- 侧边栏文件树插件, 有时候 neot-tree.nvim 更新后会报错
+    -- 就用这个暂时替换 neo-tree.nvim, 快捷键和 neo-tree 一致
+    "nvim-tree/nvim-tree.lua",
+    version = "v1.*",
+    event = "VeryLazy",
+    enabled = false,
+    opts = function(_, opts)
+      -- event handler: https://github.com/nvim-tree/nvim-tree.lua/blob/master/lua/nvim-tree/events.lua
+      -- direct to edit file after created
+      local events = require("nvim-tree.events")
+      events.subscribe(events.Event.FileCreated, function(file)
+        vim.cmd("silent edit " .. file.fname)
+      end)
+
+      -- on attach keybindings: https://github.com/nvim-tree/nvim-tree.lua/blob/master/lua/nvim-tree/keymap.lua
+      local on_attach = function(bufnr)
+        local api = require("nvim-tree.api")
+        local keybindings = {
+          {
+            key = "o",
+            cmd = api.node.open.edit,
+            desc = "open",
+          },
+          {
+            key = "<cr>",
+            cmd = api.node.open.edit,
+            desc = "open",
+          },
+          {
+            key = "<tab>",
+            cmd = api.node.open.preview,
+            desc = "open preview",
+          },
+          {
+            key = "s",
+            cmd = api.node.open.horizontal,
+            desc = "Open: Horizontal Split",
+          },
+          {
+            key = "<shift-s>",
+            cmd = api.node.open.vertical,
+            desc = "Open: Vertical Split",
+          },
+          {
+            key = "<shift-r>",
+            cmd = api.tree.reload,
+            desc = "Refresh",
+          },
+          {
+            key = "?",
+            cmd = api.tree.toggle_help,
+            desc = "Show help",
+          },
+          {
+            key = "x",
+            cmd = api.fs.trash,
+            desc = "Remove",
+          },
+          {
+            key = "a",
+            cmd = api.fs.create,
+            desc = "Create File Or Directory",
+          },
+          {
+            key = "r",
+            cmd = api.fs.rename,
+            desc = "Rename",
+          },
+          {
+            key = "<c-r>",
+            cmd = api.fs.rename_full,
+            desc = "Rename: Full Path",
+          },
+          {
+            key = "y",
+            cmd = api.fs.copy.node,
+            desc = "Copy",
+          },
+          {
+            key = "<shift-y>",
+            cmd = api.fs.copy.filename,
+            desc = "Copy",
+          },
+          {
+            key = "<c-y>",
+            cmd = api.fs.copy.absolute_path,
+            desc = "Copy path",
+          },
+          {
+            key = "d",
+            cmd = api.fs.cut,
+            desc = "Cut",
+          },
+          {
+            key = "p",
+            cmd = api.fs.paste,
+            desc = "Paste",
+          },
+          {
+            key = "z",
+            cmd = api.node.navigate.parent_close,
+            desc = "Close Folder",
+          },
+        }
+        for _, item in pairs(keybindings) do
+          vim.keymap.set("n", item.key, item.cmd, {
+            desc = item.desc,
+            buffer = bufnr,
+            noremap = true,
+            silent = true,
+            nowait = true,
+          })
+        end
+      end
+      return vim.tbl_deep_extend("force", opts, {
+        on_attach = on_attach,
+        disable_netrw = true,
+        hijack_netrw = false,
+        update_focused_file = {
+          enable = true,
+          update_root = true, -- auto change root directory after sesseion changed
+        },
+        filesystem_watchers = {
+          enable = true,
+        },
+        actions = {
+          use_system_clipboard = true,
+          open_file = {
+            resize_window = false,
+          },
+        },
+        view = {
+          width = vim.g.file_explorer_width,
+        },
+        renderer = {
+          root_folder_label = false, --- hidden root director absolute path
+          indent_width = 2,
+          indent_markers = {
+            enable = true,
+          },
+          icons = {
+            show = {
+              file = true,
+              folder = true,
+              folder_arrow = false,
+              modified = false,
+              git = false,
+            },
+          },
+        },
+        git = { enable = false },
+        filters = {
+          -- filter files to hidden
+          dotfiles = false,
+          git_clean = false,
+          no_buffer = false,
+          custom = { ".DS_Store", ".git" },
+          exclude = {},
+        },
+      })
+    end,
+    keys = {
+      {
+        "<c-e>",
+        "<cmd>NvimTreeToggle<cr>",
+        desc = "Toggle file explorer",
+      },
+    },
+  },
+
   {
     "nvim-pack/nvim-spectre",
     opts = {

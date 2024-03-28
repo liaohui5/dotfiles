@@ -145,6 +145,15 @@ return {
     end,
   },
   {
+    -- 自动切换输入法
+    "keaising/im-select.nvim",
+    event = "VeryLazy",
+    opts = {
+      default_im_select = "com.apple.keylayout.ABC", -- MacOS 默认的英文输入法
+      set_previous_events = { "InsertEnter" }, -- 自动恢复上一次输入法状态事件(如:InsertEnter)
+    },
+  },
+  {
     -- 快速启动一个 vite srever 注意需要全局安装 vite
     "liaohui5/vite-server.nvim",
     event = "VeryLazy",
@@ -243,17 +252,6 @@ return {
       },
     },
   },
-
-  {
-    -- 自动切换输入法
-    "keaising/im-select.nvim",
-    event = "VeryLazy",
-    opts = {
-      default_im_select = "com.apple.keylayout.ABC", -- MacOS 默认的英文输入法
-      set_previous_events = { "InsertEnter" }, -- 自动恢复上一次输入法状态事件(如:InsertEnter)
-    },
-  },
-
   {
     -- 快速打开 url
     "xiyaowong/link-visitor.nvim",
@@ -316,7 +314,9 @@ return {
     end,
   },
   {
+    -- 在浏览器中预览makdown文件
     "iamcco/markdown-preview.nvim",
+    enabled = true,
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     ft = { "markdown" },
     build = "cd app && npm install",
@@ -339,6 +339,7 @@ return {
   {
     -- session 管理插件
     "Shatur/neovim-session-manager",
+    enabled = true,
     event = "VeryLazy",
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -397,77 +398,10 @@ return {
     },
   },
   {
-    -- 合并/切分当前行(这几个都可以)
-    -- https://github.com/Wansmer/treesj
-    -- https://github.com/bennypowers/splitjoin.nvim
-    -- https://github.com/CKolkey/ts-node-action
-    "Wansmer/treesj",
-    event = "VeryLazy",
-    opts = {
-      use_default_keymaps = false,
-    },
-    keys = function()
-      local splitJoin = require("treesj")
-      return {
-        {
-          "gJ",
-          splitJoin.join,
-          desc = "Join the object under cursor",
-        },
-        {
-          "gS",
-          splitJoin.split,
-          desc = "Split the object under cursor",
-        },
-      }
-    end,
-  },
-  {
-    -- 美化折叠样式插进
-    "kevinhwang91/nvim-ufo",
-    enabled = false,
-    event = "VeryLazy",
-    version = "v1.*",
-    build = "npm install --frozen-lockfile",
-    dependencies = {
-      "kevinhwang91/promise-async",
-    },
-    opts = function(_, opts)
-      return vim.tbl_deep_extend("force", opts, {
-        fold_virt_text_handler = function(virtText, lnum, endLnum, width, truncate)
-          local newVirtText = {}
-          local suffix = (" + fold %d lines "):format(endLnum - lnum)
-          local sufWidth = vim.fn.strdisplaywidth(suffix)
-          local targetWidth = width - sufWidth
-          local curWidth = 0
-          for _, chunk in ipairs(virtText) do
-            local chunkText = chunk[1]
-            local chunkWidth = vim.fn.strdisplaywidth(chunkText)
-            if targetWidth > curWidth + chunkWidth then
-              table.insert(newVirtText, chunk)
-            else
-              chunkText = truncate(chunkText, targetWidth - curWidth)
-              local hlGroup = chunk[2]
-              table.insert(newVirtText, { chunkText, hlGroup })
-              chunkWidth = vim.fn.strdisplaywidth(chunkText)
-              if curWidth + chunkWidth < targetWidth then
-                suffix = suffix .. (" "):rep(targetWidth - curWidth - chunkWidth)
-              end
-              break
-            end
-            curWidth = curWidth + chunkWidth
-          end
-          table.insert(newVirtText, { suffix, "MoreMsg" })
-          return newVirtText
-        end,
-      })
-    end,
-  },
-  {
     -- 代码重构工具
     "ThePrimeagen/refactoring.nvim",
+    enabled = true,
     event = "VeryLazy",
-    enabled = false,
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
@@ -497,180 +431,33 @@ return {
       },
     },
   },
-
   {
-    -- 侧边栏文件树插件, 有时候 neot-tree.nvim 更新会报错
-    -- 就用这个暂时替换 neo-tree.nvim, 快捷键和 neo-tree 一直
-    "nvim-tree/nvim-tree.lua",
-    version = "v1.*",
-    event = "VeryLazy",
-    enabled = false,
-    opts = function(_, opts)
-      -- event handler: https://github.com/nvim-tree/nvim-tree.lua/blob/master/lua/nvim-tree/events.lua
-      -- direct to edit file after created
-      local events = require("nvim-tree.events")
-      events.subscribe(events.Event.FileCreated, function(file)
-        vim.cmd("silent edit " .. file.fname)
-      end)
-
-      -- on attach keybindings: https://github.com/nvim-tree/nvim-tree.lua/blob/master/lua/nvim-tree/keymap.lua
-      local on_attach = function(bufnr)
-        local api = require("nvim-tree.api")
-        local keybindings = {
-          {
-            key = "o",
-            cmd = api.node.open.edit,
-            desc = "open",
-          },
-          {
-            key = "<cr>",
-            cmd = api.node.open.edit,
-            desc = "open",
-          },
-          {
-            key = "<tab>",
-            cmd = api.node.open.preview,
-            desc = "open preview",
-          },
-          {
-            key = "s",
-            cmd = api.node.open.horizontal,
-            desc = "Open: Horizontal Split",
-          },
-          {
-            key = "<shift-s>",
-            cmd = api.node.open.vertical,
-            desc = "Open: Vertical Split",
-          },
-          {
-            key = "<shift-r>",
-            cmd = api.node.open.vertical,
-            desc = "Open: Vertical Split",
-          },
-          {
-            key = "R",
-            cmd = api.tree.reload,
-            desc = "Refresh",
-          },
-          {
-            key = "?",
-            cmd = api.tree.toggle_help,
-            desc = "Show help",
-          },
-          {
-            key = "x",
-            cmd = api.fs.trash,
-            desc = "Remove",
-          },
-          {
-            key = "a",
-            cmd = api.fs.create,
-            desc = "Create File Or Directory",
-          },
-          {
-            key = "r",
-            cmd = api.fs.rename,
-            desc = "Rename",
-          },
-          {
-            key = "<c-r>",
-            cmd = api.fs.rename_full,
-            desc = "Rename: Full Path",
-          },
-          {
-            key = "y",
-            cmd = api.fs.copy.node,
-            desc = "Copy",
-          },
-          {
-            key = "<shift-y>",
-            cmd = api.fs.copy.filename,
-            desc = "Copy",
-          },
-          {
-            key = "<c-y>",
-            cmd = api.fs.copy.absolute_path,
-            desc = "Copy path",
-          },
-          {
-            key = "d",
-            cmd = api.fs.cut,
-            desc = "Cut",
-          },
-          {
-            key = "p",
-            cmd = api.fs.paste,
-            desc = "Paste",
-          },
-          {
-            key = "z",
-            cmd = api.node.navigate.parent_close,
-            desc = "Close Folder",
-          },
-        }
-        for _, item in pairs(keybindings) do
-          vim.keymap.set("n", item.key, item.cmd, {
-            desc = item.desc,
-            buffer = bufnr,
-            noremap = true,
-            silent = true,
-            nowait = true,
-          })
-        end
-      end
-      return vim.tbl_deep_extend("force", opts, {
-        on_attach = on_attach,
-        disable_netrw = true,
-        hijack_netrw = false,
-        update_focused_file = {
-          enable = true,
-          update_root = true, -- auto change root directory after sesseion changed
-        },
-        filesystem_watchers = {
-          enable = true,
-        },
-        actions = {
-          use_system_clipboard = true,
-          open_file = {
-            resize_window = false,
-          },
-        },
-        view = {
-          width = vim.g.file_explorer_width,
-        },
-        renderer = {
-          root_folder_label = false, --- hidden root director absolute path
-          indent_width = 2,
-          indent_markers = {
-            enable = true,
-          },
-          icons = {
-            show = {
-              file = true,
-              folder = true,
-              folder_arrow = false,
-              modified = false,
-              git = false,
-            },
-          },
-        },
-        git = { enable = false },
-        filters = {
-          -- filter files to hidden
-          dotfiles = false,
-          git_clean = false,
-          no_buffer = false,
-          custom = { ".DS_Store", ".git" },
-          exclude = {},
-        },
-      })
-    end,
-    keys = {
-      {
-        "<c-e>",
-        "<cmd>NvimTreeToggle<cr>",
-        desc = "Toggle file explorer",
-      },
-    },
+    -- 合并/切分当前行,这几个都可以,已经在treesitter
+    -- 中安装了ts-node-action, 所以注释掉, 不重复加载了
+    -- https://github.com/bennypowers/splitjoin.nvim
+    -- https://github.com/Wansmer/treesj
+    -- https://github.com/CKolkey/ts-node-action
+    "bennypowers/splitjoin.nvim",
+    enabeld = false,
+    -- event = "VeryLazy",
+    -- opts = {
+    --   use_default_keymaps = false,
+    -- },
+    -- keys = function()
+    --   local sj = require("splitjoin")
+    --   -- local sj = require("treesj")
+    --   return {
+    --     {
+    --       "gJ",
+    --       sj.join,
+    --       desc = "Join the object under cursor",
+    --     },
+    --     {
+    --       "gS",
+    --       sj.split,
+    --       desc = "Split the object under cursor",
+    --     },
+    --   }
+    -- end,
   },
 }
