@@ -100,8 +100,8 @@ return {
       ------------------------------------------------------------
       local header_width = 55
       local menus_width = 42
-      local header_pad_lines = 5
-      local footer_pad_lines = 5
+      local header_pad_lines = 4
+      local footer_pad_lines = 3
 
       ------------------------------------------------------------
       --- header

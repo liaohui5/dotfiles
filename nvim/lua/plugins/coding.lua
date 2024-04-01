@@ -10,20 +10,9 @@ return {
   { "JoosepAlviste/nvim-ts-context-commentstring", enabled = false },
   {
     "echasnovski/mini.pairs",
-    enabled = false,
+    enabled = true,
     version = "*",
     event = "VeryLazy",
-  },
-  {
-    -- 自动补全成对的符号, 如(){}""等, 替换 mini.pairs
-    -- 因为 mini.pairs 总是会让鼠标跳来跳去的
-    "windwp/nvim-autopairs",
-    enabled = true,
-    event = "InsertEnter",
-    opts = {
-      disable_in_visualblock = true,
-      disable_filetype = { "TelescopePrompt", "spectre_panel", "vim" },
-    },
   },
   {
     "kylechui/nvim-surround",

@@ -3,8 +3,8 @@
 -- https://www.lazyvim.org/plugins/lsp
 -----------------------------------------------------------------------
 return {
-  { "folke/neoconf.nvim", enabled = false },
-  { "folke/neodev.nvim", enabled = false },
+  { "folke/neoconf.nvim", enabled = true },
+  { "folke/neodev.nvim", enabled = true },
   { "williamboman/mason.nvim", enabled = true },
   { "williamboman/mason-lspconfig.nvim", enabled = true },
   {

@@ -71,19 +71,21 @@ return {
         base0F = "#cc6633",
       })
       local colors = base16.colors
+      colors.black = "#151612"
       local hl_overrides = {
         Visual = {
-          bg = colors.base01,
+          bg = colors.base03,
         },
         VertSplit = {
           link = "TSComment",
         },
         NeoTreeNormal = {
-          link = "BufferLineTab",
+          fg = colors.base05,
+          bg = colors.black,
         },
         NeoTreeNormalNC = {
-          bg = colors.base00,
-          fg = colors.base00,
+          fg = colors.base05,
+          bg = colors.base01,
         },
         NeoTreeWinSeparator = {
           bg = colors.base00,
@@ -111,20 +113,15 @@ return {
           italic = false,
         },
         PmenuSel = { -- nvim-cmp selected item
-          bg = colors.base02,
-          fg = colors.base0D,
+          bg = colors.black,
+          fg = colors.base0C,
         },
       }
-      vim.g.override_highlight_executed = 0
       api.nvim_create_autocmd("ColorScheme", {
         group = api.nvim_create_augroup("user_override_highligts", {
           clear = true,
         }),
         callback = function()
-          if vim.g.override_highlight_executed == 1 then
-            return
-          end
-          vim.g.override_highlight_executed = 1
           for key, val in pairs(hl_overrides) do
             api.nvim_set_hl(0, key, val)
           end
