@@ -404,6 +404,14 @@
       "icon": "diff-renamed"
     },
     {
+      // <leader>rc
+      "keys": "r.c",
+      "name": "execute code",
+      "type": "command",
+      "command": "code-runner.run",
+      "icon": "symbol-event"
+    },
+    {
       // <leader>bD
       "keys": "b.D",
       "name": "close other tabs",
