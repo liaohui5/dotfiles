@@ -4,6 +4,5 @@
 --------------------------------------------------------------
 return {
   { "folke/persistence.nvim", enabled = false },
-  { "dstein64/vim-startuptime", enabled = true },
   { "nvim-lua/plenary.nvim", enabled = true },
 }

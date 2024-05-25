@@ -44,11 +44,6 @@ return {
             "typescriptreact",
           },
         },
-
-        volar = {
-          -- better vue support
-          filetypes = { "javascriptreact", "typescriptreact", "vue" },
-        },
       },
     },
   },

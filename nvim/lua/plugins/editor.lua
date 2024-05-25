@@ -576,26 +576,6 @@ return {
     },
   },
   {
-    "RRethy/vim-illuminate",
-    opts = function(_, opts)
-      -- https://neovim.io/doc/user/api.html#nvim_set_hl()
-      local hl = vim.api.nvim_set_hl
-      local highlights = {
-        bg = "NONE",
-        bold = true,
-        underline = true,
-      }
-      hl(0, "IlluminatedWordText", highlights)
-      hl(0, "IlluminatedWordRead", highlights)
-      hl(0, "IlluminatedWordWrite", highlights)
-      return vim.tbl_deep_extend("force", opts, {
-        providers = {
-          "treesitter",
-        },
-      })
-    end,
-  },
-  {
     "nvim-telescope/telescope.nvim",
     opts = function(_, opts)
       local actions = require("telescope.actions")
@@ -657,6 +637,33 @@ return {
         remap = true,
         noremap = true,
       },
+    },
+  },
+
+  {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    vscode = true,
+    ---@type Flash.Config
+    opts = {},
+    -- stylua: ignore
+    keys = {
+      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+      { "S", mode = { "n", "o", "x" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+      { "r", false },
+      { "R", false },
+      { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+      {
+        "<leader>ll",
+        function ()
+          require("flash").jump({
+            search = { mode = "search", max_length = 0 },
+            label = { after = { 0, 0 } },
+            pattern = "^"
+          })
+        end,
+        mode = "n",
+      }
     },
   },
 }

@@ -67,21 +67,10 @@ return {
     end,
   },
   {
-    -- 自动不同颜色高亮不同层级的括号
-    "HiPhish/rainbow-delimiters.nvim",
-    event = "BufReadPost",
-    enabled = false,
-  },
-  {
     -- 自动闭合 HTML 和 jsx 标签
     "windwp/nvim-ts-autotag",
     event = "InsertEnter",
     enabled = true,
-  },
-  {
-    -- 显示当前上下文
-    "nvim-treesitter/nvim-treesitter-context",
-    enabled = false,
   },
   {
     -- 快速执行一些操作

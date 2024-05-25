@@ -314,29 +314,6 @@ return {
     end,
   },
   {
-    -- 在浏览器中预览makdown文件
-    "iamcco/markdown-preview.nvim",
-    enabled = true,
-    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    ft = { "markdown" },
-    build = "cd app && npm install",
-    init = function()
-      vim.g.mkdp_filetypes = { "markdown" }
-    end,
-    keys = {
-      {
-        "<leader>Mp",
-        "<cmd>MarkdownPreview<cr>",
-        desc = "start preview markdown server",
-      },
-      {
-        "<leader>MP",
-        "<cmd>MarkdownPreviewStop<cr>",
-        desc = "stop preview markdown server",
-      },
-    },
-  },
-  {
     -- session 管理插件
     "Shatur/neovim-session-manager",
     enabled = true,
@@ -398,40 +375,6 @@ return {
     },
   },
   {
-    -- 代码重构工具
-    "ThePrimeagen/refactoring.nvim",
-    enabled = true,
-    event = "VeryLazy",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-    },
-    keys = {
-      {
-        "<leader>rf",
-        "<cmd>lua require('refactoring').select_refactor()<cr>",
-        desc = "show refactoring actions",
-      },
-      {
-        "<leader>rf",
-        "<cmd>lua require('refactoring').select_refactor()<cr>",
-        desc = "show refactoring actions",
-        mode = "v",
-      },
-      {
-        "<leader>il",
-        "<cmd>lua require('refactoring').debug.print_var()<cr>",
-        desc = "print var",
-        mode = "v",
-      },
-      {
-        "<leader>iL",
-        "<cmd>lua require('refactoring').debug.cleanup()<cr>",
-        desc = "clear inserted print var",
-      },
-    },
-  },
-  {
     -- 合并/切分当前行,这几个都可以,已经在treesitter
     -- 中安装了ts-node-action, 所以注释掉, 不重复加载了
     -- https://github.com/bennypowers/splitjoin.nvim
@@ -439,25 +382,5 @@ return {
     -- https://github.com/CKolkey/ts-node-action
     "bennypowers/splitjoin.nvim",
     enabeld = false,
-    -- event = "VeryLazy",
-    -- opts = {
-    --   use_default_keymaps = false,
-    -- },
-    -- keys = function()
-    --   local sj = require("splitjoin")
-    --   -- local sj = require("treesj")
-    --   return {
-    --     {
-    --       "gJ",
-    --       sj.join,
-    --       desc = "Join the object under cursor",
-    --     },
-    --     {
-    --       "gS",
-    --       sj.split,
-    --       desc = "Split the object under cursor",
-    --     },
-    --   }
-    -- end,
   },
 }

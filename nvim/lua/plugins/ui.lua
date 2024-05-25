@@ -5,12 +5,6 @@
 return {
   { "rcarriga/nvim-notify", enabled = false },
   { "folke/noice.nvim", enabled = false },
-  { "goolord/alpha-nvim", enabled = false },
-  { "echasnovski/mini.indentscope", enabled = false },
-  {
-    "echasnovski/mini.bufremove",
-    keys = { { "<leader>bD", false } },
-  },
   {
     "akinsho/bufferline.nvim",
     opts = function(_, opts)
@@ -69,11 +63,6 @@ return {
   {
     "nvim-lualine/lualine.nvim",
     opts = function(_, opts)
-      -- nvim 运行的目录
-      local function project_name()
-        return table.remove(vim.fn.split(vim.fn.getcwd(), "/"))
-      end
-
       return vim.tbl_deep_extend("force", opts, {
         options = {
           globalstatus = true, -- 使用全局的状态栏(false 每个窗口显示不同的状态栏)
@@ -83,10 +72,10 @@ return {
         sections = {
           lualine_a = { { "mode", icon = "󰕷" } },
           lualine_b = { { "branch", icon = "" } },
-          lualine_c = { "diff", "diagnostics", "searchcount" },
-          lualine_x = { "filetype", "encoding", "fileformat", "filesize" },
-          lualine_y = { { "location", icon = "󰕟" } },
-          lualine_z = { { project_name, icon = "" } },
+        --   lualine_c = { "diff", "diagnostics", "searchcount" },
+        --   lualine_x = { "filetype", "encoding", "fileformat", "filesize" },
+        --   lualine_y = {  },
+          lualine_z = { "fileformat", "encoding" },
         },
       })
     end,

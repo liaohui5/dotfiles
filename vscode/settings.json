@@ -423,5 +423,8 @@
   "genieai.openai.model": "gpt-3.5-turbo",
   "tabnine.experimentalAutoImports": true,
   "editor.inlineSuggest.suppressSuggestions": true,
-  "editor.stickyScroll.enabled": false
+  "editor.stickyScroll.enabled": false,
+  "[lua]": {
+    "editor.defaultFormatter": "JohnnyMorganz.stylua"
+  }
 }

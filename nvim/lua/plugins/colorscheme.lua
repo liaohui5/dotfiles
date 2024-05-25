@@ -116,6 +116,17 @@ return {
           bg = colors.black,
           fg = colors.base0C,
         },
+        IlluminatedWordText = {
+          bg = "NONE",
+          bold = true,
+          underline = true,
+        },
+        IlluminatedWordRead = {
+          link = "IlluminatedWordText",
+        },
+        IlluminatedWordWrite = {
+          link = "IlluminatedWordText",
+        },
       }
       api.nvim_create_autocmd("ColorScheme", {
         group = api.nvim_create_augroup("user_override_highligts", {
