@@ -54,9 +54,9 @@ autocmd("OptionSet", {
 -- https://github1s.com/LazyVim/LazyVim/blob/HEAD/lua/lazyvim/config/autocmds.lua#L87
 autocmd("FileType", {
   group = lazy_augroup("wrap_spell"),
-  pattern = { "gitcommit" },
+  pattern = { "*.txt", "*.tex", "*.typ", "gitcommit", "markdown" },
   callback = function()
-    vim.opt_local.wrap = true
-    vim.opt_local.spell = true
+    vim.opt_local.wrap = false
+    vim.opt_local.spell = false
   end,
 })

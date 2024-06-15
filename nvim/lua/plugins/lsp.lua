@@ -22,7 +22,7 @@ return {
       table.insert(keys, {
         "gh",
         "gK",
-        desc = "lsp hover",
+        desc = "LSP hover",
         mode = { "n", "v" },
         remap = true,
         silent = true,

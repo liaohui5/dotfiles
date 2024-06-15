@@ -250,17 +250,17 @@ return {
           {
             key = "o",
             cmd = api.node.open.edit,
-            desc = "open",
+            desc = "Open",
           },
           {
             key = "<cr>",
             cmd = api.node.open.edit,
-            desc = "open",
+            desc = "Open",
           },
           {
             key = "<tab>",
             cmd = api.node.open.preview,
-            desc = "open preview",
+            desc = "Open preview",
           },
           {
             key = "s",
@@ -467,7 +467,7 @@ return {
           })
         end,
         mode = "n",
-        desc = "jump to line",
+        desc = "Flash to line",
       },
     },
   },
@@ -482,6 +482,7 @@ return {
         defaults = {
           ["<leader>t"] = { name = "+toggle" },
           ["<leader>o"] = { name = "+open" },
+          ["<leader>p"] = { name = "+project/yank" },
         },
         plugins = {
           spelling = { enabled = false },

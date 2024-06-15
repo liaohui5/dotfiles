@@ -10,7 +10,7 @@ return {
     opts = function(_, opts)
       return vim.tbl_deep_extend("force", opts, {
         options = {
-          always_show_bufferline = false, -- 如果为真在启动页也会显示,会破坏启动页的样式
+          always_show_bufferline = false,
           offsets = {
             {
               filetype = "neo-tree", -- neo-tree | NvimTree
@@ -22,59 +22,22 @@ return {
         },
       })
     end,
-    keys = {
-      {
-        "<leader>qH",
-        "<cmd>BufferLineCloseLeft<cr>",
-        desc = "close left buffers",
-      },
-      {
-        "<leader>qL",
-        "<cmd>BufferLineCloseRight<cr>",
-        desc = "close right buffers",
-      },
-      {
-        "<leader>bD",
-        "<cmd>BufferLineCloseOthers<cr>",
-        desc = "close other buffers",
-      },
-      {
-        "<leader>bh",
-        "<cmd>BufferLineMovePrev<cr>",
-        desc = "move to left",
-      },
-      {
-        "<leader>bl",
-        "<cmd>BufferLineMoveNext<cr>",
-        desc = "move to right",
-      },
-      {
-        "<s-h>",
-        "<cmd>BufferLineCyclePrev<cr>",
-        desc = "previous tab",
-      },
-      {
-        "<s-l>",
-        "<cmd>BufferLineCycleNext<cr>",
-        desc = "next tab",
-      },
-    },
   },
   {
     "nvim-lualine/lualine.nvim",
     opts = function(_, opts)
       return vim.tbl_deep_extend("force", opts, {
         options = {
-          globalstatus = true, -- 使用全局的状态栏(false 每个窗口显示不同的状态栏)
-          component_separators = { left = "", right = "" }, -- 右侧默认: { left = "", right = "" },
-          section_separators = { left = "", right = "" }, -- 左侧分割符
+          globalstatus = true,
+          component_separators = { left = "", right = "" },
+          section_separators = { left = "", right = "" },
         },
         sections = {
           lualine_a = { { "mode", icon = "󰕷" } },
           lualine_b = { { "branch", icon = "" } },
-          --   lualine_c = { "diff", "diagnostics", "searchcount" },
-          --   lualine_x = { "filetype", "encoding", "fileformat", "filesize" },
-          --   lualine_y = {  },
+          lualine_c = { "filename", "diff", "diagnostics", "searchcount" },
+          lualine_x = { "filetype", "filesize" },
+          lualine_y = { "location" },
           lualine_z = { "fileformat", "encoding" },
         },
       })
@@ -113,29 +76,35 @@ return {
       ------------------------------------------------------------
       --- menus
       ------------------------------------------------------------
+      -- menu item example:
+      -- {
+      --     icon = " ",
+      --     icon_hl = "Title",
+      --     desc = "Find File",
+      --     desc_hl = "String",
+      --     key = "b",
+      --     keymap = "SPC f f",
+      --     key_hl = "Number",
+      --     action = "lua print(2)",
+      -- },
       local menu_items = {
-        -- menu item example:
-        -- {
-        --     icon = " ",
-        --     icon_hl = "Title",
-        --     desc = "Find File",
-        --     desc_hl = "String",
-        --     key = "b",
-        --     keymap = "SPC f f",
-        --     key_hl = "Number",
-        --     action = "lua print(2)",
-        -- },
         {
           icon = "󰾅",
           desc = "Show startuptime",
-          key = "s",
+          key = "S",
           action = "StartupTime",
         },
         {
+          icon = "",
+          desc = "Restore last session",
+          key = "l",
+          action = "SessionManager load_last_session",
+        },
+        {
           icon = "",
-          desc = "Pick projects",
+          desc = "Pick sessions",
           key = "p",
-          action = "Telescope projects",
+          action = "SessionManager load_session",
         },
         {
           icon = "",
@@ -144,7 +113,7 @@ return {
           action = "Telescope find_files",
         },
         {
-          icon = "",
+          icon = "󰕁",
           desc = "Recent files",
           key = "f",
           action = "Telescope oldfiles",
@@ -169,9 +138,9 @@ return {
         },
         {
           icon = "",
-          desc = "Quit",
+          desc = "Quit neovim",
           key = "q",
-          action = "quitall",
+          action = "quit",
         },
       }
       for _, menu in pairs(menu_items) do
@@ -221,47 +190,6 @@ return {
           center = menu_items,
           footer = footer,
         },
-      })
-    end,
-  },
-  {
-    -- 美化折叠样式插进
-    "kevinhwang91/nvim-ufo",
-    enabled = false,
-    event = "VeryLazy",
-    version = "v1.*",
-    build = "npm install --frozen-lockfile",
-    dependencies = {
-      "kevinhwang91/promise-async",
-    },
-    opts = function(_, opts)
-      return vim.tbl_deep_extend("force", opts, {
-        fold_virt_text_handler = function(virtText, lnum, endLnum, width, truncate)
-          local newVirtText = {}
-          local suffix = (" + fold %d lines "):format(endLnum - lnum)
-          local sufWidth = vim.fn.strdisplaywidth(suffix)
-          local targetWidth = width - sufWidth
-          local curWidth = 0
-          for _, chunk in ipairs(virtText) do
-            local chunkText = chunk[1]
-            local chunkWidth = vim.fn.strdisplaywidth(chunkText)
-            if targetWidth > curWidth + chunkWidth then
-              table.insert(newVirtText, chunk)
-            else
-              chunkText = truncate(chunkText, targetWidth - curWidth)
-              local hlGroup = chunk[2]
-              table.insert(newVirtText, { chunkText, hlGroup })
-              chunkWidth = vim.fn.strdisplaywidth(chunkText)
-              if curWidth + chunkWidth < targetWidth then
-                suffix = suffix .. (" "):rep(targetWidth - curWidth - chunkWidth)
-              end
-              break
-            end
-            curWidth = curWidth + chunkWidth
-          end
-          table.insert(newVirtText, { suffix, "MoreMsg" })
-          return newVirtText
-        end,
       })
     end,
   },

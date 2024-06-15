@@ -117,34 +117,4 @@ return {
       },
     },
   },
-
-  {
-    -- quickly generate comment
-    "numToStr/Comment.nvim",
-    event = "BufEnter",
-    opts = function(_, opts)
-      return vim.tbl_extend("force", opts, {
-        padding = true,
-        sticky = true,
-        mappings = { -- 禁止使用默认的快捷键
-          basic = false,
-          extra = false,
-        },
-      })
-    end,
-    keys = {
-      {
-        "<c-\\>",
-        "<Plug>(comment_toggle_linewise_visual)<c-c>gv-gv",
-        desc = "toggle comment in selection",
-        mode = "v",
-      },
-      {
-        "<c-\\>",
-        "<Plug>(comment_toggle_linewise_current)",
-        desc = "toggle comment",
-        mode = "n",
-      },
-    },
-  },
 }

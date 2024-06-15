@@ -3,8 +3,6 @@
 -- https://www.lazyvim.org/plugins/linting
 -----------------------------------------------------------------------
 return {
-  {
-    "mfussenegger/nvim-lint",
-    enabled = true,
-  },
+  "mfussenegger/nvim-lint",
+  enabled = false,
 }

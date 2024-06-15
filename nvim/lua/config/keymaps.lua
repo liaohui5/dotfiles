@@ -3,7 +3,6 @@
 -- LazyVim default keymaps: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -----------------------------------------------------------------------
 local helpers = require("utils.helpers")
-local Util = require("lazyvim.util")
 
 local function map(mode, lhs, rhs, opts)
   opts = opts or {}
@@ -16,114 +15,83 @@ local function unmap(modes, lhs, opts)
 end
 
 -- Move to window using the <ctrl> hjkl keys
-unmap("n", "<C-h>")
-unmap("n", "<C-j>")
-unmap("n", "<C-k>")
-unmap("n", "<C-l>")
 
--- Move Lines
+-- Move Lines, yabai used these keys on my config
 unmap({ "n", "i", "v" }, "<A-j>")
 unmap({ "n", "i", "v" }, "<A-k>")
 
 -- Buffers
-unmap("n", "<leader>`")
 
 -- Clear search, diff update and redraw
 -- taken from runtime/lua/_editor.lua
-unmap("n", "<leader>ur")
+
+-- Add undo break-points
 
 -- Save file
 map({ "v", "n" }, "<leader>fs", "<cmd>w<cr><esc>", { desc = "Save file" })
 
 -- Show help doc with keyword under the cursor
-unmap("n", "<leader>K")
 
--- Show lazy.nvim dashboard
+-- better indenting
+
+-- commenting
+
+-- Show lazy.nvim dashboard, bind in file: plugins/lazyvim.lua
 unmap("n", "<leader>l")
 
 -- New file
-unmap("n", "<leader>fn")
-unmap("n", "<leader>xl")
-unmap("n", "<leader>xq")
 
--- Formatting
-map({ "n", "v" }, "<leader>ff", function()
-  Util.format({ force = true })
-end, {
-  desc = "Format Dcoument",
+-- formatting
+map({ "n", "v" }, "<leader>ff", "<cmd>LazyFormat<cr>", {
+  desc = "Format",
   noremap = true,
-  silent = true,
 })
+
+-- diagnostic
 
 -- toggle options
-unmap("n", "<leader>uf")
-unmap("n", "<leader>uF")
-unmap("n", "<leader>us")
-unmap("n", "<leader>uw")
-unmap("n", "<leader>uL")
-unmap("n", "<leader>ul")
-unmap("n", "<leader>ud")
-unmap("n", "<leader>uc")
-if vim.lsp.inlay_hint then
-  unmap("n", "<leader>uh")
-end
-
-map("n", "<leader>tl", function()
-  Util.toggle("relativenumber")
-end, { desc = "Toggle Relative Line Numbers" })
-map("n", "<leader>tL", function()
-  Util.toggle.number()
-end, { desc = "Toggle Line Numbers" })
 
 -- lazygit
-map("n", "<c-g>", function()
-  Util.terminal({ "lazygit" }, { esc_esc = false, ctrl_hjkl = false })
-end, {
-  desc = "Lazygit",
-  silent = true,
-})
+map("n", "<C-g>", "<leader>gg", { remap = true })
 
 -- quit
-map("n", "<C-q>", "<cmd>qa<cr>", { desc = "Quit all" })
+map("n", "<C-q>", "<leader>qq", { remap = true })
 
 -- highlights under cursor
-unmap("n", "<leader>ui")
 
 -- LazyVim Changelog
-map("n", "<leader>L", function()
-  Util.news.changelog()
-end, { desc = "LazyVim Changelog" })
+-- unmap("n", "<leader>L");
 
 -- floating terminal
-unmap("n", "<leader>ft")
-unmap("n", "<leader>fT")
-unmap("n", "<c-/>")
-unmap("n", "<c-_>")
+map({ "n", "t" }, "<c-x>", "<c-_>", { remap = true })
 
 -- Terminal Mappings
-unmap("t", "<esc><esc>")
-unmap("t", "<C-h>")
-unmap("t", "<C-j>")
-unmap("t", "<C-k>")
-unmap("t", "<C-l>")
 
----------------------------
----------- customs --------
----------------------------
+-- windows
+
+-- tabs
+
+-----------------------------
+---------- customs ----------
+-----------------------------
 
 -- better $
-map({ "n", "x" }, "$", "$h", { silent = true, remap = true })
+map({ "n", "x" }, "$", "$h", {
+  silent = true,
+  remap = true,
+  noremap = true,
+})
 
 -- better delete
-map({ "n", "x" }, "x", [["_x]], { silent = true, desc = "delete" })
+map({ "n", "x" }, "x", [["_x]], {
+  silent = true,
+  desc = "Delete",
+  noremap = true,
+})
 
 -- better scroll
 map({ "n", "x" }, "<c-d>", "10jzz", { silent = true })
 map({ "n", "x" }, "<c-u>", "10kzz", { silent = true })
-
--- better paste
--- map("n", "p", [["+p]], { noremap = true, silent = true })
--- map("v", "p", [["_c<c-r><c-o>+<Esc>]], { silent = true, noremap = true })
 
 -- search selection word
 map({ "n", "x" }, "gw", "*N", { desc = "Search word under cursor" })
@@ -136,13 +104,13 @@ map("c", "<c-l>", "<Right>", { noremap = true })
 
 -- toggle show invisible characters
 map("n", "<leader>tc", helpers.toggle_invisible_characters, {
-  desc = "toggle show invisible characters",
+  desc = "Toggle show invisible characters",
 })
 
 -- open file in visual studio code
 map("n", "<leader>ov", helpers.buf_open_in_vscode, {
-  desc = "open buffer in vscode",
+  desc = "Open buffer in vscode",
 })
 map("n", "<leader>oV", helpers.cwd_open_in_vscode, {
-  desc = "open cwd in vscode",
+  desc = "Open cwd in vscode",
 })

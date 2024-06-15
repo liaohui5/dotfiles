@@ -1,19 +1,27 @@
 return {
   {
-    -- add which key menu for `yanky.nvim` and `project.nvim`
-    "folke/which-key.nvim",
-    opts = function(_, opts)
-      return vim.tbl_deep_extend("force", opts, {
-        defaults = {
-          ["<leader>p"] = {
-            name = "+project/yank",
-          },
-        },
-      })
-    end,
+    "echasnovski/mini.comment",
+    event = "VeryLazy",
+    opts = {
+      options = {
+        custom_commentstring = function()
+          return require("ts_context_commentstring.internal").calculate_commentstring() or vim.bo.commentstring
+        end,
+      },
+    },
+    keys = {
+      {
+        "<c-/>",
+        "gcc",
+        mode = "n",
+        remap = true,
+      },
+    },
   },
   {
     "gbprod/yanky.nvim",
+    recommended = true,
+    desc = "Better Yank/Paste",
     keys = {
       { "<leader>p", false },
       {
@@ -27,23 +35,11 @@ return {
         end,
         desc = "Open Yank History",
       },
-    },
-  },
-  {
-    "ahmedkhalf/project.nvim",
-    opts = function(_, opts)
-      vim.tbl_deep_extend("force", opts, {
-        exclude_dirs = {
-          ".cargo/*",
-          "node_modules/*",
-        },
-      })
-    end,
-    keys = {
       {
-        "<leader>ps",
-        "<cmd>ProjectRoot<cr>",
-        desc = "Save project",
+        "<leader>pC",
+        "<cmd>YankClearHistory<cr>",
+        desc = "Clear yank history",
+        mode = "n",
       },
     },
   },
