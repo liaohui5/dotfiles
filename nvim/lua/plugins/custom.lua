@@ -148,6 +148,7 @@ return {
     -- 自动切换输入法
     "keaising/im-select.nvim",
     event = "VeryLazy",
+    enabled = false,
     opts = {
       default_im_select = "com.apple.keylayout.ABC", -- MacOS 默认的英文输入法
       set_previous_events = { "InsertEnter" }, -- 自动恢复上一次输入法状态事件(如:InsertEnter)
