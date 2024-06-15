@@ -134,11 +134,6 @@ map("c", "<c-k>", "<c-p>", { noremap = true })
 map("c", "<c-h>", "<Left>", { noremap = true })
 map("c", "<c-l>", "<Right>", { noremap = true })
 
--- toggle completation
-map("n", "<leader>tt", helpers.toggle_completation_status, {
-  desc = "toggle auto completion enabled status",
-})
-
 -- toggle show invisible characters
 map("n", "<leader>tc", helpers.toggle_invisible_characters, {
   desc = "toggle show invisible characters",

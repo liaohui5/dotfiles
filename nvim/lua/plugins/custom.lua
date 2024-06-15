@@ -157,6 +157,28 @@ return {
     -- 快速启动一个 vite srever 注意需要全局安装 vite
     "liaohui5/vite-server.nvim",
     event = "VeryLazy",
+    dependencies = {
+      {
+        -- add vite-server.nvim status to lualine
+        "nvim-lualine/lualine.nvim",
+        opts = function(_, opts)
+          local function vite_server_status()
+            local ok, vs = pcall(require, "vite-server")
+            local status = ""
+            if ok then
+              status = "󰡄"
+            end
+
+            if vs.is_started then
+              status = string.format("%s %s", status, vs.gen_url(vs.config.vite_cli_opts))
+            end
+
+            return status
+          end
+          table.insert(opts.sections.lualine_x, 1, vite_server_status)
+        end,
+      },
+    },
     opts = {
       show_cmd = false,
       vite_cli_opts = {
@@ -198,26 +220,6 @@ return {
           end
         end,
       })
-    end,
-  },
-  {
-    -- add vite-server.nvim status to lualine
-    "nvim-lualine/lualine.nvim",
-    opts = function(_, opts)
-      local function vite_server_status()
-        local ok, vs = pcall(require, "vite-server")
-        local status = ""
-        if ok then
-          status = "󰡄"
-        end
-
-        if vs.is_started then
-          status = string.format("%s %s", status, vs.gen_url(vs.config.vite_cli_opts))
-        end
-
-        return status
-      end
-      table.insert(opts.sections.lualine_x, 1, vite_server_status)
     end,
   },
 
@@ -313,74 +315,72 @@ return {
       return keybindings
     end,
   },
-  {
-    -- session 管理插件
-    "Shatur/neovim-session-manager",
-    enabled = true,
-    event = "VeryLazy",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-
-    opts = function()
-      local config = require("session_manager.config")
-      local Path = require("plenary.path")
-      local sessions_dir = Path:new(vim.fn.stdpath("data"), "sessions")
-
-      -- session autoload mode: Disabled, CurrentDir, LastSession
-      local autoload_mode = config.AutoloadMode.Disabled
-      return {
-        sessions_dir = sessions_dir,
-        autoload_mode = autoload_mode,
-        path_replacer = "__",
-        colon_replacer = "++",
-        autosave_last_session = true,
-        autosave_ignore_not_normal = true,
-        autosave_only_in_session = true,
-        max_path_length = 80,
-        autosave_ignore_filetypes = {
-          ".DS_Store",
-          "gitcommit",
-        },
-      }
-    end,
-
-    keys = {
-      {
-        "<leader>pr",
-        "<cmd>SessionManager load_last_session<cr>",
-        desc = "load last session",
-      },
-      {
-        "<leader>pc",
-        "<cmd>SessionManager load_current_dir_session<cr>",
-        desc = "load current session",
-      },
-
-      {
-        "<leader>pp",
-        "<cmd>SessionManager load_session<cr>",
-        desc = "pick session",
-      },
-      {
-        "<leader>pd",
-        "<cmd>SessionManager delete_session<cr>",
-        desc = "delete sessions",
-      },
-      {
-        "<leader>ps",
-        "<cmd>SessionManager save_current_session<cr>",
-        desc = "save sessions",
-      },
-    },
-  },
-  {
-    -- 合并/切分当前行,这几个都可以,已经在treesitter
-    -- 中安装了ts-node-action, 所以注释掉, 不重复加载了
-    -- https://github.com/bennypowers/splitjoin.nvim
-    -- https://github.com/Wansmer/treesj
-    -- https://github.com/CKolkey/ts-node-action
-    "bennypowers/splitjoin.nvim",
-    enabeld = false,
-  },
+  -- {
+  --   -- session 管理插件
+  --   "Shatur/neovim-session-manager",
+  --   enabled = true,
+  --   event = "VeryLazy",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --   },
+  --
+  --   opts = function()
+  --     local config = require("session_manager.config")
+  --     local Path = require("plenary.path")
+  --     local sessions_dir = Path:new(vim.fn.stdpath("data"), "sessions")
+  --
+  --     -- session autoload mode: Disabled, CurrentDir, LastSession
+  --     local autoload_mode = config.AutoloadMode.Disabled
+  --     return {
+  --       sessions_dir = sessions_dir,
+  --       autoload_mode = autoload_mode,
+  --       path_replacer = "__",
+  --       colon_replacer = "++",
+  --       autosave_last_session = true,
+  --       autosave_ignore_not_normal = true,
+  --       autosave_only_in_session = true,
+  --       max_path_length = 80,
+  --       autosave_ignore_filetypes = {
+  --         ".DS_Store",
+  --         "gitcommit",
+  --       },
+  --     }
+  --   end,
+  --
+  --   keys = {
+  --     {
+  --       "<leader>pr",
+  --       "<cmd>SessionManager load_last_session<cr>",
+  --       desc = "load last session",
+  --     },
+  --     {
+  --       "<leader>pc",
+  --       "<cmd>SessionManager load_current_dir_session<cr>",
+  --       desc = "load current session",
+  --     },
+  --
+  --     {
+  --       "<leader>pp",
+  --       "<cmd>SessionManager load_session<cr>",
+  --       desc = "pick session",
+  --     },
+  --     {
+  --       "<leader>pd",
+  --       "<cmd>SessionManager delete_session<cr>",
+  --       desc = "delete sessions",
+  --     },
+  --     {
+  --       "<leader>ps",
+  --       "<cmd>SessionManager save_current_session<cr>",
+  --       desc = "save sessions",
+  --     },
+  --   },
+  -- },
+  -- {
+  --   -- 合并/切分当前行,这几个都可以,已经在treesitter
+  --   -- 中安装了ts-node-action, 所以注释掉, 不重复加载了
+  --   -- https://github.com/bennypowers/splitjoin.nvim
+  --   -- https://github.com/Wansmer/treesj
+  --   -- https://github.com/CKolkey/ts-node-action
+  -- },
 }

@@ -72,9 +72,9 @@ return {
         sections = {
           lualine_a = { { "mode", icon = "󰕷" } },
           lualine_b = { { "branch", icon = "" } },
-        --   lualine_c = { "diff", "diagnostics", "searchcount" },
-        --   lualine_x = { "filetype", "encoding", "fileformat", "filesize" },
-        --   lualine_y = {  },
+          --   lualine_c = { "diff", "diagnostics", "searchcount" },
+          --   lualine_x = { "filetype", "encoding", "fileformat", "filesize" },
+          --   lualine_y = {  },
           lualine_z = { "fileformat", "encoding" },
         },
       })
@@ -89,7 +89,7 @@ return {
       ------------------------------------------------------------
       local header_width = 55
       local menus_width = 42
-      local header_pad_lines = 4
+      local header_pad_lines = 5
       local footer_pad_lines = 3
 
       ------------------------------------------------------------
@@ -126,39 +126,33 @@ return {
         --     action = "lua print(2)",
         -- },
         {
-          icon = "󰥔",
-          desc = "Restore last session",
-          key = "l",
-          action = "SessionManager load_last_session",
-        },
-        {
-          icon = "",
-          desc = "Current directory session",
-          key = "c",
-          action = "SessionManager load_current_dir_session",
+          icon = "󰾅",
+          desc = "Show startuptime",
+          key = "s",
+          action = "StartupTime",
         },
         {
           icon = "",
-          desc = "Pick session",
+          desc = "Pick projects",
           key = "p",
-          action = "SessionManager load_session",
+          action = "Telescope projects",
         },
         {
           icon = "",
-          desc = "Find files",
-          key = "f",
+          desc = "Search files",
+          key = "s",
           action = "Telescope find_files",
         },
         {
           icon = "",
           desc = "Recent files",
-          key = "r",
+          key = "f",
           action = "Telescope oldfiles",
         },
         {
           icon = "",
           desc = "Configurations",
-          key = "C",
+          key = "c",
           action = "edit $MYVIMRC",
         },
         {

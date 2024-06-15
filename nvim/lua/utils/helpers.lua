@@ -43,17 +43,6 @@ function M.get_mode()
   return modes[vim.api.nvim_get_mode().mode]
 end
 
--- toggle auto completation enabled status
-function M.toggle_completation_status()
-  if vim.g.enable_auto_completation then
-    vim.g.enable_auto_completation = false
-    print("auto completion disabled")
-  else
-    vim.g.enable_auto_completation = true
-    print("auto completion enabled")
-  end
-end
-
 -- toggle space characters invisible
 M.toggle_invisible_characters = function()
   local opt = vim.opt
