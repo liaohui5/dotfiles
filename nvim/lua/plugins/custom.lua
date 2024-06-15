@@ -1,5 +1,5 @@
 --------------------------------------------------------------
--- LazyVIM 没有内置, 需要我自己安装的插件
+-- LazyVIM 没有内置(文档中没有的)的需要自己安装/配置的插件
 --------------------------------------------------------------
 -- stylua: ignore
 local float_opts = {
@@ -179,6 +179,17 @@ return {
           table.insert(opts.sections.lualine_x, 1, vite_server_status)
         end,
       },
+      {
+        -- add vite-server.nvim keys to which menu
+        "folke/which-key.nvim",
+        opts = function(_, opts)
+          return vim.tbl_deep_extend("force", opts, {
+            defaults = {
+              ["<leader>v"] = { name = "+vite" },
+            },
+          })
+        end,
+      },
     },
     opts = {
       show_cmd = false,
@@ -228,6 +239,16 @@ return {
     -- 代码对齐插件
     "Vonr/align.nvim",
     event = "VeryLazy",
+    dependencies = {
+      "folke/which-key.nvim",
+      opts = function(_, opts)
+        return vim.tbl_deep_extend("force", opts, {
+          defaults = {
+            ["<leader>a"] = { name = "+align" },
+          },
+        })
+      end,
+    },
     keys = {
       {
         "<leader>aa",
@@ -259,6 +280,18 @@ return {
     -- 快速打开 url
     "xiyaowong/link-visitor.nvim",
     event = "VeryLazy",
+    dependencies = {
+      "folke/which-key.nvim",
+      opts = function(_, opts)
+        return vim.tbl_deep_extend("force", opts, {
+          defaults = {
+            ["<leader>h"] = {
+              name = "+help",
+            },
+          },
+        })
+      end,
+    },
     opts = {
       open_cmd = nil,
       silent = true,
@@ -300,7 +333,7 @@ return {
         },
         k = {
           url = "https://www.lazyvim.org/keymaps",
-          desc = "LazyVim default keymaps",
+          desc = "LazyVim keymaps documentation",
         },
       }
       for key, item in pairs(help_urls) do

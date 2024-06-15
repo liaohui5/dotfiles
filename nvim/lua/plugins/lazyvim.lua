@@ -9,4 +9,34 @@ return {
     autocmds = true, -- load lazyvim autocmds
     keymaps = true, --- load lazyvim keymaps
   },
+  dependencies = {
+    "folke/which-key.nvim",
+    opts = function(_, opts)
+      return vim.tbl_deep_extend("force", opts, {
+        defaults = {
+          ["<leader>l"] = { name = "+lazy" },
+        },
+      })
+    end,
+  },
+  keys = {
+    {
+      "<leader>lz",
+      "<cmd>Lazy<cr>",
+      desc = "LazyVim",
+      mode = "n",
+    },
+    {
+      "<leader>le",
+      "<cmd>LazyExtra<cr>",
+      desc = "LazyExtra",
+      mode = "n",
+    },
+    {
+      "<leader>lh",
+      "<cmd>LazyHealth<cr>",
+      desc = "LazyHealth",
+      mode = "n",
+    },
+  },
 }

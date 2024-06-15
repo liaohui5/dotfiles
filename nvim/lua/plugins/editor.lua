@@ -474,105 +474,36 @@ return {
   {
     "folke/which-key.nvim",
     opts = function(_, opts)
-        -- stylua: ignore
-        return vim.tbl_deep_extend("force", opts, {
-            ignore_missing = false, -- 忽略没有 whichKey.register 的快捷键映射
-            show_help = true,       -- 显示帮助信息
-            triggers = "auto",
-            defaults = {
-                mode = { "n", "v" },
-                ["g"] = { name = "+goto" },
-                ["z"] = { name = "+fold" },
-                ["]"] = { name = "+next" },
-                ["["] = { name = "+prev" },
-                ["<leader>a"] = { name = "+align/auto" },
-                ["<leader>b"] = { name = "+buffer" },
-                ["<leader>c"] = { name = "+code/comment" },
-                ["<leader>d"] = { name = "+debug" },
-                ["<leader>e"] = { name = "+error" },
-                ["<leader>f"] = { name = "+file/find" },
-                ["<leader>g"] = { name = "+git" },
-                ["<leader>h"] = { name = "+help" },
-                ["<leader>i"] = { name = "+insert" },
-                ["<leader>j"] = { name = "+jump" },
-                -- ["<leader>k"] = { name = "+keymaps" },
-                ["<leader>l"] = { name = "+list" },
-                ["<leader>M"] = { name = "+markdown" },
-                ["<leader>o"] = { name = "+open" },
-                ["<leader>p"] = { name = "+project" },
-                ["<leader>q"] = { name = "+quit" },
-                ["<leader>r"] = { name = "+replace" },
-                ["<leader>s"] = { name = "+search/section" },
-                ["<leader>t"] = { name = "+test" },
-                ["<leader>u"] = { name = "+ui" },
-                ["<leader>w"] = { name = "+window" },
-                ["<leader>x"] = { name = "+diagnostics/quickfix" },
-            },
-            plugins = { -- 禁止单词拼写插件
-                spelling = { enabled = false },
-            },
-            layout = { -- 菜单布局样式
-                spacing = 4,
-                align = "center", -- left | center | right
-            },
-            disable = { -- 禁止菜单的 filetype 或 buftype
-                buftypes = {},
-                filetypes = { "TelescopePrompt", "NvimTree" },
-            },
-        })
+      -- docs: https://www.lazyvim.org/plugins/editor#which-keynvim
+      return vim.tbl_deep_extend("force", opts, {
+        ignore_missing = false, -- 忽略没有 whichKey.register 的快捷键映射
+        show_help = true, -- 显示帮助信息
+        triggers = "auto",
+        defaults = {
+          ["<leader>t"] = { name = "+toggle" },
+          ["<leader>o"] = { name = "+open" },
+        },
+        plugins = {
+          spelling = { enabled = false },
+        },
+        layout = {
+          spacing = 4,
+          align = "center",
+        },
+        disable = {
+          filetypes = {
+            "TelescopePrompt",
+            "NvimTree",
+            "neo-tree",
+          },
+        },
+      })
     end,
   },
   {
     "lewis6991/gitsigns.nvim",
     opts = {
       yadm = { enable = false },
-    },
-    keys = {
-      {
-        "<leader>gf",
-        "<cmd>Gitsigns refresh<cr>",
-        desc = "refresh gitsigns",
-      },
-      {
-        "<leader>gu",
-        "<cmd>Gitsigns undo_stage_hunk<cr>",
-        desc = "undo current hunk",
-      },
-      {
-        "<leader>gr",
-        "<cmd>Gitsigns reset_hunk<cr>",
-        desc = "reset current hunk",
-      },
-      {
-        "<leader>gR",
-        "<cmd>Gitsigns reset_buffer<cr>",
-        desc = "reset buffer all hunk",
-      },
-      {
-        "<leader>gs",
-        "<cmd>Gitsigns stage_hunk<cr>",
-        desc = "stage current hunk",
-      },
-      {
-        "<leader>gS",
-        "<cmd>Gitsigns stage_buffer<cr>",
-        desc = "stage buffer all hunk",
-      },
-      {
-        "<leader>gd",
-        "<cmd>Gitsigns diffthis<cr>",
-        desc = "diff hunks",
-      },
-      {
-        "<leader>gj",
-        "<cmd>Gitsigns next_hunk<cr>",
-        desc = "next hunk",
-      },
-      {
-        "<leader>gk",
-        "<cmd>Gitsigns prev_hunk<cr>",
-        desc = "previous hunk",
-      },
     },
   },
   {
@@ -601,6 +532,7 @@ return {
           file_ignore_patterns = { -- 忽略目录
             "**node_modules",
             "**.git",
+            "**.cargo",
           },
         },
         pickers = {
@@ -655,6 +587,7 @@ return {
       { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
       {
         "<leader>ll",
+        desc = "Flash lines",
         function ()
           require("flash").jump({
             search = { mode = "search", max_length = 0 },
