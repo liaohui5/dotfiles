@@ -1,13 +1,13 @@
 #!/usr/local/bin/bash
 
-# vi
-alias vi='nvim'
-
 # clear
 alias c='clear'
 
 # cp
 alias cp='cp -r'
+
+# reload bashrc
+alias rc='source ~/.bashrc'
 
 # lsd: https://github.com/Peltoche/lsd
 alias ls='lsd'
@@ -65,8 +65,10 @@ alias v='nvim'
 # copypath
 alias copypath='echo $(pwd) | pbcopy'
 
-# enable or disable clashx proxies
-alias setproxy='export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890'
+# enable or disable proxies
+# v2rayU(http:1087 socks5:1080) clashX(http:7890 socks5:7890)
+PROXY_HTTP_PORT='7890'
+PROXY_SOCK_PORT='7890'
+alias setproxy="export https_proxy=http://127.0.0.1:$PROXY_HTTP_PORT http_proxy=http://127.0.0.1:$PROXY_HTTP_PORT all_proxy=socks5://127.0.0.1:$PROXY_SOCK_PORT"
 alias resetproxy="export https_proxy='' http_proxy='' all_proxy=''"
 resetproxy
-

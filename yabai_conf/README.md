@@ -9,9 +9,18 @@
 ## 安装
 
 ```sh
+# 安装最新版本
 brew tap koekeishiya/formulae/skhd && brew install skhd
 brew tap FelixKratz/formulae && brew install sketchybar
 brew tap koekeishiya/formulae/yabai && brew install yabai
+
+# 安装指定版本(如: v5.0.9 边框选项没有被移除,而且老版本系统才支持 spacebar)
+git clone https://github.com/koekeishiya/homebrew-formulae
+git reset --hard 8e96736353534532b72edfaa3b2290413b34c042
+cd homebrew-formulae
+brew install ./yabai.rb
+brew install ./skhd.rb
+brew install cmacrae/formulae/spacebar
 ```
 
 ## yabai - 平铺式窗口管理器

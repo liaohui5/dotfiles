@@ -29,9 +29,7 @@
 # 链接
 - link:
     # terminal emulators
-    ~/.config/kitty: kitty
     ~/.config/wezterm: wezterm
-    ~/.config/alacritty: alacritty
     # bash
     ~/.bashrc: .shell-scripts/.bashrc
     ~/.bash_profile: .shell-scripts/.bash_profile
@@ -40,19 +38,14 @@
     ~/.zprofile: zsh/.zprofile
     ~/.zshrc: zsh/.zshrc
     ~/.config/starship: starship
-    # tmux
-    ~/.tmux.conf: tmux_conf/.tmux.conf
-    ~/.tmux.conf.local: tmux_conf/.tmux.conf.local
     # terminal file manager
-    ~/.config/vifm: vifm
-    ~/.config/joshuto: joshuto
     ~/.config/yazi: yazi
     # neovim & gui client
-    ~/.config/nvim: nvim
     ~/.config/goneovim: goneovim
     # yabi: bsp window manager like i3wm
     ~/.config/yabai: yabai_conf/yabai
     ~/.config/sketchybar: yabai_conf/sketchybar
+    ~/.config/spacebar: yabai_conf/spacebar
     ~/.config/skhd: yabai_conf/skhd
     # vscode
     ~/Library/Application Support/Code/User/settings.json: vscode/settings.json
