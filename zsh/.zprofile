@@ -70,6 +70,22 @@ if [[ -d "$HOME/Library/Android/sdk" ]]; then
 fi
 
 ################################################################
+# Blender
+# https://docs.blender.org/manual/zh-hans/dev/advanced/command_line/launch/macos.html
+################################################################
+export BLENDER_PATH="/Applications/Blender.app/Contents/MacOS"
+export PATH="$BLENDER_PATH:$PATH"
+
+################################################################
+# pyenv
+# https://github.com/pyenv/pyenv
+################################################################
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH="$PYENV_ROOT/shims:$PATH"
+eval "$(pyenv init -)"
+
+################################################################
 # pnpm
 # https://pnpm.io/
 ################################################################
