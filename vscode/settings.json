@@ -430,5 +430,6 @@
   "editor.stickyScroll.enabled": false,
   "[lua]": {
     "editor.defaultFormatter": "JohnnyMorganz.stylua"
-  }
+  },
+  "workbench.editor.editorActionsLocation": "titleBar"
 }

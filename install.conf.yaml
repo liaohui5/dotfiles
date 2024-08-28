@@ -30,13 +30,13 @@
 - link:
     # terminal emulators
     ~/.config/wezterm: wezterm
-    # bash
-    ~/.bashrc: .shell-scripts/.bashrc
-    ~/.bash_profile: .shell-scripts/.bash_profile
-    ~/.shell-scripts: .shell-scripts
-    # zsh & prompt style
-    ~/.zprofile: zsh/.zprofile
-    ~/.zshrc: zsh/.zshrc
+    # shell
+    ~/.shell-scripts: shell
+    ~/.zshrc: shell/.zshrc
+    ~/.zprofile: shell/.zprofile
+    ~/.bashrc: shell/.bashrc
+    ~/.bash_profile: shell/.bash_profile
+    # starship prompt
     ~/.config/starship: starship
     # terminal file manager
     ~/.config/yazi: yazi

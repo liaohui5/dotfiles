@@ -1,5 +1,7 @@
 ################################################################
 # execute zprofile
-# zshrc -> zprofile -> bashrc -> tools/vm/alias/bash_profile
+# zshrc -> zprofile + bashrc -> bashprofile
 ################################################################
 source ~/.zprofile
+source ~/.bashrc
+
