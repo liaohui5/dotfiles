@@ -32,6 +32,20 @@ if command -v 'starship' &> /dev/null; then
   export STARSHIP_CONFIG="${HOME}/.config/starship/config.toml"
 fi
 
+################################################################
+# yazi
+# https://yazi-rs.github.io/
+################################################################
+function yazi_fm() {
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+  yazi "$@" --cwd-file="$tmp"
+  if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+    builtin cd -- "$cwd"
+  fi
+  rm -f -- "$tmp"
+}
+alias fm='yazi_fm'
+
 ###############################################################
 # zoxide
 # https://github.com/ajeetdsouza/zoxide

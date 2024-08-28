@@ -27,7 +27,7 @@ safe-alias 'ls' 'lsd'
 # yazi: https://yazi-rs.github.io/
 # alias fm='vifm'
 # alias fm='joshuto'
-safe-alias 'fm' 'yazi'
+# safe-alias 'fm' 'yazi'
 
 # neofetch: https://github.com/fastfetch-cli/fastfetch
 safe-alias 'fetch' 'fastfetch'
