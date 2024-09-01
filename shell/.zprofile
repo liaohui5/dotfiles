@@ -116,6 +116,14 @@ fi
 [ -s "${HOME}/.bun/_bun" ] && source "${HOME}/.bun/_bun"
 
 ################################################################
+# orbstack
+# https://orbstack.dev/
+################################################################
+if [[ -f ~/.orbstack/shell/init.zsh ]]; then
+  source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+fi
+
+################################################################
 # fnm
 # https://github.com/Schniz/fnm#shell-setup
 ################################################################

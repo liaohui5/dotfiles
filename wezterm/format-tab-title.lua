@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-global
 -- The filled in variant of the < symbol
 local SOLID_LEFT_ARROW = utf8.char(0xe0ba)
 local SOLID_LEFT_MOST = utf8.char(0x2588)
@@ -5,6 +6,7 @@ local SOLID_LEFT_MOST = utf8.char(0x2588)
 -- The filled in variant of the > symbol
 local SOLID_RIGHT_ARROW = utf8.char(0xe0bc)
 
+---@diagnostic disable-next-line: unused-local
 return function(tab, tabs, panes, config, hover, max_width)
   local edge_background = "#272822"
   local background = "#272822"

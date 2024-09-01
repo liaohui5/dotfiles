@@ -1,7 +1,10 @@
+----------------------------------------------------------
+-- github: https://github.com/wez/wezterm
+-- docs  : https://wezfurlong.org/wezterm
+----------------------------------------------------------
 local formatTabTitle = require("format-tab-title")
 local keybindings = require("keybindings")
 local wezterm = require("wezterm")
-local strfmt = string.format
 
 -- tab 样式
 wezterm.on("format-tab-title", formatTabTitle)
@@ -11,9 +14,9 @@ local fontSize = 18
 local font = wezterm.font_with_fallback({
   {
     family = "JetBrainsMono Nerd Font Mono",
-    weight = "Light",
+    weight = "Regular",
     italic = false,
-    harfbuzz_features = { "calt=1", "clig=1", "liga=1" }, -- 全部设置为0禁止使用连体字符
+    harfbuzz_features = { "calt=0", "clig=0", "liga=0" }, -- 全部设置为0禁止使用连体字符
   },
   "OperatorMono Nerd Font Mono",
   "Hack Nerd Font Mono",
@@ -22,7 +25,7 @@ local font = wezterm.font_with_fallback({
 
 return {
   -- colorschemes: https://wezfurlong.org/wezterm/colorschemes/index.html
-  color_scheme = "Monokai (base16)",
+  color_scheme = "Tokyo Night Moon",
   font = font,
   line_height = 1,
   font_size = fontSize,
