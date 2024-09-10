@@ -131,3 +131,5 @@ alt - 0: open -b "com.google.chrome"                    # Google Chrome 浏览�
 alt - 0x1B: open -a "neovide" --args --frame buttonless # neovim(alt + -)
 alt - 0x18: open -b "org.alacritty"                     # Alacritty
 
+# auto switch input method when press <ESC>
+0x35 -> : im-select com.apple.keylayout.ABC
