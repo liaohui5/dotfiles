@@ -17,9 +17,6 @@ add_newline = false
 
 # 相当于
 format = """
-$username\
-$hostname\
-$localip\
 $shlvl\
 $singularity\
 $kubernetes\
@@ -97,7 +94,6 @@ $env_var\
 $crystal\
 $custom\
 $sudo\
-$cmd_duration\
 $jobs\
 $battery\
 $time\
@@ -110,8 +106,9 @@ $character"""
 [character]
 success_symbol = '[](bold green)'
 error_symbol = '[](bold red) '
+vimcmd_symbol = '[v](bold blue) '
 
 [directory]
 truncation_symbol = '  '
 truncation_length = 10
-truncate_to_repo  = false
+truncate_to_repo = false
