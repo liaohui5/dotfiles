@@ -34,8 +34,6 @@
     ~/.shell-scripts: shell
     ~/.zshrc: shell/.zshrc
     ~/.zprofile: shell/.zprofile
-    ~/.bashrc: shell/.bashrc
-    ~/.bash_profile: shell/.bash_profile
     # starship prompt
     ~/.config/starship: starship
     # terminal file manager

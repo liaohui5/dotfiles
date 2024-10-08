@@ -1,3 +1,3 @@
 #!/bin/bash
 
-# bash_profile
+##### bashrc #######

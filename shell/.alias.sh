@@ -16,8 +16,8 @@ safe-alias 'c' 'clear'
 # cp
 safe-alias 'cp' 'cp -r'
 
-# reload bashrc
-safe-alias 'rc' "source $HOME/.bashrc"
+# reload zshrc
+safe-alias 'rc' "source $HOME/.zshrc"
 
 # lsd: https://github.com/Peltoche/lsd
 safe-alias 'ls' 'lsd'
@@ -71,8 +71,22 @@ fi
 
 # enable or disable proxies
 # v2rayU(http:1087 socks5:1080) clashX(http:7890 socks5:7890)
-PROXY_HTTP_PORT='7890'
-PROXY_SOCK_PORT='7890'
-alias setproxy="export https_proxy=http://127.0.0.1:$PROXY_HTTP_PORT http_proxy=http://127.0.0.1:$PROXY_HTTP_PORT all_proxy=socks5://127.0.0.1:$PROXY_SOCK_PORT"
-alias resetproxy="export https_proxy='' http_proxy='' all_proxy=''"
-resetproxy
+alias reset-proxy="export https_proxy='' http_proxy='' all_proxy=''"
+function set-proxy() {
+  PROXY_APP_NAME="$1";
+  PROXY_HTTP_PORT='1087'
+  PROXY_SOCK_PORT='1080'
+  if [[ $PROXY_APP_NAME == "v2rayu" ]]; then
+    PROXY_HTTP_PORT='1087'
+    PROXY_SOCK_PORT='1080'
+  elif [[ $PROXY_APP_NAME == "clash" ]]; then
+    PROXY_HTTP_PORT='7890'
+    PROXY_SOCK_PORT='7890'
+  else
+    echo "unsupport proxy app"
+    exit 1
+  fi
+
+  cmd="export https_proxy=http://127.0.0.1:$PROXY_HTTP_PORT http_proxy=http://127.0.0.1:$PROXY_HTTP_PORT all_proxy=socks5://127.0.0.1:$PROXY_SOCK_PORT"
+  eval "${cmd}"
+}
