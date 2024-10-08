@@ -24,13 +24,13 @@ brew install yazi ffmpegthumbnailer unar jq poppler fd ripgrep fzf zoxide
 
 ### neovim and dependences
 brew install neovim
-brew tap daipeihust/tap/im-select && brew install im-select
+brew tap daipeihust/tap && brew install im-select
 
 ### yabai: bsp window manager like i3wm
-# brew tap cmacrae/formulae/spacebar && install spacebar
-# brew tap koekeishiya/formulae/skhd && brew install skhd
+# brew install cmacrae/formulae/spacebar
+# brew install koekeishiya/formulae/skhd
 # brew tap FelixKratz/formulae && brew install sketchybar
-# brew tap koekeishiya/formulae/yabai && brew install yabai
+# brew install koekeishiya/formulae/yabai
 
 ###### prompt style ######
 brew install starship
