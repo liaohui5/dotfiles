@@ -73,10 +73,10 @@ fi
 # v2rayU(http:1087 socks5:1080) clashX(http:7890 socks5:7890)
 alias reset-proxy="export https_proxy='' http_proxy='' all_proxy=''"
 function set-proxy() {
-  PROXY_APP_NAME="$1";
+  PROXY_APP_NAME="$1"
   PROXY_HTTP_PORT='1087'
   PROXY_SOCK_PORT='1080'
-  if [[ $PROXY_APP_NAME == "v2rayu" ]]; then
+  if [[ $PROXY_APP_NAME == "v2ray" ]]; then
     PROXY_HTTP_PORT='1087'
     PROXY_SOCK_PORT='1080'
   elif [[ $PROXY_APP_NAME == "clash" ]]; then
