@@ -3,6 +3,12 @@
 # │ skhd                                                                         │ #
 # │ example: https://github.com/koekeishiya/yabai/blob/master/examples/skhdrc    │ #
 # ╰──────────────────────────────────────────────────────────────────────────────╯ #
+
+# ╭──────────────────────────────────────────────────────────────────────────────╮
+# │ <ESC>自动切换输入法                                                          │
+# ╰──────────────────────────────────────────────────────────────────────────────╯
+0x35 -> : im-select com.apple.keylayout.ABC
+
 # ╭──────────────────────────────────────────────────────────────────────────────╮
 # │ 切换窗口焦点                                                                 │
 # ╰──────────────────────────────────────────────────────────────────────────────╯
@@ -118,18 +124,14 @@ shift + cmd - 0 : yabai -m window --space 9 && yabai -m space --focus 10
 # 查看软件的包名: mdls -name kMDItemCFBundleIdentifier /Applications/Safari.app
 # 查看更多按键码: skhd -o
 alt - 1: open -b "com.apple.finder"                     # Finder
-alt - 2: open -b "com.yimutodo.app"                     # 一木清单(根据包名启动)
-alt - 3: open -a "WezTerm"                              # wezterm
+alt - 2: open -b "org.mozilla.thunderbird"              # Thunderbird
+alt - 3: open -b "com.github.wez.wezterm"               # wezterm
 alt - 4: open -b "com.microsoft.VSCode"                 # vscode
-alt - 5: open -a "Typora"                               # typora
-alt - 6: open -a "QQ"                                   # QQ
-alt - 7: open -a "com.tencent.xinWeChat"                # 微信
-alt - 8: open -a "YesPlayMusic"                         # 网易云音乐
+alt - 5: open -b "com.tencent.qq"                       # QQ
+alt - 6: open -b "com.tencent.xinWeChat"                # 微信
+alt - 7: open -b "com.tencent.QQMusicMac"               # 音乐
+alt - 8: open -b "net.antelle.keeweb"                   # KeeWeb
 alt - 9: open -a "Launchpad"                            # 启动项
-# alt - 0: open -b "org.mozilla.firefox"                  # firefox 浏览器
-alt - 0: open -b "com.google.chrome"                    # Google Chrome 浏览器
+alt - 0: open -b "org.mozilla.firefox"                  # firefox 浏览器
+# alt - 0: open -b "com.google.chrome"                    # Google Chrome 浏览器
 alt - 0x1B: open -a "neovide" --args --frame buttonless # neovim(alt + -)
-alt - 0x18: open -b "org.alacritty"                     # Alacritty
-
-# auto switch input method when press <ESC>
-0x35 -> : im-select com.apple.keylayout.ABC
