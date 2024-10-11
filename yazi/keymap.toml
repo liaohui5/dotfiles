@@ -5,6 +5,26 @@
 "$schema" = "https://yazi-rs.github.io/schemas/keymap.json"
 
 [[manager.prepend_keymap]]
+on = "d"
+run = "yank --cut"
+desc = "Yank selected files (cut)"
+
+[[manager.prepend_keymap]]
+on = "D"
+run = "unyank"
+desc = "Cancel the yank status"
+
+[[manager.prepend_keymap]]
+on = "x"
+run = "remove"
+desc = "Trash selected files"
+
+[[manager.prepend_keymap]]
+on = "X"
+run = "Trash selected files"
+desc = "Permanently delete selected files"
+
+[[manager.prepend_keymap]]
 on = "<C-q>"
 run = "quit"
 desc = "Exit the process"
