@@ -21,7 +21,7 @@ desc = "Trash selected files"
 
 [[manager.prepend_keymap]]
 on = "X"
-run = "Trash selected files"
+run = "remove --permanently"
 desc = "Permanently delete selected files"
 
 [[manager.prepend_keymap]]
