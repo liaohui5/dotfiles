@@ -5,7 +5,7 @@
 
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 
-FONT="JetBrainsMono Nerd Font Mono"
+FONT="JetBrainsMono Nerd Font Mono:Regular"
 
 ##### Bar Appearance #####
 # Configuring the general appearance of the bar, these are only some of the
@@ -30,8 +30,8 @@ sketchybar --bar height=25        \
 default=(
   padding_left=5
   padding_right=5
-  icon.font="$FONT:Normal:16.0"
-  label.font="$FONT:Normal:14.0"
+  icon.font="$FONT:16.0"
+  label.font="$FONT:14.0"
   icon.color=0xffffffff
   label.color=0xffffffff
   icon.padding_left=4

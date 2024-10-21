@@ -1,16 +1,15 @@
 {
   "window.commandCenter": false,
   // 编辑器 & 终端字体设置
-  "editor.fontSize": 16,
+  "editor.fontSize": 18,
   "editor.fontLigatures": true,
-  "editor.fontFamily": "'JetBrainsMono Nerd Font Mono', 'OperatorMono Nerd Font Mono', 'Maple Mono NF', 'Hack Nerd Font Mono'",
+  "editor.fontFamily": "'Maple Mono SC NF','JetBrainsMono Nerd Font Mono', 'Maple Mono NF', 'Hack Nerd Font Mono'",
   "editor.fontWeight": 300,
-  "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font Mono'",
-  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.fontFamily": "'Maple Mono SC NF','JetBrainsMono Nerd Font Mono', 'Maple Mono NF', 'Hack Nerd Font Mono'",
+  "terminal.integrated.fontSize": 16,
   // 不开启固定滚动
   "editor.stickyScroll.enabled": false,
   // 不要开启声音提示
-  "audioCues.enabled": false,
   "editor.accessibilitySupport": "off",
   // 不要自动换行
   "editor.wordWrap": "off",
