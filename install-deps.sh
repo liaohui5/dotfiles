@@ -1,30 +1,32 @@
 #!/usr/bin/env bash
 
-git submodule update --init --recursive
+### init or update submoudles
+git submodule update --remote -f --recursive
 
 ### nerd font: JetBrinasMono Nerd Font ###
-brew install --cask homebrew/cask-fonts/font-jetbrains-mono-nerd-font
+# https://github.com/ryanoasis/nerd-fonts
+# https://github.com/subframe7536/maple-font
 
 ## terminal emulators ###
 brew install --cask wezterm
 
 ### vscode editor ###
-brew install --cask visual-studio-code
+# brew install --cask visual-studio-code
 
 ### git commands ###
-brew install git
-brew install git-delta
-brew install lazygit
+# brew install git
+# brew install git-delta
+# brew install lazygit
 
 ### some useful commands ###
-brew install curl lsof gnu-sed fzf lsd bat rg
+# brew install curl lsof gnu-sed fzf lsd bat rg
 
 ### file manager for command line ###
-brew install yazi ffmpegthumbnailer unar jq poppler fd ripgrep fzf zoxide
+# brew install yazi ffmpegthumbnailer unar jq poppler fd ripgrep fzf zoxide
 
 ### neovim and dependences
-brew install neovim
-brew tap daipeihust/tap && brew install im-select
+# brew install neovim
+# brew tap daipeihust/tap && brew install im-select
 
 ### yabai: bsp window manager like i3wm
 # brew install cmacrae/formulae/spacebar
@@ -33,10 +35,10 @@ brew tap daipeihust/tap && brew install im-select
 # brew install koekeishiya/formulae/yabai
 
 ###### prompt style ######
-brew install starship
+# brew install starship
 
 ### fnm node verion manager ###
-brew install fnm
+# brew install fnm
 
 ###### node packages ######
 ### please install node.js first ###
