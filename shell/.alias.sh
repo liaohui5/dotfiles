@@ -29,14 +29,18 @@ safe-alias 'ls' 'lsd'
 # alias fm='joshuto'
 # safe-alias 'fm' 'yazi'
 
+# static web server
+# https://static-web-server.net/
+safe-alias 'sws' 'static-web-server'
+
 # neofetch: https://github.com/fastfetch-cli/fastfetch
-safe-alias 'fetch' 'fastfetch'
+safe-alias 'ff' 'fastfetch'
 
 # git: https://git-scm.com/
 # lazygit: https://github.com/jesseduffield/lazygit
 # czgit: https://github.com/Zhengqbbb/cz-git
+alias gs='git status'
 safe-alias 'lg' 'lazygit'
-safe-alias 'gs' 'git status'
 
 # docker: https://www.docker.com/
 # docker & dockerc-compose
