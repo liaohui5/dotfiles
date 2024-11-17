@@ -102,11 +102,33 @@ if command -v 'pnpm' &> /dev/null; then
 fi
 
 ################################################################
+# rustup
+# https://github.com/rust-lang/rustup
+################################################################
+if command -v 'rustup' &> /dev/null; then
+  export RUSTUP_DIST_SERVER="https://rsproxy.cn"
+  export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
+fi
+
+################################################################
 # cargo
 # https://github.com/rust-lang/cargo
 ################################################################
 if command -v 'cargo' &> /dev/null; then
   export PATH="/Users/$(whoami)/.cargo/bin:$PATH"
+  # docs: https://rsproxy.cn/
+  cat > "/Users/$(whoami)/.cargo/config.toml" <<EOF
+[source.crates-io]
+replace-with = 'rsproxy-sparse'
+[source.rsproxy]
+registry = "https://rsproxy.cn/crates.io-index"
+[source.rsproxy-sparse]
+registry = "sparse+https://rsproxy.cn/index/"
+[registries.rsproxy]
+index = "https://rsproxy.cn/crates.io-index"
+[net]
+git-fetch-with-cli = true
+EOF
 fi
 
 ################################################################

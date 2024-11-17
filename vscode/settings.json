@@ -73,4 +73,9 @@
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1
   },
+  /////////////////////////////////////////
+  // plugins
+  /////////////////////////////////////////
+  // 隐藏 Explorer 中的箭头
+  "material-icon-theme.hidesExplorerArrows": true,
 }
