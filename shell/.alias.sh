@@ -64,6 +64,13 @@ if command -v "bun" &>/dev/null; then
   alias bm='bun run mock'
 fi
 
+# cargo: https://rustwiki.org/zh-CN/cargo/
+if command -v "cargo" &>/dev/null; then
+  alias cr='cargo run'
+  alias ct='cargo test'
+  alias cb='cargo build --release'
+fi
+
 # neovim: https://github.com/neovim/neovim
 # helix:  https://helix-editor.com/
 safe-alias 'v' 'nvim'
