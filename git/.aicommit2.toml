@@ -1,0 +1,10 @@
+# General Settings
+# docs: https://github.com/tak-bro/aicommit2
+# defaults: https://github.com/tak-bro/aicommit2/blob/main/src/utils/config.ts
+logging = true
+temperature = 0.8
+locale = "zh-CN"
+generate = 3
+
+[DEEPSEEK]
+key = ""

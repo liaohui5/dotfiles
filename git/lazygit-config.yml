@@ -2,7 +2,7 @@
 #  │ lazygit 配置                                                                 │
 #  │ https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md          │
 #  ╰──────────────────────────────────────────────────────────────────────────────╯
-# yaml-language-server: $schema=https://json.schemastore.org/lazygit.json
+yaml-language-server: $schema=https://json.schemastore.org/lazygit.json
 gui:
   # 不显示页脚
   showListFooter: false
@@ -65,7 +65,24 @@ keybinding:
     quit: "<c-q>" # 退出
 
 customCommands:
+  # 集成 cz-git 命令, 快速生成提交模板
+  # docs: https://cz-git.qbb.sh/zh/
   - key: "<c-c>"
+    description: "Generate commit use cz-git"
     context: "files"
-    command: "czg" # 快速生成提交模板, 需要安装命令: https://cz-git.qbb.sh/zh/
+    command: "czg"
+    subprocess: true
+
+  # 集成 aicommit2, 快速生成提交模板
+  # docs: https://github.com/tak-bro/aicommit2
+  - key: <c-e>
+    description: "Pick AI commit"
+    command: "aicommit2"
+    context: "files"
+    subprocess: true
+    showOutput: true
+  - key: E
+    description: "Pick AI commit (no verify)"
+    command: "aicommit2 --no-verify"
+    context: "files"
     subprocess: true
