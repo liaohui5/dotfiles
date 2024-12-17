@@ -10,9 +10,9 @@ generate = 3
 key = ""
 
 # aliyun openai compatible-mode
-# https://help.aliyun.com/zh/model-studio/getting-started/models#0d841ef5caz0x
+# https://help.aliyun.com/zh/model-studio/getting-started/models
 [OPENAI]
 key = ""
-url = "https://dashscope.aliyuncs.com"
-path = "/compatible-mode/v1"
-model = "llama3-8b-instruct"
+url = "https://dashscope.aliyuncs.com/"
+path = "/compatible-mode/v1/chat/completions"
+model = "qwen2.5-3b-instruct"
