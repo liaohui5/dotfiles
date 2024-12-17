@@ -76,13 +76,8 @@ customCommands:
   # 集成 aicommit2, 快速生成提交模板
   # docs: https://github.com/tak-bro/aicommit2
   - key: <c-e>
-    description: "Pick AI commit"
-    command: "aicommit2"
-    context: "files"
-    subprocess: true
-    showOutput: true
-  - key: E
-    description: "Pick AI commit (no verify)"
+    description: "Easily generate commit using ai"
     command: "aicommit2 --no-verify"
     context: "files"
     subprocess: true
+    showOutput: true
