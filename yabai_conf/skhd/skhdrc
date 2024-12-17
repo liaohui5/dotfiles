@@ -132,6 +132,6 @@ alt - 6: open -b "com.tencent.xinWeChat"                # 微信
 alt - 7: open -b "com.tencent.QQMusicMac"               # 音乐
 alt - 8: open -b "net.antelle.keeweb"                   # KeeWeb
 alt - 9: open -a "Launchpad"                            # 启动项
-alt - 0: open -b "org.mozilla.firefox"                  # firefox 浏览器
-# alt - 0: open -b "com.google.chrome"                    # Google Chrome 浏览器
+# alt - 0: open -b "org.mozilla.firefox"                  # firefox 浏览器
+alt - 0: open -b "com.google.chrome"                    # Google Chrome 浏览器
 alt - 0x1B: open -a "neovide" --args --frame buttonless # neovim(alt + -)
