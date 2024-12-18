@@ -76,13 +76,13 @@
     // nvim模式: 代码提示显示时: 选中上一个代码提示
     "key": "ctrl+k",
     "command": "selectPrevSuggestion",
-    "when": "suggestWidgetVisible && suggestWidgetMultipleSuggestions && neovime.mode == 'insert'"
+    "when": "suggestWidgetVisible && suggestWidgetMultipleSuggestions && neovime.mode != 'normal'"
   },
   {
     // nvim模式: 代码提示显示时: 选中下一个代码提示
     "key": "ctrl+j",
     "command": "selectNextSuggestion",
-    "when": "suggestWidgetVisible && suggestWidgetMultipleSuggestions && neovime.mode == 'insert'"
+    "when": "suggestWidgetVisible && suggestWidgetMultipleSuggestions && neovime.mode != 'normal'"
   },
   {
     // 在显示搜索文件输入框时: 选中上一个
@@ -111,14 +111,14 @@
   {
     // 当 codeAction 菜单显示的时候 c-k 选中上一个
     "key": "ctrl+k",
-    "when": "codeActionMenuVisible",
-    "command": "selectPrevCodeAction"
+    "command": "selectPrevCodeAction",
+    "when": "codeActionMenuVisible"
   },
   {
     // 当 codeAction 菜单显示的时候 c-j 选择下一个
     "key": "ctrl+j",
-    "when": "codeActionMenuVisible",
-    "command": "selectNextCodeAction"
+    "command": "selectNextCodeAction",
+    "when": "codeActionMenuVisible"
   },
   {
     // 当 codeAction 菜单显示的时候 c-l 确认选择
