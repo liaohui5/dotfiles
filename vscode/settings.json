@@ -74,8 +74,28 @@
     "asvetliakov.vscode-neovim": 1
   },
   /////////////////////////////////////////
+  // whichkey
+  /////////////////////////////////////////
+  "whichkey.bindingOverrides": [
+    {
+      // 格式化文档
+      "keys": "f.f",
+      "name": "Format document",
+      "type": "command",
+      "command": "editor.action.formatDocument"
+    },
+    {
+      // 关闭其他编辑器
+      "keys": "b.o",
+      "name": "Close other editors",
+      "type": "command",
+      "command": "workbench.action.closeOtherEditors"
+    }
+  ],
+  /////////////////////////////////////////
   // plugins
   /////////////////////////////////////////
   // 隐藏 Explorer 中的箭头
   "material-icon-theme.hidesExplorerArrows": true,
+  "Codegeex.License": "",
 }
