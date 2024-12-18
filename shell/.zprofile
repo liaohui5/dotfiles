@@ -96,7 +96,7 @@ fi
 # pnpm
 # https://pnpm.io/
 ################################################################
-if command -v 'pnpm' &> /dev/null; then
+if [ -d "$HOME/.pnpm_store" ]; then
   export PNPM_HOME="$HOME/.pnpm_store"
   export PATH="$PNPM_HOME:$PATH"
 fi

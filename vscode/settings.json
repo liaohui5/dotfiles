@@ -64,10 +64,12 @@
   /////////////////////////////////////////
   // 颜色主题/图标主题
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.colorTheme": "Monokai",
+  "workbench.colorTheme": "rimless-monokai",
   // 打开设置使用左右json
+  // 需要按住 rimless-monokai 和 material-icon-theme
   "workbench.settings.editor": "json",
   "workbench.settings.useSplitJSON": true,
+  "material-icon-theme.hidesExplorerArrows": true,
   // 在启动时不自动打开任何文件
   "workbench.startupEditor": "none",
   "extensions.experimental.affinity": {
@@ -95,7 +97,7 @@
   /////////////////////////////////////////
   // plugins
   /////////////////////////////////////////
-  // 隐藏 Explorer 中的箭头
-  "material-icon-theme.hidesExplorerArrows": true,
+  // 默认格式化插件
+  "editor.defaultFormatter": "dprint.dprint",
   "Codegeex.License": "",
 }
