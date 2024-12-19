@@ -27,6 +27,12 @@
     "when": "editorTextFocus && neovim.mode == 'normal'"
   },
   {
+    // nvim 模式: 注释
+    "key": "ctrl+\\",
+    "command": "editor.action.commentLine",
+    "when": "editorTextFocus && neovim.mode != 'insert'"
+  },
+  {
     // nvim模式: 向上移动5行
     "key": "ctrl+u",
     "command": "cursorMove",
@@ -35,7 +41,7 @@
       "by": "line",
       "value": 5
     },
-    "when": "editorTextFocus && neovim.mode == 'normal'"
+    "when": "editorTextFocus && neovim.mode != 'insert'"
   },
   {
     // nvim模式: 向下移动5行
@@ -46,7 +52,7 @@
       "by": "line",
       "value": 5
     },
-    "when": "editorTextFocus && neovim.mode == 'normal'"
+    "when": "editorTextFocus && neovim.mode != 'insert'"
   },
   {
     // nvim模式: 切换命令行
