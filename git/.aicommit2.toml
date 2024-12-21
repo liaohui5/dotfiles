@@ -6,16 +6,18 @@ temperature = 0.8
 locale = "zh"
 generate = 3
 
-[DEEPSEEK]
-key = ""
+# [DEEPSEEK]
+# key = ""
 
+#####################################################################
 # openai sdk compatibility mode using aliyun service
 # https://help.aliyun.com/zh/model-studio/getting-started/models
-[OPENAI]
-key = ""
-url = "https://dashscope.aliyuncs.com/"
-path = "/compatible-mode/v1/chat/completions"
-model = "qwen2.5-3b-instruct"
+#####################################################################
+# [OPENAI]
+# key = ""
+# url = "https://dashscope.aliyuncs.com/"
+# path = "/compatible-mode/v1/chat/completions"
+# model = "qwen2.5-3b-instruct"
 
 #####################################################################
 # openai sdk compatibility mode using bytedance service
@@ -51,8 +53,8 @@ model = "qwen2.5-3b-instruct"
 # openai sdk compatibility mode using siliconflow service
 # https://docs.siliconflow.cn/quickstart
 #####################################################################
-# [OPENAI]
-# key = ""
-# url = "https://api.siliconflow.cn"
-# path = "/v1/chat/completions"
-# model = "Qwen/Qwen2.5-7B-Instruct"
+[OPENAI]
+key = ""
+url = "https://api.siliconflow.cn"
+path = "/v1/chat/completions"
+model = "Qwen/Qwen2.5-7B-Instruct"
