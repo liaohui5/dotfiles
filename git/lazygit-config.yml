@@ -23,9 +23,9 @@ os:
 reporting: "off" # 不提供日志报告
 
 # 快捷键绑定:
-# keybinding:
-#   universal:
-#     quit: "<c-q>" # 退出
+keybinding:
+  universal:
+    quit: "<c-q>" # 退出
 
 customCommands:
   # 打开默认的快捷键文档

@@ -28,6 +28,12 @@ on = "X"
 run = "remove --permanently"
 desc = "Permanently delete selected files"
 
+# 退出, 使用默认的 q 也可以
+[[manager.prepend_keymap]]
+on = "<C-q>"
+run = "quit"
+desc = "Exit the process"
+
 # 切换标签页(和 lazyvim 保持同步)
 [[manager.prepend_keymap]]
 on = "<S-h>"
@@ -40,7 +46,7 @@ desc = "Switch to the next tab"
 
 # 使用当前进程打开一个新的命令行
 [[manager.prepend_keymap]]
-on = "<Enter>"
+on = ["g", "<Enter>"]
 run = "shell $SHELL --block --confirm"
 desc = "Open shell here"
 
