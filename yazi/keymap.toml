@@ -28,12 +28,6 @@ on = "X"
 run = "remove --permanently"
 desc = "Permanently delete selected files"
 
-# 退出, 使用默认的 q 也可以
-[[manager.prepend_keymap]]
-on = "<C-q>"
-run = "quit"
-desc = "Exit the process"
-
 # 切换标签页(和 lazyvim 保持同步)
 [[manager.prepend_keymap]]
 on = "<S-h>"

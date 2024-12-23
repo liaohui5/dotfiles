@@ -1,70 +1,39 @@
-#  ╭──────────────────────────────────────────────────────────────────────────────╮
-#  │ lazygit 配置                                                                 │
-#  │ https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md          │
-#  ╰──────────────────────────────────────────────────────────────────────────────╯
+##############################################################################################
+# lazygit 配置
+# https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md
+# https://github.com/jesseduffield/lazygit/blob/master/docs/keybindings/Keybindings_zh-CN.md
+##############################################################################################
 yaml-language-server: $schema=https://json.schemastore.org/lazygit.json
 gui:
-  # 不显示页脚
-  showListFooter: false
-
-  # 是否显示文件目录结构树(false平铺显示文件)
-  showFileTree: false
-
-  # 左边栏目宽度比例
-  sidePanelWidth: 0.3
-
-  # 显示图标需要 Nerd Font(default: true)
-  # showIcons: true
-
-  # 是否随机显示提示
-  showRandomTip: false
-
+  showListFooter: false # 不显示页脚
+  showFileTree: false # 是否显示文件目录结构树(false平铺显示文件)
+  sidePanelWidth: 0.3 # 左边栏目宽度比例
+  showIcons: true # 是否显示图标需要 Nerd Font(default: true)
+  showRandomTip: false # 是否随机显示提示
 git:
-  # 自动拉取远程代码
-  autoFetch: true
-
-  # 自动刷新
-  autoRefresh: true
-
-  # 禁用鼠标
-  mouseevents: false
-
-  # 解析 gitmoji 表情
-  parseEmoji: true
-
-  # 分页
-  paging:
-    colorArg: auto
-
-    # 需要安装 git-detal 命令
-    pager: delta --dark --paging=never
-
-    # 需要安装 diff-so-fancy 命令
-    # pager: diff-so-fancy
-  log:
-    showGraph: always
-
+  autoFetch: true # 自动拉取远程代码
+  autoRefresh: true # 自动刷新
+  mouseevents: false # 禁用鼠标
+  parseEmoji: true # 解析 gitmoji 表情
 os:
-  # 编辑文件命令(需要安装vscode)
-  open: "{{editor}} {{filename}}"
-
-  # 编辑文件命令
-  edit: "{{editor}}"
+  open: "{{editor}} {{filename}}" # 编辑文件命令
+  edit: "{{editor}}" # 编辑文件命令
   editAtLine: "{{editor}} +{{line}} -- {{filename}}"
-
+  openLink: "open" # 打开链接命令
 reporting: "off" # 不提供日志报告
-update:
-  method: prompt # 询问是否要更新
-  days:
-    7 # 每7天检查一次是否有更新
 
-
-    # 快捷键绑定:
-keybinding:
-  universal:
-    quit: "<c-q>" # 退出
+# 快捷键绑定:
+# keybinding:
+#   universal:
+#     quit: "<c-q>" # 退出
 
 customCommands:
+  # 打开默认的快捷键文档
+  - key: "<c-k>"
+    description: "Open keybindings docs"
+    context: "global"
+    command: "open -u 'https://github.com/jesseduffield/lazygit/blob/master/docs/keybindings/Keybindings_zh-CN.md'"
+
   # 集成 cz-git 命令, 快速生成提交模板
   # docs: https://cz-git.qbb.sh/zh/
   - key: "<c-c>"
