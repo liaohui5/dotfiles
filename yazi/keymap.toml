@@ -1,45 +1,63 @@
-# A TOML linter such as https://taplo.tamasfe.dev/ can use this schema to validate your config.
-# If you encounter any issues, please make an issue at https://github.com/yazi-rs/schemas.
-# defaults keymaps: https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/keymap.toml
-# docs: https://yazi-rs.github.io/docs/configuration/keymap
+######################################################################################################
+# defaults keymaps: https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/keymap-default.toml
+# online docs: https://yazi-rs.github.io/docs/configuration/keymap
+######################################################################################################
 "$schema" = "https://yazi-rs.github.io/schemas/keymap.json"
 
+# 剪切文件
 [[manager.prepend_keymap]]
 on = "d"
 run = "yank --cut"
 desc = "Yank selected files (cut)"
 
+# 取消选择的剪切文件
 [[manager.prepend_keymap]]
 on = "D"
 run = "unyank"
 desc = "Cancel the yank status"
 
+# 删除文件
 [[manager.prepend_keymap]]
 on = "x"
 run = "remove"
 desc = "Trash selected files"
 
+# 取消选中的删除文件
 [[manager.prepend_keymap]]
 on = "X"
 run = "remove --permanently"
 desc = "Permanently delete selected files"
 
+# 退出, 使用默认的 q 也可以
 [[manager.prepend_keymap]]
 on = "<C-q>"
 run = "quit"
 desc = "Exit the process"
 
+# 切换标签页(和 lazyvim 保持同步)
+[[manager.prepend_keymap]]
+on = "<S-h>"
+run = "tab_switch -1 --relative"
+desc = "Switch to the previous tab"
+[[manager.prepend_keymap]]
+on = "<S-l>"
+run = "tab_switch 1 --relative"
+desc = "Switch to the next tab"
+
+# 使用当前进程打开一个新的命令行
 [[manager.prepend_keymap]]
 on = "<Enter>"
 run = "shell $SHELL --block --confirm"
 desc = "Open shell here"
 
+# 打开默认按键文档
 [[manager.prepend_keymap]]
-on = "<F1>"
+on = ["g", "k"]
 run = "shell 'open -u https://yazi-rs.github.io/docs/quick-start#keybindings' --confirm"
-desc = "Open keymaps"
+desc = "Open keybindings docs"
 
+# 打开默认按键源码
 [[manager.prepend_keymap]]
-on = "<S-F1>"
-run = "shell 'open -u https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/keymap.toml' --confirm"
-desc = "Open default keymaps file"
+on = ["g", "<S-k>"]
+run = "shell 'open -u https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/keymap-default.toml' --confirm"
+desc = "Open keybindings source code"
