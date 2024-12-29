@@ -13,12 +13,12 @@ wezterm.on("format-tab-title", formatTabTitle)
 local fontSize = 18
 local font = wezterm.font_with_fallback({
   {
-    family = "Maple Mono SC NF",
+    family = "JetBrainsMono Nerd Font Mono",
     weight = "Regular",
     italic = false,
     harfbuzz_features = { "calt=0", "clig=0", "liga=0" }, -- 全部设置为0禁止使用连体字符
   },
-  "JetBrainsMono Nerd Font Mono",
+  "Maple Mono SC NF",
   "Hack Nerd Font Mono",
 })
 

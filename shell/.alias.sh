@@ -50,9 +50,13 @@ safe-alias 'dc' 'docker compose'
 # pnpm: https://pnpm.io/
 if command -v "pnpm" &>/dev/null; then
   alias pi='pnpm install'
+  alias pa='pnpm add'
   alias pr='pnpm remove'
   alias pu='pnpm update'
-  alias pU='pnpm i -g pnpm'
+  alias pU='pnpm self-update'
+  alias pd='pnpm run dev'
+  alias pt='pnpm run test'
+  alias pb='pnpm run build'
 fi
 
 # bun: https://bun.sh/
