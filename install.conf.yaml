@@ -28,30 +28,22 @@
 
 # 链接
 - link:
-    # terminal emulators
     ~/.config/wezterm: wezterm
-    # shell
     ~/.shell-scripts: shell
     ~/.zshrc: shell/.zshrc
     ~/.zprofile: shell/.zprofile
-    # starship prompt
     ~/.config/starship: starship
-    # terminal file manager
     ~/.config/yazi: yazi
-    # yabi: bsp window manager like i3wm
     ~/.config/yabai: yabai_conf/yabai
     ~/.config/sketchybar: yabai_conf/sketchybar
     ~/.config/spacebar: yabai_conf/spacebar
     ~/.config/skhd: yabai_conf/skhd
-    # vscode
     ~/Library/Application Support/Code/User/settings.json: vscode/settings.json
     ~/Library/Application Support/Code/User/keybindings.json: vscode/keybindings.json
     ~/Library/Application Support/Code/User/snippets: nvim/snippets
-    # git & lazygit & cz-git
     ~/.gitconfig: git/.gitconfig
     ~/Library/Application Support/lazygit/config.yml: git/lazygit-config.yml
     ~/.czrc: git/cz-git.czrc
-    # mpv
     ~/.config/mpv: mpv
 
 - shell:
