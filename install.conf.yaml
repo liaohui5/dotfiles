@@ -18,7 +18,6 @@
     [
       "~",
       "~/.config",
-      "~/Library/Application Support/Code/User",
       "~/Library/Application Support/lazygit",
     ]
 
@@ -38,9 +37,6 @@
     ~/.config/sketchybar: yabai_conf/sketchybar
     ~/.config/spacebar: yabai_conf/spacebar
     ~/.config/skhd: yabai_conf/skhd
-    ~/Library/Application Support/Code/User/settings.json: vscode/settings.json
-    ~/Library/Application Support/Code/User/keybindings.json: vscode/keybindings.json
-    ~/Library/Application Support/Code/User/snippets: nvim/snippets
     ~/.gitconfig: git/.gitconfig
     ~/Library/Application Support/lazygit/config.yml: git/lazygit-config.yml
     ~/.czrc: git/cz-git.czrc
