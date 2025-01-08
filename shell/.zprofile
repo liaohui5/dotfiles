@@ -5,7 +5,17 @@ export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
 ################################################################
-# EDITOR
+# Added by Windsurf
+# https://codeium.com/windsurf
+################################################################
+windsurf_bin_path="/Users/secret/.codeium/windsurf/bin"
+if [[ -d "${windsurf_bin_path}" ]]; then
+  export PATH="/Users/secret/.codeium/windsurf/bin:$PATH"
+fi
+
+################################################################
+# nvim EDITOR
+# https://github.com/neovim/neovim
 ################################################################
 if command -v 'nvim' &> /dev/null; then
   export EDITOR='nvim'
@@ -73,15 +83,6 @@ if [[ -d "$HOME/Library/Android/sdk" ]]; then
 fi
 
 ################################################################
-# Blender
-# https://docs.blender.org/manual/zh-hans/dev/advanced/command_line/launch/macos.html
-################################################################
-if [[ -d "/Applications/Blender.app/Contents/MacOS" ]]; then
-  export BLENDER_PATH="/Applications/Blender.app/Contents/MacOS"
-  export PATH="$BLENDER_PATH:$PATH"
-fi
-
-################################################################
 # pyenv
 # https://github.com/pyenv/pyenv
 ################################################################
@@ -129,20 +130,6 @@ index = "https://rsproxy.cn/crates.io-index"
 [net]
 git-fetch-with-cli = true
 EOF
-fi
-
-################################################################
-# bun completions
-# https://bun.sh/
-################################################################
-[ -s "${HOME}/.bun/_bun" ] && source "${HOME}/.bun/_bun"
-
-################################################################
-# orbstack
-# https://orbstack.dev/
-################################################################
-if [[ -f ~/.orbstack/shell/init.zsh ]]; then
-  source ~/.orbstack/shell/init.zsh 2>/dev/null || :
 fi
 
 ################################################################
