@@ -79,13 +79,8 @@ fi
 # helix:  https://helix-editor.com/
 safe-alias 'v' 'nvim'
 
-# copypath
-if command -v "pbcopy" &>/dev/null; then
-  alias copypath='echo $(pwd) | pbcopy'
-fi
-
-# enable or disable proxies
-# v2rayU(http:1087 socks5:1080) clashX(http:7890 socks5:7890)
+######### system proxy management ##########
+# v2rayU(http:1087 socks5:1080) clash(http:7890 socks5:7890)
 alias reset-proxy="export https_proxy='' http_proxy='' all_proxy=''"
 function set-proxy() {
   PROXY_APP_NAME="$1"
@@ -98,10 +93,71 @@ function set-proxy() {
     PROXY_HTTP_PORT='7890'
     PROXY_SOCK_PORT='7890'
   else
-    echo "unsupport proxy app"
+    echo "unknown proxy type"
     exit 1
   fi
 
   cmd="export https_proxy=http://127.0.0.1:$PROXY_HTTP_PORT http_proxy=http://127.0.0.1:$PROXY_HTTP_PORT all_proxy=socks5://127.0.0.1:$PROXY_SOCK_PORT"
   eval "${cmd}"
 }
+
+######### homebrew mirror management ##########
+if command -v "brew" &>/dev/null; then
+  function set-brew-mirror() {
+    echo "请选择 homebrew 镜像源(0:默认源 1:中科大 2:清华 3:北京外国语 4:腾讯 5:阿里): "
+    read mirror_id
+
+    mirror_content=""
+    if [[ $mirror_id == "0" ]]; then
+      mirror_content="#!/bin/bash"
+    elif [[ $mirror_id == "1" ]]; then
+      mirror_content='#!/bin/bash
+export HOMEBREW_INSTALL_FROM_API=1
+export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.ustc.edu.cn/brew.git"
+export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.ustc.edu.cn/homebrew-core.git"
+export HOMEBREW_API_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles/api"
+export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles/bottles"'
+    elif [[ $mirror_id == "2" ]]; then
+      mirror_content='#!/bin/bash
+export HOMEBREW_INSTALL_FROM_API=1
+export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"
+export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git"
+export HOMEBREW_API_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/api"
+export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/bottles"'
+    elif [[ $mirror_id == "3" ]]; then
+      mirror_content='#!/bin/bash
+export HOMEBREW_INSTALL_FROM_API=1
+export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.bfsu.edu.cn/git/homebrew/brew.git"
+export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.bfsu.edu.cn/git/homebrew/homebrew-core.git"
+export HOMEBREW_API_DOMAIN="https://mirrors.bfsu.edu.cn/homebrew-bottles/api"
+export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.bfsu.edu.cn/homebrew-bottles/bottles"'
+    elif [[ $mirror_id == "4" ]]; then
+      mirror_content='#!/bin/bash
+export HOMEBREW_INSTALL_FROM_API=1
+export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.cloud.tencent.com/homebrew/brew.git"
+export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.cloud.tencent.com/homebrew/homebrew-core.git"
+export HOMEBREW_API_DOMAIN="https://mirrors.cloud.tencent.com/homebrew-bottles/api/"
+export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.cloud.tencent.com/homebrew-bottles/bottles"'
+    elif [[ $mirror_id == "5" ]]; then
+      mirror_content='#!/bin/bash
+export HOMEBREW_INSTALL_FROM_API=1
+export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.aliyun.com/homebrew/brew.git"
+export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.aliyun.com/homebrew/homebrew-core.git"
+export HOMEBREW_API_DOMAIN="https://mirrors.aliyun.com/homebrew-bottles/api"
+export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.aliyun.com/homebrew/homebrew-bottles"'
+    else
+      echo "未知源"
+      exit 1
+    fi
+
+    mirror_file="${HOME}/.shell-scripts/.homebrew_mirror"
+    if [[ -f $mirror_file ]]; then
+      echo $mirror_content > $mirror_file
+      source $mirror_file
+      echo "设置成功"
+    else
+      echo $mirror_content
+      echo "文件不存在: ${mirror_file}"
+    fi
+  }
+fi
