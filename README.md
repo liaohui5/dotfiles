@@ -14,7 +14,6 @@
 2. 软件: 所有依赖的软件安装都在 `install-dep.sh` 中, 可以自己注释不需要安装的软件
 3. 配置: 所有的软件的配置都在 `install.conf.yaml` 中, 会创建软链接, 如果要修改配置文件名, 需要维护映射关系
 4. node: 在 `install-dep` 中也会安装一些node的包, 默认是注释的, 因为需要先安装 `fnm` 然后安装 node, 然后在安装手动这些包
-5. nvim: 这个是作为 git 的 submoudule 来管理的, 可以在 [单独配置代码库](https://github.com/liaohui5/nvim)中找到源码
 
 ## 安装
 
