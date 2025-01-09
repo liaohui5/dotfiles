@@ -1,51 +1,42 @@
 #!/bin/bash
-
-function safe-alias() {
-  local alias_name="$1"
-  local alias_command="$2"
-  local command_to_check=$(echo "$alias_command" | cut -d' ' -f1)
-
-  if command -v "$command_to_check" &>/dev/null; then
-    alias "$alias_name"="$alias_command"
-  fi
-}
-
 # clear
-safe-alias 'c' 'clear'
-
-# cp
-safe-alias 'cp' 'cp -r'
+alias c="clear"
 
 # reload zshrc
-safe-alias 'rc' "source $HOME/.zshrc"
+alias rc="source $HOME/.zshrc"
 
 # lsd: https://github.com/Peltoche/lsd
-safe-alias 'ls' 'lsd'
-
-# vifm: https://github.com/vifm/vifm
-# joshuto: https://github.com/kamiyaa/joshuto
-# yazi: https://yazi-rs.github.io/
-# alias fm='vifm'
-# alias fm='joshuto'
-# safe-alias 'fm' 'yazi'
+if command -v "lsd" &>/dev/null; then
+  alias ls='lsd'
+fi
 
 # static web server
 # https://static-web-server.net/
-safe-alias 'sws' 'static-web-server'
+if command -v "sws" &>/dev/null; then
+  alias sws='static-web-server'
+fi
 
-# neofetch: https://github.com/fastfetch-cli/fastfetch
-safe-alias 'ff' 'fastfetch'
+# fastfetch
+# https://github.com/fastfetch-cli/fastfetch
+if command -v "fastfetch" &>/dev/null; then
+  alias ff='fastfetch'
+fi
 
-# git: https://git-scm.com/
 # lazygit: https://github.com/jesseduffield/lazygit
-# czgit: https://github.com/Zhengqbbb/cz-git
-alias gs='git status'
-safe-alias 'lg' 'lazygit'
+if command -v "lazygit" &>/dev/null; then
+  alias lg='lazygit'
+fi
 
-# docker: https://www.docker.com/
-# docker & dockerc-compose
-safe-alias 'd' 'docker'
-safe-alias 'dc' 'docker compose'
+# docker & compose
+# https://www.docker.com/
+if command -v "docker" &>/dev/null; then
+  alias d='docker'
+fi
+if command -v "docker-compose" &>/dev/null; then
+  alias dc='docker-compose'
+elif command -v "docker compose" &>/dev/null; then
+  alias dc='docker compose'
+fi
 
 # pnpm: https://pnpm.io/
 if command -v "pnpm" &>/dev/null; then
@@ -55,16 +46,18 @@ if command -v "pnpm" &>/dev/null; then
   alias pu='pnpm update'
   alias pU='pnpm self-update'
   alias pd='pnpm run dev'
+  alias ps='pnpm run start'
   alias pt='pnpm run test'
   alias pb='pnpm run build'
+  alias pm='pnpm run mock'
 fi
 
 # bun: https://bun.sh/
 if command -v "bun" &>/dev/null; then
   alias bd='bun run dev'
+  alias bs='bun run start'
   alias bt='bun run test'
   alias bb='bun run build'
-  alias bs='bun run start'
   alias bm='bun run mock'
 fi
 
@@ -74,10 +67,6 @@ if command -v "cargo" &>/dev/null; then
   alias ct='cargo test'
   alias cb='cargo build --release'
 fi
-
-# neovim: https://github.com/neovim/neovim
-# helix:  https://helix-editor.com/
-safe-alias 'v' 'nvim'
 
 ######### system proxy management ##########
 # v2rayU(http:1087 socks5:1080) clash(http:7890 socks5:7890)
