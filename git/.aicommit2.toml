@@ -54,7 +54,7 @@ generate = 3
 # https://docs.siliconflow.cn/quickstart
 #####################################################################
 [OPENAI]
-key = ""
+key = "sk-gtuswallsppyobufyzwnrfssbbzzeaxubncthnlkyzbgvegs"
 url = "https://api.siliconflow.cn"
 path = "/v1/chat/completions"
 model = "Qwen/Qwen2.5-7B-Instruct"
