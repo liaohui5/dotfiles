@@ -16,3 +16,4 @@ source "${HOME}/.zprofile"
 
 # alias
 source "${HOME}/.shell-scripts/.alias.sh"
+

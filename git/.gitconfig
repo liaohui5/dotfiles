@@ -13,7 +13,7 @@
 	required = true
 
 [init]
-	defaultBranch = main # 默认的分支名
+	defaultBranch = main
 
 [credential]
 	helper = store
