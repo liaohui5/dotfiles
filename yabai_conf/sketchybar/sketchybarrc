@@ -5,7 +5,7 @@
 
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 
-FONT="JetBrainsMono Nerd Font Mono:Regular"
+FONT="Hack Nerd Font Mono:Regular"
 
 ##### Bar Appearance #####
 # Configuring the general appearance of the bar, these are only some of the

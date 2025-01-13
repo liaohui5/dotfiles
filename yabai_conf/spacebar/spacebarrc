@@ -8,8 +8,8 @@
 ####################################################################################
 
 # 显示字体
-spacebar -m config text_font                   "JetBrainsMono Nerd Font Mono:Regular:12.0"
-spacebar -m config icon_font                   "JetBrainsMono Nerd Font Mono:Regular:12.0"
+spacebar -m config text_font                   "Hack Nerd Font Mono:Regular:12.0"
+spacebar -m config icon_font                   "Hack Nerd Font Mono:Regular:12.0"
 
 # 颜色
 spacebar -m config background_color            0xff202020
