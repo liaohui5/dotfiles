@@ -40,6 +40,7 @@
     ~/.gitconfig: git/.gitconfig
     ~/Library/Application Support/lazygit/config.yml: git/lazygit-config.yml
     ~/.czrc: git/cz-git.czrc
+    ~/.aicommit2: git/.aicommit2.toml
     ~/.config/mpv: mpv
 
 - shell:
