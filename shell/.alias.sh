@@ -3,7 +3,7 @@
 alias c="clear"
 
 # reload zshrc
-alias rc="source $HOME/.zshrc"
+alias rc="source ${HOME}/.zshrc"
 
 # lsd: https://github.com/Peltoche/lsd
 if command -v "lsd" &>/dev/null; then

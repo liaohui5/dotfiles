@@ -137,11 +137,9 @@ EOF
 fi
 
 ################################################################
-# volta
-# https://docs.volta.sh
+# fnm
+# https://github.com/Schniz/fnm
 ################################################################
-if command -v 'volta' &>/dev/null; then
-  export VOLTA_HOME="$HOME/.volta"
-  export PATH="$VOLTA_HOME/bin:$PATH"
-  alias fnm="volta"
+if command -v "fnm" &>/dev/null; then
+  eval "$(fnm env --use-on-cd --version-file-strategy=recursive --shell zsh)"
 fi
