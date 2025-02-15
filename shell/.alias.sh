@@ -70,31 +70,31 @@ fi
 
 ######### system proxy management ##########
 # v2rayU(http:1087 socks5:1080) clash(http:7890 socks5:7890)
-alias reset-proxy="export https_proxy='' http_proxy='' all_proxy=''"
-function set-proxy() {
-  PROXY_APP_NAME="$1"
-  PROXY_HTTP_PORT='1087'
-  PROXY_SOCK_PORT='1080'
-  if [[ $PROXY_APP_NAME == "v2ray" ]]; then
-    PROXY_HTTP_PORT='1087'
-    PROXY_SOCK_PORT='1080'
-  elif [[ $PROXY_APP_NAME == "clash" ]]; then
-    PROXY_HTTP_PORT='7890'
-    PROXY_SOCK_PORT='7890'
+function setproxy() {
+  echo "please input porxy type to set system proxy:"
+  echo "0:reset"
+  echo "1:clash"
+  echo "2:v2ray"
+  read -r choice_id
+  command_str=""
+  if [[ $choice_id -eq "0" ]]; then
+    command_str="export https_proxy='' http_proxy='' all_proxy=''"
+  elif [[ $choice_id -eq "1" ]]; then
+    command_str="export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890"
+  elif [[ $choice_id -eq "2" ]]; then
+    command_str="export https_proxy=http://127.0.0.1:1087 http_proxy=http://127.0.0.1:1087 all_proxy=socks5://127.0.0.1:1080"
   else
-    echo "unknown proxy type"
-    exit 1
+    echo "unknow proxy type"
+    return 1
   fi
-
-  cmd="export https_proxy=http://127.0.0.1:$PROXY_HTTP_PORT http_proxy=http://127.0.0.1:$PROXY_HTTP_PORT all_proxy=socks5://127.0.0.1:$PROXY_SOCK_PORT"
-  eval "${cmd}"
+  eval "${command_str}"
 }
 
 ######### homebrew mirror management ##########
 if command -v "brew" &>/dev/null; then
   function set-brew-mirror() {
     echo "请选择 homebrew 镜像源(0:默认源 1:中科大 2:清华 3:北京外国语 4:腾讯 5:阿里): "
-    read mirror_id
+    read -r mirror_id
 
     mirror_content=""
     if [[ $mirror_id == "0" ]]; then
@@ -136,16 +136,16 @@ export HOMEBREW_API_DOMAIN="https://mirrors.aliyun.com/homebrew-bottles/api"
 export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.aliyun.com/homebrew/homebrew-bottles"'
     else
       echo "未知源"
-      exit 1
+      return 1
     fi
 
     mirror_file="${HOME}/.shell-scripts/.homebrew_mirror"
     if [[ -f $mirror_file ]]; then
-      echo $mirror_content > $mirror_file
-      source $mirror_file
+      echo "$mirror_content" >"$mirror_file"
+      source "$mirror_file"
       echo "设置成功"
     else
-      echo $mirror_content
+      echo "$mirror_content"
       echo "文件不存在: ${mirror_file}"
     fi
   }
