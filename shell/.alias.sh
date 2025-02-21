@@ -42,6 +42,7 @@ fi
 if command -v "pnpm" &>/dev/null; then
   alias pi='pnpm install'
   alias pa='pnpm add'
+  alias pA='pnpm approve-builds'
   alias pr='pnpm remove'
   alias pu='pnpm update'
   alias pU='pnpm self-update'
