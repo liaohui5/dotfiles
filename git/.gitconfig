@@ -31,3 +31,5 @@
     colorMoved = default
 [https]
 	proxy = system
+[pull]
+	rebase = false
