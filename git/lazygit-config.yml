@@ -23,9 +23,9 @@ os:
 reporting: "off" # 不提供日志报告
 
 # 快捷键绑定:
-keybinding:
-  universal:
-    quit: "<c-q>" # 退出
+# keybinding:
+#   universal:
+#     quit: "<c-q>" # 退出
 
 customCommands:
   # 打开默认的快捷键文档
@@ -35,6 +35,7 @@ customCommands:
     command: "open -u 'https://github.com/jesseduffield/lazygit/blob/master/docs/keybindings/Keybindings_zh-CN.md'"
 
   # 集成 cz-git 命令, 快速生成提交模板
+  # 注意需要安装命令 npm i -g czg(或者: brew install czg)
   # docs: https://cz-git.qbb.sh/zh/
   - key: "<c-c>"
     description: "Generate commit use cz-git"
@@ -42,11 +43,12 @@ customCommands:
     command: "czg"
     subprocess: true
 
-  # 集成 aicommit2, 快速生成提交模板
-  # docs: https://github.com/tak-bro/aicommit2
+  # 集成 cz-git ai 命令, 使用AI快速生成提交模板
+  # 注意需要先配置请求 api 需要的相关信息
+  # docs: https://cz-git.qbb.sh/zh/cli/ai
   - key: <c-e>
-    description: "Easily generate commit using ai"
-    command: "aicommit2 --no-verify"
+    description: "Generate commit using ai"
+    command: "czg ai -N=5"
     context: "files"
     subprocess: true
     showOutput: true

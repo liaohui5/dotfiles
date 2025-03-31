@@ -2,7 +2,6 @@
 #  │ dotbot                                                                       │
 #  │ docs: https://github.com/anishathalye/dotbot#configuration                   │
 #  ╰──────────────────────────────────────────────────────────────────────────────╯
-# 默认选项:
 - defaults:
     link:
       create: true
@@ -13,19 +12,17 @@
       stdout: true
       stderr: true
 
-# 清理
 - clean:
-    [
-      "~",
-      "~/.config",
-      "~/Library/Application Support/lazygit",
-    ]
+    ~/:
+      force: true
+      recursive: true
+    ~/.config:
+      force: true
+      recursive: true
+    ~/Library/Application Support/lazygit/config.yml:
+      force: true
+      recursive: true
 
-# 新建目录/防止目录不存在 https://github.com/anishathalye/dotbot#create
-# - create:
-#   - ~/Downloads/docs
-
-# 链接
 - link:
     ~/.config/wezterm: wezterm
     ~/.shell-scripts: shell
@@ -37,10 +34,9 @@
     ~/.config/sketchybar: yabai_conf/sketchybar
     ~/.config/spacebar: yabai_conf/spacebar
     ~/.config/skhd: yabai_conf/skhd
-    ~/.gitconfig: git/.gitconfig
     ~/Library/Application Support/lazygit/config.yml: git/lazygit-config.yml
-    ~/.czrc: git/cz-git.czrc
-    ~/.aicommit2: git/.aicommit2.toml
+    ~/.config/.czrc: git/czg.config.json
+    ~/.gitconfig: git/.gitconfig
     ~/.config/mpv: mpv
 
 - shell:

@@ -1,0 +1,7 @@
+{
+  "path": "cz-git",
+  "useEmoji": false,
+  "openAIToken": "sk-gtuswallsppyobufyzwnrfssbbzzeaxubncthnlkyzbgvegs",
+  "apiEndpoint": "https://api.siliconflow.cn/v1",
+  "apiModel": "Qwen/Qwen2.5-7B-Instruct"
+}
