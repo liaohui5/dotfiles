@@ -151,3 +151,23 @@ export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.aliyun.com/homebrew/homebrew-bott
     fi
   }
 fi
+
+## ssh connection manager
+function sshmgr() {
+  # if sshs command exists, use it
+  if command -v "sshs" &>/dev/null; then
+    sshs
+    return 0
+  fi
+
+  # Check required commands
+  if ! command -v "grep" &>/dev/null || ! command -v "fzf" &>/dev/null; then
+    echo "Error: This function requires 'grep' and 'fzf' to be installed" >&2
+    return 1
+  fi
+
+  # Original implementation
+  host=$(grep -e "^Host " ~/.ssh/config | awk '{print $2}' | fzf)
+  echo "SSH session started, connecting to" "$host"
+  ssh "$host"
+}
