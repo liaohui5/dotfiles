@@ -1,51 +1,44 @@
 #!/usr/bin/env zsh
 ################################################################
-# load helper functions
+# define helper functions
 ################################################################
-local helpers_path="$HOME/.scripts/helpers.zsh"
-if [ -f "$helpers_path" ]; then
-  source "$helpers_path"
-fi
+function has-command() {
+  if command -v "$1" >/dev/null; then
+    return 0
+  else
+    return 1
+  fi
+}
 
-################################################################
 # MacOS language locale
-################################################################
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
-################################################################
 # nvim EDITOR
 # https://github.com/neovim/neovim
-################################################################
 if has-command 'nvim'; then
   export EDITOR='nvim'
 else
   export EDITOR='vim'
 fi
 
-################################################################
 # starship
 # https://starship.rs/zh-CN/
-################################################################
 if has-command 'starship'; then
   eval "$(starship init zsh)"
   export STARSHIP_CONFIG="${HOME}/.config/starship/config.toml"
 fi
 
-################################################################
 # windserf
-# https://codeium.com/windsurf
 # use like vscode: windsurf ./codes
-################################################################
+# https://codeium.com/windsurf
 local windsurf_bin_path="${HOME}/.codeium/windsurf/bin"
 if [[ -d "${windsurf_bin_path}" ]]; then
   export PATH="$windsurf_bin_path:$PATH"
 fi
 
-################################################################
 # yazi
 # https://yazi-rs.github.io/
-################################################################
 if has-command 'yazi'; then
   function yazi_fm() {
     local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
@@ -58,26 +51,20 @@ if has-command 'yazi'; then
   alias fm='yazi_fm'
 fi
 
-###############################################################
 # zoxide
 # https://github.com/ajeetdsouza/zoxide
-###############################################################
 if has-command 'zoxide'; then
   eval "$(zoxide init zsh)"
 fi
 
-###############################################################
 # fzf
 # https://github.com/junegunn/fzf
-###############################################################
 if has-command 'fzf'; then
   source <(fzf --zsh)
 fi
 
-################################################################
 # adb
 # https://developer.android.com/studio/command-line/adb.html
-################################################################
 local android_home_path="$HOME/Library/Android/sdk"
 if [[ -d "$android_home_path" ]]; then
   export ANDROID_HOME="$android_home_path"
@@ -85,10 +72,8 @@ if [[ -d "$android_home_path" ]]; then
   export PATH=$PATH:"$android_home_path/platform-tools"
 fi
 
-################################################################
 # pyenv
 # https://github.com/pyenv/pyenv
-################################################################
 if has-command 'pyenv'; then
   export PYENV_ROOT="$HOME/.pyenv"
   export PATH="$PYENV_ROOT/bin:$PATH"
@@ -96,19 +81,15 @@ if has-command 'pyenv'; then
   eval "$(pyenv init -)"
 fi
 
-################################################################
 # pnpm
 # https://pnpm.io/
-################################################################
 if has-command 'pnpm'; then
   export PNPM_HOME="$HOME/.pnpm_store"
   export PATH="$PNPM_HOME:$PATH"
 fi
 
-################################################################
 # fnm
 # https://github.com/Schniz/fnm
-################################################################
 if has-command 'fnm'; then
   eval "$(fnm env --use-on-cd --version-file-strategy=recursive --shell zsh)"
 fi
