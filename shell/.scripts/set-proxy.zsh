@@ -42,8 +42,8 @@ function setproxy() {
 
   local host='127.0.0.1'
   local http_proxy="http://$host:$proxy_http_port"
-  local http_proxy="https://$host:$proxy_http_port"
   local socks5_proxy="socks5://$host:$proxy_socks5_port"
+
   eval "export https_proxy=$http_proxy http_proxy=$http_proxy all_proxy=$socks5_proxy"
 
   # print message and env vars

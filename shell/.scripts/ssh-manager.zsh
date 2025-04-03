@@ -5,12 +5,12 @@
 #######################################################################
 function sshmgr() {
   # if sshs command exists, use it
-  if has-commands 'sshs'; then
+  if has-command 'sshs'; then
     sshs
     return 0
   fi
 
-  if has-commands 'grep' -eq '0' || has-command 'fzf' -eq '0'; then
+  if has-command 'grep' -eq '0' || has-command 'fzf' -eq '0'; then
     echo 'Error: Not found "grep" and "fzf" command' >&2
     return 0
   fi
