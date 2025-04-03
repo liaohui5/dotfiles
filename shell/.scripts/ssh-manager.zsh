@@ -10,11 +10,26 @@ function sshmgr() {
     return 0
   fi
 
-  if has-command 'grep' -eq '0' || has-command 'fzf' -eq '0'; then
-    echo 'Error: Not found "grep" and "fzf" command' >&2
-    return 0
+  if ! has-command 'grep'; then
+    echo 'Error: Not found "grep" command' >&2
+    return 1
   fi
-  host=$(grep -e "^Host " "$HOME/.ssh/config" | awk '{print $2}' | fzf)
-  echo "SSH session started, connecting to $host"
-  ssh "$host"
+
+  if ! has-command 'fzf'; then
+    echo 'Error: Not found "fzf" command' >&2
+    return 1
+  fi
+
+  # parse and select host with fzf
+  local ssh_config="$HOME/.ssh/config"
+  local host=$(grep -e "^Host " "$ssh_config" | awk '{print $2}' | fzf --reverse --prompt="Select SSH host> ")
+
+  # handle cancel
+  if [[ -z "$host" ]]; then
+    echo "Selection cancelled" >&2
+    return 1
+  fi
+
+  # connect to host
+  ssh -v "$host"
 }
