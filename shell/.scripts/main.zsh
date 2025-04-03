@@ -3,7 +3,7 @@
 # check if file is exists and load it
 function load-module() {
   local module_path="${HOME}/.scripts/$1"
-  if [ -f "$1" ]; then
+  if [ -f "$module_path" ]; then
     source "${module_path}"
   else
     echo "[load-module]Error: ${module_path} not found"
