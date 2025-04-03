@@ -15,17 +15,14 @@
 - clean:
     ~/:
       force: true
-      recursive: true
     ~/.config:
       force: true
-      recursive: true
     ~/Library/Application Support/lazygit/config.yml:
       force: true
-      recursive: true
 
 - link:
     ~/.config/wezterm: wezterm
-    ~/.shell-scripts: shell
+    ~/.scripts: shell/.scripts
     ~/.zshrc: shell/.zshrc
     ~/.zprofile: shell/.zprofile
     ~/.config/starship: starship
