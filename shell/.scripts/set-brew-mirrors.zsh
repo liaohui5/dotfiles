@@ -2,7 +2,7 @@
 #####################################################
 # brew mirror management
 #####################################################
-local mirror_file_path="${HOME}/.brew-mirror.sh"
+mirror_file_path="$HOME/.brew-mirror.zsh"
 
 # if want change brew mirror forever, you have to write source to $mirror_file_path
 function reload-brew-mirror() {
@@ -26,7 +26,7 @@ function clean-brew-mirror() {
 }
 
 function set-brew-mirrors() {
-  if has-command 'brew' -eq '0'; then
+  if ! has-command 'brew'; then
     echo 'brew not found, Please install brew first'
     return 0
   fi
@@ -74,14 +74,14 @@ function set-brew-mirrors() {
   clean-brew-mirror
 
   # write new envs to file
-  local shell_content="#!/bin/bash
+  local shell_content="#!/usr/bin/env zsh
 export HOMEBREW_INSTALL_FROM_API=1
 export HOMEBREW_BREW_GIT_REMOTE=\"${brew_git_remote}\"
 export HOMEBREW_CORE_GIT_REMOTE=\"${core_git_remote}\"
 export HOMEBREW_API_DOMAIN=\"${api_domain}\"
 export HOMEBREW_BOTTLE_DOMAIN=\"${bottle_domain}\"
 "
-  echo $shell_content >"${mirror_file_path}"
+  echo "$shell_content" > "$mirror_file_path"
 
   # reload and print new envs
   reload-brew-mirror
