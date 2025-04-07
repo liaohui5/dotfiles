@@ -74,7 +74,7 @@ fi
 
 # pyenv
 # https://github.com/pyenv/pyenv
-if has-command 'pyenv'; then
+if has-command 'python'; then
   export PYENV_ROOT="$HOME/.pyenv"
   export PATH="$PYENV_ROOT/bin:$PATH"
   export PATH="$PYENV_ROOT/shims:$PATH"
@@ -83,7 +83,7 @@ fi
 
 # pnpm
 # https://pnpm.io/
-if has-command 'pnpm'; then
+if has-command 'node'; then
   export PNPM_HOME="$HOME/.pnpm_store"
   export PATH="$PNPM_HOME:$PATH"
 fi

@@ -13,12 +13,20 @@
       stderr: true
 
 - clean:
-    ~/:
-      force: true
-    ~/.config:
-      force: true
+    ~/.config/wezterm:
+    ~/.scripts:
+    ~/.zshrc:
+    ~/.zprofile:
+    ~/.config/starship:
+    ~/.config/yazi:
+    ~/.config/yabai:
+    ~/.config/sketchybar:
+    ~/.config/spacebar:
+    ~/.config/skhd:
     ~/Library/Application Support/lazygit/config.yml:
-      force: true
+    ~/.config/.czrc:
+    ~/.gitconfig:
+    ~/.config/mpv:
 
 - link:
     ~/.config/wezterm: wezterm
