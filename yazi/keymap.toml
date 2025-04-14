@@ -61,3 +61,9 @@ desc = "Open keybindings docs"
 on = ["g", "<S-k>"]
 run = "shell 'open -u https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/keymap-default.toml' --confirm"
 desc = "Open keybindings source code"
+
+# 显示帮助(搜索快捷键)
+[[manager.prepend_keymap]]
+on = ["?"]
+run = "help"
+desc = "Open help"
