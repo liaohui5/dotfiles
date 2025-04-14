@@ -29,7 +29,11 @@ safe-alias 'lzsql' 'lazysql'
 # docker & compose
 # https://www.docker.com/
 safe-alias 'd' 'docker'
-safe-alias 'dc' 'docker compose'
+if has-command 'docker-compose'; then
+  safe-alias 'dc' 'docker-compose'
+else
+  safe-alias 'dc' 'docker compose'
+fi
 
 # pnpm: https://pnpm.io/
 if has-command 'pnpm'; then

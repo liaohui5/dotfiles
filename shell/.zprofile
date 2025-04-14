@@ -74,11 +74,11 @@ fi
 
 # pyenv
 # https://github.com/pyenv/pyenv
-if has-command 'python'; then
+if [[ -d "$HOME/.pyenv" ]]; then
   export PYENV_ROOT="$HOME/.pyenv"
   export PATH="$PYENV_ROOT/bin:$PATH"
   export PATH="$PYENV_ROOT/shims:$PATH"
-  eval "$(pyenv init -)"
+  eval "$(pyenv init - zsh)"
 fi
 
 # pnpm
