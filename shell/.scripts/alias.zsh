@@ -66,31 +66,33 @@ if has-command 'cargo'; then
   alias cb='cargo build --release'
 fi
 
+# safe remove files
 alias rm='safe-rm'
-
-# 防止误删除
-$TRASH_DIR="$HOME/.Trash"
+TRASH_DIR="$HOME/.Trash"
 function safe-rm() {
-    if [[ "$*" =~ -[rf] ]]; then
-        echo "错误: 已禁用 rm -rf 参数, 请直接指定文件路径"
-        return 1
+  if [[ "$*" =~ -[rf] ]]; then
+    echo "错误: 已禁用 rm -rf 参数, 请直接指定文件路径"
+    return 1
+  fi
+
+  [ ! -d "$TRASH_DIR" ] && mkdir -p "$TRASH_DIR"
+  for file in "$@"; do
+    if [ -e "$file" ]; then
+      timestamp=$(date +"%Y_%m_%d_%H:%M:%S")
+      filename=$(basename "$file")
+      eval "mv $file ${TRASH_DIR}/${timestamp}_${filename}"
+    else
+      echo "错误: 文件 '$file' 不存在"
     fi
-
-    [ ! -d "$TRASH_DIR" ] && mkdir -p "$TRASH_DIR"
-    for file in "$@"; do
-        if [ -e "$file" ]; then
-            timestamp=$(date "%Y_%m_%d_%H:%M:%S")
-            filename=$(basename "$file")
-            mv "$file" "${TRASH_DIR}/${timestamp}_${filename}"
-        else
-            echo "错误: 文件 '$file' 不存在"
-        fi
-    done
+  done
 }
 
-# 清空回收站(彻底删除)
+# clean trash
 function trash-clean() {
-    read -p "确认清空回收站？[y/N] " confirm
-    [[ $confirm =~ [yY] ]] && \rm -rf "$TRASH_DIR/*"
+  echo "确认清空回收站？[y/N] "
+  read -r confirm
+  if [[ "$confirm" = "y" || "$confirm" = "Y" || "$confirm" = "yes" || "$confirm" = "YES" ]]; then
+    echo "Cleaning trash..."
+    /bin/rm -rf "${TRASH_DIR:?}/"*(N) && echo "Trash cleaned"
+  fi
 }
-
