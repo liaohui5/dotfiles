@@ -65,3 +65,32 @@ if has-command 'cargo'; then
   alias ct='cargo test'
   alias cb='cargo build --release'
 fi
+
+alias rm='safe-rm'
+
+# 防止误删除
+$TRASH_DIR="$HOME/.Trash"
+function safe-rm() {
+    if [[ "$*" =~ -[rf] ]]; then
+        echo "错误: 已禁用 rm -rf 参数, 请直接指定文件路径"
+        return 1
+    fi
+
+    [ ! -d "$TRASH_DIR" ] && mkdir -p "$TRASH_DIR"
+    for file in "$@"; do
+        if [ -e "$file" ]; then
+            timestamp=$(date "%Y_%m_%d_%H:%M:%S")
+            filename=$(basename "$file")
+            mv "$file" "${TRASH_DIR}/${timestamp}_${filename}"
+        else
+            echo "错误: 文件 '$file' 不存在"
+        fi
+    done
+}
+
+# 清空回收站(彻底删除)
+function trash-clean() {
+    read -p "确认清空回收站？[y/N] " confirm
+    [[ $confirm =~ [yY] ]] && \rm -rf "$TRASH_DIR/*"
+}
+
