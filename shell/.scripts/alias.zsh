@@ -26,6 +26,9 @@ safe-alias 'lg' 'lazygit'
 # lazysql: https://github.com/jorgerojas26/lazysql
 safe-alias 'lzsql' 'lazysql'
 
+# safe remove files
+safe-alias 'rm' 'trash'
+
 # docker & compose
 # https://www.docker.com/
 safe-alias 'd' 'docker'
@@ -66,33 +69,3 @@ if has-command 'cargo'; then
   alias cb='cargo build --release'
 fi
 
-# safe remove files
-alias rm='safe-rm'
-TRASH_DIR="$HOME/.Trash"
-function safe-rm() {
-  if [[ "$*" =~ -[rf] ]]; then
-    echo "错误: 已禁用 rm -rf 参数, 请直接指定文件路径"
-    return 1
-  fi
-
-  [ ! -d "$TRASH_DIR" ] && mkdir -p "$TRASH_DIR"
-  for file in "$@"; do
-    if [ -e "$file" ]; then
-      timestamp=$(date +"%Y_%m_%d_%H:%M:%S")
-      filename=$(basename "$file")
-      eval "mv $file ${TRASH_DIR}/${timestamp}_${filename}"
-    else
-      echo "错误: 文件 '$file' 不存在"
-    fi
-  done
-}
-
-# clean trash
-function trash-clean() {
-  echo "确认清空回收站？[y/N] "
-  read -r confirm
-  if [[ "$confirm" = "y" || "$confirm" = "Y" || "$confirm" = "yes" || "$confirm" = "YES" ]]; then
-    echo "Cleaning trash..."
-    /bin/rm -rf "${TRASH_DIR:?}/"*(N) && echo "Trash cleaned"
-  fi
-}

@@ -22,6 +22,12 @@ else
   export EDITOR='vim'
 fi
 
+# trash command
+local trash_bin_path="/usr/local/opt/trash/bin"
+if [[ -d "${trash_bin_path}" ]]; then
+  export PATH="$trash_bin_path:$PATH"
+fi
+
 # starship
 # https://starship.rs/zh-CN/
 if has-command 'starship'; then
