@@ -12,7 +12,7 @@ yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
 
 # folat 窗口在最上层
-yabai -m config window_topmost off
+# yabai -m config window_topmost 0
 
 # 关闭窗口阴影
 yabai -m config window_shadow off
@@ -42,12 +42,11 @@ borders active_color=0xff00ff00 inactive_color=0x00888888 width=2.0 &
 # yabai -m config active_window_border_color 0xff00ff00
 # yabai -m config normal_window_border_color 0x00888888
 # 当边框不可用时, 使用透明度来区分是否是当前窗口
-yabai -m config window_opacity off
-yabai -m config normal_window_opacity 0.9
-yabai -m config active_window_opacity 1
+# yabai -m config window_opacity off
+# yabai -m config normal_window_opacity 0.9
+# yabai -m config active_window_opacity 1
 
 # 禁用光标跟随模式
-yabai -m config focus_follows_mouse on
 yabai -m config mouse_follows_focus on
 
 # ╭──────────────────────────────────────────────────────────────────────────────╮
