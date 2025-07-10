@@ -5,75 +5,76 @@
 "$schema" = "https://yazi-rs.github.io/schemas/keymap.json"
 
 # 剪切文件
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = "d"
 run = "yank --cut"
 desc = "Yank selected files (cut)"
 
 # 取消选择的剪切文件
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = "D"
 run = "unyank"
 desc = "Cancel the yank status"
 
 # 删除文件
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = "x"
 run = "remove"
 desc = "Trash selected files"
 
 # 取消选中的删除文件
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = "X"
 run = "remove --permanently"
 desc = "Permanently delete selected files"
 
 # 退出, 使用默认的 q 也可以
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = "<C-q>"
 run = "quit"
 desc = "Exit the process"
 
 # 切换标签页(和 lazyvim 保持同步)
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = "<S-h>"
 run = "tab_switch -1 --relative"
 desc = "Switch to the previous tab"
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = "<S-l>"
 run = "tab_switch 1 --relative"
 desc = "Switch to the next tab"
 
 # 使用当前进程打开一个新的命令行
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["g", "<Enter>"]
 run = "shell $SHELL --block --confirm"
 desc = "Open shell here"
 
 # 打开默认按键文档
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["g", "k"]
 run = "shell 'open -u https://yazi-rs.github.io/docs/quick-start#keybindings' --confirm"
 desc = "Open keybindings docs"
 
 # 打开默认按键源码
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["g", "<S-k>"]
 run = "shell 'open -u https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/keymap-default.toml' --confirm"
 desc = "Open keybindings source code"
 
 # 显示帮助(搜索快捷键)
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["?"]
 run = "help"
 desc = "Open help"
 
 # zoxide fzf 插件
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = "z"
 run = "plugin zoxide"
 desc = "Jump to a directory via zoxide"
-[[manager.prepend_keymap]]
+
+[[mgr.prepend_keymap]]
 on = "Z"
 run = "plugin fzf"
 desc = "Jump to a file/directory via fzf"
