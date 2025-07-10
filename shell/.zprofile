@@ -99,3 +99,9 @@ fi
 if has-command 'fnm'; then
   eval "$(fnm env --use-on-cd --version-file-strategy=recursive --shell zsh)"
 fi
+
+# rustup
+# https://rustup.rs/
+if has-command 'rustup'; then
+  source "$HOME/.cargo/env"
+fi
