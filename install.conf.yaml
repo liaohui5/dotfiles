@@ -43,6 +43,7 @@
     ~/.config/.czrc: git/czg.config.json
     ~/.gitconfig: git/.gitconfig
     ~/.config/mpv: mpv
+    ~/.config/zellij: zellij
 
 - shell:
     - ./install-deps.sh
