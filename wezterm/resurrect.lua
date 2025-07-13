@@ -14,7 +14,7 @@ return {
       save_tabs = true,
     })
 
-    --- bind keys
+    --- save session
     table.insert(keys, {
       key = "s",
       -- mods = "CTRL|ALT",
@@ -26,6 +26,7 @@ return {
       end),
     })
 
+    -- restore session
     table.insert(keys, {
       key = "r",
       mods = "LEADER",
@@ -51,6 +52,24 @@ return {
           end
           wezterm.log_info("ctrl+alt+r: list workspace to load")
         end)
+      end),
+    })
+
+    -- delete session
+    table.insert(keys, {
+      key = "x",
+      mods = "LEADER",
+      action = wezterm.action_callback(function(win, pane)
+        wezterm.log_info("--- ctrl+alt+x: list workspace to delete")
+        local options = {
+          title = "Delete State",
+          description = "Select session to delete and press Enter = accept, Esc = cancel, / = filter",
+          fuzzy_description = "Search session to delete: ",
+          is_fuzzy = true,
+        }
+        resurrect.fuzzy_loader.fuzzy_load(win, pane, function(id)
+          resurrect.state_manager.delete_state(id)
+        end, options)
       end),
     })
   end,
