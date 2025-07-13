@@ -29,10 +29,6 @@ safe-alias 'lzsql' 'lazysql'
 # safe remove files
 safe-alias 'rm' 'trash'
 
-# virtualbox
-# virtualbox: https://www.virtualbox.org/
-safe-alias 'vbox' 'VBoxManage'
-
 # docker & compose
 # https://www.docker.com/
 safe-alias 'd' 'docker'
