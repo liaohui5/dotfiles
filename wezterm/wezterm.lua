@@ -6,17 +6,18 @@ local formatTabTitle = require("format-tab-title")
 local keybindings = require("keybindings")
 local wezterm = require("wezterm")
 
--- tab 样式
+-- tab styles
 wezterm.on("format-tab-title", formatTabTitle)
 
--- 字体样式
+-- font styles
+-- https://github.com/ryanoasis/nerd-fonts
 local fontSize = 18
 local font = wezterm.font_with_fallback({
   {
     family = "Hack Nerd Font Mono",
     weight = "Regular",
     italic = false,
-    harfbuzz_features = { "calt=0", "clig=0", "liga=0" }, -- 全部设置为0禁止使用连体字符
+    harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
   },
   "Maple Mono SC NF",
   "JetBrainsMono Nerd Font Mono",
