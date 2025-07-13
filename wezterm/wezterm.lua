@@ -2,12 +2,13 @@
 -- github: https://github.com/wez/wezterm
 -- docs  : https://wezfurlong.org/wezterm
 ----------------------------------------------------------
-local formatTabTitle = require("format-tab-title")
 local keybindings = require("keybindings")
 local wezterm = require("wezterm")
 
--- tab styles
-wezterm.on("format-tab-title", formatTabTitle)
+-- load plugins
+require("tab-bar").setup()
+require("resurrect").setup(keybindings)
+-- require("workspace-switcher").setup(keybindings)
 
 -- font styles
 -- https://github.com/ryanoasis/nerd-fonts
