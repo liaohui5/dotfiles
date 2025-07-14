@@ -20,8 +20,8 @@ return {
           right = wezterm.nerdfonts.pl_right_hard_divider,
         },
         component_separators = {
-          left = wezterm.nerdfonts.pl_left_soft_divider,
-          right = wezterm.nerdfonts.pl_right_soft_divider,
+          left = "",
+          right = "",
         },
         tab_separators = {
           -- https://wezterm.org/config/lua/wezterm/nerdfonts.html?h=wezterm.nerdfonts
