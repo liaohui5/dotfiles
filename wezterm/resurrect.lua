@@ -50,7 +50,6 @@ return {
             local state = resurrect.state_manager.load_state(id, "tab")
             resurrect.tab_state.restore_tab(pane:tab(), state, opts)
           end
-          wezterm.log_info("ctrl+alt+r: list workspace to load")
         end)
       end),
     })
@@ -60,7 +59,6 @@ return {
       key = "x",
       mods = "LEADER",
       action = wezterm.action_callback(function(win, pane)
-        wezterm.log_info("--- ctrl+alt+x: list workspace to delete")
         local options = {
           title = "Delete State",
           description = "Select session to delete and press Enter = accept, Esc = cancel, / = filter",

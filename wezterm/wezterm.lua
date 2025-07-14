@@ -6,9 +6,8 @@ local keybindings = require("keybindings")
 local wezterm = require("wezterm")
 
 -- load plugins
-require("tab-bar").setup()
 require("resurrect").setup(keybindings)
--- require("workspace-switcher").setup(keybindings)
+require("tabline").setup()
 
 -- font styles
 -- https://github.com/ryanoasis/nerd-fonts
