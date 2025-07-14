@@ -13,8 +13,8 @@ function load-module() {
 # load modules
 load-module 'helpers.zsh'
 load-module 'alias.zsh'
-load-module 'set-proxy.zsh'
 load-module 'set-brew-mirrors.zsh'
+load-module 'proxy-manager.zsh'
 load-module 'ssh-manager.zsh'
 load-module 'zellij-session-manager.zsh'
 load-module 'vbox-manager.zsh'
