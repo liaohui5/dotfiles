@@ -62,6 +62,15 @@ if has-command 'bun'; then
   alias bm='bun run mock'
 fi
 
+# https://github.com/denoland/deno
+if has-command 'deno'; then
+  alias dd='deno run dev'
+  alias ds='deno run start'
+  alias dt='deno run test'
+  alias db='deno run build'
+  alias dm='deno run mock'
+fi
+
 # cargo: https://rustwiki.org/zh-CN/cargo/
 if has-command 'cargo'; then
   alias cr='cargo run'
