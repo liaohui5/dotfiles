@@ -41,8 +41,7 @@ fi
 # pnpm: https://pnpm.io/
 if has-command 'pnpm'; then
   alias pi='pnpm install'
-  alias pa='pnpm add'
-  alias pA='pnpm approve-builds'
+  alias pa='pnpm approve-builds'
   alias pr='pnpm remove'
   alias pu='pnpm update'
   alias pU='pnpm self-update'

@@ -5,35 +5,33 @@
 ##############################################################################################
 yaml-language-server: $schema=https://json.schemastore.org/lazygit.json
 gui:
-  showListFooter: false # 不显示页脚
-  showFileTree: false # 是否显示文件目录结构树(false平铺显示文件)
-  sidePanelWidth: 0.3 # 左边栏目宽度比例
-  showIcons: true # 是否显示图标需要 Nerd Font(default: true)
-  showRandomTip: false # 是否随机显示提示
+  showListFooter: false
+  showFileTree: false
+  sidePanelWidth: 0.5
+  showIcons: true
+  showRandomTip: false
 git:
-  autoFetch: true # 自动拉取远程代码
-  autoRefresh: true # 自动刷新
-  mouseevents: false # 禁用鼠标
-  parseEmoji: true # 解析 gitmoji 表情
+  autoFetch: true
+  autoRefresh: true
+  mouseevents: false
+  parseEmoji: true
 os:
-  open: "{{editor}} {{filename}}" # 编辑文件命令
-  edit: "{{editor}}" # 编辑文件命令
+  editPreset: "vim"
+  open: "{{editor}} {{filename}}"
+  edit: "{{editor}}"
   editAtLine: "{{editor}} +{{line}} -- {{filename}}"
-  openLink: "open" # 打开链接命令
-reporting: "off" # 不提供日志报告
-
+  openLink: "open"
+reporting: "off"
 # 快捷键绑定:
 # keybinding:
 #   universal:
 #     quit: "<c-q>" # 退出
-
 customCommands:
   # 打开默认的快捷键文档
   - key: "<c-k>"
     description: "Open keybindings docs"
     context: "global"
     command: "open -u 'https://github.com/jesseduffield/lazygit/blob/master/docs/keybindings/Keybindings_zh-CN.md'"
-
   # 集成 cz-git 命令, 快速生成提交模板
   # 注意需要安装命令 npm i -g czg(或者: brew install czg)
   # docs: https://cz-git.qbb.sh/zh/
@@ -41,8 +39,7 @@ customCommands:
     description: "Generate commit use cz-git"
     context: "files"
     command: "czg"
-    subprocess: true
-
+    output: terminal
   # 集成 cz-git ai 命令, 使用AI快速生成提交模板
   # 注意需要先配置请求 api 需要的相关信息
   # docs: https://cz-git.qbb.sh/zh/cli/ai
@@ -50,5 +47,4 @@ customCommands:
     description: "Generate commit using ai"
     command: "czg ai -N=5"
     context: "files"
-    subprocess: true
-    showOutput: true
+    output: terminal

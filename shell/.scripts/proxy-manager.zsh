@@ -4,7 +4,7 @@
 # system proxy management
 # v2rayU(http:1087 socks5:1080) clash(http:7890 socks5:7890) singbox(http:9090 socks5:9090)
 ###########################################################################################
-function set-proxy() {
+function setproxy() {
     # echo "please input proxy ip(default: 127.0.0.1)"
     # read -r ip
     # if [[ -z "$ip" ]]; then
@@ -26,7 +26,7 @@ function set-proxy() {
     echo "all_proxy   is: ${all_proxy}"
 }
 
-function reset-proxy() {
+function resetproxy() {
     proxy="export https_proxy='' http_proxy='' all_proxy=''"
     eval $proxy
 }
