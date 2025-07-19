@@ -15,13 +15,8 @@ git:
   autoRefresh: true
   mouseevents: false
   parseEmoji: true
-os:
-  editPreset: "vim"
-  open: "{{editor}} {{filename}}"
-  edit: "{{editor}}"
-  editAtLine: "{{editor}} +{{line}} -- {{filename}}"
-  openLink: "open"
 reporting: "off"
+
 # 快捷键绑定:
 # keybinding:
 #   universal:
@@ -32,6 +27,7 @@ customCommands:
     description: "Open keybindings docs"
     context: "global"
     command: "open -u 'https://github.com/jesseduffield/lazygit/blob/master/docs/keybindings/Keybindings_zh-CN.md'"
+
   # 集成 cz-git 命令, 快速生成提交模板
   # 注意需要安装命令 npm i -g czg(或者: brew install czg)
   # docs: https://cz-git.qbb.sh/zh/
@@ -40,6 +36,7 @@ customCommands:
     context: "files"
     command: "czg"
     output: terminal
+
   # 集成 cz-git ai 命令, 使用AI快速生成提交模板
   # 注意需要先配置请求 api 需要的相关信息
   # docs: https://cz-git.qbb.sh/zh/cli/ai

@@ -18,8 +18,10 @@ export LC_ALL="en_US.UTF-8"
 # https://github.com/neovim/neovim
 if has-command 'nvim'; then
   export EDITOR='nvim'
+  export NVIM="/usr/local/bin/nvim"
 else
   export EDITOR='vim'
+  export NVIM="/usr/local/bin/nvim"
 fi
 
 # trash command
