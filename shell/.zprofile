@@ -24,6 +24,12 @@ else
   export NVIM="/usr/local/bin/nvim"
 fi
 
+# load bash profile if exists
+local bash_profile="${HOME}/.profile"
+if [[ -f "${bash_profile}" ]]; then
+  source "${bash_profile}"
+fi
+
 # trash command
 local trash_bin_path="/usr/local/opt/trash/bin"
 if [[ -d "${trash_bin_path}" ]]; then
