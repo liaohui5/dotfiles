@@ -6,7 +6,7 @@ local keybindings = require("keybindings")
 local wezterm = require("wezterm")
 
 -- load plugins
-require("resurrect").setup(keybindings)
+-- require("resurrect").setup(keybindings)
 require("tabline").setup()
 
 -- font styles

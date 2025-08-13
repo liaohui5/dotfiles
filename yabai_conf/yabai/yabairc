@@ -103,6 +103,7 @@ yabai -m rule --add manage=off app="CCTalk"
 yabai -m rule --add manage=off app="123云盘"
 yabai -m rule --add manage=off app="Steam"
 yabai -m rule --add manage=off app="一木清单"
+yabai -m rule --add manage=off app="Cherry\ Studio"
 
 ### config loaded
 echo "yabai config loaded"
