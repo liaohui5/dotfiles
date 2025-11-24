@@ -36,6 +36,7 @@
     ~/.config/starship: starship
     ~/.config/yazi: yazi
     ~/.config/yabai: yabai_conf/yabai
+    ~/.hyprspace.toml: yabai_conf/hpyrspace/hyprspace.toml
     ~/.config/sketchybar: yabai_conf/sketchybar
     ~/.config/spacebar: yabai_conf/spacebar
     ~/.config/skhd: yabai_conf/skhd
