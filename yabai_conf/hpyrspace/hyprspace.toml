@@ -28,7 +28,12 @@ start-at-login = true
 # Examples:
 #   after-startup-command = 'exec-and-forget open -a Ghostty'
 #   after-startup-command = ['exec-and-forget open -a Safari', 'exec-and-forget open -a Slack']
-after-startup-command = ['workspace 1', 'layout scroll']
+after-startup-command = [
+  'workspace 1',
+  'layout scroll',
+  # must be install borders command: https://github.com/FelixKratz/JankyBorders
+  'exec-and-forget borders active_color=0xff00ff00 inactive_color=0x00888888 width=2.0',
+]
 
 # ╔═══════════════════════════════════════════════════════════════════════════════╗
 # ║                            DEFAULT LAYOUT SETTINGS                            ║
@@ -322,9 +327,11 @@ run = 'layout floating'
 
 # Alternative: Vim-style navigation (uncomment to use instead of arrows)
 alt-h = 'focus left'
-alt-j = 'focus down'
-alt-k = 'focus up'
 alt-l = 'focus right'
+# alt-j = 'focus down'
+# alt-k = 'focus up'
+alt-j = 'workspace next'
+alt-k = 'workspace prev'
 
 # ──────────────────────────────────────────────────────────────────────────────
 #                              WINDOW MOVEMENT
@@ -338,9 +345,9 @@ alt-l = 'focus right'
 
 # Alternative: Vim-style window movement (uncomment to use)
 alt-shift-h = 'move left'
-alt-shift-j = 'move down'
-alt-shift-k = 'move up'
 alt-shift-l = 'move right'
+# alt-shift-j = 'move down'
+# alt-shift-k = 'move up'
 
 # ──────────────────────────────────────────────────────────────────────────────
 #                            WORKSPACE SWITCHING
@@ -352,6 +359,10 @@ cmd-2 = 'workspace 2'
 cmd-3 = 'workspace 3'
 cmd-4 = 'workspace 4'
 cmd-5 = 'workspace 5'
+cmd-6 = 'workspace 6'
+cmd-7 = 'workspace 7'
+cmd-8 = 'workspace 8'
+cmd-9 = 'workspace 9'
 
 # Move windows to workspaces 1-5
 cmd-shift-1 = 'move-node-to-workspace 1'
@@ -359,6 +370,10 @@ cmd-shift-2 = 'move-node-to-workspace 2'
 cmd-shift-3 = 'move-node-to-workspace 3'
 cmd-shift-4 = 'move-node-to-workspace 4'
 cmd-shift-5 = 'move-node-to-workspace 5'
+cmd-shift-6 = 'move-node-to-workspace 6'
+cmd-shift-7 = 'move-node-to-workspace 7'
+cmd-shift-8 = 'move-node-to-workspace 8'
+cmd-shift-9 = 'move-node-to-workspace 9'
 
 # Navigate workspaces sequentially
 # alt-tab = 'workspace next'
@@ -380,7 +395,7 @@ cmd-shift-f = 'layout floating tiling'
 
 # Balance window sizes (reset to equal sizes)
 # Especially useful after manual resizing in dwindle layout
-alt-b = 'balance-sizes'
+alt-shift-b = 'balance-sizes'
 
 # ──────────────────────────────────────────────────────────────────────────────
 #                            WINDOW RESIZING
