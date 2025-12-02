@@ -25,6 +25,7 @@
     ~/.config/skhd:
     ~/Library/Application Support/lazygit/config.yml:
     ~/.config/.czrc:
+    ~/.config/zed:
     ~/.gitconfig:
     ~/.config/mpv:
 
@@ -35,6 +36,7 @@
     ~/.zprofile: shell/.zprofile
     ~/.config/starship: starship
     ~/.config/yazi: yazi
+    ~/.config/zed: zed
     ~/.config/yabai: yabai_conf/yabai
     ~/.hyprspace.toml: yabai_conf/hpyrspace/hyprspace.toml
     ~/.config/sketchybar: yabai_conf/sketchybar

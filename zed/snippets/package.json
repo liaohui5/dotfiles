@@ -1,0 +1,35 @@
+{
+  "name": "personal-snippets",
+  "contributes": {
+    "snippets": [
+      {
+        "language": "html",
+        "path": "./html.json"
+      },
+      {
+        "language": ["javascript", "typescript", "vue"],
+        "path": "./javascript.json"
+      },
+      {
+        "language": "vue",
+        "path": "./vue.json"
+      },
+      {
+        "language": "json",
+        "path": "./json.json"
+      },
+      {
+        "language": "markdown",
+        "path": "./markdown.json"
+      },
+      {
+        "language": ["sh", "zsh", "bash"],
+        "path": "./shell.json"
+      },
+      {
+        "language": "editorconfig",
+        "path": "./editorconfig.json"
+      }
+    ]
+  }
+}

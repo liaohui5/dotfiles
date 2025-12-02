@@ -1,0 +1,52 @@
+{
+  "create shell menu script": {
+    "prefix": "createmenu",
+    "body": [
+      "while true; do",
+      "  echo \"======================\"",
+      "  echo \"0: 启动本地开发 docker 环境\"",
+      "  echo \"1: 操作 1\"",
+      "  echo \"2: 操作 2\"",
+      "  echo \"q: 退出脚本\"",
+      "  echo \"======================\"",
+      "  echo \"请输入命令编号:\"",
+      "  read -r command_id",
+      "",
+      "  case \\$command_id in",
+      "  0)",
+      "    echo \"000\" ",
+      "    ;;",
+      "  1)",
+      "    echo \"111\"",
+      "    ;;",
+      "  2)",
+      "    echo \"222\"",
+      "    ;;",
+      "  q)",
+      "    echo \"退出脚本\"",
+      "    break",
+      "    ;;",
+      "  *)",
+      "    echo \"无效的指令，请重新输入\"",
+      "    ;;",
+      "  esac",
+      "",
+      "  echo -e \"\\n\"",
+      "done",
+      ""
+    ],
+    "description": "create shell menu script"
+  },
+  "print and execute command": {
+    "prefix": "print",
+    "body": [
+      "function print_and_exec() {",
+      "  cmd=\"\\$1\"",
+      "  echo \">>> [Execcute Command]: \\$cmd\"",
+      "  eval \"\\$cmd\"",
+      "}",
+      ""
+    ],
+    "description": "print and execute command"
+  }
+}

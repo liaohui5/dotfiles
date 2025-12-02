@@ -1,0 +1,90 @@
+{
+  "Vue Single File Component without styles": {
+    "prefix": "vbase",
+    "body": ["<template>", "\t<div>${1:text}</div>", "</template>", "", "<script setup>", "$0", "</script>"],
+    "description": "Base for Vue File with SCSS"
+  },
+  "Vue Single File Component with Typescript": {
+    "prefix": "vbasets",
+    "body": [
+      "<template>",
+      "\t<div>",
+      "",
+      "\t</div>",
+      "</template>",
+      "",
+      "<script lang=\"ts\" setup>",
+      "$0",
+      "</script>"
+    ],
+    "description": "Base for Vue File with Typescript"
+  },
+  "Vue Single File Component with SASS": {
+    "prefix": "vbasescss",
+    "body": [
+      "<template>",
+      "\t<div>",
+      "",
+      "\t</div>",
+      "</template>",
+      "",
+      "<script setup>",
+      "$0",
+      "</script>",
+      "",
+      "<style lang=\"scss\" scoped></style>"
+    ],
+    "description": "Base for Vue File with SCSS"
+  },
+  "Vue Single File Component with LESS": {
+    "prefix": "vbaseless",
+    "body": [
+      "<template>",
+      "\t<div>",
+      "",
+      "\t</div>",
+      "</template>",
+      "",
+      "<script setup>",
+      "$0",
+      "</script>",
+      "",
+      "<style lang=\"less\" scoped></style>"
+    ],
+    "description": "Base for Vue File with PostCSS"
+  },
+  "Vue Single File Component with CSS": {
+    "prefix": "vbasecss",
+    "body": [
+      "<template>",
+      "\t<div>",
+      "",
+      "\t</div>",
+      "</template>",
+      "",
+      "<script setup>",
+      "$0",
+      "</script>",
+      "",
+      "<style scoped></style>"
+    ],
+    "description": "Base for Vue File with CSS"
+  },
+  "Vue Single File Component with Stylus": {
+    "prefix": "vbasestyl",
+    "body": [
+      "<template>",
+      "\t<div>",
+      "",
+      "\t</div>",
+      "</template>",
+      "",
+      "<script setup>",
+      "$0",
+      "</script>",
+      "",
+      "<style lang=\"stylus\" scoped></style>"
+    ],
+    "description": "Base for Vue File with Stylus"
+  }
+}

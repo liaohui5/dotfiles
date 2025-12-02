@@ -1,0 +1,112 @@
+{
+  "Console Log": {
+    "prefix": "clog",
+    "body": ["console.log(${0});"],
+    "description": "output to console"
+  },
+  "Named Function": {
+    "prefix": "fn",
+    "body": ["function ${1:name}(${2}) {", "  ${0}", "}"],
+    "description": "named function"
+  },
+  "Async Named function": {
+    "prefix": "asfn",
+    "body": ["async function ${1}(${2}){", "  await ${0}", "}"],
+    "description": "async named function"
+  },
+  "Const Variable Function": {
+    "prefix": "caf",
+    "body": ["const ${1} = (${2}) => {", "  ${0}", "}"],
+    "description": "const variable function"
+  },
+  "ES Export Class": {
+    "prefix": "expcl",
+    "body": ["export class ${1} {", "\t${0}", "};"],
+    "description": "ES Export class"
+  },
+  "ES Import External Module": {
+    "prefix": "impd",
+    "body": ["import ${0} from \"${1}\";"],
+    "description": "ES Import"
+  },
+  "ES Import Module": {
+    "prefix": "impo",
+    "body": ["import {${0}} from \"${1}\";"],
+    "description": "ES Destruction Import"
+  },
+  "ES Export All": {
+    "prefix": "expa",
+    "body": ["export * from ${0};"],
+    "description": "es export all"
+  },
+  "ES Export Default": {
+    "prefix": "expd",
+    "body": ["export default ${0};"],
+    "description": "es export default"
+  },
+  "ES Export Default As": {
+    "prefix": "expas",
+    "body": ["export { default as ${0} } from \"${1}\";"],
+    "description": "es export default as"
+  },
+  "ES Export Const": {
+    "prefix": "expc",
+    "body": ["export const ${1} = ${0};"],
+    "description": "es export const"
+  },
+  "ES Export Function": {
+    "prefix": "expf",
+    "body": ["export function ${1}(${2}) {", "\t${0}", "}"],
+    "description": "es export function"
+  },
+  "ES Export Default Function": {
+    "prefix": "expdf",
+    "body": ["export default function ${1}(${2}) {", "\t${0}", "}"],
+    "description": "es export default function"
+  },
+  "ES Export Async Function": {
+    "prefix": "expasf",
+    "body": ["export async function ${1}(${2}) {\n\t${0}\n}"],
+    "description": "es export arrow function"
+  },
+  "ES Export Arrow Function": {
+    "prefix": "expaf",
+    "body": ["export const ${1:name} = (${2}) => {", "\t${0}", "}"],
+    "description": "es export arrow function"
+  },
+  "Export Class": {
+    "prefix": "expcl",
+    "body": ["export class ${1} {", "\t${0}", "};"],
+    "description": "export class"
+  },
+  "Import Module Default": {
+    "prefix": "impd",
+    "body": ["import ${0} from \"${1}\";"],
+    "description": "import module default"
+  },
+  "Import Module": {
+    "prefix": "impp",
+    "body": ["import {${0}} from \"${1}\";"],
+    "description": "import module partion"
+  },
+  "Import Vitest": {
+    "prefix": "impv",
+    "body": ["import { describe, it, expect, beforeEach, vi } from \"vitest\";"],
+    "description": "import vitest"
+  },
+  "Import TypeScript Types": {
+    "prefix": "impt",
+    "body": ["import type { ${0} } from \"${1}\";"],
+    "description": "import pinia for unit tests"
+  },
+  "Unit Test Describe": {
+    "prefix": "desc",
+    "body": ["describe('${1}', () => {", "  ${2}", "})"],
+    "description": "unit test describe"
+  },
+  "Unit Test case": {
+    "prefix": "it",
+    "body": ["it('${1}', () => {", "  expect(${2}).toBe(${3});", "})"],
+    "description": "unit Test case"
+  }
+}

@@ -1,0 +1,164 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette
+{
+  // disable ai features
+  "disable_ai": true,
+  // "agent": {
+  //   "enabled": true,
+  //   "default_profile": "ask",
+  //   "default_model": {
+  //     "provider": "aliyun",
+  //     "model": "qwen2-1.5b-instruct"
+  //   }
+  // },
+  // "language_models": {
+  //   "openai_compatible": {
+  //     "aliyun": {
+  //       "api_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+  //       "available_models": [
+  //         {
+  //           "name": "qwen2-1.5b-instruct",
+  //           "max_tokens": 200000,
+  //           "max_output_tokens": 32000,
+  //           "max_completion_tokens": 200000,
+  //           "capabilities": {
+  //             "tools": true,
+  //             "images": false,
+  //             "parallel_tool_calls": true,
+  //             "prompt_cache_key": false
+  //           }
+  //         }
+  //       ]
+  //     }
+  //   }
+  // },
+  "edit_predictions": {
+    "mode": "subtle",
+    "disabled_globs": ["**/*.md", "**/.env*", "**/*.pem", "**/*.key", "**/*.cert", "**/*.crt", "**/secrets.yml"]
+  },
+  "edit_predictions_disabled_in": ["comment"],
+  "features": {
+    "edit_prediction_provider": "none"
+  },
+
+  // auto save & auto format
+  "format_on_save": "off",
+  "autosave": "on_focus_change",
+  "preferred_line_length": 120,
+  "hard_tabs": false,
+  "tab_size": 2,
+  // disable soft wrap
+  "show_wrap_guides": false,
+  "soft_wrap": "none",
+  // git
+  "git": {
+    "git_gutter": "tracked_files",
+    "inline_blame": {
+      "enabled": false
+    }
+  },
+  // project panel
+  "project_panel": {
+    "auto_fold_dirs": false,
+    "hide_root": false
+  },
+  // vim
+  "vim_mode": true,
+  "vim": {
+    "use_system_clipboard": "always",
+    "use_smartcase_find": true
+  },
+  // font
+  "ui_font_size": 18,
+  "buffer_font_size": 18,
+  "buffer_font_family": "JetBrainsMonoNL Nerd Font Mono",
+  "ui_font_family": "JetBrainsMonoNL Nerd Font Mono",
+  "buffer_line_height": "standard",
+  // theme
+  "theme": "One Dark",
+  // tab bar
+  "tab_bar": {
+    "show": true,
+    "show_nav_history_buttons": false
+  },
+  // tabs
+  "tabs": {
+    "file_icons": true,
+    "git_status": true
+  },
+  // scrollbar
+  "scrollbar": {
+    "show": "never"
+  },
+  // status bar
+  "toolbar": {
+    "breadcrumbs": false,
+    "quick_actions": false
+  },
+  // title bar
+  "title_bar": {
+    "show_branch_icon": true,
+    "show_branch_name": true,
+    "show_project_items": true,
+    "show_onboarding_banner": true,
+    "show_user_picture": true,
+    "show_sign_in": true,
+    "show_menus": true
+  },
+  // search
+  "search": {
+    "regex": true
+  },
+  // search files
+  "file_finder": {
+    "file_icons": true,
+    "modal_max_width": "large",
+    "skip_focus_for_active_in_search": true,
+    "git_status": true,
+    "include_ignored": "all"
+  },
+  // hits
+  "inlay_hints": {
+    "enabled": false
+  },
+  // hide collaboration panel
+  "collaboration_panel": {
+    "button": false
+  },
+  // terminal
+  "terminal": {
+    "font_size": 16,
+    "line_height": "standard"
+  },
+  // debugger
+  "debugger": {
+    "stepping_granularity": "line",
+    "save_breakpoints": true,
+    "dock": "left",
+    "button": true
+  },
+  // prettier
+  "prettier": {
+    "printWidth": 120,
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": true,
+    "singleQuote": false,
+    "trailingCommas": "all",
+    "bracketSpacing": true,
+    "alwaysParens": true
+  },
+  // telemetry
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+  // auto update
+  "auto_update": false
+}
