@@ -1,10 +1,6 @@
 [user]
 	name = secret
-	email = secretx500@outlook.com
-
-[core]
-	excludesfile = ~/.gitignore_global
-    pager = delta
+	email = secretx500@qq.com
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
@@ -21,15 +17,11 @@
 [interactive]
     diffFilter = delta --color-only
 
-[delta]
-    navigate = true    # use n and N to move between diff sections
-    light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
 [merge]
     conflictstyle = diff3
 
-[diff]
-    colorMoved = default
 [https]
 	proxy = system
+
 [pull]
-	rebase = false
+	rebase = true
