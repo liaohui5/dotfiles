@@ -63,11 +63,6 @@
       "enabled": false
     }
   },
-  // project panel
-  "project_panel": {
-    "auto_fold_dirs": false,
-    "hide_root": false
-  },
   // vim
   "vim_mode": true,
   "vim": {
