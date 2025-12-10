@@ -14,13 +14,12 @@ function has-command() {
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
-# nvim EDITOR
+# vim & nvim EDITOR
 # https://github.com/neovim/neovim
-if has-command 'nvim'; then
-  export EDITOR='nvim'
-  export NVIM="/usr/local/bin/nvim"
-else
+if has-command 'vim'; then
   export EDITOR='vim'
+else
+  export EDITOR='nvim'
   export NVIM="/usr/local/bin/nvim"
 fi
 
