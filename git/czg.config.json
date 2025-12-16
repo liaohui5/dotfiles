@@ -3,5 +3,5 @@
   "useEmoji": false,
   "openAIToken": "sk-gtuswallsppyobufyzwnrfssbbzzeaxubncthnlkyzbgvegs",
   "apiEndpoint": "https://api.siliconflow.cn/v1",
-  "apiModel": "Qwen/Qwen2.5-7B-Instruct"
+  "apiModel": "THUDM/glm-4-9b-chat"
 }
