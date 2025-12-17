@@ -43,7 +43,7 @@
     ~/.config/spacebar: yabai_conf/spacebar
     ~/.config/skhd: yabai_conf/skhd
     ~/Library/Application Support/lazygit/config.yml: git/lazygit-config.yml
-    ~/.config/.czrc: git/czg.config.json
+    ~/.czrc: git/czg.config.json
     ~/.gitconfig: git/.gitconfig
     ~/.config/mpv: mpv
     ~/.config/zellij: zellij
