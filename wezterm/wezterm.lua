@@ -4,9 +4,6 @@
 ----------------------------------------------------------
 local keybindings = require("keybindings")
 local wezterm = require("wezterm")
-
--- load plugins
--- require("resurrect").setup(keybindings)
 require("tabline").setup()
 
 -- font styles
@@ -25,11 +22,12 @@ local font = wezterm.font_with_fallback({
 
 return {
   -- colorschemes: https://wezfurlong.org/wezterm/colorschemes/index.html
-  color_scheme = "Tokyo Night Moon",
+  -- color_scheme = "Tokyo Night Moon",
+  color_scheme = "Monokai (base16)",
   font = font,
   line_height = 1,
   font_size = fontSize,
-  tab_max_width = 20,
+  tab_max_width = 30,
   use_fancy_tab_bar = false,
   window_decorations = "RESIZE",
   window_frame = { font = font, font_size = fontSize },

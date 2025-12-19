@@ -5,13 +5,13 @@ return {
   setup = function()
     tabline.setup({
       options = {
-        theme = "Tokyo Night Moon",
+        theme = "Monokai (base16)",
         icons_enabled = true,
         tabs_enabled = true,
         theme_overrides = {
           tab = {
             active = { fg = "#f6f6f6", bg = "#1a73e8" },
-            inactive = { fg = "#f6f6f6", bg = "#191d2e" },
+            inactive = { fg = "#f6f6f6", bg = "#3A3A3A" }, -- inactive tab bg color
             inactive_hover = { fg = "#f6f6f6", bg = "#1a73e8" },
           },
         },
@@ -42,12 +42,9 @@ return {
           "index",
           { "process", padding = { left = 0, right = 1 } },
         },
-        tabline_x = { "mode", "workspace", "domain" },
-        tabline_y = {},
-        tabline_z = {},
-      },
-      extensions = {
-        "resurrect",
+        tabline_x = {},
+        tabline_y = { "ram", "cpu", "domain" },
+        tabline_z = { "mode" },
       },
     })
   end,
