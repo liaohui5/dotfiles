@@ -8,7 +8,7 @@
 # ║  • Niri/Scroll/Paper Layout - Scrollable window management                    ║
 # ║                                                                               ║
 # ║  Configuration Location: ~/.hyprspace.toml                                    ║
-# ║  Documentation: https://github.com/barut/HyprSpace                            ║
+# ║  Documentation: https://github.com/BarutSRB/HyprSpace                         ║
 # ║                                                                               ║
 # ║  This file contains ALL possible configuration options with explanations.     ║
 # ║  Default values are set for optimal dwindle layout experience.                ║
@@ -32,7 +32,7 @@ after-startup-command = [
   'workspace 1',
   'layout scroll',
   # must be install borders command: https://github.com/FelixKratz/JankyBorders
-  'exec-and-forget borders active_color=0xff00ff00 inactive_color=0x00888888 width=2.0',
+  # 'exec-and-forget borders active_color=0xff00ff00 inactive_color=0x00888888 width=2.0',
 ]
 
 # ╔═══════════════════════════════════════════════════════════════════════════════╗
