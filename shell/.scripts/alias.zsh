@@ -77,3 +77,16 @@ if has-command 'cargo'; then
   alias cb='cargo build --release'
 fi
 
+
+# just: https://just.systems/man/zh/%E8%AF%B4%E6%98%8E.html
+if has-command 'just'; then
+  alias j='just'
+  alias jd='just dev'
+  alias js='just start'
+  alias jt='just test'
+  alias jr='just run'
+  alias jb='just build'
+  alias jm='just mock'
+  alias jd='just doc'
+fi
+

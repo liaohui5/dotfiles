@@ -42,14 +42,6 @@ if has-command 'starship'; then
   export STARSHIP_CONFIG="${HOME}/.config/starship/config.toml"
 fi
 
-# windserf
-# use like vscode: windsurf ./codes
-# https://codeium.com/windsurf
-local windsurf_bin_path="${HOME}/.codeium/windsurf/bin"
-if [[ -d "${windsurf_bin_path}" ]]; then
-  export PATH="$windsurf_bin_path:$PATH"
-fi
-
 # yazi
 # https://yazi-rs.github.io/
 if has-command 'yazi'; then
