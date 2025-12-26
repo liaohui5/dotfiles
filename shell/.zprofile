@@ -3,11 +3,7 @@
 # define helper functions
 ################################################################
 function has-command() {
-  if command -v "$1" >/dev/null; then
-    return 0
-  else
-    return 1
-  fi
+  command -v "$1" >/dev/null 2>&1
 }
 
 # MacOS language locale
@@ -21,12 +17,6 @@ if has-command 'vim'; then
 else
   export EDITOR='nvim'
   export NVIM="/usr/local/bin/nvim"
-fi
-
-# load bash profile if exists
-local bash_profile="${HOME}/.profile"
-if [[ -f "${bash_profile}" ]]; then
-  source "${bash_profile}"
 fi
 
 # trash command
@@ -79,7 +69,9 @@ fi
 
 # uv
 # https://docs.astral.sh/uv/getting-started
-export PATH="$HOME/.local/bin:$PATH"
+if has-command 'uv'; then
+  export PATH="$HOME/.local/bin:$PATH"
+fi
 
 # pnpm
 # https://pnpm.io/
@@ -98,4 +90,9 @@ fi
 # https://rustup.rs/
 if has-command 'rustup'; then
   source "$HOME/.cargo/env"
+fi
+
+# mise
+if has-command 'mise'; then
+  eval "$(~/.cargo/bin/mise activate zsh)"
 fi

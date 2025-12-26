@@ -42,6 +42,6 @@ customCommands:
   # docs: https://cz-git.qbb.sh/zh/cli/ai
   - key: <c-e>
     description: "Generate commit using ai"
-    command: "czg ai -N=5"
+    command: "czg ai -N=4"
     context: "files"
     output: terminal
