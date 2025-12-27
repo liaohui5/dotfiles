@@ -73,12 +73,6 @@ if has-command 'uv'; then
   export PATH="$HOME/.local/bin:$PATH"
 fi
 
-# pnpm
-# https://pnpm.io/
-if has-command 'node'; then
-  export PNPM_HOME="$HOME/.pnpm_store"
-  export PATH="$PNPM_HOME:$PATH"
-fi
 
 # fnm
 # https://github.com/Schniz/fnm
@@ -88,11 +82,18 @@ fi
 
 # rustup
 # https://rustup.rs/
-if has-command 'rustup'; then
+if [[ -f "$HOME/.cargo/env" ]]; then
   source "$HOME/.cargo/env"
 fi
 
 # mise
-if has-command 'mise'; then
+if [[ -f "$HOME/.cargo/bin/mise" ]]; then
   eval "$(~/.cargo/bin/mise activate zsh)"
+fi
+
+# pnpm
+# https://pnpm.io/
+if has-command 'node'; then
+  export PNPM_HOME="$HOME/.pnpm_store"
+  export PATH="$PNPM_HOME:$PATH"
 fi
