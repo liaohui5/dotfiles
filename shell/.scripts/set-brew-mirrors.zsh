@@ -25,9 +25,9 @@ function clean-brew-mirror() {
   fi
 }
 
-function set-brew-mirrors() {
+function set-brew-mirror() {
   if ! has-command 'brew'; then
-    echo 'brew not found, Please install brew first'
+    echo '请先安装 homebrew'
     return 0
   fi
 
@@ -81,7 +81,7 @@ export HOMEBREW_CORE_GIT_REMOTE=\"${core_git_remote}\"
 export HOMEBREW_API_DOMAIN=\"${api_domain}\"
 export HOMEBREW_BOTTLE_DOMAIN=\"${bottle_domain}\"
 "
-  echo "$shell_content" > "$mirror_file_path"
+  echo "$shell_content" >"$mirror_file_path"
 
   # reload and print new envs
   reload-brew-mirror

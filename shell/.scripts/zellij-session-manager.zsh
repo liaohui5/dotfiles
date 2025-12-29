@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # zellij: https://zellij.dev/
-function zj () {
+function zj() {
   if ! has-command 'zellij'; then
     echo 'Error: Not found "zellij" command' >&2
     exit 1

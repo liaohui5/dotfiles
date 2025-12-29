@@ -19,12 +19,6 @@ else
   export NVIM="/usr/local/bin/nvim"
 fi
 
-# trash command
-local trash_bin_path="/usr/local/opt/trash/bin"
-if [[ -d "${trash_bin_path}" ]]; then
-  export PATH="$trash_bin_path:$PATH"
-fi
-
 # starship
 # https://starship.rs/zh-CN/
 if has-command 'starship'; then
@@ -55,29 +49,7 @@ fi
 # fzf
 # https://github.com/junegunn/fzf
 if has-command 'fzf'; then
-  source <(fzf --zsh)
-fi
-
-# adb
-# https://developer.android.com/studio/command-line/adb.html
-local android_home_path="$HOME/Library/Android/sdk"
-if [[ -d "$android_home_path" ]]; then
-  export ANDROID_HOME="$android_home_path"
-  export PATH=$PATH:"$android_home_path/tools"
-  export PATH=$PATH:"$android_home_path/platform-tools"
-fi
-
-# uv
-# https://docs.astral.sh/uv/getting-started
-if has-command 'uv'; then
-  export PATH="$HOME/.local/bin:$PATH"
-fi
-
-
-# fnm
-# https://github.com/Schniz/fnm
-if has-command 'fnm'; then
-  eval "$(fnm env --use-on-cd --version-file-strategy=recursive --shell zsh)"
+  eval "$(fzf --zsh)"
 fi
 
 # rustup
@@ -89,6 +61,12 @@ fi
 # mise
 if [[ -f "$HOME/.cargo/bin/mise" ]]; then
   eval "$(~/.cargo/bin/mise activate zsh)"
+fi
+
+# uv
+# https://docs.astral.sh/uv/getting-started
+if has-command 'uv'; then
+  export PATH="$HOME/.local/bin:$PATH"
 fi
 
 # pnpm
