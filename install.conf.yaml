@@ -47,6 +47,7 @@
     ~/.gitconfig: git/.gitconfig
     ~/.config/mpv: mpv
     ~/.config/zellij: zellij
+    ~/.hammerspoon: hammerspoon
 
 - shell:
     - ./install-deps.sh

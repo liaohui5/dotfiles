@@ -20,7 +20,7 @@
 
 # Launch HyprSpace automatically when you log into macOS
 # Options: true, false
-start-at-login = true
+start-at-login = false
 
 # Commands to run after HyprSpace starts
 # Can be a single command (string) or multiple commands (array)
