@@ -5,9 +5,9 @@ hs.window.animationDuration = 0
 -- docs: https://www.hammerspoon.org/Spoons/SpoonInstall.html
 spoon.SpoonInstall.use_syncinstall = true
 spoon.SpoonInstall.repos.PaperWM = {
-	url = "https://github.com/mogenson/PaperWM.spoon",
-	desc = "PaperWM.spoon repository",
-	branch = "release",
+  url = "https://github.com/mogenson/PaperWM.spoon",
+  desc = "PaperWM.spoon repository",
+  branch = "release",
 }
 spoon.SpoonInstall:andUse("PaperWM", { repo = "PaperWM" })
 
@@ -27,47 +27,47 @@ PaperWM:bindHotkeys({
 	focus_down  = { { "alt" }, "j" },
 
 	-- move windows around in tiled grid
-	full_width = { { "alt", "shift" }, "f" },
 	swap_left  = { { "alt", "shift" }, "h" },
 	swap_right = { { "alt", "shift" }, "l" },
 	swap_up    = { { "alt", "shift" }, "k" },
 	swap_down  = { { "alt", "shift" }, "j" },
-	-- stylua: ignore end
+  -- stylua: ignore end
 
-	-- increase/decrease width
-	increase_width = { { "shift", "cmd" }, "l" },
-	decrease_width = { { "shift", "cmd" }, "h" },
+  -- increase/decrease width
+  full_width = { { "shift", "cmd" }, "f" },
+  increase_width = { { "shift", "cmd" }, "l" },
+  decrease_width = { { "shift", "cmd" }, "h" },
 
-	-- move focused window into / out of a column
-	slurp_in = { { "shift", "cmd" }, "i" },
-	barf_out = { { "shift", "cmd" }, "o" },
+  -- move focused window into / out of a column
+  slurp_in = { { "shift", "cmd" }, "i" },
+  barf_out = { { "shift", "cmd" }, "o" },
 
-	-- toggle current window folat/tailing status
-	toggle_floating = { { "shift", "cmd" }, "space" },
+  -- toggle current window folat/tailing status
+  toggle_floating = { { "shift", "cmd" }, "space" },
 
-	-- move current focused window to workspace
-	move_window_1 = { { "cmd", "shift" }, "1" },
-	move_window_2 = { { "cmd", "shift" }, "2" },
-	move_window_3 = { { "cmd", "shift" }, "3" },
-	move_window_4 = { { "cmd", "shift" }, "4" },
-	move_window_5 = { { "cmd", "shift" }, "5" },
-	move_window_6 = { { "cmd", "shift" }, "6" },
-	move_window_7 = { { "cmd", "shift" }, "7" },
-	move_window_8 = { { "cmd", "shift" }, "8" },
-	move_window_9 = { { "cmd", "shift" }, "9" },
+  -- move current focused window to workspace
+  move_window_1 = { { "cmd", "shift" }, "1" },
+  move_window_2 = { { "cmd", "shift" }, "2" },
+  move_window_3 = { { "cmd", "shift" }, "3" },
+  move_window_4 = { { "cmd", "shift" }, "4" },
+  move_window_5 = { { "cmd", "shift" }, "5" },
+  move_window_6 = { { "cmd", "shift" }, "6" },
+  move_window_7 = { { "cmd", "shift" }, "7" },
+  move_window_8 = { { "cmd", "shift" }, "8" },
+  move_window_9 = { { "cmd", "shift" }, "9" },
 
-	-- switch desktop workspace
-	-- switch_space_l = { { "alt", "cmd" }, "h" },
-	-- switch_space_r = { { "alt", "cmd" }, "l" },
-	switch_space_1 = { { "cmd" }, "1" },
-	switch_space_2 = { { "cmd" }, "2" },
-	switch_space_3 = { { "cmd" }, "3" },
-	switch_space_4 = { { "cmd" }, "4" },
-	switch_space_5 = { { "cmd" }, "5" },
-	switch_space_6 = { { "cmd" }, "6" },
-	switch_space_7 = { { "cmd" }, "7" },
-	switch_space_8 = { { "cmd" }, "8" },
-	switch_space_9 = { { "cmd" }, "9" },
+  -- switch desktop workspace
+  -- switch_space_l = { { "alt", "cmd" }, "h" },
+  -- switch_space_r = { { "alt", "cmd" }, "l" },
+  switch_space_1 = { { "cmd" }, "1" },
+  switch_space_2 = { { "cmd" }, "2" },
+  switch_space_3 = { { "cmd" }, "3" },
+  switch_space_4 = { { "cmd" }, "4" },
+  switch_space_5 = { { "cmd" }, "5" },
+  switch_space_6 = { { "cmd" }, "6" },
+  switch_space_7 = { { "cmd" }, "7" },
+  switch_space_8 = { { "cmd" }, "8" },
+  switch_space_9 = { { "cmd" }, "9" },
 })
 
 -- window gap
@@ -85,10 +85,10 @@ PaperWM.swipe_gain = 1.0
 
 -- ignore tailing apps
 local ignore_tailing_apps = {
-  "System Settings"
+  "System Settings",
 }
 for _, app_name in ipairs(ignore_tailing_apps) do
-	PaperWM.window_filter:rejectApp(app_name)
+  PaperWM.window_filter:rejectApp(app_name)
 end
 
 -- don't forget start it
@@ -99,5 +99,5 @@ PaperWM:start()
 -- github: https://github.com/mogenson/ActiveSpace.spoon
 ----------------------------------------------------------------------
 if hs.loadSpoon("ActiveSpace") then
-	spoon.ActiveSpace:start()
+  spoon.ActiveSpace:start()
 end
