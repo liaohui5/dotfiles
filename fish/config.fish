@@ -3,10 +3,15 @@
 # MacOS language locale
 set -gx LANG "en_US.UTF-8"
 set -gx LC_ALL "en_US.UTF-8"
+set -gx TERM "xterm-256color"
 
 ######################################################################
 # 配置入口文件
 ######################################################################
+
+# 设置 ctrl+h/ctrl-l 左右移光标
+bind \ch backward-char
+bind \cl forward-char
 
 # 判断一个命令是否存在
 function command_exists
