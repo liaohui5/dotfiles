@@ -1,0 +1,33 @@
+# alacritty
+# github: https://github.com/alacritty/alacritty
+# docs: https://alacritty.org/config-alacritty.html
+[terminal.shell]
+program = "/bin/zsh"
+args = ["--login"]
+
+[font]
+size = 18
+
+[font.normal]
+family = "JetBrainsMono Nerd Font Mono"
+style = "Light"
+
+[font.offset]
+y = 2
+
+[font.glyph_offset]
+y = 1
+
+[window]
+startup_mode = "Windowed"
+dynamic_padding = true
+opacity = 1.0
+decorations = "buttonless"
+
+[window.padding]
+x = 0
+y = 0
+
+[colors.cursor]
+text = '#f8f8f8'
+cursor = '#fbbc07'

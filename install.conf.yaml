@@ -49,6 +49,7 @@
     ~/.config/zellij: zellij
     ~/.hammerspoon: hammerspoon
     ~/.config/fish: fish
+    ~/.config/alacritty: alacritty
 
 - shell:
     - ./install-deps.sh
