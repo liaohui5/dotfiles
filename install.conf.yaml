@@ -48,6 +48,7 @@
     ~/.config/mpv: mpv
     ~/.config/zellij: zellij
     ~/.hammerspoon: hammerspoon
+    ~/.config/fish: fish
 
 - shell:
     - ./install-deps.sh
