@@ -2,8 +2,24 @@
 ################################################################
 # define helper functions
 ################################################################
+
+# check command exists
 function has-command() {
-  command -v "$1" >/dev/null 2>&1
+  if command -v "$1" >/dev/null; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+# check command exists and alias it
+# safe-alias <alias> <cmd>
+function safe-alias() {
+  local alias="$1"
+  local cmd="$2"
+  if command -v "$cmd" >/dev/null; then
+    alias "$alias"="$cmd"
+  fi
 }
 
 # MacOS language locale
