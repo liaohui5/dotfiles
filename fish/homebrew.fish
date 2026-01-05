@@ -3,7 +3,7 @@
 #####################################################
 # 设置 homebrew 源相关命令脚本
 #####################################################
-set mirror_file_path "$HOME/.brew-mirror.fish"
+set -gx mirror_file_path "$HOME/.brew-mirror.fish"
 
 # 重新加载源
 function reload-brew-mirror
@@ -27,7 +27,7 @@ end
 
 # 设置 homebrew 源并保存到文件中
 function set-brew-mirror
-    if not has_command brew
+    if not command_exists brew
         echo '请先安装 homebrew'
         return 0
     end

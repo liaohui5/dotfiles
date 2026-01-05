@@ -3,7 +3,7 @@
 # MacOS language locale
 set -gx LANG "en_US.UTF-8"
 set -gx LC_ALL "en_US.UTF-8"
-set -gx TERM "xterm-256color"
+set -gx TERM xterm-256color
 
 ######################################################################
 # 配置入口文件
@@ -63,17 +63,22 @@ function append_path
     end
 end
 
-# 加载命令别名脚本
-source_file_if_exists "$HOME/.config/fish/aliases.fish"
-
 # 加载软件设置选项脚本
 source_file_if_exists "$HOME/.config/fish/softwares.fish"
+
+# 加载命令别名脚本
+source_file_if_exists "$HOME/.config/fish/aliases.fish"
 
 # 加载系统代理设置脚本
 source_file_if_exists "$HOME/.config/fish/proxy.fish"
 
 # 加载 ssh 会话管理脚本
 source_file_if_exists "$HOME/.config/fish/ssh_manager.fish"
+
+# 加载 virtual box 管理脚本
+if command_exists VBoxManage
+    source_file_if_exists "$HOME/.config/fish/vbox.fish"
+end
 
 # 加载设置 homebrew 镜像源的设置脚本
 if command_exists brew

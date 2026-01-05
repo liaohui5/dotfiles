@@ -15,7 +15,7 @@ end
 
 # rustup
 # https://rustup.rs/
-if command_exists cargo
+if file_exists "$HOME/.cargo/bin/cargo"
     # for replace: source ~/.cargo/env
     append_path "$HOME/.cargo/bin"
 end
