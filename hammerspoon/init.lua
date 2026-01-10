@@ -33,17 +33,18 @@ PaperWM:bindHotkeys({
 	swap_down  = { { "alt", "shift" }, "j" },
   -- stylua: ignore end
 
+  -- toggle current window folat/tailing status
+  toggle_floating = { { "alt", "shift" }, "f" },
+  focus_floating = { { "alt", "cmd", "shift" }, "f" },
+
   -- increase/decrease width
-  full_width = { { "shift", "cmd" }, "f" },
+  full_width = { { "alt" }, "return" },
   increase_width = { { "shift", "cmd" }, "l" },
   decrease_width = { { "shift", "cmd" }, "h" },
 
   -- move focused window into / out of a column
   slurp_in = { { "shift", "cmd" }, "i" },
   barf_out = { { "shift", "cmd" }, "o" },
-
-  -- toggle current window folat/tailing status
-  toggle_floating = { { "shift", "cmd" }, "space" },
 
   -- move current focused window to workspace
   move_window_1 = { { "cmd", "shift" }, "1" },
@@ -57,8 +58,6 @@ PaperWM:bindHotkeys({
   move_window_9 = { { "cmd", "shift" }, "9" },
 
   -- switch desktop workspace
-  -- switch_space_l = { { "alt", "cmd" }, "h" },
-  -- switch_space_r = { { "alt", "cmd" }, "l" },
   switch_space_1 = { { "cmd" }, "1" },
   switch_space_2 = { { "cmd" }, "2" },
   switch_space_3 = { { "cmd" }, "3" },
@@ -90,6 +89,15 @@ local ignore_tailing_apps = {
 for _, app_name in ipairs(ignore_tailing_apps) do
   PaperWM.window_filter:rejectApp(app_name)
 end
+
+-- resize mode
+local resizeMode = hs.hotkey.modal.new({ "shift", "alt" }, "r")
+local actions = PaperWM.actions.actions()
+resizeMode:bind({}, "h", nil, actions.decrease_width)
+resizeMode:bind({}, "l", nil, actions.increase_width)
+resizeMode:bind({}, "escape", function()
+  resizeMode:exit()
+end)
 
 -- don't forget start it
 PaperWM:start()
