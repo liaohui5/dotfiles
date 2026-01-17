@@ -11,12 +11,13 @@ require("tabline").setup()
 local fontSize = 18
 local font = wezterm.font_with_fallback({
   {
-    family = "Hack Nerd Font Mono",
-    weight = "Regular",
+    family = "Maple Mono NF CN",
+    weight = "Light",
+    stretch = "Normal",
     italic = false,
-    harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
+    -- harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
   },
-  "Maple Mono SC NF",
+  "Hack Nerd Font Mono",
   "JetBrainsMono Nerd Font Mono",
 })
 
