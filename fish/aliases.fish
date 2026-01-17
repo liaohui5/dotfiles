@@ -13,8 +13,25 @@ alias rc="source $HOME/.config/fish/config.fish"
 safe_alias ls lsd
 
 # static web server
-# https://static-web-server.net/
-safe_alias sws static-web-server
+# https://github.com/vercel/serve
+# https://github.com/vitejs/vite
+# https://github.com/svenstaro/miniserve
+# https://github.com/TheWaWaR/simple-http-server
+if command_exists simple-http-server
+    alias sws='simple-http-server . -p 3000'
+else if command_exists miniserve
+    alias sws='miniserve . -p 3000'
+else if command_exists serve
+    alias sws='serve . -p 3000'
+else if command_exists vite
+    alias sws='vite . -p 3000'
+else
+    printf "no static web server found, please install one of the following:\n"
+    printf "\t https://github.com/vercel/serve\n"
+    printf "\t https://github.com/vitejs/vite\n"
+    printf "\t https://github.com/svenstaro/miniserve\n"
+    printf "\t https://github.com/TheWaWaR/simple-http-server\n"
+end
 
 # fastfetch
 # https://github.com/fastfetch-cli/fastfetch
