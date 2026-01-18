@@ -9,9 +9,12 @@ set -gx TERM xterm-256color
 # 配置入口文件
 ######################################################################
 
-# 设置 ctrl+h/ctrl-l 左右移光标
+# 设置 ctrl+h/ctrl+l 左右移光标
+# 设置 ctrl+k/ctrl+j 上下搜索执行过的历史命令
 bind \ch backward-char
 bind \cl forward-char
+bind \ck up-or-search
+bind \cj down-or-search
 
 # 判断一个命令是否存在
 function command_exists
