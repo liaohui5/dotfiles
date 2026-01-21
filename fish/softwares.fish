@@ -57,7 +57,7 @@ end
 # mise
 # https://mise.jdx.dev/
 if command_exists mise
-    ~/.cargo/bin/mise activate fish | source
+    mise activate fish | source
 end
 
 # uv
