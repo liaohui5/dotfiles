@@ -9,8 +9,8 @@
   {
     "bindings": {
       "ctrl-j": "menu::SelectNext",
-      "ctrl-k": "menu::SelectPrevious"
-    }
+      "ctrl-k": "menu::SelectPrevious",
+    },
   },
   {
     // for vim normal mode
@@ -33,20 +33,20 @@
       // toggle panels
       "ctrl-e": "project_panel::ToggleFocus",
       "ctrl-x": "workspace::ToggleBottomDock",
-      "space a": "agent::ToggleFocus",
+      "space a a": "agent::ToggleFocus",
 
       // tabs
       "space b h": [
         "pane::CloseItemsToTheLeft",
         {
-          "close_pinned": false
-        }
+          "close_pinned": false,
+        },
       ],
       "space b l": [
         "pane::CloseItemsToTheRight",
         {
-          "close_pinned": false
-        }
+          "close_pinned": false,
+        },
       ],
       "space b shift-h": "pane::SwapItemLeft",
       "space b shift-l": "pane::SwapItemRight",
@@ -57,31 +57,32 @@
 
       // lazygit & yazi: need task.json config
       "ctrl-g": ["task::Spawn", { "task_name": "lazygit" }],
-      "ctrl-f": ["task::Spawn", { "task_name": "yazi" }]
-    }
+      "ctrl-f": ["task::Spawn", { "task_name": "yazi" }],
+    },
   },
   {
     // toggle terminal in terminal
-    "context": "Workspace",
+    "context": "Terminal",
     "bindings": {
-      "ctrl-x": "workspace::ToggleBottomDock"
-    }
+      "ctrl-x": "workspace::ToggleBottomDock",
+    },
   },
   {
+    // for vim normal mode
     "context": "VimControl && vim_mode == normal",
     "bindings": {
       "space q q": "zed::Quit",
       "space f s": "workspace::Save",
       "ctrl-\\": ["workspace::SendKeystrokes", "g c c"],
-      "ctrl-g": ["task::Spawn", { "task_name": "lazygit" }]
-    }
+      "ctrl-g": ["task::Spawn", { "task_name": "lazygit" }],
+    },
   },
   {
     // for vim visual mode
     "context": "VimControl && vim_mode == visual",
     "bindings": {
-      "ctrl-\\": ["workspace::SendKeystrokes", "g c"]
-    }
+      "ctrl-\\": ["workspace::SendKeystrokes", "g c"],
+    },
   },
   {
     // for vim insert mode
@@ -91,21 +92,23 @@
       "ctrl-e": "editor::Cancel",
       "ctrl-a": "assistant::InlineAssist",
       "ctrl-h": "editor::Backtab",
-      "ctrl-l": "editor::Tab"
-    }
+      "ctrl-l": "editor::Tab",
+    },
   },
   {
     // select code suggestion
-    "context": "Editor && vim_mode == insert && (showing_code_actions || showing_completions)",
+    "context": "Editor && (showing_code_actions || showing_completions)",
+    "use_key_equivalents": true,
     "bindings": {
       "ctrl-k": "editor::ContextMenuPrevious",
-      "ctrl-j": "editor::ContextMenuNext"
-    }
+      "ctrl-j": "editor::ContextMenuNext",
+    },
   },
   {
     // file explorer
     "context": "ProjectPanel && not_editing",
     "bindings": {
+      "space space": "file_finder::Toggle",
       ":": "command_palette::Toggle",
       "ctrl-e": "workspace::ToggleLeftDock",
       "shift-a": "project_panel::NewDirectory",
@@ -115,15 +118,15 @@
       "x": [
         "project_panel::Trash",
         {
-          "skip_prompt": false
-        }
+          "skip_prompt": false,
+        },
       ],
       "d": "project_panel::Cut",
       "y": "project_panel::Copy",
       "shift-y": "workspace::CopyPath",
       "ctrl-y": "workspace::CopyRelativePath",
       "p": "project_panel::Paste",
-      "ctrl-enter": "project_panel::RevealInFileManager"
-    }
-  }
+      "ctrl-enter": "project_panel::RevealInFileManager",
+    },
+  },
 ]
