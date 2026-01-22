@@ -13,7 +13,7 @@ function setproxy
     # end
     set ip "127.0.0.1"
 
-    echo -n "please input proxy port(default: 7890): "
+    echo "please input proxy port(default: 7890): "
     read -l port
     if test -z "$port"
         set port 7890
@@ -23,6 +23,12 @@ function setproxy
     set -gx http_proxy "http://$ip:$port"
     set -gx all_proxy "socks5://$ip:$port"
 
+    echo "https_proxy is: $https_proxy"
+    echo "http_proxy  is: $http_proxy"
+    echo "all_proxy   is: $all_proxy"
+end
+
+function showproxy
     echo "https_proxy is: $https_proxy"
     echo "http_proxy  is: $http_proxy"
     echo "all_proxy   is: $all_proxy"
