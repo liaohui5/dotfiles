@@ -60,6 +60,11 @@ if command_exists mise
     mise activate fish | source
 end
 
+# goproxy
+if command_exists go
+    set -gx GOPROXY https://goproxy.cn/,https://mirrors.aliyun.com/goproxy/,https://goproxy.bj.bcebos.com,direct
+end
+
 # uv
 # https://docs.astral.sh/uv/getting-started
 if command_exists uv
