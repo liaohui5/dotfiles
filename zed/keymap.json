@@ -16,40 +16,57 @@
     // for vim normal mode
     "context": "VimControl && !menu",
     "bindings": {
-      "space space": "file_finder::Toggle",
-      "shift-l": "pane::ActivateNextItem",
-      "shift-h": "pane::ActivatePreviousItem",
-      "space o u": "editor::OpenUrl",
-      "space f s": "workspace::Save",
-      "space c a": "editor::ToggleCodeActions",
-      "space b d": "pane::CloseActiveItem",
-      "space b o": "workspace::CloseInactiveTabsAndPanes",
-      "space s s": "outline::Toggle",
-      "space f f": "editor::Format",
-      "space r n": "editor::Rename",
-      "space q l": "projects::OpenRecent",
-      "space r r": "buffer_search::DeployReplace",
-
       // toggle panels
+      "space space": "file_finder::Toggle",
       "ctrl-e": "project_panel::ToggleFocus",
       "ctrl-x": "workspace::ToggleBottomDock",
-      "space a a": "agent::ToggleFocus",
 
-      // tabs
-      "space b h": [
-        "pane::CloseItemsToTheLeft",
-        {
-          "close_pinned": false,
-        },
-      ],
-      "space b l": [
-        "pane::CloseItemsToTheRight",
-        {
-          "close_pinned": false,
-        },
-      ],
+      // <leader-a> -> AI
+      "space a a": "workspace::ToggleRightDock",
+
+      // <leader-b> -> tabs -> buffers
+      "shift-l": "pane::ActivateNextItem",
+      "shift-h": "pane::ActivatePreviousItem",
+      "space b d": "pane::CloseActiveItem",
+      "space b o": "workspace::CloseInactiveTabsAndPanes",
+      "space b p": "pane::TogglePinTab",
+      "space b [": ["pane::CloseItemsToTheLeft", { "close_pinned": false }],
+      "space b ]": ["pane::CloseItemsToTheRight", { "close_pinned": false }],
       "space b shift-h": "pane::SwapItemLeft",
       "space b shift-l": "pane::SwapItemRight",
+
+      // <leader-c> -> codeAction
+      "space c a": "editor::ToggleCodeActions",
+      // "space c d":"editor::GoToDiagnostic",
+      "space c d": "editor::Hover",
+
+      // <leader-f> -> find/search/foramt
+      "space f s": "workspace::Save",
+      "space f f": "editor::Format",
+
+      // <leader-o> -> open
+      "space o u": "editor::OpenUrl",
+
+      // <leader-q> -> quit/projects
+      "space q q": "workspace::CloseWindow",
+      "space q l": "projects::OpenRecent",
+
+      // <leader-r> -> refactor/replace
+      "space r r": "buffer_search::DeployReplace",
+      "space r n": "editor::Rename",
+
+      // <leader-s> -> search
+      "space s s": "outline::Toggle",
+      "space s shift-s": "project_symbols::Toggle",
+      "space s g": "pane::DeploySearch",
+
+      // <leader-u> -> ui
+      "space u t": "theme_selector::Toggle",
+      "space u n": "editor::ToggleLineNumbers",
+      "space u z": "editor::ToggleSoftWrap",
+
+      // toggle comment
+      "ctrl-\\": ["workspace::SendKeystrokes", "g c c"],
 
       // scroll
       "ctrl-d": ["workspace::SendKeystrokes", "5 j z z"],
@@ -71,10 +88,8 @@
     // for vim normal mode
     "context": "VimControl && vim_mode == normal",
     "bindings": {
-      "space q q": "zed::Quit",
-      "space f s": "workspace::Save",
-      "ctrl-\\": ["workspace::SendKeystrokes", "g c c"],
-      "ctrl-g": ["task::Spawn", { "task_name": "lazygit" }],
+      "g s r": ["vim::PushChangeSurrounds", {}], // mini.surround - replace
+      "g s d": ["vim::PushDeleteSurrounds", {}], // mini.surround - delete
     },
   },
   {
@@ -82,6 +97,7 @@
     "context": "VimControl && vim_mode == visual",
     "bindings": {
       "ctrl-\\": ["workspace::SendKeystrokes", "g c"],
+      "g s s": ["vim::PushAddSurrounds", {}], // mini.surround - add
     },
   },
   {

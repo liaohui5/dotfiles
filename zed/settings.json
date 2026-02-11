@@ -9,18 +9,93 @@
 {
   // disable ai features
   // "disable_ai": true,
-  "icon_theme": "VSCode Icons for Zed (Dark Official Icons)",
+  "language_models": {
+    "openai_compatible": {
+      "Nvidia": {
+        "api_url": "https://integrate.api.nvidia.com/v1",
+        "available_models": [
+          {
+            "name": "z-ai/glm4.7",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+              "chat_completions": true,
+            },
+          },
+          {
+            "name": "qwen/qwen3-coder-480b-a35b-instruct",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+              "chat_completions": true,
+            },
+          },
+          {
+            "name": "minimaxai/minimax-m2.1",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+              "chat_completions": true,
+            },
+          },
+          {
+            "name": "deepseek-ai/deepseek-v3.2",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+              "chat_completions": true,
+            },
+          },
+          {
+            "name": "qwen/qwen3-next-80b-a3b-thinking",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+              "chat_completions": true,
+            },
+          },
+        ],
+      },
+    },
+  },
   "agent": {
+    "default_model": {
+      "provider": "Nvidia",
+      "model": "z-ai/glm4.7",
+    },
     "enabled": true,
   },
   "edit_predictions": {
+    "provider": "none",
     "mode": "subtle",
-    "disabled_globs": ["**/*.md", "**/.env*", "**/*.pem", "**/*.key", "**/*.cert", "**/*.crt", "**/secrets.yml"],
+    "disabled_globs": ["**/.env*", "**/*.pem", "**/*.key", "**/*.cert", "**/*.crt", "**/secrets.yml"],
   },
   "edit_predictions_disabled_in": ["comment"],
-  "features": {
-    "edit_prediction_provider": "none",
-  },
 
   // auto save & auto format
   "format_on_save": "off",
@@ -28,9 +103,11 @@
   "preferred_line_length": 120,
   "hard_tabs": false,
   "tab_size": 2,
+
   // disable soft wrap
   "show_wrap_guides": false,
   "soft_wrap": "none",
+
   // git
   "git": {
     "git_gutter": "tracked_files",
@@ -38,39 +115,48 @@
       "enabled": false,
     },
   },
+
   // vim
   "vim_mode": true,
   "vim": {
     "use_system_clipboard": "always",
     "use_smartcase_find": true,
   },
+
   // font
   "ui_font_size": 18,
   "buffer_font_size": 18,
   "buffer_font_family": "Maple Mono NF CN",
   "ui_font_family": "Maple Mono NF CN",
   "buffer_line_height": "standard",
-  // theme
+
+  // theme & icon theme
   "theme": "Monokai-og",
+  "icon_theme": "VSCode Icons for Zed (Dark Official Icons)",
+
   // tab bar
   "tab_bar": {
     "show": true,
     "show_nav_history_buttons": false,
   },
+
   // tabs
   "tabs": {
     "file_icons": true,
     "git_status": true,
   },
+
   // scrollbar
   "scrollbar": {
     "show": "never",
   },
+
   // status bar
   "toolbar": {
     "breadcrumbs": false,
     "quick_actions": false,
   },
+
   // title bar
   "title_bar": {
     "show_branch_icon": true,
@@ -81,10 +167,12 @@
     "show_sign_in": true,
     "show_menus": true,
   },
+
   // search
   "search": {
     "regex": true,
   },
+
   // search files
   "file_finder": {
     "file_icons": true,
@@ -93,19 +181,23 @@
     "git_status": true,
     "include_ignored": "all",
   },
+
   // hits
   "inlay_hints": {
     "enabled": false,
   },
+
   // hide collaboration panel
   "collaboration_panel": {
     "button": false,
   },
+
   // terminal
   "terminal": {
     "font_size": 16,
     "line_height": "standard",
   },
+
   // debugger
   "debugger": {
     "stepping_granularity": "line",
@@ -113,22 +205,13 @@
     "dock": "left",
     "button": true,
   },
-  // prettier
-  "prettier": {
-    "printWidth": 120,
-    "tabWidth": 2,
-    "useTabs": false,
-    "semi": true,
-    "singleQuote": false,
-    "trailingCommas": "all",
-    "bracketSpacing": true,
-    "alwaysParens": true,
-  },
+
   // telemetry
   "telemetry": {
     "diagnostics": false,
     "metrics": false,
   },
+
   // auto update
   "auto_update": false,
 }
