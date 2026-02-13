@@ -39,8 +39,8 @@ PaperWM:bindHotkeys({
 
   -- increase/decrease width
   full_width = { { "alt" }, "return" },
-  increase_width = { { "shift", "cmd" }, "l" },
-  decrease_width = { { "shift", "cmd" }, "h" },
+  increase_width = { { "alt", "ctrl" }, "l" },
+  decrease_width = { { "alt", "ctrl" }, "h" },
 
   -- move focused window into / out of a column
   slurp_in = { { "shift", "cmd" }, "i" },

@@ -19,15 +19,18 @@
     ~/.zprofile:
     ~/.config/starship:
     ~/.config/yazi:
+    ~/.config/zed:
     ~/.config/yabai:
     ~/.config/sketchybar:
-    ~/.config/spacebar:
     ~/.config/skhd:
     ~/Library/Application Support/lazygit/config.yml:
-    ~/.config/.czrc:
-    ~/.config/zed:
+    ~/.czrc:
     ~/.gitconfig:
     ~/.config/mpv:
+    ~/.config/zellij:
+    ~/.hammerspoon:
+    ~/.config/fish:
+    ~/.config/alacritty:
 
 - link:
     ~/.config/wezterm: wezterm
@@ -38,9 +41,7 @@
     ~/.config/yazi: yazi
     ~/.config/zed: zed
     ~/.config/yabai: yabai_conf/yabai
-    ~/.hyprspace.toml: yabai_conf/hpyrspace/hyprspace.toml
     ~/.config/sketchybar: yabai_conf/sketchybar
-    ~/.config/spacebar: yabai_conf/spacebar
     ~/.config/skhd: yabai_conf/skhd
     ~/Library/Application Support/lazygit/config.yml: git/lazygit-config.yml
     ~/.czrc: git/czg.config.json
