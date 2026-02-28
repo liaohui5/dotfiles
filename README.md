@@ -1,3 +1,7 @@
+## 注意
+
+由于 dotbot 功能有限, 所以我改用 [chezmoi](https://www.chezmoi.io/) 了, 配置迁移至[这个仓库](https://github.com/liaohui5/chezmoi), 本仓库不在维护
+
 ## 介绍
 
 各种命令行工具的配置文件, 每次换电脑都重新配置, 太麻烦了
