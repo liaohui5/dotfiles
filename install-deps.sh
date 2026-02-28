@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+###########################################################
+##### please install dependencies first
+###########################################################
+
 ### init or update submoudles
 git submodule update --remote -f --recursive
 

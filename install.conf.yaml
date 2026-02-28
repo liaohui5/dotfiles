@@ -17,6 +17,7 @@
     ~/.scripts:
     ~/.zshrc:
     ~/.zprofile:
+    ~/.zsh-scripts:
     ~/.config/starship:
     ~/.config/yazi:
     ~/.config/zed:
@@ -33,10 +34,10 @@
     ~/.config/alacritty:
 
 - link:
+    ~/.zshrc: zsh/.zshrc
+    ~/.zprofile: zsh/.zprofile
+    ~/.zsh-scripts: zsh/.zsh-scripts
     ~/.config/wezterm: wezterm
-    ~/.scripts: shell/.scripts
-    ~/.zshrc: shell/.zshrc
-    ~/.zprofile: shell/.zprofile
     ~/.config/starship: starship
     ~/.config/yazi: yazi
     ~/.config/zed: zed
@@ -51,6 +52,3 @@
     ~/.hammerspoon: hammerspoon
     ~/.config/fish: fish
     ~/.config/alacritty: alacritty
-
-- shell:
-    - ./install-deps.sh
